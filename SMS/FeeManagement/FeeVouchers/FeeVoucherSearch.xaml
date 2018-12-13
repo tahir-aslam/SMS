@@ -1,0 +1,1369 @@
+﻿<Page x:Class="SMS.FeeManagement.FeeVouchers.FeeVoucherSearch"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+	Title="FeeVoucherSearch">
+    <Page.Resources>
+
+        <SolidColorBrush x:Key="ExceptionHeaderBackgroundBrush" Color="LightGray" />
+        <!--<SolidColorBrush x:Key="ExceptionCellBackgroundBrush" Color="White" />-->
+
+        <Style x:Key="ExceptionHeaderStyle" TargetType="{x:Type Label}">
+            <Setter Property="Background" Value="{StaticResource ExceptionHeaderBackgroundBrush}" />
+            <Setter Property="FontFamily" Value="Trebuchet MS" />
+            <Setter Property="FontWeight" Value="Black" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1,1,0,0" />
+            <Setter Property="Padding" Value="3,6,0,6" />
+        </Style>
+
+
+        <Style x:Key="ExceptionCellStyle" TargetType="{x:Type Label}">
+            <!--<Setter Property="Background" Value="{StaticResource ExceptionCellBackgroundBrush}" />-->
+            <Setter Property="FontFamily" Value="Trebuchet MS" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1,1,0,0" />
+            <Setter Property="Padding" Value="3,6,0,6" />
+        </Style>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="1" Margin="-1">
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+                <TextBlock Text="Fee Vouchers"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="WhiteSmoke"  Offset="0" />
+                    <GradientStop Color="LightGray" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>                
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="80"/>
+                    <ColumnDefinition  Width="150"/>
+                    <ColumnDefinition  Width="80"/>
+                    <ColumnDefinition  Width="150"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Month: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="month_cmb"  SelectionChanged="month_cmb_SelectionChanged" SelectedValuePath="id">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                <TextBlock Text="{Binding month_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+
+                <Label Grid.Row="0" Grid.Column="2" Content="Class: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="class_cmb" SelectedValuePath="id" SelectionChanged="class_cmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                <TextBlock Text="{Binding class_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Label Grid.Row="0" Grid.Column="4" Content="Section: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0 " Grid.Column="5" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="section_cmb" SelectedValuePath="id" SelectionChanged="section_cmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                <TextBlock Text="{Binding section_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Button Grid.Column="6" HorizontalAlignment="Right" Click="print_btn_Click" Width="45" Height="35" ToolTip="Print All Vouchers" VerticalAlignment="Center" Name="print_btn" Visibility="Hidden">
+                    <Image Source="/SMS;component/images/print3.jpg"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="1,0,1,1" Name="voucher1_grid" Visibility="Hidden">
+                <ScrollViewer>
+                    
+                         <ListBox  Name="voucher1_lstbox" VerticalAlignment="Center" ItemsSource="{Binding fee_voucher_list}" Width="824" HorizontalAlignment="Left"  Visibility="Hidden">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="2"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate >
+                                <DataTemplate>                                    
+                                    <StackPanel Width="400" Orientation="Horizontal" HorizontalAlignment="Left" >
+                                        <Grid ShowGridLines="True" Height="584">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="550"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Border Grid.Row="0" Grid.Column="0" BorderThickness="1"  BorderBrush="Black" CornerRadius="5" Margin="10">
+                                                <Grid Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30" />
+                                                        <RowDefinition Height="50"/>
+                                                        <RowDefinition Height="30"/>
+                                                        <RowDefinition Height="30"/>
+                                                        <RowDefinition Height="30"/>
+                                                        <RowDefinition Height="30"/>
+                                                        <RowDefinition Height="10"/>
+                                                        <RowDefinition Height="250"/>
+                                                        <RowDefinition Height="35"/>
+                                                        <RowDefinition Height="20"/>
+                                                        <RowDefinition Height="20"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="350"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label Grid.Row="0" Content="Institute's Copy" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+
+
+                                                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                                                        <Image  HorizontalAlignment="Left" Width="60" Height="60" Source="{Binding institute_logo}" />
+                                                        <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding institute_name}"  FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
+                                                    </StackPanel>
+
+                                                    <Grid Grid.Row="2">
+                                                        <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Foreground="White" Content="Fee Slip" FontSize="16" />
+                                                    </Grid>
+
+                                                    <Grid Grid.Row="3" VerticalAlignment="Center">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width=".5*" />
+                                                            <ColumnDefinition Width=".5*" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                            <Label   Content="Date:" />
+                                                            <TextBlock   VerticalAlignment="Center" TextDecorations="Underline" Text="{Binding date_time}"  />
+                                                        </StackPanel>
+                                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                                                            <Label   Content="Receipt #" VerticalAlignment="Center"/>
+                                                            <TextBlock  Background="Black" Foreground="White" Text="{Binding reciept_no}" FontSize="17" />
+                                                        </StackPanel>
+                                                    </Grid>
+                                                    <Grid Grid.Row="4" >
+                                                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center" >
+                                                            <Label   Content="Name: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                            <TextBlock   HorizontalAlignment="Left"  Text="{Binding std_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="14" TextDecorations="Underline" />
+
+                                                            <Label   Content=" C/O " HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                            <TextBlock  HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding father_name}"  FontWeight="Black" FontSize="12" TextDecorations="Underline" />
+                                                        </StackPanel>
+                                                    </Grid>
+
+                                                    <Grid Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50"/>
+                                                            <ColumnDefinition Width="60"/>
+                                                            <ColumnDefinition Width="140"/>
+                                                            <ColumnDefinition Width="100"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Label Grid.Column="0" Content="Adm # " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                        <TextBlock Grid.Column="1" Text="{Binding adm_no}" VerticalAlignment="Center" FontWeight="Black"/>
+
+                                                        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"  Text="{Binding month}"   VerticalAlignment="Center"  FontWeight="Black" TextDecorations="Underline" FontSize="16" Foreground="Blue"/>
+
+                                                        <TextBlock Grid.Column="3"   HorizontalAlignment="Right"  Text="{Binding class_name}" VerticalAlignment="Center" FontWeight="Black"/>
+                                                    </Grid>
+
+                                                    <Grid  Grid.Row="7" HorizontalAlignment="Center" >
+                                                        <Grid.Background>
+                                                            <ImageBrush ImageSource="{Binding institute_logo}" Stretch="Fill" Opacity="0.2"/>
+                                                        </Grid.Background >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="30" />
+                                                            <RowDefinition Height="26" />
+                                                            <RowDefinition Height="26" />
+                                                            <RowDefinition Height="26" />
+                                                            <RowDefinition Height="26" />
+                                                            <RowDefinition Height="26" />
+                                                            <RowDefinition Height="26" />
+                                                            <RowDefinition Height="26" />
+                                                            <RowDefinition Height="28" />
+                                                    </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="40" />
+                                                            <ColumnDefinition Width="220"/>
+                                                            <ColumnDefinition Width="90"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Label Grid.Column="0" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Sr#</Label>
+                                                        <Label Grid.Column="1" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Particulars</Label>
+                                                        <Label Grid.Column="2" Grid.Row="0" BorderThickness="1 1 1 0"  Style="{StaticResource ExceptionHeaderStyle}">Amount (Rs)</Label>
+
+                                                        <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >1</Label>
+                                                        <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >Admission Fee</Label>
+                                                        <TextBox Grid.Column="2" Grid.Row="1" Background="Transparent" BorderBrush="Black" Text="{Binding rem_adm_fee}" BorderThickness="1 0 0 0"   FontSize="14"   />
+
+
+                                                        <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >2</Label>
+                                                        <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >Annual Fund</Label>
+                                                        <TextBox Grid.Column="2" Grid.Row="2" Background="Transparent" BorderThickness="1 0 0 0"  BorderBrush="Black" Text="{Binding rem_reg_fee}"   FontSize="14"  />
+
+                                                        <Label Grid.Column="0" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">3</Label>
+                                                        <Label Grid.Column="1" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">Tution Fee</Label>
+                                                        <TextBox Grid.Column="2" Background="Transparent" Grid.Row="3" BorderThickness="1 0 0 0" Text="{Binding rem_tution_fee}"  BorderBrush="Black"   FontSize="14" />
+
+                                                        <Label Grid.Column="0" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">4</Label>
+                                                        <Label Grid.Column="1" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">Exam Fee</Label>
+                                                        <TextBox Grid.Column="2" Background="Transparent" Grid.Row="4" BorderThickness="1 0 0 0" Text="{Binding rem_exam_fee}"  BorderBrush="Black"  FontSize="14" />
+
+                                                        <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >5</Label>
+                                                        <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >Security Fee</Label>
+                                                        <TextBox Grid.Column="2" Background="Transparent" Grid.Row="5 " BorderThickness="1 0 0 0" Text="{Binding rem_security_fee}"  BorderBrush="Black" FontSize="14" />
+
+                                                        <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" >6</Label>
+                                                        <Label Grid.Column="1" Grid.Row="6" Content="{Binding fine_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                        <TextBox Grid.Column="2" Background="Transparent" Grid.Row="6" BorderThickness="1 0 0 0" Text="{Binding fine_amount}"  BorderBrush="Black" FontSize="14" />
+
+                                                        <Label Grid.Column="0" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}">7</Label>
+                                                    <Label Grid.Column="1" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}" Content="{Binding other_desc}"></Label>
+                                                        <TextBox Grid.Column="2" Background="Transparent" Grid.Row="7" BorderThickness="1 0 0 0" Text="{Binding other_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                        <Label Grid.Column="0" Grid.Row="8"  BorderThickness="1,1,0,1" Style="{StaticResource ExceptionCellStyle}">8</Label>
+                                                        <Label Grid.Column="1" Grid.Row="8" BorderThickness="1,1,0,1" Content="{Binding pending_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                        <TextBox Grid.Column="2" Background="Transparent" Grid.Row="8" BorderThickness="1 1 0 0" Text="{Binding pending_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="8" Grid.ColumnSpan="3" Visibility="Hidden" >
+                                                            <Image  Stretch="None" Source="/SMS;component/images/paid_image.jpg" Opacity="0.33" Focusable="True" ></Image>
+                                                        </Grid>
+
+                                                    </Grid>
+                                                    <Grid Grid.Row="8" VerticalAlignment="Center">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="130"/>
+                                                            <ColumnDefinition Width="130"/>
+                                                            <ColumnDefinition Width="120"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Grid.Column="0" Content="Amount In Words: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                        <Label Grid.Column="1" Content="Total: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                                        <TextBlock Grid.Column="2" Width="125" Height="35" HorizontalAlignment="Left" TextAlignment="Left"   FontSize="20" FontWeight="Black" Text="{Binding total}"  VerticalAlignment="Center" TextDecorations="Underline" />
+                                                        <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Content="Rs"/>
+
+                                                    </Grid>
+
+                                                    <Grid Grid.Row="9">
+                                                        <TextBlock Text="{Binding total_in_words}" VerticalAlignment="Center" HorizontalAlignment="Left"  TextDecorations="Underline" />
+                                                    </Grid>
+
+                                                    <Grid Grid.Row="10">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="230"/>
+                                                            <ColumnDefinition Width="140"/>
+
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0" Text="Signature  " VerticalAlignment="Center" HorizontalAlignment="Right" />
+                                                        <TextBlock Grid.Column="1" Width="140" VerticalAlignment="Center" HorizontalAlignment="Left"  Text="______________________________"/>
+
+                                                    </Grid>
+
+                                                </Grid>
+                                            </Border>
+                                            <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                                            </Grid>
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                   
+                </ScrollViewer>
+            </Grid>     
+           
+       
+            <Grid Grid.Row="1" Margin="1,0,1,1" Name="voucher2_grid" Visibility="Hidden">                
+                <ScrollViewer>
+                    <ListBox  Name="voucher_lstbox" VerticalAlignment="Center" ItemsSource="{Binding fee_voucher_list}" Width="824" HorizontalAlignment="Center"  Visibility="Hidden">
+                        <ListBox.ItemTemplate >
+                            <DataTemplate>                               
+                                <Grid ShowGridLines="True" Height="584.5">
+                                    <Grid.RowDefinitions>                                        
+                                        <RowDefinition Height="Auto"/>                                        
+                                        <RowDefinition Height="15"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".5*"/>
+                                        <ColumnDefinition Width=".5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Row="0" Grid.Column="0" BorderThickness="1"  BorderBrush="Black" CornerRadius="5" Margin="10,10,10,0">
+                                        <Grid Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30" />
+                                                <RowDefinition Height="50"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="10"/>
+                                                <RowDefinition Height="250"/>
+                                                <RowDefinition Height="35"/>                                                
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="25"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="350"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Row="0" Content="Institute's Copy" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+
+
+                                            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                                                <Image   HorizontalAlignment="Left" Width="55" Height="50" Source="{Binding institute_logo}" Stretch="Fill" VerticalAlignment="Center"/>
+                                                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding institute_name}"  FontSize="14" FontWeight="Black"/>
+                                            </StackPanel>
+
+                                            <Grid Grid.Row="2">
+                                                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Foreground="White" Content="Fee Slip" FontSize="16" />
+                                            </Grid>
+
+                                            <Grid Grid.Row="3" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width=".5*" />
+                                                    <ColumnDefinition Width=".5*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                    <Label   Content="Date:" />
+                                                    <TextBlock   VerticalAlignment="Center" TextDecorations="Underline" Text="{Binding date_time}"  />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                                                    <Label   Content="Receipt #" VerticalAlignment="Center"/>
+                                                    <TextBlock  Background="Black" Foreground="White" Text="{Binding reciept_no}" FontSize="17" />
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Grid.Row="4" >
+                                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center" >
+                                                    <Label   Content="Name: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                    <TextBlock   HorizontalAlignment="Left"  Text="{Binding std_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="14" TextDecorations="Underline" />
+
+                                                    <Label   Content=" C/O " HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    <TextBlock  HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding father_name}"  FontWeight="Black" FontSize="12" TextDecorations="Underline" />
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Grid Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="60"/>                                                    
+                                                    <ColumnDefinition Width="140"/>                                                    
+                                                    <ColumnDefinition Width="100"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Content="Adm # " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding adm_no}" VerticalAlignment="Center" FontWeight="Black"/>
+                                                
+                                                <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"  Text="{Binding month}"   VerticalAlignment="Center"  FontWeight="Black" TextDecorations="Underline" FontSize="16" Foreground="Blue"/>
+
+                                                <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding class_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="14"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="-" VerticalAlignment="Center" FontWeight="Black" FontSize="16"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding section_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="12"/>
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Grid  Grid.Row="7" HorizontalAlignment="Center" >
+                                                <Grid.Background>
+                                                    <ImageBrush ImageSource="{Binding institute_logo}" Stretch="Fill" Opacity="0.2"/>
+                                                </Grid.Background >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="28" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="40" />
+                                                    <ColumnDefinition Width="220"/>
+                                                    <ColumnDefinition Width="90"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Sr#</Label>
+                                                <Label Grid.Column="1" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Particulars</Label>
+                                                <Label Grid.Column="2" Grid.Row="0" BorderThickness="1 1 1 0"  Style="{StaticResource ExceptionHeaderStyle}">Amount (Rs)</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >1</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >Admission Fee</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="1" Background="Transparent" BorderBrush="Black" Text="{Binding rem_adm_fee}" BorderThickness="1 0 0 0"   FontSize="14"   />
+
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >2</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >Annual Fund</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="2" Background="Transparent" BorderThickness="1 0 0 0"  BorderBrush="Black" Text="{Binding rem_reg_fee}"   FontSize="14"  />
+
+                                                <Label Grid.Column="0" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">3</Label>
+                                                <Label Grid.Column="1" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">Tution Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="3" BorderThickness="1 0 0 0" Text="{Binding rem_tution_fee}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">4</Label>
+                                                <Label Grid.Column="1" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">Exam Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="4" BorderThickness="1 0 0 0" Text="{Binding rem_exam_fee}"  BorderBrush="Black"  FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >5</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >Security Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="5 " BorderThickness="1 0 0 0" Text="{Binding rem_security_fee}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" >6</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Content="{Binding fine_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="6" BorderThickness="1 0 0 0" Text="{Binding fine_amount}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}">6</Label>
+                                                <Label Grid.Column="1" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}" Content="{Binding other_desc}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="7" BorderThickness="1 0 0 0" Text="{Binding other_amount}"  BorderBrush="Black"   FontSize="14" />
+                                                
+                                                <Label Grid.Column="0" Grid.Row="8"  BorderThickness="1,1,0,1" Style="{StaticResource ExceptionCellStyle}">7</Label>                                                
+                                                <Label Grid.Column="1" Grid.Row="8" BorderThickness="1,1,0,1" Content="{Binding pending_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="8" BorderThickness="1 1 0 0" Text="{Binding pending_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="8" Grid.ColumnSpan="3" Visibility="Hidden" >
+                                                    <Image  Stretch="None" Source="/SMS;component/images/paid_image.jpg" Opacity="0.33" Focusable="True" ></Image>
+                                                </Grid>
+
+                                            </Grid>
+
+                                            <Grid Grid.Row="8" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Content="Amount In Words: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <Label Grid.Column="1" Content="Total: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="2" Width="125" Height="35" HorizontalAlignment="Left" TextAlignment="Left"   FontSize="20" FontWeight="Black" Text="{Binding total}"  VerticalAlignment="Center" TextDecorations="Underline" />
+                                                <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Content="Rs"/>
+
+                                            </Grid>
+
+                                            <Grid Grid.Row="9">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="{Binding total_in_words}" VerticalAlignment="Center" HorizontalAlignment="Left"  TextDecorations="Underline" Margin="0,0,20,0"/>                                                
+                                                <TextBlock Grid.Column="1" Text="Paid: " VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                                <TextBlock Grid.Column="2" Width="125" Text="__________"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                                <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Content="Rs"/>
+                                            </Grid>                                            
+                                            <Grid Grid.Row="10" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="1" Text="Arrears: " VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                                <TextBlock Grid.Column="2" Width="125"    Text="__________" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                                <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Content="Rs"/>
+                                            </Grid>                                          
+
+                                            <Grid Grid.Row="11" HorizontalAlignment="Left">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="230"/>
+                                                    <ColumnDefinition Width="140"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="Signature  " VerticalAlignment="Center" HorizontalAlignment="Right" />
+                                                <TextBlock Grid.Column="1" Width="140" VerticalAlignment="Center" HorizontalAlignment="Left"  Text="______________________________"/>
+
+                                            </Grid>
+
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Row="0" Grid.Column="1" BorderThickness="1"  BorderBrush="Black" CornerRadius="5" Margin="10,10,10,0">
+                                        <Grid Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30" />
+                                                <RowDefinition Height="50"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="10"/>
+                                                <RowDefinition Height="250"/>
+                                                <RowDefinition Height="35"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="25" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="350"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Row="0" Content="Depositor's Copy" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+
+
+                                            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                                                <Image  HorizontalAlignment="Left" Width="55" Height="50" Source="{Binding institute_logo}" Stretch="Fill" VerticalAlignment="Center" />
+                                                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding institute_name}"  FontSize="14" FontWeight="Black"/>
+                                            </StackPanel>
+
+                                            <Grid Grid.Row="2">
+                                                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Foreground="White" Content="Fee Slip" FontSize="16" />
+                                            </Grid>
+
+                                            <Grid Grid.Row="3" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width=".5*" />
+                                                    <ColumnDefinition Width=".5*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                    <Label   Content="Date:" />
+                                                    <TextBlock   VerticalAlignment="Center" TextDecorations="Underline" Text="{Binding date_time}"  />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                                                    <Label   Content="Receipt #" VerticalAlignment="Center"/>
+                                                    <TextBlock  Background="Black" Foreground="White" Text="{Binding reciept_no}" FontSize="17" />
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Grid.Row="4" >
+                                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center" >
+                                                    <Label   Content="Name: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                    <TextBlock   HorizontalAlignment="Left"  Text="{Binding std_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="14" TextDecorations="Underline" />
+
+                                                    <Label   Content=" C/O " HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    <TextBlock  HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding father_name}"  FontWeight="Black" FontSize="12" TextDecorations="Underline" />
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Grid Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="60"/>
+                                                    <ColumnDefinition Width="140"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Content="Adm # " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding adm_no}" VerticalAlignment="Center" FontWeight="Black"/>
+
+                                                <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"  Text="{Binding month}"   VerticalAlignment="Center"  FontWeight="Black" TextDecorations="Underline" FontSize="16" Foreground="Blue"/>
+
+                                                <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding class_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="14"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="-" VerticalAlignment="Center" FontWeight="Black" FontSize="16"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding section_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="12"/>
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Grid  Grid.Row="7" HorizontalAlignment="Center">
+                                                <Grid.Background>
+                                                    <ImageBrush ImageSource="{Binding institute_logo}" Stretch="Fill" Opacity="0.2"/>
+                                                </Grid.Background >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="26" />
+                                                    <RowDefinition Height="28" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="40" />
+                                                    <ColumnDefinition Width="220"/>
+                                                    <ColumnDefinition Width="90"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Sr#</Label>
+                                                <Label Grid.Column="1" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Particulars</Label>
+                                                <Label Grid.Column="2" Grid.Row="0" BorderThickness="1 1 1 0"  Style="{StaticResource ExceptionHeaderStyle}">Amount (Rs)</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >1</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >Admission Fee</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="1" Background="Transparent" BorderBrush="Black" Text="{Binding rem_adm_fee}" BorderThickness="1 0 0 0"   FontSize="14"   />
+
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >2</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >Annual Fund</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="2" Background="Transparent" BorderThickness="1 0 0 0"  BorderBrush="Black" Text="{Binding rem_reg_fee}"   FontSize="14"  />
+
+                                                <Label Grid.Column="0" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">3</Label>
+                                                <Label Grid.Column="1" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">Tution Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="3" BorderThickness="1 0 0 0" Text="{Binding rem_tution_fee}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">4</Label>
+                                                <Label Grid.Column="1" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">Exam Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="4" BorderThickness="1 0 0 0" Text="{Binding rem_exam_fee}"  BorderBrush="Black"  FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >5</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >Security Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="5 " BorderThickness="1 0 0 0" Text="{Binding rem_security_fee}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" >6</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Content="{Binding fine_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="6" BorderThickness="1 0 0 0" Text="{Binding fine_amount}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}">6</Label>
+                                                <Label Grid.Column="1" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}" Content="{Binding other_desc}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="7" BorderThickness="1 0 0 0" Text="{Binding other_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="8"  BorderThickness="1,1,0,1" Style="{StaticResource ExceptionCellStyle}">7</Label>
+                                                <Label Grid.Column="1" Grid.Row="8" BorderThickness="1,1,0,1" Content="{Binding pending_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="8" BorderThickness="1 1 0 0" Text="{Binding pending_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="8" Grid.ColumnSpan="3" Visibility="Hidden" >
+                                                    <Image  Stretch="None" Source="/SMS;component/images/paid_image.jpg" Opacity="0.33" Focusable="True" ></Image>
+                                                </Grid>
+
+                                            </Grid>
+
+                                            <Grid Grid.Row="8" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Content="Amount In Words: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <Label Grid.Column="1" Content="Total: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="2" Width="125" Height="35" HorizontalAlignment="Left" TextAlignment="Left"   FontSize="20" FontWeight="Black" Text="{Binding total}"  VerticalAlignment="Center" TextDecorations="Underline" />
+                                                <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Content="Rs"/>
+
+                                            </Grid>
+
+                                            <Grid Grid.Row="9">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="{Binding total_in_words}" VerticalAlignment="Center" HorizontalAlignment="Left"  TextDecorations="Underline" Margin="0,0,20,0"/>
+                                                <TextBlock Grid.Column="1" Text="Paid: " VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                                <TextBlock Grid.Column="2" Width="125" Text="__________"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                                <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Content="Rs"/>
+                                            </Grid>
+                                            <Grid Grid.Row="10" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="1" Text="Arrears: " VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                                <TextBlock Grid.Column="2" Width="125"    Text="__________" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                                <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Content="Rs"/>
+                                            </Grid>
+
+                                            <Grid Grid.Row="11" HorizontalAlignment="Left">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="230"/>
+                                                    <ColumnDefinition Width="140"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="Signature  " VerticalAlignment="Center" HorizontalAlignment="Right" />
+                                                <TextBlock Grid.Column="1" Width="140" VerticalAlignment="Center" HorizontalAlignment="Left"  Text="______________________________"/>
+
+                                            </Grid>
+
+                                        </Grid>
+                                    </Border>
+                                    <Grid Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Center" Margin="5,0,5,0" VerticalAlignment="Center">
+                                        <!--<TextBlock TextWrapping="Wrap" Text="{Binding fee_note}" FontStyle="Italic" FontSize="10"/>-->
+                                    </Grid>
+                                    <Grid Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center" Margin="5,0,5,0" VerticalAlignment="Center">
+                                        <!--<TextBlock TextWrapping="Wrap" Text="{Binding fee_note}" FontStyle="Italic" FontSize="10"/>-->
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+            </Grid>
+            
+            <Grid Grid.Row="1" Margin="1,0,1,1" Name="voucher3_grid" Visibility="Hidden">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                    <ListBox  Name="voucher3_lstbox" VerticalAlignment="Stretch"   ItemsSource="{Binding fee_voucher_list}" Width="1100" MaxWidth="1100" HorizontalAlignment="Center" Visibility="Hidden">
+                        <ListBox.ItemTemplate >
+                            <DataTemplate>
+                                <Grid ShowGridLines="True" Height="Auto">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="7.5in"/>
+                                        <RowDefinition Height="1.353in" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".333*"/>
+                                        <ColumnDefinition Width=".333*"/>
+                                        <ColumnDefinition Width=".333*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <!--First Slip-->
+                                    <Border Grid.Row="0" Grid.Column="0" BorderThickness="1"  BorderBrush="Black" CornerRadius="5" Margin="0,5,0,5" HorizontalAlignment="Center">
+                                        <Grid Margin="5" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30" />
+                                                <RowDefinition Height="80"/>
+                                                <RowDefinition Height="65"/>
+                                                <RowDefinition Height="50"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="10"/>
+                                                <RowDefinition Height="280"/>
+                                                <RowDefinition Height="35"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="350"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Row="0" Content="Bank's Copy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="70"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>                                                
+                                                    <Image Grid.Column="0"  HorizontalAlignment="Left"  Source="{Binding institute_logo}" />
+                                                    <TextBlock Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding institute_name}" FontSize="14" TextWrapping="Wrap" FontWeight="Black"/>
+                                                    <!--<Image Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="/SMS;component/images/lps.png"/>-->
+                                            </Grid>
+                                            <!--<StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                                                
+                                                
+                                            </StackPanel>-->
+                                            
+                                            <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Vertical">
+                                                <TextBlock Text="{Binding bank_name}" HorizontalAlignment="Center" FontSize="14" FontWeight="Medium"/>
+                                                <TextBlock Text="{Binding branch_name}" HorizontalAlignment="Center"/>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock Text="A/C Title: " />
+                                                    <TextBlock Text="{Binding account_title}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock Text="A/C: " />
+                                                    <TextBlock Text="{Binding account_no}" FontWeight="Black"/>    
+                                                </StackPanel>                                                
+                                            </StackPanel>
+
+                                            <Grid Grid.Row="3">
+                                                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Foreground="White" Content="Fee Slip" FontSize="16" />
+                                            </Grid>
+
+                                            <Grid Grid.Row="4" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width=".5*" />
+                                                    <ColumnDefinition Width=".5*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                    <Label   Content="Date:" />
+                                                    <TextBlock   VerticalAlignment="Center" TextDecorations="Underline" Text="{Binding date_time}" FontSize="16" />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,50,0">
+                                                    <Label   Content="Receipt #" VerticalAlignment="Center"/>
+                                                    <TextBlock  Background="Black" Foreground="White" Text="{Binding reciept_no}" FontSize="17" />
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Grid.Row="5" >
+                                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center" >                                                    
+                                                    <TextBlock   HorizontalAlignment="Left"  Text="{Binding std_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="14" TextDecorations="Underline" />
+                                                    <Label   Content=" C/O " HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    <TextBlock  HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding father_name}"  FontWeight="Black" FontSize="12" TextDecorations="Underline" />
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Grid Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="60"/>
+                                                    <ColumnDefinition Width="110"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Content="Adm # " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding adm_no}" VerticalAlignment="Center" FontWeight="Black" TextDecorations="Underline" FontSize="16"/>
+                                                <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"  Text="{Binding month}"   VerticalAlignment="Center"  FontWeight="Black" TextDecorations="Underline" FontSize="18" Foreground="Blue"/>
+                                                <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding class_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="16"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="-" VerticalAlignment="Center" FontWeight="Black" FontSize="14"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding section_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="12"/>
+                                                </StackPanel>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="8" HorizontalAlignment="Center" >
+                                                <!--<Grid.Background>
+                                                    <ImageBrush ImageSource="{Binding institute_logo}" Stretch="None"  Opacity="0.3"/>
+                                                </Grid.Background >-->
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="40" />
+                                                    <ColumnDefinition Width="220"/>
+                                                    <ColumnDefinition Width="90"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Sr#</Label>
+                                                <Label Grid.Column="1" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Particulars</Label>
+                                                <Label Grid.Column="2" Grid.Row="0" BorderThickness="1 1 1 0"  Style="{StaticResource ExceptionHeaderStyle}">Amount (Rs)</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >1</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >Admission Fee</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="1" Background="Transparent" BorderBrush="Black" Text="{Binding rem_adm_fee}" BorderThickness="1 0 0 0"   FontSize="14"   />
+
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >2</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >Annual Fund</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="2" Background="Transparent" BorderThickness="1 0 0 0"  BorderBrush="Black" Text="{Binding rem_reg_fee}"   FontSize="14"  />
+
+                                                <Label Grid.Column="0" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">3</Label>
+                                                <Label Grid.Column="1" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">Tution Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="3" BorderThickness="1 0 0 0" Text="{Binding rem_tution_fee}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">4</Label>
+                                                <Label Grid.Column="1" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">Exam Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="4" BorderThickness="1 0 0 0" Text="{Binding rem_exam_fee}"  BorderBrush="Black"  FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >5</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >Security Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="5 " BorderThickness="1 0 0 0" Text="{Binding rem_security_fee}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" >6</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Content="{Binding fine_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="6" BorderThickness="1 0 0 0" Text="{Binding fine_amount}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}">7</Label>
+                                                <Label Grid.Column="1" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}" Content="{Binding other_desc}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="7" BorderThickness="1 0 0 0" Text="{Binding other_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="8"  BorderThickness="1,1,0,1" Style="{StaticResource ExceptionCellStyle}">8</Label>
+                                                <Label Grid.Column="1" Grid.Row="8" BorderThickness="1,1,0,1" Content="{Binding pending_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="8" BorderThickness="1 1 0 0" Text="{Binding pending_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="8" Grid.ColumnSpan="3" Visibility="Hidden" >
+                                                    <!--<Image  Stretch="None" Source="/SMS;component/images/paid_image.jpg" Opacity="0.7" Focusable="True" ></Image>-->
+                                                </Grid>
+
+                                            </Grid>
+                                            <Grid Grid.Row="9" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Content="Amount In Words: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <Label Grid.Column="1" Content="Total: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="2" Width="100" Height="35" HorizontalAlignment="Left" TextAlignment="Left"   FontSize="20" FontWeight="Black" Text="{Binding total}"  VerticalAlignment="Center" TextDecorations="Underline" />
+                                                <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="20" Content="Rs"/>
+
+                                            </Grid>
+
+                                            <Grid Grid.Row="10">
+                                                <TextBlock Text="{Binding total_in_words}" VerticalAlignment="Center" HorizontalAlignment="Left"  TextDecorations="Underline" />
+                                            </Grid>
+
+                                            <Grid Grid.Row="11">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="230"/>
+                                                    <ColumnDefinition Width="140"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="Signature  " VerticalAlignment="Center" HorizontalAlignment="Right" />
+                                                <TextBlock Grid.Column="1" Width="140" VerticalAlignment="Center" HorizontalAlignment="Left"  Text="______________________________"/>
+
+                                            </Grid>
+
+                                        </Grid>
+                                    </Border>
+                                    <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Orientation="Vertical" Margin="5" Width="350" VerticalAlignment="Top">
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding fee_note}" FontStyle="Italic" FontSize="16"/>
+                                    </StackPanel>
+
+                                    <Border Grid.Row="0" Grid.Column="1" BorderThickness="1"  BorderBrush="Black" CornerRadius="5" Margin="0,5,0,5" HorizontalAlignment="Center">
+                                        <Grid Margin="5" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30" />
+                                                <RowDefinition Height="80"/>
+                                                <RowDefinition Height="65"/>
+                                                <RowDefinition Height="50"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="10"/>
+                                                <RowDefinition Height="280"/>
+                                                <RowDefinition Height="35"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="350"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Row="0" Content="Institute's Copy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="70"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Column="0"  HorizontalAlignment="Left"  Source="{Binding institute_logo}" />
+                                                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding institute_name}" FontSize="14" TextWrapping="Wrap" FontWeight="Black"/>
+                                                <!--<Image Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="/SMS;component/images/lps.png"/>-->
+                                            </Grid>
+                                            <!--<StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                                                <Image  HorizontalAlignment="Left" Width="60" Height="60" Source="{Binding institute_logo}" />
+                                                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding institute_name}"  FontSize="14" FontWeight="Black"/>
+                                            </StackPanel>-->
+
+                                            <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Vertical">
+                                                <TextBlock Text="{Binding bank_name}" HorizontalAlignment="Center" FontSize="14" FontWeight="Medium"/>
+                                                <TextBlock Text="{Binding branch_name}" HorizontalAlignment="Center"/>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock Text="A/C Title: " />
+                                                    <TextBlock Text="{Binding account_title}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock Text="A/C: " />
+                                                    <TextBlock Text="{Binding account_no}" FontWeight="Black"/>
+                                                </StackPanel>
+                                            </StackPanel>
+
+                                            <Grid Grid.Row="3">
+                                                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Foreground="White" Content="Fee Slip" FontSize="16" />
+                                            </Grid>
+
+                                            <Grid Grid.Row="4" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width=".5*" />
+                                                    <ColumnDefinition Width=".5*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                    <Label   Content="Date:" />
+                                                    <TextBlock   VerticalAlignment="Center" TextDecorations="Underline" Text="{Binding date_time}" FontSize="16" />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,50,0">
+                                                    <Label   Content="Receipt #" VerticalAlignment="Center"/>
+                                                    <TextBlock  Background="Black" Foreground="White" Text="{Binding reciept_no}" FontSize="17" />
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Grid.Row="5" >
+                                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center" >
+                                                    <TextBlock   HorizontalAlignment="Left"  Text="{Binding std_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="14" TextDecorations="Underline" />
+                                                    <Label   Content=" C/O " HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    <TextBlock  HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding father_name}"  FontWeight="Black" FontSize="12" TextDecorations="Underline" />
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Grid Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="60"/>
+                                                    <ColumnDefinition Width="110"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Content="Adm # " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding adm_no}" VerticalAlignment="Center" FontWeight="Black" TextDecorations="Underline" FontSize="16"/>
+                                                <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"  Text="{Binding month}"   VerticalAlignment="Center"  FontWeight="Black" TextDecorations="Underline" FontSize="18" Foreground="Blue"/>
+                                                <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding class_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="16"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="-" VerticalAlignment="Center" FontWeight="Black" FontSize="14"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding section_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="12"/>
+                                                </StackPanel>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="8" HorizontalAlignment="Center" >
+                                                <!--<Grid.Background>
+                                                    <ImageBrush ImageSource="{Binding institute_logo}" Stretch="None"  Opacity="0.3"/>
+                                                </Grid.Background >-->
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="40" />
+                                                    <ColumnDefinition Width="220"/>
+                                                    <ColumnDefinition Width="90"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Sr#</Label>
+                                                <Label Grid.Column="1" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Particulars</Label>
+                                                <Label Grid.Column="2" Grid.Row="0" BorderThickness="1 1 1 0"  Style="{StaticResource ExceptionHeaderStyle}">Amount (Rs)</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >1</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >Admission Fee</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="1" Background="Transparent" BorderBrush="Black" Text="{Binding rem_adm_fee}" BorderThickness="1 0 0 0"   FontSize="14"   />
+
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >2</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >Annual Fund</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="2" Background="Transparent" BorderThickness="1 0 0 0"  BorderBrush="Black" Text="{Binding rem_reg_fee}"   FontSize="14"  />
+
+                                                <Label Grid.Column="0" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">3</Label>
+                                                <Label Grid.Column="1" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">Tution Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="3" BorderThickness="1 0 0 0" Text="{Binding rem_tution_fee}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">4</Label>
+                                                <Label Grid.Column="1" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">Exam Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="4" BorderThickness="1 0 0 0" Text="{Binding rem_exam_fee}"  BorderBrush="Black"  FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >5</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >Security Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="5 " BorderThickness="1 0 0 0" Text="{Binding rem_security_fee}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" >6</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Content="{Binding fine_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="6" BorderThickness="1 0 0 0" Text="{Binding fine_amount}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}">7</Label>
+                                                <Label Grid.Column="1" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}" Content="{Binding other_desc}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="7" BorderThickness="1 0 0 0" Text="{Binding other_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="8"  BorderThickness="1,1,0,1" Style="{StaticResource ExceptionCellStyle}">8</Label>
+                                                <Label Grid.Column="1" Grid.Row="8" BorderThickness="1,1,0,1" Content="{Binding pending_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="8" BorderThickness="1 1 0 0" Text="{Binding pending_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="8" Grid.ColumnSpan="3" Visibility="Hidden" >
+                                                    <!--<Image  Stretch="None" Source="/SMS;component/images/paid_image.jpg" Opacity="0.33" Focusable="True" ></Image>-->
+                                                </Grid>
+
+                                            </Grid>
+                                            <Grid Grid.Row="9" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Content="Amount In Words: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <Label Grid.Column="1" Content="Total: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="2" Width="100" Height="35" HorizontalAlignment="Left" TextAlignment="Left"   FontSize="20" FontWeight="Black" Text="{Binding total}"  VerticalAlignment="Center" TextDecorations="Underline" />
+                                                <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="20" Content="Rs"/>
+
+                                            </Grid>
+
+                                            <Grid Grid.Row="10">
+                                                <TextBlock Text="{Binding total_in_words}" VerticalAlignment="Center" HorizontalAlignment="Left"  TextDecorations="Underline" />
+                                            </Grid>
+
+                                            <Grid Grid.Row="11">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="230"/>
+                                                    <ColumnDefinition Width="140"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="Signature  " VerticalAlignment="Center" HorizontalAlignment="Right" />
+                                                <TextBlock Grid.Column="1" Width="140" VerticalAlignment="Center" HorizontalAlignment="Left"  Text="______________________________"/>
+
+                                            </Grid>
+
+                                        </Grid>
+                                    </Border>
+                                    <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Vertical" Margin="5" Width="350" VerticalAlignment="Top">
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding fee_note}" FontStyle="Italic" FontSize="16"/>
+                                    </StackPanel>
+                                    <Border Grid.Row="0" Grid.Column="2" BorderThickness="1"  BorderBrush="Black" CornerRadius="5" Margin="0,5,0,5" HorizontalAlignment="Center">
+                                        <Grid Margin="5" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30" />
+                                                <RowDefinition Height="80"/>
+                                                <RowDefinition Height="65"/>
+                                                <RowDefinition Height="50"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="10"/>
+                                                <RowDefinition Height="280"/>
+                                                <RowDefinition Height="35"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="350"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Row="0" Content="Depositor's Copy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="70"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Column="0"  HorizontalAlignment="Left"  Source="{Binding institute_logo}" />
+                                                <TextBlock Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding institute_name}" FontSize="14" TextWrapping="Wrap" FontWeight="Black"/>
+                                                <!--<Image Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="/SMS;component/images/lps.png"/>-->
+                                            </Grid>
+                                            <!--<StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                                                <Image  HorizontalAlignment="Left" Width="60" Height="60" Source="{Binding institute_logo}" />
+                                                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding institute_name}"  FontSize="14" FontWeight="Black"/>
+                                            </StackPanel>-->
+
+                                            <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Vertical">
+                                                <TextBlock Text="{Binding bank_name}" HorizontalAlignment="Center" FontSize="14" FontWeight="Medium"/>
+                                                <TextBlock Text="{Binding branch_name}" HorizontalAlignment="Center"/>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock Text="A/C Title: " />
+                                                    <TextBlock Text="{Binding account_title}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock Text="A/C: " />
+                                                    <TextBlock Text="{Binding account_no}" FontWeight="Black"/>
+                                                </StackPanel>
+                                            </StackPanel>
+
+                                            <Grid Grid.Row="3">
+                                                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Foreground="White" Content="Fee Slip" FontSize="16" />
+                                            </Grid>
+
+                                            <Grid Grid.Row="4" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width=".5*" />
+                                                    <ColumnDefinition Width=".5*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                    <Label   Content="Date:" />
+                                                    <TextBlock   VerticalAlignment="Center" TextDecorations="Underline" Text="{Binding date_time}" FontSize="16" />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,50,0">
+                                                    <Label   Content="Receipt #" VerticalAlignment="Center"/>
+                                                    <TextBlock  Background="Black" Foreground="White" Text="{Binding reciept_no}" FontSize="17" />
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Grid.Row="5" >
+                                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center" >
+                                                    <TextBlock   HorizontalAlignment="Left"  Text="{Binding std_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="14" TextDecorations="Underline" />
+                                                    <Label   Content=" C/O " HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    <TextBlock  HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding father_name}"  FontWeight="Black" FontSize="12" TextDecorations="Underline" />
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Grid Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="60"/>
+                                                    <ColumnDefinition Width="110"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Content="Adm # " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding adm_no}" VerticalAlignment="Center" FontWeight="Black" TextDecorations="Underline" FontSize="16"/>
+                                                <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"  Text="{Binding month}"   VerticalAlignment="Center"  FontWeight="Black" TextDecorations="Underline" FontSize="18" Foreground="Blue"/>
+                                                <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right">
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding class_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="16"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="-" VerticalAlignment="Center" FontWeight="Black" FontSize="14"/>
+                                                    <TextBlock HorizontalAlignment="Left"  Text="{Binding section_name}" VerticalAlignment="Center" FontWeight="Black" FontSize="12"/>
+                                                </StackPanel>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="8" HorizontalAlignment="Center" >
+                                                <!--<Grid.Background>
+                                                    <ImageBrush ImageSource="{Binding institute_logo}" Stretch="None"  Opacity="0.3"/>
+                                                </Grid.Background >-->
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="40" />
+                                                    <ColumnDefinition Width="220"/>
+                                                    <ColumnDefinition Width="90"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Sr#</Label>
+                                                <Label Grid.Column="1" Grid.Row="0"  Style="{StaticResource ExceptionHeaderStyle}">Particulars</Label>
+                                                <Label Grid.Column="2" Grid.Row="0" BorderThickness="1 1 1 0"  Style="{StaticResource ExceptionHeaderStyle}">Amount (Rs)</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >1</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" >Admission Fee</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="1" Background="Transparent" BorderBrush="Black" Text="{Binding rem_adm_fee}" BorderThickness="1 0 0 0"   FontSize="14"   />
+
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >2</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" >Annual Fund</Label>
+                                                <TextBox Grid.Column="2" Grid.Row="2" Background="Transparent" BorderThickness="1 0 0 0"  BorderBrush="Black" Text="{Binding rem_reg_fee}"   FontSize="14"  />
+
+                                                <Label Grid.Column="0" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">3</Label>
+                                                <Label Grid.Column="1" Grid.Row="3"  Style="{StaticResource ExceptionCellStyle}">Tution Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="3" BorderThickness="1 0 0 0" Text="{Binding rem_tution_fee}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">4</Label>
+                                                <Label Grid.Column="1" Grid.Row="4"  Style="{StaticResource ExceptionCellStyle}">Exam Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="4" BorderThickness="1 0 0 0" Text="{Binding rem_exam_fee}"  BorderBrush="Black"  FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >5</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" >Security Fee</Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="5 " BorderThickness="1 0 0 0" Text="{Binding rem_security_fee}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" >6</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Content="{Binding fine_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="6" BorderThickness="1 0 0 0" Text="{Binding fine_amount}"  BorderBrush="Black" FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}">7</Label>
+                                                <Label Grid.Column="1" Grid.Row="7"  Style="{StaticResource ExceptionCellStyle}" Content="{Binding other_desc}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="7" BorderThickness="1 0 0 0" Text="{Binding other_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Label Grid.Column="0" Grid.Row="8"  BorderThickness="1,1,0,1" Style="{StaticResource ExceptionCellStyle}">8</Label>
+                                                <Label Grid.Column="1" Grid.Row="8" BorderThickness="1,1,0,1" Content="{Binding pending_desc}"  Style="{StaticResource ExceptionCellStyle}"></Label>
+                                                <TextBox Grid.Column="2" Background="Transparent" Grid.Row="8" BorderThickness="1 1 0 0" Text="{Binding pending_amount}"  BorderBrush="Black"   FontSize="14" />
+
+                                                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="8" Grid.ColumnSpan="3" Visibility="Hidden" >
+                                                    <!--<Image  Stretch="None" Source="/SMS;component/images/paid_image.jpg" Opacity="0.33" Focusable="True" ></Image>-->
+                                                </Grid>
+
+                                            </Grid>
+                                            <Grid Grid.Row="9" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="130"/>
+                                                    <ColumnDefinition Width="120"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Content="Amount In Words: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                                <Label Grid.Column="1" Content="Total: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="2" Width="100" Height="35" HorizontalAlignment="Left" TextAlignment="Left"   FontSize="20" FontWeight="Black" Text="{Binding total}"  VerticalAlignment="Center" TextDecorations="Underline" />
+                                                <Label Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="20" Content="Rs"/>
+
+                                            </Grid>
+
+                                            <Grid Grid.Row="10">
+                                                <TextBlock Text="{Binding total_in_words}" VerticalAlignment="Center" HorizontalAlignment="Left"  TextDecorations="Underline" />
+                                            </Grid>
+
+                                            <Grid Grid.Row="11">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="230"/>
+                                                    <ColumnDefinition Width="140"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="Signature  " VerticalAlignment="Center" HorizontalAlignment="Right" />
+                                                <TextBlock Grid.Column="1" Width="140" VerticalAlignment="Center" HorizontalAlignment="Left"  Text="______________________________"/>
+
+                                            </Grid>
+
+                                        </Grid>
+                                    </Border>
+                                    <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Orientation="Vertical" Width="350" Margin="5" VerticalAlignment="Top">
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding fee_note}" FontStyle="Italic" FontSize="16"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+            </Grid>
+            
+            <Grid Name="adm_grid" Grid.Row="1" Margin="1,0,1,1" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid Grid.Row="0" Margin="0,0,0,0" ItemsSource="{Binding adm_list}"   VerticalScrollBarVisibility="Auto"  IsReadOnly="True" AutoGenerateColumns="False"  FontSize="12" Background="White"  RowHeight="30"    BorderThickness="0" x:Name="adm_datagrid" >
+                    <DataGrid.Columns>            
+
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsThreeState="False"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Checked}" Click="CheckBox_Checked_sub"  IsThreeState="False" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
+                        <DataGridTextColumn Binding="{Binding std_name}"  Header="Students" Width="150" />
+                        <DataGridTextColumn Header="Father Name" Binding="{Binding father_name}" Width="120" />
+                        <DataGridTextColumn Header="Admission #" Binding="{Binding adm_no}" Width="120"/>
+                        <DataGridTextColumn Header="Roll #" Binding="{Binding roll_no}" Width="120"/>
+                        <DataGridTextColumn Header="Class Name" Binding="{Binding class_name}" Width="120"/>
+                        <DataGridTextColumn Header="Section Name" Binding="{Binding section_name}" Width="120"/>
+                        
+                        <DataGridTextColumn Header="" Width="*"/>
+
+
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Grid.Row="1"  Width="90" Content="Proceed" Name="proceed_btn" Click="proceed_btn_Click"  Margin="0,0,0,0" VerticalAlignment="Center" Height="30"/>
+
+
+            </Grid>
+            <Grid Grid.Row="1"  Name="img_grid" Background="White" Margin="1,0,1,1">
+                <Image Source="/SMS;component/images/voucher.jpg" Width="500" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

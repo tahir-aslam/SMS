@@ -1,0 +1,80 @@
+﻿<Window x:Class="SMS.Messaging.SendMessage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:sdk="http://schemas.microsoft.com/netfx/2007/xaml/presentation"
+      mc:Ignorable="d" 
+        
+      d:DesignHeight="600" d:DesignWidth="1200"
+	Title="SendMessage" Closed="Window_Closed" Loaded="Window_Loaded" WindowState="Maximized" Icon="/SMS;component/SMS.ico">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="Black" VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" >
+                <Image Name="institute_logo_img"  HorizontalAlignment="Left" Source="/SMS;component/images/harvard.jpg" Width="80" Height="70" Margin="0,1,0,1" VerticalAlignment="Center"/>
+                <Label Name="institute_name_lbl" Content="SmS" Foreground="White" FontSize="25" FontFamily="Georgia" HorizontalAlignment="Left" Margin="10,0,0,0"  VerticalAlignment="Center"/>    
+            </StackPanel>
+            
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                <Button Name="saved_sms" Height="50" Width="60" ToolTipService.ToolTip="Saved SmS" Margin="5" Click="saved_sms_Click">
+                    <Image Source="/SMS;component/images/saved_sms.png" />
+                </Button>
+                <Button Name="friends_sms" Height="50" Width="60" ToolTipService.ToolTip="Friends List" Margin="5" Click="friends_sms_Click">
+                    <Image Source="/SMS;component/images/people1.png" />
+                </Button>
+                <Button Name="general_sms" Height="50" Width="60" ToolTipService.ToolTip="General SmS" Margin="5" Click="general_sms_Click">
+                    <Image Source="/SMS;component/images/general_sms.png" />
+                </Button>
+                <Button Name="adm_info_sms" Height="50" Width="60" ToolTipService.ToolTip="Admission  SmS" Margin="5" Click="adm_info_sms_Click">
+                    <Image Source="/SMS;component/images/adm_slip.png" />
+                </Button>
+                <Button Name="exam_sms" Height="50" Width="60" Margin="5" ToolTipService.ToolTip="Examination SmS" Click="exam_sms_Click">
+                    <Image Source="/SMS;component/images/class_img.jpg" />
+                </Button>
+                <Button Name="test_sms" Height="50" Width="60" Margin="5" ToolTipService.ToolTip="Test SmS" Click="test_sms_Click">
+                    <Image Source="/SMS;component/images/test.jpg" />
+                </Button>
+                <Button Name="att_sms_btn" Height="50" Width="60" Margin="5" ToolTipService.ToolTip="Student Attendance SmS" Click="att_sms_btn_Click">
+                    <Image Source="/SMS;component/images/std_attendance.png" />
+                </Button>
+                <Button Name="fee_defaulter_sms" Height="50" Width="60" ToolTipService.ToolTip="Fee Defaulter SmS" Margin="5" Click="fee_defaulter_sms_Click" Visibility="Collapsed">
+                    <Image Source="/SMS;component/images/fee_defaulter.png" />
+                </Button>
+                <Button Name="fee_defaulter_sms_new" Height="50" Width="60" ToolTipService.ToolTip="Fee Defaulter SmS" Margin="5" Click="fee_defaulter_sms_new_Click">
+                    <Image Source="/SMS;component/images/fee_defaulter.png" />
+                </Button>
+                <Button Name="fee_paid_sms" Height="50" Width="60" ToolTipService.ToolTip="Fee Paid SmS" Margin="5" Click="fee_paid_sms_Click" Visibility="Collapsed">
+                    <Image Source="/SMS;component/images/fee_paid.png" />
+                </Button>
+                <Button Name="fee_paid_sms_new" Height="50" Width="60" ToolTipService.ToolTip="Fee Paid SmS" Margin="5" Click="fee_paid_sms_new_Click">
+                    <Image Source="/SMS;component/images/fee_paid.png" />
+                </Button>
+                
+                <Button Name="emp_attendence_btn" Height="50" Width="60" ToolTipService.ToolTip="Employee Attendance SmS" Margin="5" Click="emp_attendence_btn_Click">
+                    <Image Source="/SMS;component/images/Staff.png" Stretch="Uniform"/>
+                </Button>
+                <Button Name="birthday_btn" Height="50" Width="60" ToolTipService.ToolTip="Birthday SmS" Margin="5" Click="birthday_btn_Click">
+                    <Image Source="/SMS;component/images/birthday.jpg" />
+                </Button>
+                <Button Name="history_btn" Height="50" Width="60" ToolTipService.ToolTip="SmS History" Margin="5" Click="history_btn_Click">
+                    <Image Source="/SMS;component/images/historySearch1.png" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        
+        
+        <Grid Grid.Row="2">
+            <Frame Name="sms_frame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Window>

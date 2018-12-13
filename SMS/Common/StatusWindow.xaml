@@ -1,0 +1,30 @@
+﻿<Window x:Class="SMS.Common.StatusWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StatusWindow" Height="450" Width="450" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
+    <Grid>
+        <StackPanel Grid.Row="0"  Grid.Column="0" Margin="10" >
+            <Border BorderThickness="1" BorderBrush="#FFD6D4D4" CornerRadius="15,15,0,0">
+                <StackPanel>
+                    <Border Background="Purple" Height="50" CornerRadius="15,15,0,0" BorderThickness="0">
+                        <TextBlock Text="Status Window" Foreground="White" FontSize="20" FontFamily="Arial" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+
+                    <Grid Margin="20">
+                        <DataGrid x:Name="status_grid" AutoGenerateColumns="False" FontSize="12" Background="White" IsReadOnly="True" RowHeight="30"   BorderThickness="0" HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto" SelectionMode="Single" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding std_name}" Width="Auto"  />
+                                <DataGridTextColumn Header="Adm#" Binding="{Binding adm_no}" Width="Auto"/>
+                                <DataGridTextColumn Header="Operation" Binding="{Binding operation}" Width="Auto"/>
+                                <DataGridTextColumn Header="Status" Binding="{Binding status}" Width="Auto" FontSize="20"/>                               
+                            
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>

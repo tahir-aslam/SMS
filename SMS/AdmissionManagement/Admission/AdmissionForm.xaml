@@ -1,0 +1,268 @@
+﻿<Window x:Class="SMS.AdmissionManagement.Admission.AdmissionForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpf="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"      
+        Title="AdmissionForm" Height="650" Width="1100" KeyDown="Window_KeyDown" WindowStartupLocation="CenterScreen" Icon="/SMS;component/images/sms.jpg" Closed="Window_Closed">    
+    <Window.Resources>
+        <!--<Style TargetType="DataGridCell">
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsReadOnly" Value="False" />
+                        <Condition Property="IsMouseOver" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsEditing" Value="True" />
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>-->
+    </Window.Resources>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+        <StackPanel Grid.Row="0"  Grid.Column="0" Margin="5" >
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg" Opacity="0.5" />
+            </StackPanel.Background>
+            <Border BorderThickness="1" BorderBrush="#FFD6D4D4" CornerRadius="15,15,0,0">
+                <StackPanel>
+                    <Border Background="Purple" Height="50" CornerRadius="15,15,0,0" BorderThickness="0">
+                        <TextBlock Text="Student Management Form" Foreground="White" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                    </Border>
+
+                    <Grid Margin="10" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+
+
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Select Session: *" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>                       
+                        <ComboBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="session_cmb" SelectedValuePath="id">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <TextBlock Text="{Binding session_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock> 
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        
+                        <StackPanel Grid.Row="0" Grid.Column="5" Orientation="Horizontal" Grid.ColumnSpan="3" Margin="2" HorizontalAlignment="Right">
+
+                            <Button Grid.Row="0" Name="std_card_btn" Grid.Column="4" Width="50" HorizontalAlignment="Right" Margin="0,0,5,0" ToolTipService.ToolTip="Student Card" Grid.ColumnSpan="2"  IsEnabled="True" Click="std_card_btn_Click">
+                                <Image  Source="/SMS;component/images/std_card.png"  />
+                            </Button>
+                            <Button Grid.Row="0" Name="sibling_btn" IsEnabled="False" Grid.Column="4" Width="50" HorizontalAlignment="Right" Margin="0,0,5,0" ToolTipService.ToolTip="Siblings" Grid.ColumnSpan="2"   Click="sibling_btn_Click">
+                                <Image  Source="/SMS;component/images/sibling.png"  />
+                            </Button>
+
+                            <Button Grid.Row="0" Name="print_btn" Grid.Column="5" Width="50" HorizontalAlignment="Right" Margin="0,0,5,0" ToolTipService.ToolTip="Admission Form" Grid.ColumnSpan="2"  IsEnabled="True" Click="print_btn_Click">
+                                <Image  Source="/SMS;component/images/print3.jpg"  />
+                            </Button>
+                            <Button Grid.Row="0" Name="withdraw_btn" Grid.Column="6" Width="50" HorizontalAlignment="Right" Margin="0,0,5,0" ToolTipService.ToolTip="Withdraw Admission" Grid.ColumnSpan="2"  Click="withdraw_btn_Click" IsEnabled="True">
+                                <Image  Source="/SMS;component/images/withdraw.png"  />
+                            </Button>
+                        </StackPanel>
+                        
+                        <TextBlock Text="Full Name:  *" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="1" Grid.Column="1" MaxLength="30" Name="full_name_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" BorderBrush="Green"/>
+
+                        <TextBlock Text="Father Name:  *" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="2" Grid.Column="1" BorderBrush="Green" MaxLength="30" Name="fname_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" />
+
+                        <TextBlock Text="Father CNIC#:   " Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <wpf:MaskedTextBox   Grid.Row="3" Grid.Column="1" Mask="#####-#######-#" ValueDataType="{x:Type s:Int32}" MaxLength="13" Name="fCNIC_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" PreviewTextInput="NumberValidationTextBox"/>
+
+                        <TextBlock Text="Father Occupation:" FontSize="11" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="4" Grid.Column="1" MaxLength="30" Name="fIncome_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16"/>
+
+                        <TextBlock Text="Religion:   " Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="5" Grid.Column="1" MaxLength="30" Name="religion_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" />
+
+                        <TextBlock Text="DOB:  *" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <DatePicker BorderBrush="Green"  Grid.Row="6" Grid.Column="1" Name="dob_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" />
+
+                        <TextBlock Text="B-Form #:   " Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30" />
+                        <wpf:MaskedTextBox   Grid.Row="7" Grid.Column="1" Mask="#####-#######-#" ValueDataType="{x:Type s:Int32}" Name="bForm_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" PreviewTextInput="NumberValidationTextBox"/>
+
+                        <TextBlock Text="Permanent Address:   " Grid.Row="8" Grid.RowSpan="2" Grid.Column="0" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="8" Grid.Column="1" Grid.RowSpan="2" MaxLength="100" TextWrapping="Wrap"  Name="address_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="60" FontSize="16" Text="House-  St- Block- ,Sargodha"/>
+                        <!--Column 2-->
+                        
+
+                        <TextBlock Text="Cell #:  *" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="1"  Grid.Column="3" BorderBrush="Green"   Name="cell_textbox" MaxWidth="200" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="0" Width="150" Height="30" HorizontalContentAlignment="Center"  FontSize="16" PreviewTextInput="NumberValidationTextBox" Text="" MaxLength="10"  />
+                        <Label Grid.Row="1" Grid.Column="3" FontSize="14" Width="34" HorizontalAlignment="Left"   VerticalAlignment="Center" Content="+92"/>
+
+                        <TextBlock Text="Admission Date: *" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <DatePicker BorderBrush="Green"  Grid.Row="2" Grid.Column="3" Name="adm_date_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" />
+
+                        <TextBlock Text="Land Line #:   " Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="3" Grid.Column="3" Name="Ephone_textbox" MaxLength="14" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" PreviewTextInput="NumberValidationTextBox"/>
+
+                        <TextBlock Text="Previous Institute:   " Grid.Row="4" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="4" Grid.Column="3" Name="pre_school_textbox" MaxLength="30" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" />
+
+                        <TextBlock Text="Gender:   " Grid.Row="5" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <RadioButton   Grid.Row="5" Grid.Column="3" Name="boarding_yes" GroupName="boarding_checkbox"  MaxWidth="100" Content="Male" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="70" Height="30" FontSize="16" IsChecked="True"/>
+                        <RadioButton   Grid.Row="5" Grid.Column="3" Name="boarding_no" GroupName="boarding_checkbox"  MaxWidth="100" Content="Female" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" Width="80" Height="30" FontSize="16" />
+
+                        <TextBlock Text="Transport:   " Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <RadioButton   Grid.Row="6" Grid.Column="3" Name="transport_yes" GroupName="transport_checkbox"  MaxWidth="100" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="70" Height="30" FontSize="16" />
+                        <RadioButton   Grid.Row="6" Grid.Column="3" Name="transport_no" GroupName="transport_checkbox"  MaxWidth="100" Content="No" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" Width="70" Height="30" FontSize="16" IsChecked="True"/>
+
+                        <TextBlock Text="Is Active: " Grid.Row="7" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30" />
+                        <CheckBox   Grid.Row="7" Grid.Column="3" Name="is_active_chekbox"  MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" IsChecked="True" IsEnabled="False" Width="100" Height="30" FontSize="16" />
+
+                        <TextBlock Text="Communication Address:   " Grid.Row="8" Grid.RowSpan="2"  Grid.Column="2" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="8" Grid.Column="3" Grid.RowSpan="2" MaxLength="150" TextWrapping="Wrap"  Name="commm_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="60" FontSize="16" Text="House-  St- Block- ,Sargodha" />
+                        
+
+                        <!--Column 3-->
+
+
+
+                        <Label Grid.Row="1" Grid.Column="4" Content="Class Name: *" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <ComboBox Grid.Row="1" Grid.Column="5" BorderBrush="Green" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="class_cmb" SelectedValuePath="id" SelectionChanged="class_cmb_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                        <TextBlock Text="{Binding class_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Label Grid.Row="2" Grid.Column="4" Content="Section Name: *" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <ComboBox BorderBrush="Green" Grid.Row="2" Grid.Column="5" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="section_cmb" SelectedValuePath="id" SelectionChanged="section_cmb_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                        <TextBlock Text="{Binding section_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Roll #:  *" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="3" Grid.Column="5" BorderBrush="Green" MaxLength="14" Name="roll_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" IsReadOnly="False" FontStyle="Italic" FontWeight="Black"/>
+
+                        <TextBlock Text="Admission #:  *" Grid.Row="4" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox BorderBrush="Green"  Grid.Row="4" Grid.Column="5" MaxLength="14"  Name="adm_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" IsReadOnly="False"  FontStyle="Italic" FontWeight="Black"/>
+
+                        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5"  Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2" Grid.RowSpan="3">
+                            <Image  Name="student_image"  Margin="2"/>    
+                        </Border>
+                        
+                        <Button Grid.Row="4" Grid.Column="6"  Content="Browse" Width="80" Height="25" Margin="10,0,0,0" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        <Button Grid.Row="4" Grid.Column="7" Width="50" Height="30" Name="camera_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderThickness="0" Click="camera_btn_Click_1">
+                            <Image Source="/SMS;component/images/camera.png" Width="40" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" ImageFailed="Image_ImageFailed" />
+                        </Button>
+                        
+                        <Border Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="4" Grid.RowSpan="5" CornerRadius="10" Margin="5,0,0,5" Background="#FFE2E3E5">
+                            <Grid Margin="0" Name="fees_grid">
+                                <Grid.RowDefinitions>
+                                <RowDefinition Height="80"/>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="35"/>
+                                </Grid.RowDefinitions>
+                                
+                                <GroupBox Grid.Row="0" Header="Monthly Charges" Margin="0,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Margin="2">
+                                        <TextBlock Width="85" Text="Tution Fee:"  HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                        <TextBox VerticalContentAlignment="Center" Name="tutuion_textbox" MaxLength="6"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="tutuion_textbox_TextChanged" />
+
+                                        <TextBlock Width="100" Text=" Other Expenses:"  HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                        <TextBox VerticalContentAlignment="Center"  Name="other_textbox" MaxLength="6" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="other_textbox_TextChanged" />
+                                    </StackPanel>
+                                </GroupBox>
+
+
+                                <GroupBox Grid.Row="1" Header="Annual Charges" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0" >
+                                    <StackPanel Orientation="Vertical" Margin="0">
+                                        <StackPanel Orientation="Horizontal" Margin="2">
+                                            <TextBlock Text="Annual Fund:  *" Width="85"  HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                            <TextBox VerticalContentAlignment="Center"  Name="reg_textbox" MaxLength="6"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="reg_textbox_TextChanged" />
+
+                                            <TextBlock Width="100" Text=" Admission Fee:  *"  HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                            <TextBox VerticalContentAlignment="Center"  Name="admmission_textbox" MaxLength="6" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="admmission_textbox_TextChanged" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="2">
+                                            <TextBlock Width="85" Text="Security Fee:   "  HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                            <TextBox  Name="security_textbox" MaxLength="6" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="security_textbox_TextChanged" />
+
+                                            <TextBlock Width="100" Text=" Exam Fee:   " Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                            <TextBox  Name="exam_textbox" MaxLength="6"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="exam_textbox_TextChanged" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+                             
+                                
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,9,0">
+                                    <TextBlock Text="Total:   "   VerticalAlignment="Center"  Height="25"/>
+                                    <TextBox VerticalContentAlignment="Center"  Grid.Row="2"   Name="total_textbox"  VerticalAlignment="Center"  Width="100" Height="30" FontSize="20" Foreground="Black" IsReadOnly="True" FontStyle="Italic" FontWeight="Black"/>
+                                    <TextBlock Grid.Row="2"  Width="25"  Text="Rs  " VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <TextBlock Visibility="Hidden" Text="Scholarship:   " Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                <TextBox Visibility="Hidden"  Grid.Row="3" Grid.Column="1" IsEnabled="False" MaxLength="6" Name="scholarship_textbox"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="scholarship_textbox_TextChanged" />
+                            
+                                <TextBlock Visibility="Hidden" Text="Misc Charges:   " Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                <TextBox Visibility="Hidden"  Grid.Row="4" Grid.Column="1"  Name="misc_textbox" MaxLength="6"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="misc_textbox_TextChanged"  />                    
+                                
+                                <TextBlock Visibility="Hidden" Text="Stationary Charges:  " Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                <TextBox Visibility="Hidden"  Grid.Row="2" Grid.Column="3"  Name="stationary_textbox" MaxLength="6"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="stationary_textbox_TextChanged" IsEnabled="False" />
+
+                                <TextBlock Visibility="Hidden" Text="Transport Charges:   " Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="25"/>
+                                <TextBox Visibility="Hidden"  Name="transport_textbox" MaxLength="6"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100" Height="25" FontSize="16" PreviewTextInput="NumberValidationTextBox" TextChanged="transport_textbox_TextChanged" IsEnabled="False"/>
+                     
+                          </Grid>                            
+                        </Border>                       
+                        
+                        <Grid Width="230" Grid.Row="10" Grid.Column="4" VerticalAlignment="Bottom" Grid.ColumnSpan="2"  Margin="0,0,0,15" HorizontalAlignment="Center" >
+                            <Button Content="Save" Width="100" Height="30" HorizontalAlignment="Left" Click="click_save"  />
+                            <Button Content="Cancel" Width="100" Height="30" HorizontalAlignment="Right" Click="click_cancel"  />
+                        </Grid>
+
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>

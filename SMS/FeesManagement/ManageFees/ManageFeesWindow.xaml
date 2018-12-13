@@ -1,0 +1,126 @@
+﻿<Window x:Class="SMS.FeesManagement.ManageFees.ManageFeesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ManageFeesWindow" Width="460" Height="650" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
+    <Window.Resources>
+        <Style x:Key="gridStyle" TargetType="StackPanel">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Grid.Row="0"  Grid.Column="0" Margin="10" >
+            <Border BorderThickness="1" BorderBrush="#FFD6D4D4" CornerRadius="15,15,0,0">
+                <StackPanel>
+                    <Border Background="Purple" Height="50" CornerRadius="15,15,0,0" BorderThickness="0">
+                        <TextBlock Text="Fees Generator" Foreground="White" FontSize="20" FontFamily="Arial" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+
+                    <StackPanel Margin="30">
+                        <TextBlock Visibility="Collapsed" Name="std_name_TB" Text="Muhammad Tahir Aslam" FontSize="20" FontWeight="Bold" Foreground="Gray" FontStyle="Italic"  HorizontalAlignment="Center"/>
+                        <StackPanel Name="std_SP" Orientation="Horizontal" Style="{StaticResource gridStyle}">
+                            <Label Content="Select Student(s):  *" Width="150"  VerticalAlignment="Center" Height="30" />
+                            <Grid Width="150">
+                                <RadioButton Name="allOption" Content="All"  GroupName="StudentsRadiobutton"  HorizontalAlignment="Left" Checked="allOption_Checked"/>                                
+                                <RadioButton Name="selectedOption" Content="Selected"  GroupName="StudentsRadiobutton" HorizontalAlignment="Right" Checked="selectedOption_Checked"/>
+                             </Grid>
+                        </StackPanel>                
+
+                        <Grid Background="WhiteSmoke" Name="std_count_SP" Height="45" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock   Foreground="Gray" FontSize="30" FontStyle="Italic" HorizontalAlignment="Center" Name="selectedStudentCountTB" Text="000"/>
+                                <TextBlock Text="Student(s) Selected" Foreground="Gray" FontSize="18"  VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                        
+                        <StackPanel Name="feeType_SP" Orientation="Horizontal" Style="{StaticResource gridStyle}" Visibility="Collapsed">
+                            <Label Width="150" Content="Fees Type:  *" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="30"/>
+                            <Grid Width="150">
+                                <RadioButton Name="monthlyOption" Content="Monthly"  GroupName="feesTypeRadiobutton"  HorizontalAlignment="Left" Checked="monthlyOption_Checked" />
+                                <RadioButton Name="AnnualOption" Content="Annual"  GroupName="feesTypeRadiobutton" HorizontalAlignment="Right" Checked="AnnualOption_Checked" />
+                            </Grid>                            
+                        </StackPanel>                        
+
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource gridStyle}">
+                            <Label Width="150" Content="Fees Category:  *" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="30"/>
+                            <ComboBox Width="150" Height="30" FontSize="15" VerticalAlignment="Center" Name="fees_category_cmb"  SelectedValuePath="id" SelectionChanged="fees_category_cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                            <TextBlock Text="{Binding fees_category}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Name="amount_type_SP" Orientation="Horizontal" Style="{StaticResource gridStyle}">
+                            <Label Width="150" Content="Amount Type:  " HorizontalAlignment="Right" VerticalAlignment="Center"  Height="30"/>
+                            <Grid Width="200">
+                                <RadioButton Name="amountOption" Content="Amount"  GroupName="amountTypeRadiobutton"  HorizontalAlignment="Left" Checked="amountOption_Checked" />
+                                <RadioButton Name="withoutAmountOption" Content="Without Amount"  GroupName="amountTypeRadiobutton" HorizontalAlignment="Right" Checked="withoutAmountOption_Checked" />
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Name="amount_sp" Orientation="Horizontal" Style="{StaticResource gridStyle}">
+                            <Label Width="150" Content="Amount:  *" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30"/>
+                            <TextBox  Width="150" Name="amount_textbox"  VerticalAlignment="Center" Margin="0"  Height="30" FontSize="16" />
+                            <Label Content="Rs" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Name="waveoff_SP" Orientation="Horizontal" Style="{StaticResource gridStyle}">
+                            <Label Width="150" Content="Wave Off:  " HorizontalAlignment="Right" VerticalAlignment="Center" Height="30"/>
+                            <TextBox  Width="150" Text="0" Name="waveoff_textbox"  VerticalAlignment="Center" Margin="0"  Height="30" FontSize="16" />
+                            <Label Content="Rs" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource gridStyle}">
+                            <Label Width="150" Content="Year:  *" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30"/>
+                            <ComboBox Width="150" Height="30" VerticalAlignment="Center" Name="year_cmb"  SelectedValuePath="year">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                            <TextBlock Text="{Binding year}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource gridStyle}">
+                            <Label Width="150" Content="Month:  *" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30"/>
+                            <ComboBox Width="150" Height="30" VerticalAlignment="Center" Name="month_cmb"  SelectedValuePath="month_id">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding month_id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                            <TextBlock Text="{Binding month_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource gridStyle}">
+                            <Label Width="150" Content="Date:  *" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30"/>
+                            <DatePicker Width="150" Name="date"  VerticalAlignment="Center" Margin="0"  Height="30" FontSize="16" SelectedDateChanged="date_SelectedDateChanged" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource gridStyle}">
+                            <Label Width="150" Content="Due Date:  *" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30"/>
+                            <DatePicker Width="150" Name="due_date"  VerticalAlignment="Center" Margin="0"  Height="30" FontSize="16" />
+                        </StackPanel>
+
+
+                        <StackPanel Style="{StaticResource gridStyle}" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="Generate" Width="100" Height="30" HorizontalAlignment="Left" Click="click_save"  />                            
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>

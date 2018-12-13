@@ -1,0 +1,303 @@
+﻿<Page x:Class="SMS.ExamManagement.ExamMultipleResultCards.MultipleResultCardsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"  
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="MultipleResultCardsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="1" Margin="-1">
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+                <TextBlock Text="Multiple Result Cards"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="LightGray"  Offset="0" />
+                    <GradientStop Color="Gray" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="Class: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                    <ComboBox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="class_cmb" SelectedValuePath="id" SelectionChanged="class_cmb_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                    <TextBlock Text="{Binding class_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Label Grid.Row="0" Grid.Column="4" Content="Section: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                    <ComboBox Grid.Row="0 " Grid.Column="5" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="section_cmb" SelectedValuePath="id" SelectionChanged="section_cmb_SelectionChanged" IsEnabled="False">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                    <TextBlock Text="{Binding section_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button HorizontalAlignment="Right" Width="45" Height="35" ToolTip="Print Exam Report" VerticalAlignment="Center" Name="print_btn" Visibility="Hidden" Margin="50,0,0,0" Click="print_btn_Click">
+                        <Image Source="/SMS;component/images/print3.jpg"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+
+
+            <!--REsult card-->
+            <Grid Grid.Row="1" Margin="1" Background="White" Name="exam_result_card_grid" HorizontalAlignment="Center" Visibility="Hidden">
+                <ScrollViewer Name="result_card_sv" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Center" HorizontalScrollBarVisibility="Visible" Background="White">
+                    <ListBox  Name="Result_grid_lstbox" ItemsSource="{Binding attList}" VerticalAlignment="Stretch" HorizontalAlignment="Center">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="5" BorderBrush="Gray" Margin="15" Height="1139" HorizontalAlignment="Center">
+                                    <Grid Margin="0,50,0,50">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="225"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="40"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="780"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="70"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="40"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="460"/>
+                                                <ColumnDefinition Width="150"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" Source="{Binding institute_logo}" Grid.RowSpan="2" Width="120" Margin="5" VerticalAlignment="Top" Name="institue_logo_img"/>
+                                            <Grid Grid.Column="1" Grid.RowSpan="2">
+                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                                    <TextBlock Text="{Binding institute_name}" Name="institute_name_tb" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="NoWrap"  TextDecorations="Underline"  VerticalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding exam_name}" Name="exam_name_tb" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" TextDecorations="Underline" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Border Grid.Row="0"  Grid.Column="2" Grid.RowSpan="4" Margin="8" BorderThickness="1" BorderBrush="Black" VerticalAlignment="Bottom">
+                                                <Image Name="std_image" Margin="5" Source="{Binding std_img}" />
+                                            </Border>
+
+                                            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Orientation="Horizontal" VerticalAlignment="Center">
+                                                <TextBlock Width="135" Text="Student Name:   " FontSize="20" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                                <TextBlock  Name="std_name_tb" FontStyle="Italic" Text="{Binding std_name}" FontSize="18" VerticalAlignment="Center" TextDecorations="Underline" FontWeight="Black"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"  Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                                                <TextBlock Width="135" Text="Father Name:    "  FontSize="20" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding father_name}" FontStyle="Italic" FontSize="17" VerticalAlignment="Center" TextDecorations="Underline" FontWeight="Black"/>
+                                            </StackPanel>
+
+                                            <StackPanel  Grid.Row="2" Grid.Column="1"  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                                <TextBlock  Text="Grade:   " FontSize="20" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                                <TextBlock  Name="class_name_tb" FontStyle="Italic" Text="{Binding class_name}" FontSize="17" VerticalAlignment="Center" TextDecorations="Underline" FontWeight="Black"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center" >
+                                                <TextBlock Text="Section:  " FontSize="20" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                                <TextBlock  Name="section_name_tb" FontStyle="Italic" Text="{Binding section_name}" FontSize="17" TextDecorations="Underline" VerticalAlignment="Center" FontWeight="Black"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"  Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                                                <TextBlock Width="135" Text="Date:   " FontSize="20" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                                <TextBlock   Text="{Binding date}" FontStyle="Italic" FontSize="18" VerticalAlignment="Center" TextDecorations="Underline" FontWeight="Black"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center">
+                                            <DataGrid GridLinesVisibility="All" Width="Auto" MinWidth="700"  ItemsSource="{Binding subj_list}"   AlternatingRowBackground="WhiteSmoke"  Margin="0,5,0,5" HorizontalScrollBarVisibility="Hidden" Height="Auto" HorizontalAlignment="Center" RowHeight="40" BorderThickness="1,1,1,0"  Foreground="Black"  BorderBrush="Black" AutoGenerateColumns="False" IsReadOnly="True" Name="marks_grid" FontSize="12" Background="WhiteSmoke" FontWeight="Bold" >
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="Subjects" Binding="{Binding subject_name}" Width="Auto"  IsReadOnly="True" FontSize="13" FontFamily="Arial" FontWeight="Bold"/>
+                                                    <DataGridTemplateColumn Width="*" >
+                                                        <DataGridTemplateColumn.HeaderStyle>
+                                                            <Style TargetType="primitives:DataGridColumnHeader">
+                                                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                                                <Setter Property="Margin" Value="0" />
+                                                                <Setter Property="ContentTemplate">
+                                                                    <Setter.Value>
+                                                                        <DataTemplate>
+                                                                            <ItemsControl ItemsSource="{Binding DataContext.TitleList,ElementName=Result_grid_lstbox}" >
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel  Orientation="Horizontal" >
+                                                                                        </StackPanel>
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Border Width="Auto" MinWidth="70" BorderThickness="0" BorderBrush="Black">
+                                                                                            <TextBlock  Text="{Binding}"  TextAlignment="Center" />
+                                                                                        </Border>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                        </DataTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </DataGridTemplateColumn.HeaderStyle>
+
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <ItemsControl ItemsSource="{Binding subj_list}">
+                                                                    <ItemsControl.ItemsPanel>
+                                                                        <ItemsPanelTemplate>
+                                                                            <StackPanel Orientation="Horizontal"/>
+                                                                        </ItemsPanelTemplate>
+                                                                    </ItemsControl.ItemsPanel>
+                                                                    <ItemsControl.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Border Width="Auto" MinWidth="70" BorderThickness="0,0,1,0" BorderBrush="Black" Height="40" Margin="0">
+                                                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                                    <TextBlock Text="{Binding subject_obtained}" x:Name="att_tb" TextAlignment="Center"/>
+                                                                                    <TextBlock Text="/"/>
+                                                                                    <TextBlock Text="{Binding subject_total}" />
+                                                                                </StackPanel>
+                                                                            </Border>
+                                                                        </DataTemplate>
+                                                                    </ItemsControl.ItemTemplate>
+                                                                </ItemsControl>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </Grid>
+
+                                        <StackPanel Grid.Row="3" Orientation="Horizontal"  >
+                                            <TextBlock Text="Attendance:   " FontSize="18" FontWeight="Bold" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                            <TextBlock  Name="attendence_tb" Text="_____________________"  FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Width="300"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="4" Grid.RowSpan="3" Orientation="Horizontal"  Name="position_sp" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                            <TextBlock Text="Principal"  FontSize="18" FontWeight="Bold" Margin="10,0,20,0" VerticalAlignment="Center"/>
+                                            <TextBlock  Name="position_tb" Text="___________________" Margin="0,0,20,0" FontFamily="Arial"  FontSize="32" FontWeight="Medium"  VerticalAlignment="Center" TextDecorations="Underline"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="4" Orientation="Horizontal">
+                                            <TextBlock Text="Class Teacher:   " FontSize="18" FontWeight="Bold" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                            <TextBlock   Text="______________________"  FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+            </Grid>
+            <!--Examination-->
+            <Grid Name="exam_grid" Grid.Row="1" Margin="1,0,1,1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid Grid.Row="0" Margin="0,0,0,0" ItemsSource="{Binding exam_list}"  IsReadOnly="True" AutoGenerateColumns="False"  FontSize="12" Background="White"  RowHeight="30"    BorderThickness="0" x:Name="exam_Datagrid" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Selected Exams Will Include in Exam Report" Width="*"/>
+
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsThreeState="False"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Checked}" Click="CheckBox_Checked_sub"  IsThreeState="False" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Binding="{Binding exam_name}"  Header="Examinations" Width="150" />
+                        <DataGridTextColumn Header="" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Grid.Row="1"  Width="90" Content="Proceed" Click="proceed_btn_Click" Name="create_btn" Margin="0,0,0,0" VerticalAlignment="Center" Height="30"/>
+
+
+            </Grid>
+            <!--Image-->
+            <Grid Grid.Row="1"  Name="exam_img_grid" Background="White" Margin="1,0,1,1">
+                <Image Source="/SMS;component/images/exam_report.png"  Width="620" Height="365" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+            </Grid>
+            <!--Student Grid-->
+            <Grid Grid.Row="1"  Name="exam_std_grid" Margin="1,0,1,1" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid Grid.Row="0" Margin="0,0,0,0" ItemsSource="{Binding std_list}"  IsReadOnly="True" AutoGenerateColumns="False"  FontSize="12" Background="White"  RowHeight="30"    BorderThickness="0" x:Name="exam_std_Datagrid" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Select Students" Width="*"/>
+
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="CheckBox_Checked_std" Unchecked="CheckBox_Checked_std" IsThreeState="False"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Checked}" Click="CheckBox_Checked_sub_std"  IsThreeState="False" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Binding="{Binding std_name}"  Header="Name" Width="150" />
+                        <DataGridTextColumn Binding="{Binding father_name}"  Header="Father Name" Width="150" />
+                        <DataGridTextColumn Binding="{Binding adm_no}"  Header="Adm #" Width="150" />
+
+                        <DataGridTextColumn Header="" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Grid.Row="1"  Width="90" Content="Create Report" Click="create_report_btn_Click"  Name="create_report_btn" Margin="0,0,0,0" VerticalAlignment="Center" Height="30"/>
+            </Grid>
+           
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,56 @@
+﻿<Window x:Class="SMS.AdmissionManagement.Admission.SiblingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SiblingWindow" Height="350" Width="850" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>            
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        
+        <Grid Grid.Row="0" Margin="-1">
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+                <TextBlock Text="Siblings"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="LightGray"  Offset="0" />
+                    <GradientStop Color="Gray" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>                
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            
+            <Grid Grid.Row="2" Margin="1,0,1,1">
+                <DataGrid x:Name="adm_grid"  AutoGenerateColumns="False" FontSize="12" Background="White" IsReadOnly="True" RowHeight="35"   BorderThickness="0" HorizontalScrollBarVisibility="Visible"  VerticalScrollBarVisibility="Visible"  SelectedValuePath="id" ScrollViewer.CanContentScroll="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding id}"  Foreground="Black" Visibility="Collapsed"/>
+                        <DataGridTemplateColumn Width="100" Header="Image">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding image}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>                        
+                        <DataGridTextColumn Header="Student Name" Binding="{Binding std_name}" Width="Auto" />
+                        <DataGridTextColumn Header="Father Name" Binding="{Binding father_name}" Width="Auto" />                        
+                        <DataGridTextColumn Header="Adm #" Binding="{Binding adm_no}" Width="Auto"/>                        
+                        <DataGridTextColumn Header="Class" Binding="{Binding class_name}" Width="Auto"/>
+                        <DataGridTextColumn Header="Section" Binding="{Binding section_name}" Width="Auto"/>
+                        <DataGridTextColumn Header="Tution Fee" Binding="{Binding  tution_fee}" Width="Auto"/>
+                        <DataGridTextColumn Header="Annual Fund" Binding="{Binding reg_fee}" Width="Auto"/>
+                        <DataGridTextColumn Header="Adm Fee" Binding="{Binding adm_fee}" Width="Auto"/>
+                        <DataGridTextColumn Header="Security Fee" Binding="{Binding security_fee}" Width="Auto"/>
+                        <DataGridTextColumn Header="Exam Fee" Binding="{Binding exam_fee}" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

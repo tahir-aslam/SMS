@@ -1,0 +1,109 @@
+﻿<Page x:Class="SMS.AccountManagement.CashDetail.CashDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="CashDetailPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" HorizontalAlignment="Right"  VerticalAlignment="Bottom">
+            <ToolBarTray Background="White" >
+                <ToolBar Margin="0,0,0,0" BorderThickness="1" Band="1" BandIndex="1" MinWidth="100">
+                    <Button  ToolTipService.ToolTip="Refresh" Height="35" Width="50" Name="print_btn" Click="print_btn_Click">
+                        <Image Source="/SMS;component/images/print3.jpg"  />
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+        </Grid>
+        <Grid Grid.Row="1" Margin="-1">
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+                <TextBlock Text="Cash Detail Report"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="LightGray"  Offset="0" />
+                    <GradientStop Color="Gray" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="*"/>
+                    <ColumnDefinition  Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Month: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="month_cmb"  SelectionChanged="month_cmb_SelectionChanged" SelectedValuePath="id">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                <TextBlock Text="{Binding month_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Visible">
+                <Grid Grid.Row="1" Margin="5" Background="White"  Visibility="Hidden" Name="report_grid" Width="820" ScrollViewer.CanContentScroll="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>                   
+                    <Grid Grid.Row="0" Background="WhiteSmoke" >
+                        <StackPanel Background="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="WhiteSmoke">
+                                <Image Name="institute_logo" Width="70" Height="50"  VerticalAlignment="Center"/>
+                                <TextBlock Name="institue_name" FontSize="25" FontWeight="Bold" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock Text="Cash Detail Report" HorizontalAlignment="Center" TextDecorations="Underline" FontSize="20" FontWeight="Bold"/>
+                            <TextBlock Name="session_tb" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="White" Margin="0,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid Grid.Row="1" Grid.Column="0" FontSize="16" HorizontalAlignment="Center" Height="Auto"  GridLinesVisibility="All"  IsReadOnly="True" AutoGenerateColumns="False" Background="White"  RowHeight="30.5"    BorderThickness="1" BorderBrush="Black" x:Name="cashDetailsDataGrid" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding monthDay}"  Header="Date" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding weekDay}"  Header="Week Day" Width="150"/>
+                                <DataGridTextColumn Binding="{Binding cashAmount}"  Header="Income" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding expenseAmount}"  Header="Expenses" Width="100" />  
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" Margin="0,100,0,0">
+                            <TextBlock Text=" Total Income" FontSize="20" Width="200" Height="35" Background="LightGray"/>                   
+                            <TextBlock Name="cashTB" FontSize="25" Width="200" Height="35"/>
+
+                            <TextBlock Text=" Total Expense" FontSize="20" Width="200" Height="35" Background="LightGray" Margin="0,50,0,0"/>
+                            <TextBlock Name="expenseTB" FontSize="25" Width="200" Height="35"/>
+                        </StackPanel>
+                        
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+            <Grid Grid.Row="1" Margin="1,0,1,1" Background="White" Visibility="Hidden" Name="img_grid">
+                <Image Source="/SMS;component/images/report3.jpg" Stretch="None"/>
+            </Grid>
+
+        </Grid>
+    </Grid>
+
+</Page>

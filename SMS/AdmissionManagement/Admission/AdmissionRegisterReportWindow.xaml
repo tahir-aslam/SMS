@@ -1,0 +1,16 @@
+﻿<Window x:Class="SMS.AdmissionManagement.Admission.AdmissionRegisterReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        Title="AdmissionRegisterReportWindow"
+        Height="650"
+        Width="1000"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <WindowsFormsHost  Name="windowsFormsHost1">
+            <rv:ReportViewer x:Name="_reportViewer"
+                             Margin="5,5,5,5">
+            </rv:ReportViewer>
+        </WindowsFormsHost>
+    </Grid>
+</Window>

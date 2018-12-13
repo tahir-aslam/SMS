@@ -1,0 +1,121 @@
+﻿<Window x:Class="SMS.AdminPanel.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AdminWindow" Height="400" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Width="Auto" Name="tab_control" Margin="5">            
+            <TabItem Header="Arrange Roll#" Name="arrange_roll_no" >
+                <Grid Background="WhiteSmoke">
+                    <StackPanel HorizontalAlignment="Center" Margin="5">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Class: " Width="70"  VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                            <ComboBox HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="class_cmb" SelectedValuePath="id" SelectionChanged="class_cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                            <TextBlock Text="{Binding class_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Section: " Width="70" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                            <ComboBox Grid.Row="0 " Grid.Column="5" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="section_cmb" SelectedValuePath="id" SelectionChanged="section_cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                            <TextBlock Text="{Binding section_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <Button Height="30" Width="100" Content="Arrange" Click="Button_Click" Margin="25,10,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>      
+            <TabItem Name="finePanelTabItem"
+                     Header="Fine Panel">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Center" >
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,30,0,0"
+                                    HorizontalAlignment="Center">
+                            <CheckBox Name="AutoFineChk" 
+                                      Content="Auto Fine"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,20,0,0">
+                            <TextBlock Text="Last Date: "
+                                       HorizontalAlignment="Right"
+                                       Margin="0,0,10,0"/>
+                            <TextBox Name="lastDateTxt"
+                                     HorizontalAlignment="Left"
+                                     Width="150"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,20,0,0">
+                            <TextBlock Text="Amount: "
+                                       HorizontalAlignment="Right"
+                                       Margin="0,0,10,0"/>
+                            <TextBox Name="fineAmountTxt"
+                                     HorizontalAlignment="Left"
+                                     Width="150"/>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,30,0,0"
+                                    HorizontalAlignment="Center">
+                            <CheckBox Name="dailyFineChkbox" 
+                                      Content="Daily Fine"/>
+                        </StackPanel>
+                        
+                        
+                        
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Name="ClassesChargesPanelTabItem"
+                     Header="Generate Fees">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Center" 
+                                VerticalAlignment="Center">
+
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Path=MyValue}"
+                                   FontSize="130"
+                                   FontFamily="Andalus"
+                                   FontWeight="Light"
+                                   Name="count_TB"/>
+                            <Button Content="Generate Fees" Margin="0,50,0,0" Width="150" Height="40" Click="Button_Click_1" />
+                        
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Name="TabItem"
+                     Header="Debug Accounts">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Center" 
+                                VerticalAlignment="Center">
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,20,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <Button Content="Start Debug" Width="150" Height="40" Name="synch_btn" Click="synch_btn_Click" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+    </Grid>
+</Window>

@@ -1,0 +1,11 @@
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\bin\Debug\SMS.messageEngine.exe
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\bin\Debug\SMS.messageEngine.pdb
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\obj\x86\Debug\MainWindow.baml
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\obj\x86\Debug\App.g.cs
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\obj\x86\Debug\SMS.messageEngine_MarkupCompile.cache
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\obj\x86\Debug\SMS.messageEngine.g.resources
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\obj\x86\Debug\SMS.messageEngine.Properties.Resources.resources
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\obj\x86\Debug\SMS.messageEngine.csproj.GenerateResource.Cache
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\obj\x86\Debug\SMS.messageEngine.exe
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.messageEngine\obj\x86\Debug\SMS.messageEngine.pdb

@@ -1,0 +1,2121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{23FC9054-B931-4AAB-84BC-B0942D174359}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SMS</RootNamespace>
+    <AssemblyName>SMS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>Scenario School Management Software</ProductName>
+    <PublisherName>Tahir Aslam 0300-4197674</PublisherName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>SMS.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject>SMS.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GSMCommServer">
+      <HintPath>C:\Users\Scenario\Downloads\Compressed\GSMModem\GSMModem\GSMModem\bin\Debug\GSMCommServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GSMCommShared">
+      <HintPath>C:\Users\Scenario\Downloads\Compressed\GSMModem\GSMModem\GSMModem\bin\Debug\GSMCommShared.dll</HintPath>
+    </Reference>
+    <Reference Include="GSMCommunication">
+      <HintPath>C:\Users\Scenario\Downloads\Compressed\GSMModem\GSMModem\GSMModem\bin\Debug\GSMCommunication.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\ICSharpCode.SharpZipLib.dll.0.85.4.369\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\packages\MahApps.Metro.0.12.1.0\lib\net40\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Expression\Encoder 4\SDK\Microsoft.Expression.Encoder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Data.6.8.3\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data.entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entities.6.8.3.0\lib\net40\mysql.data.entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Neodynamic.WPF.Barcode">
+      <HintPath>C:\Users\Scenario\Documents\Visual Studio 2010\Projects\XamlBarcodeGenerator\XamlBarcodeGenerator\bin\Debug\Neodynamic.WPF.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="PDUConverter">
+      <HintPath>C:\Users\Scenario\Downloads\Compressed\GSMModem\GSMModem\GSMModem\bin\Debug\PDUConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.3.3\lib\net4-client\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\packages\MahApps.Metro.0.12.1.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WebcamControl, Version=3.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\WebcamControl.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit">
+      <HintPath>E:\SMS Backup\WPFPrintEngine_Alpha_1\WPFPrintEngine_Alpha_1\WPFPrintEngine\Source\SUT.PrintEngine\bin\Debug\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AccountManagement\AccountBalanceSheet\BalanceSheet.xaml.cs">
+      <DependentUpon>BalanceSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\AccountBalanceSheet\BalanceSheetPrint.xaml.cs">
+      <DependentUpon>BalanceSheetPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\AccountDataEntry\AccountDataForm.xaml.cs">
+      <DependentUpon>AccountDataForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\AccountDataEntry\AccountDataSearch.xaml.cs">
+      <DependentUpon>AccountDataSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\Account\AccountForm.xaml.cs">
+      <DependentUpon>AccountForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\Account\AccountSearch.xaml.cs">
+      <DependentUpon>AccountSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\CashDetail\CashDetailPage.xaml.cs">
+      <DependentUpon>CashDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\Investment\InvestmentForm.xaml.cs">
+      <DependentUpon>InvestmentForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\Investment\InvestmentPage.xaml.cs">
+      <DependentUpon>InvestmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\Investors\InverstersPage.xaml.cs">
+      <DependentUpon>InverstersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\Investors\InvestorsForm.xaml.cs">
+      <DependentUpon>InvestorsForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\AdminPasswordWindow.xaml.cs">
+      <DependentUpon>AdminPasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\AdmissionFormNew.xaml.cs">
+      <DependentUpon>AdmissionFormNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\AdmissionFormPrint.xaml.cs">
+      <DependentUpon>AdmissionFormPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\AdmissionRegisterReportWindow.xaml.cs">
+      <DependentUpon>AdmissionRegisterReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\AdmissionSearchNew.xaml.cs">
+      <DependentUpon>AdmissionSearchNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\AdmissionSlip.xaml.cs">
+      <DependentUpon>AdmissionSlip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\BirthDayCertificate\BirthDayCertificateWindow.xaml.cs">
+      <DependentUpon>BirthDayCertificateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\GetDateRemarksWindow.xaml.cs">
+      <DependentUpon>GetDateRemarksWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\NewAdmissionForm.xaml.cs">
+      <DependentUpon>NewAdmissionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\RFIDWindow.xaml.cs">
+      <DependentUpon>RFIDWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\SchoolConfirmationCertificate\SchoolConfirmationWindow.xaml.cs">
+      <DependentUpon>SchoolConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\SiblingWindow.xaml.cs">
+      <DependentUpon>SiblingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\StudentCardWindow.xaml.cs">
+      <DependentUpon>StudentCardWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\BulkFeeUpdate\FeeUpdateForm.xaml.cs">
+      <DependentUpon>FeeUpdateForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\BulkFeeUpdate\FeeUpdatePage.xaml.cs">
+      <DependentUpon>FeeUpdatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\CameraWindow.xaml.cs">
+      <DependentUpon>CameraWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Camera\CameraEngineWindow.xaml.cs">
+      <DependentUpon>CameraEngineWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AdmissionManagement\Camera\WebCam.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AdmissionManagement\Envelope\EnvelopePage.xaml.cs">
+      <DependentUpon>EnvelopePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\FineManagement\Fine\FineSearch.xaml.cs">
+      <DependentUpon>FineSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\FineManagement\Fine\FineWindow.xaml.cs">
+      <DependentUpon>FineWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\PromoteStudents\PromoteStudentForm.xaml.cs">
+      <DependentUpon>PromoteStudentForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\PromoteStudents\PromoteStudentPage.xaml.cs">
+      <DependentUpon>PromoteStudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\WithdrawAdmission\SLCWindow.xaml.cs">
+      <DependentUpon>SLCWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\WithdrawAdmission\WithdrawAdmissionPage.xaml.cs">
+      <DependentUpon>WithdrawAdmissionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\AccountsLedger\AccountsLedgerPage.xaml.cs">
+      <DependentUpon>AccountsLedgerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\AccountsLedger\AccountsLedgerReportWindow.xaml.cs">
+      <DependentUpon>AccountsLedgerReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\BalanceSheet\BalanceSheetPage.xaml.cs">
+      <DependentUpon>BalanceSheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\CashFlowStatement\CashFlowStatementPage.xaml.cs">
+      <DependentUpon>CashFlowStatementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\DetailedAccounts\ChartOfAccountReportWindow.xaml.cs">
+      <DependentUpon>ChartOfAccountReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\DetailedAccounts\DetailedAccountsWindow.xaml.cs">
+      <DependentUpon>DetailedAccountsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\IncomeStatement\IncomeStatementPage.xaml.cs">
+      <DependentUpon>IncomeStatementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\MainAccounts\MainAccountWindow.xaml.cs">
+      <DependentUpon>MainAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\TrialBalance\TrialBalancePage.xaml.cs">
+      <DependentUpon>TrialBalancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\VoucherEntry\VoucherEntryReportWindow.xaml.cs">
+      <DependentUpon>VoucherEntryReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\Class\ClassReportWindow.xaml.cs">
+      <DependentUpon>ClassReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\DateToAge.cs" />
+    <Compile Include="Common\DateToWords.cs" />
+    <Compile Include="Common\MetroMenuResources.cs" />
+    <Compile Include="Common\ResultWindow.xaml.cs">
+      <DependentUpon>ResultWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\StudentSelectionWindowNew.xaml.cs">
+      <DependentUpon>StudentSelectionWindowNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CircularProgressBar.xaml.cs">
+      <DependentUpon>CircularProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Exam\ExamReportHeader.xaml.cs">
+      <DependentUpon>ExamReportHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoadingPanel.xaml.cs">
+      <DependentUpon>LoadingPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StudentSearchUC.xaml.cs">
+      <DependentUpon>StudentSearchUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AccountsDAL.cs" />
+    <Compile Include="AdvancedAccountManagement\DetailedAccounts\DetailedAccountPage.xaml.cs">
+      <DependentUpon>DetailedAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\MainAccounts\MainAccountsPage.xaml.cs">
+      <DependentUpon>MainAccountsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\VoucherEntry\VoucherEntryForm.xaml.cs">
+      <DependentUpon>VoucherEntryForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\VoucherEntry\VoucherEntryPage.xaml.cs">
+      <DependentUpon>VoucherEntryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\Class\ClassChargesForm.xaml.cs">
+      <DependentUpon>ClassChargesForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\Class\ClassFormNew.xaml.cs">
+      <DependentUpon>ClassFormNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\StatusWindow.xaml.cs">
+      <DependentUpon>StatusWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\StudentSelectionWindow.xaml.cs">
+      <DependentUpon>StudentSelectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\BinaryImageConverter.cs" />
+    <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converter\RowNumber.cs" />
+    <Compile Include="Controls\DataUploader.xaml.cs">
+      <DependentUpon>DataUploader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SmsEngine.xaml.cs">
+      <DependentUpon>SmsEngine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AdmissionDAL.cs" />
+    <Compile Include="DAL\AttendanceBioDAL.cs" />
+    <Compile Include="DAL\AttendanceDAL.cs" />
+    <Compile Include="DAL\ClassesDAL.cs" />
+    <Compile Include="DAL\EmployeesDAL.cs" />
+    <Compile Include="DAL\LicenseDAL.cs" />
+    <Compile Include="DAL\MiscDAL.cs" />
+    <Compile Include="DAL\RfidDAL.cs" />
+    <Compile Include="DAL\RolesDAL.cs" />
+    <Compile Include="DataUploader\DataUploaderWindow.xaml.cs">
+      <DependentUpon>DataUploaderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\ADDEMP\GetDateWindow.xaml.cs">
+      <DependentUpon>GetDateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmpAttendance.xaml.cs">
+      <DependentUpon>EmpAttendance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeAttendanceBio\EmployeeAttendanceBioPage.xaml.cs">
+      <DependentUpon>EmployeeAttendanceBioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeAttendanceBio\EmployeeAttendanceBioReportWindow.xaml.cs">
+      <DependentUpon>EmployeeAttendanceBioReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetPage.xaml.cs">
+      <DependentUpon>EmployeeAttendanceSheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeAttendance\EmployeeAttendanceEdit.xaml.cs">
+      <DependentUpon>EmployeeAttendanceEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeAttendance\EmployeeAttendanceForm.xaml.cs">
+      <DependentUpon>EmployeeAttendanceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeAttendance\EmployeeAttendancePage.xaml.cs">
+      <DependentUpon>EmployeeAttendancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmpLogin\EmployeeLoginForm.xaml.cs">
+      <DependentUpon>EmployeeLoginForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmpLogin\EmployeeLoginSearch.xaml.cs">
+      <DependentUpon>EmployeeLoginSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeSalarySheetBio\EmployeeSalarySheetBioWindow.xaml.cs">
+      <DependentUpon>EmployeeSalarySheetBioWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmpPayment\EmpPayment.xaml.cs">
+      <DependentUpon>EmpPayment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmpRoles\EmployeeRolesForm.xaml.cs">
+      <DependentUpon>EmployeeRolesForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmpRoles\EmployeeRolesSearch.xaml.cs">
+      <DependentUpon>EmployeeRolesSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmpRoles\rolesDAL.cs" />
+    <Compile Include="EmployeeManagement\SalarySheet\SalarySheetPage.xaml.cs">
+      <DependentUpon>SalarySheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\UnitTest\UnitTestPage.xaml.cs">
+      <DependentUpon>UnitTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\WithdrawEmployees\WithdrawEmployeesPage.xaml.cs">
+      <DependentUpon>WithdrawEmployeesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\DateSheet\DateSheetPage.xaml.cs">
+      <DependentUpon>DateSheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamDataEntry\ExamDataEntry1.xaml.cs">
+      <DependentUpon>ExamDataEntry1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamDataEntry\ExamEntryForm.xaml.cs">
+      <DependentUpon>ExamEntryForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamMultipleResultCards\MultipleResultCardsPage.xaml.cs">
+      <DependentUpon>MultipleResultCardsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamReport\ExamReportPage.xaml.cs">
+      <DependentUpon>ExamReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamResultCard\ResultCard.xaml.cs">
+      <DependentUpon>ResultCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamResultCard\ResultCard1.xaml.cs">
+      <DependentUpon>ResultCard1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamResultCard\ResultCard2.xaml.cs">
+      <DependentUpon>ResultCard2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamResultListBySubject\ResultListBySubject.xaml.cs">
+      <DependentUpon>ResultListBySubject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamResultList\ResultList.xaml.cs">
+      <DependentUpon>ResultList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\ExamResultList\ResultList1.xaml.cs">
+      <DependentUpon>ResultList1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\Exam\ExamForm.xaml.cs">
+      <DependentUpon>ExamForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\Exam\ExamSearch.xaml.cs">
+      <DependentUpon>ExamSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamManagement\RollNoSlip\RollNoSlipPage.xaml.cs">
+      <DependentUpon>RollNoSlipPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeeDefaulters\FeeDefaultersList.xaml.cs">
+      <DependentUpon>FeeDefaultersList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeeHistory\FeeHistoryByChallansWindow.xaml.cs">
+      <DependentUpon>FeeHistoryByChallansWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeePaidByAmount\FeePaidByAmountHistory.xaml.cs">
+      <DependentUpon>FeePaidByAmountHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeePaidByAmount\FeePaidByAmountPage.xaml.cs">
+      <DependentUpon>FeePaidByAmountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeePaidByAmount\FeePaidByAmountPrint.xaml.cs">
+      <DependentUpon>FeePaidByAmountPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeePaidByAmount\FeePaidByAmountWindow.xaml.cs">
+      <DependentUpon>FeePaidByAmountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeePaidByVoucher\FeePaidByVoucherPage.xaml.cs">
+      <DependentUpon>FeePaidByVoucherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeePaidByVoucher\FeePaidByVoucherWindow.xaml.cs">
+      <DependentUpon>FeePaidByVoucherWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeePrintSlip\FeePrint.xaml.cs">
+      <DependentUpon>FeePrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeeSearch\ReceiptNoWindow.xaml.cs">
+      <DependentUpon>ReceiptNoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeeVouchers\FeeVoucherSearch.xaml.cs">
+      <DependentUpon>FeeVoucherSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeeVouchers\VoucherOptionWindow.xaml.cs">
+      <DependentUpon>VoucherOptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\PaidFeeList\PaidFee.xaml.cs">
+      <DependentUpon>PaidFee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\PaidFeeReport\PaidFeeReport.xaml.cs">
+      <DependentUpon>PaidFeeReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\FeesDAL.cs" />
+    <Compile Include="FeesManagement\BulkFeesUpdate\BulkFeesUpdatePage.xaml.cs">
+      <DependentUpon>BulkFeesUpdatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\BulkFeesUpdate\BulkFeesUpdateWindow.xaml.cs">
+      <DependentUpon>BulkFeesUpdateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountPage.xaml.cs">
+      <DependentUpon>FeesCollectionByAmountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountReportWindow.xaml.cs">
+      <DependentUpon>FeesCollectionByAmountReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountWindow.xaml.cs">
+      <DependentUpon>FeesCollectionByAmountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollectionByVoucher\FeesCollectionByVoucherPage.xaml.cs">
+      <DependentUpon>FeesCollectionByVoucherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollectionByVoucher\FeesCollectionByVoucherWindow.xaml.cs">
+      <DependentUpon>FeesCollectionByVoucherWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerPage.xaml.cs">
+      <DependentUpon>FeesCollectionLedgerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportWindow.xaml.cs">
+      <DependentUpon>FeesCollectionLedgerReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollection\FeesCollectionForm.xaml.cs">
+      <DependentUpon>FeesCollectionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollection\FeesCollectionPage.xaml.cs">
+      <DependentUpon>FeesCollectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesCollection\StudentFeeIndividualReport.xaml.cs">
+      <DependentUpon>StudentFeeIndividualReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesDefaulters\FeesDefaulterReportWindow.xaml.cs">
+      <DependentUpon>FeesDefaulterReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesDefaulters\FeesDefaultersPage.xaml.cs">
+      <DependentUpon>FeesDefaultersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesRegister\FeesVoucherHistoryReportWindow.xaml.cs">
+      <DependentUpon>FeesVoucherHistoryReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesReports\CRVHistoryWindow.xaml.cs">
+      <DependentUpon>CRVHistoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesReports\CRVWindow.xaml.cs">
+      <DependentUpon>CRVWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\FeesVoucher\FeesVoucherPage.xaml.cs">
+      <DependentUpon>FeesVoucherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\ManageFees\ManageFeesPage.xaml.cs">
+      <DependentUpon>ManageFeesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\ManageFees\ManageFeesReportWindow.xaml.cs">
+      <DependentUpon>ManageFeesReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\ManageFees\ManageFeesWindow.xaml.cs">
+      <DependentUpon>ManageFeesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeesManagement\SampleReports\SampleReportsPage.xaml.cs">
+      <DependentUpon>SampleReportsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HeaderTemplate.xaml.cs">
+      <DependentUpon>HeaderTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelperClasses\CommandManagerHelper.cs" />
+    <Compile Include="HelperClasses\DelegateCommand.cs" />
+    <Compile Include="MainScreen\MainScreenReports.xaml.cs">
+      <DependentUpon>MainScreenReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainScreen\Start.xaml.cs">
+      <DependentUpon>Start.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\Admission\AdmissionSMSPage.xaml.cs">
+      <DependentUpon>AdmissionSMSPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\AttendenceSms\AttendenceSmsPage.xaml.cs">
+      <DependentUpon>AttendenceSmsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\BirthdaySms\BirthdaySmsPage.xaml.cs">
+      <DependentUpon>BirthdaySmsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\BrandedSms\BrandedSmsEngine.xaml.cs">
+      <DependentUpon>BrandedSmsEngine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\EmpAttendanceSms\EmpAttendanceSmsPage.xaml.cs">
+      <DependentUpon>EmpAttendanceSmsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\EmpSms\EmpSmsWindow.xaml.cs">
+      <DependentUpon>EmpSmsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\ExamSms.xaml.cs">
+      <DependentUpon>ExamSms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\ExamSmsNew\ExamSmsNew.xaml.cs">
+      <DependentUpon>ExamSmsNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\FeeDefaulterSms.xaml.cs">
+      <DependentUpon>FeeDefaulterSms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\FeePaidSms.xaml.cs">
+      <DependentUpon>FeePaidSms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\FeesCollection\FeesCollectionSmsPage.xaml.cs">
+      <DependentUpon>FeesCollectionSmsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\FeesDefaulter\FeesDefaulterSmsPage.xaml.cs">
+      <DependentUpon>FeesDefaulterSmsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\FeesPaid\FeesPaidSMSNew.xaml.cs">
+      <DependentUpon>FeesPaidSMSNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\FriendList\FriendListForm.xaml.cs">
+      <DependentUpon>FriendListForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\FriendList\FriendListSearch.xaml.cs">
+      <DependentUpon>FriendListSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\FriendList\FriendListSelectedWindow.xaml.cs">
+      <DependentUpon>FriendListSelectedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\GeneralSms.xaml.cs">
+      <DependentUpon>GeneralSms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\History\SmsHistory.xaml.cs">
+      <DependentUpon>SmsHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\History\SMSHistoryPrint.xaml.cs">
+      <DependentUpon>SMSHistoryPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\SavedSms\SavedSmsForm.xaml.cs">
+      <DependentUpon>SavedSmsForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\SavedSms\SavedSmsSearch.xaml.cs">
+      <DependentUpon>SavedSmsSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\SendMessage.xaml.cs">
+      <DependentUpon>SendMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\SmsOption\OptionWindow.xaml.cs">
+      <DependentUpon>OptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\TestSms\TestSmsPage.xaml.cs">
+      <DependentUpon>TestSmsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\account.cs" />
+    <Compile Include="Models\account_entry.cs" />
+    <Compile Include="Models\adminPanel.cs" />
+    <Compile Include="Models\AttendanceReport.cs" />
+    <Compile Include="Models\AttendanceReportClass.cs" />
+    <Compile Include="Models\balanceSheet.cs" />
+    <Compile Include="Models\cashDetails.cs" />
+    <Compile Include="Models\chart_of_accounts.cs" />
+    <Compile Include="Models\CityArea.cs" />
+    <Compile Include="Models\clsSMS.cs" />
+    <Compile Include="Models\employee_attendence.cs" />
+    <Compile Include="Models\emp_login.cs" />
+    <Compile Include="Models\exam.cs" />
+    <Compile Include="Models\exam_data_entry.cs" />
+    <Compile Include="Models\exam_entry.cs" />
+    <Compile Include="Models\exam_marks.cs" />
+    <Compile Include="Models\FeesReportData.cs" />
+    <Compile Include="Models\loadingPanel.cs" />
+    <Compile Include="Models\prefix.cs" />
+    <Compile Include="Models\rfid_assignment.cs" />
+    <Compile Include="Models\sms_account_type.cs" />
+    <Compile Include="Models\sms_emp_attendance_bio.cs" />
+    <Compile Include="Models\sms_emp_designation.cs" />
+    <Compile Include="Models\sms_emp_title.cs" />
+    <Compile Include="Models\sms_fees.cs" />
+    <Compile Include="Models\sms_fees_actual.cs" />
+    <Compile Include="Models\sms_fees_admin_panel.cs" />
+    <Compile Include="Models\sms_fees_cancel.cs" />
+    <Compile Include="Models\sms_fees_category.cs" />
+    <Compile Include="Models\sms_fees_collection_place.cs" />
+    <Compile Include="Models\sms_fees_package.cs" />
+    <Compile Include="Models\sms_fees_sub_category.cs" />
+    <Compile Include="Models\fee_history.cs" />
+    <Compile Include="Models\fee_voucher.cs" />
+    <Compile Include="Models\friend_list.cs" />
+    <Compile Include="Models\institute.cs" />
+    <Compile Include="Models\other_fee.cs" />
+    <Compile Include="Models\other_fee_type.cs" />
+    <Compile Include="Models\session.cs" />
+    <Compile Include="Models\sms.cs" />
+    <Compile Include="Models\sms_exam_admin_panel.cs" />
+    <Compile Include="Models\sms_exam_requirements.cs" />
+    <Compile Include="Models\sms_fee_admin_panel.cs" />
+    <Compile Include="Models\sms_fine.cs" />
+    <Compile Include="Models\sms_fine_type.cs" />
+    <Compile Include="Models\sms_freind_type.cs" />
+    <Compile Include="Models\sms_history.cs" />
+    <Compile Include="Models\sms_InsertUpdateStatus.cs" />
+    <Compile Include="Models\sms_investments.cs" />
+    <Compile Include="Models\sms_investor.cs" />
+    <Compile Include="Models\sms_months.cs" />
+    <Compile Include="Models\sms_report.cs" />
+    <Compile Include="Models\sms_result_engine.cs" />
+    <Compile Include="Models\sms_voucher.cs" />
+    <Compile Include="Models\sms_voucher_entries.cs" />
+    <Compile Include="Models\sms_voucher_types.cs" />
+    <Compile Include="Models\sms_years.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\student_attendence.cs" />
+    <Compile Include="Models\web_events.cs" />
+    <Compile Include="Models\web_event_image.cs" />
+    <Compile Include="Models\web_messages.cs" />
+    <Compile Include="Models\web_slider_images.cs" />
+    <Compile Include="PrintHeaderTemplates\AbsentsStudentsHeader.xaml.cs">
+      <DependentUpon>AbsentsStudentsHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintHeaderTemplates\AdmissionRegisterHeader.xaml.cs">
+      <DependentUpon>AdmissionRegisterHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintHeaderTemplates\ExpenseHeader.xaml.cs">
+      <DependentUpon>ExpenseHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintHeaderTemplates\FeeDefaulterHeader.xaml.cs">
+      <DependentUpon>FeeDefaulterHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintHeaderTemplates\GenaralAwardListHeader.xaml.cs">
+      <DependentUpon>GenaralAwardListHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintHeaderTemplates\PaidFeeLedger.xaml.cs">
+      <DependentUpon>PaidFeeLedger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintHeaderTemplates\StudentAttendanceHeader.xaml.cs">
+      <DependentUpon>StudentAttendanceHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintHeaderTemplates\WithdrawHeader.xaml.cs">
+      <DependentUpon>WithdrawHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintSlipHeaderTemplate.xaml.cs">
+      <DependentUpon>PrintSlipHeaderTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Employee\EmployeeCardWindow.xaml.cs">
+      <DependentUpon>EmployeeCardWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Exam\FourExamReport\FourExamReportWindow.xaml.cs">
+      <DependentUpon>FourExamReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Exam\GeneralAwardListByPosition\GeneralAwardListByPositionWindow.xaml.cs">
+      <DependentUpon>GeneralAwardListByPositionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Exam\ResultCardCustom\ResultCardCustomWindow.xaml.cs">
+      <DependentUpon>ResultCardCustomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Exam\ThreeExamReport\ThreeExamReportWindow.xaml.cs">
+      <DependentUpon>ThreeExamReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Exam\ResultCardByCoduct\ResultCardByConductWindow.xaml.cs">
+      <DependentUpon>ResultCardByConductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Exam\ResultCardByGrade\ResultCardByGradeWindow.xaml.cs">
+      <DependentUpon>ResultCardByGradeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Exam\TwoExamReport\TwoExamReport.xaml.cs">
+      <DependentUpon>TwoExamReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MiscReports\StudentListBySection\StudentListBySectionWindow.xaml.cs">
+      <DependentUpon>StudentListBySectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Student\AttendanceClassWise\AttendanceClassWiseWindow.xaml.cs">
+      <DependentUpon>AttendanceClassWiseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Student\Attendance\StudentAttendanceReportWindow.xaml.cs">
+      <DependentUpon>StudentAttendanceReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Student\StudentCards\StudentCardsWindow.xaml.cs">
+      <DependentUpon>StudentCardsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentManagement\AttendanceReportClassWise\AttendanceReportClassWisePage.xaml.cs">
+      <DependentUpon>AttendanceReportClassWisePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentManagement\AttendanceReport\DailyAttendanceReportPage.xaml.cs">
+      <DependentUpon>DailyAttendanceReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentManagement\AttendanceReport\StudentAttendanceSheetPage.xaml.cs">
+      <DependentUpon>StudentAttendanceSheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentManagement\StudentAttendence\AttendanceReportWindow.xaml.cs">
+      <DependentUpon>AttendanceReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentManagement\StudentAttendence\StudentAttendanceNew.xaml.cs">
+      <DependentUpon>StudentAttendanceNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentManagement\StudentAttendence\StudentAttendence.xaml.cs">
+      <DependentUpon>StudentAttendence.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentManagement\StudentAttendence\StudentAttendenceForm.xaml.cs">
+      <DependentUpon>StudentAttendenceForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentManagement\StudentAttendence\StudentAttendenceInsert.xaml.cs">
+      <DependentUpon>StudentAttendenceInsert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ExamReportBySubjectVM.cs" />
+    <Compile Include="xml\Upload\UploadWindow.xaml.cs">
+      <DependentUpon>UploadWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="ViewModels\EmpViewModel.cs" />
+    <Compile Include="ViewModels\ExamReportViewModel.cs" />
+    <Compile Include="ViewModels\ExamViewModel.cs" />
+    <Compile Include="ViewModels\HeaderViewModel.cs" />
+    <Compile Include="ViewModels\StudentViewModel.cs" />
+    <Compile Include="Web\EditNotification.xaml.cs">
+      <DependentUpon>EditNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Web\home.xaml.cs">
+      <DependentUpon>home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ManageSliderImages.xaml.cs">
+      <DependentUpon>ManageSliderImages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Web\NewsMessage.xaml.cs">
+      <DependentUpon>NewsMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Web\NewsMessageForm.xaml.cs">
+      <DependentUpon>NewsMessageForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Web\SchoolEventForm.xaml.cs">
+      <DependentUpon>SchoolEventForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Web\SchoolEvents.xaml.cs">
+      <DependentUpon>SchoolEvents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Web\SchoolWeb.xaml.cs">
+      <DependentUpon>SchoolWeb.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowManager.cs" />
+    <Page Include="AccountManagement\AccountBalanceSheet\BalanceSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManagement\AccountBalanceSheet\BalanceSheetPrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManagement\AccountDataEntry\AccountDataForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManagement\AccountDataEntry\AccountDataSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManagement\Account\AccountForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManagement\Account\AccountSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManagement\CashDetail\CashDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManagement\Investment\InvestmentForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManagement\Investment\InvestmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManagement\Investors\InverstersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManagement\Investors\InvestorsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPanel\AdminPasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPanel\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\AdmissionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\AdmissionFormNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\AdmissionFormPrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\AdmissionRegisterReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\AdmissionSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\AdmissionSearchNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\AdmissionSlip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\BirthDayCertificate\BirthDayCertificateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\GetDateRemarksWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\NewAdmissionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\RFIDWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\SchoolConfirmationCertificate\SchoolConfirmationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\SiblingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Admission\StudentCardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\BulkFeeUpdate\FeeUpdateForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\BulkFeeUpdate\FeeUpdatePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdmissionManagement\CameraWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdmissionManagement\Camera\CameraEngineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\Envelope\EnvelopePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\FineManagement\Fine\FineSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\FineManagement\Fine\FineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\PromoteStudents\PromoteStudentForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\PromoteStudents\PromoteStudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\WithdrawAdmission\SLCWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\WithdrawAdmission\WithdrawAdmissionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\AccountsLedger\AccountsLedgerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\AccountsLedger\AccountsLedgerReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\BalanceSheet\BalanceSheetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\CashFlowStatement\CashFlowStatementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\DetailedAccounts\ChartOfAccountReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\DetailedAccounts\DetailedAccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\DetailedAccounts\DetailedAccountsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\IncomeStatement\IncomeStatementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\MainAccounts\MainAccountsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\MainAccounts\MainAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\TrialBalance\TrialBalancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\VoucherEntry\VoucherEntryForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\VoucherEntry\VoucherEntryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedAccountManagement\VoucherEntry\VoucherEntryReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Class\ClassChargesForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Class\ClassFormNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Class\ClassReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Class\ClassSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Section\SectionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Section\SectionSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Subject\SubjectForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Subject\SubjectSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\ResultWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\StatusWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\StudentSelectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\StudentSelectionWindowNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DataUploader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Exam\ExamReportHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoadingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SmsEngine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StudentSearchUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataUploader\DataUploaderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\ADDEMP\AddEmpForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\ADDEMP\ADDEMPSEARCH.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\ADDEMP\GetDateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmpAttendance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmployeeAttendanceBio\EmployeeAttendanceBioPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmployeeAttendanceBio\EmployeeAttendanceBioReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmployeeAttendance\EmployeeAttendanceEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmployeeAttendance\EmployeeAttendanceForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmployeeAttendance\EmployeeAttendancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmpLogin\EmployeeLoginForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmpLogin\EmployeeLoginSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmployeeSalarySheetBio\EmployeeSalarySheetBioWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmpPayment\EmpPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmpRoles\EmployeeRolesForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\EmpRoles\EmployeeRolesSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\SalarySheet\SalarySheetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\UnitTest\UnitTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeManagement\WithdrawEmployees\WithdrawEmployeesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\DateSheet\DateSheetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamDataEntry\ExamDataEntry1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamDataEntry\ExamEntryForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamMultipleResultCards\MultipleResultCardsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamReport\ExamReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamResultCard\ResultCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamResultCard\ResultCard1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamResultCard\ResultCard2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamResultListBySubject\ResultListBySubject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamResultList\ResultList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\ExamResultList\ResultList1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\Exam\ExamForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\Exam\ExamSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamManagement\RollNoSlip\RollNoSlipPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeeDefaulters\FeeDefaultersList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeeHistory\FeeHistoryByChallansWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeePaidByAmount\FeePaidByAmountHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeePaidByAmount\FeePaidByAmountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeePaidByAmount\FeePaidByAmountPrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeePaidByAmount\FeePaidByAmountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeePaidByVoucher\FeePaidByVoucherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeePaidByVoucher\FeePaidByVoucherWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeePrintSlip\FeePrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeeSearch\FeeForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeeSearch\FeeSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeeSearch\ReceiptNoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeeVouchers\FeeVoucherSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\FeeVouchers\VoucherOptionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\PaidFeeList\PaidFee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeeManagement\PaidFeeReport\PaidFeeReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\BulkFeesUpdate\BulkFeesUpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\BulkFeesUpdate\BulkFeesUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollectionByVoucher\FeesCollectionByVoucherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollectionByVoucher\FeesCollectionByVoucherWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollection\FeesCollectionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollection\FeesCollectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesCollection\StudentFeeIndividualReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesDefaulters\FeesDefaulterReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesDefaulters\FeesDefaultersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesRegister\FeesVoucherHistoryReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesReports\CRVHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesReports\CRVWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\FeesVoucher\FeesVoucherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\ManageFees\ManageFeesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\ManageFees\ManageFeesReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\ManageFees\ManageFeesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeesManagement\SampleReports\SampleReportsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HeaderTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainScreen\MainScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainScreen\MainScreenReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainScreen\Start.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="AdmissionManagement\Admission\AdmissionForm.xaml.cs">
+      <DependentUpon>AdmissionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionManagement\Admission\AdmissionSearch.xaml.cs">
+      <DependentUpon>AdmissionSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClassManagement\Class\ClassSearch.xaml.cs">
+      <DependentUpon>ClassSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\Section\SectionForm.xaml.cs">
+      <DependentUpon>SectionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\Section\SectionSearch.xaml.cs">
+      <DependentUpon>SectionSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\Subject\SubjectForm.xaml.cs">
+      <DependentUpon>SubjectForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\Subject\SubjectSearch.xaml.cs">
+      <DependentUpon>SubjectSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Connection_String.cs" />
+    <Compile Include="EmployeeManagement\ADDEMP\AddEmpForm.xaml.cs">
+      <DependentUpon>AddEmpForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\ADDEMP\ADDEMPSEARCH.xaml.cs">
+      <DependentUpon>ADDEMPSEARCH.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeeSearch\FeeForm.xaml.cs">
+      <DependentUpon>FeeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeeManagement\FeeSearch\FeeSearch.xaml.cs">
+      <DependentUpon>FeeSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainScreen\MainScreen.xaml.cs">
+      <DependentUpon>MainScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Messaging\Admission\AdmissionSMSPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\AttendenceSms\AttendenceSmsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\BirthdaySms\BirthdaySmsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\BrandedSms\BrandedSmsEngine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\EmpAttendanceSms\EmpAttendanceSmsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Messaging\EmpSms\EmpSmsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\ExamSms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\ExamSmsNew\ExamSmsNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\FeeDefaulterSms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\FeePaidSms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\FeesCollection\FeesCollectionSmsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\FeesDefaulter\FeesDefaulterSmsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\FeesPaid\FeesPaidSMSNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\FriendList\FriendListForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\FriendList\FriendListSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\FriendList\FriendListSelectedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\GeneralSms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\History\SmsHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\History\SMSHistoryPrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\SavedSms\SavedSmsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\SavedSms\SavedSmsSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\SendMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\SmsOption\OptionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\TestSms\TestSmsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintHeaderTemplates\AbsentsStudentsHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintHeaderTemplates\AdmissionRegisterHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintHeaderTemplates\ExpenseHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintHeaderTemplates\FeeDefaulterHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintHeaderTemplates\GenaralAwardListHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintHeaderTemplates\PaidFeeLedger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintHeaderTemplates\StudentAttendanceHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintHeaderTemplates\WithdrawHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintSlipHeaderTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Employee\EmployeeCardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Exam\FourExamReport\FourExamReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Exam\GeneralAwardListByPosition\GeneralAwardListByPositionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Exam\ResultCardCustom\ResultCardCustomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Exam\ThreeExamReport\ThreeExamReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Exam\ResultCardByCoduct\ResultCardByConductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Exam\ResultCardByGrade\ResultCardByGradeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Exam\TwoExamReport\TwoExamReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\MiscReports\StudentListBySection\StudentListBySectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Student\AttendanceClassWise\AttendanceClassWiseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Student\Attendance\StudentAttendanceReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Student\StudentCards\StudentCardsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentManagement\AttendanceReportClassWise\AttendanceReportClassWisePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentManagement\AttendanceReport\DailyAttendanceReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentManagement\AttendanceReport\StudentAttendanceSheetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentManagement\StudentAttendence\AttendanceReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentManagement\StudentAttendence\StudentAttendanceNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentManagement\StudentAttendence\StudentAttendence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentManagement\StudentAttendence\StudentAttendenceForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StudentManagement\StudentAttendence\StudentAttendenceInsert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="xml\Upload\UploadWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Web\EditNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Web\home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Web\ManageSliderImages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Web\NewsMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Web\NewsMessageForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Web\SchoolEventForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Web\SchoolEvents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Web\SchoolWeb.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\admission.cs" />
+    <Compile Include="Models\classes.cs" />
+    <Compile Include="Models\employees.cs" />
+    <Compile Include="Models\employees_types.cs" />
+    <Compile Include="Models\fee.cs" />
+    <Compile Include="Models\roles.cs" />
+    <Compile Include="Models\roll_no.cs" />
+    <Compile Include="Models\sections.cs" />
+    <Compile Include="Models\subjects.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="AdmissionManagement\Admission\AdmissionRegisterReport.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdmissionManagement\Admission\AdmissionSlipReport.rdlc" />
+    <EmbeddedResource Include="AdmissionManagement\Admission\BirthDayCertificate\BirthDayCertificateReport.rdlc" />
+    <EmbeddedResource Include="AdmissionManagement\Admission\SchoolConfirmationCertificate\SchoolConfirmationCertificateReport.rdlc" />
+    <EmbeddedResource Include="AdvancedAccountManagement\AccountsLedger\AccountsLedgerReport.rdlc" />
+    <EmbeddedResource Include="AdvancedAccountManagement\CashFlowStatement\CashFlowStatementReport.rdlc" />
+    <EmbeddedResource Include="AdvancedAccountManagement\DetailedAccounts\ChartOfAccountsReport.rdlc" />
+    <EmbeddedResource Include="AdvancedAccountManagement\IncomeStatement\IncomeStatementReport.rdlc" />
+    <EmbeddedResource Include="AdvancedAccountManagement\TrialBalance\TrialBalanceReport.rdlc" />
+    <EmbeddedResource Include="AdvancedAccountManagement\VoucherEntry\VoucherEntryReport.rdlc" />
+    <EmbeddedResource Include="ClassManagement\Class\ClassReport.rdlc" />
+    <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceBio\EmployeeAttendanceBioReport.rdlc" />
+    <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetReport.rdlc" />
+    <EmbeddedResource Include="EmployeeManagement\EmployeeSalarySheetBio\EmployeeSalarySheetReport.rdlc" />
+    <EmbeddedResource Include="EmployeeManagement\SalarySheet\SalarySheetReport.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountReport.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReport.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportGrouped.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportNew.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesCollection\StduentFeeReportIndividual.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesDefaulters\FeesDefaulterReportGrouped.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesRegister\FeesVoucherHistoryReport.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReport1.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReport2.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReport3.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReport3Fine.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesVoucher\Report3.rdlc" />
+    <EmbeddedResource Include="FeesManagement\ManageFees\ManageFeesReport.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesDefaulters\FeesDefaulterReport.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesReports\CashReceivedVoucherHistory.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesReports\CRVReport.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesReports\Report1.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesReports\Report2.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesReports\Report3.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesReports\Report4.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesReports\CashReceivedVoucher.rdlc" />
+    <EmbeddedResource Include="Messaging\History\SMSHistoryReport.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Employee\EmployeeCardReport.rdlc" />
+    <EmbeddedResource Include="Reports\MiscReports\StudentListBySection\StudentListBySectionReport.rdlc" />
+    <EmbeddedResource Include="Reports\Student\AttendanceClassWise\StudentAttendanceReportClassWise.rdlc" />
+    <EmbeddedResource Include="Reports\Student\Attendance\StudentAttendanceReport.rdlc" />
+    <EmbeddedResource Include="Reports\Student\StudentCards\studentCardsReport.rdlc" />
+    <EmbeddedResource Include="StudentManagement\AttendanceReportClassWise\StudentAttendanceReportClassWiseReport.rdlc" />
+    <EmbeddedResource Include="StudentManagement\AttendanceReport\StudentAttendanceSheetFilledReport.rdlc" />
+    <EmbeddedResource Include="StudentManagement\AttendanceReport\StudentAttendanceSheetReport.rdlc" />
+    <EmbeddedResource Include="StudentManagement\StudentAttendence\StudentAttendanceReport.rdlc" />
+    <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="SMS.Models.admission.datasource" />
+    <None Include="SMS.Models.employees.datasource" />
+    <None Include="SMS.Models.employees1.datasource" />
+    <None Include="SMS.Models.employees2.datasource" />
+    <None Include="SMS.Models.exam_data_entry.datasource" />
+    <None Include="SMS.Models.FeesReportData.datasource" />
+    <None Include="SMS.Models.institute.datasource" />
+    <None Include="SMS.Models.institute1.datasource" />
+    <None Include="SMS.Models.institute2.datasource" />
+    <None Include="SMS.Models.institute3.datasource" />
+    <None Include="SMS.Models.sms_emp_attendance_bio.datasource" />
+    <None Include="SMS.Models.sms_fees.datasource" />
+    <None Include="SMS.Models.sms_fees1.datasource" />
+    <None Include="SMS.Models.sms_fees2.datasource" />
+    <None Include="SMS.Models.sms_fees3.datasource" />
+    <None Include="SMS.Models.sms_fees4.datasource" />
+    <None Include="SMS.Models.sms_history.datasource" />
+    <None Include="SMS.Models.sms_report.datasource" />
+    <None Include="SMS.Models.sms_voucher_entries.datasource" />
+    <None Include="SMS.Models.student_attendence.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\add-icon.png" />
+    <Resource Include="images\Delete-icon.png" />
+    <Resource Include="images\Edit-icon.png" />
+    <Resource Include="images\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\print.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\print1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\print2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\print3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="xml\receipt.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\paid_image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icojam-Blue-Bits-Database-check.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\download.jpg" />
+    <Resource Include="images\upload.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\download1.png" />
+    <Resource Include="images\upload1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\smsicon.png" />
+    <Resource Include="images\smsicon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\web1.png" />
+    <Resource Include="images\web2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PrintHeaderTemplates\Gurux.Common.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\sms.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\23_demo_image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\capture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\class_img.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\restult.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\results_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\general_sms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\fee_defaulter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\fee_paid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\report3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\saved_sms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\home2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\home3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\history3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\people1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\people.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\history.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\history1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\historySearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\historySearch1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\voucher.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\branded_sms.png" />
+    <Resource Include="images\close.png" />
+    <Resource Include="images\tplink.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\SMS_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\std_attendance.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\withdraw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\SMS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\birthday.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SMS.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\perfect_attendance.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\std_attendance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\exam_report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\promotion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\std_card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\barcode2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\sibling.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\settings.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\test.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\fee_history.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\sims_name.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\open_challan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CS_sample\WPF Webcam\WPF Webcam\WPF Webcam.csproj">
+      <Project>{86C6005D-B1DF-4C7F-A035-BBA5602FF3ED}</Project>
+      <Name>WPF Webcam</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\Local Disk E\Project Backups\SMS\2014\WPFPrintEngine_Alpha_1\WPFPrintEngine_Alpha_1\WPFPrintEngine\Source\SUT.PrintEngine\SUT.PrintEngine.csproj">
+      <Project>{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}</Project>
+      <Name>SUT.PrintEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AdvancedAccountManagement\GeneralJournal\" />
+    <Folder Include="CrystalReports\" />
+    <Folder Include="ENUM\" />
+    <Folder Include="Reports\Employee\EmployeeAttendanceBio\" />
+    <Folder Include="Reports\Fees\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\duplicate.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rfid.png" />
+    <Resource Include="images\adm_slip.png" />
+    <Content Include="Lib\CrystalDecisions.CrystalReports.Engine.dll" />
+    <Content Include="Lib\GSMCommServer.dll" />
+    <Content Include="Lib\GSMCommShared.dll" />
+    <Content Include="Lib\GSMCommunication.dll" />
+    <Content Include="Lib\MySql.Data.dll" />
+    <Content Include="Lib\Neodynamic.WPF.Barcode.dll" />
+    <Content Include="Lib\PDUConverter.dll" />
+    <Content Include="Lib\WebcamControl.dll" />
+    <Content Include="Lib\WPFToolkit.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

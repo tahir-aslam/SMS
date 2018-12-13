@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="SMS.Controls.StudentSearchUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="35"
+             d:DesignWidth="300">
+    <StackPanel Orientation="Horizontal">
+        <TextBox Width="200"
+                 Name="SearchTextBox"
+                 VerticalAlignment="Stretch"
+                 VerticalScrollBarVisibility="Hidden"
+                 BorderThickness="1"
+                 BorderBrush="LightGray"
+                 Background="White"
+                 VerticalContentAlignment="Center"
+                 FontSize="16"
+                 />
+        <ComboBox Grid.Row="0"
+                  Grid.Column="1"
+                  HorizontalAlignment="Left"
+                  Width="100"                  
+                  VerticalAlignment="Stretch"
+                  Name="search_cmb"
+                  SelectedValuePath="id"
+                  >
+            <ComboBoxItem Content="By Name" />
+            <ComboBoxItem Content="By Father Name" />
+            <ComboBoxItem Content="By Adm #"
+                          IsSelected="True" />
+            <ComboBoxItem Content="By Roll #" />
+            <ComboBoxItem Content="By Cell#" />
+        </ComboBox>
+    </StackPanel>
+</UserControl>

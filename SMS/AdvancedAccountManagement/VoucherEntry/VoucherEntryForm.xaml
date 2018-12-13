@@ -1,0 +1,162 @@
+﻿<Window x:Class="SMS.AdvancedAccountManagement.VoucherEntry.VoucherEntryForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VoucherEntryForm" Height="600" Width="900" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        KeyDown="Window_KeyDown">
+
+    <Window.Resources>
+        <Style x:Key="FeesDataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="BorderThickness" Value="0,1,1,1"/>
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Background" Value="Gray" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="190"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="LightGray">
+            <TextBlock  Grid.Row="0" Text="Journal Entries" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="35" Foreground="Gray"/>
+        </Grid>
+
+
+        <Grid Grid.Row="1" Background="WhiteSmoke">
+            <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0">
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="Voucher Date" Width="100" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                    <DatePicker Name="voucher_Date_TB" Width="200"/>
+
+                    <TextBlock Text="Voucher No" Margin="100,0,0,0" Width="100"  VerticalAlignment="Center"/>
+                    <TextBox Name="voucher_no_TB" FontWeight="Bold" FontStyle="Italic" FontSize="14" Width="200" IsReadOnly="True"/>
+
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <TextBlock Text="Voucher Types" Width="100" VerticalAlignment="Center"/>
+                    <ComboBox   Width="200" IsEditable="True" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" StaysOpenOnEdit="True" TextSearch.TextPath="voucher_type"  Name="voucher_types_CMB"  SelectedValuePath="id">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                    <TextBlock Text="{Binding voucher_type}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <TextBlock Text="Description" Width="100" VerticalAlignment="Center"/>
+                    <TextBox Width="200" Name="voucher_Description_TB" TextWrapping="Wrap" Height="40"/>
+
+                    <TextBlock  Text="UnPosted" Width="130" Name="posted_TB" VerticalAlignment="Center" FontSize="25" FontFamily="Arial"  Margin="100,0,0,0" Foreground="Red"/>
+                    <Button Width="70" Margin="5" Name="post_btn" Content="Post" Click="post_btn_Click" />
+
+                    <Button Margin="100,0,0,0" Visibility="Collapsed" ToolTipService.ToolTip="Print" Height="35" Width="50" Name="print_btn" Click="print_btn_Click">
+                        <Image Source="/SMS;component/images/print3.jpg" />
+                    </Button>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0"
+                            Name="voucher_entry_SP">
+                    <StackPanel Margin="0,0,0,0">
+                        <TextBlock Text="Account Head" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ComboBox   Width="180" IsEditable="True" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" StaysOpenOnEdit="True" TextSearch.TextPath="account_name"  Name="account_head_cmb"  SelectedValuePath="id" SelectionChanged="account_head_cmb_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <TextBlock Text="{Binding account_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock Text="Account Detail" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ComboBox   Width="180" IsEditable="True" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" StaysOpenOnEdit="True" TextSearch.TextPath="account_name"  Name="account_detail_cmb"  SelectedValuePath="id" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <TextBlock Text="{Binding account_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock Text="Description" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Name="voucher_entry_description_TB" Width="200" MaxLength="50"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock Text="Debit" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Name="debit_TB" Text="0.00" FontSize="14" Width="100" MaxLength="8"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock Text="Credit" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Name="credit_TB" Width="100" Text="0.00" FontSize="14" MaxLength="8"/>
+                    </StackPanel>
+
+                    <Button ToolTipService.ToolTip="Add New Voucher Entry" Name="add_btn"  Click="add_btn_Click" Width="30" Margin="10,0,0,0" VerticalAlignment="Bottom">
+                        <Image  Source="/SMS;component/images/add-icon.png"  />
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <DataGrid x:Name="voucher_entries_grid" 
+                      ColumnHeaderHeight="30" 
+                      HorizontalGridLinesBrush="Gray" 
+                      VerticalGridLinesBrush="Gray" 
+                      CanUserResizeColumns="False" 
+                      CanUserReorderColumns="False"                       
+                      AutoGenerateColumns="False"
+                      FontSize="12" 
+                      Background="White" 
+                      IsReadOnly="True" 
+                      GridLinesVisibility="All" 
+                      RowHeight="30" 
+                      ColumnHeaderStyle="{StaticResource FeesDataGridHeaderStyle}" 
+                      BorderThickness="2" 
+                      HorizontalScrollBarVisibility="Hidden"  
+                      VerticalScrollBarVisibility="Auto" 
+                      SelectionMode="Single"
+                      Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Account Head" Binding="{Binding account_head}" Width="200"/>
+                    <DataGridTextColumn Header="Account Detail" Binding="{Binding account_detail}" Width="200"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding description}" Width="180" />
+                    <DataGridTextColumn Header="Debit (Rs)" Binding="{Binding debit}" FontSize="14" Width="100" />
+                    <DataGridTextColumn Header="Credit (Rs)" Binding="{Binding credit}" FontSize="14" Width="100" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="delete_btn_Click"  Name="delete_btn" ToolTipService.ToolTip="Delete Record" Height="30" Width="30">
+                                    <Image Source="/SMS;component/images/Delete-icon.png" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+            <TextBlock Text="Total Debit (Rs)  " VerticalAlignment="Center"/>
+            <TextBox Height="40" Name="total_debit_TB" Width="100" Text="0.00" FontSize="20"/>
+            <TextBlock Text="    Total Credit (Rs)  " VerticalAlignment="Center"/>
+            <TextBox Height="40" Name="total_credit_TB" Width="100" Text="0.00" FontSize="20"/>
+        </StackPanel>
+    </Grid>
+</Window>

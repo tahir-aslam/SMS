@@ -1,0 +1,115 @@
+﻿<Page x:Class="SMS.ExamManagement.ExamDataEntry.ExamEntryForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="ExamEntryForm">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        
+        <Grid Grid.Row="1" Margin="-1">
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+                <TextBlock Text="Exam Data Entry Form"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+            </Border>
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="LightGray"  Offset="0" />
+                    <GradientStop Color="Gray" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>                
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="80"/>
+                    <ColumnDefinition  Width="150"/>
+                    <ColumnDefinition  Width="80"/>
+                    <ColumnDefinition  Width="150"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Exam: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="exam_cmb" SelectedValuePath="id" SelectionChanged="exam_cmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                <TextBlock Text="{Binding exam_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+
+                <Label Grid.Row="0" Grid.Column="2" Content="Class: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="class_cmb" SelectedValuePath="id" SelectionChanged="class_cmb_SelectionChanged" IsEnabled="False">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                <TextBlock Text="{Binding class_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Label Grid.Row="0" Grid.Column="4" Content="Section: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0 " Grid.Column="5" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="section_cmb" SelectedValuePath="id" SelectionChanged="section_cmb_SelectionChanged" IsEnabled="False">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                <TextBlock Text="{Binding section_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Grid.Column="6" Width="90" Content="Create Exam" Name="create_btn"  Visibility="Hidden" Click="create_btn_Click" HorizontalAlignment="Right"/>
+                <Button Grid.Column="6" Width="90" Content="Delete Exam" Name="delete_btn"  Visibility="Hidden" Click="delete_btn_Click" HorizontalAlignment="Right"/>
+
+            </Grid>
+            
+            <Grid Grid.Row="1" Background="White" Margin="1,0,1,1">
+                <Button Content="Save Changes" Width="100" Height="35" HorizontalAlignment="Left" Margin="5" Name="save_btn" Click="save_btn_Click" Visibility="Hidden"/>
+            </Grid>
+            <Grid Grid.Row="2" Margin="1,0,1,1">
+                <DataGrid x:Name="exam_entry_grid" GridLinesVisibility="All" AutoGenerateColumns="False" FontSize="16" Background="White" IsReadOnly="False" RowHeight="35"   BorderThickness="0" HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto" SelectionMode="Single" RowEditEnding="exam_entry_grid_RowEditEnding" Visibility="Hidden">
+                    <DataGrid.Columns>
+                        <!--<DataGridTextColumn Header="Student Name" Binding="{Binding std_name}" Width="200" IsReadOnly="True" />-->              
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+            <Grid Grid.Row="2" Name="exam_img_grid" Background="White" Margin="1,0,1,1">
+                <Image Source="/SMS;component/images/class_img.jpg" Width="500" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,240 @@
+﻿<Page x:Class="SMS.Messaging.FeesDefaulter.FeesDefaulterSmsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1000"
+	Title="FeesDefaulterSmsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" >
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="/SMS;component/images/fee_defaulter.png" Margin="8"/>
+                    <TextBlock Text="Fee Defaulters SMS New"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+                </StackPanel>
+
+            </Border>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
+                <TextBlock Text="Defaulter Count:" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="15" FontStyle="Italic"/>
+                <TextBlock Text="0000" Name="strength_textblock" FontWeight="Bold" Foreground="White"  Margin="10,0,0,0" VerticalAlignment="Center" FontSize="25" FontFamily="Arial"  TextDecorations="Underline"  FontStyle="Italic"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>                
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>         
+
+            <Grid Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Center">
+
+                <StackPanel Orientation="Horizontal" 
+                            VerticalAlignment="Center" 
+                            Margin="10,0,0,0">
+
+                    <ComboBox  HorizontalAlignment="Left" Width="130" Height="30" VerticalAlignment="Center" Name="month_cmb"  SelectedValuePath="id" SelectionChanged="month_cmb_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Checked="CheckBox_Checked1"
+                                              Unchecked="CheckBox_Checked1"
+                                              IsChecked="{Binding isChecked}"
+                                              IsThreeState="False" />
+                                    <TextBlock Text="{Binding month_name}"
+                                               HorizontalAlignment="Right"
+                                               FontSize="12"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <ComboBox  HorizontalAlignment="Left" 
+                               Width="120" 
+                               Height="30" 
+                               VerticalAlignment="Center" 
+                               Name="class_cmb" 
+                               SelectedValuePath="id" 
+                               SelectionChanged="class_cmb_SelectionChanged"
+                               Margin="30,0,0,0">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                    <TextBlock Text="{Binding class_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox  HorizontalAlignment="Left"
+                               Width="120" 
+                               Height="30" 
+                               VerticalAlignment="Center" 
+                               Name="section_cmb" 
+                               SelectedValuePath="id" 
+                               SelectionChanged="section_cmb_SelectionChanged"
+                               Margin="0,0,30,0">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                    <TextBlock Text="{Binding section_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+
+                    <ComboBox  HorizontalAlignment="Left" Width="120" Height="30" VerticalAlignment="Center" Name="year_cmb"  SelectedValuePath="id" SelectionChanged="year_cmb_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                    <TextBlock Text="{Binding year}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+
+                  
+
+
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Row="1" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center"                   
+                            Margin="10,0,0,0">
+                    <TextBox  Height="30"  
+                              Width="200"                           
+                              Name="SearchTextBox"                             
+                              BorderBrush="Gray"                              
+                              FontSize="16" 
+                              TextChanged="SearchTextBox_TextChanged" />
+                    <ComboBox Margin="0,0,20,0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Center" Name="search_cmb" SelectedValuePath="id" SelectionChanged="search_cmb_SelectionChanged">
+                        <ComboBoxItem Content="By Adm#" IsSelected="True"/>
+                        <ComboBoxItem Content="By Receipt# Full" />
+                        <ComboBoxItem Content="By Receipt#" />
+                        <ComboBoxItem Content="By Name" />
+                        <ComboBoxItem Content="By Father Name" />
+                        <ComboBoxItem Content="By Cell#" />
+                    </ComboBox>
+
+                    <ComboBox  HorizontalAlignment="Left" 
+                               Width="120" 
+                               Height="30" 
+                               VerticalAlignment="Center" 
+                               Name="fees_category_cmb" 
+                               SelectedValuePath="id"                                
+                               Margin="30,0,0,0" SelectionChanged="fees_category_cmb_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                    <TextBlock Text="{Binding fees_category}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2" Margin="5">
+
+                <DataGrid x:Name="defaulter_fee_grid" AutoGenerateColumns="False"  FontSize="12" Background="White" IsReadOnly="True" RowHeight="30"   BorderThickness="0"  >
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsThreeState="False"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Checked}" Click="CheckBox_Checked_sub"  IsThreeState="False" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                       
+                        <DataGridTextColumn Header="Sr#" Binding="{Binding id}" Width="Auto" />
+
+                        <DataGridTextColumn Header="Student Name" Binding="{Binding std_name}" Width="Auto" />
+                        <DataGridTextColumn Header="Father Name" Binding="{Binding father_name}" Width="Auto" />
+                        <DataGridTextColumn Header="Adm#" Binding="{Binding adm_no}" Width="Auto"/>
+                        <DataGridTextColumn Header="Cell#" Binding="{Binding cell_no}" Width="Auto"/>
+                        <DataGridTextColumn Header="Class" Binding="{Binding class_name}" Width="Auto"/>
+                        <DataGridTextColumn Header="Section" Binding="{Binding section_name}" Width="Auto"/>
+                        <DataGridTextColumn Header="Month" Binding="{Binding month_name_group}" Width="Auto"/>
+                        <DataGridTextColumn Header="Category" Binding="{Binding fees_category_group}" Width="Auto"/>
+                        <DataGridTextColumn Header="R.Amount" Binding="{Binding rem_amount_group}" Width="Auto"/>                        
+                        <DataGridTextColumn Header="Year" Binding="{Binding year}" Width="Auto"/>
+                        <DataGridTextColumn Header="Created By" Binding="{Binding created_by}" Width="Auto"/>
+                        <DataGridTextColumn Header="Date Time" Binding="{Binding date_time}" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+               
+            </Grid>
+        </Grid>
+
+        <!--Column 1-->
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="180"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="SmS" FontSize="28" Foreground="Gray"  />
+            </Grid>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                <RadioButton GroupName="radio_btn" Name="default_btn" Content="Default   "  Checked="RadioButton_Checked" />
+                <RadioButton GroupName="radio_btn" Name="general_btn" Content="General" Checked="RadioButton_Checked" />
+            </StackPanel>
+            <StackPanel Grid.Row="2"  Background="White" Name="option_grid"  HorizontalAlignment="Center" Orientation="Vertical" >
+                <RadioButton GroupName="radio_btn1" Name="withoutAmount_btn" Content="Without Amount  " IsChecked="True"/>
+                <RadioButton GroupName="radio_btn1" Name="withAmount_btn" Content="With Amount"  />
+            </StackPanel>
+            <StackPanel Grid.Row="2"  Background="White" Name="general_grid">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <TextBlock Name="count_text" Text="306" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                    <TextBlock Text=" / " FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                    <TextBlock Name="sms_no_tb" Text="1" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <TextBox FontSize="15" Height="130" FontStyle="Italic" Text="This sms is powered by Scenario Management Solution......." TextWrapping="Wrap" Name="message_textbox"  BorderBrush="Gray" Margin="25,0,25,0" TextChanged="message_textbox_TextChanged" />
+                <Grid Grid.Row="3"
+                      Width="200"
+                      VerticalAlignment="Top">
+                    <RadioButton x:Name="englishRB"
+                                 HorizontalAlignment="Left"
+                                 GroupName="msgRB"
+                                 Content="English"
+                                 IsChecked="True" />
+                    <RadioButton x:Name="encodedRB"
+                                 HorizontalAlignment="Right"
+                                 GroupName="msgRB"
+                                 Content="Encoded" />
+                </Grid>
+            </StackPanel>
+            <Grid Grid.Row="3" >
+                <Button Name="send_btn" Content="Send" FontSize="16" Foreground="Chocolate" Click="send_btn_Click" HorizontalAlignment="Center" Margin="5"  Width="200"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

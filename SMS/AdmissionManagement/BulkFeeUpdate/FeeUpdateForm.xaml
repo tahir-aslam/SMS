@@ -1,0 +1,90 @@
+﻿<Window x:Class="SMS.AdmissionManagement.BulkFeeUpdate.FeeUpdateForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FeeUpdateForm" Height="500" Width="370" WindowStartupLocation="CenterScreen">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="0"  Grid.Column="0" Margin="10" >
+            <Border BorderThickness="1" BorderBrush="#FFD6D4D4" CornerRadius="15,15,0,0">
+                <StackPanel>
+                    <Border Background="Purple" Height="50" CornerRadius="15,15,0,0" BorderThickness="0">
+                        <TextBlock Text="Fee Updation Form" Foreground="White" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                    <StackPanel Orientation="Horizontal" Margin="90,0,0,0" VerticalAlignment="Bottom">
+                        <Label Content="" Name="std_lbl" Foreground="Red" FontSize="12"/>
+                        <Label Content=" Students Selected." Foreground="Green"/>
+                    </StackPanel>
+                    
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="60" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="150"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Fee Type: *" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <ComboBox   Grid.Row="0" Grid.Column="1" Name="fee_cmb" SelectedIndex="0"  MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="130" Height="30" FontSize="11" SelectionChanged="fee_cmb_SelectionChanged">
+                            <ComboBoxItem Content="-Select Fee Type-"/>
+                            <ComboBoxItem Content="Tution Fee"/>
+                            <ComboBoxItem Content="Other Fee"/>
+                            <ComboBoxItem Content="Annual Fund"/>
+                            <ComboBoxItem Content="Exam Fee"/>
+                            <ComboBoxItem Content="Security Fee"/>
+                        </ComboBox>
+                        
+                        <TextBlock Text="Other Type:  " Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" IsEnabled="False" Width="130" Height="30" VerticalAlignment="Center" Name="other_cmb" SelectionChanged="other_cmb_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <TextBlock Text="{Binding fee_type}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Month:  " Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" IsEnabled="False" Width="130" Height="30" VerticalAlignment="Center" Name="month_cmb"  SelectionChanged="month_cmb_SelectionChanged" SelectedValuePath="id">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <TextBlock Text="{Binding month_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="Date:  " Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <DatePicker   Grid.Row="3" Grid.Column="1" Name="date_picker" IsEnabled="False" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="130" Height="30" FontSize="16" />
+
+                        <TextBlock Text="Amount Option:  " Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <ComboBox   Grid.Row="4" Grid.Column="1" Name="amount_option" SelectedIndex="0"  MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="130" Height="30" FontSize="11" SelectionChanged="amount_option_SelectionChanged">
+                            <ComboBoxItem Content="-Select Option-"/>
+                            <ComboBoxItem Content="Replace Fee"/>
+                            <ComboBoxItem Content="Increment Fee"/>
+                        </ComboBox>
+
+                        <TextBlock Text="Amount: *" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="5" Grid.Column="1" Name="fee_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False" Margin="0" Width="130" Height="30" FontSize="16" PreviewTextInput="NumberValidationTextBox"/>
+
+                        <Grid Width="230" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,0" HorizontalAlignment="Right" >
+                            <Button Content="Save" Width="100" Height="30" HorizontalAlignment="Left" Click="click_save"  />
+                            <Button Content="Cancel" Width="100" Height="30" HorizontalAlignment="Right" Click="click_cancel"  />
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>

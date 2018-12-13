@@ -1,0 +1,8 @@
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.smsEngine\obj\x86\Debug\SMS.smsEngine.csprojResolveAssemblyReference.cache
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.smsEngine\obj\x86\Debug\MainWindow.baml
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.smsEngine\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.smsEngine\obj\x86\Debug\App.g.cs
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.smsEngine\obj\x86\Debug\SMS.smsEngine_MarkupCompile.cache
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.smsEngine\obj\x86\Debug\SMS.smsEngine.g.resources
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.smsEngine\obj\x86\Debug\SMS.smsEngine.Properties.Resources.resources
+C:\Users\Haq\Documents\Visual Studio 2010\Projects\SMS\SMS.smsEngine\obj\x86\Debug\SMS.smsEngine.csproj.GenerateResource.Cache

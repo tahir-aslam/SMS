@@ -1,0 +1,321 @@
+﻿<Page x:Class="SMS.ExamManagement.ExamDataEntry.ExamDataEntry1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vms="clr-namespace:SMS.ViewModels"
+      xmlns:Navigation="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"    
+      xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="ExamDataEntry1">
+
+    <!--<Navigation:Page.DataContext >
+        <vms:ExamViewModel/>
+    </Navigation:Page.DataContext>-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+ 
+
+        <Grid Grid.Row="1" Margin="-1">
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+                <TextBlock Text="Exam Data Entry Form New"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="LightGray"  Offset="0" />
+                    <GradientStop Color="Gray" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="80"/>
+                    <ColumnDefinition  Width="150"/>
+                    <ColumnDefinition  Width="80"/>
+                    <ColumnDefinition  Width="150"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Exam: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="exam_cmb" SelectedValuePath="id" SelectionChanged="exam_cmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                <TextBlock Text="{Binding exam_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+
+                <Label Grid.Row="0" Grid.Column="2" Content="Class: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="class_cmb" SelectedValuePath="id" SelectionChanged="class_cmb_SelectionChanged" IsEnabled="False">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                <TextBlock Text="{Binding class_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Label Grid.Row="0" Grid.Column="4" Content="Section: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0 " Grid.Column="5" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="section_cmb" SelectedValuePath="id" SelectionChanged="section_cmb_SelectionChanged" IsEnabled="False">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                <TextBlock Text="{Binding section_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                
+                <Button Grid.Column="6" Width="90" Click="delete_btn_Click" Content="Delete Exam" Name="delete_btn"   Visibility="Hidden"  HorizontalAlignment="Right"/>
+
+            </Grid>
+
+            <Grid Grid.Row="1" Background="White" Margin="1,0,1,1">
+                <Button Content="Save Changes" Width="100" Height="35" HorizontalAlignment="Left" Margin="5" Name="save_btn" Click="save_btn_Click" Visibility="Hidden"/>
+            </Grid>
+            <Grid Grid.Row="2" Margin="1,0,1,1">
+                <!--<ScrollViewer HorizontalScrollBarVisibility="Visible" Background="White">-->
+                    <DataGrid ItemsSource="{Binding examList}"  x:Name="exam_entry_grid" GridLinesVisibility="All" AutoGenerateColumns="False" FontSize="12" Background="White" IsReadOnly="False" RowHeight="35"   BorderThickness="0" SelectionMode="Single"  Visibility="Hidden" CanUserAddRows="False" >
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Binding="{Binding std_name}"  Header="Student Name" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn Binding="{Binding father_name}"  Header="Father Name" IsReadOnly="True" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding adm_no}"  Header="Adm#" IsReadOnly="True" Width="Auto"/>
+                        <DataGridTextColumn Binding="{Binding roll_no}"
+                                            Header="Roll#"
+                                            IsReadOnly="True"
+                                            Width="Auto" />
+
+                        <DataGridTemplateColumn >
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="primitives:DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                        <Setter Property="Margin" Value="1" />
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <ItemsControl ItemsSource="{Binding DataContext.TitleList,ElementName=exam_entry_grid}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <StackPanel  Orientation="Horizontal">
+                                                                </StackPanel>
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Border  Width="70" >
+                                                                    <TextBlock Text="{Binding}" TextAlignment="Center"/>
+                                                                </Border>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </DataGridTemplateColumn.HeaderStyle>
+
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding subj_list}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Width="70">
+                                                        <TextBox Height="34" Margin="0"  Text="{Binding subject_obtained}" BorderThickness="1" FontSize="16" MaxLength="4" TextAlignment="Center"/>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                <!--</ScrollViewer>-->
+            </Grid>
+            <Grid Name="subjects_grid" Grid.Row="2" Margin="1,0,1,1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>               
+                
+                    <DataGrid Grid.Row="0" Margin="0,0,0,0" ItemsSource="{Binding subjects_list}"  IsReadOnly="True" AutoGenerateColumns="False"  FontSize="12" Background="White"  RowHeight="30"    BorderThickness="0" x:Name="subjects_Datagrid" >
+                        <DataGrid.Columns>
+                        <DataGridTextColumn Header="" Width="*"/>
+
+                        <DataGridTemplateColumn Width="50">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsThreeState="False"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding Checked}" Click="CheckBox_Checked_sub"  IsThreeState="False" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTextColumn Binding="{Binding subject_name}"  Header="Subjects" Width="150" />
+
+                        <DataGridTextColumn Header="" Width="*"/>
+
+
+
+                    </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Row="1"  Width="90" Content="Create Exam" Name="create_btn" Click="create_btn_Click"  Margin="0,0,0,0" VerticalAlignment="Center" Height="30"/>
+                
+
+            </Grid>
+            <Grid Grid.Row="2"  Name="exam_img_grid" Background="White" Margin="1,0,1,1">
+                <Image Source="/SMS;component/images/class_img.jpg" Width="500" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
+<!--<DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="primitives:DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                    <Setter Property="Margin" Value="0" />
+                                    <Setter Property="ContentTemplate">
+                                        <Setter.Value>
+                                            <DataTemplate>
+                                                <ItemsControl ItemsSource="{Binding subj_list}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel  Orientation="Horizontal">
+                                                            </StackPanel>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border  Width="70" >
+                                                                <TextBlock Text="{Binding subj_name}" TextAlignment="Center"/>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </DataTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding subj_list}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Width="70">
+                                                    <TextBlock Text="{Binding subject_obtained}" TextAlignment="Center"/>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>-->
+
+
+
+
+
+
+<!--<DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style>
+
+                                    <Setter >
+                                        <Setter.Value>
+                                            <DataTemplate>
+                                                <ItemsControl ItemsSource="{Binding subj_list}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel  Orientation="Horizontal">
+                                                            </StackPanel>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border  Width="70" >
+                                                                <TextBlock Text="{Binding subj_name}" TextAlignment="Center"/>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </DataTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding subj_list}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Width="70">
+                                                    <TextBlock Text="{Binding subj_obtained}" TextAlignment="Center"/>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>--> 
+
+

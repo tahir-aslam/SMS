@@ -1,0 +1,606 @@
+﻿<Window x:Class="SMS.EmployeeManagement.ADDEMP.AddEmpForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        Title="Employee Management Form"
+        Height="650"
+        Width="1000"
+        KeyDown="Window_KeyDown"
+        Icon="/SMS;component/images/sms.jpg">
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Center">
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg"
+                            Opacity="0.5" />
+            </StackPanel.Background>
+            <Border BorderThickness="1"
+                    BorderBrush="#FFD6D4D4"
+                    CornerRadius="15,15,0,0">
+                <StackPanel>
+                    <Border Background="Purple"
+                            Height="60"
+                            CornerRadius="15,15,0,0"
+                            BorderThickness="0">
+                        <TextBlock Text="Employee Management Form"
+                                   Foreground="White"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" />
+
+                    </Border>
+                    <StackPanel Orientation="Horizontal"
+                                Height="45"
+                                HorizontalAlignment="Right">
+                        <Button Grid.Row="0"
+                                Name="withdraw_btn"                                
+                                Width="40"
+                                Height="40"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,35,0"
+                                ToolTipService.ToolTip="Withdraw Employee"                                
+                                Click="withdraw_btn_Click"
+                                IsEnabled="True">
+                            <Image  Source="/SMS;component/images/withdraw.png" />
+                        </Button>
+                        
+                    </StackPanel>
+
+                    <Grid Margin="30,0,30,30">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="190" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="190" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="190" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Content="Title: *"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                        <ComboBox Grid.Row="0"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  Width="170"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  Name="emp_title_cmb"
+                                  SelectedValuePath="id">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding title}"
+                                                   HorizontalAlignment="Right"
+                                                   FontSize="12"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+
+
+                        <TextBlock Text="Full Name:  *"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="1"
+                                   Grid.Column="1"
+                                   MaxLength="30"
+                                   Name="full_name_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
+
+                        <TextBlock Text="Father Name:  *"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="2"
+                                   Grid.Column="1"
+                                   MaxLength="30"
+                                   Name="fname_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
+
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Content="Deparment: *"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                        <ComboBox Grid.Row="3"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  Width="170"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  Name="emp_types_cmb"
+                                  SelectedValuePath="id">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding emp_types}"
+                                                   HorizontalAlignment="Right"
+                                                   FontSize="12"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Label Grid.Row="4"
+                               Grid.Column="0"
+                               Content="Designation: *"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                        <ComboBox Grid.Row="4"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  Width="170"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  Name="emp_designation_cmb"
+                                  SelectedValuePath="id">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>                                   
+                                        <TextBlock Text="{Binding designation}"                                              
+                                                   FontSize="12"></TextBlock>
+                                   
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+
+                        <TextBlock Text="Nationality:   "
+                                   Grid.Row="5"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="5"
+                                   Grid.Column="1"
+                                   MaxLength="30"
+                                   Name="nationality_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
+
+                        <TextBlock Text="Religion:   "
+                                   Grid.Row="6"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="6"
+                                   Grid.Column="1"
+                                   MaxLength="30"
+                                   Name="religion_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
+
+                        <TextBlock Text="Experience:   "
+                                   Grid.Row="7"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="7"
+                                   Grid.Column="1"
+                                   MaxLength="30"
+                                   Name="exp_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
+
+                        <TextBlock Text="CNIC #:   "
+                                   Grid.Row="8"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="8"
+                                   Grid.Column="1"
+                                   MaxLength="14"
+                                   Name="cnic_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16"
+                                   PreviewTextInput="NumberValidationTextBox" />
+
+                        <TextBlock Text="Qualification:   "
+                                   Grid.Row="9"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="9"
+                                   Grid.Column="1"
+                                   Name="qual_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
+
+                        <!--Column 2-->
+
+
+                        <TextBlock Text="DOB:  *"
+                                   Grid.Row="0"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <DatePicker   Grid.Row="0"
+                                      Grid.Column="3"
+                                      Name="dob_textbox"
+                                      MaxWidth="200"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Margin="0"
+                                      Width="170"
+                                      Height="30"
+                                      FontSize="16" />
+
+                        <TextBlock Text="Email:   "
+                                   Grid.Row="1"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="1"
+                                   Grid.Column="3"
+                                   Grid.ColumnSpan="3"
+                                   Name="email_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
+
+                        <TextBlock Text="Cell #:  *"
+                                   Grid.Row="2"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="2"
+                                   Grid.Column="3"
+                                   MaxLength="10"
+                                   PreviewTextInput="NumberValidationTextBox"
+                                   Name="cell_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
+
+                        <TextBlock Text="Phone #:   "
+                                   Grid.Row="3"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="3"
+                                   Grid.Column="3"
+                                   Name="phone_textbox"
+                                   MaxLength="14"
+                                   PreviewTextInput="NumberValidationTextBox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
+
+
+                        <TextBlock Text="Address:   "
+                                   Grid.Row="4"
+                                   Grid.RowSpan="2"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="4"
+                                   Grid.Column="3"
+                                   Grid.RowSpan="2"
+                                   MaxLength="100"
+                                   TextWrapping="Wrap"
+                                   Name="address_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="60"
+                                   FontSize="16" />
+
+                        <TextBlock Text="Remarks:   "
+                                   Grid.Row="6"
+                                   Grid.RowSpan="2"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="6"
+                                   Grid.Column="3"
+                                   Grid.RowSpan="2"
+                                   MaxLength="150"
+                                   TextWrapping="Wrap"
+                                   Name="remarks_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="60"
+                                   FontSize="16" />
+
+                        <StackPanel Grid.Row="8"
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="2"
+                                    Orientation="Horizontal">
+                            <TextBlock Text="Gender:   "
+                                       VerticalAlignment="Center"
+                                       Width="120"
+                                       TextAlignment="Right" />
+                            <RadioButton   Name="male"
+                                           GroupName="sex_checkbox"
+                                           Content="Male"
+                                           Margin="0"
+                                           Width="70"
+                                           FontSize="16"
+                                           IsChecked="True" />
+                            <RadioButton   Name="female"
+                                           GroupName="sex_checkbox"
+                                           MaxWidth="100"
+                                           Content="FeMale"
+                                           Margin="0"
+                                           Width="90"
+                                           FontSize="16" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="9"
+                                    Grid.Column="2"
+                                    Orientation="Horizontal"
+                                    Grid.ColumnSpan="2">
+                            <TextBlock Text="Marital Status:   "
+                                       HorizontalAlignment="Right"
+                                       TextAlignment="Right"
+                                       VerticalAlignment="Center"
+                                      
+                                       Width="120" />
+                            <RadioButton   Name="single"
+                                           GroupName="marital_checkbox"
+                                           Content="Single"
+                                           VerticalAlignment="Center"
+                                           Margin="0"
+                                           Width="70"
+                                           FontSize="16"
+                                           IsChecked="True" />
+                            <RadioButton   Grid.Row="4"
+                                           Grid.Column="5"
+                                           Name="married"
+                                           GroupName="marital_checkbox"
+                                           MaxWidth="100"
+                                           Content="Married"
+                                           Margin="0"
+                                           Width="100"
+                                           FontSize="16" />
+                        </StackPanel>
+
+
+
+                        <!--Column 3-->
+
+                        <Border BorderBrush="Gray"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                Grid.Row="0"
+                                Grid.Column="4"
+                                Grid.ColumnSpan="2"
+                                Grid.RowSpan="4"
+                                Width="200"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,35,0"
+                                Background="White">
+                            <Image  Name="emp_image"
+                                    Margin="2" 
+                                     />
+                        </Border>
+
+                        <Button Grid.Row="4"
+                                Grid.Column="4"                                
+                                Content="Browse"
+                                Width="80"
+                                Height="25"                                
+                                Click="Button_Click"                                
+                                HorizontalAlignment="Right"
+                                Margin="0,0,-40,0"/>
+                        <Button Grid.Row="4"
+                                Grid.Column="5"
+                                Width="50"
+                                Height="30"
+                                Name="camera_btn"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="White"
+                                BorderThickness="0"
+                                Click="camera_btn_Click_1">
+                            <Image Source="/SMS;component/images/camera.png"
+                                   Width="40"
+                                   Height="30"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   ImageFailed="Image_ImageFailed" />
+                        </Button>
+                        <TextBlock Text="Pay:  *"
+                                   Grid.Row="6"
+                                   Grid.Column="4"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="6"
+                                   Grid.Column="5"
+                                   MaxLength="6"
+                                   PreviewTextInput="NumberValidationTextBox"
+                                   Name="pay_textbox"                                   
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="150"
+                                   Height="30"
+                                   FontSize="16" />
+                        <TextBlock Grid.Row="6"
+                                   Grid.Column="5"
+                                   Text="Rs"
+                                   HorizontalAlignment="Right"
+                                   Width="60"
+                                   VerticalAlignment="Center" />
+                        
+
+                       
+
+
+                        
+
+                        <TextBlock Text="Joining Date:  *"
+                                   Grid.Row="7"
+                                   Grid.Column="4"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <DatePicker   Grid.Row="7"
+                                      Grid.Column="5"
+                                      Name="joining_textbox"
+                                      MaxWidth="200"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Margin="0"
+                                      Width="150"
+                                      Height="30"
+                                      FontSize="16" />
+
+<TextBlock Text="Is Active: "
+                                   Visibility="Hidden"
+                                   Grid.Row="8"
+                                   Grid.Column="4"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <CheckBox   Grid.Row="8"
+                                    Grid.Column="5"
+                                    Visibility="Hidden"
+                                    Name="is_active_chekbox"
+                                    IsChecked="True"
+                                    MaxWidth="200"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="0"
+                                    Width="100"
+                                    Height="30"
+                                    FontSize="16" />
+
+                        <Grid Width="230"
+                              Grid.Row="9"
+                              Grid.Column="4"
+                              VerticalAlignment="Bottom"
+                              Grid.ColumnSpan="2"
+                              Margin="0,0,0,15"
+                              HorizontalAlignment="Center">
+
+                            <Button Content="Save"
+                                    Width="100"
+                                    Height="30"
+                                    HorizontalAlignment="Left"
+                                    Click="click_save" />
+
+                            <Button Content="Cancel"
+                                    Width="100"
+                                    Height="30"
+                                    HorizontalAlignment="Right"
+                                    Click="click_cancel" />
+                        </Grid>
+
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>

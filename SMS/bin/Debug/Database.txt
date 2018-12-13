@@ -1,0 +1,4 @@
+localhost
+3306
+pgs_haider1
+root

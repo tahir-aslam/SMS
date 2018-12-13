@@ -1,0 +1,417 @@
+﻿<Window x:Class="SMS.FeesManagement.FeesCollection.FeesCollectionForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FeesCollectionForm" Height="700" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" KeyDown="Window_KeyDown">
+
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Trebuchet MS" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="120" />
+        </Style>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Trebuchet MS" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            
+            <Setter Property="TextDecorations" Value="UnderLine" />
+            <Setter Property="FontStyle" Value="Italic" />
+        </Style>
+        <Style x:Key="FeesDataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="BorderThickness" Value="0,1,1,1"/>
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Background" Value="WhiteSmoke" />
+        </Style>
+        <Style x:Key="FeesHistoryDataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0,1,1,1"/>
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+    </Window.Resources>
+    <Grid >
+        <StackPanel Grid.Row="0"  Grid.Column="0" Margin="5" >
+            <Border BorderThickness="1" BorderBrush="#FFD6D4D4" CornerRadius="15,15,0,0">
+                <StackPanel>
+                    <Grid Margin="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="550" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0"
+                              Background="WhiteSmoke">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="400"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Student Name:" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock Text="Muhammad" Name="std_name_TB" Style="{StaticResource TextBlockStyle}" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Father Name:" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock Text="Muhammad" Name="father_name_TB" Style="{StaticResource TextBlockStyle}" />
+                            </StackPanel>                           
+
+                            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Class:" Width="80" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock Text="8th" Name="class_name_TB" Style="{StaticResource TextBlockStyle}" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Section:" Width="80" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock Text="Muhammad" Name="section_name_TB" Style="{StaticResource TextBlockStyle}" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Adm#:" Width="50" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock Text="8th" Name="adm_no_TB" Style="{StaticResource TextBlockStyle}" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Cell#:" Width="50" Style="{StaticResource LabelStyle}"/>
+                                <TextBlock Text="3233991984" Name="cell_TB" Style="{StaticResource TextBlockStyle}" />
+                            </StackPanel>
+
+                            <Border Grid.Column="3" BorderThickness="1" CornerRadius="10" BorderBrush="Gray" Grid.Row="0" Grid.RowSpan="3" Margin="2">
+                                <Image Name="std_img"  HorizontalAlignment="Center"  Source="/SMS;component/images/SMS.png"  VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Button Grid.Column="4" Grid.Row="0" Height="30" Name="cance_challan_btn" Click="cance_challan_btn_Click"  ToolTip="Cancel Challan">
+                                <Image Source="/SMS;component/images/open_challan.png"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Button>
+                            <Button Grid.Column="5"
+                                    Grid.Row="0"
+                                    Height="30"
+                                    Name="student_fee_report_btn"                                    
+                                    ToolTip="Student Report"
+                                    Click="student_fee_report_btn_Click">
+                                <Image Source="/SMS;component/images/report.png"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            </Button>
+                        </Grid>
+
+                        <Grid Grid.Row="1" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="580"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" BorderThickness="1,1,0,1" CornerRadius="0,0,0,0" BorderBrush="Black">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="250"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" Background="Purple" CornerRadius="15,0,0,0">
+                                        <TextBlock HorizontalAlignment="Center"  Text="Fees" Foreground="White" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
+                                    </Border>
+                                    <Grid Grid.Row="1" >
+                                        <DataGrid x:Name="FeesGrid" 
+                                                  Height="250" 
+                                                  AutoGenerateColumns="False"
+                                                  ColumnHeaderHeight="40" 
+                                                  FontFamily="Arial" 
+                                                  HorizontalGridLinesBrush="LightGray" 
+                                                  GridLinesVisibility="Horizontal" 
+                                                  HorizontalContentAlignment="Center" 
+                                                  ColumnHeaderStyle="{StaticResource FeesDataGridHeaderStyle}" 
+                                                  FontSize="12"                                                   
+                                                  RowHeight="35"  
+                                                  BorderThickness="0,0,0,1"
+                                                  BorderBrush="Gray"  
+                                                  ScrollViewer.CanContentScroll="True"
+                                                  CanUserAddRows="False"
+                                                  CanUserDeleteRows="False">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Sr#" Binding="{Binding id}" IsReadOnly="True" />
+                                                <DataGridTextColumn Header="Category" Binding="{Binding fees_category}" Width="100" IsReadOnly="True" />
+                                                <DataGridTextColumn Header="Month" Binding="{Binding month_name}" Width="80" IsReadOnly="True" />
+                                                <DataGridTextColumn Header="A.A(Rs)" Binding="{Binding actual_amount}" Width="65" IsReadOnly="True" />
+                                                <DataGridTextColumn Header="Disc(Rs)" Binding="{Binding discount}" Width="65" IsReadOnly="True" />
+                                                <DataGridTextColumn Header="W.Off(Rs)" Binding="{Binding wave_off}" Width="65" IsReadOnly="True" />
+                                                <DataGridTextColumn Header="Amonut(Rs)" Binding="{Binding amount}" Width="65" IsReadOnly="True" />
+                                                <DataGridTextColumn Header="R.Amonut" Binding="{Binding rem_amount}" Width="65" IsReadOnly="False" />
+
+                                                <DataGridTemplateColumn Width="50">
+                                                    <DataGridTemplateColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsThreeState="False"/>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.HeaderTemplate>
+
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <CheckBox IsChecked="{Binding isChecked}" Click="CheckBox_Checked_sub"  IsThreeState="False" />
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </Grid>
+                                    <Grid Grid.Row="2" 
+                          Background="LightGray"
+                          Margin="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50"/>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="10"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="300"/>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="120" />
+                                            <ColumnDefinition Width="30" />
+                                        </Grid.ColumnDefinitions>
+
+
+
+                                        <StackPanel Grid.Row="0" 
+                                    Grid.Column="0" 
+                                    Grid.RowSpan="7"
+                                    Margin="0,0,0,0"
+                                    Background="LightGray" 
+                                                    HorizontalAlignment="Left">
+                                            <Border BorderThickness="0,0,1,0"
+                                    BorderBrush="White">
+                                                <StackPanel>
+                                                    <DatePicker Width="140"
+                                                Height="35" 
+                                                Name="date_picker"
+                                                Margin="0,10,0,20"
+                                                FontSize="16" SelectedDateChanged="date_picker_SelectedDateChanged" />
+                                                    <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Margin="0,0,0,10">
+                                                        <TextBlock Grid.Row="1" 
+                                           Grid.Column="1" 
+                                           Text="Disc:  "
+                                           HorizontalAlignment="Right"
+                                           FontSize="15"
+                                           FontWeight="DemiBold" 
+                                           VerticalAlignment="Center"
+                                           Width="50" />
+                                                        <TextBox Grid.Row="1" 
+                                         Grid.Column="2" 
+                                         Name="disc_TB" 
+                                         Width="80" 
+                                         Height="35"
+                                         VerticalContentAlignment="Center" 
+                                         TextAlignment="Right" 
+                                         BorderThickness="1"
+                                         BorderBrush="Gray" 
+                                         HorizontalAlignment="Right" 
+                                         FontSize="15"
+                                         FontWeight="DemiBold" 
+                                         VerticalAlignment="Center"
+                                         IsReadOnly="True"/>
+                                                        <TextBlock Grid.Row="1" Grid.Column="3" Text="Rs" VerticalAlignment="Center" FontSize="15"/>
+
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                                        <TextBlock Grid.Row="1" 
+                                           Grid.Column="1" 
+                                           Text="W.OFF:  "
+                                           HorizontalAlignment="Right"
+                                           FontSize="15"
+                                           FontWeight="DemiBold" 
+                                           VerticalAlignment="Center"
+                                           Width="50"/>
+                                                        <TextBox Grid.Row="1" 
+                                         Grid.Column="2" 
+                                         Name="waveOFF_TB" 
+                                         Width="80" 
+                                         Height="35"
+                                         VerticalContentAlignment="Center" 
+                                         TextAlignment="Right" 
+                                         BorderThickness="1"
+                                         BorderBrush="Gray" 
+                                         HorizontalAlignment="Right" 
+                                         FontSize="15"
+                                         FontWeight="DemiBold" 
+                                         VerticalAlignment="Center"
+                                         IsReadOnly="True"/>
+                                                        <TextBlock Grid.Row="1" Grid.Column="3" Text="Rs" VerticalAlignment="Center" FontSize="15"/>
+
+                                                    </StackPanel>
+                                                    <Label Content="Collection Office" 
+                                        HorizontalAlignment="Center"
+                                        Margin="0,10,0,0"/>
+                                                    <ComboBox   HorizontalAlignment="Center" 
+                                            Width="140" 
+                                            Height="35" 
+                                            VerticalAlignment="Center" 
+                                            Name="place_cmb"
+                                            SelectedIndex="0"  
+                                            SelectedValuePath="id">
+                                                        <ComboBox.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                                                    <TextBlock Text="{Binding place}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
+                                                    </ComboBox>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="0" 
+                                    Grid.Column="1" 
+                                    Grid.ColumnSpan="4"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                                            <RadioButton Content="Pay By Selection"
+                                         Name="PayBySelectionRB" 
+                                         Checked="PayBySelectionRB_Checked" />
+                                            <RadioButton Content="Pay By Amount" 
+                                         Name="PayByAmountRB" 
+                                         Margin="10,0,0,0" 
+                                         Checked="PayByAmountRB_Checked" />
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Total:  " HorizontalAlignment="Right"  FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"/>
+                                        <TextBox Grid.Row="1" Grid.Column="2" Name="total_TB" Width="100" Height="35" VerticalContentAlignment="Center" TextAlignment="Right" BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Right" FontSize="20" FontWeight="DemiBold" VerticalAlignment="Center" IsReadOnly="True"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="3" Text="Rs" VerticalAlignment="Center" FontSize="15"/>
+
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="Paid:  " HorizontalAlignment="Right"  FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"/>
+                                        <TextBox Grid.Row="2" Grid.Column="2" Name="paid_TB" HorizontalContentAlignment="Right" MaxLength="5" Width="100" Height="35" TextAlignment="Right" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Right" FontSize="24" FontWeight="DemiBold" VerticalAlignment="Center" TextChanged="paid_TB_TextChanged" />
+                                        <TextBlock Grid.Row="2" Grid.Column="3" Text="Rs" VerticalAlignment="Center" FontSize="15"/>
+
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="__________________________________" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+
+                                        <TextBlock Grid.Row="4" Grid.Column="1" Text="Remaining:  " HorizontalAlignment="Right"  FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"/>
+                                        <TextBox Grid.Row="4" Grid.Column="2" Name="rem_TB" Width="100" Height="35" TextAlignment="Right" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" HorizontalAlignment="Right" FontSize="20" FontWeight="DemiBold" VerticalAlignment="Center" IsReadOnly="True"/>
+                                        <TextBlock Grid.Row="4" Grid.Column="3" Text="Rs" VerticalAlignment="Center" FontSize="15"/>
+
+                                        <Button Grid.Row="5" Grid.Column="2"  Content="Pay Cash" Width="100" Height="30" Background="White"  HorizontalAlignment="Right"  VerticalAlignment="Center" Name="pay_cash_btn" Click="pay_cash_btn_Click" />
+
+                                    </Grid>
+
+                                    <!--<Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="300" />
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <Grid Grid.Column="0" Background="WhiteSmoke">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="40"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100" />
+                                                <ColumnDefinition Width="*" />                                                
+                                            </Grid.ColumnDefinitions>
+                                            <Label Content="Collection Office" 
+                                                   VerticalAlignment="Center"/>
+                                            <ComboBox Grid.Row="0" 
+                                                      Grid.Column="1"  
+                                                      HorizontalAlignment="Center" 
+                                                      Width="150" Height="30" 
+                                                      VerticalAlignment="Center" 
+                                                      Name="place_cmb"
+                                                      SelectedIndex="0">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                                            <TextBlock Text="{Binding place}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                        </Grid>
+                                        
+                                        <Grid Grid.Column="1" Background="LightGray">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="50"/>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>  
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100" />
+                                                <ColumnDefinition Width="120" />
+                                                <ColumnDefinition Width="50" />
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <RadioButton Content="Pay By Selection" Name="PayBySelectionRB" Checked="PayBySelectionRB_Checked" />
+                                                <RadioButton Content="Pay By Amount" Name="PayByAmountRB" Margin="10,0,0,0" Checked="PayByAmountRB_Checked" />
+                                            </StackPanel>
+                                            
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Total:  " HorizontalAlignment="Right"  FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"/>
+                                            <TextBox Grid.Row="1" Grid.Column="1" Name="total_TB" Width="100" Height="35" VerticalContentAlignment="Center" TextAlignment="Right" BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Right" FontSize="20" FontWeight="DemiBold" VerticalAlignment="Center" IsReadOnly="True"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="2" Text="Rs" VerticalAlignment="Center" FontSize="15"/>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Paid:  " HorizontalAlignment="Right"  FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"/>
+                                            <TextBox Grid.Row="2" Grid.Column="1" Name="paid_TB" MaxLength="5" Width="100" Height="35" TextAlignment="Right" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Right" FontSize="24" FontWeight="DemiBold" VerticalAlignment="Center" TextChanged="paid_TB_TextChanged" />
+                                            <TextBlock Grid.Row="2" Grid.Column="2" Text="Rs" VerticalAlignment="Center" FontSize="15"/>
+
+                                            <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="__________________________________" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+
+                                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Remaining:  " HorizontalAlignment="Right"  FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"/>
+                                            <TextBox Grid.Row="4" Grid.Column="1" Name="rem_TB" Width="100" Height="35" TextAlignment="Right" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" HorizontalAlignment="Right" FontSize="20" FontWeight="DemiBold" VerticalAlignment="Center" IsReadOnly="True"/>
+                                            <TextBlock Grid.Row="4" Grid.Column="2" Text="Rs" VerticalAlignment="Center" FontSize="15"/>
+
+                                            <Button Grid.Row="5" IsEnabled="False" Grid.Column="1"  Content="Pay Cash" Width="100" Height="35" Background="White"  HorizontalAlignment="Right"  VerticalAlignment="Center" Name="pay_cash_btn" Click="pay_cash_btn_Click" />
+
+                                        </Grid>
+                                    </Grid>-->
+                                </Grid>
+                            </Border>
+
+                            <Border Grid.Column="1" BorderThickness="1" CornerRadius="0,15,0,0" BorderBrush="Black">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" Grid.Column="0" Background="Purple" CornerRadius="0,15,0,0">
+                                        <TextBlock HorizontalAlignment="Center" Text="Fees History" Foreground="White" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
+                                    </Border>
+                                    <Grid Grid.Row="1">
+                                        <DataGrid x:Name="FeesHistoryGrid" AutoGenerateColumns="False" ColumnHeaderHeight="40" FontSize="12" IsReadOnly="True" RowHeight="30" ColumnHeaderStyle="{StaticResource FeesHistoryDataGridHeaderStyle}" BorderThickness="0,0,0,1" BorderBrush="Gray"  ScrollViewer.CanContentScroll="True">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Date" Binding="{Binding date,  StringFormat=\{0:dd-MMM-yy\}}" Width="80"/>
+                                                <DataGridTextColumn Header="CRV #" Binding="{Binding receipt_no_full}" Width="90" />
+                                                <DataGridTextColumn Header="Category" Binding="{Binding fees_category}" Width="105"/>
+                                                <DataGridTextColumn Header="Month" Binding="{Binding month_name}" Width="60"/>
+                                                <DataGridTextColumn Header="Amount" Binding="{Binding amount_paid}" Width="Auto"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

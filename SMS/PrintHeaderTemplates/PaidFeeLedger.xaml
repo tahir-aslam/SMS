@@ -1,0 +1,37 @@
+﻿    <UserControl x:Class="SMS.PrintHeaderTemplates.PaidFeeLedger"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="1000" x:Name="PaidFeeLedgerControl">
+    <Grid HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <DockPanel LastChildFill="False" Margin="5"  Grid.Row="0" VerticalAlignment="Bottom">
+            <Image  HorizontalAlignment="Left" Source="/SMS;component/images/sms.png"   Width="100" Height="50" Visibility="Collapsed"/>
+            <TextBlock Text="{Binding ElementName=PaidFeeLedgerControl, Path=Messages}" Foreground="Black"  FontSize="27" FontFamily="Georgia"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <!--<Label Content="Providence Schools"  Foreground="Black" FontSize="40" FontFamily="Georgia"  HorizontalAlignment="Center" VerticalAlignment="Center" />-->
+            <TextBlock DockPanel.Dock="Right"  VerticalAlignment="Bottom" FontWeight="Bold" TextWrapping="Wrap" Text="Page # : @PageNumber"/>
+            <TextBlock DockPanel.Dock="Right" VerticalAlignment="Top"  Text="{Binding ElementName=PaidFeeLedgerControl, Path=dates}" TextDecorations="Underline"/>
+            <!--<TextBlock DockPanel.Dock="Right" VerticalAlignment="Top" DataContext="{Binding Source={StaticResource DateTimeDataSource}}"  Text="{Binding Now, Mode=OneWay, StringFormat=\{0:d\}}" />-->
+        </DockPanel>
+        <Grid Grid.Row="1" Margin="10,0,10,0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="200">
+                    <TextBlock VerticalAlignment="Center" Text="{Binding ElementName=PaidFeeLedgerControl, Path=date_texts}"/>                   
+                    <TextBlock  VerticalAlignment="Center"  Text="{Binding ElementName=PaidFeeLedgerControl, Path=date_exps}" TextDecorations="Underline"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="290">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding ElementName=PaidFeeLedgerControl, Path=report_names}" TextDecorations="Underline" FontSize="22"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock VerticalAlignment="Center" Text="{Binding ElementName=PaidFeeLedgerControl, Path=amount_texts}" TextDecorations="Underline" />                    
+                    <TextBlock VerticalAlignment="Center" Text="{Binding ElementName=PaidFeeLedgerControl, Path=amounts}" TextDecorations="Underline" FontSize="20"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="SMS.PrintHeaderTemplates.FeeDefaulterHeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="120" d:DesignWidth="1000" x:Name="FeeDefaulterControl">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <DockPanel LastChildFill="False" Margin="5"  Grid.Row="0">
+
+            <Image  HorizontalAlignment="Left"
+                    Source="/SMS;component/images/sms.png"
+                    Width="100"
+                    Height="70"
+                    Visibility="Collapsed" />
+            <TextBlock Text="{Binding ElementName=FeeDefaulterControl, Path=Messages}" Foreground="Black"  FontSize="27" FontFamily="Georgia"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <!--<Label Content="Providence Schools"  Foreground="Black" FontSize="40" FontFamily="Georgia"  HorizontalAlignment="Center" VerticalAlignment="Center" />-->
+            <TextBlock DockPanel.Dock="Right"  VerticalAlignment="Bottom" FontWeight="Bold" TextWrapping="Wrap" Text="Page # : @PageNumber"/>
+            <TextBlock DockPanel.Dock="Right" VerticalAlignment="Top"  Text="{Binding ElementName=FeeDefaulterControl, Path=dates}" TextDecorations="Underline"/>
+            <!--<TextBlock DockPanel.Dock="Right" VerticalAlignment="Top" DataContext="{Binding Source={StaticResource DateTimeDataSource}}"  Text="{Binding Now, Mode=OneWay, StringFormat=\{0:d\}}" />-->
+        </DockPanel>
+        <Grid Grid.Row="1" Margin="10,0,10,0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200">
+                    <TextBlock VerticalAlignment="Center" Text="{Binding ElementName=FeeDefaulterControl, Path=date_texts}" FontSize="16"/>
+                    <TextBlock  VerticalAlignment="Center"  Text="{Binding ElementName=FeeDefaulterControl, Path=date_exps}" TextDecorations="Underline" FontSize="16" FontWeight="Black"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Width="290">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding ElementName=FeeDefaulterControl, Path=report_names}" TextDecorations="Underline" FontSize="22"/>
+                </StackPanel>                
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

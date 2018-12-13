@@ -1,0 +1,43 @@
+﻿<Window x:Class="SMS.EmployeeManagement.EmpRoles.EmployeeRolesForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EmployeeRolesForm" Height="640" Width="430">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="400" MinWidth="400">
+        <StackPanel Grid.Row="0"  Grid.Column="0" Margin="10" MaxWidth="470">
+            <Border BorderThickness="1" BorderBrush="#FFD6D4D4" CornerRadius="15,15,0,0">
+                <StackPanel Orientation="Vertical">
+                    <Border Background="Purple" Height="50" CornerRadius="15,15,0,0" BorderThickness="0">
+                        <TextBlock Text="Employee Role Assignment" Foreground="White" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+
+                    <Grid Margin="20" >
+
+                        <TreeView Name="rolestreeView" ItemsSource="{Binding}" Height="450"  FontSize="16" Focusable="True" >
+                            <TreeView.ItemContainerStyle>
+                                <Style TargetType="TreeViewItem">
+                                    <Setter Property="IsExpanded" Value="True"></Setter>
+                                    <Setter Property="Margin" Value="8 7 5 5" />
+                                    
+                                </Style>
+                            </TreeView.ItemContainerStyle>
+
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding children}" >
+                                    <CheckBox IsChecked="{Binding Checked}" Checked="CheckBox_Click" Click="CheckBox_Click" Unchecked="CheckBox_Click"   IsThreeState="False" Focusable="True">
+                                        <TextBlock Text="{Binding module_name}" FontSize="16"></TextBlock>                                        
+                                    </CheckBox>
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
+                        </TreeView>
+                    </Grid>
+                    
+                    <StackPanel Orientation="Horizontal" Height="35" HorizontalAlignment="Right" Margin="5">
+                        <Button Content="Save" Width="100" Name="save_btn" Click="save_btn_Click" />
+                        <Button Content="Cancel" Width="100" Name="cancel_btn" Margin="20,0,0,0" Click="cancel_btn_Click" />
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

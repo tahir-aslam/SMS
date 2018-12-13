@@ -1,0 +1,24 @@
+﻿<Window x:Class="SMS.AdmissionManagement.Admission.RFIDWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RFID Card Registration Window" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow"
+        KeyDown="Window_KeyDown">
+    <Grid>
+        <TextBlock Text="Place RFID Card In Front OF Reader" HorizontalAlignment="Center"
+                   Foreground="Gray"
+                   FontSize="20"/>
+        <Image  Name="image1" Source="/SMS;component/images/rfid.png" />
+        <TextBlock Text="Registered" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                   Foreground="Green"
+                   FontSize="40"
+                   Name="v_register"
+                   Visibility="Collapsed"/>
+        <TextBlock Text="Already Registered" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                   Foreground="Red"
+                   FontSize="40"
+                   Name="v_alreadyregister"
+                   Visibility="Collapsed"/>
+    </Grid>
+</Window>

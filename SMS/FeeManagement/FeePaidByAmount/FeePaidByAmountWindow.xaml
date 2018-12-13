@@ -1,0 +1,91 @@
+﻿<Window x:Class="SMS.FeeManagement.FeePaidByAmount.FeePaidByAmountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FeePaidByAmountWindow" Height="580" Width="450" KeyDown="Window_KeyDown" Closed="Window_Closed">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="0"  Grid.Column="0" Margin="10" >
+            <Border BorderThickness="1" BorderBrush="#FFD6D4D4" CornerRadius="15,15,0,0">
+                <StackPanel>
+                    <Border Background="Purple" Height="50" CornerRadius="15,15,0,0" BorderThickness="0">
+                        <TextBlock Text="Paid Fee By Amount Form" Foreground="White" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                    
+                    <StackPanel Margin="0,8,20,8" HorizontalAlignment="Right">
+                        <Button Click="Button_Click" ToolTip="Fee History">
+                            <Image Width="35" Height="27" Source="/SMS;component/images/fee_history.png" />
+                        </Button>
+                    </StackPanel>
+                    
+                    <Grid Margin="20,5,20,20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="50" />
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Month: *" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <ComboBox Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="month_cmb"  SelectedValuePath="id" SelectionChanged="month_cmb_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <TextBlock Text="{Binding month_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text=" Amount:  " Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="1" Grid.Column="1" IsReadOnly="True" Name="amount_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" PreviewTextInput="NumberValidationTextBox" />
+                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="annualFund" Text="0000" />
+
+                        
+                        <TextBlock   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Name="pending_months_textbox" HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="0" Width="270"  Height="30" FontSize="16" FontStyle="Italic" PreviewTextInput="NumberValidationTextBox" />
+
+                        <TextBlock Text="Pending Amount:  " Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="3" Grid.Column="1" Name="pending_amount_textbox" IsReadOnly="True"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" PreviewTextInput="NumberValidationTextBox" />
+
+                        <TextBlock   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Name="fine_months_textbox" HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="0" Width="270"  Height="30" FontSize="16" FontStyle="Italic" />
+
+                        <TextBlock Text="Fine Amount:  " Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="5" Grid.Column="1" Name="fine_amount_textbox" IsReadOnly="True"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="16" PreviewTextInput="NumberValidationTextBox" />
+                        
+                        <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Content="____________________________________________________________________________________________________" HorizontalAlignment="Center" />
+                        
+                        <TextBlock Text="Total Amount:  " Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="7" Grid.Column="1" Name="total_amont_textbox" IsReadOnly="True"  MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30" FontSize="18" PreviewTextInput="NumberValidationTextBox" />
+                        
+                        
+                        
+                        <TextBlock Text="Amount Paid:  " Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="8" Grid.Column="1" Name="paid_amount_textbox"  MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="40" Background="WhiteSmoke" VerticalContentAlignment="Center" FontSize="20" FontStyle="Italic" BorderBrush="Green" FontWeight="Bold" PreviewTextInput="NumberValidationTextBox" TextChanged="paid_amount_textbox_TextChanged" />
+
+                        <TextBlock Text="Remaining :  " Grid.Row="9" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="9" Grid.Column="1" IsReadOnly="True" Name="rem_amount_textbox"  MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="150" Height="30"  FontStyle="Italic" FontSize="18" PreviewTextInput="NumberValidationTextBox" />
+
+
+                        <Grid  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center"  Margin="0,0,0,0"  >
+                            <Button Content="Pay" Width="100" Height="30" HorizontalAlignment="Center" Click="click_save"  />                           
+                        </Grid>
+
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>

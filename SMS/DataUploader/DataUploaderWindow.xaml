@@ -1,0 +1,9 @@
+﻿<Window x:Class="SMS.DataUploader.DataUploaderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:DataUploader="clr-namespace:SMS.Controls"
+        Title="DataUploaderWindow" Height="360" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closed="Window_Closed" Name="data_uploader_window" >
+    <Grid>
+        <DataUploader:DataUploader />
+    </Grid>
+</Window>

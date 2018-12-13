@@ -1,0 +1,15 @@
+﻿<Window x:Class="SMS.EmployeeManagement.EmployeeAttendanceBio.EmployeeAttendanceBioReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EmployeeAttendanceBioReportWindow" Height="600" Width="900"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid>
+        <WindowsFormsHost  Name="windowsFormsHost1">
+            <rv:ReportViewer x:Name="_reportViewer"
+                             Margin="5,5,5,5">
+            </rv:ReportViewer>
+        </WindowsFormsHost>
+    </Grid>
+</Window>

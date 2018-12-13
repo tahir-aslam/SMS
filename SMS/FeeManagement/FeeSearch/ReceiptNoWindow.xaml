@@ -1,0 +1,13 @@
+﻿<Window x:Class="SMS.FeeManagement.FeeSearch.ReceiptNoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cancel Challan Window" MaxHeight="205" MaxWidth="290" KeyDown="Window_KeyDown" WindowStyle="ToolWindow"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <GroupBox Header="Enter Receipt# To Cancel Challan"  Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="25">
+                <TextBox Name="receipt_textbox" Width="200" Height="35" FontSize="20"/>
+                <Button Content="Cancel Challan" Name="cancel_btn" Width="100" Margin="0,10,0,0" Height="30" Click="cancel_btn_Click" />
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -1,0 +1,224 @@
+﻿<Page x:Class="SMS.EmployeeManagement.EmpAttendence"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:dg="http://schemas.microsoft.com/wpf/2008/toolkit"
+      xmlns:vms="clr-namespace:SMS.ViewModels"
+      xmlns:Navigation="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"    
+      xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"      
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="Employee Attendence" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+    
+    <!--<Navigation:Page.DataContext >
+        <vms:EmpViewModel />
+    </Navigation:Page.DataContext>-->
+      
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+            <Grid Grid.Row="0" HorizontalAlignment="Right"  VerticalAlignment="Bottom">
+
+        </Grid>
+        <Grid Grid.Row="1" Margin="-1">
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+                <TextBlock Text="Employee Attendence"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <!--<Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="LightGray"  Offset="0" />
+                    <GradientStop Color="Gray" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"   Background="LightGray">
+                <Grid.ColumnDefinitions>                    
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="170"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="170"/>
+                </Grid.ColumnDefinitions>                
+
+                <Label Grid.Row="0" Grid.Column="0" Content=" Date: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <DatePicker Grid.Row="0 " Grid.Column="1" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="attendnce_date"  />
+                <Label Grid.Row="0" Grid.Column="2" Content="Employee Types: *" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="170" Height="30" VerticalAlignment="Center" Name="emp_types_cmb" SelectedValuePath="id" SelectionChanged="emp_types_cmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                <TextBlock Text="{Binding emp_types}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+
+            </Grid>
+
+
+
+            <Grid Grid.Row="1" Margin="1,1,1,1" VerticalAlignment="Top" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="100"/>
+                    
+                </Grid.RowDefinitions>
+
+
+
+                <!--<ListView x:Name="attendence_grid"   Grid.IsSharedSizeScope="True"  Grid.Row="0" BorderThickness="1" BorderBrush="LightGray" MinHeight="100" FontSize="14">
+                    <ListView.View>
+                        <GridView  >
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding std_name}" Width="120"/>
+                            <GridViewColumn Header="Roll#" DisplayMemberBinding="{Binding roll_no}" Width="100"/>
+                            <GridViewColumn Header="Attendence" Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding Active}" IsThreeState="False"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                                <GridViewColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsThreeState="False"/>
+                                            <TextBlock VerticalAlignment="Center" Text="Attendence"  FontWeight="Bold" Margin="5,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.HeaderTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>-->
+                
+                <DataGrid Grid.Row="0" GridLinesVisibility="All" ItemsSource="{Binding empList}"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto"  IsReadOnly="True" AutoGenerateColumns="False"  FontSize="12" Background="White"  RowHeight="30"    BorderThickness="1" x:Name="emp_attendence_grid" SelectionChanged="emp_attendence_grid_SelectionChanged">
+                    <DataGrid.Columns>
+
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsThreeState="False"/>    
+                                </DataTemplate>                            
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Active}" Checked="CheckBox_Checked_sub" Unchecked="CheckBox_Checked_sub"  IsThreeState="False"/>                                    
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                       
+                        <DataGridTextColumn Binding="{Binding emp_name}"  Header="Name"/>
+                        <DataGridTextColumn Binding="{Binding emp_type}"  Header="Designation"/>
+
+                        <DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="primitives:DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                    <Setter Property="Margin" Value="0" />
+                                    <Setter Property="ContentTemplate">
+                                        <Setter.Value>
+                                            <DataTemplate>
+                                                <ItemsControl ItemsSource="{Binding DataContext.TitleList,ElementName=emp_attendence_grid}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel  Orientation="Horizontal">
+                                                            </StackPanel>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border  Width="70" >
+                                                                <TextBlock Text="{Binding}" TextAlignment="Center"/>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </DataTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding att_lst}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Width="70" x:Name="att_border">
+                                                    <TextBlock Text="{Binding}" x:Name="att_tb" TextAlignment="Center"/>
+                                                </Border>
+                                                <DataTemplate.Triggers>
+                                                    <DataTrigger Binding="{Binding }" Value="A">
+                                                        <Setter TargetName="att_tb" Property="Foreground" Value="Red"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding }" Value="P">
+                                                        <Setter TargetName="att_tb" Property="Foreground" Value="Green"/>
+                                                    </DataTrigger>
+                                                </DataTemplate.Triggers>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+                <!--<Grid x:Name="LayoutRoot" Grid.Row="1">
+                        
+                        <dg:DataGrid AutoGenerateColumns="False"  IsReadOnly="True"  x:Name="emp_attendence_grid">
+                            <dg:DataGrid.Columns>
+                                <dg:DataGridTemplateColumn>
+                                    <dg:DataGridTemplateColumn.Header>                                        
+                                            <CheckBox x:Name="chec"  Content="Attendence" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsThreeState="False"/>
+                                    </dg:DataGridTemplateColumn.Header>
+                                    <dg:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding Active}" IsThreeState="False" />
+                                        </DataTemplate>
+                                    </dg:DataGridTemplateColumn.CellTemplate>
+                                </dg:DataGridTemplateColumn>
+                                <dg:DataGridTextColumn Binding="{Binding emp_name}"  Header="Name"/>
+                            </dg:DataGrid.Columns>
+                        </dg:DataGrid>           
+                </Grid>-->
+
+
+
+                <Button Grid.Row="1" Width="130" Height="35" VerticalAlignment="Bottom" Name="att_button" Content="Submit Attendence" HorizontalAlignment="Left" Margin="30" Click="Button_Click" />
+
+                
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>

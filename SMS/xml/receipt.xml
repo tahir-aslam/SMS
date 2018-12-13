@@ -1,0 +1,22 @@
+﻿<Customers>
+  <Customer>
+    <Code>1234</Code>
+    <Name>EPI</Name>
+    <Country>Sesame Street</Country>
+  </Customer>
+  <Customer>
+    <Code>3234</Code>
+    <Name>Paul</Name>
+    <Country>United Kingdom</Country>
+  </Customer>
+  <Customer>
+    <Code>3344</Code>
+    <Name>Juan</Name>
+    <Country>Spain</Country>
+  </Customer>
+  <Customer>
+    <Code>4321</Code>
+    <Name>Dodo</Name>
+    <Country>Mars</Country>
+  </Customer>
+</Customers>

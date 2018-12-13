@@ -1,0 +1,146 @@
+﻿<Page x:Class="SMS.AdvancedAccountManagement.VoucherEntry.VoucherEntryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="VoucherEntryPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="1,0,1,0" >
+            <ToolBarTray Background="White" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <ToolBar Margin="0,0,0,0" BorderThickness="1" Band="1" BandIndex="1" MinWidth="240">
+                    <Button Click="click_new" ToolTipService.ToolTip="Add New Record"  Height="35" Width="50">
+                        <Image  Source="/SMS;component/images/add-icon.png"  />
+                    </Button>
+
+                    <Button  Click="click_edit"  CommandParameter="edit" Name="nameedit"  ToolTipService.ToolTip="Edit Record" Height="35" Width="50">
+                        <Image  Source="/SMS;component/images/Edit-icon.png" Name="img" />
+                    </Button>
+
+                    <Button Click="click_delete" ToolTipService.ToolTip="Delete Record" Height="35" Width="50">
+                        <Image Source="/SMS;component/images/Delete-icon.png" />
+                    </Button>
+
+                    <Button Click="click_refresh" ToolTipService.ToolTip="Refresh" Height="35" Width="50">
+                        <Image Source="/SMS;component/images/Refresh.png" />
+                    </Button>
+
+                    <Button ToolTipService.ToolTip="Print" Height="35" Width="50" Name="print_btn" Click="print_btn_Click">
+                        <Image Source="/SMS;component/images/print3.jpg" />
+                    </Button>
+                </ToolBar>
+
+            </ToolBarTray>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="-1">
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+                <TextBlock Text="General Journal"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="LightGray"  Offset="0" />
+                    <GradientStop Color="Gray" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"                         
+                  Margin="1,1,1,1"  
+                  Background="LightGray">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker Width="120" 
+                                Name="date_picker_to"   
+                                Height="30"
+                                Margin="10,0,0,0"
+                                SelectedDateChanged="date_picker_to_SelectedDateChanged" />
+                    <DatePicker Width="120" 
+                                Name="date_picker_from" 
+                                SelectedDateChanged="date_picker_from_SelectedDateChanged" 
+                                Height="30"/>
+                    <ComboBox   Width="150" 
+                                Height="30"
+                                Margin="30,0,0,0"
+                                IsEditable="True"
+                                IsTextSearchEnabled="True" 
+                                IsTextSearchCaseSensitive="False" 
+                                StaysOpenOnEdit="True" 
+                                TextSearch.TextPath="voucher_type"
+                                Name="voucher_types_CMB" 
+                                SelectedValuePath="id"
+                                SelectionChanged="voucher_types_CMB_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                    <TextBlock Text="{Binding voucher_type}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,10,0">
+                        <Label VerticalAlignment="Center"
+                               Content="Total Vouchers"
+                               Margin="0,0,0,0"
+                               FontSize="14"/>
+                    <TextBlock Name="count_TB"                                                
+                                   Text="0000"
+                                   VerticalAlignment="Center"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   FontFamily="Times New Roman"/>
+
+                    <Label VerticalAlignment="Center"
+                               Content="Total Amount(Rs)"
+                               Margin="10,0,0,0"
+                               FontSize="14"/>
+                    <TextBlock Name="amount_TB"                                                
+                                   Text="0000"
+                                   VerticalAlignment="Center"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   FontFamily="Times New Roman"/>
+                    </StackPanel>
+
+                
+                
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="1,0,1,1">
+                <DataGrid x:Name="vouchers_grid" AutoGenerateColumns="False" FontSize="12" Background="White" IsReadOnly="True" RowHeight="30"   BorderThickness="0" HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto" SelectionMode="Single" Margin="1,0,-1,0" MouseDoubleClick="vouchers_grid_MouseDoubleClick">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Sr#" Binding="{Binding id}" Width="50"/>
+                        <DataGridTextColumn Header="Type" Binding="{Binding voucher_type}" Width="80"/>
+                        <DataGridTextColumn Header="Date" Binding="{Binding voucher_date,  StringFormat=\{0:dd-MMM-yy\}}" Width="120"/>
+                        <DataGridTextColumn Header="Voucher#" Binding="{Binding voucher_no}" Width="100" />
+                        <DataGridTextColumn Header="Amonut" Binding="{Binding amount}" Width="100"  />
+                        <DataGridTextColumn Header="Description" Binding="{Binding voucher_description}" Width="180"  />
+                        <DataGridTextColumn Header="Cheque Date"  Width="Auto"  />
+                        <DataGridTextColumn Header="Cheque#"  Width="Auto"  />
+                        <DataGridTextColumn Header="Created By" Binding="{Binding created_by}" Width="Auto"  />
+                        <DataGridTextColumn Header="Date Time" Binding="{Binding date_time,  StringFormat=\{0:dd-MMM-yy HH:mm\}}" Width="Auto"  />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

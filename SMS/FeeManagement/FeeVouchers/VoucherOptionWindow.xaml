@@ -1,0 +1,39 @@
+﻿<Window x:Class="SMS.FeeManagement.FeeVouchers.VoucherOptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VoucherOptionWindow" Height="400" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="0"  Grid.Column="0" Margin="10" MaxWidth="500">
+            <Border BorderThickness="1" BorderBrush="#FFD6D4D4" CornerRadius="15,15,0,0">
+                <StackPanel>
+                    <Border Background="Purple" Height="50" CornerRadius="15,15,0,0" BorderThickness="0">
+                        <TextBlock Text="Fee Voucher Options" Foreground="White" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                    </Border>
+
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="55" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="60" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="220"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Row="0" Name="add_prev_chkbox" IsChecked="True" Content="Add Pending Dues"/>
+                        <RadioButton Grid.Row="1" Name="one_radiobtn" GroupName="copies" Content="1 Fee Slip Per Student"  VerticalAlignment="Bottom" IsEnabled="True"/>
+                        <RadioButton Grid.Row="2" Name="two_radiobtn" GroupName="copies" Content="2 Fee Slips Per Student" IsChecked="True"   VerticalAlignment="Center" IsEnabled="True" />
+                        <RadioButton Grid.Row="3" Name="three_radiobtn" GroupName="copies" Content="3 Fee Slips Per Student (For Bank)" VerticalAlignment="Top" IsEnabled="True"/>
+                        
+                        <Button Grid.Row="4" Name="back_btn" Width="80" Height="30" Content="Back" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="back_btn_Click" Margin="5"/>
+                        <Button Grid.Row="4" Name="submit_btn" Width="80" Height="30" Content="Proceed" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="submit_btn_Click" Margin="5"/>
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>

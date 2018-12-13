@@ -1,0 +1,160 @@
+﻿<Page x:Class="SMS.Messaging.BirthdaySms.BirthdaySmsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="BirthdaySmsPage" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" >
+            <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="/SMS;component/images/birthday.jpg" Margin="8"/>
+                    <TextBlock Text="BirthDay SMS"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+                </StackPanel>
+
+            </Border>
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
+                <TextBlock Text="Birthday sms Count:" Margin="10,0,0,0" Foreground="White" VerticalAlignment="Center" FontSize="15" FontStyle="Italic"/>
+                <TextBlock Text="0000" Name="strength_textblock" FontWeight="Bold" Foreground="White"  Margin="10,0,0,0" VerticalAlignment="Center" FontSize="25" FontFamily="Arial"  TextDecorations="Underline"  FontStyle="Italic"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Margin="5">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.5">
+                    <GradientStop Color="WhiteSmoke"  Offset="0" />
+                    <GradientStop Color="Gray" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" ShowGridLines="True">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <DatePicker Width="150" Name="attendnce_date" SelectedDateChanged="date_picker_SelectedDateChanged" Height="30"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="0"/>
+                    <ColumnDefinition  Width="50"/>
+                    <ColumnDefinition  Width="50"/>
+                    <ColumnDefinition  Width="150"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label Grid.Row="0" Grid.Column="2" Content="Class: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="class_cmb" SelectedValuePath="id" SelectionChanged="class_cmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                <TextBlock Text="{Binding class_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Label Grid.Row="0" Grid.Column="4" Content="Section: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                <ComboBox Grid.Row="0 " Grid.Column="5" HorizontalAlignment="Left" Width="150" Height="30" VerticalAlignment="Center" Name="section_cmb" SelectedValuePath="id" SelectionChanged="section_cmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+                                <TextBlock Text="{Binding section_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+
+            </Grid>
+
+            <Grid Grid.Row="3" Margin="1,0,1,1">
+                <DataGrid x:Name="adm_grid" BorderBrush="LightGray" Foreground="LightGray"  AutoGenerateColumns="False" FontSize="12" Background="White" IsReadOnly="True" RowHeight="50"   BorderThickness="1"  HorizontalScrollBarVisibility="Visible"  VerticalScrollBarVisibility="Visible" >
+                    <DataGrid.Columns>
+
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsThreeState="False"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Checked}" Click="CheckBox_Checked_sub"  IsThreeState="False" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="120" Header="Image">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding image}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Student Name" Binding="{Binding std_name}" Width="120" />
+                        <DataGridTextColumn Header="Father Name" Binding="{Binding father_name}" Width="120" />
+                        <DataGridTextColumn Header="Class Name" Binding="{Binding class_name}" Width="120"/>
+                        <DataGridTextColumn Header="Section Name" Binding="{Binding section_name}" Width="120"/>
+                        <DataGridTextColumn Header="Contact No" Binding="{Binding cell_no}" Width="120"/>
+                        <DataGridTextColumn Header="Roll #" Binding="{Binding roll_no}" Width="120"/>
+                        <DataGridTextColumn Header="Adm #" Binding="{Binding adm_no}" Width="120"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+        <!--Column 1-->
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="SmS" FontSize="28" Foreground="Gray"  />
+            </Grid>
+            <Grid Grid.Row="1"  Background="White" Visibility="Hidden">
+                <TextBox FontSize="15" FontStyle="Italic" Text="This sms is powered by Scenario Management Solution......." TextWrapping="Wrap" Name="message_textbox" BorderBrush="Gray" Margin="15"/>
+            </Grid>
+            <Grid Grid.Row="2" >
+                <Button Name="send_btn" Content="Send" FontSize="16" Foreground="Chocolate" Click="send_btn_Click" HorizontalAlignment="Center" Margin="5"  Width="200"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
