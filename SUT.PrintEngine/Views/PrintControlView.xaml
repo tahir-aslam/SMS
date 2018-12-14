@@ -30,13 +30,13 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Border x:Name="ToolBar" Height="40" BorderBrush="#FFA8A8A8" BorderThickness="2">
+                        <Border x:Name="ToolBar" Height="35" BorderBrush="#FFA8A8A8" BorderThickness="2">
                             <DockPanel LastChildFill="False">
-                                <Button DockPanel.Dock="Right" IsTabStop="True" TabIndex="5" x:Name="ActualSizeButton" ToolTip="100%" VerticalAlignment="Center" Width="75" Command="{Binding ActualPageSizeCommand}" ToolTipService.ShowOnDisabled="True" Content="Actual Size" Margin="0,0,5,0" Style="{DynamicResource DefaultButtonStyle}" Height="25" Click="ActualSizeButton_Click" />
-                                <Button DockPanel.Dock="Right" IsTabStop="True" TabIndex="8" x:Name="AllPagesButton" ToolTip="Show All Pages" VerticalAlignment="Center" Width="75" Command="{Binding AllPagesCommand}" ToolTipService.ShowOnDisabled="True" HorizontalAlignment="Stretch" Content="All Pages" Margin="0,0,5,0" Style="{DynamicResource DefaultButtonStyle}" Height="25" Click="AllPagesButton_Click" />
-                                <Menu Cursor="Hand" DockPanel.Dock="Right" Margin="0,0,05,0" VerticalAlignment="Center"  Height="35"    Background="{x:Null}" >
-                                    <MenuItem Header="Printing Options" FontSize="12" VerticalAlignment="Center"  Height="25" Width="109" Click="MenuItem_Click_1">
-                                        <MenuItem  Template="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}">
+                                <Button DockPanel.Dock="Right" IsTabStop="True" TabIndex="5" x:Name="ActualSizeButton" ToolTip="100%" VerticalAlignment="Center" Width="75" Command="{Binding ActualPageSizeCommand}" ToolTipService.ShowOnDisabled="True" Content="Actual Size" Margin="0,0,5,0" Style="{DynamicResource DefaultButtonStyle}" Height="25"/>
+                                <Button DockPanel.Dock="Right" IsTabStop="True" TabIndex="8" x:Name="AllPagesButton" ToolTip="Show All Pages" VerticalAlignment="Center" Width="75" Command="{Binding AllPagesCommand}" ToolTipService.ShowOnDisabled="True" HorizontalAlignment="Stretch" Content="All Pages" Margin="0,0,5,0" Style="{DynamicResource DefaultButtonStyle}" Height="25"/>
+                                <Menu Cursor="Hand" DockPanel.Dock="Right" Margin="0,0,5,0" VerticalAlignment="Center" Height="25" Background="{x:Null}" >
+                                    <MenuItem Header="Printing Options" VerticalAlignment="Center" Style="{DynamicResource MenuItemStyle}" Height="25" Width="108.893">
+                                        <MenuItem Style="{DynamicResource MenuItemStyle}" Template="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}">
                                             <MenuItem.Header>
                                                 <Grid>
                                                     <Border x:Name="PrintingOptionsWaitCurtain" Panel.ZIndex="1" Height="Auto" Background="White" Opacity="0.9" Visibility="Collapsed">
@@ -77,39 +77,39 @@
                                                             <Rectangle Fill="#FFCFD8DA" StrokeThickness="0"  Margin="0,10,0,0" VerticalAlignment="Top" Height="1" />
                                                             <Rectangle Height="1" Fill="#eeeeee" Margin="0,0,0,10" />
                                                             <Border Margin="0,-1,2,0" BorderThickness="1" BorderBrush="#cccccc" CornerRadius="0,5,5,5" Background="#FFFDDB" d:LayoutOverrides="Width">
-                                                                <StackPanel Orientation="Vertical" Margin="8,0,0,0">
-                                                                    <StackPanel Orientation="Vertical">
-                                                                        <StackPanel Orientation="Horizontal">
-                                                                            <Label Padding="0,0,0,2"  FontFamily="Verdana" Foreground="Black" FontWeight="Bold" FontSize="10" Margin="0,15,0,0" HorizontalAlignment="Left" Content="Select Printer" />
-                                                                        </StackPanel>
-                                                                        <StackPanel Orientation="Horizontal">
-                                                                            <ComboBox Cursor="Hand" x:Name="PrinterList" Margin="0,5,0,0" Width="150"
+                                                            	<StackPanel Orientation="Vertical" Margin="8,0,0,0">
+                                                            		<StackPanel Orientation="Vertical">
+                                                            			<StackPanel Orientation="Horizontal">
+                                                            				<Label Padding="0,0,0,2"  FontFamily="Verdana" Foreground="Black" FontWeight="Bold" FontSize="10" Margin="0,15,0,0" HorizontalAlignment="Left" Content="Select Printer" />
+                                                            			</StackPanel>
+                                                            			<StackPanel Orientation="Horizontal">
+                                                            				<ComboBox Cursor="Hand" x:Name="PrinterList" Margin="0,5,0,0" Width="150"
                                                             					HorizontalAlignment="Left"
                                                             					ItemsSource="{Binding Printers}"
                                                             					SelectedItem="{Binding CurrentPrinter, Mode=TwoWay}"
                                                             					SelectedValuePath="FullName"
                                                             					DisplayMemberPath="FullName"/>
-                                                                            <ContentControl Cursor="Hand" Margin="0,5,0,0" HorizontalAlignment="Left" Content="Error" Visibility="Hidden"/>
-                                                                        </StackPanel>
-                                                                    </StackPanel>
-                                                                    <DockPanel LastChildFill="False" Margin="0,0,0,15">
-                                                                        <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-                                                                            <Label Padding="0,0,0,2"  FontFamily="Verdana" Foreground="Black" FontWeight="Bold" FontSize="10" Margin="0,10,0,0" HorizontalAlignment="Left" Content="Copies" />
-                                                                            <TextBox Width="25" Margin="0,5,0,0" HorizontalAlignment="Left"  Height="20" Text="{Binding PrintCopyCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                                                        </StackPanel>
-                                                                        <StackPanel Visibility="Collapsed" Orientation="Vertical"  Margin="5,0,30,0" DockPanel.Dock="Right">
-                                                                            <Label Padding="0,0,0,2"  FontFamily="Verdana" Foreground="Black" FontWeight="Bold" FontSize="10" Margin="0,10,0,0" HorizontalAlignment="Left" Content="Range" />
-                                                                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                                                                <TextBox  Width="25" Height="18" Text="{Binding PageRangeStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                                                                <Label Padding="0,0,0,2"  FontFamily="Verdana" Foreground="Black" FontSize="10" Margin="5,5,0,0" HorizontalAlignment="Left" Content="to" />
-                                                                                <TextBox Width="25" Margin="5,0,0,0" Height="18" Text="{Binding PageRangeEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                                                            </StackPanel>
-                                                                        </StackPanel>
-                                                                    </DockPanel>
-                                                                    <CheckBox Cursor="Hand" x:Name="PageNumberMarker" Visibility="Collapsed" Margin="0,0,10,10" IsChecked="{Binding IsMarkPageNumbers, Mode=TwoWay}">
-                                                                        <Label Padding="3,0,0,0" FontSize="9" Foreground="Black" Margin="0,0,0,0" Content="Mark Page Positions" FontWeight="Bold"/>
-                                                                    </CheckBox>
-                                                                </StackPanel>
+                                                            				<ContentControl Cursor="Hand" Margin="0,5,0,0" HorizontalAlignment="Left" Content="Error" Visibility="Hidden"/>
+                                                            			</StackPanel>
+                                                            		</StackPanel>
+                                                            		<DockPanel LastChildFill="False" Margin="0,0,0,15">
+                                                            			<StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                                                            				<Label Padding="0,0,0,2"  FontFamily="Verdana" Foreground="Black" FontWeight="Bold" FontSize="10" Margin="0,10,0,0" HorizontalAlignment="Left" Content="Copies" />
+                                                            				<TextBox Width="25" Margin="0,5,0,0" HorizontalAlignment="Left"  Height="20" Text="{Binding PrintCopyCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                            			</StackPanel>
+                                                            			<StackPanel Visibility="Collapsed" Orientation="Vertical"  Margin="5,0,30,0" DockPanel.Dock="Right">
+                                                            				<Label Padding="0,0,0,2"  FontFamily="Verdana" Foreground="Black" FontWeight="Bold" FontSize="10" Margin="0,10,0,0" HorizontalAlignment="Left" Content="Range" />
+                                                            				<StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                                            					<TextBox  Width="25" Height="18" Text="{Binding PageRangeStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                            					<Label Padding="0,0,0,2"  FontFamily="Verdana" Foreground="Black" FontSize="10" Margin="5,5,0,0" HorizontalAlignment="Left" Content="to" />
+                                                            					<TextBox Width="25" Margin="5,0,0,0" Height="18" Text="{Binding PageRangeEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                            				</StackPanel>
+                                                            			</StackPanel>
+                                                            		</DockPanel>
+                                                            		<CheckBox Cursor="Hand" x:Name="PageNumberMarker" Visibility="Collapsed" Margin="0,0,10,10" IsChecked="{Binding IsMarkPageNumbers, Mode=TwoWay}">
+                                                            			<Label Padding="3,0,0,0" FontSize="9" Foreground="Black" Margin="0,0,0,0" Content="Mark Page Positions" FontWeight="Bold"/>
+                                                            		</CheckBox>
+                                                            	</StackPanel>
                                                             </Border>
                                                             <Rectangle Fill="#cfd8da" StrokeThickness="0"  Margin="0,10,0,0" VerticalAlignment="Top" Height="1" />
                                                             <Rectangle Fill="#ffffff" StrokeThickness="0"  Margin="0,0,0,0" VerticalAlignment="Top" Height="1" />
@@ -128,8 +128,8 @@
                                     </MenuItem>
                                 </Menu>
                                 <Menu x:Name="ScaleMenu" Cursor="Hand" DockPanel.Dock="Right" Margin="0,0,5,0"  Visibility="{Binding CanScale,Converter={StaticResource BooleanToVisibilityConverter}}" VerticalAlignment="Center" Height="25" Background="{x:Null}" Width="60">
-                                    <MenuItem Header="Print Size" Height="25" FontSize="12" Width="80" Click="MenuItem_Click">
-                                        <MenuItem Template="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}">
+                                    <MenuItem Header="Print Size" Height="25" Width="60">
+                                        <MenuItem Style="{DynamicResource MenuItemStyle}" Template="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}">
                                             <MenuItem.Header>
                                                 <Border Width="Auto" Height="Auto" BorderThickness="1,0,1,1" BorderBrush="#ffffff" Margin="0,0,0,0">
                                                     <Border.Background>
@@ -173,11 +173,11 @@
                                                                         <Grid Width="90" Height="51">
                                                                             <Rectangle Fill="#FFE4FFAE" Stroke="#cccccc" />
                                                                             <Label Content="Content"
-                                                                                 HorizontalAlignment="Center"
-                                                                                 VerticalAlignment="Center"
-                                                                                 FontFamily="Arial"
-                                                                                 FontSize="14"
-                                                                                 Foreground="Black"/>
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 FontFamily="Arial"
+                 FontSize="14"
+                 Foreground="Black"/>
                                                                         </Grid>
                                                                     </Grid>
                                                                 </DockPanel>
@@ -225,7 +225,7 @@
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="10"  >
                     <Button HorizontalAlignment="Right" Command="{Binding Path=CancelPrintCommand}" Content="Cancel" Style="{DynamicResource DefaultButtonStyle}" Width="60"/>
                     <TextBlock Margin="10,0" Text="Or"  VerticalAlignment="Center"/>
-                    <Button IsDefault="True"  HorizontalAlignment="Right" Command="{Binding Path=PrintDocumentCommand}" Content="Print" Style="{DynamicResource DefaultButtonStyle}" Width="60" Click="Button_Click" />
+                    <Button IsDefault="True"  HorizontalAlignment="Right" Command="{Binding Path=PrintDocumentCommand}" Content="Print" Style="{DynamicResource DefaultButtonStyle}" Width="60"/>
                 </StackPanel>
             </Grid>
         </Grid>

@@ -91,30 +91,5 @@ namespace SUT.PrintEngine.Views
             else
                 SetPanel.Visibility = Visibility.Collapsed;
         }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("clicked");
-        }
-
-        private void AllPagesButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ActualSizeButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

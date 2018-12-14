@@ -15,11 +15,12 @@ using System.Windows.Forms;
 using SMS.AdmissionManagement;
 using System.IO;
 using WebcamControl;
-using Microsoft.Expression.Encoder.Devices;
+using Microsoft.Expression.Encoder;
 using System.Windows.Data;
 using SMS.AdmissionManagement.Admission;
 using System.Threading;
 using SMS.EmployeeManagement.ADDEMP;
+using Microsoft.Expression.Encoder.Devices;
 
 namespace SMS.AdmissionManagement.Camera
 {

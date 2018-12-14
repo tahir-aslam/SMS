@@ -35,37 +35,41 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Composite">
-      <HintPath>..\Lib\Microsoft\Microsoft.Practices.Composite.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Composite.Presentation">
-      <HintPath>..\Lib\Microsoft\Microsoft.Practices.Composite.Presentation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Composite.UnityExtensions">
-      <HintPath>..\Lib\Microsoft\Microsoft.Practices.Composite.UnityExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.Composite, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Microsoft\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+      <HintPath>Lib\Microsoft.Practices.Composite.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching.Database, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.Composite.Presentation, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Microsoft\Microsoft.Practices.EnterpriseLibrary.Caching.Database.dll</HintPath>
+      <HintPath>Lib\Microsoft.Practices.Composite.Presentation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.Composite.UnityExtensions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Microsoft\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <HintPath>Lib\Microsoft.Practices.Composite.UnityExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ObjectBuilder2">
-      <HintPath>..\Lib\Microsoft\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching.Database, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Microsoft.Practices.EnterpriseLibrary.Caching.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Microsoft\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>Lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Microsoft\Microsoft.Practices.Unity.dll</HintPath>
+      <HintPath>Lib\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -77,12 +81,14 @@
     <Reference Include="System.Printing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xaml">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xaml.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="WPFToolkit" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\LoadScreen\LoadScreen.cs">
@@ -143,11 +149,6 @@
       <DependentUpon>ProgressDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\StringTable.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StringTable.resx</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\UnityContainerExtention.cs" />
     <Compile Include="Paginators\VisualPaginator.cs" />
     <Compile Include="Controls\WaitScreen\IWaitScreenViewModel.cs" />
@@ -190,6 +191,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controls\LoadScreen\loading.gif" />
+    <Content Include="Lib\Microsoft.Practices.Composite.dll" />
+    <Content Include="Lib\Microsoft.Practices.Composite.Presentation.dll" />
+    <Content Include="Lib\Microsoft.Practices.Composite.UnityExtensions.dll" />
+    <Content Include="Lib\Microsoft.Practices.EnterpriseLibrary.Caching.Database.dll" />
+    <Content Include="Lib\Microsoft.Practices.EnterpriseLibrary.Caching.Database.XML" />
+    <Content Include="Lib\Microsoft.Practices.EnterpriseLibrary.Caching.dll" />
+    <Content Include="Lib\Microsoft.Practices.EnterpriseLibrary.Caching.XML" />
+    <Content Include="Lib\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="Lib\Microsoft.Practices.EnterpriseLibrary.Common.XML" />
+    <Content Include="Lib\Microsoft.Practices.ObjectBuilder2.dll" />
+    <Content Include="Lib\Microsoft.Practices.ObjectBuilder2.xml" />
+    <Content Include="Lib\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="Lib\Microsoft.Practices.ServiceLocation.XML" />
+    <Content Include="Lib\Microsoft.Practices.Unity.dll" />
+    <Content Include="Lib\Microsoft.Practices.Unity.xml" />
     <Content Include="SUT.PrintEngine.App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -201,7 +217,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\StringTable.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

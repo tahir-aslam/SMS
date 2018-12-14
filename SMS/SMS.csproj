@@ -89,7 +89,7 @@
     </Reference>
     <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Expression\Encoder 4\SDK\Microsoft.Expression.Encoder.dll</HintPath>
+      <HintPath>Lib\Microsoft.Expression.Encoder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -1814,7 +1814,9 @@
     <EmbeddedResource Include="StudentManagement\StudentAttendence\StudentAttendanceReport.rdlc" />
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -2073,8 +2075,8 @@
       <Project>{86C6005D-B1DF-4C7F-A035-BBA5602FF3ED}</Project>
       <Name>WPF Webcam</Name>
     </ProjectReference>
-    <ProjectReference Include="E:\Local Disk E\Project Backups\SMS\2014\WPFPrintEngine_Alpha_1\WPFPrintEngine_Alpha_1\WPFPrintEngine\Source\SUT.PrintEngine\SUT.PrintEngine.csproj">
-      <Project>{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}</Project>
+    <ProjectReference Include="..\SUT.PrintEngine\SUT.PrintEngine.csproj">
+      <Project>{0b3d76d5-d9f4-4c0e-afa9-143138ebc74d}</Project>
       <Name>SUT.PrintEngine</Name>
     </ProjectReference>
   </ItemGroup>
@@ -2104,6 +2106,10 @@
     <Content Include="Lib\GSMCommServer.dll" />
     <Content Include="Lib\GSMCommShared.dll" />
     <Content Include="Lib\GSMCommunication.dll" />
+    <Content Include="Lib\Microsoft.Expression.Encoder.Api2.dll" />
+    <Content Include="Lib\Microsoft.Expression.Encoder.CommonUI.dll" />
+    <Content Include="Lib\Microsoft.Expression.Encoder.CoreUI.dll" />
+    <Content Include="Lib\Microsoft.Expression.Encoder.dll" />
     <Content Include="Lib\MySql.Data.dll" />
     <Content Include="Lib\Neodynamic.WPF.Barcode.dll" />
     <Content Include="Lib\PDUConverter.dll" />
