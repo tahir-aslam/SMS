@@ -49,7 +49,7 @@ namespace SMS.AdmissionManagement.PromoteStudents
 
             get_all_sessions();
             session_cmb.ItemsSource = session_list;
-            session_cmb.SelectedIndex = 2;
+            session_cmb.SelectedIndex = session_list.Count - 1;
             session_cmb.IsEnabled = true;
         }
 
@@ -236,9 +236,13 @@ namespace SMS.AdmissionManagement.PromoteStudents
 
         private void click_save(object sender, RoutedEventArgs e)
         {
-            if(validate())
+            MessageBoxResult mbr = MessageBox.Show("Do You Want To Promote this section ?", "Confirmation", MessageBoxButton.YesNo);
+            if (mbr == MessageBoxResult.Yes)
             {
-                promote_students();
+                if (validate())
+                {
+                    promote_students();
+                }
             }
         }
 
@@ -250,8 +254,20 @@ namespace SMS.AdmissionManagement.PromoteStudents
 
             foreach(admission adm in adm_list)
             {
-                roll_no++;
-                if (submit(adm, cl, sec, roll_no) > 0) 
+                if (reArrangeRollNoCheckBox.IsChecked == true)
+                {
+                    roll_no++;                    
+                }
+                else
+                {
+                    roll_no = adm.roll_no_int;
+                }
+
+                adm.roll_no_int = roll_no;
+                adm.roll_no = MainWindow.roll_no_prefix_list.Where(x => x.id == adm.roll_no_prefix_id).FirstOrDefault().prefix+ roll_no;
+                adm.adm_no = MainWindow.adm_no_prefix_list.Where(x => x.id == adm.adm_no_prefix_id).FirstOrDefault().prefix + adm.adm_no_int;
+
+                if (submit(adm, cl, sec) > 0) 
                 {
                     
                 }
@@ -261,18 +277,19 @@ namespace SMS.AdmissionManagement.PromoteStudents
             class_cmb.SelectedIndex = 0;
         }
 
-        public int submit(admission adm_obj,classes cl_obj, sections sec_obj,int roll_no) 
+        public int submit(admission adm_obj,classes cl_obj, sections sec_obj) 
         {
             int i = 0;
             int last_id=0;
-            session sess = (session)session_cmb.SelectedItem;
-            try{
+            session sess = (session)session_cmb.SelectedItem;            
+            try
+            {
 
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "INSERT INTO sms_admission(id,class_id,std_name,father_name,father_cnic,father_income,religion,dob,b_form,parmanent_adress,adm_date,cell_no,emergency_address,previous_school,boarding,transport,comm_adress,roll_no,adm_no,reg_fee,adm_fee,tution_fee,scholarship,misc_charges,exam_fee,security_fee,transport_fee,other_exp,stationary_fee,total,class_name,section_id,section_name,image,is_active,created_by,date_time,session_id,fees_package_id,fees_package) Values(@id,@class_id,@std_name,@father_name,@father_cnic,@father_income,@religion,@dob,@b_form,@parmanent_adress,@adm_date,@cell_no,@emergency_address,@previous_school,@boarding,@transport,@comm_adress,@roll_no,@adm_no,@reg_fee,@adm_fee,@tution_fee,@scholarship,@misc_charges,@exam_fee,@security_fee,@transport_fee,@other_exp,@stationary_fee,@total,@class_name,@section_id,@section_name,@image,@is_active,@created_by,@date_time,@session_id, @fees_package_id,@fees_package); SELECT LAST_INSERT_ID()";
+                        cmd.CommandText = "INSERT INTO sms_admission(id,class_id,std_name,father_name,father_cnic,father_income,religion,dob,b_form,parmanent_adress,adm_date,cell_no,emergency_address,previous_school,boarding,transport,comm_adress,roll_no,adm_no,reg_fee,adm_fee,tution_fee,scholarship,misc_charges,exam_fee,security_fee,transport_fee,other_exp,stationary_fee,total,class_name,section_id,section_name,image,is_active,created_by,date_time,session_id,fees_package_id,fees_package, class_in_id, roll_no_prefix_id, adm_no_prefix_id, city_area_id, family_group_id, adm_no_int, roll_no_int) Values(@id,@class_id,@std_name,@father_name,@father_cnic,@father_income,@religion,@dob,@b_form,@parmanent_adress,@adm_date,@cell_no,@emergency_address,@previous_school,@boarding,@transport,@comm_adress,@roll_no,@adm_no,@reg_fee,@adm_fee,@tution_fee,@scholarship,@misc_charges,@exam_fee,@security_fee,@transport_fee,@other_exp,@stationary_fee,@total,@class_name,@section_id,@section_name,@image,@is_active,@created_by,@date_time,@session_id, @fees_package_id,@fees_package, @class_in_id, @roll_no_prefix_id, @adm_no_prefix_id, @area_id, @family_group_id, @adm_no_int, @roll_no_int); SELECT LAST_INSERT_ID()";
                         cmd.Connection = con;
                         //cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -300,7 +317,7 @@ namespace SMS.AdmissionManagement.PromoteStudents
                         cmd.Parameters.Add("@transport", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm_obj.transport;
                         cmd.Parameters.Add("@comm_adress", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm_obj.comm_adress;
 
-                        cmd.Parameters.Add("@roll_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = roll_no;
+                        cmd.Parameters.Add("@roll_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm_obj.roll_no;
                         cmd.Parameters.Add("@adm_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm_obj.adm_no;
                         cmd.Parameters.Add("@total", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm_obj.total;
 
@@ -324,6 +341,14 @@ namespace SMS.AdmissionManagement.PromoteStudents
                         cmd.Parameters.Add("@fees_package_id", MySqlDbType.Int32).Value = adm_obj.fees_package_id;
                         cmd.Parameters.Add("@fees_package", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm_obj.fees_package;
 
+                        cmd.Parameters.Add("@class_in_id", MySqlDbType.Int32).Value = adm_obj.class_in_id;
+                        cmd.Parameters.Add("@roll_no_prefix_id", MySqlDbType.Int32).Value = adm_obj.roll_no_prefix_id;
+                        cmd.Parameters.Add("@adm_no_prefix_id", MySqlDbType.Int32).Value = adm_obj.adm_no_prefix_id;
+                        cmd.Parameters.Add("@area_id", MySql.Data.MySqlClient.MySqlDbType.Int32).Value = adm_obj.area_id;
+                        cmd.Parameters.Add("@family_group_id", MySql.Data.MySqlClient.MySqlDbType.Int32).Value = adm_obj.family_group_id;
+                        cmd.Parameters.Add("@adm_no_int", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm_obj.adm_no_int;
+                        cmd.Parameters.Add("@roll_no_int", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm_obj.roll_no_int;
+
                         con.Open();
                         i = Convert.ToInt32(cmd.ExecuteScalar());
                         con.Close();
@@ -338,6 +363,11 @@ namespace SMS.AdmissionManagement.PromoteStudents
             }    
                         
                         return i;  
+        }
+
+        private void reArrangeRollNoCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

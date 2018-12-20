@@ -287,7 +287,14 @@ namespace SMS.AdmissionManagement.PromoteStudents
                             created_by = Convert.ToString(reader["created_by"].ToString()),
                             is_active = Convert.ToString(reader["is_active"].ToString()),
                             fees_package_id = Convert.ToInt32(reader["fees_package_id"]),
-                            fees_package = Convert.ToString(reader["fees_package"].ToString()),                            
+                            fees_package = Convert.ToString(reader["fees_package"].ToString()),
+                            class_in_id = Convert.ToInt32(reader["class_in_id"]),
+                            adm_no_prefix_id = Convert.ToInt32(reader["adm_no_prefix_id"]),
+                            roll_no_prefix_id = Convert.ToInt32(reader["roll_no_prefix_id"]),
+                            area_id = Convert.ToInt32(reader["city_area_id"]),
+                            family_group_id = Convert.ToInt32(reader["family_group_id"]),
+                            roll_no_int = Convert.ToInt32(reader["roll_no_int"]),
+                            adm_no_int = Convert.ToInt32(reader["adm_no_int"]),
                             image = img,
                         };
                         adm_list.Add(adm);
