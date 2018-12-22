@@ -40,6 +40,7 @@ namespace SMS.Reports.Exam.GeneralAwardListByPosition
         public static string section_name = "";
         public static string exam_name = "";
         private bool m_isSortByPercentage = true;
+       
 
         public GeneralAwardListByPositionWindow()
         {
@@ -630,7 +631,7 @@ namespace SMS.Reports.Exam.GeneralAwardListByPosition
         {
             var dataTable = CreateSampleDataTable();
             var columnWidths = col_width;
-            var ht = new GenaralAwardListHeader();
+            var ht = new GenaralAwardListHeader(this);
             var headerTemplate = XamlWriter.Save(ht);
             var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
             printControl.ShowPrintPreview();

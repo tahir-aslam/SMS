@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SMS.ExamManagement.ExamResultList;
+using SMS.Reports.Exam.GeneralAwardListByPosition;
 
 namespace SMS.PrintHeaderTemplates
 {
@@ -30,6 +31,18 @@ namespace SMS.PrintHeaderTemplates
             report_names = " General Award List ";
             amount_texts = ResultList1.class_name;
             amounts = ResultList1.section_name;
+        }
+
+        public GenaralAwardListHeader(SMS.Reports.Exam.GeneralAwardListByPosition.GeneralAwardListByPositionWindow obj)
+        {
+            InitializeComponent();
+            Messages = MainWindow.ins.institute_name;
+            dates = DateTime.Now.ToString("dd-MMM-yyyy");
+            date_texts = "Subject ";
+            date_exps = GeneralAwardListByPositionWindow.exam_name;
+            report_names = "Subject Result List - " + MainWindow.session.session_name;
+            amount_texts = GeneralAwardListByPositionWindow.class_name;
+            amounts = GeneralAwardListByPositionWindow.section_name;
         }
 
         public GenaralAwardListHeader(SMS.ExamManagement.ExamResultListBySubject.ResultListBySubject RLBS)
