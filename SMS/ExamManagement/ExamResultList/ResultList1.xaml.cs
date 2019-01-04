@@ -603,13 +603,13 @@ namespace SMS.ExamManagement.ExamResultList
                                 obtained_marks = Convert.ToString(reader["obtained_marks"].ToString()),
                                 grade = Convert.ToString(reader["grade"].ToString()),
                                 remarks = Convert.ToString(reader["remarks"].ToString()),
-                                percentage = Convert.ToString(reader["percentage"].ToString()),
+                                percentage = Convert.ToString(reader["percentage"]),
                                 //percentageDouble = Convert.ToDouble(reader["percentage"].ToString()),
                                 position = Convert.ToString(reader["position"].ToString()),
                             };
                             if (!string.IsNullOrEmpty(ede.percentage) && ede.percentage != "-")
                             {
-                                ede.percentageDouble = Convert.ToDouble(reader["percentage"].ToString());
+                                ede.percentageDouble = double.Parse(ede.percentage, System.Globalization.CultureInfo.InvariantCulture);
                             }
                             else
                             {

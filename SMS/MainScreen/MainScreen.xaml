@@ -834,6 +834,12 @@
                                     Height="35"
                                     VerticalAlignment="Center"
                                     Click="attendance_report_class_wise_Click" />
+                            <Button Grid.Row="3"
+                                    Content="Complaint Register"
+                                    Name="V_ComplaintRegiter"
+                                    Height="35"
+                                    VerticalAlignment="Center"
+                                    Click="V_ComplaintRegiter_Click"/>
                         </StackPanel>
                     </TabItem>
 

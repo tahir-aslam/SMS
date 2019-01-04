@@ -317,15 +317,21 @@
     <Compile Include="ClassManagement\Class\ClassReportWindow.xaml.cs">
       <DependentUpon>ClassReportWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\Common.cs" />
     <Compile Include="Common\DateToAge.cs" />
     <Compile Include="Common\DateToWords.cs" />
     <Compile Include="Common\MetroMenuResources.cs" />
     <Compile Include="Common\ResultWindow.xaml.cs">
       <DependentUpon>ResultWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\StudentSelectionGrid.xaml.cs">
+      <DependentUpon>StudentSelectionGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\StudentSelectionWindowNew.xaml.cs">
       <DependentUpon>StudentSelectionWindowNew.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ComplaintManagment\ComplaintForm.xaml.cs" />
+    <Compile Include="ComplaintManagment\ComplaintSearch.xaml.cs" />
     <Compile Include="Controls\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
@@ -376,6 +382,7 @@
     <Compile Include="DAL\AttendanceBioDAL.cs" />
     <Compile Include="DAL\AttendanceDAL.cs" />
     <Compile Include="DAL\ClassesDAL.cs" />
+    <Compile Include="DAL\ComplaintDAL.cs" />
     <Compile Include="DAL\EmployeesDAL.cs" />
     <Compile Include="DAL\LicenseDAL.cs" />
     <Compile Include="DAL\MiscDAL.cs" />
@@ -691,6 +698,10 @@
     <Compile Include="Models\prefix.cs" />
     <Compile Include="Models\rfid_assignment.cs" />
     <Compile Include="Models\sms_account_type.cs" />
+    <Compile Include="Models\sms_complaint_from.cs" />
+    <Compile Include="Models\sms_complaint_register.cs" />
+    <Compile Include="Models\sms_complaint_status.cs" />
+    <Compile Include="Models\sms_complaint_type.cs" />
     <Compile Include="Models\sms_emp_attendance_bio.cs" />
     <Compile Include="Models\sms_emp_designation.cs" />
     <Compile Include="Models\sms_emp_title.cs" />
@@ -1103,6 +1114,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Common\StudentSelectionGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Common\StudentSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1110,6 +1125,14 @@
     <Page Include="Common\StudentSelectionWindowNew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ComplaintManagment\ComplaintForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ComplaintManagment\ComplaintSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
@@ -1809,7 +1832,9 @@
     <EmbeddedResource Include="Reports\Student\Attendance\StudentAttendanceReport.rdlc" />
     <EmbeddedResource Include="Reports\Student\StudentCards\studentCardsReport.rdlc" />
     <EmbeddedResource Include="StudentManagement\AttendanceReportClassWise\StudentAttendanceReportClassWiseReport.rdlc" />
-    <EmbeddedResource Include="StudentManagement\AttendanceReport\StudentAttendanceSheetFilledReport.rdlc" />
+    <EmbeddedResource Include="StudentManagement\AttendanceReport\StudentAttendanceSheetFilledReport.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentManagement\AttendanceReport\StudentAttendanceSheetReport.rdlc" />
     <EmbeddedResource Include="StudentManagement\StudentAttendence\StudentAttendanceReport.rdlc" />
     <None Include="App.config" />

@@ -124,10 +124,7 @@ namespace SMS.FeesManagement.FeesCollectionByAmount
                 section_cmb.SelectedIndex = 0;
             }
         }
-
-
-
-        
+               
         private void section_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             sections sec = (sections)section_cmb.SelectedItem;

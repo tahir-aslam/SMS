@@ -4,7 +4,7 @@
 library
 C#
 .cs
-F:\Scenario\ScenarioProjects\SMS\SMS.ComplaintManagement\obj\x86\Debug\
+D:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\
 SMS.ComplaintManagement
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 2-844017751
 
 7-666487475
-11197641777
+11-1758719902
 View\ComplaintForm.xaml;View\ComplaintSearch.xaml;
 
 False

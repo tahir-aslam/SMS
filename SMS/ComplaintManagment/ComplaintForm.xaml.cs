@@ -1,0 +1,38 @@
+﻿using SMS.ComplaintManagement;
+using SMS.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace SMS.ComplaintManagment
+{
+    /// <summary>
+    /// Interaction logic for ComplaintForm.xaml
+    /// </summary>
+    public partial class ComplaintForm : Window
+    {        
+        List<sms_complaint_register> complaints_list;
+        ComplaintForm CF;
+        
+        List<classes> classes_list;
+        List<sections> sections_list;
+        
+
+        public ComplaintForm(string mode, ComplaintSearch search, sms_complaint_register obj)
+        {
+            InitializeComponent();
+            
+        }
+        
+    }
+}

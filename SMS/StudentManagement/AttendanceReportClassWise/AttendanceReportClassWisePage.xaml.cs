@@ -27,6 +27,7 @@ namespace SMS.StudentManagement.AttendanceReportClassWise
         classes cl;
         ClassesDAL classDAL;
         AdmissionDAL admDAL;
+        AttendanceDAL attDAL;
 
         List<admission> adm_list;
         List<classes> classes_list;
@@ -40,12 +41,14 @@ namespace SMS.StudentManagement.AttendanceReportClassWise
 
             classDAL = new ClassesDAL();
             admDAL = new AdmissionDAL();
+            attDAL = new AttendanceDAL();
 
             adm_list = new List<admission>();
 
             try
             {
                 adm_list = admDAL.get_all_admissions();
+                adm_grid.ItemsSource = adm_list;
                 classes_list = classDAL.get_all_classes();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -53,6 +56,12 @@ namespace SMS.StudentManagement.AttendanceReportClassWise
             classes_list.Insert(0, new classes() { id = "-1", class_name = "--All Class--" });
             class_cmb.ItemsSource = classes_list;
             class_cmb.SelectedIndex = 0;
+
+            DateTime _date = DateTime.Now;
+            var firstDayOfMonth = new DateTime(_date.Year, _date.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            date_picker_to.SelectedDate = firstDayOfMonth;
+            date_picker_from.SelectedDate = lastDayOfMonth;
         }
 
         private void class_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -68,10 +77,12 @@ namespace SMS.StudentManagement.AttendanceReportClassWise
                     section_cmb.ItemsSource = sections_list;
                     section_cmb.SelectedIndex = 0;
                     section_cmb.IsEnabled = true;
+                    adm_grid.ItemsSource = adm_list.Where(x => x.class_id == cl.id);
                 }
                 else
                 {
                 }
+                ShowAdmissionGrid();
             }
         }
         private void section_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,30 +92,13 @@ namespace SMS.StudentManagement.AttendanceReportClassWise
                 if (section_cmb.SelectedIndex != 0)
                 {
                     sec = (sections)section_cmb.SelectedItem;
-
-                    ReportDataSource adm = new ReportDataSource();
-                    adm.Name = "adm";
-                    adm.Value = adm_list.Where(x => x.section_id == sec.id);
-
-                    ReportDataSource ins = new ReportDataSource();
-                    List<institute> ins_list = new List<institute>();
-                    MainWindow.ins.date = DateTime.Now;
-                    MainWindow.ins.page_no = 1;
-                    ins_list.Add(MainWindow.ins);
-                    ins.Name = "ins"; //Name of the report dataset in our .RDLC file
-                    ins.Value = ins_list;
-
-                    this._reportViewer1.LocalReport.DataSources.Clear();
-                    this._reportViewer1.LocalReport.DataSources.Add(adm);
-                    this._reportViewer1.LocalReport.DataSources.Add(ins);
-                    this._reportViewer1.LocalReport.ReportEmbeddedResource = "SMS.StudentManagement.AttendanceReportClassWise.StudentAttendanceReportClassWiseReport.rdlc";
-
-                    _reportViewer1.RefreshReport();
+                    adm_grid.ItemsSource = adm_list.Where(x => x.section_id == sec.id);                    
                 }
                 else
                 {
 
                 }
+                ShowAdmissionGrid();
             }
         }
 
@@ -116,7 +110,8 @@ namespace SMS.StudentManagement.AttendanceReportClassWise
                 date_picker_to.DisplayDateEnd = date_picker_from.SelectedDate;
                 if (date_picker_to.SelectedDate <= date_picker_from.SelectedDate)
                 {
-                    dt = date_picker_from.SelectedDate.Value;                    
+                    dt = date_picker_from.SelectedDate.Value;
+                    ShowAdmissionGrid();             
                 }
             }
         }
@@ -130,16 +125,45 @@ namespace SMS.StudentManagement.AttendanceReportClassWise
 
                 if (date_picker_to.SelectedDate <= date_picker_from.SelectedDate)
                 {
-                    dt = date_picker_from.SelectedDate.Value;                    
+                    dt = date_picker_from.SelectedDate.Value;
+                    ShowAdmissionGrid();
                 }
             }
         }
 
         private void generate_report_btn_Click(object sender, RoutedEventArgs e)
         {
-            if(class_cmb.SelectedItem != null && section_cmb.SelectedItem != null)
+            if (adm_list.Where(x => x.Checked == true).Count() > 0)
             {
+                List<student_attendence> lst = attDAL.GetStudentAttendanceByDate(date_picker_to.SelectedDate.Value, date_picker_from.SelectedDate.Value, adm_list.Where(x => x.Checked == true).OrderBy(x=>x.adm_no_int).ToList());
+                foreach (var item in lst)
+                {
 
+                }        
+                ReportDataSource att = new ReportDataSource();
+                att.Name = "att";
+                att.Value = lst;
+
+                ReportDataSource ins = new ReportDataSource();
+                List<institute> ins_list = new List<institute>();
+                MainWindow.ins.sDate = date_picker_to.SelectedDate.Value;
+                MainWindow.ins.eDate = date_picker_from.SelectedDate.Value;
+                MainWindow.ins.page_no = 1;
+                ins_list.Add(MainWindow.ins);
+                ins.Name = "ins"; //Name of the report dataset in our .RDLC file
+                ins.Value = ins_list;
+
+                this._reportViewer1.LocalReport.DataSources.Clear();
+                this._reportViewer1.LocalReport.DataSources.Add(att);
+                this._reportViewer1.LocalReport.DataSources.Add(ins);
+                this._reportViewer1.LocalReport.ReportEmbeddedResource = "SMS.StudentManagement.AttendanceReportClassWise.StudentAttendanceReportClassWiseReport.rdlc";
+
+                _reportViewer1.RefreshReport();
+                ShowAttendanceReport();
+            }
+            else
+            {
+                MessageBox.Show("Please Select Minimum One Student", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
             }
         }
 
@@ -155,6 +179,44 @@ namespace SMS.StudentManagement.AttendanceReportClassWise
             {
                 return true;
             }
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            admission adm_obj;
+            var checkBox = sender as CheckBox;
+            if (null == checkBox) return;
+
+            for (int i = 0; i < adm_grid.Items.Count; i++)
+            {
+                adm_obj = (admission)adm_grid.Items[i];
+                adm_obj.Checked = checkBox.IsChecked.Value;
+            }
+            adm_grid.Items.Refresh();
+
+        }
+        private void CheckBox_Checked_sub(object sender, RoutedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            adm_grid.SelectedItem = e.Source;
+            admission adm = new admission();
+            adm = (admission)adm_grid.SelectedItem;
+            foreach (admission ede in adm_list)
+            {
+                if (adm.id == ede.id)
+                {
+                    ede.Checked = checkBox.IsChecked.Value;
+                }
+            }
+        }
+        void ShowAdmissionGrid()
+        {
+            windowsFormsHost1.Visibility = Visibility.Collapsed;
+            adm_grid.Visibility = Visibility.Visible;
+        }
+        void ShowAttendanceReport()
+        {
+            windowsFormsHost1.Visibility = Visibility.Visible;
+            adm_grid.Visibility = Visibility.Collapsed;
         }
     }
 

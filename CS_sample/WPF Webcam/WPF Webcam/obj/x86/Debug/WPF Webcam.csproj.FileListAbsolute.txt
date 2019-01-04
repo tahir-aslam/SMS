@@ -66,3 +66,20 @@ F:\Scenario\ScenarioProjects\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\W
 F:\Scenario\ScenarioProjects\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.exe
 F:\Scenario\ScenarioProjects\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.pdb
 F:\Scenario\ScenarioProjects\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csprojResolveAssemblyReference.cache
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\WPF Webcam.exe
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\WPF Webcam.pdb
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.dll
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.Utilities.dll
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.Types.dll
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.xml
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.Utilities.xml
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.Types.xml
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\MainWindow.baml
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\MainWindow.g.cs
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\App.g.cs
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam_MarkupCompile.cache
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.g.resources
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF_Webcam.Properties.Resources.resources
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csproj.GenerateResource.Cache
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.exe
+D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.pdb

@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:Icon="clr-namespace:SMS.Common;assembly=SMS.Common"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
-    <!--<Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="60" />
@@ -26,7 +27,7 @@
                             ToolTipService.ToolTip="Add New Record"
                             Height="35"
                             Width="50">
-                        <Image  Source="/SMS;component/images/add-icon.png" />
+                        <Image  Source="/SMS.Common;component/Icons/add-icon.png" />
                     </Button>
 
                     <Button  Click="click_edit"
@@ -35,7 +36,7 @@
                              ToolTipService.ToolTip="Edit Record"
                              Height="35"
                              Width="50">
-                        <Image  Source="/SMS;component/images/Edit-icon.png"
+                        <Image  Source="/SMS.Common;component/Icons/Edit-icon.png"
                                 Name="img" />
                     </Button>
 
@@ -43,14 +44,14 @@
                             ToolTipService.ToolTip="Delete Record"
                             Height="35"
                             Width="50">
-                        <Image Source="/SMS;component/images/Delete-icon.png" />
+                        <Image Source="/SMS.Common;component/Icons/Delete-icon.png" />
                     </Button>
 
                     <Button Click="click_refresh"
                             ToolTipService.ToolTip="Refresh"
                             Height="35"
                             Width="50">
-                        <Image Source="/SMS;component/images/Refresh.png" />
+                        <Image Source="/SMS.Common;component/Icons/Refresh.png" />
                     </Button>
 
                     <Button ToolTipService.ToolTip="Print"
@@ -58,7 +59,7 @@
                             Width="50"
                             Name="print_btn"
                             Click="print_btn_Click">
-                        <Image Source="/SMS;component/images/print3.jpg" />
+                        <Image Source="/SMS.Common;component/Icons/print3.jpg" />
                     </Button>
                 </ToolBar>
 
@@ -97,52 +98,24 @@
 
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal"
+            <StackPanel Grid.Row="0"
                         Margin="1"
-                        Grid.Row="0"
-                        Background="White">
-
-
-                <Label Content="Select Category Account"
-                       VerticalAlignment="Center" />
-                <ComboBox   Width="160"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Stretch">
+                <DatePicker Width="120"
+                            Name="date_picker_to"
                             Height="30"
-                            Name="account_head_cmb"
-                            SelectedValuePath="id"
-                            SelectionChanged="account_head_cmb_SelectionChanged"
-                            Margin="10,0,0,0">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding id}"
-                                           HorizontalAlignment="Left"
-                                           FontSize="10"
-                                           Foreground="White"
-                                           VerticalAlignment="Center"
-                                           Visibility="Collapsed"></TextBlock>
-                                <TextBlock Text="{Binding account_name}"
-                                           HorizontalAlignment="Right"
-                                           FontSize="12"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <Label Height="25"
-                       HorizontalAlignment="Right"
-                       Margin="50,7,0,11"
-                       Name="label"
-                       VerticalAlignment="Center"
-                       Content="Search Account Name:   "
-                       Foreground="Black"
-                       BorderThickness="0"
-                       BorderBrush="#FF551755"
-                       VerticalContentAlignment="Center"
-                       HorizontalContentAlignment="Right" />
-                <TextBox  Height="35"
-                          Grid.Column="1"
-                          Width="300"
-                          MaxWidth="500"
-                          Margin="10,0,0,0"
+                            SelectedDateChanged="date_picker_to_SelectedDateChanged"
+                            Margin="10,0,0,0"
+                            ToolTip="Start Date" />
+                <DatePicker Width="120"
+                            Name="date_picker_from"
+                            SelectedDateChanged="date_picker_from_SelectedDateChanged"
+                            Height="30"
+                            ToolTip="End Date" />
+                <TextBox  Height="30"
+                          Width="200"
+                          Margin="20,0,0,0"
                           HorizontalAlignment="Left"
                           Name="SearchTextBox"
                           VerticalAlignment="Center"
@@ -153,12 +126,80 @@
                           VerticalContentAlignment="Center"
                           FontSize="16"
                           TextChanged="SearchTextBox_TextChanged" />
-
+                <ComboBox Margin="10,0,0,0"
+                          Grid.Row="0"
+                          Grid.Column="1"
+                          HorizontalAlignment="Left"
+                          Width="100"
+                          Height="20"
+                          VerticalAlignment="Center"
+                          Name="search_cmb"
+                          SelectedValuePath="id"
+                          SelectionChanged="search_cmb_SelectionChanged">
+                    <ComboBoxItem Content="By Name" />
+                    <ComboBoxItem Content="By Father Name" />
+                    <ComboBoxItem Content="By Adm #"
+                                  IsSelected="True" />
+                    <ComboBoxItem Content="By Roll #" />
+                    <ComboBoxItem Content="By Cell#" />
+                </ComboBox>
+                <ComboBox Grid.Row="0"
+                          Grid.Column="1"
+                          Margin="70,0,0,0"
+                          HorizontalAlignment="Left"
+                          Width="120"
+                          Height="30"
+                          VerticalAlignment="Center"
+                          Name="class_cmb"
+                          SelectedValuePath="id"
+                          SelectionChanged="class_cmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding id}"
+                                           HorizontalAlignment="Left"
+                                           FontSize="10"
+                                           Foreground="White"
+                                           VerticalAlignment="Center"
+                                           Visibility="Collapsed"></TextBlock>
+                                <TextBlock Text="{Binding class_name}"
+                                           HorizontalAlignment="Right"
+                                           FontSize="12"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox Grid.Row="0 "
+                          Grid.Column="3"
+                          Margin="20,0,0,0"
+                          HorizontalAlignment="Right"
+                          Width="120"
+                          Height="30"
+                          VerticalAlignment="Center"
+                          Name="section_cmb"
+                          SelectedValuePath="id"
+                          SelectionChanged="section_cmb_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding id}"
+                                           HorizontalAlignment="Left"
+                                           FontSize="10"
+                                           Foreground="White"
+                                           VerticalAlignment="Center"
+                                           Visibility="Collapsed"></TextBlock>
+                                <TextBlock Text="{Binding section_name}"
+                                           HorizontalAlignment="Right"
+                                           FontSize="12"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>              
             </StackPanel>
 
             <Grid Grid.Row="1"
                   Margin="1,0,1,1">
-                <DataGrid x:Name="account_grid"
+                <DataGrid x:Name="v_ComplaintGrid"
                           AutoGenerateColumns="False"
                           FontSize="12"
                           Background="White"
@@ -197,5 +238,5 @@
 
             </Grid>
         </Grid>
-    </Grid>-->
+    </Grid>
 </UserControl>

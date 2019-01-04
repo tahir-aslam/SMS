@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SMS.Common.Models;
+using SMS.ComplaintManagement.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,10 +20,19 @@ namespace SMS.ComplaintManagement.View
     /// Interaction logic for ComplaintForm.xaml
     /// </summary>
     public partial class ComplaintForm : Window
-    {
-        public ComplaintForm()
+    {        
+        List<sms_complaint_register> complaints_list;
+        ComplaintForm CF;
+        
+        List<classes> classes_list;
+        List<sections> sections_list;
+        
+
+        public ComplaintForm(string mode, ComplaintSearch search, sms_complaint_register obj)
         {
             InitializeComponent();
+            
         }
+        
     }
 }

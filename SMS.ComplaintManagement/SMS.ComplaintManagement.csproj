@@ -70,12 +70,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SMS\SMS.csproj">
-      <Project>{23FC9054-B931-4AAB-84BC-B0942D174359}</Project>
-      <Name>SMS</Name>
+    <ProjectReference Include="..\SMS.Common\SMS.Common.csproj">
+      <Project>{05d572dd-638d-49a8-8286-fc84c853a6a3}</Project>
+      <Name>SMS.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

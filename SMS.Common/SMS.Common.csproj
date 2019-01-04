@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{05D572DD-638D-49A8-8286-FC84C853A6A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SMS.Common</RootNamespace>
+    <AssemblyName>SMS.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\23_demo_image.jpg" />
+    <Content Include="Icons\add-icon.png" />
+    <Content Include="Icons\adm_slip.png" />
+    <Content Include="Icons\barcode2.jpg" />
+    <Content Include="Icons\birthday.jpg" />
+    <Content Include="Icons\branded_sms.png" />
+    <Content Include="Icons\camera.png" />
+    <Content Include="Icons\capture.png" />
+    <Content Include="Icons\class_img.jpg" />
+    <Content Include="Icons\clear.png" />
+    <Content Include="Icons\close.png" />
+    <Content Include="Icons\Delete-icon.png" />
+    <Content Include="Icons\disable.png" />
+    <Content Include="Icons\download.jpg" />
+    <Content Include="Icons\download1.png" />
+    <Content Include="Icons\duplicate.jpg" />
+    <Content Include="Icons\Edit-icon.png" />
+    <Content Include="Icons\exam_report.png" />
+    <Content Include="Icons\fee_defaulter.png" />
+    <Content Include="Icons\fee_history.png" />
+    <Content Include="Icons\fee_paid.png" />
+    <Content Include="Icons\general_sms.png" />
+    <Content Include="Icons\history.png" />
+    <Content Include="Icons\history1.png" />
+    <Content Include="Icons\history3.jpg" />
+    <Content Include="Icons\historySearch.png" />
+    <Content Include="Icons\historySearch1.png" />
+    <Content Include="Icons\home.png" />
+    <Content Include="Icons\home2.png" />
+    <Content Include="Icons\home3.png" />
+    <Content Include="Icons\icon.jpg" />
+    <Content Include="Icons\images.jpg" />
+    <Content Include="Icons\logout.png" />
+    <Content Include="Icons\new.png" />
+    <Content Include="Icons\open_challan.png" />
+    <Content Include="Icons\paid_image.jpg" />
+    <Content Include="Icons\people.png" />
+    <Content Include="Icons\people1.png" />
+    <Content Include="Icons\perfect_attendance.gif" />
+    <Content Include="Icons\print.jpg" />
+    <Content Include="Icons\print1.jpg" />
+    <Content Include="Icons\print2.jpg" />
+    <Content Include="Icons\print3.jpg" />
+    <Content Include="Icons\promotion.png" />
+    <Content Include="Icons\Refresh.png" />
+    <Content Include="Icons\report.png" />
+    <Content Include="Icons\report3.jpg" />
+    <Content Include="Icons\restore.png" />
+    <Content Include="Icons\restult.jpg" />
+    <Content Include="Icons\results_icon.jpg" />
+    <Content Include="Icons\rfid.png" />
+    <Content Include="Icons\saved_sms.png" />
+    <Content Include="Icons\setting.png" />
+    <Content Include="Icons\settings.jpg" />
+    <Content Include="Icons\sibling.png" />
+    <Content Include="Icons\sims_name.PNG" />
+    <Content Include="Icons\sms.jpg" />
+    <Content Include="Icons\SMS.png" />
+    <Content Include="Icons\smsicon.png" />
+    <Content Include="Icons\smsicon1.png" />
+    <Content Include="Icons\SMS_3.jpg" />
+    <Content Include="Icons\Staff.png" />
+    <Content Include="Icons\std_attendance.jpg" />
+    <Content Include="Icons\std_attendance.png" />
+    <Content Include="Icons\std_card.png" />
+    <Content Include="Icons\test.jpg" />
+    <Content Include="Icons\tplink.jpg" />
+    <Content Include="Icons\upload.jpg" />
+    <Content Include="Icons\upload1.png" />
+    <Content Include="Icons\voucher.jpg" />
+    <Content Include="Icons\web.png" />
+    <Content Include="Icons\web1.png" />
+    <Content Include="Icons\web2.png" />
+    <Content Include="Icons\withdraw.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

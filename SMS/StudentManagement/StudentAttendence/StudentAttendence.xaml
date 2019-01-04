@@ -115,7 +115,7 @@
                                           IsSelected="True" />
                             <ComboBoxItem Content="By Father Name" />
                             <ComboBoxItem Content="By Adm #" />
-                            <ComboBoxItem Content="By Roll #" />                            
+                            <ComboBoxItem Content="By Roll #" />
                         </ComboBox>
                     </StackPanel>
                     <Label Grid.Row="0"
@@ -166,9 +166,9 @@
                               VerticalAlignment="Center"
                               Name="section_cmb"
                               SelectedValuePath="id"
-                              SelectionChanged="section_cmb_SelectionChanged">                       
-                        <ComboBox.ItemTemplate>                            
-                            <DataTemplate>                                
+                              SelectionChanged="section_cmb_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <CheckBox Checked="CheckBox_Checked_Sections"
                                               Unchecked="CheckBox_Checked_Sections"
@@ -199,13 +199,13 @@
                     <Button Grid.Column="6"
                             Width="120"
                             Height="30"
-                            VerticalAlignment="Center"
+                            VerticalAlignment="Bottom"
                             Name="att_button"
                             Content="Submit Attendence"
                             HorizontalAlignment="Right"
                             Click="Button_Click"
                             IsEnabled="False"
-                            Margin="15,0,0,0" />
+                            Margin="15,0,0,7" />
                     <Button Content="Insert Previous"
                             Name="insert_prov_btn"
                             Height="30"

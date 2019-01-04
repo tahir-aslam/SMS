@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SMS.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace SMS.ComplaintManagement.Model
 {
-    public class sms_complaint_register : Models.admission
+    public class sms_complaint_register : admission
     {
         public int id { get;set;}
         public int std_id { get; set; }

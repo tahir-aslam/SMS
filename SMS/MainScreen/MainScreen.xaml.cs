@@ -1112,7 +1112,21 @@ namespace SMS.MainScreen
             attendance_sheet_btn.Foreground = Brushes.Black;
             daily_attendance_report_btn.Background = Brushes.White;
             daily_attendance_report_btn.Foreground = Brushes.Black;
-        }       
+        }
+
+        private void V_ComplaintRegiter_Click(object sender, RoutedEventArgs e)
+        {
+            //this.mainFrame.Content = new SM;
+            std_attendence_history.Background = Brushes.Purple;
+            std_attendence_history.Foreground = Brushes.White;
+
+            std_attendence.Background = Brushes.White;
+            std_attendence.Foreground = Brushes.Black;
+            attendance_sheet_btn.Background = Brushes.White;
+            attendance_sheet_btn.Foreground = Brushes.Black;
+            daily_attendance_report_btn.Background = Brushes.White;
+            daily_attendance_report_btn.Foreground = Brushes.Black;
+        }
 
         private void emp_login_Click(object sender, RoutedEventArgs e)
         {
@@ -2940,7 +2954,8 @@ namespace SMS.MainScreen
                 //MessageBox.Show(ex.Message, "Stop", MessageBoxButton.OK, MessageBoxImage.Stop);
                 //Environment.Exit(0);
             }
-        }   
+        }
 
+        
     }
 }
