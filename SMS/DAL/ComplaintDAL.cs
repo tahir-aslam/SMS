@@ -131,16 +131,16 @@ namespace SMS.DAL
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "select * from sms_complaint_register as register" +
-                                            "Inner Join sms_admission as adm ON adm.id=register.std_id && adm.session_id=@session_id" +
-                                            "Inner Join sms_complaint_from as c_from ON c_from.id=register.complaint_from_id" +
-                                            "inner Join sms_complaint_status as c_status ON c_status.id=register.complaint_status_id" +
-                                            "Inner Join sms_complaint_type as c_type ON c_type.id=register.complaint_type_id" +
+                        cmd.CommandText = "select * from sms_complaint_register as register " +
+                                            "Inner Join sms_admission as adm ON adm.id=register.std_id && adm.session_id=@session_id " +
+                                            "Inner Join sms_complaint_from as c_from ON c_from.id=register.complaint_from_id " +
+                                            "Inner Join sms_complaint_status as c_status ON c_status.id=register.complaint_status_id " +
+                                            "Inner Join sms_complaint_type as c_type ON c_type.id=register.complaint_type_id " +
                                             "Where register.deletion='false' && (DATE(register.created_date_time) >= @sDate && DATE(register.created_date_time) <= @eDate)";
                         cmd.Connection = con;
                         cmd.Parameters.Add("@sDate", MySqlDbType.Date).Value = sDate;
                         cmd.Parameters.Add("@eDate", MySqlDbType.Date).Value = eDate;
-                        cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = 6;
+                        cmd.Parameters.Add("@session_id", MySqlDbType.VarChar).Value = MainWindow.session.id;
                         con.Open();
                         MySqlDataReader reader = cmd.ExecuteReader();
 

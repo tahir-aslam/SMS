@@ -49,6 +49,7 @@ using SMS.AdvancedAccountManagement;
 using System.ComponentModel;
 using System.Net;
 using SMS.DAL;
+using SMS.ComplaintManagment;
 
 namespace SMS.MainScreen
 {
@@ -1116,9 +1117,9 @@ namespace SMS.MainScreen
 
         private void V_ComplaintRegiter_Click(object sender, RoutedEventArgs e)
         {
-            //this.mainFrame.Content = new SM;
-            std_attendence_history.Background = Brushes.Purple;
-            std_attendence_history.Foreground = Brushes.White;
+            this.mainFrame.Content = new ComplaintRegister();
+            V_ComplaintRegiter.Background = Brushes.Purple;
+            V_ComplaintRegiter.Foreground = Brushes.White;
 
             std_attendence.Background = Brushes.White;
             std_attendence.Foreground = Brushes.Black;

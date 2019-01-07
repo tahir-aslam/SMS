@@ -83,3 +83,21 @@ D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF_Webcam.Properties.R
 D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csproj.GenerateResource.Cache
 D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.exe
 D:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.pdb
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\WPF Webcam.exe
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\WPF Webcam.pdb
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.dll
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.Utilities.dll
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.Types.dll
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.xml
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.Utilities.xml
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\bin\Debug\Microsoft.Expression.Encoder.Types.xml
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csprojResolveAssemblyReference.cache
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\MainWindow.baml
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\MainWindow.g.cs
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\App.g.cs
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam_MarkupCompile.cache
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.g.resources
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF_Webcam.Properties.Resources.resources
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csproj.GenerateResource.Cache
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.exe
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.pdb

@@ -330,8 +330,12 @@
     <Compile Include="Common\StudentSelectionWindowNew.xaml.cs">
       <DependentUpon>StudentSelectionWindowNew.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ComplaintManagment\ComplaintForm.xaml.cs" />
-    <Compile Include="ComplaintManagment\ComplaintSearch.xaml.cs" />
+    <Compile Include="ComplaintManagment\ComplaintForm.xaml.cs">
+      <DependentUpon>ComplaintForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ComplaintManagment\ComplaintRegister.xaml.cs">
+      <DependentUpon>ComplaintRegister.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
@@ -1127,12 +1131,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ComplaintManagment\ComplaintForm.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ComplaintManagment\ComplaintSearch.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="ComplaintManagment\ComplaintRegister.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CircularProgressBar.xaml">
       <SubType>Designer</SubType>

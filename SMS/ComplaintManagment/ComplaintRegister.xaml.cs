@@ -1,5 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using SMS.DAL;
+using SMS.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -11,17 +15,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
-using System.ComponentModel;
-using SMS.Models;
-using SMS.DAL;
 
-namespace SMS.ComplaintManagement
+namespace SMS.ComplaintManagment
 {
     /// <summary>
-    /// Interaction logic for ComplaintSearch.xaml
+    /// Interaction logic for ComplaintRegister.xaml
     /// </summary>
-    public partial class ComplaintSearch : UserControl
+    public partial class ComplaintRegister : Page
     {
         List<sms_complaint_register> complaints_list;
         ComplaintForm CF;
@@ -31,10 +31,10 @@ namespace SMS.ComplaintManagement
         List<sections> sections_list;
         ComplaintDAL ComplaintDAL;
 
-        public ComplaintSearch()
+        public ComplaintRegister()
         {
-            InitializeComponent();            
-            
+            InitializeComponent();
+
             SearchTextBox.Focus();
             classes_list = new List<classes>();
             get_all_classes();
@@ -42,9 +42,14 @@ namespace SMS.ComplaintManagement
             classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
             class_cmb.ItemsSource = classes_list;
 
+            DateTime _date = DateTime.Now;
+            var firstDayOfMonth = new DateTime(_date.Year, _date.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            date_picker_to.SelectedDate = firstDayOfMonth;
+            date_picker_from.SelectedDate = lastDayOfMonth;
+
             load_grid();
         }
-
         public void load_grid()
         {
             ComplaintDAL = new ComplaintDAL();
@@ -52,7 +57,7 @@ namespace SMS.ComplaintManagement
             complaints_list = ComplaintDAL.getAllComplaintsRegiter(date_picker_to.SelectedDate.Value, date_picker_from.SelectedDate.Value);
             v_ComplaintGrid.ItemsSource = complaints_list;
             class_cmb.SelectedIndex = 0;
-            section_cmb.SelectedIndex = 0;            
+            section_cmb.SelectedIndex = 0;
         }
         private void date_picker_from_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -61,8 +66,8 @@ namespace SMS.ComplaintManagement
                 date_picker_from.DisplayDateStart = date_picker_to.SelectedDate;
                 date_picker_to.DisplayDateEnd = date_picker_from.SelectedDate;
                 if (date_picker_to.SelectedDate <= date_picker_from.SelectedDate)
-                {                    
-                    
+                {
+
                 }
             }
         }
@@ -76,7 +81,7 @@ namespace SMS.ComplaintManagement
 
                 if (date_picker_to.SelectedDate <= date_picker_from.SelectedDate)
                 {
-                    
+
                 }
             }
         }
@@ -84,7 +89,7 @@ namespace SMS.ComplaintManagement
         private void click_refresh(object sender, RoutedEventArgs e)
         {
             load_grid();
-            class_cmb.SelectedIndex = 0;            
+            class_cmb.SelectedIndex = 0;
         }
 
         private void click_new(object sender, RoutedEventArgs e)
@@ -141,10 +146,10 @@ namespace SMS.ComplaintManagement
             {
                 MessageBoxResult mbr = MessageBox.Show("Are You Want To Delete This Record ?", "Delete Confirmation", MessageBoxButton.YesNo);
                 if (mbr == MessageBoxResult.Yes)
-                {                    
+                {
                 }
             }
-        }       
+        }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             search_box();
@@ -195,7 +200,7 @@ namespace SMS.ComplaintManagement
 
                 };
             }
-            SearchTextBox.Focus();            
+            SearchTextBox.Focus();
         }
 
         //---------------           Get All Classes    ----------------------------------
@@ -244,7 +249,7 @@ namespace SMS.ComplaintManagement
 
             if (class_cmb.SelectedIndex != 0)
             {
-                //get_all_sections(id);                
+                get_all_sections(id);
                 v_ComplaintGrid.ItemsSource = complaints_list.Where(x => x.class_id == id);
                 section_cmb.IsEnabled = true;
                 sections_list.Insert(0, new sections() { section_name = "---Select Section---", id = "-1" });
@@ -260,7 +265,55 @@ namespace SMS.ComplaintManagement
             }
         }
 
-        //------------         Get All Sections   ------------------------       
+        //------------         Get All Sections   ------------------------      
+        public void get_all_sections(string id)
+        {
+            sections_list = new List<sections>();
+
+            using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+
+
+                    //cmd.CommandText = "GetAllRoles";
+                    cmd.CommandText = "SELECT* FROM sms_subjects where class_id = " + id;
+                    cmd.Connection = con;
+                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
+                    try
+                    {
+                        con.Open();
+
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            sections section = new sections()
+                            {
+
+                                id = Convert.ToString(reader["id"].ToString()),
+                                section_name = Convert.ToString(reader["section_name"].ToString()),
+                                emp_id = Convert.ToString(reader["emp_id"].ToString()),
+                                emp_name = Convert.ToString(reader["emp_name"].ToString()),
+                                class_id = Convert.ToString(reader["class_id"].ToString()),
+                                is_active = Convert.ToString(reader["is_active"].ToString()),
+                                date_time = Convert.ToDateTime(reader["date_time"]),
+                                created_by = Convert.ToString(reader["created_by"].ToString()),
+                                class_name = Convert.ToString(reader["class_name"].ToString()),
+
+
+                            };
+                            sections_list.Add(section);
+
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("DB not connected");
+                    }
+
+                }
+            }
+        }
 
         //=======          Sections Selection Changed        ======================================================
         private void section_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -271,7 +324,7 @@ namespace SMS.ComplaintManagement
                 string id = sec.id;
                 if (section_cmb.SelectedIndex != 0)
                 {
-                    v_ComplaintGrid.ItemsSource = complaints_list.Where(x => x.section_id == id);                    
+                    v_ComplaintGrid.ItemsSource = complaints_list.Where(x => x.section_id == id);
                 }
                 else
                 {
@@ -324,14 +377,14 @@ namespace SMS.ComplaintManagement
             //window.Show();
 
         }
-       
+
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SearchTextBox.Focus();
         }
 
-       
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var dpd = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, typeof(DataGrid));
