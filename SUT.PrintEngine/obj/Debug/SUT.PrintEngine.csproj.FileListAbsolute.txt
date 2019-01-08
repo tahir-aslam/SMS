@@ -128,3 +128,4 @@ F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.Resources.Strin
 F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.csproj.GenerateResource.Cache
 F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.dll
 F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.pdb
+D:\USB\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.csprojResolveAssemblyReference.cache

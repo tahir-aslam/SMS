@@ -2062,9 +2062,7 @@ D:\USB\SMS\SMS\obj\x86\Debug\SMS.application
 D:\USB\SMS\SMS\obj\x86\Debug\SMS.exe
 D:\USB\SMS\SMS\obj\x86\Debug\SMS.pdb
 D:\USB\SMS\SMS\obj\x86\Debug\ComplaintManagment\ComplaintForm.baml
-D:\USB\SMS\SMS\obj\x86\Debug\ComplaintManagment\ComplaintSearch.baml
 D:\USB\SMS\SMS\obj\x86\Debug\ComplaintManagment\ComplaintForm.g.cs
-D:\USB\SMS\SMS\obj\x86\Debug\ComplaintManagment\ComplaintSearch.g.cs
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\SMS.csprojResolveAssemblyReference.cache
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\AccountManagement\AccountBalanceSheet\BalanceSheet.baml
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\AccountManagement\AccountBalanceSheet\BalanceSheetPrint.baml
@@ -2565,3 +2563,5 @@ F:\Scenario\Github\SMS\SMS\obj\x86\Debug\SMS.exe.manifest
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\SMS.application
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\SMS.exe
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\SMS.pdb
+D:\USB\SMS\SMS\obj\x86\Debug\ComplaintManagment\ComplaintRegister.g.cs
+D:\USB\SMS\SMS\obj\x86\Debug\ComplaintManagment\ComplaintRegister.baml

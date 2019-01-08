@@ -58,7 +58,7 @@ namespace SMS.ComplaintManagment
             v_ComplaintGrid.ItemsSource = complaints_list;
             class_cmb.SelectedIndex = 0;
             section_cmb.SelectedIndex = 0;
-        }
+        }        
         private void date_picker_from_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (date_picker_from.SelectedDate != null && date_picker_to.SelectedDate != null)
@@ -67,7 +67,7 @@ namespace SMS.ComplaintManagment
                 date_picker_to.DisplayDateEnd = date_picker_from.SelectedDate;
                 if (date_picker_to.SelectedDate <= date_picker_from.SelectedDate)
                 {
-
+                    load_grid();
                 }
             }
         }
@@ -81,7 +81,7 @@ namespace SMS.ComplaintManagment
 
                 if (date_picker_to.SelectedDate <= date_picker_from.SelectedDate)
                 {
-
+                    load_grid();
                 }
             }
         }
@@ -138,6 +138,9 @@ namespace SMS.ComplaintManagment
         private void click_delete(object sender, RoutedEventArgs e)
         {
             obj = (sms_complaint_register)v_ComplaintGrid.SelectedItem;
+            obj.updated_by = MainWindow.emp_login_obj.emp_user_name;
+            obj.updated_date_time = DateTime.Now;
+            obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.id);
             if (obj == null)
             {
                 MessageBox.Show("Please Select A Row");
@@ -147,6 +150,11 @@ namespace SMS.ComplaintManagment
                 MessageBoxResult mbr = MessageBox.Show("Are You Want To Delete This Record ?", "Delete Confirmation", MessageBoxButton.YesNo);
                 if (mbr == MessageBoxResult.Yes)
                 {
+                    if (ComplaintDAL.deleteComplaintRegister(obj) > 0)
+                    {
+                        MessageBox.Show("Successfully Deleted");
+                        load_grid();
+                    }
                 }
             }
         }
@@ -410,10 +418,10 @@ namespace SMS.ComplaintManagment
                 }
             }
         }
-
-        private void v_ComplaintGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+       
+        private void v_ComplaintGrid_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
-
+            editing();
         }
     }
 }

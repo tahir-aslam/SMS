@@ -9,9 +9,9 @@ using SMS.Common;
 namespace SMS.DAL
 {
     public class ComplaintDAL
-    {        
+    {
         public ComplaintDAL()
-        {            
+        {
         }
         public List<sms_complaint_from> getAllComplaintFrom()
         {
@@ -108,7 +108,7 @@ namespace SMS.DAL
                             sms_complaint_status obj = new sms_complaint_status()
                             {
                                 id = Convert.ToInt32(reader["id"]),
-                                complaint_status = Convert.ToString(reader["complaint_type"]),
+                                complaint_status = Convert.ToString(reader["complaint_status"]),
                             };
                             list.Add(obj);
                         }
@@ -187,33 +187,38 @@ namespace SMS.DAL
 
             return list;
         }
-        public int insertComplaintRegister(sms_complaint_register obj)
-{
-    try
-    {
+        public int insertComplaintRegister(List<sms_complaint_register> lst)
+        {
+            int i = 0;
+            try
+            {
                 using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    con.Open();
+                    foreach (var obj in lst)
                     {
-                        cmd.CommandText = "INSERT INTO sms_complaint_register(std_id,session_id,complaint_type_id,complaint_status_id,complaint_from_id, complaint_remarks,complaint_resolved_remarks,complaint_date, complaint_resolved_date, created_by, updated_by, created_date_time, updated_date_time, emp_id) Values(@std_id, @session_id, @complaint_type_id, @complaint_status_id, @complaint_from_id, @complaint_remarks, @complaint_resolved_remarks, @complaint_date, @complaint_resolved_date, @created_by, @updated_by, @created_date_time, @updated_date_time, @emp_id)";
-                        cmd.Connection = con;
+                        using (MySqlCommand cmd = new MySqlCommand())
+                        {
+                            cmd.CommandText = "INSERT INTO sms_complaint_register(std_id,session_id,complaint_type_id,complaint_status_id,complaint_from_id, complaint_remarks,complaint_resolved_remarks,complaint_date, complaint_resolved_date, created_by, updated_by, created_date_time, updated_date_time, emp_id) Values(@std_id, @session_id, @complaint_type_id, @complaint_status_id, @complaint_from_id, @complaint_remarks, @complaint_resolved_remarks, @complaint_date, @complaint_resolved_date, @created_by, @updated_by, @created_date_time, @updated_date_time, @emp_id)";
+                            cmd.Connection = con;                    
 
-                        cmd.Parameters.Add("@std_id", MySqlDbType.Int32).Value = obj.std_id;
-                        cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = obj.session_id;
-                        cmd.Parameters.Add("@complaint_type_id", MySqlDbType.Int32).Value = obj.complaint_type_id;
-                        cmd.Parameters.Add("@complaint_status_id", MySqlDbType.Int32).Value = obj.complaint_status_id;
-                        cmd.Parameters.Add("@complaint_from_id", MySqlDbType.Int32).Value = obj.complaint_from_id;
-                        cmd.Parameters.Add("@complaint_remarks", MySqlDbType.VarChar).Value = obj.complaint_remarks;
-                        cmd.Parameters.Add("@complaint_resolved_remarks", MySqlDbType.VarChar).Value = obj.complaint_resolved_remarks;
-                        cmd.Parameters.Add("@complaint_date", MySqlDbType.Date).Value = obj.complaint_date;
-                        cmd.Parameters.Add("@complaint_resolved_date", MySqlDbType.Date).Value = obj.complaint_resolved_date;
-                        cmd.Parameters.Add("@created_by", MySqlDbType.VarChar).Value = obj.created_by;
-                        cmd.Parameters.Add("@updated_by", MySqlDbType.VarChar).Value = obj.updated_by;
-                        cmd.Parameters.Add("@created_date_time", MySqlDbType.Date).Value = obj.created_date_time;
-                        cmd.Parameters.Add("@updated_date_time", MySqlDbType.Date).Value = obj.updated_date_time;
-                        cmd.Parameters.Add("@emp_id", MySqlDbType.Int32).Value = obj.emp_id;
+                            cmd.Parameters.Add("@std_id", MySqlDbType.Int32).Value = obj.std_id;
+                            cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = obj.session_id;
+                            cmd.Parameters.Add("@complaint_type_id", MySqlDbType.Int32).Value = obj.complaint_type_id;
+                            cmd.Parameters.Add("@complaint_status_id", MySqlDbType.Int32).Value = obj.complaint_status_id;
+                            cmd.Parameters.Add("@complaint_from_id", MySqlDbType.Int32).Value = obj.complaint_from_id;
+                            cmd.Parameters.Add("@complaint_remarks", MySqlDbType.VarChar).Value = obj.complaint_remarks;
+                            cmd.Parameters.Add("@complaint_resolved_remarks", MySqlDbType.VarChar).Value = obj.complaint_resolved_remarks;
+                            cmd.Parameters.Add("@complaint_date", MySqlDbType.Date).Value = obj.complaint_date;
+                            cmd.Parameters.Add("@complaint_resolved_date", MySqlDbType.Date).Value = obj.complaint_resolved_date;
+                            cmd.Parameters.Add("@created_by", MySqlDbType.VarChar).Value = obj.created_by;
+                            cmd.Parameters.Add("@updated_by", MySqlDbType.VarChar).Value = obj.updated_by;
+                            cmd.Parameters.Add("@created_date_time", MySqlDbType.Date).Value = obj.created_date_time;
+                            cmd.Parameters.Add("@updated_date_time", MySqlDbType.Date).Value = obj.updated_date_time;
+                            cmd.Parameters.Add("@emp_id", MySqlDbType.Int32).Value = obj.emp_id;
 
-                        return Convert.ToInt32(cmd.ExecuteNonQuery());
+                            i = Convert.ToInt32(cmd.ExecuteNonQuery());
+                        }
                     }
                 }
             }
@@ -221,13 +226,15 @@ namespace SMS.DAL
             {
                 throw ex;
             }
-}
-public int updateComplaintRegister(sms_complaint_register obj)
-{
-    try
-    {
+            return i;
+        }
+        public int updateComplaintRegister(sms_complaint_register obj)
+        {
+            try
+            {
                 using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
                 {
+                    con.Open();
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         cmd.CommandText = "Update sms_complaint_register Set std_id=@std_id, session_id=@session_id, complaint_type_id=@complaint_type_id,complaint_status_id=@complaint_status_id, complaint_from_id=@complaint_from_id, complaint_remarks=@complaint_remarks, complaint_resolved_remarks=@complaint_resolved_remarks, complaint_date=@complaint_date, complaint_resolved_date=@complaint_resolved_date, updated_date_time=@updated_date_time, updated_by=@updated_by, emp_id=@emp_id";
@@ -256,14 +263,15 @@ public int updateComplaintRegister(sms_complaint_register obj)
             }
         }
         public int deleteComplaintRegister(sms_complaint_register obj)
-{
-    try
-    {
+        {
+            try
+            {
                 using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
                 {
+                    con.Open();
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "Update sms_complaint_register Set deletion=@deletion, updated_date_time=@updated_date_time, updated_by=@updated_by, emp_id=@emp_id where id=@id)";
+                        cmd.CommandText = "Update sms_complaint_register Set deletion=@deletion, updated_date_time=@updated_date_time, updated_by=@updated_by, emp_id=@emp_id where id=@id";
                         cmd.Connection = con;
                         cmd.Parameters.Add("@deletion", MySqlDbType.VarChar).Value = "true";
                         cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = obj.id;

@@ -75,7 +75,7 @@
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Center">
                                     <TextBlock Text="Issue Date:-  " Width="100" VerticalAlignment="Center" FontSize="18"/>
-                                    <TextBlock Text="{Binding reg_fee}"  Margin="10,0,30,0" FontWeight="Bold" Width="130" TextDecorations="Underline" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding reg_fee}"  Margin="10,0,30,0" FontWeight="Bold" Width="133" TextDecorations="Underline" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                                     <TextBlock Text="Reg No:-  " Width="100" VerticalAlignment="Center" FontSize="18" Margin="70,0,0,0"/>
                                     <TextBlock Text="{Binding adm_no}"  Margin="10,0,0,0" FontWeight="Bold" Width="120" TextDecorations="Underline" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>

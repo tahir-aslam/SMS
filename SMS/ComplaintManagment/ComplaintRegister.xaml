@@ -144,6 +144,7 @@
                                   IsSelected="True" />
                     <ComboBoxItem Content="By Roll #" />
                     <ComboBoxItem Content="By Cell#" />
+                    <ComboBoxItem Content="By Complaint#" />
                 </ComboBox>
                 <ComboBox Grid.Row="0"
                           Grid.Column="1"
@@ -212,7 +213,7 @@
                           VerticalScrollBarVisibility="Auto"
                           SelectionMode="Single"
                           Margin="1,0,-1,0"
-                          MouseDoubleClick="v_ComplaintGrid_MouseDoubleClick">
+                          MouseDoubleClick="v_ComplaintGrid_MouseDoubleClick_1">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="C.No"
                                             Binding="{Binding id}"
