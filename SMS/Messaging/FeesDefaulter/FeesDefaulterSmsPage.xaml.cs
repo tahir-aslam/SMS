@@ -51,7 +51,7 @@ namespace SMS.Messaging.FeesDefaulter
             classDAL = new ClassesDAL();
             miscDAL = new MiscDAL();
 
-            general_btn.IsChecked = true;
+            //general_btn.IsChecked = true;
             withoutAmount_btn.IsChecked = true;
             if (MainWindow.ins.isMultiPartSMSAccess == "Y")
             {

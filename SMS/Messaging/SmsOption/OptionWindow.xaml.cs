@@ -50,6 +50,7 @@ namespace SMS.Messaging.SmsOption
             FeesPaid.FeesPaidSMSNew.isbranded = false;
             FeesDefaulter.FeesDefaulterSmsPage.isbranded = false;
             Admission.AdmissionSMSPage.isbranded = false;
+            ComplaintRegister.ComplaintSMS.isbranded = false;
             this.Close();
 
         }
@@ -67,6 +68,7 @@ namespace SMS.Messaging.SmsOption
             FeesDefaulter.FeesDefaulterSmsPage.isbranded = true;
             FeesPaid.FeesPaidSMSNew.isbranded = true;
             Admission.AdmissionSMSPage.isbranded = true;
+            ComplaintRegister.ComplaintSMS.isbranded = true;
             this.Close();
         }
 
@@ -82,6 +84,7 @@ namespace SMS.Messaging.SmsOption
             FeesDefaulter.FeesDefaulterSmsPage.isbranded = false;
             FeesPaid.FeesPaidSMSNew.isbranded = false;
             Admission.AdmissionSMSPage.isbranded = false;
+            ComplaintRegister.ComplaintSMS.isbranded = false;
             this.Close();
         }
 

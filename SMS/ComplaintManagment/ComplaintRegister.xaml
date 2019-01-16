@@ -214,7 +214,7 @@
                           SelectionMode="Single"
                           Margin="1,0,-1,0"
                           MouseDoubleClick="v_ComplaintGrid_MouseDoubleClick_1">
-                    <DataGrid.Columns>
+                    <DataGrid.Columns>                       
                         <DataGridTextColumn Header="C.No"
                                             Binding="{Binding id}"
                                             Width="50" />
@@ -235,6 +235,15 @@
                                             Width="Auto" />
                         <DataGridTextColumn Header="Roll#"
                                             Binding="{Binding roll_no}"
+                                            Width="Auto" />
+                        <DataGridTextColumn Header="C.From"
+                                            Binding="{Binding complaint_from}"
+                                            Width="Auto" />
+                        <DataGridTextColumn Header="C.Type"
+                                            Binding="{Binding complaint_type}"
+                                            Width="Auto" />
+                        <DataGridTextColumn Header="C.Status"
+                                            Binding="{Binding complaint_status}"
                                             Width="Auto" />
                     </DataGrid.Columns>
                 </DataGrid>

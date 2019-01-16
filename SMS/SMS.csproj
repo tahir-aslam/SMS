@@ -621,6 +621,9 @@
     <Compile Include="Messaging\BrandedSms\BrandedSmsEngine.xaml.cs">
       <DependentUpon>BrandedSmsEngine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Messaging\ComplaintRegister\ComplaintSMS.xaml.cs">
+      <DependentUpon>ComplaintSMS.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Messaging\EmpAttendanceSms\EmpAttendanceSmsPage.xaml.cs">
       <DependentUpon>EmpAttendanceSmsPage.xaml</DependentUpon>
     </Compile>
@@ -1531,6 +1534,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Messaging\ComplaintRegister\ComplaintSMS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Messaging\EmpAttendanceSms\EmpAttendanceSmsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -2131,6 +2138,7 @@
   <ItemGroup>
     <Resource Include="images\rfid.png" />
     <Resource Include="images\adm_slip.png" />
+    <Resource Include="images\complaint_icon.png" />
     <Content Include="Lib\CrystalDecisions.CrystalReports.Engine.dll" />
     <Content Include="Lib\GSMCommServer.dll" />
     <Content Include="Lib\GSMCommShared.dll" />

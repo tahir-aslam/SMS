@@ -14,7 +14,8 @@ namespace SMS.Models
         public string complaint_type { get; set; }
         public int complaint_status_id { get; set; }
         public string complaint_status { get; set; }
-        public int complaint_from_id { get; set; }        
+        public int complaint_from_id { get; set; }
+        public string complaint_from { get; set; }
         public string complaint_remarks { get; set; }
         public string complaint_resolved_remarks { get; set; }        
         public DateTime complaint_date { get; set; }

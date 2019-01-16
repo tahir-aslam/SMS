@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS", "SMS\SMS.csproj", "{23FC9054-B931-4AAB-84BC-B0942D174359}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.DAL", "SMS.DAL\SMS.DAL.csproj", "{9DE549EC-84FA-48D3-BA15-710A4477D364}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SMS_08Jan", "SMS_08Jan\SMS_08Jan.vdproj", "{C17D4B9B-BE6F-4684-9844-400B45C301F6}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SMS_13jan", "SMS_13jan\SMS_13jan.vdproj", "{82114830-A148-4806-9B97-1732FF15F3AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,12 @@ Global
 		{C17D4B9B-BE6F-4684-9844-400B45C301F6}.Release|Any CPU.ActiveCfg = Release
 		{C17D4B9B-BE6F-4684-9844-400B45C301F6}.Release|Mixed Platforms.ActiveCfg = Release
 		{C17D4B9B-BE6F-4684-9844-400B45C301F6}.Release|x86.ActiveCfg = Release
+		{82114830-A148-4806-9B97-1732FF15F3AC}.Debug|Any CPU.ActiveCfg = Debug
+		{82114830-A148-4806-9B97-1732FF15F3AC}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{82114830-A148-4806-9B97-1732FF15F3AC}.Debug|x86.ActiveCfg = Debug
+		{82114830-A148-4806-9B97-1732FF15F3AC}.Release|Any CPU.ActiveCfg = Release
+		{82114830-A148-4806-9B97-1732FF15F3AC}.Release|Mixed Platforms.ActiveCfg = Release
+		{82114830-A148-4806-9B97-1732FF15F3AC}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

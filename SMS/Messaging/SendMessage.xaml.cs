@@ -146,6 +146,10 @@ namespace SMS.Messaging
             this.sms_frame.Navigate(new Admission.AdmissionSMSPage());
         }
 
+        private void complaint_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.sms_frame.Navigate(new Messaging.ComplaintRegister.ComplaintSMS());
+        }
     }
 
 }
