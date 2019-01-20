@@ -21,6 +21,9 @@ namespace SMS.Models
         public string parents_visibility { set; get; }
         public string teacher_sig_text { set; get; }
         public string principal_sig_text { set; get; }
-        public string parents_sig_text { set; get; }        
+        public string parents_sig_text { set; get; }    
+        public Byte[] teacher_sig_image { get; set; }
+        public Byte[] principal_sig_image { get; set; }
+        public Byte[] parents_sig_image { get; set; }
     }
 }

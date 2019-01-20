@@ -10,7 +10,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
 	Title="ResultCard1">
-    <Page.Resources>        
+    <Page.Resources>
         <converter:BinaryImageConverter x:Key="imgConverter"/>
         <converter:BooleanToVisibilityConverter x:Key="visibilityConverter" />
         <converter:PositionToVisibilityConverter x:Key="myPositionToVisibilityConverter" />
@@ -26,7 +26,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>            
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Margin="-1">
@@ -48,7 +48,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            
+
             <!--Selection Grid exam class section-->
             <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
@@ -131,7 +131,7 @@
                                             <RowDefinition Height="225"/>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="40"/>
-                                            <RowDefinition Height="40"/>                                            
+                                            <RowDefinition Height="40"/>
                                             <RowDefinition Height="40"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
@@ -309,8 +309,8 @@
                                                     </DataGridTextColumn>
                                                 </DataGrid.Columns>
                                             </DataGrid>
-                                        </Grid>                                                                                
-                                        
+                                        </Grid>
+
                                         <StackPanel Grid.Row="2" Orientation="Horizontal"  Margin="10,0,0,0" Visibility="{Binding Converter={StaticResource myAttendanceToVisibilityConverter}}" >
                                             <TextBlock Text="Total Days:     " FontSize="14" FontWeight="Bold"  VerticalAlignment="Center"/>
                                             <TextBlock  Name="attendence_tb" Text="{Binding total_days}"  FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Width="80" TextDecorations="Underline"/>
@@ -329,7 +329,7 @@
                                         <StackPanel Grid.Row="3" Grid.RowSpan="2" Margin="10,0,0,0">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="Remarks:   " HorizontalAlignment="Left" FontSize="18" FontWeight="Bold"   VerticalAlignment="Center" Visibility="{Binding Converter={StaticResource myRemarksToVisibilityConverter}}"/>
-                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="450,0,0,0" Visibility="{Binding Converter={StaticResource myPositionToVisibilityConverter}}">                                                    
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="450,0,0,0" Visibility="{Binding Converter={StaticResource myPositionToVisibilityConverter}}">
                                                     <TextBlock Text="Position: " FontSize="15" FontWeight="Bold"  VerticalAlignment="Center"/>
                                                     <TextBlock   Text="{Binding position}" TextDecorations="Underline" FontSize="18" Width="80" FontWeight="Bold" VerticalAlignment="Center"/>
                                                     <!--<TextBlock Text="Vacation Task: " FontSize="15" FontWeight="Bold"  VerticalAlignment="Center"/>
@@ -346,54 +346,22 @@
                                         <StackPanel Grid.Row="5" 
                                               Margin="10,0,10,0"
                                                Orientation="Horizontal">
-                                            <!--<TextBlock Text="Class Teacher's Signature  "
-                                                       FontSize="15"                                                       
-                                                       FontWeight="Bold"
-                                                       VerticalAlignment="Center"
-                                                       Visibility="{Binding Converter={StaticResource myPrincipalToVisibilityConverter}}" />
-                                            <TextBox  FontSize="15"
-                                                      Width="80"
-                                                      Text="____________________"
-                                                      BorderThickness="0,0,0,1"
-                                                      BorderBrush="Black"
-                                                      TextDecorations="Underline"
-                                                      FontWeight="Bold"
-                                                      VerticalAlignment="Center"
-                                                      Visibility="{Binding Converter={StaticResource myPrincipalToVisibilityConverter}}" />
-                                            <TextBlock Text="Principal's Signature  "
-                                                       FontSize="15"                                                       
-                                                       FontWeight="Bold"
-                                                       VerticalAlignment="Center"
-                                                       Visibility="{Binding Converter={StaticResource myTeachersToVisibilityConverter}}" />
-                                            <TextBox  Text="____________________"
-                                                      FontSize="15"
-                                                      Width="80"
-                                                      BorderThickness="0,0,0,1"
-                                                      BorderBrush="Black"
-                                                      FontWeight="Bold"
-                                                      VerticalAlignment="Center"
-                                                      Visibility="{Binding Converter={StaticResource myTeachersToVisibilityConverter}}" />
-                                            <TextBlock Text="Parent's Signature  "                                                       
-                                                       FontSize="15"
-                                                       FontWeight="Bold"
-                                                       VerticalAlignment="Center"
-                                                       Visibility="{Binding Converter={StaticResource myParentsToVisibilityConverter}}" />
-                                            <TextBox  Text="_________________"
-                                                      FontSize="15"
-                                                      Width="80"
-                                                      BorderThickness="0,0,0,1"
-                                                      BorderBrush="Black"
-                                                      FontWeight="Bold"
-                                                      VerticalAlignment="Center"
-                                                      Visibility="{Binding Converter={StaticResource myParentsToVisibilityConverter}}" />-->
-                                            <TextBlock Text="{Binding teacher_sig_text}" FontSize="13" Width="100" FontWeight="Bold"  VerticalAlignment="Center" Visibility="{Binding Converter={StaticResource myPrincipalToVisibilityConverter}}"/>
-                                            <TextBox  FontSize="15" Width="150" Text="_______________________________" BorderThickness="0,0,0,1" BorderBrush="Black" TextDecorations="Underline" FontWeight="Bold" VerticalAlignment="Center" Visibility="{Binding Converter={StaticResource myPrincipalToVisibilityConverter}}"/>
-                                            <TextBlock Text="{Binding principal_sig_text}" FontSize="13" Width="100" FontWeight="Bold"  VerticalAlignment="Center" Visibility="{Binding Converter={StaticResource myTeachersToVisibilityConverter}}"/>
-                                            <TextBox  Text="_______________________________"  FontSize="15" Width="150" BorderThickness="0,0,0,1" BorderBrush="Black" FontWeight="Bold" VerticalAlignment="Center" Visibility="{Binding Converter={StaticResource myTeachersToVisibilityConverter}}"/>
-                                            <TextBlock Text="{Binding parents_sig_text}" Width="115" FontSize="13" FontWeight="Bold"  VerticalAlignment="Center" Visibility="{Binding Converter={StaticResource myParentsToVisibilityConverter}}"/>
-                                            <TextBox  Text="____________________________" FontSize="15" Width="150" BorderThickness="0,0,0,1" BorderBrush="Black" FontWeight="Bold" VerticalAlignment="Center" Visibility="{Binding Converter={StaticResource myParentsToVisibilityConverter}}"/>
+                                            <TextBlock Text="{Binding teacher_sig_text}" FontSize="13" Width="100" FontWeight="Bold"  VerticalAlignment="Bottom"  Visibility="{Binding Converter={StaticResource myTeachersToVisibilityConverter}}"/>
+                                            <Border BorderThickness="0,0,0,1" BorderBrush="Black" Width="150" Visibility="{Binding Converter={StaticResource myTeachersToVisibilityConverter}}">
+                                                <Image Source="{Binding Path=teacher_sig_image, Converter={StaticResource imgConverter}}" Width="120" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
                                             
-                                        </StackPanel>                                     
+                                            <TextBlock Text="{Binding principal_sig_text}" FontSize="13" Width="100" FontWeight="Bold"  VerticalAlignment="Bottom"  Visibility="{Binding Converter={StaticResource myPrincipalToVisibilityConverter}}"/>
+                                            <Border BorderThickness="0,0,0,1" BorderBrush="Black" Width="150" Visibility="{Binding Converter={StaticResource myPrincipalToVisibilityConverter}}">
+                                                <Image Source="{Binding Path=principal_sig_image, Converter={StaticResource imgConverter}}" Width="120" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+
+                                            <TextBlock Text="{Binding parents_sig_text}" Width="115" FontSize="13" FontWeight="Bold"  VerticalAlignment="Bottom"  Visibility="{Binding Converter={StaticResource myParentsToVisibilityConverter}}"/>
+                                            <Border BorderThickness="0,0,0,1" BorderBrush="Black" Width="150" Visibility="{Binding Converter={StaticResource myParentsToVisibilityConverter}}">
+                                                <Image Source="{Binding Path=parents_sig_image, Converter={StaticResource imgConverter}}" Width="120" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>                       
+
+                                        </StackPanel>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
@@ -401,7 +369,7 @@
                     </ListBox>
                 </ScrollViewer>
             </Grid>
-            
+
             <!--Student List-->
             <Grid Grid.Row="1" Margin="1,1,1,1" Name="exam_entry_grid_g">
                 <ScrollViewer Name="exam_entry_sv" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -435,12 +403,12 @@
                 </ScrollViewer>
 
             </Grid>
-            
+
             <!--Image Grid-->
             <Grid Grid.Row="1" Grid.RowSpan="2" Name="exam_img_grid" Background="White" Margin="1,1,1,1">
                 <Image Source="/SMS;component/images/results_icon.jpg"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
-            
+
             <!--proceed button-->
             <Grid Grid.Row="2" Name="create_btn" Background="White" Margin="1,0,1,1" Visibility="Hidden">
                 <Button Width="130"  Content="Create  Result  Card"  HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="0,0,0,0"  Height="35" Click="create_btn_Click" />

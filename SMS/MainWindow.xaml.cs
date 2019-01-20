@@ -169,6 +169,9 @@ namespace SMS
                                 teacher_sig_text = Convert.ToString(reader["teacher_sig_text"]),
                                 principal_sig_text = Convert.ToString(reader["principal_sig_text"]),
                                 parents_sig_text = Convert.ToString(reader["parents_sig_text"]),
+                                teacher_sig_image = (byte[])reader["teacher_sig_image"],
+                                principal_sig_image = (byte[])reader["teacher_sig_image"],
+                                parents_sig_image = (byte[])reader["teacher_sig_image"],
                             };
                             
                         }

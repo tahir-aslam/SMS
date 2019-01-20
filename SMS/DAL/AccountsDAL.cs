@@ -894,7 +894,7 @@ namespace SMS.DAL
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "select * from sms_voucher where DATE(voucher_date) >= @sDate && DATE(voucher_date) <= @eDate ORDER BY date_time DESC";
+                        cmd.CommandText = "select * from sms_voucher where DATE(voucher_date) >= @sDate && DATE(voucher_date) <= @eDate ORDER BY date_time DESC";                        
                         cmd.Parameters.Add("@sDate", MySqlDbType.Date).Value = sDate;
                         cmd.Parameters.Add("@eDate", MySqlDbType.Date).Value = eDate;
                         cmd.Connection = con;
@@ -946,6 +946,55 @@ namespace SMS.DAL
                     {
                         cmd.CommandText = "select * from sms_voucher_entries where voucher_id = @voucher_id ORDER By date_time DESC";
                         cmd.Parameters.Add("@voucher_id", MySqlDbType.Int32).Value = voucherId;
+                        cmd.Connection = con;
+                        con.Open();
+
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            sms_voucher_entries voucher = new sms_voucher_entries()
+                            {
+                                id = Convert.ToInt32(reader["id"]),
+                                voucher_no = Convert.ToString(reader["voucher_no"]),
+                                account_detail_id = Convert.ToInt32(reader["account_detail_id"]),
+                                account_detail = Convert.ToString(reader["account_detail"]),
+                                account_head_id = Convert.ToInt32(reader["account_head_id"]),
+                                account_head = Convert.ToString(reader["account_head"]),
+                                balance = Convert.ToDouble(reader["balance"]),
+                                description = Convert.ToString(reader["description"]),
+                                debit = Convert.ToDouble(reader["debit"]),
+                                credit = Convert.ToDouble(reader["credit"]),
+                                created_by = Convert.ToString(reader["created_by"]),
+                                emp_id = Convert.ToInt32(reader["emp_id"]),
+                                date_time = Convert.ToDateTime(reader["date_time"]),
+                            };
+                            voucherEntriesList.Add(voucher);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            return voucherEntriesList;
+        }
+
+        public List<sms_voucher_entries> getAllVoucherEntriesByVoucherDateAndType(DateTime sDate, DateTime eDate)
+        {
+            List<sms_voucher_entries> voucherEntriesList = new List<sms_voucher_entries>();
+
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.CommandText = "select * from sms_voucher_entries where (DATE(voucher_date) >= @sDate && DATE(voucher_date) <= @eDate) ORDER By id DESC";                        
+                        cmd.Parameters.Add("@sDate", MySqlDbType.Date).Value = sDate;
+                        cmd.Parameters.Add("@eDate", MySqlDbType.Date).Value = eDate;
                         cmd.Connection = con;
                         con.Open();
 

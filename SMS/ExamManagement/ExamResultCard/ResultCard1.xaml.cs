@@ -423,7 +423,11 @@ namespace SMS.ExamManagement.ExamResultCard
                     ede_obj.teacher_sig_text = MainWindow.examAdminPanel.teacher_sig_text;
                     ede_obj.principal_sig_text = MainWindow.examAdminPanel.principal_sig_text;
                     ede_obj.parents_sig_text = MainWindow.examAdminPanel.parents_sig_text;
-                    
+
+                    ede_obj.teacher_sig_image = MainWindow.examAdminPanel.teacher_sig_image;
+                    ede_obj.principal_sig_image = MainWindow.examAdminPanel.principal_sig_image;
+                    ede_obj.parents_sig_image = MainWindow.examAdminPanel.parents_sig_image;
+
 
                     ede_obj.subj_list = new List<exam_data_entry>();
                     foreach (exam_data_entry ede_s in ede_list.Where(x => x.std_id == adm.id))
