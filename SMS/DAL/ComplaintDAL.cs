@@ -240,9 +240,10 @@ namespace SMS.DAL
                     con.Open();
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "Update sms_complaint_register Set std_id=@std_id, session_id=@session_id, complaint_type_id=@complaint_type_id,complaint_status_id=@complaint_status_id, complaint_from_id=@complaint_from_id, complaint_remarks=@complaint_remarks, complaint_resolved_remarks=@complaint_resolved_remarks, complaint_date=@complaint_date, complaint_resolved_date=@complaint_resolved_date, updated_date_time=@updated_date_time, updated_by=@updated_by, emp_id=@emp_id";
+                        cmd.CommandText = "Update sms_complaint_register Set std_id=@std_id, session_id=@session_id, complaint_type_id=@complaint_type_id,complaint_status_id=@complaint_status_id, complaint_from_id=@complaint_from_id, complaint_remarks=@complaint_remarks, complaint_resolved_remarks=@complaint_resolved_remarks, complaint_date=@complaint_date, complaint_resolved_date=@complaint_resolved_date, updated_date_time=@updated_date_time, updated_by=@updated_by, emp_id=@emp_id where id=@id";
                         cmd.Connection = con;
 
+                        cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = obj.id;
                         cmd.Parameters.Add("@std_id", MySqlDbType.Int32).Value = obj.std_id;
                         cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = obj.session_id;
                         cmd.Parameters.Add("@complaint_type_id", MySqlDbType.Int32).Value = obj.complaint_type_id;

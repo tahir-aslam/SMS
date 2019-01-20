@@ -55,7 +55,14 @@ namespace SMS.FeesManagement.FeesCollectionByAmount
             {
                 place_cmb.ItemsSource = feeDal.getAllFeesCollectionPlace();
                 fees_note = feeDal.getFeesNote();
-                place_cmb.SelectedValue = 22;
+                if (MainWindow.d_FeeCollectionByAmountCollectionPlace == 0)
+                {
+                    place_cmb.SelectedValue = 22;
+                }
+                else
+                {
+                    place_cmb.SelectedValue = MainWindow.d_FeeCollectionByAmountCollectionPlace;
+                }
             }
             catch (Exception ex)
             {
@@ -588,6 +595,13 @@ namespace SMS.FeesManagement.FeesCollectionByAmount
             return list;
         }
 
-        
+        private void place_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (place_cmb != null && place_cmb.SelectedIndex > 0)
+            {
+                sms_fees_collection_place obj = (sms_fees_collection_place)place_cmb.SelectedItem;
+                MainWindow.d_FeeCollectionByAmountCollectionPlace = obj.id;
+            }
+        }
     }
 }

@@ -54,7 +54,7 @@ namespace SMS.ComplaintManagment
         {
             ComplaintDAL = new ComplaintDAL();
             complaints_list = new List<sms_complaint_register>();
-            complaints_list = ComplaintDAL.getAllComplaintsRegiter(date_picker_to.SelectedDate.Value, date_picker_from.SelectedDate.Value);
+            complaints_list = ComplaintDAL.getAllComplaintsRegiter(date_picker_to.SelectedDate.Value, date_picker_from.SelectedDate.Value).OrderByDescending(x=>x.complaint_date).ToList();
             v_ComplaintGrid.ItemsSource = complaints_list;
             class_cmb.SelectedIndex = 0;
             section_cmb.SelectedIndex = 0;
@@ -422,6 +422,6 @@ namespace SMS.ComplaintManagment
         private void v_ComplaintGrid_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
             editing();
-        }
+        }  
     }
 }

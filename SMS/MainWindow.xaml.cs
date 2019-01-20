@@ -63,6 +63,11 @@ namespace SMS
         public static List<prefixNo> roll_no_prefix_list;
         public static List<CityArea> area_list;
 
+        //Default Values
+        // default d
+        public static int d_FeeCollectionByVocherCollectionPlace = 0;
+        public static int d_FeeCollectionByAmountCollectionPlace = 0;
+
 
         FeesDAL feesDAL;
         MiscDAL miscDAL;

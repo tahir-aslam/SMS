@@ -218,12 +218,12 @@
                         <DataGridTextColumn Header="C.No"
                                             Binding="{Binding id}"
                                             Width="50" />
+                        <DataGridTextColumn Header="C.Status"
+                                            Binding="{Binding complaint_status}"
+                                            Width="Auto" />
                         <DataGridTextColumn Header="C.Date"
-                                            Binding="{Binding complaint_date}"
-                                            Width="Auto" />
-                        <DataGridTextColumn Header="C.Resolved.Date"
-                                            Binding="{Binding complaint_resolved_date}"
-                                            Width="Auto" />
+                                            Binding="{Binding complaint_date,  StringFormat=\{0:dd-MMM-yy\}}"
+                                            Width="Auto" />                        
                         <DataGridTextColumn Header="Student Name"
                                             Binding="{Binding std_name}"
                                             Width="Auto" />
@@ -242,8 +242,20 @@
                         <DataGridTextColumn Header="C.Type"
                                             Binding="{Binding complaint_type}"
                                             Width="Auto" />
-                        <DataGridTextColumn Header="C.Status"
-                                            Binding="{Binding complaint_status}"
+                        <DataGridTextColumn Header="C.Remarks"
+                                            Binding="{Binding complaint_remarks}"
+                                            Width="Auto" />
+                        <DataGridTextColumn Header="C.Res.Remarks"
+                                            Binding="{Binding complaint_resolved_remarks}"
+                                            Width="Auto" />
+                        <DataGridTextColumn Header="C.Resolved.Date"
+                                            Binding="{Binding complaint_resolved_date,  StringFormat=\{0:dd-MMM-yy\}}"
+                                            Width="Auto" />
+                        <DataGridTextColumn Header="Created By"
+                                            Binding="{Binding created_by}"
+                                            Width="Auto" />
+                        <DataGridTextColumn Header="Date Time"
+                                            Binding="{Binding date_time}"
                                             Width="Auto" />
                     </DataGrid.Columns>
                 </DataGrid>

@@ -54,8 +54,8 @@ namespace SMS.Controls
         {
             try
             {                
-                //comm = new GsmCommMain("COM22", 115200, 300);
-                comm = new GsmCommMain("COM22", 19200, 300);
+                comm = new GsmCommMain("COM22", 115200, 300);
+                //comm = new GsmCommMain("COM22", 19200, 300);
                 comm.Open();
             }
             catch (Exception ex)                                                                                       
@@ -275,7 +275,7 @@ namespace SMS.Controls
                                 else 
                                 {
                                     j--;
-                                    MessageBox.Show("IsConnected=false", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                                    MessageBox.Show("IsConnected()=false", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
                                     isSend = false;
                                     adm_obj.sms_status = "Not Sent";
                                     

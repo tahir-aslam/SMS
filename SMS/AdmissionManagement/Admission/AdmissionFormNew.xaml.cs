@@ -827,7 +827,7 @@ namespace SMS.AdmissionManagement.Admission
                 {
                     if (!string.IsNullOrWhiteSpace(adm.adm_no) || !string.IsNullOrEmpty(adm.adm_no))
                     {
-                        if (Convert.ToInt32(adm.adm_no) == Convert.ToInt32(adm_textbox.Text.Trim()) && adm.id != obj.id)
+                        if (Convert.ToInt32(adm.adm_no_int) == Convert.ToInt32(adm_textbox.Text.Trim()) && adm.id != obj.id)
                         {
                             check = true;
                         }
@@ -837,7 +837,7 @@ namespace SMS.AdmissionManagement.Admission
                 {
                     if (!string.IsNullOrWhiteSpace(adm.adm_no) || !string.IsNullOrEmpty(adm.adm_no))
                     {
-                        if (adm.adm_no == adm_textbox.Text.Trim() && adm.id != obj.id)
+                        if (adm.adm_no_int.ToString() == adm_textbox.Text.Trim() && adm.id != obj.id)
                         {
                             check = true;
                         }

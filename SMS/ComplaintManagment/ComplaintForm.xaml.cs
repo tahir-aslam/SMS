@@ -126,7 +126,7 @@ namespace SMS.ComplaintManagment
                     obj.session_id = Convert.ToInt32(MainWindow.session.id);
                     obj.complaint_from_id = c_from.id;
                     obj.complaint_status_id = c_status.id;
-                    obj.complaint_type_id = c_status.id;
+                    obj.complaint_type_id = c_type.id;
                     obj.complaint_date = v_complaint_date.SelectedDate.Value;
                     obj.complaint_remarks = v_complaint_remarks.Text;
                     obj.complaint_resolved_date = v_complaint_resolved_date.SelectedDate.Value;
@@ -161,7 +161,7 @@ namespace SMS.ComplaintManagment
             obj.session_id = Convert.ToInt32(MainWindow.session.id);
             obj.complaint_from_id = c_from.id;
             obj.complaint_status_id = c_status.id;
-            obj.complaint_type_id = c_status.id;
+            obj.complaint_type_id = c_type.id;
             obj.complaint_date = v_complaint_date.SelectedDate.Value;
             obj.complaint_remarks = v_complaint_remarks.Text;
             obj.complaint_resolved_date = v_complaint_resolved_date.SelectedDate.Value;

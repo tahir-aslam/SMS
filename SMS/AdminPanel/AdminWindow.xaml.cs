@@ -180,7 +180,7 @@ namespace SMS.AdminPanel
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
             using (MySqlCommand cmd = new MySqlCommand())
             {
-                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + id + "&& session_id=" + MainWindow.session.id+" ORDER BY adm_no ASC";
+                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + id + "&& session_id=" + MainWindow.session.id+" ORDER BY adm_no_int ASC";
                 cmd.Connection = con;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
@@ -199,7 +199,8 @@ namespace SMS.AdminPanel
                             section_id = Convert.ToString(reader["section_id"].ToString()),
                             section_name = Convert.ToString(reader["section_name"].ToString()),
                             roll_no = Convert.ToString(reader["roll_no"].ToString()),
-                            adm_no = Convert.ToString(reader["adm_no"].ToString()),                            
+                            adm_no = Convert.ToString(reader["adm_no"].ToString()),
+                            adm_no_int = Convert.ToInt32(reader["adm_no_int"]),
                         };
                         adm_list.Add(adm);
                     }
@@ -262,14 +263,15 @@ namespace SMS.AdminPanel
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "Update sms_admission SET roll_no=@roll_no,updation=@updation WHERE id = @id && session_id=@session_id";
+                        cmd.CommandText = "Update sms_admission SET roll_no=@roll_no, roll_no_int=@roll_no_int,updation=@updation WHERE id = @id && session_id=@session_id";
                         cmd.Connection = con;
                         //cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
 
                         cmd.Parameters.Add("@id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm.id;
                         cmd.Parameters.Add("@session_id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = MainWindow.session.id;                        
-                        cmd.Parameters.Add("@roll_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = roll.ToString();                                                                        
+                        cmd.Parameters.Add("@roll_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = roll.ToString();
+                        cmd.Parameters.Add("@roll_no_int", MySql.Data.MySqlClient.MySqlDbType.Int32).Value = Convert.ToInt32(roll);
                         cmd.Parameters.Add("@updation", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = "true";
                         con.Open();
                         i = Convert.ToInt32(cmd.ExecuteNonQuery());

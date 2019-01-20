@@ -51,7 +51,7 @@
                                     Name="place_cmb"
                                     SelectedIndex="0"
                                     Margin="0,20,0,0"
-                                    SelectedValuePath="id">
+                                    SelectedValuePath="id" SelectionChanged="place_cmb_SelectionChanged">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
