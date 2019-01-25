@@ -872,19 +872,25 @@ namespace SUT.PrintEngine.ViewModels
 
         public void CreatePrintPreviewWindow()
         {
-            FullScreenPrintWindow = new Window();
-            FullScreenPrintWindow.Activated += FullScreenPrintWindowActivated;
-            FullScreenPrintWindow.Closing += FullScreenPrintWindowClosing;
-            FullScreenPrintWindow.Title = "Print Preview";
-            FullScreenPrintWindow.MinWidth = 600;
-            FullScreenPrintWindow.MinHeight = 600;
-            FullScreenPrintWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            FullScreenPrintWindow.ShowInTaskbar = false;
-            FullScreenPrintWindow.WindowStyle = WindowStyle.SingleBorderWindow;
-            FullScreenPrintWindow.WindowState = WindowState.Maximized;
-            FullScreenPrintWindow.Owner = Application.Current.MainWindow;
-            FullScreenPrintWindow.Content = View;
-            ApplicationExtention.MainWindow = FullScreenPrintWindow;
+            try {
+                FullScreenPrintWindow = new Window();
+                FullScreenPrintWindow.Activated += FullScreenPrintWindowActivated;
+                FullScreenPrintWindow.Closing += FullScreenPrintWindowClosing;
+                FullScreenPrintWindow.Title = "Print Preview";
+                FullScreenPrintWindow.MinWidth = 600;
+                FullScreenPrintWindow.MinHeight = 600;
+                FullScreenPrintWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                FullScreenPrintWindow.ShowInTaskbar = false;
+                FullScreenPrintWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+                FullScreenPrintWindow.WindowState = WindowState.Maximized;
+                FullScreenPrintWindow.Owner = Application.Current.MainWindow;
+                FullScreenPrintWindow.Content = View;
+                ApplicationExtention.MainWindow = FullScreenPrintWindow;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public virtual void FullScreenPrintWindowClosing(object sender, CancelEventArgs e)

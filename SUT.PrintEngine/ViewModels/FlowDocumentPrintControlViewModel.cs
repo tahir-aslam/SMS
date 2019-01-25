@@ -74,12 +74,18 @@ namespace SUT.PrintEngine.ViewModels
 
         public void ShowPrintPreview(FlowDocument flowDocument)
         {
-            FlowDocument = flowDocument;
-            if (FullScreenPrintWindow == null)
-                CreatePrintPreviewWindow();
-            Loading = true;
-            if (FullScreenPrintWindow != null) FullScreenPrintWindow.ShowDialog();
-            ApplicationExtention.MainWindow = null;
+            try {
+                FlowDocument = flowDocument;
+                if (FullScreenPrintWindow == null)
+                    CreatePrintPreviewWindow();
+                Loading = true;
+                if (FullScreenPrintWindow != null) FullScreenPrintWindow.ShowDialog();
+                ApplicationExtention.MainWindow = null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public override void FullScreenPrintWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)

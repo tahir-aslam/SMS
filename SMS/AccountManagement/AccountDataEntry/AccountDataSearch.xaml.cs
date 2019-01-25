@@ -410,12 +410,18 @@ namespace SMS.AccountManagement.AccountDataEntry
 
         private void print_btn_Click(object sender, RoutedEventArgs e)
         {
-            var dataTable = CreateSampleDataTable();
-            var columnWidths = new List<double>() { 70, 220, 280, 120 };
-            var ht = new ExpenseHeader();
-            var headerTemplate = XamlWriter.Save(ht);
-            var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
-            printControl.ShowPrintPreview();
+            try {
+                var dataTable = CreateSampleDataTable();
+                var columnWidths = new List<double>() { 70, 220, 280, 120 };
+                var ht = new ExpenseHeader();
+                var headerTemplate = XamlWriter.Save(ht);
+                var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
+                printControl.ShowPrintPreview();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private DataTable CreateSampleDataTable()

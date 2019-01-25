@@ -219,16 +219,22 @@ namespace SUT.PrintEngine.ViewModels
 
         public void ShowPrintPreview()
         {
-            if (FullScreenPrintWindow != null)
-            {
-                FullScreenPrintWindow.Content = null;
+            try {
+                if (FullScreenPrintWindow != null)
+                {
+                    FullScreenPrintWindow.Content = null;
+                }
+                CreatePrintPreviewWindow();
+                Loading = true;
+                IsSetPrintingOptionsEnabled = false;
+                IsCancelPrintingOptionsEnabled = false;
+                if (FullScreenPrintWindow != null) FullScreenPrintWindow.ShowDialog();
+                ApplicationExtention.MainWindow = null;
             }
-            CreatePrintPreviewWindow();
-            Loading = true;
-            IsSetPrintingOptionsEnabled = false;
-            IsCancelPrintingOptionsEnabled = false;
-            if (FullScreenPrintWindow != null) FullScreenPrintWindow.ShowDialog();
-            ApplicationExtention.MainWindow = null;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void ShowPrintPreview(DataTable dataTable)

@@ -40,3 +40,10 @@ D:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintForm.g.cs
 D:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintSearch.g.cs
 D:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement_MarkupCompile.cache
 D:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement.g.resources
+C:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement.csprojResolveAssemblyReference.cache
+C:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintForm.baml
+C:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintSearch.baml
+C:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintForm.g.cs
+C:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintSearch.g.cs
+C:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement_MarkupCompile.cache
+C:\USB\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement.g.resources

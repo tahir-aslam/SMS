@@ -33,24 +33,24 @@ namespace SMS
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static string Database="sms";
-        public static string Server="localhost";
-        public static string Port="3306";
-        public static string Uid="root";
+        public static string Database = "sms";
+        public static string Server = "localhost";
+        public static string Port = "3306";
+        public static string Uid = "root";
 
         public static institute ins;
         public static session session;
         public static sms_exam_admin_panel examAdminPanel;
         public static sms_fee_admin_panel feeAdminPanel;
-        public static sms_fees_admin_panel feesAdminPanel;        
+        public static sms_fees_admin_panel feesAdminPanel;
         public static string sms;
         public static string web_sms;
         List<emp_login> emp_login_list;
         public static emp_login emp_login_obj;
         public static List<roles> roles_list;
-        public static List<roles>  basic_roles_list;
+        public static List<roles> basic_roles_list;
         List<session> session_list;
-        
+
         //new fees
         public static List<sms_fees_category> fees_category_list;
         public static List<sms_fees_sub_category> fees_sub_category_list;
@@ -91,7 +91,7 @@ namespace SMS
 
             get_all_sessions();
             session_cmb.ItemsSource = session_list;
-            session_cmb.SelectedIndex = session_list.Count-1;
+            session_cmb.SelectedIndex = session_list.Count - 1;
 
             get_exam_admin_panel();
             get_fee_admin_panel();
@@ -106,7 +106,7 @@ namespace SMS
 
                 fees_category_list = feesDAL.get_all_fees_category();
                 fees_sub_category_list = feesDAL.get_all_fees_sub_category();
-                years_list =miscDAL.get_all_years();
+                years_list = miscDAL.get_all_years();
 
                 fees_package_list = feesDAL.getAllFeesPackage();
                 fees_package_list.Insert(0, new sms_fees_package() { id = -1, package_name = "-Select Package-" });
@@ -118,13 +118,13 @@ namespace SMS
                 roll_no_prefix_list = miscDAL.get_all_roll_no_prefix();
                 area_list = miscDAL.get_all_area();
 
-                
+
 
                 basic_roles_list = rolesDAL.get_all_roles();
 
                 //WriteLogFile();
                 //ReadLogFile();
-                
+
             }
             catch (Exception ex)
             {
@@ -132,12 +132,12 @@ namespace SMS
                 Environment.Exit(0);
             }
         }
-       
 
-       
+
+
 
         public void get_exam_admin_panel()
-        {            
+        {
             try
             {
                 using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
@@ -150,8 +150,43 @@ namespace SMS
                         //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                         con.Open();
                         MySqlDataReader reader = cmd.ExecuteReader();
+
+                        byte[] teacher_img;
+                        byte[] parent_img;
+                        byte[] principal_img;
+
                         while (reader.Read())
                         {
+                            if (reader["teacher_sig_image"] == "" || reader["teacher_sig_image"] == null)
+                            {
+                                string path = "/SMS;component/images/Delete-icon.png";
+                                teacher_img = File.ReadAllBytes(path);
+                            }
+                            else
+                            {
+                                teacher_img = (byte[])(reader["teacher_sig_image"]);
+                            }
+
+                            if (reader["principal_sig_image"] == "" || reader["principal_sig_image"] == null)
+                            {
+                                string path = "/SMS;component/images/Delete-icon.png";
+                                principal_img = File.ReadAllBytes(path);
+                            }
+                            else
+                            {
+                                principal_img = (byte[])(reader["principal_sig_image"]);
+                            }
+
+                            if (reader["parents_sig_image"] == "" || reader["parents_sig_image"] == null)
+                            {
+                                string path = "/SMS;component/images/Delete-icon.png";
+                                parent_img = File.ReadAllBytes(path);
+                            }
+                            else
+                            {
+                                parent_img = (byte[])(reader["parents_sig_image"]);
+                            }
+
                             examAdminPanel = new sms_exam_admin_panel()
                             {
                                 position_visibility = Convert.ToString(reader["position_visibility"]),
@@ -169,11 +204,11 @@ namespace SMS
                                 teacher_sig_text = Convert.ToString(reader["teacher_sig_text"]),
                                 principal_sig_text = Convert.ToString(reader["principal_sig_text"]),
                                 parents_sig_text = Convert.ToString(reader["parents_sig_text"]),
-                                teacher_sig_image = (byte[])reader["teacher_sig_image"],
-                                principal_sig_image = (byte[])reader["teacher_sig_image"],
-                                parents_sig_image = (byte[])reader["teacher_sig_image"],
+                                teacher_sig_image = teacher_img,
+                                principal_sig_image = principal_img,
+                                parents_sig_image = parent_img,
                             };
-                            
+
                         }
                     }
                 }
@@ -211,7 +246,7 @@ namespace SMS
                                 fine_fee = Convert.ToString(reader["fine_fee"]),
                                 cancel_challan = Convert.ToString(reader["cancel_challan"]),
                                 pay_cash_btn = Convert.ToString(reader["pay_cash_btn"]),
-                                waveoff = Convert.ToString(reader["waveoff"]),                                
+                                waveoff = Convert.ToString(reader["waveoff"]),
                             };
                         }
                     }
@@ -241,7 +276,7 @@ namespace SMS
                             feesAdminPanel = new sms_fees_admin_panel()
                             {
                                 id = Convert.ToInt32(reader["id"]),
-                                bank_logo = (byte[])(reader["bank_logo"]),                                
+                                bank_logo = (byte[])(reader["bank_logo"]),
                             };
                         }
                     }
@@ -286,7 +321,7 @@ namespace SMS
                 MessageBox.Show(ex.Message);
             }
         }
-        public void check() 
+        public void check()
         {
             NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
             String sMacAddress = string.Empty;
@@ -300,13 +335,13 @@ namespace SMS
                 {
                     check = false;
                 }
-                    
-                
+
+
             }
             if (check == false)
-            {               
+            {
             }
-            else 
+            else
             {
                 MessageBox.Show("Application Is Not Licensed");
                 Environment.Exit(0);
@@ -318,64 +353,64 @@ namespace SMS
             //}
             //else 
             //{
-               
+
             //}
         }
 
-        public static void get_sms_institute() 
-        {        
-               using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
-                using (MySqlCommand cmd = new MySqlCommand())
+        public static void get_sms_institute()
+        {
+            using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                cmd.CommandText = "SELECT* FROM sms_institute";
+                cmd.Connection = con;
+                //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
+                try
                 {
-                    cmd.CommandText = "SELECT* FROM sms_institute";
-                    cmd.Connection = con;
-                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
-                    try
+                    con.Open();
+
+                    Byte[] institute_logo;
+                    Byte[] male_image;
+                    Byte[] female_image;
+
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    institute_logo = (byte[])(reader["institute_logo"]);
+                    male_image = (byte[])(reader["male_image"]);
+                    female_image = (byte[])(reader["female_image"]);
+
+
+                    ins = new institute()
                     {
-                        con.Open();
+                        institute_id = Convert.ToInt32(reader["institute_id"]),
+                        institute_name = Convert.ToString(reader["institute_name"]),
+                        institute_cell = Convert.ToString(reader["institute_cell"]),
+                        institute_address = Convert.ToString(reader["institute_address"]),
+                        institute_owner_cell = Convert.ToString(reader["institute_owner_cell"]),
+                        institute_owner_name = Convert.ToString(reader["institute_owner_name"]),
+                        institute_phone = Convert.ToString(reader["institute_phone"]),
+                        institute_quote = Convert.ToString(reader["institute_quote"]),
+                        expiry_date = Convert.ToDateTime(reader["expiry_date"]),
+                        expiry_warning_day = Convert.ToInt32(reader["expiry_warning_day"]),
+                        expiry_message = Convert.ToString(reader["expiry_message"]),
+                        expiry_warning_message = Convert.ToString(reader["expiry_warning_message"]),
+                        expiry_instant = Convert.ToString(reader["expiry_instant"]),
+                        installation_date = Convert.ToDateTime(reader["installation_date"]),
 
-                        Byte[] institute_logo;
-                        Byte[] male_image;
-                        Byte[] female_image;
+                        institute_logo = institute_logo,
+                        male_image = male_image,
+                        female_image = female_image,
+                        mac = Convert.ToString(reader["mac"].ToString()),
+                        isMultiPartSMSAccess = Convert.ToString(reader["isMultiPartSMSAccess"]),
+                    };
 
-                        MySqlDataReader reader = cmd.ExecuteReader();
-                        reader.Read();                        
-                            institute_logo = (byte[])(reader["institute_logo"]);
-                            male_image = (byte[])(reader["male_image"]);
-                            female_image = (byte[])(reader["female_image"]);
-
-
-                            ins = new institute()
-                            {
-                                institute_id = Convert.ToInt32(reader["institute_id"]),
-                                institute_name = Convert.ToString(reader["institute_name"]),
-                                institute_cell = Convert.ToString(reader["institute_cell"]),
-                                institute_address = Convert.ToString(reader["institute_address"]),
-                                institute_owner_cell = Convert.ToString(reader["institute_owner_cell"]),
-                                institute_owner_name = Convert.ToString(reader["institute_owner_name"]),
-                                institute_phone = Convert.ToString(reader["institute_phone"]),
-                                institute_quote = Convert.ToString(reader["institute_quote"]),
-                                expiry_date = Convert.ToDateTime(reader["expiry_date"]),
-                                expiry_warning_day = Convert.ToInt32(reader["expiry_warning_day"]),
-                                expiry_message = Convert.ToString(reader["expiry_message"]),
-                                expiry_warning_message = Convert.ToString(reader["expiry_warning_message"]),
-                                expiry_instant = Convert.ToString(reader["expiry_instant"]),
-                                installation_date = Convert.ToDateTime(reader["installation_date"]),
-                                 
-                                institute_logo = institute_logo,
-                                male_image = male_image,
-                                female_image = female_image,
-                                mac = Convert.ToString(reader["mac"].ToString()),
-                                isMultiPartSMSAccess = Convert.ToString(reader["isMultiPartSMSAccess"]),
-                            };                           
-                        
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                        Environment.Exit(0);
-                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    Environment.Exit(0);
+                }
+            }
         }
 
 
@@ -383,7 +418,7 @@ namespace SMS
         {
             save();
         }
-        public void save() 
+        public void save()
         {
             get_all_emp_login();
             string uid = usr_name.Text.Trim();
@@ -391,21 +426,21 @@ namespace SMS
 
             if (uid != "" && pwd != "")
             {
-                if (check(uid,pwd))
+                if (check(uid, pwd))
                 {
                     session = (session)session_cmb.SelectedItem;
                     get_all_roles_assignment();
-                   
+
                     MainScreen.MainScreen main = new MainScreen.MainScreen();
-                    main.Show();                    
-                    this.Close();                   
+                    main.Show();
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("UserName Or Password is incorrect", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else 
+            else
             {
                 usr_name.Focus();
             }
@@ -435,7 +470,7 @@ namespace SMS
                                 id = Convert.ToString(reader["id"].ToString()),
                                 module_name = Convert.ToString(reader["module_name"]),
                                 module_pid = Convert.ToString(reader["module_pid"]),
-                                module_id = Convert.ToString(reader["module_id"]),                                
+                                module_id = Convert.ToString(reader["module_id"]),
                             };
                             roles_list.Add(rol);
                         }
@@ -449,11 +484,11 @@ namespace SMS
             }
         }
 
-        public bool check(string uid, string pwd) 
+        public bool check(string uid, string pwd)
         {
-            foreach(emp_login el in emp_login_list)
+            foreach (emp_login el in emp_login_list)
             {
-                if(el.emp_user_name == uid && el.emp_pwd == pwd)
+                if (el.emp_user_name == uid && el.emp_pwd == pwd)
                 {
                     emp_login_obj = new emp_login();
                     emp_login_obj = el;
@@ -499,7 +534,7 @@ namespace SMS
                                 branded_user_name = Convert.ToString(reader["branded_user_name"].ToString()),
                                 branded_pwd = Convert.ToString(reader["branded_pwd"].ToString()),
                                 branded_name = Convert.ToString(reader["branded_name"].ToString()),
-                                branded_check_remaining_url = Convert.ToString(reader["branded_check_remaining_url"].ToString()),                                
+                                branded_check_remaining_url = Convert.ToString(reader["branded_check_remaining_url"].ToString()),
                                 updation = Convert.ToString(reader["updation"].ToString()),
                                 date_time = Convert.ToDateTime(reader["date_time"]),
                                 created_by = Convert.ToString(reader["created_by"].ToString()),
@@ -526,7 +561,7 @@ namespace SMS
             usr_pwd.Password = "";
             usr_name.Focus();
 
-            
+
         }
 
         public static ImageSource ByteToImage(byte[] imageData)
@@ -552,13 +587,13 @@ namespace SMS
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
-            {
-            
+        {
+
             if (e.Key == Key.Enter)
             {
                 save();
             }
-        
+
         }
 
         public static bool CheckForInternetConnection()
@@ -582,7 +617,7 @@ namespace SMS
         {
             string ipAddress = "";
             ipAddress = new WebClient().DownloadString("http://icanhazip.com");
-            
+
             return ipAddress;
         }
         //public static DateTime GetNistTime()
@@ -626,7 +661,7 @@ namespace SMS
                                            CultureInfo.InvariantCulture.DateTimeFormat,
                                            DateTimeStyles.AssumeUniversal);
             }
-            catch (Exception ex)             
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -663,7 +698,7 @@ namespace SMS
                 }
             }
         }
-        void ReadLogFile() 
+        void ReadLogFile()
         {
             string sDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MyApplicationDir");
 
@@ -671,10 +706,10 @@ namespace SMS
             {
                 StreamReader reader = new StreamReader(sDirectory);
                 reader.ReadToEnd();
-            }            
+            }
         }
 
-        void ReadDatabaseFile() 
+        void ReadDatabaseFile()
         {
             string line;
             int i = 0;
@@ -684,25 +719,25 @@ namespace SMS
                 {
                     while ((line = sr.ReadLine()) != null)
                     {
-                        if(i==0 && line.Trim() != "")
+                        if (i == 0 && line.Trim() != "")
                         {
-                            Server = line;                            
+                            Server = line;
                         }
                         if (i == 1 && line.Trim() != "")
                         {
-                            Port = line;                            
+                            Port = line;
                         }
                         if (i == 2 && line.Trim() != "")
                         {
-                            Database = line;                            
+                            Database = line;
                         }
                         if (i == 3 && line.Trim() != "")
                         {
-                            Uid = line;                            
+                            Uid = line;
                         }
                         i++;
                     }
-                    
+
                 }
             }
             catch (Exception e)
@@ -717,7 +752,7 @@ namespace SMS
                     outputFile.WriteLine("root");
                 }
             }
-            
+
             //File.Create("fileName");
             //string baseDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //var assembly = Assembly.GetExecutingAssembly();

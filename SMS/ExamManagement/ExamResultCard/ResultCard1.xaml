@@ -348,18 +348,18 @@
                                                Orientation="Horizontal">
                                             <TextBlock Text="{Binding teacher_sig_text}" FontSize="13" Width="100" FontWeight="Bold"  VerticalAlignment="Bottom"  Visibility="{Binding Converter={StaticResource myTeachersToVisibilityConverter}}"/>
                                             <Border BorderThickness="0,0,0,1" BorderBrush="Black" Width="150" Visibility="{Binding Converter={StaticResource myTeachersToVisibilityConverter}}">
-                                                <Image Source="{Binding Path=teacher_sig_image, Converter={StaticResource imgConverter}}" Width="120" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <Image Source="{Binding teacher_sig_image}" Width="120" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </Border>
                                             
                                             <TextBlock Text="{Binding principal_sig_text}" FontSize="13" Width="100" FontWeight="Bold"  VerticalAlignment="Bottom"  Visibility="{Binding Converter={StaticResource myPrincipalToVisibilityConverter}}"/>
                                             <Border BorderThickness="0,0,0,1" BorderBrush="Black" Width="150" Visibility="{Binding Converter={StaticResource myPrincipalToVisibilityConverter}}">
-                                                <Image Source="{Binding Path=principal_sig_image, Converter={StaticResource imgConverter}}" Width="120" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <Image Source="{Binding Path=principal_sig_image}" Width="120" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </Border>
 
                                             <TextBlock Text="{Binding parents_sig_text}" Width="115" FontSize="13" FontWeight="Bold"  VerticalAlignment="Bottom"  Visibility="{Binding Converter={StaticResource myParentsToVisibilityConverter}}"/>
                                             <Border BorderThickness="0,0,0,1" BorderBrush="Black" Width="150" Visibility="{Binding Converter={StaticResource myParentsToVisibilityConverter}}">
-                                                <Image Source="{Binding Path=parents_sig_image, Converter={StaticResource imgConverter}}" Width="120" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>                       
+                                                <Image Source="{Binding Path=parents_sig_image}" Width="120" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>                     
 
                                         </StackPanel>
                                     </Grid>
