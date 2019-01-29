@@ -83,7 +83,7 @@ namespace SMS.StudentManagement.AttendanceReport
 
                     ReportDataSource adm = new ReportDataSource();
                     adm.Name = "adm";
-                    adm.Value = adm_list.Where(x=>x.section_id == sec.id);
+                    adm.Value = adm_list.Where(x=>x.section_id == sec.id).OrderBy(x=>x.adm_no_int);
 
                     ReportDataSource ins = new ReportDataSource();
                     List<institute> ins_list = new List<institute>();

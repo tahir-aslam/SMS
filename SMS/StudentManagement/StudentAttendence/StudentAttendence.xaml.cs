@@ -250,7 +250,7 @@ namespace SMS.StudentManagement.StudentAttendence
                     {
                         using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + sec.id + "&&  session_id=" + MainWindow.session.id + " ORDER BY adm_no ASC";
+                            cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + sec.id + "&&  session_id=" + MainWindow.session.id + "  ORDER BY adm_no_int ASC";
                             cmd.Connection = con;
                             //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
 
@@ -348,10 +348,13 @@ namespace SMS.StudentManagement.StudentAttendence
                     {
                         using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.CommandText = "SELECT* FROM sms_student_attendence as st where DATE(st.attendence_date) >= DATE(@date) && st.session_id=" + MainWindow.session.id + "&& st.std_id IN (select id from sms_admission as adm where adm.section_id = @section_id && adm.session_id=" + MainWindow.session.id + ") ORDER BY st.attendence_date DESC";
+                            cmd.CommandText = "SELECT* FROM sms_student_attendence as st where st.session_id=" + MainWindow.session.id + " && st.std_id IN (select id from sms_admission as adm where adm.section_id = @section_id && adm.session_id=" + MainWindow.session.id + ") ORDER BY st.attendence_date DESC";
                             cmd.Connection = con;
                             cmd.Parameters.Add("@section_id", MySqlDbType.String).Value = sec.id.ToString();
-                            cmd.Parameters.Add("@date", MySqlDbType.Date).Value = attendnce_date.SelectedDate.Value.AddDays(-10);
+                            //cmd.CommandText = "SELECT* FROM sms_student_attendence as st where DATE(st.attendence_date) >= DATE(@date) && st.session_id=" + MainWindow.session.id + "&& st.std_id IN (select id from sms_admission as adm where adm.section_id = @section_id && adm.session_id=" + MainWindow.session.id + ") ORDER BY st.attendence_date DESC";
+                            //cmd.Connection = con;
+                            //cmd.Parameters.Add("@section_id", MySqlDbType.String).Value = sec.id.ToString();
+                            //cmd.Parameters.Add("@date", MySqlDbType.Date).Value = attendnce_date.SelectedDate.Value.AddDays(-10);
                             //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
 
                             MySqlDataReader reader = cmd.ExecuteReader();
@@ -443,7 +446,7 @@ namespace SMS.StudentManagement.StudentAttendence
             std_vm_list = new ObservableCollection<student_attendence>();
 
 
-            foreach (admission adm in adm_list)
+            foreach (admission adm in adm_list.OrderBy(x=>x.adm_no_int))
             {
                 student_attendence std_vm = new student_attendence()
                 {
@@ -1062,7 +1065,7 @@ namespace SMS.StudentManagement.StudentAttendence
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
             using (MySqlCommand cmd = new MySqlCommand())
             {
-                cmd.CommandText = "SELECT* FROM sms_admission where session_id=" + MainWindow.session.id;
+                cmd.CommandText = "SELECT* FROM sms_admission where session_id=" + MainWindow.session.id+" Order By adm_no_int ASC";
                 cmd.Connection = con;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
@@ -1082,6 +1085,7 @@ namespace SMS.StudentManagement.StudentAttendence
                             section_name = Convert.ToString(reader["section_name"].ToString()),
                             roll_no = Convert.ToString(reader["roll_no"].ToString()),
                             adm_no = Convert.ToString(reader["adm_no"].ToString()),
+                            adm_no_int = Convert.ToInt32(reader["adm_no_int"]),
                             cell_no = Convert.ToString(reader["cell_no"].ToString()),
                         };
                         adm_list.Add(adm);

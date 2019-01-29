@@ -21,10 +21,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox152</rd:DefaultName>
-        <Top>0.89059cm</Top>
+        <Top>0.25559cm</Top>
         <Left>2.80375in</Left>
-        <Height>0.50708in</Height>
-        <Width>2.68417in</Width>
+        <Height>0.30403in</Height>
+        <Width>3.1425in</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -46,28 +46,28 @@
               <Width>1.77037in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.72917in</Width>
+              <Width>0.61459in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.73958in</Width>
+              <Width>0.60416in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.26043in</Width>
+              <Width>0.2in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.2313in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.27083in</Width>
+              <Width>0.35in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.28125in</Width>
+              <Width>0.35in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.26042in</Width>
+              <Width>0.35in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.34375in</Width>
+              <Width>0.35in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.52083in</Width>
@@ -181,7 +181,7 @@
                             <TextRun>
                               <Value>=FORMAT(Fields!attendence_date.Value,"dd")</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <Format>d</Format>
                               </Style>
                             </TextRun>
@@ -764,7 +764,7 @@
                             <TextRun>
                               <Value>=Fields!std_name.Value</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -795,7 +795,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!adm_no.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -825,7 +827,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!roll_no.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -857,6 +861,7 @@
                               <Value>=Fields!attendence.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=IIF(Fields!attendence.Value.Equals("P"), "Red", "Green")</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -877,6 +882,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -975,6 +981,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1172,10 +1179,10 @@
         <FixedRowHeaders>true</FixedRowHeaders>
         <KeepTogether>true</KeepTogether>
         <DataSetName>att</DataSetName>
-        <Top>1.02437in</Top>
+        <Top>0.52437in</Top>
         <Left>0.06958in</Left>
         <Height>0.75in</Height>
-        <Width>5.40793in</Width>
+        <Width>5.34125in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1193,7 +1200,7 @@
                 <Value>=First(Fields!sDate.Value, "ins")</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
-                  <Format>D</Format>
+                  <Format>d</Format>
                   <TextDecoration>Underline</TextDecoration>
                 </Style>
               </TextRun>
@@ -1204,7 +1211,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>0.40466in</Top>
+        <Top>0.15466in</Top>
         <Left>0.06958in</Left>
         <Height>0.25in</Height>
         <Width>1.17702in</Width>
@@ -1229,7 +1236,7 @@
                 <Value>=First(Fields!eDate.Value, "ins")</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
-                  <Format>D</Format>
+                  <Format>d</Format>
                   <TextDecoration>Underline</TextDecoration>
                 </Style>
               </TextRun>
@@ -1240,7 +1247,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>0.40466in</Top>
+        <Top>0.15466in</Top>
         <Left>1.42018in</Left>
         <Height>0.25in</Height>
         <Width>1.31413in</Width>
@@ -1275,7 +1282,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>0.40466in</Top>
+        <Top>0.15466in</Top>
         <Left>1.2431in</Left>
         <Height>0.25in</Height>
         <Width>0.10764in</Width>

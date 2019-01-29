@@ -72,3 +72,5 @@ C:\USB\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.csproj.GenerateResource.Cac
 C:\USB\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.dll
 C:\USB\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.pdb
 C:\USB\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.csprojResolveAssemblyReference.cache
+F:\Scenario\Github\SMS\SUT.PrintEngine\bin\Debug\SUT.PrintEngine.pdb
+F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\Controls\ProgressDialog\ProgressDialogView.g.cs

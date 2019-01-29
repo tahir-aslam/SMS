@@ -629,12 +629,19 @@ namespace SMS.ExamManagement.ExamResultList
         //print 
         private void print_btn_Click(object sender, RoutedEventArgs e)
         {
-            var dataTable = CreateSampleDataTable();
-            var columnWidths = col_width;
-            var ht = new GenaralAwardListHeader();
-            var headerTemplate = XamlWriter.Save(ht);
-            var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
-            printControl.ShowPrintPreview();
+            try
+            {
+                var dataTable = CreateSampleDataTable();
+                var columnWidths = col_width;
+                var ht = new GenaralAwardListHeader();
+                var headerTemplate = XamlWriter.Save(ht);
+                var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
+                printControl.ShowPrintPreview();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private DataTable CreateSampleDataTable()
         {
@@ -652,45 +659,53 @@ namespace SMS.ExamManagement.ExamResultList
             col_width.Add(60);
             AddColumn(dataTable, "Roll#", typeof(string));
             col_width.Add(60);
-            foreach (exam_data_entry ee in ede_exam_list)
+            try
             {
-                foreach (exam_data_entry ede in ee.subj_list)
+                
+                foreach (exam_data_entry ee in ede_exam_list)
                 {
-                    AddColumn(dataTable, ede.subject_name, typeof(string));
-                    col_width.Add(60);
+                    foreach (exam_data_entry ede in ee.subj_list)
+                    {
+                        AddColumn(dataTable, ede.subject_name, typeof(string));
+                        col_width.Add(60);
+                    }
+                    break;
                 }
-                break;
+                AddColumn(dataTable, "Total", typeof(string));
+                col_width.Add(60);
+                AddColumn(dataTable, "%", typeof(string));
+                col_width.Add(50);
+                AddColumn(dataTable, "Grade", typeof(string));
+                col_width.Add(50);
+                AddColumn(dataTable, "Position", typeof(string));
+                col_width.Add(50);
+
+                //Add Marks
+
+                foreach (exam_data_entry ee in ede_exam_list)
+                {
+                    var dataRow = dataTable.NewRow();
+                    j = 0;
+                    dataRow[j] = i.ToString();
+                    dataRow[++j] = ee.std_name.ToString();
+                    dataRow[++j] = ee.adm_no.ToString();
+                    dataRow[++j] = ee.roll_no.ToString();
+                    foreach (exam_data_entry ede in ee.subj_list)
+                    {
+                        dataRow[++j] = ede.subject_obtained;
+                    }
+                    dataRow[++j] = ee.obtained_marks;
+                    dataRow[++j] = ee.percentage;
+                    dataRow[++j] = ee.grade;
+                    dataRow[++j] = ee.position;
+
+                    dataTable.Rows.Add(dataRow);
+                    i++;
+                }
             }
-            AddColumn(dataTable, "Total", typeof(string));
-            col_width.Add(60);
-            AddColumn(dataTable, "%", typeof(string));
-            col_width.Add(50);
-            AddColumn(dataTable, "Grade", typeof(string));
-            col_width.Add(50);
-            AddColumn(dataTable, "Position", typeof(string));
-            col_width.Add(50);
-
-            //Add Marks
-
-            foreach (exam_data_entry ee in ede_exam_list)
+            catch (Exception ex)
             {
-                var dataRow = dataTable.NewRow();
-                j = 0;
-                dataRow[j] = i.ToString();
-                dataRow[++j] = ee.std_name.ToString();
-                dataRow[++j] = ee.adm_no.ToString();
-                dataRow[++j] = ee.roll_no.ToString();
-                foreach (exam_data_entry ede in ee.subj_list)
-                {
-                    dataRow[++j] = ede.subject_obtained;
-                }
-                dataRow[++j] = ee.obtained_marks;
-                dataRow[++j] = ee.percentage;
-                dataRow[++j] = ee.grade;
-                dataRow[++j] = ee.position;
-
-                dataTable.Rows.Add(dataRow);
-                i++;
+                MessageBox.Show(ex.Message);
             }
             return dataTable;
         }
