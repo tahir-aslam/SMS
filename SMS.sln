@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS", "SMS\SMS.csproj", "{23FC9054-B931-4AAB-84BC-B0942D174359}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF Webcam", "CS_sample\WPF Webcam\WPF Webcam\WPF Webcam.csproj", "{86C6005D-B1DF-4C7F-A035-BBA5602FF3ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUT.PrintEngine", "SUT.PrintEngine\SUT.PrintEngine.csproj", "{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SMS_29Jan", "SMS_29Jan\SMS_29Jan.vdproj", "{0DE610A5-551C-4B00-949A-AA6831E1905E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,12 @@ Global
 		{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}.Release|x86.ActiveCfg = Release|Any CPU
 		{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}.Release|x86.Build.0 = Release|Any CPU
+		{0DE610A5-551C-4B00-949A-AA6831E1905E}.Debug|Any CPU.ActiveCfg = Debug
+		{0DE610A5-551C-4B00-949A-AA6831E1905E}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{0DE610A5-551C-4B00-949A-AA6831E1905E}.Debug|x86.ActiveCfg = Debug
+		{0DE610A5-551C-4B00-949A-AA6831E1905E}.Release|Any CPU.ActiveCfg = Release
+		{0DE610A5-551C-4B00-949A-AA6831E1905E}.Release|Mixed Platforms.ActiveCfg = Release
+		{0DE610A5-551C-4B00-949A-AA6831E1905E}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
