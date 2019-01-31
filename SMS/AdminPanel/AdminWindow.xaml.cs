@@ -16,6 +16,9 @@ using SMS.DAL;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using System.Data;
+using SUT.PrintEngine.Utils;
+using System.Windows.Markup;
 
 namespace SMS.AdminPanel
 {
@@ -180,7 +183,7 @@ namespace SMS.AdminPanel
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
             using (MySqlCommand cmd = new MySqlCommand())
             {
-                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + id + "&& session_id=" + MainWindow.session.id+" ORDER BY adm_no_int ASC";
+                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + id + "&& session_id=" + MainWindow1.session.id+" ORDER BY adm_no_int ASC";
                 cmd.Connection = con;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
@@ -269,7 +272,7 @@ namespace SMS.AdminPanel
 
 
                         cmd.Parameters.Add("@id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm.id;
-                        cmd.Parameters.Add("@session_id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = MainWindow.session.id;                        
+                        cmd.Parameters.Add("@session_id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = MainWindow1.session.id;                        
                         cmd.Parameters.Add("@roll_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = roll.ToString();
                         cmd.Parameters.Add("@roll_no_int", MySql.Data.MySqlClient.MySqlDbType.Int32).Value = Convert.ToInt32(roll);
                         cmd.Parameters.Add("@updation", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = "true";
@@ -485,8 +488,8 @@ namespace SMS.AdminPanel
                         }
 
 
-                        classes_obj.created_by = MainWindow.emp_login_obj.emp_user_name;
-                        classes_obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                        classes_obj.created_by = MainWindow1.emp_login_obj.emp_user_name;
+                        classes_obj.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                         classes_obj.date_time = DateTime.Now;
 
                         if (dal.insertFeesClasses(classes_obj) > 0)
@@ -528,8 +531,8 @@ namespace SMS.AdminPanel
                     foreach (var fee in fees_list)
                     {
                         actual_obj = new sms_fees_actual();
-                        actual_obj.created_by = MainWindow.emp_login_obj.emp_user_name;
-                        actual_obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                        actual_obj.created_by = MainWindow1.emp_login_obj.emp_user_name;
+                        actual_obj.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                         actual_obj.date_time = DateTime.Now;
                         actual_obj.fees_category_id = fee.fees_category_id;
                         actual_obj.fees_category = fee.fees_category;
@@ -745,10 +748,10 @@ namespace SMS.AdminPanel
                 //            generatedFee.year = 2016;
                 //            generatedFee.date = item.date_time;
                 //            generatedFee.due_date = item.date_time.AddDays(20);
-                //            generatedFee.session_id = Convert.ToInt32(MainWindow.session.id);
+                //            generatedFee.session_id = Convert.ToInt32(MainWindow1.session.id);
 
                 //            generatedFee.created_by = item.created_by;
-                //            generatedFee.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                //            generatedFee.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                 //            generatedFee.date_time = DateTime.Now;
                 //            generatedFee.fees_category_id = 111;
                 //            generatedFee.fees_category = "Admission Fee";
@@ -806,10 +809,10 @@ namespace SMS.AdminPanel
                 //            generatedFee.year = 2016;
                 //            generatedFee.date = item.date_time;
                 //            generatedFee.due_date = item.date_time.AddDays(20);
-                //            generatedFee.session_id = Convert.ToInt32(MainWindow.session.id);
+                //            generatedFee.session_id = Convert.ToInt32(MainWindow1.session.id);
 
                 //            generatedFee.created_by = item.created_by;
-                //            generatedFee.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                //            generatedFee.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                 //            generatedFee.date_time = DateTime.Now;
                 //            generatedFee.fees_category_id = 112;
                 //            generatedFee.fees_category = "Annual Fund";
@@ -866,10 +869,10 @@ namespace SMS.AdminPanel
                 //            generatedFee.year = 2016;
                 //            generatedFee.date = item.date_time;
                 //            generatedFee.due_date = item.date_time.AddDays(20);
-                //            generatedFee.session_id = Convert.ToInt32(MainWindow.session.id);
+                //            generatedFee.session_id = Convert.ToInt32(MainWindow1.session.id);
 
                 //            generatedFee.created_by = item.created_by;
-                //            generatedFee.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                //            generatedFee.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                 //            generatedFee.date_time = DateTime.Now;
                 //            generatedFee.fees_category_id = 113;
                 //            generatedFee.fees_category = "Tution Fee";
@@ -927,10 +930,10 @@ namespace SMS.AdminPanel
                 //            generatedFee.year = 2016;
                 //            generatedFee.date = item.date_time;
                 //            generatedFee.due_date = item.date_time.AddDays(20);
-                //            generatedFee.session_id = Convert.ToInt32(MainWindow.session.id);
+                //            generatedFee.session_id = Convert.ToInt32(MainWindow1.session.id);
 
                 //            generatedFee.created_by = item.created_by;
-                //            generatedFee.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                //            generatedFee.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                 //            generatedFee.date_time = DateTime.Now;
                 //            generatedFee.fees_category_id = 115;
                 //            generatedFee.fees_category = "Other";
@@ -987,10 +990,10 @@ namespace SMS.AdminPanel
                 //            generatedFee.year = 2016;
                 //            generatedFee.date = item.date_time;
                 //            generatedFee.due_date = item.date_time.AddDays(20);
-                //            generatedFee.session_id = Convert.ToInt32(MainWindow.session.id);
+                //            generatedFee.session_id = Convert.ToInt32(MainWindow1.session.id);
 
                 //            generatedFee.created_by = item.created_by;
-                //            generatedFee.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                //            generatedFee.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                 //            generatedFee.date_time = DateTime.Now;
                 //            generatedFee.fees_category_id = 117;
                 //            generatedFee.fees_category = "Security Fee";
@@ -1047,10 +1050,10 @@ namespace SMS.AdminPanel
                 //            generatedFee.year = 2016;
                 //            generatedFee.date = item.date_time;
                 //            generatedFee.due_date = item.date_time.AddDays(20);
-                //            generatedFee.session_id = Convert.ToInt32(MainWindow.session.id);
+                //            generatedFee.session_id = Convert.ToInt32(MainWindow1.session.id);
 
                 //            generatedFee.created_by = item.created_by;
-                //            generatedFee.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                //            generatedFee.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                 //            generatedFee.date_time = DateTime.Now;
                 //            generatedFee.fees_category_id = 118;
                 //            generatedFee.fees_category = "Exam Fee";
@@ -1107,10 +1110,10 @@ namespace SMS.AdminPanel
                 //            generatedFee.year = 2016;
                 //            generatedFee.date = item.date_time;
                 //            generatedFee.due_date = item.date_time.AddDays(20);
-                //            generatedFee.session_id = Convert.ToInt32(MainWindow.session.id);
+                //            generatedFee.session_id = Convert.ToInt32(MainWindow1.session.id);
 
                 //            generatedFee.created_by = item.created_by;
-                //            generatedFee.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                //            generatedFee.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                 //            generatedFee.date_time = DateTime.Now;
                 //            generatedFee.fees_category_id = 119;
                 //            generatedFee.fees_category = "Fine";
@@ -1560,7 +1563,7 @@ namespace SMS.AdminPanel
             {
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
-                    cmd.CommandText = "SELECT* FROM sms_fee where (month=@month1 || month=@month2 || month=@month3 || month=@month4 || month=@month5 || month=@month6) && isActive='Y' && session_id=" + MainWindow.session.id;
+                    cmd.CommandText = "SELECT* FROM sms_fee where (month=@month1 || month=@month2 || month=@month3 || month=@month4 || month=@month5 || month=@month6) && isActive='Y' && session_id=" + MainWindow1.session.id;
                     cmd.Connection = con;
                     //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                     try
@@ -1615,8 +1618,8 @@ namespace SMS.AdminPanel
                 sms_voucher_obj.voucher_no = feesListToBePaid.First().receipt_no_full;
                 sms_voucher_obj.amount = feesListToBePaid.First().total_paid;
 
-                sms_voucher_obj.created_by = MainWindow.emp_login_obj.emp_user_name;
-                sms_voucher_obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                sms_voucher_obj.created_by = MainWindow1.emp_login_obj.emp_user_name;
+                sms_voucher_obj.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
                 sms_voucher_obj.date_time = DateTime.Now;
             }
             catch (Exception ex)
@@ -1777,7 +1780,61 @@ namespace SMS.AdminPanel
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
         public event PropertyChangedEventHandler PropertyChanged;
- 
+
+        private void PrintVisualClick(object sender, RoutedEventArgs e)
+        {
+            var visualSize = new Size(visual.ActualWidth, visual.ActualHeight);
+            var printControl = PrintControlFactory.Create(visualSize, visual);
+            printControl.ShowPrintPreview();
+        }
+        #region PrintDataTable
+        private void PrintDataTableClick(object sender, RoutedEventArgs e)
+        {
+            var dataTable = CreateSampleDataTable();
+            var columnWidths = new List<double>() { 30, 40, 300, 300, 150 };
+            var ht = new HeaderTemplate();
+            var headerTemplate = XamlWriter.Save(ht);
+            var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
+            printControl.ShowPrintPreview();
+        }
+
+        private DataTable CreateSampleDataTable()
+        {
+            var dataTable = new DataTable();
+            AddColumn(dataTable, "ID", typeof(int));
+            AddColumn(dataTable, "Name", typeof(string));
+            AddColumn(dataTable, "Birth Date", typeof(DateTime));
+            AddColumn(dataTable, "Profession", typeof(string));
+            AddColumn(dataTable, "Address", typeof(string));
+
+            for (int i = 1; i < 300; i++)
+            {
+                AddRow(dataTable, i);
+            }
+            return dataTable;
+        }
+
+        private void AddRow(DataTable dataTable, int i)
+        {
+            var name = string.Format("saraf {0}", i);
+            var dob = string.Format("{0}", DateTime.Now.AddDays(-(i * 18)));
+            var profession = string.Format("Engineer {0}", i);
+            var address = string.Format("8{0} Jack Clow Road, London", i);
+            var dataRow = dataTable.NewRow();
+            dataRow[0] = i;
+            dataRow[1] = name;
+            dataRow[2] = dob;
+            dataRow[3] = profession;
+            dataRow[4] = address;
+            dataTable.Rows.Add(dataRow);
+        }
+
+        private void AddColumn(DataTable dataTable, string columnName, Type type)
+        {
+            var dataColumn = new DataColumn(columnName, type);
+            dataTable.Columns.Add(dataColumn);
+        }
+        #endregion
     }
     public static class ExtensionMethods
     {

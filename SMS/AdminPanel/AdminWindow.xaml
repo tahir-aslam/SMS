@@ -2,6 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AdminWindow" Height="400" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <BitmapImage x:Key="MyImageSource"
+                     UriSource="/SMS;component/images/PrintBg.jpg" />
+    </Window.Resources>
     <Grid>
         <TabControl HorizontalAlignment="Left" Width="Auto" Name="tab_control" Margin="5">            
             <TabItem Header="Arrange Roll#" Name="arrange_roll_no" >
@@ -111,6 +115,29 @@
                                     VerticalAlignment="Center">
                             <Button Content="Start Debug" Width="150" Height="40" Name="synch_btn" Click="synch_btn_Click" />
                         </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Name="TabItemPrintengine"
+                     Header="Test PrintEngine">
+                <Grid>
+                    <StackPanel Background="LightSlateGray">
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Center"
+                                    Margin="20">
+                            <Button Content="Print This Visual"
+                                    Width="200"
+                                    Height="50"
+                                    Click="PrintVisualClick" />
+                            <Button Content="Print Sample DataTable"
+                                    Width="200"
+                                    Height="50"
+                                    Click="PrintDataTableClick" />
+                        </StackPanel>
+                        <Image Source="{StaticResource MyImageSource}"
+                               Stretch="UniformToFill"
+                               x:Name="visual" />
                     </StackPanel>
                 </Grid>
             </TabItem>
