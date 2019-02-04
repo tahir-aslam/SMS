@@ -183,7 +183,7 @@ namespace SMS.AdminPanel
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
             using (MySqlCommand cmd = new MySqlCommand())
             {
-                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + id + "&& session_id=" + MainWindow1.session.id+" ORDER BY adm_no_int ASC";
+                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + id + "&& session_id=" + MainWindow.session.id+" ORDER BY adm_no_int ASC";
                 cmd.Connection = con;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
@@ -272,7 +272,7 @@ namespace SMS.AdminPanel
 
 
                         cmd.Parameters.Add("@id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm.id;
-                        cmd.Parameters.Add("@session_id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = MainWindow1.session.id;                        
+                        cmd.Parameters.Add("@session_id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = MainWindow.session.id;                        
                         cmd.Parameters.Add("@roll_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = roll.ToString();
                         cmd.Parameters.Add("@roll_no_int", MySql.Data.MySqlClient.MySqlDbType.Int32).Value = Convert.ToInt32(roll);
                         cmd.Parameters.Add("@updation", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = "true";
@@ -390,8 +390,7 @@ namespace SMS.AdminPanel
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            
+        {            
             try
             {
                 bool check = false;
@@ -488,8 +487,8 @@ namespace SMS.AdminPanel
                         }
 
 
-                        classes_obj.created_by = MainWindow1.emp_login_obj.emp_user_name;
-                        classes_obj.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
+                        classes_obj.created_by = MainWindow.emp_login_obj.emp_user_name;
+                        classes_obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
                         classes_obj.date_time = DateTime.Now;
 
                         if (dal.insertFeesClasses(classes_obj) > 0)
@@ -531,8 +530,8 @@ namespace SMS.AdminPanel
                     foreach (var fee in fees_list)
                     {
                         actual_obj = new sms_fees_actual();
-                        actual_obj.created_by = MainWindow1.emp_login_obj.emp_user_name;
-                        actual_obj.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
+                        actual_obj.created_by = MainWindow.emp_login_obj.emp_user_name;
+                        actual_obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
                         actual_obj.date_time = DateTime.Now;
                         actual_obj.fees_category_id = fee.fees_category_id;
                         actual_obj.fees_category = fee.fees_category;
@@ -1563,7 +1562,7 @@ namespace SMS.AdminPanel
             {
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
-                    cmd.CommandText = "SELECT* FROM sms_fee where (month=@month1 || month=@month2 || month=@month3 || month=@month4 || month=@month5 || month=@month6) && isActive='Y' && session_id=" + MainWindow1.session.id;
+                    cmd.CommandText = "SELECT* FROM sms_fee where (month=@month1 || month=@month2 || month=@month3 || month=@month4 || month=@month5 || month=@month6) && isActive='Y' && session_id=" + MainWindow.session.id;
                     cmd.Connection = con;
                     //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                     try
@@ -1618,8 +1617,8 @@ namespace SMS.AdminPanel
                 sms_voucher_obj.voucher_no = feesListToBePaid.First().receipt_no_full;
                 sms_voucher_obj.amount = feesListToBePaid.First().total_paid;
 
-                sms_voucher_obj.created_by = MainWindow1.emp_login_obj.emp_user_name;
-                sms_voucher_obj.emp_id = Convert.ToInt32(MainWindow1.emp_login_obj.emp_id);
+                sms_voucher_obj.created_by = MainWindow.emp_login_obj.emp_user_name;
+                sms_voucher_obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
                 sms_voucher_obj.date_time = DateTime.Now;
             }
             catch (Exception ex)
