@@ -883,6 +883,10 @@ namespace SUT.PrintEngine.ViewModels
                 FullScreenPrintWindow.ShowInTaskbar = false;
                 FullScreenPrintWindow.WindowStyle = WindowStyle.SingleBorderWindow;
                 FullScreenPrintWindow.WindowState = WindowState.Maximized;
+                foreach (var Window in Application.Current.Windows)
+                {
+                    // TODO: write what you want here
+                }
                 FullScreenPrintWindow.Owner = Application.Current.MainWindow;
                 FullScreenPrintWindow.Content = View;
                 ApplicationExtention.MainWindow = FullScreenPrintWindow;

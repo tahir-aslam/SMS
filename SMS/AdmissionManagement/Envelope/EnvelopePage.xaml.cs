@@ -378,9 +378,15 @@ namespace SMS.AdmissionManagement.Envelope
 
         private void print_btn_Click(object sender, RoutedEventArgs e)
         {
-            var visualSize = new Size(envelope_listbox.ActualWidth, envelope_listbox.ActualHeight);
-            var printControl = PrintControlFactory.Create(visualSize, envelope_listbox);
-            printControl.ShowPrintPreview();
-        }
+            try
+            {                
+                var visualSize = new Size(envelope_listbox.ActualWidth, envelope_listbox.ActualHeight);
+                var printControl = PrintControlFactory.Create(visualSize, envelope_listbox);
+                printControl.ShowPrintPreview();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }        }
     }
 }

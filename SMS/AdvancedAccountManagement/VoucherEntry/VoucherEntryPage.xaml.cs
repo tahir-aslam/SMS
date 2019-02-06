@@ -124,20 +124,27 @@ namespace SMS.AdvancedAccountManagement.VoucherEntry
 
         private void print_btn_Click(object sender, RoutedEventArgs e)
         {
-            DateTime sDate = date_picker_from.SelectedDate.Value;
-            DateTime eDate = date_picker_to.SelectedDate.Value;
-            sms_account_type type;
-            List<sms_voucher_entries> lst;
+            try
+            {
+                DateTime sDate = date_picker_from.SelectedDate.Value;
+                DateTime eDate = date_picker_to.SelectedDate.Value;
+                sms_account_type type;
+                List<sms_voucher_entries> lst;
 
-            if (voucher_types_CMB.SelectedItem != null && voucher_types_CMB.SelectedIndex > 0)
-            {
-                type = (sms_account_type)voucher_types_CMB.SelectedItem;
-                lst = accountsDAL.getAllVoucherEntriesByVoucherDateAndType(sDate, eDate).Where(x=>x.account_type_id == type.id).ToList();
+                if (voucher_types_CMB.SelectedItem != null && voucher_types_CMB.SelectedIndex > 0)
+                {
+                    type = (sms_account_type)voucher_types_CMB.SelectedItem;
+                    lst = accountsDAL.getAllVoucherEntriesByVoucherDateAndType(sDate, eDate).Where(x => x.account_type_id == type.id).ToList();
+                }
+                else
+                {
+                    lst = accountsDAL.getAllVoucherEntriesByVoucherDateAndType(sDate, eDate);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lst = accountsDAL.getAllVoucherEntriesByVoucherDateAndType(sDate, eDate);
-            }            
+                MessageBox.Show(ex.Message);
+            }       
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
