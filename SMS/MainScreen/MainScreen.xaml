@@ -11,7 +11,8 @@
         Icon="/SMS;component/SMS.ico"
         Activated="MetroWindow_Activated"
         Deactivated="MetroWindow_Deactivated"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Name="v_MainScreen">
     <Window.Background>
         <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg" />
     </Window.Background>

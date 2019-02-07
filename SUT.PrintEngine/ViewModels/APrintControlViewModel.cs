@@ -882,13 +882,10 @@ namespace SUT.PrintEngine.ViewModels
                 FullScreenPrintWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 FullScreenPrintWindow.ShowInTaskbar = false;
                 FullScreenPrintWindow.WindowStyle = WindowStyle.SingleBorderWindow;
-                FullScreenPrintWindow.WindowState = WindowState.Maximized;
-                foreach (var Window in Application.Current.Windows)
-                {
-                    // TODO: write what you want here
-                }
-                FullScreenPrintWindow.Owner = Application.Current.MainWindow;
+                FullScreenPrintWindow.WindowState = WindowState.Maximized;                
+                //FullScreenPrintWindow.Owner = Application.Current.MainWindow;
                 FullScreenPrintWindow.Content = View;
+                //FullScreenPrintWindow.Show();
                 ApplicationExtention.MainWindow = FullScreenPrintWindow;
             }
             catch (Exception ex)
