@@ -3073,3 +3073,5 @@ C:\USB\SMS\SMS\obj\x86\Debug\SMS.pdb
 C:\USB\SMS\SMS\bin\Debug\SUT.PrintEngine.App.config
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\RdlCompile.cache
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\RdlCompile.compiled
+F:\Scenario\Github\SMS\SMS\obj\x86\Debug\Reports\Exam\ThreeExamReport\ThreeExamReportWithGrandTotalWindow.g.cs
+F:\Scenario\Github\SMS\SMS\obj\x86\Debug\Reports\Exam\ThreeExamReport\ThreeExamReportWithGrandTotalWindow.baml

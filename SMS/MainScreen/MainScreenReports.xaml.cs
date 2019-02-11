@@ -128,5 +128,11 @@ namespace SMS.MainScreen
             Reports.Exam.ResultCardCustom.ResultCardCustomWindow window = new Reports.Exam.ResultCardCustom.ResultCardCustomWindow();
             window.Show();
         }
+
+        private void threeexamwithGrandTotalreportbtn_Click(object sender, RoutedEventArgs e)
+        {
+            Reports.Exam.ThreeExamReport.ThreeExamReportWithGrandTotalWindow window = new Reports.Exam.ThreeExamReport.ThreeExamReportWithGrandTotalWindow();
+            window.Show();
+        }
     }
 }

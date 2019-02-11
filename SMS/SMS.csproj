@@ -799,6 +799,9 @@
     <Compile Include="Reports\Exam\ResultCardByGrade\ResultCardByGradeWindow.xaml.cs">
       <DependentUpon>ResultCardByGradeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Exam\ThreeExamReport\ThreeExamReportWithGrandTotalWindow.xaml.cs">
+      <DependentUpon>ThreeExamReportWithGrandTotalWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Exam\TwoExamReport\TwoExamReport.xaml.cs">
       <DependentUpon>TwoExamReport.xaml</DependentUpon>
     </Compile>
@@ -1679,6 +1682,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Reports\Exam\ResultCardByGrade\ResultCardByGradeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Exam\ThreeExamReport\ThreeExamReportWithGrandTotalWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

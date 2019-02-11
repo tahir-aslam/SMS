@@ -220,6 +220,18 @@
                 <StackPanel Orientation="Horizontal" >
                     <Button Width="100"
                         Height="120"
+                        Name="threeexamwithGrandTotalreportbtn"
+                     Click="threeexamwithGrandTotalreportbtn_Click"
+                        Margin="20,0,0,0">
+                        <TextBlock Text="3Exam Report With Grand Total"
+                               FontSize="16"
+                               FontFamily="Segoe UI Light"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"></TextBlock>
+
+                    </Button>
+                    <Button Width="100"
+                        Height="120"
                         Name="fourexamreportbtn"
                      Click="fourexamreportbtn_Click"
                         Margin="20,0,0,0">

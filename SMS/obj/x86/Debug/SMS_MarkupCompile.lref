@@ -1,4 +1,4 @@
-﻿F:\Scenario\Github\SMS\SMS\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 
 FF:\Scenario\Github\SMS\SMS\AdmissionManagement\Admission\AdmissionFormPrint.xaml;;
 FF:\Scenario\Github\SMS\SMS\AdmissionManagement\Admission\AdmissionSearch.xaml;;
@@ -30,4 +30,5 @@ FF:\Scenario\Github\SMS\SMS\Reports\Exam\ResultCardByCoduct\ResultCardByConductW
 FF:\Scenario\Github\SMS\SMS\Reports\Exam\ResultCardByGrade\ResultCardByGradeWindow.xaml;;
 FF:\Scenario\Github\SMS\SMS\Reports\Exam\TwoExamReport\TwoExamReport.xaml;;
 FF:\Scenario\Github\SMS\SMS\xml\Upload\UploadWindow.xaml;;
+FF:\Scenario\Github\SMS\SMS\Reports\Exam\ThreeExamReport\ThreeExamReportWithGrandTotalWindow.xaml;;
 
