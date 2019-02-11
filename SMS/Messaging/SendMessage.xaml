@@ -65,7 +65,7 @@
                 <Button Name="birthday_btn" Height="50" Width="60" ToolTipService.ToolTip="Birthday SmS" Margin="5" Click="birthday_btn_Click">
                     <Image Source="/SMS;component/images/birthday.jpg" />
                 </Button>
-                <Button Name="complaint_btn" Height="50" Width="60" ToolTipService.ToolTip="Birthday SmS" Margin="5" Click="complaint_btn_Click">
+                <Button Name="complaint_btn" Height="50" Width="60" ToolTipService.ToolTip="Complaint SmS" Margin="5" Click="complaint_btn_Click">
                     <Image Source="/SMS;component/images/complaint_icon.png" />
                 </Button>
                 <Button Name="history_btn" Height="50" Width="60" ToolTipService.ToolTip="SmS History" Margin="5" Click="history_btn_Click">
