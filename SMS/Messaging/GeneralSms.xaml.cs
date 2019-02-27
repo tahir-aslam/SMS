@@ -256,15 +256,17 @@ namespace SMS.Messaging
 
         private void send_btn_Click(object sender, RoutedEventArgs e)
         {
+            int count = 0;
             std_nos = new List<admission>();
             admission adm;
             text_message = message_textbox.Text;            
             //foreach(int row = 0; row < adm_grid.Items.Count; row++)
             foreach(admission adms in adm_list.Where(x=>x.Checked == true))
             {
+                count++;
                 adm = new admission();
                 adm = adms;
-                adm.sms_message = message_textbox.Text.Trim();
+                adm.sms_message = message_textbox.Text.Trim()+Environment.NewLine + Environment.NewLine + count.ToString("D5");
                 adm.sms_type = "General";
                 std_nos.Add(adm);
             }
