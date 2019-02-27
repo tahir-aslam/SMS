@@ -50,7 +50,8 @@ namespace SMS.ExamManagement.ExamReport
         string total_presents = "_______";
         string total_absents = "_______";
         string att_percentage = "_______";
-        
+        string total_leaves = "_______";
+
         public ExamReportPage()
         {
             InitializeComponent();
@@ -698,6 +699,7 @@ namespace SMS.ExamManagement.ExamReport
                     ede_obj.total_days = total_days;
                     ede_obj.total_presents = total_presents;
                     ede_obj.total_absents = total_absents;
+                    ede_obj.total_leaves = total_leaves;
                     ede_obj.att_percentage = att_percentage;
 
                     ede_obj.teacher_sig_text = MainWindow.examAdminPanel.teacher_sig_text;
@@ -819,6 +821,7 @@ namespace SMS.ExamManagement.ExamReport
                 total_days = days.ToString();
                 total_absents = absents.ToString();
                 total_presents = presents.ToString();
+                total_leaves = leaves.ToString();
             }
             catch (Exception ex)
             {

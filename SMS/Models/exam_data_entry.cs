@@ -66,7 +66,8 @@ namespace SMS.Models
        public string total_days { set; get; }
        public string total_presents { set; get; }
        public string total_absents { set; get; }
-       public string att_percentage { set; get; }
+        public string total_leaves { set; get; }
+        public string att_percentage { set; get; }
 
        public string sectionStrength { set; get; }
        public string classStrength { set; get; }

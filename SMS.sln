@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF Webcam", "CS_sample\WPF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUT.PrintEngine", "SUT.PrintEngine\SUT.PrintEngine.csproj", "{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SMS-11Feb", "SMS-11Feb\SMS-11Feb.vdproj", "{3E3598D2-0F0D-412E-A828-4F9A101B1516}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,12 +51,6 @@ Global
 		{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}.Release|x86.ActiveCfg = Release|Any CPU
 		{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}.Release|x86.Build.0 = Release|Any CPU
-		{3E3598D2-0F0D-412E-A828-4F9A101B1516}.Debug|Any CPU.ActiveCfg = Debug
-		{3E3598D2-0F0D-412E-A828-4F9A101B1516}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{3E3598D2-0F0D-412E-A828-4F9A101B1516}.Debug|x86.ActiveCfg = Debug
-		{3E3598D2-0F0D-412E-A828-4F9A101B1516}.Release|Any CPU.ActiveCfg = Release
-		{3E3598D2-0F0D-412E-A828-4F9A101B1516}.Release|Mixed Platforms.ActiveCfg = Release
-		{3E3598D2-0F0D-412E-A828-4F9A101B1516}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

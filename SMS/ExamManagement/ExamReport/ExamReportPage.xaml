@@ -348,51 +348,20 @@
                                                     Orientation="Horizontal"
                                                     Margin="10,0,0,0"
                                                     Visibility="{Binding Converter={StaticResource myAttendanceToVisibilityConverter}}">
-                                            <TextBlock Text="Total Days:     "
-                                                       FontSize="14"
-                                                       FontWeight="Bold"
-                                                       VerticalAlignment="Center" />
-                                            <TextBlock  Name="attendence_tb"
-                                                        Text="{Binding total_days}"
-                                                        FontSize="15"
-                                                        FontWeight="Bold"
-                                                        VerticalAlignment="Center"
-                                                        Width="80"
-                                                        TextDecorations="Underline" />
+                                            <TextBlock Text="T.Present:  " FontSize="14" FontWeight="Bold"  VerticalAlignment="Center"/>
+                                            <TextBlock  Text="{Binding total_presents}"  FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Width="70" TextDecorations="Underline"/>
 
-                                            <TextBlock Text="Total Absentees:     "
-                                                       FontSize="14"
-                                                       FontWeight="Bold"
-                                                       VerticalAlignment="Center" />
-                                            <TextBlock  Text="{Binding total_absents}"
-                                                        FontSize="15"
-                                                        FontWeight="Bold"
-                                                        VerticalAlignment="Center"
-                                                        Width="80"
-                                                        TextDecorations="Underline" />
+                                            <TextBlock Text="T.Absentees:  " FontSize="14" FontWeight="Bold"  VerticalAlignment="Center"/>
+                                            <TextBlock  Text="{Binding total_absents}"  FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Width="70" TextDecorations="Underline"/>
 
-                                            <TextBlock Text="Total Present:     "
-                                                       FontSize="14"
-                                                       FontWeight="Bold"
-                                                       VerticalAlignment="Center" />
-                                            <TextBlock  Text="{Binding total_presents}"
-                                                        FontSize="15"
-                                                        FontWeight="Bold"
-                                                        VerticalAlignment="Center"
-                                                        Width="80"
-                                                        TextDecorations="Underline" />
+                                            <TextBlock Text="T.Leave:  " FontSize="14" FontWeight="Bold"  VerticalAlignment="Center"/>
+                                            <TextBlock  Text="{Binding total_leaves}"  FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Width="70" TextDecorations="Underline"/>
 
-                                            <TextBlock Text="Attendance %:     "
-                                                       FontSize="14"
-                                                       FontWeight="Bold"
-                                                       VerticalAlignment="Center" />
-                                            <TextBlock  Text="{Binding att_percentage}"
-                                                        FontSize="15"
-                                                        FontWeight="Bold"
-                                                        VerticalAlignment="Center"
-                                                        Width="80"
-                                                        TextDecorations="Underline" />
+                                            <TextBlock Text="Total Days:  " FontSize="14" FontWeight="Bold"  VerticalAlignment="Center"/>
+                                            <TextBlock  Name="attendence_tb" Text="{Binding total_days}"  FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Width="80" TextDecorations="Underline"/>
 
+                                            <TextBlock Text="Attendance %:  " FontSize="14" FontWeight="Bold"  VerticalAlignment="Center"/>
+                                            <TextBlock  Text="{Binding att_percentage}"  FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Width="70" TextDecorations="Underline"/>
                                         </StackPanel>
 
                                         <!--<StackPanel Grid.Row="4" Grid.RowSpan="3" Orientation="Horizontal"  Name="position_sp" HorizontalAlignment="Right" VerticalAlignment="Top">
