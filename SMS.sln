@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF Webcam", "CS_sample\WPF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUT.PrintEngine", "SUT.PrintEngine\SUT.PrintEngine.csproj", "{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scenario.GSMSMSEngine", "..\..\ScenarioProjects\Scenario.GSMSMSEngine\Scenario.GSMSMSEngine\Scenario.GSMSMSEngine.csproj", "{5F8A229F-4742-4BA8-AC83-876BD2314592}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,18 @@ Global
 		{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}.Release|x86.ActiveCfg = Release|Any CPU
 		{0B3D76D5-D9F4-4C0E-AFA9-143138EBC74D}.Release|x86.Build.0 = Release|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Debug|x86.Build.0 = Debug|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Release|x86.ActiveCfg = Release|Any CPU
+		{5F8A229F-4742-4BA8-AC83-876BD2314592}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

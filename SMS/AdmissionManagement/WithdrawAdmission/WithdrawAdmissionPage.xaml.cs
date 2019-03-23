@@ -45,7 +45,9 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
             strength_textblock.Text = adm_grid.Items.Count.ToString();
         }
         public void load_grid()
-        {            
+        {
+            session_cmb.SelectedIndex = 0;
+            session_cmb.SelectedIndex = Convert.ToInt32(MainWindow.session.id) - 1;
         }
         public void get_all_sessions()
         {
@@ -150,80 +152,92 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
         {
             adm_list = new List<admission>();
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
-            using (MySqlCommand cmd = new MySqlCommand())
             {
-                cmd.CommandText = "SELECT* FROM sms_admission where is_active='N' && session_id=" + id;
-                cmd.Connection = con;
-                //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
-                try
+                using (MySqlCommand cmd = new MySqlCommand())
                 {
-                    con.Open();
-                    Byte[] img;
-
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    cmd.CommandText = "SELECT* FROM sms_admission as adm Left join sms_classes as cl ON adm.class_in_id=cl.id where adm.is_active='N' && adm.session_id=" + id;
+                    cmd.Connection = con;
+                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
+                    try
                     {
-                        if (reader["image"] == "")
-                        {
-                            string path = "/SMS;component/images/Delete-icon.png";
-                            img = File.ReadAllBytes(path);
-                        }
-                        else
-                        {
-                            img = (byte[])(reader["image"]);
-                        }
+                        con.Open();
+                        Byte[] img;
 
-                        admission adm = new admission()
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
                         {
-                            id = Convert.ToString(reader["id"].ToString()),
-                            std_name = Convert.ToString(reader["std_name"].ToString()),
-                            father_name = Convert.ToString(reader["father_name"].ToString()),
-                            father_cnic = Convert.ToString(reader["father_cnic"].ToString()),
-                            father_income = Convert.ToString(reader["father_income"].ToString()),
-                            religion = Convert.ToString(reader["religion"].ToString()),
-                            dob = Convert.ToDateTime(reader["dob"]),
-                            b_form = Convert.ToString(reader["b_form"].ToString()),
-                            parmanent_adress = Convert.ToString(reader["parmanent_adress"].ToString()),
-                            adm_date = Convert.ToDateTime(reader["adm_date"]),
-                            cell_no = Convert.ToString(reader["cell_no"].ToString()),
-                            emergency_address = Convert.ToString(reader["emergency_address"].ToString()),
-                            previous_school = Convert.ToString(reader["previous_school"].ToString()),
-                            boarding = Convert.ToString(reader["boarding"].ToString()),
-                            transport = Convert.ToString(reader["transport"].ToString()),
-                            comm_adress = Convert.ToString(reader["comm_adress"].ToString()),
-                            class_id = Convert.ToString(reader["class_id"].ToString()),
-                            class_name = Convert.ToString(reader["class_name"].ToString()),
-                            section_id = Convert.ToString(reader["section_id"].ToString()),
-                            section_name = Convert.ToString(reader["section_name"].ToString()),
-                            roll_no = Convert.ToString(reader["roll_no"].ToString()),
-                            adm_no = Convert.ToString(reader["adm_no"].ToString()),
-                            transport_fee = Convert.ToString(reader["transport_fee"].ToString()),
-                            reg_fee = Convert.ToString(reader["reg_fee"].ToString()),
-                            tution_fee = Convert.ToString(reader["tution_fee"].ToString()),
-                            exam_fee = Convert.ToString(reader["exam_fee"].ToString()),
-                            security_fee = Convert.ToString(reader["security_fee"].ToString()),
-                            stationary_fee = Convert.ToString(reader["stationary_fee"].ToString()),
-                            scholarship = Convert.ToString(reader["scholarship"].ToString()),
-                            misc_charges = Convert.ToString(reader["misc_charges"].ToString()),
-                            other_exp = Convert.ToString(reader["other_exp"].ToString()),
-                            adm_fee = Convert.ToString(reader["adm_fee"].ToString()),
-                            total = Convert.ToString(reader["total"].ToString()),
-                            date_time = Convert.ToDateTime(reader["date_time"]),
-                            created_by = Convert.ToString(reader["created_by"].ToString()),
-                            is_active = Convert.ToString(reader["is_active"].ToString()),
-                            remarks = Convert.ToString(reader["remarks"].ToString()),
-                            withdrawal_date = Convert.ToDateTime(reader["withdrawal_date"]),
+                            if (reader["image"] == "")
+                            {
+                                string path = "/SMS;component/images/Delete-icon.png";
+                                img = File.ReadAllBytes(path);
+                            }
+                            else
+                            {
+                                img = (byte[])(reader["image"]);
+                            }
 
-                            image = img,
-                        };
-                        adm_list.Add(adm);
+                            admission adm = new admission()
+                            {
+                                id = Convert.ToString(reader["id"].ToString()),
+                                std_name = Convert.ToString(reader["std_name"].ToString()),
+                                father_name = Convert.ToString(reader["father_name"].ToString()),
+                                father_cnic = Convert.ToString(reader["father_cnic"].ToString()),
+                                father_income = Convert.ToString(reader["father_income"].ToString()),
+                                religion = Convert.ToString(reader["religion"].ToString()),
+                                dob = Convert.ToDateTime(reader["dob"]),
+                                b_form = Convert.ToString(reader["b_form"].ToString()),
+                                parmanent_adress = Convert.ToString(reader["parmanent_adress"].ToString()),
+                                adm_date = Convert.ToDateTime(reader["adm_date"]),
+                                cell_no = Convert.ToString(reader["cell_no"].ToString()),
+                                emergency_address = Convert.ToString(reader["emergency_address"].ToString()),
+                                previous_school = Convert.ToString(reader["previous_school"].ToString()),
+                                boarding = Convert.ToString(reader["boarding"].ToString()),
+                                transport = Convert.ToString(reader["transport"].ToString()),
+                                comm_adress = Convert.ToString(reader["comm_adress"].ToString()),
+                                class_id = Convert.ToString(reader["class_id"].ToString()),
+                                class_name = Convert.ToString(reader["class_name"].ToString()),
+                                section_id = Convert.ToString(reader["section_id"].ToString()),
+                                section_name = Convert.ToString(reader["section_name"].ToString()),
+                                roll_no = Convert.ToString(reader["roll_no"].ToString()),
+                                adm_no = Convert.ToString(reader["adm_no"].ToString()),
+                                transport_fee = Convert.ToString(reader["transport_fee"].ToString()),
+                                reg_fee = Convert.ToString(reader["reg_fee"].ToString()),
+                                tution_fee = Convert.ToString(reader["tution_fee"].ToString()),
+                                exam_fee = Convert.ToString(reader["exam_fee"].ToString()),
+                                security_fee = Convert.ToString(reader["security_fee"].ToString()),
+                                stationary_fee = Convert.ToString(reader["stationary_fee"].ToString()),
+                                scholarship = Convert.ToString(reader["scholarship"].ToString()),
+                                misc_charges = Convert.ToString(reader["misc_charges"].ToString()),
+                                other_exp = Convert.ToString(reader["other_exp"].ToString()),
+                                adm_fee = Convert.ToString(reader["adm_fee"].ToString()),
+                                total = Convert.ToString(reader["total"].ToString()),
+                                date_time = Convert.ToDateTime(reader["date_time"]),
+                                created_by = Convert.ToString(reader["created_by"].ToString()),
+                                is_active = Convert.ToString(reader["is_active"].ToString()),
+                                remarks = Convert.ToString(reader["remarks"].ToString()),
+                                withdrawal_date = Convert.ToDateTime(reader["withdrawal_date"]),
+
+                                class_in_id = Convert.ToInt32(reader["class_in_id"]),
+                                class_in_name = Convert.ToString(reader[72].ToString()),
+                                adm_no_prefix_id = Convert.ToInt32(reader["adm_no_prefix_id"]),
+                                roll_no_prefix_id = Convert.ToInt32(reader["roll_no_prefix_id"]),
+                                area_id = Convert.ToInt32(reader["city_area_id"]),
+                                family_group_id = Convert.ToInt32(reader["family_group_id"]),
+                                roll_no_int = Convert.ToInt32(reader["roll_no_int"]),
+                                adm_no_int = Convert.ToInt32(reader["adm_no_int"]),
+
+
+                                image = img,
+                            };
+                            adm_list.Add(adm);
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }                
+            }            
         }
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -322,7 +336,7 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
                 dataRow[5] = c.father_name.ToString();
                 dataRow[6] = c.cell_no.ToString();
                 dataRow[7] = c.parmanent_adress;
-                dataRow[8] = c.class_name.ToString();
+                dataRow[8] = c.class_in_name.ToString();
                 dataRow[9] = c.class_name.ToString();
                 dataRow[10] = c.withdrawal_date.ToString("dd-MMM-yyyy");
                 dataRow[11] = c.remarks.ToString();

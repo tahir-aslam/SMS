@@ -67,6 +67,7 @@ namespace SMS.Models
         public int adm_no_prefix_id { set; get; }
         public int area_id { set; get; }
         public int class_in_id { set; get; }
+        public string class_in_name { set; get; }
         public int roll_no_int { get; set; }
         public int adm_no_int { get; set; }
         public int family_group_id { get; set; }

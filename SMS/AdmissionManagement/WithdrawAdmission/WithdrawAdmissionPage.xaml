@@ -109,8 +109,8 @@
                         <DataGridTextColumn Header="Father Name" Binding="{Binding father_name}" Width="Auto" />
                         <DataGridTextColumn Header="Father CNIC" Binding="{Binding father_cnic}" Width="Auto" />
                         <DataGridTextColumn Header="Contact No" Binding="{Binding cell_no}" Width="Auto"/>
-                        <DataGridTextColumn Header="Residence" Binding="{Binding parmanent_adress}" Width="Auto"/>                        
-                        <DataGridTextColumn Header="Adm Class" Binding="{Binding class_name}" Width="Auto"/>
+                        <DataGridTextColumn Header="Residence" Binding="{Binding parmanent_adress}" Width="Auto"/>
+                        <DataGridTextColumn Header="Adm Class" Binding="{Binding class_in_name}" Width="Auto"/>
                         <DataGridTextColumn Header="Adm Section" Binding="{Binding section_name}" Width="Auto"/>                                               
                         <DataGridTextColumn Header="Withdrawan Class" Binding="{Binding class_name}" Width="Auto"/>
                         <DataGridTextColumn Header="Withdrawan Section" Binding="{Binding section_name}" Width="Auto"/>                        

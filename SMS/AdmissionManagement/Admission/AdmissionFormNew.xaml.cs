@@ -820,14 +820,18 @@ namespace SMS.AdmissionManagement.Admission
 
             bool a = Regex.IsMatch(adm_textbox.Text.Trim(), @"^\d+$");
             bool b = false;
+            string full_adm_no = "";
             foreach(admission adm in AS.adm_list)
             {
+                prefixNo objP = (prefixNo)adm_no_prefix_cmb.SelectedItem;                
+                full_adm_no = objP.prefix_abbreviation + adm_textbox.Text.Trim();
+
                 b = Regex.IsMatch(adm.adm_no, @"^\d+$");
                 if (a && b)
                 {
                     if (!string.IsNullOrWhiteSpace(adm.adm_no) || !string.IsNullOrEmpty(adm.adm_no))
                     {
-                        if (Convert.ToInt32(adm.adm_no_int) == Convert.ToInt32(adm_textbox.Text.Trim()) && adm.id != obj.id)
+                        if (adm.adm_no == full_adm_no && adm.id != obj.id)
                         {
                             check = true;
                         }
@@ -837,7 +841,7 @@ namespace SMS.AdmissionManagement.Admission
                 {
                     if (!string.IsNullOrWhiteSpace(adm.adm_no) || !string.IsNullOrEmpty(adm.adm_no))
                     {
-                        if (adm.adm_no_int.ToString() == adm_textbox.Text.Trim() && adm.id != obj.id)
+                        if (adm.adm_no == full_adm_no && adm.id != obj.id)
                         {
                             check = true;
                         }

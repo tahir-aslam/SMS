@@ -72,12 +72,12 @@
                                 <ColumnDefinition Width="100" />
                                 <ColumnDefinition Width="150" />
                                 <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="150" />                                
+                                <ColumnDefinition Width="150" />
                                 <ColumnDefinition Width="*" />
 
                             </Grid.ColumnDefinitions>
 
-                           
+
                             <Label Grid.Row="0"
                                    Grid.Column="0"
                                    Content="Voucher Type: "
@@ -195,7 +195,7 @@
                                     <ComboBoxItem Content="By Father Name" />
                                     <ComboBoxItem Content="By Adm #"
                                                   IsSelected="True" />
-                                    <ComboBoxItem Content="By Roll #" />                                   
+                                    <ComboBoxItem Content="By Roll #" />
                                 </ComboBox>
                             </StackPanel>
                         </Grid>
@@ -751,7 +751,7 @@
                         <Button Content="Fee Vouchers"
                                 Name="print_voucher_history"
                                 Width="100"
-                                Click="print_voucher_history_Click" />
+                                Click="print_voucher_history_Click" Margin="447,0" />
                     </Grid>
                 </Grid>
             </TabItem>

@@ -263,6 +263,7 @@ namespace SMS.Controls
 
                                 if (comm.IsConnected())
                                 {
+                                    Thread.Sleep(3000); // wait for 2sec as PTA rules to send 200sms in 15 minutes
                                     comm.SendMessage(pdu[j],false);
                                     isSend = true;
                                     totalSmsSent++;
