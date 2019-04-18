@@ -39,7 +39,7 @@ namespace SMS.Controls
         string b;
         int error_no = 0;
         public GsmCommMain comm;
-        private static ushort refNumber;        
+        private static ushort refNumber;
         int totalSmsSent = 0;
         bool isWholeSent = false;
 
@@ -48,24 +48,33 @@ namespace SMS.Controls
 
         public SmsEngine()
         {
-            InitializeComponent();     
+            InitializeComponent();
         }
-        public void openPort() 
+        public void openPort()
         {
             try
             {                
                 comm = new GsmCommMain("COM22", 115200, 300);
                 //comm = new GsmCommMain("COM22", 19200, 300);
                 comm.Open();
+                if (comm.IsConnected())
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("openPort(): comm.IsConnected()=false");
+                }
+               
             }
-            catch (Exception ex)                                                                                       
+            catch (Exception ex)
             {
-                MessageBox.Show("Opening Port Exception: " + ex.Message);
+                MessageBox.Show("openPort(): Opening Port Exception: " + ex.Message);
             }
         }
         private void loaded_smsEngine(object sender, RoutedEventArgs e)
-        {                        
-            start_btn.Visibility = Visibility.Visible;           
+        {
+            start_btn.Visibility = Visibility.Visible;
             try
             {
                 foreach (var portName in SerialPort.GetPortNames())
@@ -83,10 +92,12 @@ namespace SMS.Controls
                             port.Dispose();
                         }
                     }
-                }                
+                }
 
                 openPort();
-                
+                comm.PhoneConnected += Comm_PhoneConnected;
+                comm.PhoneDisconnected += Comm_PhoneDisconnected;
+
                 std_nos = new List<admission>();
                 std_nos = UploadWindow.std_nos_sms;
                 sms_grid.ItemsSource = null;
@@ -105,9 +116,32 @@ namespace SMS.Controls
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                start_btn.Visibility = Visibility.Collapsed ;           
+                start_btn.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void Comm_PhoneConnected(object sender, EventArgs e)
+        {
+            if (comm.IsConnected())
+            {
+            }
+            else
+            {
+            }
+            //throw new NotImplementedException();
+        }
+        private void Comm_PhoneDisconnected(object sender, EventArgs e)
+        {
+            if (comm.IsConnected())
+            {
+            }
+            else
+            {
+            }
+            //throw new NotImplementedException();
+            
+        }
+
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
             if (bw.IsBusy != true)
@@ -129,9 +163,9 @@ namespace SMS.Controls
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
-           
-              
-            if (sendMsg(std_nos , worker, e))
+
+
+            if (sendMsg(std_nos, worker, e))
             {
                 //MessageBox.Show("Message has sent successfully");
                 // sms_prog_bar.Visibility = Visibility.Hidden;
@@ -142,9 +176,9 @@ namespace SMS.Controls
                 //MessageBox.Show("Failed to send message");
                 // sms_prog_bar.Visibility = Visibility.Hidden;
                 MessageBox.Show("Failed to send message", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                
+
             }
-            
+
         }
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -175,82 +209,90 @@ namespace SMS.Controls
 
         private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if(isWholeSent)
+            if (isWholeSent)
             {
                 this.sms_grid.Items.Insert(0, adm_obj);
                 this.sms_grid.Items.Refresh();
-            }            
+            }
 
             this.progressbar_textblock.Text = (e.ProgressPercentage.ToString() + "%");
             this.progressbar.Value = i;
             this.uploader_content_textblock.Text = i.ToString();
             this.totalSmsSentTB.Text = totalSmsSent.ToString();
         }
-        
+
         // ----------------------------------------SMS----------------------------------------------------------------------------             
 
         #region Send SMS
 
         static AutoResetEvent readNow = new AutoResetEvent(false);
 
-        public void closePort() 
+        public void closePort()
         {
             try
             {
                 if (comm.IsOpen())
                 {
                     comm.Close();
-                }              
+                }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                MessageBox.Show("Closing Port Exception: "+ex.Message);
+                MessageBox.Show("Closing Port Exception: " + ex.Message);
             }
         }
 
-        public bool sendMsg(List<admission> std_nos , BackgroundWorker worker, DoWorkEventArgs e)
-        {        
+        public bool sendMsg(List<admission> std_nos, BackgroundWorker worker, DoWorkEventArgs e)
+        {
             bool isSend = false;
-            i = 0;                        
+            SmsSubmitPdu[] pdu;
+            i = 0;
 
             foreach (admission adm in std_nos)
-            {                
-                i++;
-                try
+            {
+                if (comm.IsConnected())
                 {
-                    if ((worker.CancellationPending == true))
+                    #region loop
+                    i++;
+                    try
                     {
-                        i = 0;
-                        e.Cancel = true;
-                        worker.ReportProgress(((i * 100) / std_nos.Count));
-                        break;
-                    }
-                    else
-                    {
-                        isSend = false;
-                        Thread.Sleep(500);
-                        adm_obj = new admission();
-
-                        adm_obj.std_name = adm.std_name;
-                        adm_obj.cell_no = adm.cell_no;
-                        adm_obj.father_name = adm.father_name;
-                        adm_obj.class_name = adm.class_name;
-                        adm_obj.roll_no = adm.roll_no;
-                        adm_obj.sms_status = "Sent";
-                        isWholeSent = false;
-
-                        SmsSubmitPdu[] pdu;
-                        if (UploadWindow.isEncoded)
+                        if ((worker.CancellationPending == true))
                         {
-                            pdu = CreateConcatTextMessage(adm.sms_message, true, Convert.ToString("+92" + adm.cell_no));
+                            i = 0;
+                            e.Cancel = true;
+                            worker.ReportProgress(((i * 100) / std_nos.Count));
+                            break;
                         }
                         else
                         {
-                            pdu = CreateConcatTextMessage(adm.sms_message, false, Convert.ToString("+92" + adm.cell_no));
-                        }
+                            isSend = false;
+                            Thread.Sleep(500);
+                            adm_obj = new admission();
 
-                        for (int j = 0; j < pdu.Length; j++)
-                        {
+                            adm_obj.std_name = adm.std_name;
+                            adm_obj.cell_no = adm.cell_no;
+                            if (!string.IsNullOrEmpty(adm.cell_no) && adm.cell_no[0] == '0')
+                            {
+                                adm.cell_no = adm.cell_no.Substring(1);
+                            }
+                            adm_obj.father_name = adm.father_name;
+                            adm_obj.class_name = adm.class_name;
+                            adm_obj.roll_no = adm.roll_no;
+                            adm_obj.sms_status = "Sent";
+                            isWholeSent = true;
+
+                            
+                            if (UploadWindow.isEncoded)
+                            {
+                                pdu = CreateConcatTextMessage(adm.sms_message, true, Convert.ToString("+92" + adm.cell_no));
+                            }
+                            else
+                            {
+                                pdu = CreateConcatTextMessage(adm.sms_message, false, Convert.ToString("+92" + adm.cell_no));
+                            }
+
+                            //for (int j = 0; j < pdu.Length; j++)
+                            //{
                             try
                             {
                                 if ((worker.CancellationPending == true))
@@ -263,209 +305,264 @@ namespace SMS.Controls
 
                                 if (comm.IsConnected())
                                 {
-                                    Thread.Sleep(3000); // wait for 2sec as PTA rules to send 200sms in 15 minutes
-                                    comm.SendMessage(pdu[j],false);
-                                    isSend = true;
-                                    totalSmsSent++;
-                                    if (j + 1 == pdu.Length)
+                                    //comm.SendMessage(pdu[j], false);
+                                    try
                                     {
-                                        isWholeSent = true;
+                                        comm.SendMessages(pdu);
+                                        isSend = true;
+                                        totalSmsSent = totalSmsSent + pdu.Length;
+                                        Thread.Sleep(3500 * pdu.Length);
+                                        //RetryDevice();
+
                                     }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("Exception: Comm.SendMessages() Exception " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                                        isSend = false;
+                                        adm_obj.sms_status = "Not Sent";
+                                    }
+
+                                    //if (j + 1 == pdu.Length)
+                                    //{
+                                    //    isWholeSent = true;
+                                    //}
                                     worker.ReportProgress(((i * 100) / std_nos.Count));
                                 }
-                                else 
+                                else
                                 {
-                                    j--;
-                                    MessageBox.Show("IsConnected()=false", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
-                                    isSend = false;
-                                    adm_obj.sms_status = "Not Sent";
-                                    
-
-                                    j--;
-                                    MessageBoxResult mbr = MessageBox.Show("Do You Want To Retry ?", "Send Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                                    MessageBoxResult mbr = MessageBox.Show("Device comm.IsConnected()=false" + Environment.NewLine + "Do You Want To Retry Or Skip this Number?", "Send Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
                                     if (mbr == MessageBoxResult.Yes)
                                     {
+                                        try
+                                        {
+                                            closePort();
+                                            openPort();
+                                            isSend = false;
+                                            RetryDevice();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            //MessageBox.Show("Retry Send Exception: Comm.SendMessages() Exception " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                                            isSend = false;
 
-                                        closePort();
-                                        openPort();
+                                        }
                                     }
                                     else if (mbr == MessageBoxResult.No)
                                     {
-                                        break;
+                                        isSend = false;
+                                        //continue;
                                     }
                                     else
                                     {
                                         return false;
-                                        
                                     }
-                                    
                                 }
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show(ex.Message,"Error",MessageBoxButton.OK, MessageBoxImage.Stop);
+                                MessageBox.Show("General Exception: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
                                 isSend = false;
                                 adm_obj.sms_status = "Not Sent";
                                 if (ex.Message.ToUpper().Equals("PORT NOT OPEN") || ex.Message.ToUpper().Equals("PHONE NOT CONNECTED"))
                                 {
-                                    
-                                    j--;
-                                    MessageBoxResult mbr = MessageBox.Show("Do You Want To Retry ?", "Send Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
-                                    if (mbr == MessageBoxResult.Yes)
-                                    {
-                                        
-                                        closePort();
-                                        openPort();
-                                    }
-                                    else if (mbr == MessageBoxResult.No)
-                                    {
-                                        break;
-                                    }
-                                    else 
-                                    {
-                                        return false;
-                                    }
+                                    RetryDevice();
                                 }
-                                
                             }
 
+                            // }
+                            // saved to sms history table
+                            if (isSend)
+                            {
+                                sh = new sms_history();
+                                sh.sender_id = adm.id;
+                                sh.sender_name = adm.std_name;
+                                sh.class_id = adm.class_id;
+                                sh.class_name = adm.class_name;
+                                sh.section_id = adm.section_id;
+                                sh.section_name = adm.section_name;
+                                sh.cell = adm.cell_no;
+                                sh.msg = adm.sms_message;
+                                sh.sms_type = adm.sms_type;
+                                sh.created_by = MainWindow.emp_login_obj.emp_user_name;
+                                sh.date_time = DateTime.Now;
+
+                                submit();
+                            }
+
+                            // Send multipart sms  -----------------------
+                            #region Old SMS
+                            //if (isMultiPartAccess == "Y")
+                            //{
+                            //    isWholeSent = false;
+                            //    SmsSubmitPdu[] pdu = CreateConcatTextMessage(adm.sms_message, false, Convert.ToString("+92" + adm.cell_no));
+                            //    for (int j = 0; j < pdu.Length; j++)
+                            //    {
+                            //        try
+                            //        {
+                            //            comm.SendMessage(pdu[j]);
+                            //            isSend = true;
+                            //            totalSmsSent++;
+                            //            if (j + 1 == pdu.Length)
+                            //            {
+                            //                isWholeSent = true;
+                            //            }
+                            //            worker.ReportProgress(((i * 100) / std_nos.Count));
+                            //        }
+                            //        catch (Exception ex)
+                            //        {
+                            //            MessageBox.Show(ex.Message);
+                            //            isSend = false;
+                            //            adm_obj.sms_status = "Not Sent";
+                            //        }
+
+                            //    }
+                            //    // saved to sms history table
+                            //    if (isSend)
+                            //    {
+                            //        sh = new sms_history();
+                            //        sh.sender_id = adm.id;
+                            //        sh.sender_name = adm.std_name;
+                            //        sh.class_id = adm.class_id;
+                            //        sh.class_name = adm.class_name;
+                            //        sh.section_id = adm.section_id;
+                            //        sh.section_name = adm.section_name;
+                            //        sh.cell = adm.cell_no;
+                            //        sh.msg = adm.sms_message;
+                            //        sh.sms_type = adm.sms_type;
+                            //        sh.created_by = MainWindow.emp_login_obj.emp_user_name;
+                            //        sh.date_time = DateTime.Now;
+
+                            //        submit();
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    isWholeSent = true;
+                            //    // send single sms -------------------------------------
+                            //    if (adm.sms_message.Length > 160)
+                            //    {
+                            //        messages = new string[2];
+                            //        messages[0] = adm.sms_message.Substring(0, 160);
+                            //        messages[1] = adm.sms_message.Substring(160);
+                            //        //messages[2] = adm.sms_message.Substring(321);
+                            //    }
+                            //    else
+                            //    {
+                            //        messages = new string[1];
+                            //        messages[0] = adm.sms_message.ToString();
+                            //    }
+                            //    for (int j = 0; j < messages.Length; j++)
+                            //    {
+                            //        sh = new sms_history();
+                            //        sh.sender_id = adm.id;
+                            //        sh.sender_name = adm.std_name;
+                            //        sh.class_id = adm.class_id;
+                            //        sh.class_name = adm.class_name;
+                            //        sh.section_id = adm.section_id;
+                            //        sh.section_name = adm.section_name;
+                            //        sh.cell = adm.cell_no;
+                            //        sh.msg = messages[j];
+                            //        sh.sms_type = adm.sms_type;
+                            //        sh.created_by = MainWindow.emp_login_obj.emp_user_name;
+                            //        sh.date_time = DateTime.Now;
+                            //        try
+                            //        {
+                            //            try
+                            //            {
+                            //                SmsSubmitPdu pdu;
+                            //                byte dcs = (byte)DataCodingScheme.GeneralCoding.Alpha7BitDefault;
+                            //                pdu = new SmsSubmitPdu(messages[j], Convert.ToString("+92" + adm.cell_no), dcs);
+                            //                comm.SendMessage(pdu);
+                            //                isSend = true;
+                            //                totalSmsSent++;
+                            //                worker.ReportProgress(((i * 100) / std_nos.Count));
+                            //                submit();
+                            //                Thread.Sleep(500);
+                            //            }
+                            //            catch (Exception ex)
+                            //            {
+                            //                MessageBox.Show("Modem is not available");
+                            //                isSend = false;
+                            //                adm_obj.sms_status = "Not Sent";
+                            //            }
+                            //        }
+                            //        catch (Exception ex)
+                            //        {
+                            //            MessageBox.Show("SMS not send");
+                            //            isSend = false;
+                            //            adm_obj.sms_status = "Not Sent";
+                            //        }
+                            //    }
+                            //}
+                            #endregion
                         }
-                        // saved to sms history table
-                        if (isSend)
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        isSend = false;
+                    }
+                    #endregion
+                }
+                else
+                {
+                    //MessageBox.Show("Device comm.IsConnected()=false"+Environment.NewLine+ "Do You Want To Retry Or Select NO for Skip this Number?", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    isSend = false;
+                    adm_obj.sms_status = "Not Sent";
+                    MessageBoxResult mbr = MessageBox.Show("Device comm.IsConnected()=false" + Environment.NewLine + "Do You Want To Retry Or Skip this Number?", "Send Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                    if (mbr == MessageBoxResult.Yes)
+                    {
+                        try
                         {
-                            sh = new sms_history();
-                            sh.sender_id = adm.id;
-                            sh.sender_name = adm.std_name;
-                            sh.class_id = adm.class_id;
-                            sh.class_name = adm.class_name;
-                            sh.section_id = adm.section_id;
-                            sh.section_name = adm.section_name;
-                            sh.cell = adm.cell_no;
-                            sh.msg = adm.sms_message;
-                            sh.sms_type = adm.sms_type;
-                            sh.created_by = MainWindow.emp_login_obj.emp_user_name;
-                            sh.date_time = DateTime.Now;
-
-                            submit();
+                            closePort();
+                            openPort();                            
+                            isSend = false;
+                            RetryDevice();
                         }
-
-                        // Send multipart sms  -----------------------
-                        #region Old SMS
-                        //if (isMultiPartAccess == "Y")
-                        //{
-                        //    isWholeSent = false;
-                        //    SmsSubmitPdu[] pdu = CreateConcatTextMessage(adm.sms_message, false, Convert.ToString("+92" + adm.cell_no));
-                        //    for (int j = 0; j < pdu.Length; j++)
-                        //    {
-                        //        try
-                        //        {
-                        //            comm.SendMessage(pdu[j]);
-                        //            isSend = true;
-                        //            totalSmsSent++;
-                        //            if (j + 1 == pdu.Length)
-                        //            {
-                        //                isWholeSent = true;
-                        //            }
-                        //            worker.ReportProgress(((i * 100) / std_nos.Count));
-                        //        }
-                        //        catch (Exception ex)
-                        //        {
-                        //            MessageBox.Show(ex.Message);
-                        //            isSend = false;
-                        //            adm_obj.sms_status = "Not Sent";
-                        //        }
-
-                        //    }
-                        //    // saved to sms history table
-                        //    if (isSend)
-                        //    {
-                        //        sh = new sms_history();
-                        //        sh.sender_id = adm.id;
-                        //        sh.sender_name = adm.std_name;
-                        //        sh.class_id = adm.class_id;
-                        //        sh.class_name = adm.class_name;
-                        //        sh.section_id = adm.section_id;
-                        //        sh.section_name = adm.section_name;
-                        //        sh.cell = adm.cell_no;
-                        //        sh.msg = adm.sms_message;
-                        //        sh.sms_type = adm.sms_type;
-                        //        sh.created_by = MainWindow.emp_login_obj.emp_user_name;
-                        //        sh.date_time = DateTime.Now;
-
-                        //        submit();
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    isWholeSent = true;
-                        //    // send single sms -------------------------------------
-                        //    if (adm.sms_message.Length > 160)
-                        //    {
-                        //        messages = new string[2];
-                        //        messages[0] = adm.sms_message.Substring(0, 160);
-                        //        messages[1] = adm.sms_message.Substring(160);
-                        //        //messages[2] = adm.sms_message.Substring(321);
-                        //    }
-                        //    else
-                        //    {
-                        //        messages = new string[1];
-                        //        messages[0] = adm.sms_message.ToString();
-                        //    }
-                        //    for (int j = 0; j < messages.Length; j++)
-                        //    {
-                        //        sh = new sms_history();
-                        //        sh.sender_id = adm.id;
-                        //        sh.sender_name = adm.std_name;
-                        //        sh.class_id = adm.class_id;
-                        //        sh.class_name = adm.class_name;
-                        //        sh.section_id = adm.section_id;
-                        //        sh.section_name = adm.section_name;
-                        //        sh.cell = adm.cell_no;
-                        //        sh.msg = messages[j];
-                        //        sh.sms_type = adm.sms_type;
-                        //        sh.created_by = MainWindow.emp_login_obj.emp_user_name;
-                        //        sh.date_time = DateTime.Now;
-                        //        try
-                        //        {
-                        //            try
-                        //            {
-                        //                SmsSubmitPdu pdu;
-                        //                byte dcs = (byte)DataCodingScheme.GeneralCoding.Alpha7BitDefault;
-                        //                pdu = new SmsSubmitPdu(messages[j], Convert.ToString("+92" + adm.cell_no), dcs);
-                        //                comm.SendMessage(pdu);
-                        //                isSend = true;
-                        //                totalSmsSent++;
-                        //                worker.ReportProgress(((i * 100) / std_nos.Count));
-                        //                submit();
-                        //                Thread.Sleep(500);
-                        //            }
-                        //            catch (Exception ex)
-                        //            {
-                        //                MessageBox.Show("Modem is not available");
-                        //                isSend = false;
-                        //                adm_obj.sms_status = "Not Sent";
-                        //            }
-                        //        }
-                        //        catch (Exception ex)
-                        //        {
-                        //            MessageBox.Show("SMS not send");
-                        //            isSend = false;
-                        //            adm_obj.sms_status = "Not Sent";
-                        //        }
-                        //    }
-                        //}
-                        #endregion
+                        catch (Exception ex)
+                        {
+                            //MessageBox.Show("Retry Send Exception: Comm.SendMessages() Exception " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                            isSend = false;
+                            
+                        }
+                    }
+                    else if (mbr == MessageBoxResult.No)
+                    {
+                        isSend = false;
+                        //continue;
+                    }
+                    else
+                    {
+                        return false;
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    isSend = false;
-                }
-            }            
+            }
             return isSend;
         }
-        public void setConnected() 
+
+        void RetryDevice()
+        {
+            try
+            {
+                MessageBoxResult mbr = MessageBox.Show("Do you want to Retry Device with Ejected again" + Environment.NewLine + "Or press No to skip this step and try next number?", "Retry Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                if (mbr == MessageBoxResult.Yes)
+                {
+                    closePort();
+                    MessageBox.Show("Eject the Device and Re connect Again. Press OK After Reconnected the device");
+                    Thread.Sleep(5000);
+                    closePort();
+                    openPort();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("RetryDevice Exception:" + ex.Message);
+            }
+        }
+
+       
+
+        public void setConnected()
         {
             string cmbCOM = "COM22";
             if (cmbCOM == "")
@@ -493,7 +590,7 @@ namespace SMS.Controls
                 }
             }
             while (retry);
-            
+
         }
 
         static void DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -511,12 +608,12 @@ namespace SMS.Controls
 
         #endregion
 
-       
+
 
         private void finsish_btn_Click(object sender, RoutedEventArgs e)
         {
             Window parentWindow = Window.GetWindow(this);
-           // comm.Close();            
+            // comm.Close();            
             parentWindow.Close();
         }
 
@@ -666,7 +763,7 @@ namespace SMS.Controls
         {
             ushort num;
             lock (typeof(SmartMessageFactory))
-            {                
+            {
                 num = refNumber;
                 if (refNumber != 65535)
                 {
@@ -717,7 +814,7 @@ namespace SMS.Controls
             }
             catch (Exception ex)
             {
-               MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return i;
         }

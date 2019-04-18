@@ -331,7 +331,32 @@ namespace SMS.FeesManagement.FeesDefaulters
                 defaulter_fee_grid.Items.Refresh();
             }
             calculate_amount();
-        }        
+        }
+
+        private void CheckBox_Checked_fees(object sender, RoutedEventArgs e)
+        {
+            int count = 0;
+            List<sms_fees> list = new List<sms_fees>();
+            foreach (sms_fees_category fee in fees_category_list.Where(x => x.isChecked == true))
+            {
+                foreach (var item in fees_list.Where(x => x.fees_category_id == fee.id))
+                {
+                    list.Add(item);
+                    count++;
+                }
+            }
+            if (fees_category_list.Where(x=>x.isChecked == true).Count() == 0)
+            {
+                defaulter_fee_grid.ItemsSource = fees_list;
+                defaulter_fee_grid.Items.Refresh();
+            }
+            else
+            {
+                defaulter_fee_grid.ItemsSource = list;
+                defaulter_fee_grid.Items.Refresh();
+            }
+            calculate_amount();
+        }
 
         void print(bool isGrouped) 
         {

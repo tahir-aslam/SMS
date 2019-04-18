@@ -53,7 +53,7 @@
                 <StackPanel Orientation="Horizontal" 
                             VerticalAlignment="Center" 
                             Margin="10,0,0,0">
-                    
+
                     <ComboBox  HorizontalAlignment="Left" Width="130" Height="30" VerticalAlignment="Center" Name="month_cmb"  SelectedValuePath="id" SelectionChanged="month_cmb_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -100,7 +100,7 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    
+
                     <ComboBox  HorizontalAlignment="Left" Width="120" Height="30" VerticalAlignment="Center" Name="year_cmb"  SelectedValuePath="id" SelectionChanged="year_cmb_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -110,11 +110,11 @@
                                 </StackPanel>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
-                    </ComboBox>                    
+                    </ComboBox>
 
-                    
+
                     <TextBlock Margin="10,0,0,0" FontFamily="Times New Roman" Name="total_fee_tb"  FontSize="24"   VerticalAlignment="Center"/>
-                    
+
 
                 </StackPanel>
 
@@ -124,9 +124,13 @@
                   Margin="1,0,1,0" 
                   
                   VerticalAlignment="Center" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="19*"/>
+                </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Center"                   
-                            Margin="10,0,0,0">
+                            Margin="10,0,0,0" Grid.ColumnSpan="2">
                     <TextBox  Height="30"  
                               Width="200"                           
                               Name="SearchTextBox"                             
@@ -152,14 +156,12 @@
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                    <CheckBox Checked="CheckBox_Checked_fees" Unchecked="CheckBox_Checked_fees" IsChecked="{Binding isChecked}" IsThreeState="False"/>
                                     <TextBlock Text="{Binding fees_category}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-
-
 
                     <Button  ToolTipService.ToolTip="Clear All Filters"  Height="30" Name="clear_btn" Click="clear_btn_Click" Margin="10,0,0,0">
                         <Image Source="/SMS;component/images/clear.png" />
@@ -173,15 +175,15 @@
             <Grid Grid.Row="2" Margin="1,0,1,1">
                 <DataGrid x:Name="defaulter_fee_grid" AutoGenerateColumns="False"  FontSize="12" Background="White" IsReadOnly="True" RowHeight="30"   BorderThickness="0"  >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Sr#" Binding="{Binding id}" Width="Auto" />                        
+                        <DataGridTextColumn Header="Sr#" Binding="{Binding id}" Width="Auto" />
 
                         <DataGridTextColumn Header="Student Name" Binding="{Binding std_name}" Width="Auto" />
                         <DataGridTextColumn Header="Father Name" Binding="{Binding father_name}" Width="Auto" />
                         <DataGridTextColumn Header="Adm#" Binding="{Binding adm_no}" Width="Auto"/>
                         <DataGridTextColumn Header="Cell#" Binding="{Binding cell_no}" Width="Auto"/>
                         <DataGridTextColumn Header="Class" Binding="{Binding class_name}" Width="Auto"/>
-                        <DataGridTextColumn Header="Section" Binding="{Binding section_name}" Width="Auto"/>                        
-                        <DataGridTextColumn Header="Month" Binding="{Binding month_name}" Width="Auto"/>                        
+                        <DataGridTextColumn Header="Section" Binding="{Binding section_name}" Width="Auto"/>
+                        <DataGridTextColumn Header="Month" Binding="{Binding month_name}" Width="Auto"/>
                         <DataGridTextColumn Header="Category" Binding="{Binding fees_category}" Width="Auto"/>
                         <DataGridTextColumn Header="A.Amount" Binding="{Binding actual_amount}" Width="Auto" />
                         <DataGridTextColumn Header="Amount" Binding="{Binding amount}" Width="Auto" />

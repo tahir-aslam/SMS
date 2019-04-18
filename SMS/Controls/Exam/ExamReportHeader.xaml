@@ -52,7 +52,7 @@
                            HorizontalAlignment="Center"
                            TextDecorations="Underline"
                            VerticalAlignment="Center" />
-                <TextBlock Text="Session 2018-2019"
+                <TextBlock Text="Session 2019-2020"
                            FontSize="16"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"

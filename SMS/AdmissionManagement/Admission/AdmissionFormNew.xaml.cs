@@ -1448,15 +1448,22 @@ namespace SMS.AdmissionManagement.Admission
 
         private void schoolConfirmation_btn_Click(object sender, RoutedEventArgs e)
         {
-            List<admission> adm_list = new List<admission>();
-            admission adm = new admission();
-            adm = obj;
-            adm.dob_in_words = DateToWords.DateToWritten(obj.dob.Date);
-            DateToAge age = new DateToAge(obj.dob.Date, DateTime.Now.Date);
-            adm.age_in_words = age.Years + " Years, " + age.Months + " Months, " + age.Days + " Days";
-            adm_list.Add(adm);
-            SchoolConfirmationCertificate.SchoolConfirmationWindow window = new SchoolConfirmationCertificate.SchoolConfirmationWindow(adm_list);
-            window.ShowDialog();
+            try
+            {
+                List<admission> adm_list = new List<admission>();
+                admission adm = new admission();
+                adm = obj;
+                adm.dob_in_words = DateToWords.DateToWritten(obj.dob.Date);
+                DateToAge age = new DateToAge(obj.dob.Date, DateTime.Now.Date);
+                adm.age_in_words = age.Years + " Years, " + age.Months + " Months, " + age.Days + " Days";
+                adm_list.Add(adm);
+                SchoolConfirmationCertificate.SchoolConfirmationWindow window = new SchoolConfirmationCertificate.SchoolConfirmationWindow(adm_list);
+                window.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void rfid_btn_Click(object sender, RoutedEventArgs e)

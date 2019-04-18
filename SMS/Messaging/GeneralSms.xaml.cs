@@ -55,7 +55,7 @@ namespace SMS.Messaging
                 encodedRB.IsEnabled = false;
             }
 
-            string message = "This sms is powered by Scenario Management Solution......."+Environment.NewLine;
+            string message = "This sms is powered by Scenario Systems......."+Environment.NewLine;
             message = message + " Admin " + MainWindow.ins.institute_name + "." + Environment.NewLine
             + MainWindow.ins.institute_cell + Environment.NewLine
             + MainWindow.ins.institute_phone+Environment.NewLine
@@ -266,7 +266,8 @@ namespace SMS.Messaging
                 count++;
                 adm = new admission();
                 adm = adms;
-                adm.sms_message = message_textbox.Text.Trim()+Environment.NewLine + Environment.NewLine + count.ToString("D5");
+                //adm.sms_message = message_textbox.Text.Trim()+Environment.NewLine + Environment.NewLine + count.ToString("D5");
+                adm.sms_message = message_textbox.Text.Trim();
                 adm.sms_type = "General";
                 std_nos.Add(adm);
             }

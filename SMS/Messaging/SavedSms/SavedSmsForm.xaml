@@ -14,7 +14,7 @@
                     <Grid Margin="30">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45" />
-                            <RowDefinition Height="25" />                            
+                            <RowDefinition Height="25" />
                             <RowDefinition Height="175" />
                             <RowDefinition Height="60" />
 
@@ -28,17 +28,18 @@
 
                         <Label Grid.Row="0" Grid.Column="0" Content="SMS Heading: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
                         <TextBox   Grid.Row="0" Grid.Column="1" Name="sms_name_textbox" MaxWidth="250" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="250" Height="30" FontSize="16" />
-                        
+
                         <Grid Grid.Row="1" Grid.Column="1">
                             <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal" VerticalAlignment="Bottom">
+                                <Button Visibility="Collapsed" Content="Enter" Name="v_lineBReak" Click="v_lineBReak_Click"/>
                                 <TextBlock Name="count_text_tb" FontSize="19" Text="459"/>
                                 <TextBlock Text=" / " FontSize="18"/>
                                 <TextBlock Name="sms_no_tb" FontSize="18" Text="1"/>
                             </StackPanel>
                         </Grid>
-                        
+
                         <Label Grid.Row="2" Grid.Column="0" Content="SMS : " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
-                        <TextBox   Grid.Row="2" Grid.Column="1" Name="sms_textbox" TextWrapping="Wrap" MaxWidth="250" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="250" Height="170" FontSize="16" TextChanged="sms_textbox_TextChanged" MaxLength="459" />
+                        <TextBox   Grid.Row="2" Grid.Column="1" Name="sms_textbox" TextWrapping="Wrap" MaxWidth="250" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="250" Height="170" FontSize="16" TextChanged="sms_textbox_TextChanged" MaxLength="459" AcceptsReturn="True"/>
 
 
 

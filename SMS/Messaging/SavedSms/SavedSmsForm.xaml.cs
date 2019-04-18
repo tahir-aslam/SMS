@@ -308,5 +308,10 @@ namespace SMS.Messaging.SavedSms
             }
             
         }
+
+        private void v_lineBReak_Click(object sender, RoutedEventArgs e)
+        {
+            //sms_textbox.Text.cu
+        }
     }
 }

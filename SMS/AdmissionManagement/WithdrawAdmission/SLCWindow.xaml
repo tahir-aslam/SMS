@@ -21,10 +21,15 @@
                             <RowDefinition Height="150"/>
                         </Grid.RowDefinitions>
 
+                        
                         <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <Image Source="{Binding image}"  Width="100" Height="110" Margin="5"  VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding previous_school}"  FontSize="32" FontWeight="Bold" FontFamily="Calibri"  TextWrapping="NoWrap"  TextDecorations="Underline" VerticalAlignment="Center"/>
+                            <Image Source="{Binding image}"  Width="100" Height="110" Margin="5"  VerticalAlignment="Top"/>
+                            <StackPanel>
+                            <TextBlock Text="{Binding previous_school}"  FontSize="32" FontWeight="Bold" FontFamily="Old English Text MT"  TextWrapping="NoWrap"  TextDecorations="Underline" VerticalAlignment="Center"/>
+                                <TextBlock Text="Reg.10650 G/1(2003)" HorizontalAlignment="Center"/>
+                            </StackPanel>
                         </StackPanel>
+                        
 
                         <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="Institute Leaving Certificate" TextDecorations="Underline" FontSize="25" FontFamily="Georgia"/>
@@ -46,6 +51,7 @@
                                     <TextBlock Text="{Binding adm_fee}" Margin="10,0,10,0" FontWeight="Bold" TextDecorations="Underline" FontStyle="Italic" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     <TextBlock Text="To" FontSize="18" VerticalAlignment="Center"/>
                                     <TextBlock Text="{Binding reg_fee}" Margin="10,0,0,0" FontWeight="Bold" TextDecorations="Underline" FontStyle="Italic" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="."/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Height="35">
                                     <TextBlock Text="He / She was in class" VerticalAlignment="Center" FontSize="18"/>
@@ -66,7 +72,7 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Height="40">
                                     <TextBlock Text="Note: " VerticalAlignment="Bottom" FontSize="18"/>
-                                    <TextBlock Text="___________________________________________________________________" Margin="10,0,10,0" FontWeight="Bold"  FontStyle="Italic" FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                                    <TextBlock Visibility="Collapsed" Text="___________________________________________________________________" Margin="10,0,10,0" FontWeight="Bold"  FontStyle="Italic" FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>

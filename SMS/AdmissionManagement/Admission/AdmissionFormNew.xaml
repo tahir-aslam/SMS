@@ -271,10 +271,10 @@
                                       CanUserAddRows="False"
                                       CanUserDeleteRows="False">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Fees" IsReadOnly="True" Binding="{Binding fees_category}" Width="100"/>
-                                    <DataGridTextColumn Header="Amount" FontSize="15" Binding="{Binding actual_amount}" IsReadOnly="True" Width="70"/>
-                                    <DataGridTextColumn Header="Disc" FontSize="15" Binding="{Binding discount}" Width="70"/>
-                                    <DataGridTextColumn Header="Receiveable" FontSize="15"  Binding="{Binding amount}"   Width="70"/>
+                                    <DataGridTextColumn Header="Fees" IsReadOnly="True" Binding="{Binding fees_category}" Width="90"/>
+                                    <DataGridTextColumn Header="Amount" FontSize="15" Binding="{Binding actual_amount}" Width="75"/>
+                                    <DataGridTextColumn Header="Disc" FontSize="15" Binding="{Binding discount}" Width="60"/>
+                                    <DataGridTextColumn Header="Receiveable" FontSize="15"  Binding="{Binding amount}"   Width="*"/>
 
                                     <!--<DataGridTemplateColumn Header="Disc"  Width="70">                                      
                                         <DataGridTemplateColumn.CellEditingTemplate>
@@ -298,7 +298,7 @@
                             <Border Grid.Column="1" BorderThickness="0,1,1,1" BorderBrush="Gray" Background="LightBlue">
                                 <StackPanel >
                                     <TextBlock Text="Package" Height="30" FontSize="16" HorizontalAlignment="Center" />
-                                    <ComboBox  Name="package_cmb" Width="120" SelectedValuePath="id">
+                                    <ComboBox  Name="package_cmb" Width="120" SelectedValuePath="id" SelectedIndex="0">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">

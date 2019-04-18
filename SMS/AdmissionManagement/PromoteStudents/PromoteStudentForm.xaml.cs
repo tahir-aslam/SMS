@@ -264,8 +264,8 @@ namespace SMS.AdmissionManagement.PromoteStudents
                 }
 
                 adm.roll_no_int = roll_no;
-                adm.roll_no = MainWindow.roll_no_prefix_list.Where(x => x.id == adm.roll_no_prefix_id).FirstOrDefault().prefix+ roll_no;
-                adm.adm_no = MainWindow.adm_no_prefix_list.Where(x => x.id == adm.adm_no_prefix_id).FirstOrDefault().prefix + adm.adm_no_int;
+                adm.roll_no = MainWindow.roll_no_prefix_list.Where(x => x.id == adm.roll_no_prefix_id).FirstOrDefault().prefix_abbreviation+ roll_no;
+                adm.adm_no = MainWindow.adm_no_prefix_list.Where(x => x.id == adm.adm_no_prefix_id).FirstOrDefault().prefix_abbreviation + adm.adm_no_int;
 
                 if (submit(adm, cl, sec) > 0) 
                 {
