@@ -427,6 +427,10 @@ namespace SMS.AdmissionManagement.Admission
                     {
                         return (x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
                     }
+                    else if (search_cmb.SelectedIndex == 5)
+                    {
+                        return (x.father_cnic.ToUpper().StartsWith(v_search.ToUpper()) || x.father_cnic.ToUpper().Contains(v_search.ToUpper()));
+                    }
                     else
                     {
                         return true;
@@ -534,6 +538,7 @@ namespace SMS.AdmissionManagement.Admission
                 section_cmb.SelectedIndex = 0;
                 adm_grid.ItemsSource = adm_list;
             }
+            SearchTextBox.Focus();
         }
 
         //------------         Get All Sections   ------------------------
@@ -603,6 +608,7 @@ namespace SMS.AdmissionManagement.Admission
                    // adm_grid.ItemsSource = null;
                 }
             }
+            SearchTextBox.Focus();
         }
 
         // ================        Printing         ========================

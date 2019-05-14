@@ -445,6 +445,12 @@ namespace SMS.FeeManagement.FeeSearch
                 fee_grid.ItemsSource = adm_list.Where(x => x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
                 fee_grid.Items.Refresh();
             }
+            else if (search_cmb.SelectedIndex == 5)
+            {
+                string v_search = SearchTextBox.Text;
+                fee_grid.ItemsSource = adm_list.Where(x => x.father_cnic.ToUpper().StartsWith(v_search.ToUpper()) || x.father_cnic.ToUpper().Contains(v_search.ToUpper()));
+                fee_grid.Items.Refresh();
+            }
             else
             {
             }

@@ -59,6 +59,11 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+                    <Label Content="Report Type" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                    <ComboBox Name="v_reportType" HorizontalAlignment="Right" Height="30" Width="150" Margin="10,0,0,0" SelectedIndex="0" SelectionChanged="v_reportType_SelectionChanged">
+                        <ComboBoxItem Content="Four Column" />
+                        <ComboBoxItem Content="Feedback" />
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Right"

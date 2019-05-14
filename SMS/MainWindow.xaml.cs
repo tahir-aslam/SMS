@@ -420,29 +420,36 @@ namespace SMS
         }
         public void save()
         {
-            get_all_emp_login();
-            string uid = usr_name.Text.Trim();
-            string pwd = usr_pwd.Password;
-
-            if (uid != "" && pwd != "")
+            try
             {
-                if (check(uid, pwd))
-                {
-                    session = (session)session_cmb.SelectedItem;
-                    get_all_roles_assignment();
+                get_all_emp_login();
+                string uid = usr_name.Text.Trim();
+                string pwd = usr_pwd.Password;
 
-                    MainScreen.MainScreen main = new MainScreen.MainScreen();
-                    main.Show();
-                    this.Close();
+                if (uid != "" && pwd != "")
+                {
+                    if (check(uid, pwd))
+                    {
+                        session = (session)session_cmb.SelectedItem;
+                        get_all_roles_assignment();
+
+                        MainScreen.MainScreen main = new MainScreen.MainScreen();
+                        main.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("UserName Or Password is incorrect", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("UserName Or Password is incorrect", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    usr_name.Focus();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                usr_name.Focus();
+                MessageBox.Show("Main Window Exception "+ex.Message);
             }
         }
 

@@ -808,6 +808,9 @@
     <Compile Include="Reports\MiscReports\StudentListBySection\StudentListBySectionWindow.xaml.cs">
       <DependentUpon>StudentListBySectionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\MiscReports\StudentListFourColumn\StudentListWindow.xaml.cs">
+      <DependentUpon>StudentListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Student\AttendanceClassWise\AttendanceClassWiseWindow.xaml.cs">
       <DependentUpon>AttendanceClassWiseWindow.xaml</DependentUpon>
     </Compile>
@@ -1697,6 +1700,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Reports\MiscReports\StudentListFourColumn\StudentListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Reports\Student\AttendanceClassWise\AttendanceClassWiseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1845,6 +1852,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Employee\EmployeeCardReport.rdlc" />
+    <EmbeddedResource Include="Reports\MiscReports\StudentListBySection\StudentListBySectionReportFourColumn.rdlc" />
     <EmbeddedResource Include="Reports\MiscReports\StudentListBySection\StudentListBySectionReport.rdlc" />
     <EmbeddedResource Include="Reports\Student\AttendanceClassWise\StudentAttendanceReportClassWise.rdlc" />
     <EmbeddedResource Include="Reports\Student\Attendance\StudentAttendanceReport.rdlc" />

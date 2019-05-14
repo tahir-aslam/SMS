@@ -151,22 +151,30 @@ namespace SMS.FeesManagement.ManageFees
             {
                 cv.Filter = o =>
                 {
-                    sms_fees f = o as sms_fees;                    
+                    sms_fees x = o as sms_fees;
                     if (search_cmb.SelectedIndex == 0)
                     {
-                        return (f.std_name.ToUpper().StartsWith(v_search.ToUpper()));
+                        return (x.std_name.ToUpper().StartsWith(v_search.ToUpper()) || x.std_name.ToUpper().Contains(v_search.ToUpper()));
                     }
                     else if (search_cmb.SelectedIndex == 1)
                     {
-                        return (f.father_name.ToUpper().StartsWith(v_search.ToUpper()));
+                        return (x.father_name.ToUpper().StartsWith(v_search.ToUpper()) || x.father_name.ToUpper().Contains(v_search.ToUpper()));
                     }
                     else if (search_cmb.SelectedIndex == 2)
                     {
-                        return (f.adm_no.ToUpper().StartsWith(v_search.ToUpper()));
+                        return (x.adm_no.ToUpper().StartsWith(v_search.ToUpper()) || x.adm_no.ToUpper().Contains(v_search.ToUpper()));
                     }
-                    //else if (search_cmb.SelectedIndex == 3)
+                    else if (search_cmb.SelectedIndex == 3)
+                    {
+                        return (x.roll_no.Equals(v_search.ToUpper()) || x.roll_no.Equals(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 4)
+                    {
+                        return (x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
+                    }
+                    //else if (search_cmb.SelectedIndex == 5)
                     //{
-                    //    return (f.std_cell_no.ToUpper().StartsWith(v_search.ToUpper()));
+                    //    return (x.father_cnic.ToUpper().StartsWith(v_search.ToUpper()) || x.father_cnic.ToUpper().Contains(v_search.ToUpper()));
                     //}
                     else
                     {

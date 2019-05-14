@@ -102,10 +102,10 @@
                           BorderThickness="1"
                           MouseDoubleClick="fee_grid_MouseDoubleClick">
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Width="90" Header="Image">
+                        <DataGridTemplateColumn Width="Auto" Header="Image">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding std_image}" />
+                                    <Image Source="{Binding image}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

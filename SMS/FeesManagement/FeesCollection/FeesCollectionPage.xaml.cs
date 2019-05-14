@@ -483,6 +483,12 @@ namespace SMS.FeesManagement.FeesCollection
                 fee_grid.ItemsSource = adm_list.Where(x => x.tution_fee.ToUpper().StartsWith(v_search.ToUpper()));
                 fee_grid.Items.Refresh();
             }
+            else if (search_cmb.SelectedIndex == 8)
+            {
+                string v_search = SearchTextBox.Text;
+                fee_grid.ItemsSource = adm_list.Where(x => x.father_cnic.ToUpper().StartsWith(v_search.ToUpper()) || x.father_cnic.ToUpper().Contains(v_search.ToUpper()));
+                fee_grid.Items.Refresh();
+            }
             else
             {
             }

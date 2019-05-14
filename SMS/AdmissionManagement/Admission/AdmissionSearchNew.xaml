@@ -70,6 +70,7 @@
                     <ComboBoxItem Content="By Adm #" IsSelected="True"/>
                     <ComboBoxItem Content="By Roll #"/>
                     <ComboBoxItem Content="By Cell#"/>
+                    <ComboBoxItem Content="By Father CNIC"/>
                 </ComboBox>
                 <ComboBox Grid.Row="0" Grid.Column="1" Margin="70,0,0,0" HorizontalAlignment="Left" Width="120" Height="30" VerticalAlignment="Center" Name="class_cmb" SelectedValuePath="id" SelectionChanged="class_cmb_SelectionChanged">
                     <ComboBox.ItemTemplate>

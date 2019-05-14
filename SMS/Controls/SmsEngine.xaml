@@ -18,11 +18,10 @@
             <Label Content="Scenario SMS Engine" HorizontalAlignment="Center"  Foreground="LightGray"  FontSize="28" VerticalAlignment="Center"/>
         </Grid>
         <Grid Grid.Row="1" Background="DimGray" Margin="8">
-            <!--<Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="5*"/>
-            </Grid.ColumnDefinitions>-->
+            <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Bottom" Orientation="Horizontal">
+                <TextBlock Text="Signal Strength: " Foreground="LightGray" VerticalAlignment="Center"/>
+                <TextBlock Text="0" VerticalAlignment="Bottom" Foreground="White" FontSize="30" Name="V_SignalStrength"   Margin="10,0,10,0"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock  Name="uploader_content_textblock"   VerticalAlignment="Center"  Text="0" FontStyle="Italic" FontSize="72" Foreground="White" />
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Content="/" Margin="10,0,10,0"  FontSize="42" FontWeight="DemiBold"  Foreground="LightGray"/>

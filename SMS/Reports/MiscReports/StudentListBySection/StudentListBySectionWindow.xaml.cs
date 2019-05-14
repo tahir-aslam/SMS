@@ -93,7 +93,15 @@ namespace SMS.Reports.MiscReports.StudentListBySection
                     this._reportViewer1.LocalReport.DataSources.Clear();
                     this._reportViewer1.LocalReport.DataSources.Add(adm);
                     this._reportViewer1.LocalReport.DataSources.Add(ins);
-                    this._reportViewer1.LocalReport.ReportEmbeddedResource = "SMS.Reports.MiscReports.StudentListBySection.StudentListBySectionReport.rdlc";
+                    if (v_reportType.SelectedIndex == 0)
+                    {
+                        this._reportViewer1.LocalReport.ReportEmbeddedResource = "SMS.Reports.MiscReports.StudentListBySection.StudentListBySectionReportFourColumn.rdlc"; 
+                    }
+                    else
+                    {
+                        this._reportViewer1.LocalReport.ReportEmbeddedResource = "SMS.Reports.MiscReports.StudentListBySection.StudentListBySectionReport.rdlc";
+                    }
+                    
 
                     _reportViewer1.RefreshReport();
                 }
@@ -102,6 +110,11 @@ namespace SMS.Reports.MiscReports.StudentListBySection
 
                 }
             }
+        }
+
+        private void v_reportType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

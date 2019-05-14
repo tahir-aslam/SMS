@@ -3075,3 +3075,5 @@ F:\Scenario\Github\SMS\SMS\obj\x86\Debug\RdlCompile.cache
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\RdlCompile.compiled
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\Reports\Exam\ThreeExamReport\ThreeExamReportWithGrandTotalWindow.g.cs
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\Reports\Exam\ThreeExamReport\ThreeExamReportWithGrandTotalWindow.baml
+F:\Scenario\Github\SMS\SMS\obj\x86\Debug\Reports\MiscReports\StudentListFourColumn\StudentListWindow.g.cs
+F:\Scenario\Github\SMS\SMS\obj\x86\Debug\Reports\MiscReports\StudentListFourColumn\StudentListWindow.baml

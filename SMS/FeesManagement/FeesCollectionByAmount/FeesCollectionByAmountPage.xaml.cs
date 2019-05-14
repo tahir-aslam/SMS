@@ -106,23 +106,26 @@ namespace SMS.FeesManagement.FeesCollectionByAmount
         {
             classes c = (classes)class_cmb.SelectedItem;
             string id = c.id;
-
+            String class_name = "";
             if (class_cmb.SelectedIndex != 0)
             {
                 sections_list = new List<sections>();
                 sections_list = classDAL.get_all_sections(c.id);
-                sections_list.Insert(0, new sections() { id = "-1", section_name = "--All Sections--" });
+                class_name = c.class_name;
+                adm_grid.ItemsSource = adm_list.Where(x => x.class_id == id);
+                section_cmb.IsEnabled = true;
+                sections_list.Insert(0, new sections() { section_name = "---Select Section---", id = "-1" });
                 section_cmb.ItemsSource = sections_list;
                 section_cmb.SelectedIndex = 0;
-
-                section_cmb.IsEnabled = true;
-               
             }
             else
             {
+
                 section_cmb.IsEnabled = false;
                 section_cmb.SelectedIndex = 0;
+                adm_grid.ItemsSource = adm_list;
             }
+            SearchTextBox.Focus();
         }
                
         private void section_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -134,12 +137,14 @@ namespace SMS.FeesManagement.FeesCollectionByAmount
                 if (section_cmb.SelectedIndex != 0)
                 {
                     adm_grid.ItemsSource = adm_list.Where(x => x.section_id == id);
+                    //section_name = sec.section_name;
                 }
                 else
                 {
-                    adm_grid.ItemsSource = null;
+                    // adm_grid.ItemsSource = null;
                 }
             }
+            SearchTextBox.Focus();
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -149,39 +154,44 @@ namespace SMS.FeesManagement.FeesCollectionByAmount
 
         public void search_box()
         {
-            string v_search = SearchTextBox.Text;
-            ICollectionView cv = CollectionViewSource.GetDefaultView(adm_grid.ItemsSource);
-            if (v_search == null)
-            {
-                cv.Filter = null;
-            }
-            else
+            
+                string v_search = SearchTextBox.Text;
+                ICollectionView cv = CollectionViewSource.GetDefaultView(adm_grid.ItemsSource);
+                if (v_search == null)
+                {
+                    cv.Filter = null;
+                }
+                else
             {
                 cv.Filter = o =>
                 {
-                    admission adm = o as admission;
-
+                    admission x = o as admission;
                     if (search_cmb.SelectedIndex == 0)
                     {
-                        return (adm.std_name.ToUpper().StartsWith(v_search.ToUpper()) || adm.std_name.ToUpper().Contains(v_search.ToUpper()));
+                        return (x.std_name.ToUpper().StartsWith(v_search.ToUpper()) || x.std_name.ToUpper().Contains(v_search.ToUpper()));
                     }
                     else if (search_cmb.SelectedIndex == 1)
                     {
-                        return (adm.father_name.ToUpper().StartsWith(v_search.ToUpper()) || adm.father_name.ToUpper().Contains(v_search.ToUpper()));
+                        return (x.father_name.ToUpper().StartsWith(v_search.ToUpper()) || x.father_name.ToUpper().Contains(v_search.ToUpper()));
                     }
-                    if (search_cmb.SelectedIndex == 2)
+                    else if (search_cmb.SelectedIndex == 2)
                     {
-                        return (adm.adm_no.ToUpper().StartsWith(v_search.ToUpper()) || adm.adm_no.ToUpper().Contains(v_search.ToUpper()));
-                    }                 
+                        return (x.adm_no.ToUpper().StartsWith(v_search.ToUpper()) || x.adm_no.ToUpper().Contains(v_search.ToUpper()));
+                    }
                     else if (search_cmb.SelectedIndex == 3)
                     {
-                        return (adm.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || adm.cell_no.ToUpper().Contains(v_search.ToUpper()));
+                        return (x.roll_no.Equals(v_search.ToUpper()) || x.roll_no.Equals(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 4)
+                    {
+                        return (x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
                     }
                     else
                     {
                         return true;
                     }
-                };                
+
+                };
             }
             SearchTextBox.Focus();
         }        

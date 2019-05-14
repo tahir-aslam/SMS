@@ -90,7 +90,6 @@ F:\Scenario\Github\SMS\SUT.PrintEngine\bin\Debug\Microsoft.Practices.EnterpriseL
 F:\Scenario\Github\SMS\SUT.PrintEngine\bin\Debug\Microsoft.Practices.ObjectBuilder2.xml
 F:\Scenario\Github\SMS\SUT.PrintEngine\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 F:\Scenario\Github\SMS\SUT.PrintEngine\bin\Debug\Microsoft.Practices.Unity.xml
-F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.csprojResolveAssemblyReference.cache
 F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\Views\PrintControlView.baml
 F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\Controls\ProgressDialog\ProgressDialogView.baml
 F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\Resources\Themes\Generic\Theme.baml
@@ -109,3 +108,4 @@ F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.Resources.Strin
 F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.csproj.GenerateResource.Cache
 F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.dll
 F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.pdb
+F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.csprojResolveAssemblyReference.cache

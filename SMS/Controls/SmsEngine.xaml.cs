@@ -22,6 +22,7 @@ using GsmComm.PduConverter;
 using GsmComm.GsmCommunication;
 using GsmComm.PduConverter.SmartMessaging;
 using System.Collections.Specialized;
+using System.Windows.Threading;
 
 namespace SMS.Controls
 {
@@ -97,6 +98,8 @@ namespace SMS.Controls
                 openPort();
                 comm.PhoneConnected += Comm_PhoneConnected;
                 comm.PhoneDisconnected += Comm_PhoneDisconnected;
+                comm.MessageSendFailed += Comm_MessageSendFailed;
+                //InitializeSignalStrengthThread();  //cannot implment because the device is not supporting
 
                 std_nos = new List<admission>();
                 std_nos = UploadWindow.std_nos_sms;
@@ -118,6 +121,45 @@ namespace SMS.Controls
                 MessageBox.Show(ex.Message);
                 start_btn.Visibility = Visibility.Collapsed;
             }
+        }
+
+        void InitializeSignalStrengthThread()
+        {
+            try
+            {
+                V_SignalStrength.Text = GetSignalQualityInfo().ToString();
+                DispatcherTimer signalQualityTimer = new DispatcherTimer();
+                signalQualityTimer.Tick += SignalQualityTimer_Tick;
+                signalQualityTimer.Interval = new TimeSpan(0,0,3);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("InitializeSignalStrengthThread(): Exception: "+ex.Message);
+            }
+        }
+
+        private void SignalQualityTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                V_SignalStrength.Text = GetSignalQualityInfo().ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        int GetSignalQualityInfo()
+        {
+            SignalQualityInfo info = comm.GetSignalQuality();
+            return info.SignalStrength;
+            
+        }
+
+        private void Comm_MessageSendFailed(object sender, MessageErrorEventArgs e)
+        {
+            MessageBox.Show("Comm_MessageSendFailed(): Exception"+ e.Exception);            
         }
 
         private void Comm_PhoneConnected(object sender, EventArgs e)
@@ -250,6 +292,14 @@ namespace SMS.Controls
 
             foreach (admission adm in std_nos)
             {
+                if ((worker.CancellationPending == true))
+                {
+                    i = 0;
+                    e.Cancel = true;
+                    worker.ReportProgress(((i * 100) / std_nos.Count));
+                    break;
+                }
+
                 if (comm.IsConnected())
                 {
                     #region loop
@@ -368,26 +418,10 @@ namespace SMS.Controls
                                     RetryDevice();
                                 }
                             }
-
-                            // }
-                            // saved to sms history table
-                            if (isSend)
-                            {
-                                sh = new sms_history();
-                                sh.sender_id = adm.id;
-                                sh.sender_name = adm.std_name;
-                                sh.class_id = adm.class_id;
-                                sh.class_name = adm.class_name;
-                                sh.section_id = adm.section_id;
-                                sh.section_name = adm.section_name;
-                                sh.cell = adm.cell_no;
-                                sh.msg = adm.sms_message;
-                                sh.sms_type = adm.sms_type;
-                                sh.created_by = MainWindow.emp_login_obj.emp_user_name;
-                                sh.date_time = DateTime.Now;
-
-                                submit();
-                            }
+                            
+                            // saved to sms history table                 
+                            InsertToSMSHistory(adm);
+                            
 
                             // Send multipart sms  -----------------------
                             #region Old SMS
@@ -540,6 +574,23 @@ namespace SMS.Controls
             return isSend;
         }
 
+    void InsertToSMSHistory(admission adm)
+    {
+            sh = new sms_history();
+            sh.sender_id = adm.id;
+            sh.sender_name = adm.std_name;
+            sh.class_id = adm.class_id;
+            sh.class_name = adm.class_name;
+            sh.section_id = adm.section_id;
+            sh.section_name = adm.section_name;
+            sh.cell = adm.cell_no;
+            sh.msg = adm.sms_message;
+            sh.sms_type = adm.sms_type;
+            sh.created_by = MainWindow.emp_login_obj.emp_user_name;
+            sh.date_time = DateTime.Now;
+
+            submit();
+        }
         void RetryDevice()
         {
             try
