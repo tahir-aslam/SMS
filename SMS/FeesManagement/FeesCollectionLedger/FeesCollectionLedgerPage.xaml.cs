@@ -397,7 +397,7 @@ namespace SMS.FeesManagement.FeesCollectionLedger
             {
                 List<sms_fees> fees_list = new List<sms_fees>();
 
-
+                int sort_order = 0;
                 string r_classes = "All";
                 string r_sections = "All";
                 string r_fees_Category = "All";
@@ -414,6 +414,7 @@ namespace SMS.FeesManagement.FeesCollectionLedger
                 {
                     classes cl = (classes)class_cmb.SelectedItem;
                     r_classes = cl.class_name;
+                    sort_order = Convert.ToInt32(cl.reg_fee);
 
                     if (section_cmb.SelectedIndex != 0)
                     {
@@ -499,6 +500,14 @@ namespace SMS.FeesManagement.FeesCollectionLedger
                     item.month_name_group = month_name_group;
 
                     item.r_classes = r_classes;
+                    try
+                    {
+                        item.session_id = Convert.ToInt32(classes_list.Where(x => x.id == item.class_id.ToString()).First().reg_fee);
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.s
+                    }
                     item.r_sections = r_sections;
                     item.r_fees_Category = r_fees_Category;
                     item.r_users = r_users;
@@ -518,6 +527,31 @@ namespace SMS.FeesManagement.FeesCollectionLedger
             {
                 MessageBox.Show("No Record Found");
             }
+        }
+
+        private void CheckBox_Checked_fees(object sender, RoutedEventArgs e)
+        {
+            int count = 0;
+            List<sms_fees> list = new List<sms_fees>();
+            foreach (sms_fees_category fee in fees_category_list.Where(x => x.isChecked == true))
+            {
+                foreach (var item in feesCollectionList.Where(x => x.fees_category_id == fee.id))
+                {
+                    list.Add(item);
+                    count++;
+                }
+            }
+            if (fees_category_list.Where(x => x.isChecked == true).Count() == 0)
+            {
+                paid_fee_grid.ItemsSource = feesCollectionList;
+                paid_fee_grid.Items.Refresh();
+            }
+            else
+            {
+                paid_fee_grid.ItemsSource = list;
+                paid_fee_grid.Items.Refresh();
+            }
+            calculate_amount();
         }
     }
 }

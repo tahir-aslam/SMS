@@ -346,7 +346,7 @@ namespace SMS.Messaging.FeesDefaulter
         bool getFeesCategory(sms_fees f)
         {
             sms_fees_category category = (sms_fees_category)fees_category_cmb.SelectedItem;
-            if (fees_category_cmb.SelectedIndex > 0 && !f.fees_category_group.Contains(category.fees_category))
+            if (fees_category_cmb.SelectedIndex > 0 && f.fees_category_id != category.id)
             {
                 return false;
             }

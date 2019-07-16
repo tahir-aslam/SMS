@@ -39,8 +39,9 @@ namespace SMS.AdmissionManagement.Admission
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 //cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && id !="+adm_obj.id+ "&& cell_no="+adm_obj.cell_no+"&& session_id=" + MainWindow.session.id;
-                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && id !=" + adm_obj.id + "&& father_cnic=" + adm_obj.father_cnic + "&& session_id=" + MainWindow.session.id;
+                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && id !=" + adm_obj.id + " && father_cnic=@cnic && session_id=" + MainWindow.session.id;
                 cmd.Connection = con;
+                cmd.Parameters.Add("@cnic", MySqlDbType.VarChar).Value = adm_obj.father_cnic;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
                 {

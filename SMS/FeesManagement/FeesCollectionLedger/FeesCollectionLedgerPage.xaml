@@ -164,17 +164,16 @@
                                VerticalAlignment="Center" 
                                Name="fees_category_cmb" 
                                SelectedValuePath="id"                                
-                               Margin="10,0,0,0" SelectionChanged="fees_category_cmb_SelectionChanged">
+                               Margin="30,0,0,0" SelectionChanged="fees_category_cmb_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                    <CheckBox Checked="CheckBox_Checked_fees" Unchecked="CheckBox_Checked_fees" IsChecked="{Binding isChecked}" IsThreeState="False"/>
                                     <TextBlock Text="{Binding fees_category}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                   
 
                     <ComboBox  HorizontalAlignment="Left"
                                Width="120" 

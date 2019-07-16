@@ -348,7 +348,7 @@ namespace SMS.StudentManagement.StudentAttendence
                     {
                         using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.CommandText = "SELECT* FROM sms_student_attendence as st where st.session_id=" + MainWindow.session.id + " && st.std_id IN (select id from sms_admission as adm where adm.section_id = @section_id && adm.session_id=" + MainWindow.session.id + ") ORDER BY st.attendence_date DESC";
+                            cmd.CommandText = "SELECT* FROM sms_student_attendence as st where st.session_id=" + MainWindow.session.id + " && st.std_id IN (select id from sms_admission as adm where adm.section_id = @section_id && adm.is_active='Y' && adm.session_id=" + MainWindow.session.id + ") ORDER BY st.attendence_date DESC";
                             cmd.Connection = con;
                             cmd.Parameters.Add("@section_id", MySqlDbType.String).Value = sec.id.ToString();
                             //cmd.CommandText = "SELECT* FROM sms_student_attendence as st where DATE(st.attendence_date) >= DATE(@date) && st.session_id=" + MainWindow.session.id + "&& st.std_id IN (select id from sms_admission as adm where adm.section_id = @section_id && adm.session_id=" + MainWindow.session.id + ") ORDER BY st.attendence_date DESC";
