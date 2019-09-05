@@ -26,12 +26,11 @@ namespace SMS.AdmissionManagement.Admission
         public SiblingWindow(admission obj, List<admission> admlist)
         {
             InitializeComponent();
-            this.adm_obj = obj;
-            get_all_admissions();
-            adm_grid.ItemsSource = adm_list;
+            this.adm_obj = obj;            
+            adm_grid.ItemsSource = get_all_siblings(adm_obj.father_cnic);
         }
         // ===============     Get All Admissions          ================
-        public void get_all_admissions()
+        public List<admission> get_all_siblings(string father_cnic)
         {
             adm_list = new List<admission>();
 
@@ -41,7 +40,7 @@ namespace SMS.AdmissionManagement.Admission
                 //cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && id !="+adm_obj.id+ "&& cell_no="+adm_obj.cell_no+"&& session_id=" + MainWindow.session.id;
                 cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && id !=" + adm_obj.id + " && father_cnic=@cnic && session_id=" + MainWindow.session.id;
                 cmd.Connection = con;
-                cmd.Parameters.Add("@cnic", MySqlDbType.VarChar).Value = adm_obj.father_cnic;
+                cmd.Parameters.Add("@cnic", MySqlDbType.VarChar).Value = father_cnic;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
                 {
@@ -108,8 +107,9 @@ namespace SMS.AdmissionManagement.Admission
                 {
                     MessageBox.Show(ex.Message);
                 }
+                
             }
+            return adm_list;
         }
-
     }
 }

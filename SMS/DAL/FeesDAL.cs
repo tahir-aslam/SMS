@@ -199,6 +199,71 @@ namespace SMS.DAL
 
             return fees_list;
         }
+        public List<sms_fees> getAllUnPaidFeesByStdId(List<admission> _lst)
+        {
+            List<sms_fees> fees_list = new List<sms_fees>();
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+                {
+                    con.Open();
+                    MySqlDataReader reader;
+                    foreach (var item in _lst)
+                    {
+                        using (MySqlCommand cmd = new MySqlCommand())
+                        {
+                            //cmd.CommandText = "GetAllRoles";
+                            cmd.CommandText = "SELECT* FROM sms_fees_generated where std_id=@std_id && rem_amount > 0";
+                            cmd.Connection = con;
+                            cmd.Parameters.Add("@std_id", MySqlDbType.Int32).Value = item.id;
+                            //cmd.CommandType = System.Data.CommandType.StoredProcedure;                                                
+                             reader = cmd.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                sms_fees fees = new sms_fees()
+                                {
+                                    id = Convert.ToInt32(reader["id"]),
+                                    std_id = Convert.ToInt32(reader["std_id"]),
+                                    fees_category_id = Convert.ToInt32(reader["fees_category_id"]),
+                                    fees_category = Convert.ToString(reader["fees_category"].ToString()),
+                                    fees_sub_category = Convert.ToString(reader["fees_sub_category"].ToString()),
+                                    fees_sub_category_id = Convert.ToInt32(reader["fees_sub_category_id"]),
+                                    amount = Convert.ToInt32(reader["amount"]),
+                                    rem_amount = Convert.ToInt32(reader["rem_amount"]),
+                                    discount = Convert.ToInt32(reader["discount"]),
+                                    actual_amount = Convert.ToInt32(reader["actual_amount"]),
+                                    wave_off = Convert.ToInt32(reader["wave_off"]),
+                                    month = Convert.ToInt32(reader["month"]),
+                                    month_name = Convert.ToString(reader["month_name"].ToString()),
+                                    class_id = Convert.ToInt32(reader["class_id"]),
+                                    class_name = Convert.ToString(reader["class_name"]),
+                                    section_id = Convert.ToInt32(reader["section_id"]),
+                                    section_name = Convert.ToString(reader["section_name"]),
+                                    year = Convert.ToInt32(reader["year"]),
+                                    date = Convert.ToDateTime(reader["date"]),
+                                    due_date = Convert.ToDateTime(reader["due_date"]),
+                                    session_id = Convert.ToInt32(reader["session_id"].ToString()),
+                                    is_active = Convert.ToString(reader["is_active"].ToString()),
+                                    created_by = Convert.ToString(reader["created_by"].ToString()),
+                                    emp_id = Convert.ToInt32(reader["emp_id"].ToString()),
+                                    date_time = Convert.ToDateTime(reader["date_time"].ToString()),
+                                };
+                                fees_list.Add(fees);
+                            }
+                            reader.Close();
+                        }
+
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+            return fees_list;
+        }
         public List<sms_fees> getAllUnPaidFeesByMonth(int month)
         {
             List<sms_fees> fees_list = new List<sms_fees>();

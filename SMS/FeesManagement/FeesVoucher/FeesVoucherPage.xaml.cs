@@ -16,6 +16,7 @@ using SMS.DAL;
 using System.Collections.ObjectModel;
 using Microsoft.Reporting.WinForms;
 using System.ComponentModel;
+using SMS.AdmissionManagement.Admission;
 
 namespace SMS.FeesManagement.FeesVoucher
 {
@@ -242,6 +243,7 @@ namespace SMS.FeesManagement.FeesVoucher
 
         private void show_vouchers_btn_Click(object sender, RoutedEventArgs e)
         {
+            List<admission> _siblingsList = new List<admission>();
             bool check = false;
             bool check_receipt = false;
             List<sms_months> checkedMonthsList = months_list.Where(x => x.isChecked == true).ToList();
@@ -285,22 +287,40 @@ namespace SMS.FeesManagement.FeesVoucher
 
 
                         foreach (admission adm in checked_adm_list)
-                        {
+                        {                           
+
                             total_amount = 0;
                             fees_list = new List<sms_fees>();
                             if (default_RB.IsChecked == true)
                             {
-                                fees_list = feesDAL.getAllUnPaidFeesByStdId(Convert.ToInt32(adm.id)).OrderBy(x => x.month).OrderBy(x => x.year).OrderByDescending(x => x.fees_category_id == 113).ToList();
-                                if (fees_list.Count > 0)
-                                {
-                                    last_receipt_no = last_receipt_no + 1;
+                                if (voucher_type_cmb.SelectedIndex==5)
+                                {                                    
+                                    _siblingsList = admDAL.get_all_siblings(adm.father_cnic);
+                                    fees_list = feesDAL.getAllUnPaidFeesByStdId(_siblingsList).OrderBy(x => x.month).OrderBy(x => x.year).OrderByDescending(x => x.fees_category_id == 113).ToList();
+                                    if (fees_list.Count > 0)
+                                    {
+                                        last_receipt_no = last_receipt_no + 1;
+                                    }
+
+                                    foreach (var item in fees_list)
+                                    {
+                                        item.adm_list = _siblingsList;
+                                    }
                                 }
-                                foreach (var item in fees_list)
+                                else
                                 {
-                                    item.class_id = Convert.ToInt32(adm.class_id);
-                                    item.class_name = adm.class_name;
-                                    item.section_id = Convert.ToInt32(adm.section_id);
-                                    item.section_name = adm.section_name;
+                                    fees_list = feesDAL.getAllUnPaidFeesByStdId(Convert.ToInt32(adm.id)).OrderBy(x => x.month).OrderBy(x => x.year).OrderByDescending(x => x.fees_category_id == 113).ToList();
+                                    if (fees_list.Count > 0)
+                                    {
+                                        last_receipt_no = last_receipt_no + 1;
+                                    }
+                                    foreach (var item in fees_list)
+                                    {
+                                        item.class_id = Convert.ToInt32(adm.class_id);
+                                        item.class_name = adm.class_name;
+                                        item.section_id = Convert.ToInt32(adm.section_id);
+                                        item.section_name = adm.section_name;
+                                    }
                                 }
                             }
                             else
@@ -342,10 +362,23 @@ namespace SMS.FeesManagement.FeesVoucher
 
                                 foreach (sms_fees fees in fees_list)
                                 {
-                                    fees.fees_generated_id = fees.id;
-                                    fees.std_name = adm.std_name;
-                                    fees.father_name = adm.father_name;
-                                    fees.adm_no = adm.adm_no;
+                                    if (voucher_type_cmb.SelectedIndex == 5)
+                                    {
+                                        admission _adm = _siblingsList.Where(x => x.id == fees.std_id.ToString()).FirstOrDefault();
+                                        fees.std_name = _adm.std_name;
+                                        fees.father_name = _adm.father_name;
+                                        fees.father_cnic = _adm.father_cnic;
+                                        fees.adm_no = _adm.adm_no;
+                                        fees.class_name = _adm.class_name;
+                                    }
+                                    else
+                                    {
+                                        fees.std_name = adm.std_name;
+                                        fees.father_name = adm.father_name;
+                                        fees.father_cnic = adm.father_cnic;
+                                        fees.adm_no = adm.adm_no;
+                                    }
+                                    fees.fees_generated_id = fees.id;                                    
                                     fees.date = DateTime.Now;
                                     fees.total_amount = total_amount;
                                     fees.total_paid = total_amount;
@@ -372,15 +405,24 @@ namespace SMS.FeesManagement.FeesVoucher
                             }
                             if (fees_list != null) // add extra rows
                             {
-                                count = fees_list.Where(x => x.std_id == Convert.ToInt32(adm.id)).Count();
+                                if (voucher_type_cmb.SelectedIndex == 5)
+                                {
+                                    count = fees_list.Where(x => x.father_cnic == adm.father_cnic).Count();
+                                }
+                                else
+                                {
+                                    count = fees_list.Where(x => x.std_id == Convert.ToInt32(adm.id)).Count();
+                                }
+                                
                                 for (int i = count; i < 6; i++)
                                 {
                                     fee = new sms_fees();
-                                    fee.std_name = adm.std_name;
-                                    fee.father_name = adm.father_name;
+                                    fee.std_name = "";
+                                    fee.father_name = "";
                                     fee.adm_no = adm.adm_no;
                                     fee.date = DateTime.Now;
                                     fee.std_id = Convert.ToInt32(adm.id);
+                                    fee.father_cnic = adm.father_cnic;
                                     fee.fees_note = fees_note;
                                     vouchers_list.Add(fee);
                                 }
@@ -401,6 +443,30 @@ namespace SMS.FeesManagement.FeesVoucher
 
                         if (saveVoucherList.Count > 0)
                         {
+                            if (voucher_type_cmb.SelectedIndex == 5)
+                            {
+                                voucherFamily_grid.Visibility = Visibility.Visible;
+
+                                ReportDataSource fees = new ReportDataSource();
+                                fees.Name = "fees";
+                                fees.Value = vouchers_list;
+
+                                ReportDataSource ins = new ReportDataSource();
+                                List<institute> ins_list = new List<institute>();
+                                MainWindow.ins.date = DateTime.Now;
+                                MainWindow.ins.page_no = 1;
+                                ins_list.Add(MainWindow.ins);
+                                ins.Name = "ins"; //Name of the report dataset in our .RDLC file
+                                ins.Value = ins_list;
+
+                                this._reportViewerFamily.LocalReport.DataSources.Clear();
+                                this._reportViewerFamily.LocalReport.DataSources.Add(fees);
+                                this._reportViewerFamily.LocalReport.DataSources.Add(ins);
+                                this._reportViewerFamily.LocalReport.ReportEmbeddedResource = "SMS.FeesManagement.FeesVoucher.FeesVoucherReportFamily.rdlc";
+
+                                _reportViewerFamily.RefreshReport();
+                            }
+
                             if (voucher_type_cmb.SelectedIndex == 4)
                             {
                                 voucherFine_grid.Visibility = Visibility.Visible;

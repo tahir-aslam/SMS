@@ -63,6 +63,7 @@ namespace SMS.Models
         public byte[] std_image { set; get; }
         public string std_name { set; get; }
         public string father_name { set; get; }
+        public string father_cnic { set; get; }
         public string adm_no { set; get; }
         public string roll_no { set; get; }
         public string cell_no { set; get; }
@@ -87,6 +88,7 @@ namespace SMS.Models
         public byte[] bank_logo { get; set; }
 
         //For Report
+        public List<admission> adm_list;
         public DateTime toDate { get; set; }
         public DateTime fromDate { get; set; }
         public string r_classes { get; set; }

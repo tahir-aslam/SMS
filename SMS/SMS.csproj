@@ -1836,6 +1836,7 @@
     <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReport2.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReport3.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReport3Fine.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReportFamily.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesVoucher\Report3.rdlc" />
     <EmbeddedResource Include="FeesManagement\ManageFees\ManageFeesReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesDefaulters\FeesDefaulterReport.rdlc" />

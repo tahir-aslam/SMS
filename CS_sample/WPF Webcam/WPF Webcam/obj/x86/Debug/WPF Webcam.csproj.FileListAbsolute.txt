@@ -118,3 +118,4 @@ C:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF_Webcam.Properties.R
 C:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csproj.GenerateResource.Cache
 C:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.exe
 C:\USB\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.pdb
+F:\Scenario\Github\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csprojResolveAssemblyReference.cache

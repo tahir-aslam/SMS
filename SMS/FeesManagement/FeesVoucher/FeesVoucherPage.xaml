@@ -94,10 +94,11 @@
                                       Name="voucher_type_cmb"
                                       SelectionChanged="voucher_type_cmb_SelectionChanged">
                                 <ComboBoxItem Content="----Select----" />
-                                <ComboBoxItem Content="1-Fee Slip" />
-                                <ComboBoxItem Content="2-Fee Slip" />
-                                <ComboBoxItem Content="3-Fee Slip For Bank" />
-                                <ComboBoxItem Content="4-Fee Slip For Bank (Fine)" />
+                                <ComboBoxItem Content="1) 1Fee Slip" />
+                                <ComboBoxItem Content="2) 2Fee Slip" />
+                                <ComboBoxItem Content="3) 3Fee Slip For Bank" />
+                                <ComboBoxItem Content="4) 3Fee Slip For Bank (Fine)" />
+                                <ComboBoxItem Content="5) 3Fee Slip For Family" />
                             </ComboBox>
 
                             <Label Grid.Row="0"
@@ -243,6 +244,17 @@
                               Visibility="Hidden">
                             <WindowsFormsHost  Name="windowsFormsHostFine">
                                 <rv:ReportViewer x:Name="_reportViewerFine"
+                                                 Margin="5,5,5,5">
+
+                                </rv:ReportViewer>
+                            </WindowsFormsHost>
+                        </Grid>
+                        <Grid Grid.Row="1"
+                              Margin="1,0,1,1"
+                              Name="voucherFamily_grid"
+                              Visibility="Hidden">
+                            <WindowsFormsHost  Name="windowsFormsHostFamily">
+                                <rv:ReportViewer x:Name="_reportViewerFamily"
                                                  Margin="5,5,5,5">
 
                                 </rv:ReportViewer>
@@ -745,7 +757,7 @@
 
                                 </rv:ReportViewer>
                             </WindowsFormsHost>
-                        </Grid>
+                        </Grid>                        
                     </Grid>
                     <Grid Grid.Row="3">
                         <Button Content="Fee Vouchers"
