@@ -419,7 +419,7 @@ namespace SMS.FeesManagement.FeesVoucher
                                     fee = new sms_fees();
                                     fee.std_name = "";
                                     fee.father_name = "";
-                                    fee.adm_no = adm.adm_no;
+                                    fee.adm_no = "";
                                     fee.date = DateTime.Now;
                                     fee.std_id = Convert.ToInt32(adm.id);
                                     fee.father_cnic = adm.father_cnic;
