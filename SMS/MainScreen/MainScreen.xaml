@@ -472,6 +472,15 @@
                                     Visibility="Collapsed"
                                     Grid.ColumnSpan="2"
                                     Margin="0,2" />
+                            <Button Grid.Row="3"
+                                    Content="Subjects Management"
+                                    Height="35"
+                                    VerticalAlignment="Center"
+                                    Name="subjects_management_button"
+                                    Click="Subjects_Mgmt_Click"
+                                    Visibility="Visible"
+                                    Grid.ColumnSpan="2"
+                                    Margin="0,2" />
                         </StackPanel>
                     </TabItem>
 

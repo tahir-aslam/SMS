@@ -317,6 +317,12 @@
     <Compile Include="ClassManagement\Class\ClassReportWindow.xaml.cs">
       <DependentUpon>ClassReportWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassManagement\Subjects\SubjectManagementPage.xaml.cs">
+      <DependentUpon>SubjectManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassManagement\Subjects\SubjectManagementWindow.xaml.cs">
+      <DependentUpon>SubjectManagementWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\DateToAge.cs" />
     <Compile Include="Common\DateToWords.cs" />
@@ -392,6 +398,7 @@
     <Compile Include="DAL\MiscDAL.cs" />
     <Compile Include="DAL\RfidDAL.cs" />
     <Compile Include="DAL\RolesDAL.cs" />
+    <Compile Include="DAL\SubjectsDAL.cs" />
     <Compile Include="DataUploader\DataUploaderWindow.xaml.cs">
       <DependentUpon>DataUploaderWindow.xaml</DependentUpon>
     </Compile>
@@ -712,6 +719,7 @@
     <Compile Include="Models\sms_emp_attendance_bio.cs" />
     <Compile Include="Models\sms_emp_designation.cs" />
     <Compile Include="Models\sms_emp_title.cs" />
+    <Compile Include="Models\sms_exams_subjects.cs" />
     <Compile Include="Models\sms_fees.cs" />
     <Compile Include="Models\sms_fees_actual.cs" />
     <Compile Include="Models\sms_fees_admin_panel.cs" />
@@ -747,6 +755,7 @@
     <Compile Include="Models\sms_years.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\student_attendence.cs" />
+    <Compile Include="Models\SubjectsDataGrid.cs" />
     <Compile Include="Models\web_events.cs" />
     <Compile Include="Models\web_event_image.cs" />
     <Compile Include="Models\web_messages.cs" />
@@ -1108,6 +1117,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ClassManagement\Section\SectionSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Subjects\SubjectManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassManagement\Subjects\SubjectManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2136,6 +2153,7 @@
     <Folder Include="AdvancedAccountManagement\GeneralJournal\" />
     <Folder Include="CrystalReports\" />
     <Folder Include="ENUM\" />
+    <Folder Include="ExamsManagement\" />
     <Folder Include="Reports\Employee\EmployeeAttendanceBio\" />
     <Folder Include="Reports\Fees\" />
   </ItemGroup>

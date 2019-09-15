@@ -215,7 +215,7 @@ namespace SMS.DAL
             return adm_list;
         }
 
-        public List<admission> get_all_siblings(string father_cnic)
+        public List<admission> get_all_siblings(admission adm)
         {
             List<admission> adm_list = new List<admission>();
 
@@ -223,9 +223,17 @@ namespace SMS.DAL
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 //cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && id !="+adm_obj.id+ "&& cell_no="+adm_obj.cell_no+"&& session_id=" + MainWindow.session.id;
-                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' &&  father_cnic=@cnic && session_id=" + MainWindow.session.id;
+                if (string.IsNullOrEmpty(adm.father_cnic) || string.IsNullOrWhiteSpace(adm.father_cnic) || adm.father_cnic.Contains("_"))
+                {
+                    cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' &&  cell_no=@cell && session_id=" + MainWindow.session.id;
+                }
+                else
+                {
+                    cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' &&  father_cnic=@cnic && session_id=" + MainWindow.session.id;
+                }                
                 cmd.Connection = con;
-                cmd.Parameters.Add("@cnic", MySqlDbType.VarChar).Value = father_cnic;
+                cmd.Parameters.Add("@cnic", MySqlDbType.VarChar).Value = adm.father_cnic;
+                cmd.Parameters.Add("@cell", MySqlDbType.VarChar).Value = adm.cell_no;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
                 {
@@ -245,7 +253,7 @@ namespace SMS.DAL
                             img = (byte[])(reader["image"]);
                         }
 
-                        admission adm = new admission()
+                        admission adm1 = new admission()
                         {
                             id = Convert.ToString(reader["id"].ToString()),
                             std_name = Convert.ToString(reader["std_name"].ToString()),
@@ -285,7 +293,7 @@ namespace SMS.DAL
                             is_active = Convert.ToString(reader["is_active"].ToString()),
                             image = img,
                         };
-                        adm_list.Add(adm);
+                        adm_list.Add(adm1);
                     }
                 }
                 catch (Exception ex)

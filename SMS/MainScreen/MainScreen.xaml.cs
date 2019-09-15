@@ -624,6 +624,9 @@ namespace SMS.MainScreen
             button1.Background = Brushes.Purple;
             button1.Foreground = Brushes.White;
 
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Black;
+
             section_button.Background = Brushes.White;
             section_button.Foreground = Brushes.Black;
             subject_button.Background = Brushes.White;
@@ -657,6 +660,9 @@ namespace SMS.MainScreen
             section_button.Background = Brushes.Purple;
             section_button.Foreground = Brushes.White;
 
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Black;
+
             button1.Background = Brushes.White;
             button1.Foreground = Brushes.Black;
             subject_button.Background = Brushes.White;
@@ -689,6 +695,42 @@ namespace SMS.MainScreen
             this.mainFrame.Content = new SubjectSearch();
             subject_button.Background = Brushes.Purple;
             subject_button.Foreground = Brushes.White;
+
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Black;
+
+            button1.Background = Brushes.White;
+            button1.Foreground = Brushes.Black;
+            section_button.Background = Brushes.White;
+            section_button.Foreground = Brushes.Black;
+            add_emp.Background = Brushes.White;
+            add_emp.Foreground = Brushes.Black;
+
+            fee.Background = Brushes.White;
+            fee.Foreground = Brushes.Black;
+            paidfee_btn.Background = Brushes.White;
+            paidfee_btn.Foreground = Brushes.Black;
+            Defaulterfee_btn.Background = Brushes.White;
+            Defaulterfee_btn.Foreground = Brushes.Black;
+            paidfeeReport_btn.Background = Brushes.White;
+            paidfeeReport_btn.Foreground = Brushes.Black;
+
+            Admission.Background = Brushes.White;
+            Admission.Foreground = Brushes.Black;
+            std_attendence.Background = Brushes.White;
+            std_attendence.Foreground = Brushes.Black;
+            emp_login.Background = Brushes.White;
+            emp_login.Foreground = Brushes.Black;
+            emp_attnd.Background = Brushes.White;
+            emp_attnd.Foreground = Brushes.Black;
+        }
+
+        private void Subjects_Mgmt_Click(object sender, RoutedEventArgs e)
+        {
+            //this.mainFrame.Navigate(new SubjectSearch());
+            this.mainFrame.Content = new ClassManagement.Subjects.SubjectManagementPage();
+            subjects_management_button.Background = Brushes.Purple;
+            subjects_management_button.Foreground = Brushes.White;
 
             button1.Background = Brushes.White;
             button1.Foreground = Brushes.Black;

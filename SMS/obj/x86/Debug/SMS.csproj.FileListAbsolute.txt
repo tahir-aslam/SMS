@@ -506,3 +506,7 @@ F:\Scenario\Github\SMS\SMS\obj\x86\Debug\SMS.exe.manifest
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\SMS.application
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\SMS.exe
 F:\Scenario\Github\SMS\SMS\obj\x86\Debug\SMS.pdb
+F:\Scenario\Github\SMS\SMS\obj\x86\Debug\ClassManagement\Subjects\SubjectManagementPage.g.cs
+F:\Scenario\Github\SMS\SMS\obj\x86\Debug\ClassManagement\Subjects\SubjectManagementWindow.g.cs
+F:\Scenario\Github\SMS\SMS\obj\x86\Debug\ClassManagement\Subjects\SubjectManagementPage.baml
+F:\Scenario\Github\SMS\SMS\obj\x86\Debug\ClassManagement\Subjects\SubjectManagementWindow.baml

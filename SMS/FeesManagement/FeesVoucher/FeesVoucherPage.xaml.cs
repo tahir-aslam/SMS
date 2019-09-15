@@ -285,7 +285,10 @@ namespace SMS.FeesManagement.FeesVoucher
                         bank_obj = feesDAL.get_bank_details();
                         last_receipt_no = accountsDAL.getLastVoucherNo(4);
 
-
+                        if (voucher_type_cmb.SelectedIndex == 5)
+                        {
+                            checked_adm_list.Select(x=>x.father_cnic).Distinct();
+                        }
                         foreach (admission adm in checked_adm_list)
                         {                           
 
@@ -295,7 +298,7 @@ namespace SMS.FeesManagement.FeesVoucher
                             {
                                 if (voucher_type_cmb.SelectedIndex==5)
                                 {                                    
-                                    _siblingsList = admDAL.get_all_siblings(adm.father_cnic);
+                                    _siblingsList = admDAL.get_all_siblings(adm);
                                     fees_list = feesDAL.getAllUnPaidFeesByStdId(_siblingsList).OrderBy(x => x.month).OrderBy(x => x.year).OrderByDescending(x => x.fees_category_id == 113).ToList();
                                     if (fees_list.Count > 0)
                                     {
@@ -413,8 +416,13 @@ namespace SMS.FeesManagement.FeesVoucher
                                 {
                                     count = fees_list.Where(x => x.std_id == Convert.ToInt32(adm.id)).Count();
                                 }
-                                
-                                for (int i = count; i < 6; i++)
+
+                                int limit = 6;
+                                if (voucher_type_cmb.SelectedIndex==5)
+                                {
+                                    limit = 10;
+                                }
+                                for (int i = count; i < limit; i++)
                                 {
                                     fee = new sms_fees();
                                     fee.std_name = "";
@@ -423,6 +431,7 @@ namespace SMS.FeesManagement.FeesVoucher
                                     fee.date = DateTime.Now;
                                     fee.std_id = Convert.ToInt32(adm.id);
                                     fee.father_cnic = adm.father_cnic;
+                                    fee.cell_no = adm.cell_no;
                                     fee.fees_note = fees_note;
                                     vouchers_list.Add(fee);
                                 }
