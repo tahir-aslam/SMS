@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Common", "SMS.Common\SM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.DAL", "SMS.DAL\SMS.DAL.csproj", "{9DE549EC-84FA-48D3-BA15-710A4477D364}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SMS_27Sep", "SMS_27Sep\SMS_27Sep.vdproj", "{AF8083BA-AD44-466F-9447-D07C2F9D64B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,12 @@ Global
 		{9DE549EC-84FA-48D3-BA15-710A4477D364}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9DE549EC-84FA-48D3-BA15-710A4477D364}.Release|x86.ActiveCfg = Release|Any CPU
 		{9DE549EC-84FA-48D3-BA15-710A4477D364}.Release|x86.Build.0 = Release|Any CPU
+		{AF8083BA-AD44-466F-9447-D07C2F9D64B9}.Debug|Any CPU.ActiveCfg = Debug
+		{AF8083BA-AD44-466F-9447-D07C2F9D64B9}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{AF8083BA-AD44-466F-9447-D07C2F9D64B9}.Debug|x86.ActiveCfg = Debug
+		{AF8083BA-AD44-466F-9447-D07C2F9D64B9}.Release|Any CPU.ActiveCfg = Release
+		{AF8083BA-AD44-466F-9447-D07C2F9D64B9}.Release|Mixed Platforms.ActiveCfg = Release
+		{AF8083BA-AD44-466F-9447-D07C2F9D64B9}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
