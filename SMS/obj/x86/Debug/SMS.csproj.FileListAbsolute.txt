@@ -1,4 +1,3 @@
-F:\Scenario\Github\SMS\SMS\bin\Debug\SUT.PrintEngine.App.config
 F:\Scenario\Github\SMS\SMS\bin\Debug\SMS.exe.config
 F:\Scenario\Github\SMS\SMS\bin\Debug\SMS.exe.manifest
 F:\Scenario\Github\SMS\SMS\bin\Debug\SMS.application
@@ -38,9 +37,7 @@ F:\Scenario\Github\SMS\SMS\bin\Debug\Microsoft.Expression.Encoder.Types.dll
 F:\Scenario\Github\SMS\SMS\bin\Debug\Microsoft.Practices.ObjectBuilder2.dll
 F:\Scenario\Github\SMS\SMS\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 F:\Scenario\Github\SMS\SMS\bin\Debug\WPF Webcam.pdb
-F:\Scenario\Github\SMS\SMS\bin\Debug\SUT.PrintEngine.pdb
 F:\Scenario\Github\SMS\SMS\bin\Debug\MahApps.Metro.xml
-F:\Scenario\Github\SMS\SMS\bin\Debug\Microsoft.ReportViewer.WinForms.xml
 F:\Scenario\Github\SMS\SMS\bin\Debug\RestSharp.xml
 F:\Scenario\Github\SMS\SMS\bin\Debug\Microsoft.Practices.Unity.xml
 F:\Scenario\Github\SMS\SMS\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.xml

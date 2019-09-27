@@ -16,9 +16,12 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/microsoft.expression.encoder.commonui.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/microsoft.expression.encoder.coreui.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/microsoft.expression.encoder.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/microsoft.reportviewer.common.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/microsoft.reportviewer.winforms.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/mysql.data.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/neodynamic.wpf.barcode.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/pduconverter.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/sut.printengine.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/webcamcontrol.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/wpftoolkit.dll")]
 
