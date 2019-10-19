@@ -67,7 +67,7 @@ namespace SMS
         // default d
         public static int d_FeeCollectionByVocherCollectionPlace = 0;
         public static int d_FeeCollectionByAmountCollectionPlace = 0;
-
+        public static int d_FeeCollectionByFeeRegisterCollectionPlace = 0;
 
         FeesDAL feesDAL;
         MiscDAL miscDAL;
