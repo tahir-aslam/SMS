@@ -21,15 +21,21 @@ namespace SMS.ClassManagement.Subjects
     public partial class SubjectManagementWindow : Window
     {
         SubjectManagementPage SP;
+
         List<classes> classes_list;
+        List<sections> sections_list;
         List<employees> emp_list;
+        List<sms_emp_designation> emp_types_list;
         List<sms_exams_subjects> subjects_list;
+
         subjects subjects_obj;
         subjects obj;
         string mode;
+
         SubjectsDAL subjectsDAL;
         EmployeesDAL empDAL;
-        SubjectsDataGrid subjectsGrid;
+        ClassesDAL classesDAL;
+        
         public SubjectManagementWindow(string m, SubjectManagementPage sp, subjects ob)
         {
             InitializeComponent();
@@ -39,7 +45,8 @@ namespace SMS.ClassManagement.Subjects
             this.mode = m;
 
             subjectsDAL = new SubjectsDAL();
-            empDAL = new EmployeesDAL();            
+            empDAL = new EmployeesDAL();
+            classesDAL = new ClassesDAL();    
 
             v_class_cmb.Focus();
             LoadData();
@@ -50,14 +57,22 @@ namespace SMS.ClassManagement.Subjects
         {
             try
             {
+                classes_list = classesDAL.getAllClasses();                
                 subjects_list = subjectsDAL.GetAllSubjects();                
                 emp_list = empDAL.get_all_active_employees();
+                emp_types_list = empDAL.get_all_employee_designation();
 
-                subjectsGrid = new SubjectsDataGrid();
-                subjectsGrid.emp_list = emp_list;
-                subjectsGrid.subjects_list = subjects_list;
+                classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
+                v_class_cmb.SelectedIndex = 0;
+                v_class_cmb.ItemsSource = classes_list;
 
-                v_subjectsSelection_Datagrid.DataContext = subjectsGrid;
+                subjects_list.Insert(0, new sms_exams_subjects() { subject_name = "---Select Subjects---", id = -1 });
+                v_subject_cmb.SelectedIndex = 0;
+                v_subject_cmb.ItemsSource = subjects_list;
+
+                emp_types_list.Insert(0, new sms_emp_designation() { designation = "---Select Designation---", id = -1 });
+                v_emp_types_cmb.SelectedIndex = 0;
+                v_emp_types_cmb.ItemsSource = emp_types_list;
             }
             catch (Exception ex)
             {
@@ -72,6 +87,116 @@ namespace SMS.ClassManagement.Subjects
 
         private void click_cancel(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void v_emp_types_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            sms_emp_designation et = (sms_emp_designation)v_emp_types_cmb.SelectedItem;
+            if (v_emp_types_cmb.SelectedIndex != 0)
+            {
+                v_emp_cmb.Items.Clear();
+                v_emp_cmb.IsEnabled = true;
+                v_emp_cmb.SelectedIndex = 0;
+                v_emp_cmb.Items.Insert(0, new employees() { emp_name = "---Select Teacher---", id = "-1" });
+                foreach (employees emp in emp_list)
+                {
+                    if (emp.designation_id == et.id)
+                    {
+                        v_emp_cmb.Items.Add(emp);
+                    }
+                }
+
+                //emp_cmb.ItemsSource = emp_list.Where(x => x.emp_type_id == et.id);
+            }
+            else
+            {
+                v_emp_cmb.SelectedIndex = 0;
+                v_emp_cmb.IsEnabled = false;
+            }
+        }
+
+        private void v_class_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                classes c = (classes)v_class_cmb.SelectedItem;
+                string id = c.id;
+
+                if (v_class_cmb.SelectedIndex != 0)
+                {
+                    sections_list = classesDAL.get_all_sections(id);
+
+
+                    v_section_cmb.IsEnabled = true;
+                    sections_list.Insert(0, new sections() { section_name = "---All Sections---", id = "-1" });
+                    v_section_cmb.ItemsSource = sections_list;
+                    v_section_cmb.SelectedIndex = 0;
+                }
+                else
+                {
+
+                    v_section_cmb.IsEnabled = false;
+                    v_section_cmb.SelectedIndex = 0;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CheckBox_Checked_Sections(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void CheckBox_Checked_subjects(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private bool validate()
+        {
+            if (v_class_cmb.SelectedIndex == 0)
+            {
+                v_class_cmb.Focus();
+                string alertText = "Class Name Should Not Be Blank.";
+                MessageBox.Show(alertText);
+                return false;
+            }
+
+            else if (sections_list.Where(x=>x.isChecked == true).Count() == 0)
+            {
+                v_section_cmb.Focus();
+                string alertText = "Please Select Minimum One Section";
+                MessageBox.Show(alertText);
+                return false;
+            }
+            else if (subjects_list.Where(x=>x.isChecked == true).Count() == 0)
+            {
+                v_subject_cmb.Focus();
+                string alertText = "Roll# Format Should Not Be Blank";
+                MessageBox.Show(alertText);
+                return false;
+            }
+            //else if (mode == "insert")
+            //{
+            //    if (check_section() == true)
+            //    {
+            //        string alertText = "Section Name Already Exists, Please Choose A Different Section Name";
+            //        section_name_textbox.Focus();
+            //        MessageBox.Show(alertText);
+            //        return false;
+            //    }
+            //    return true;
+            //}
+
+
+            else
+            {
+                return true;
+            }
 
         }
     }

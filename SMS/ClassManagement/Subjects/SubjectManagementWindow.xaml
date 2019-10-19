@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:SMS.ClassManagement.Subjects"
         mc:Ignorable="d"
         Title="SubjectManagementWindow"
-        Height="600"
-        Width="500">
+        Height="500"
+        Width="450"
+        WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Center"
           VerticalAlignment="Center">
         <StackPanel Grid.Row="0"
@@ -28,12 +29,13 @@
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center" />
                     </Border>
-
                     <Grid Margin="30">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45" />
                             <RowDefinition Height="45" />
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
                             <RowDefinition Height="60" />
 
                         </Grid.RowDefinitions>
@@ -46,7 +48,7 @@
 
                         <Label Grid.Row="0"
                                Grid.Column="0"
-                               Content="Class Name: *"
+                               Content="Class: *"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0, 0, 5, 0"
@@ -57,79 +59,159 @@
                                   Width="170"
                                   Height="30"
                                   VerticalAlignment="Center"
-                                  Name="v_class_cmb"
-                                  SelectedValuePath="id">
+                                  x:Name="v_class_cmb"
+                                  SelectedValuePath="id"
+                                  SelectionChanged="v_class_cmb_SelectionChanged">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{Binding class_name}"
                                                    HorizontalAlignment="Right"
-                                                   FontSize="12"></TextBlock>
+                                                   FontSize="12" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <TextBlock Text="Section Name: * "
+                        <TextBlock Text="Section: * "
                                    Grid.Row="1"
                                    Grid.Column="0"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
                                    Margin="0, 0, 5, 0"
                                    Height="30" />
-                        <ComboBox Grid.Row="1"
+                        <ComboBox Grid.Row="1 "
                                   Grid.Column="1"
                                   HorizontalAlignment="Left"
                                   Width="170"
                                   Height="30"
                                   VerticalAlignment="Center"
-                                  Name="v_section_cmb"
-                                  SelectedValuePath="id">
+                                  x:Name="v_section_cmb"
+                                  SelectedValuePath="id">                            
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding class_name}"
+                                        <CheckBox Checked="CheckBox_Checked_Sections"
+                                                  Unchecked="CheckBox_Checked_Sections"
+                                                  IsChecked="{Binding isChecked}"
+                                                  IsThreeState="False" />
+                                        <TextBlock Text="{Binding section_name}"
                                                    HorizontalAlignment="Right"
-                                                   FontSize="12"></TextBlock>
+                                                   FontSize="12" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <DataGrid Grid.Row="2"
-                                  Grid.ColumnSpan="2"
-                                  Margin="0,0,0,0"                                 
-                                  AutoGenerateColumns="False"
-                                  FontSize="12"
-                                  Background="White"                                  
-                                  RowHeight="30"
-                                  BorderThickness="0"
-                                  x:Name="v_subjectsSelection_Datagrid"
-                                  CanUserAddRows="True"
-                                  CanUserDeleteRows="True"
-                                  CanUserSortColumns="True"
-                                  IsReadOnly="False"
-                                  >
-                            <DataGrid.Columns>
-                                <DataGridComboBoxColumn ItemsSource="{Binding SubjectsDataGrid.subjects_list}"
-                                                        DisplayMemberPath="subject_name"
-                                                        SelectedValuePath="id"
-                                                        SelectedValueBinding="{Binding id}" 
-                                                        Header="Subjects"
-                                                        Width="*"/>
-                                <DataGridComboBoxColumn ItemsSource="{Binding SubjectsDataGrid.emp_list}"
-                                                        DisplayMemberPath="emp_name"
-                                                        SelectedValuePath="id"
-                                                        SelectedValueBinding="{Binding id}"
-                                                        Header="Teacher"
-                                                        Width="*" />
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <TextBlock Grid.Row="2"
+                                   Grid.Column="0"
+                                   Text="Subject: *  "
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <ComboBox Grid.Row="2 "
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  Width="170"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  x:Name="v_subject_cmb"
+                                  SelectedValuePath="id">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox Checked="CheckBox_Checked_subjects"
+                                                  Unchecked="CheckBox_Checked_subjects"
+                                                  IsChecked="{Binding isChecked}"
+                                                  IsThreeState="False" />
+                                        <TextBlock Text="{Binding subject_name}"
+                                                   HorizontalAlignment="Right"
+                                                   FontSize="12" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
 
+                        <TextBlock Grid.Row="3"
+                                   Grid.Column="0"
+                                   Text="Teacher Designation: *  "
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <ComboBox Grid.Row="3"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  Width="170"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  x:Name="v_emp_types_cmb"
+                                  SelectedValuePath="id"
+                                  SelectionChanged="v_emp_types_cmb_SelectionChanged">
+
+                        <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Text="{Binding id}"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="10"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   Visibility="Collapsed" />
+
+                                        <TextBlock Text="{Binding designation}"
+                                                   HorizontalAlignment="Right"
+                                                   FontSize="12" />
+
+
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Grid.Row="4"
+                                   Grid.Column="0"
+                                   Text="Teacher Name: *  "
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <ComboBox Grid.Row="4"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  Width="170"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  x:Name="v_emp_cmb"
+                                  SelectedValuePath="id">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Text="{Binding id}"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="10"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   Visibility="Collapsed" />
+
+                                        <TextBlock Text="{Binding emp_name}"
+                                                   HorizontalAlignment="Right"
+                                                   FontSize="12" />
+
+
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
 
 
                         <Grid Width="230"
-                              Grid.Row="3"
+                              Grid.Row="5"
                               Grid.Column="0"
                               VerticalAlignment="Center"
                               Grid.ColumnSpan="4"
