@@ -821,11 +821,22 @@ namespace SMS.AdmissionManagement.Admission
             bool a = Regex.IsMatch(adm_textbox.Text.Trim(), @"^\d+$");
             bool b = false;
             string full_adm_no = "";
-            foreach(admission adm in AS.adm_list)
-            {
-                prefixNo objP = (prefixNo)adm_no_prefix_cmb.SelectedItem;                
-                full_adm_no = objP.prefix_abbreviation + adm_textbox.Text.Trim();
+            prefixNo objP = (prefixNo)adm_no_prefix_cmb.SelectedItem;
 
+            try
+            {
+                full_adm_no = objP.prefix_abbreviation + Convert.ToInt32(adm_textbox.Text.Trim());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return true;
+            }
+
+           
+
+            foreach (admission adm in AS.adm_list)
+            {                
                 b = Regex.IsMatch(adm.adm_no, @"^\d+$");
                 if (a && b)
                 {
