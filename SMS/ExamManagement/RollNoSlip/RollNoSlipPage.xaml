@@ -91,7 +91,7 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <Button Margin="40,0,0,0" Width="45" Height="35" ToolTip="Print Result List" VerticalAlignment="Center" Name="print_btn" Visibility="Visible"  Click="print_btn_Click">
+                <Button Margin="10,0,0,0" Width="45" Height="35" ToolTip="Print Result List" VerticalAlignment="Center" Name="print_btn" Visibility="Visible"  Click="print_btn_Click">
                     <Image Source="/SMS;component/images/print3.jpg"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
 

@@ -84,7 +84,7 @@ namespace SMS.DAL
             return result;
         }
 
-        public int submitFees(List<sms_exams_subjects> subjectsList)
+        public int InsertSubjectAssignment(List<sms_exams_subjects> subjectsList)
         {
             int i = 0;
 
@@ -98,13 +98,18 @@ namespace SMS.DAL
                         i = 0;
                         using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.CommandText = "INSERT INTO sms_exams_subjects(std_id,fees_generated_id, fees_category_id, fees_category, fees_sub_category_id, fees_sub_category, amount,amount_paid, month, month_name, class_id, class_name, section_id, section_name, year, date, session_id, created_by, emp_id, date_time, receipt_no,fees_collection_place_id,fees_collection_place, receipt_no_full, total_amount,total_paid, total_remaining, amount_in_words, discount, wave_off) Values(@std_id, @fees_generated_id, @fees_category_id,@fees_category,@fees_sub_category_id,@fees_sub_category,@amount,@amount_paid,@month,@month_name,@class_id,@class_name,@section_id,@section_name,@year,@date,@session_id,@created_by,@emp_id,@date_time, @receipt_no, @fees_collection_place_id, @fees_collection_place, @receipt_no_full, @total_amount,@total_paid, @total_remaining, @amount_in_words, @discount, @wave_off)";
+                            cmd.CommandText = "INSERT INTO sms_exams_subjects(subject_id, section_id, emp_id, std_id, created_date_time, updated_date_time, created_emp_id, updated_date_time) Values(@subject_id, @section_id, @emp_id, @std_id, @created_date_time, @updated_date_time, @created_emp_id, @updated_date_time)";
                             cmd.Connection = con;
 
-                            cmd.Parameters.Add("@std_id", MySqlDbType.Int32).Value = obj.id;
-                            cmd.Parameters.Add("@fees_generated_id", MySqlDbType.Int32).Value = obj.section_id;
-                            cmd.Parameters.Add("@fees_category_id", MySqlDbType.Int32).Value = obj.emp_id;
-                            cmd.Parameters.Add("@fees_category", MySqlDbType.VarChar).Value = obj;                           
+                            cmd.Parameters.Add("@subject_id", MySqlDbType.Int32).Value = obj.id;
+                            cmd.Parameters.Add("@section_id", MySqlDbType.Int32).Value = obj.section_id;
+                            cmd.Parameters.Add("@emp_id", MySqlDbType.Int32).Value = obj.emp_id;
+                            cmd.Parameters.Add("@std_id", MySqlDbType.Int32).Value = 0;
+
+                            cmd.Parameters.Add("@created_date_time", MySqlDbType.DateTime).Value = obj.created_date_time;
+                            cmd.Parameters.Add("@updated_date_time", MySqlDbType.DateTime).Value = obj.updated_date_time;
+                            cmd.Parameters.Add("@created_emp_id", MySqlDbType.Int32).Value = obj.created_emp_id;
+                            cmd.Parameters.Add("@updated_date_time", MySqlDbType.Int32).Value = obj.updated_date_time;                            
 
                             i = Convert.ToInt32(cmd.ExecuteNonQuery());
                             cmd.Parameters.Clear();

@@ -43,7 +43,7 @@ namespace SMS.ClassManagement.Subjects
         public void load_grid()
         {
             subjects_list.Clear();
-            //get_all_subjects();
+            
             subjects_grid.ItemsSource = subjects_list;
             this.subjects_grid.Items.Refresh();
         }
