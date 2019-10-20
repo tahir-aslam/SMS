@@ -549,7 +549,6 @@ D:\Scenario\Github\SMS\SMS\SMS\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
 D:\Scenario\Github\SMS\SMS\SMS\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 D:\Scenario\Github\SMS\SMS\SMS\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 D:\Scenario\Github\SMS\SMS\SMS\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.csprojResolveAssemblyReference.cache
 D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\AccountManagement\AccountBalanceSheet\BalanceSheet.baml
 D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\AccountManagement\AccountBalanceSheet\BalanceSheetPrint.baml
 D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\AccountManagement\AccountDataEntry\AccountDataForm.baml
@@ -1000,3 +999,5 @@ D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.exe.manifest
 D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.application
 D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.exe
 D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.pdb
+D:\Scenario\Github\SMS\SMS\SMS\bin\Debug\ClassManagement\Class\ClassReport.rdlc
+D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.csprojResolveAssemblyReference.cache

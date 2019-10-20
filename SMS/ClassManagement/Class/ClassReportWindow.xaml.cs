@@ -43,7 +43,7 @@ namespace SMS.ClassManagement.Class
 
             this._reportViewer.LocalReport.DataSources.Add(classes);
             this._reportViewer.LocalReport.DataSources.Add(ins);
-            this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.ClassManagement.Class.ClassReport.rdlc";
+            this._reportViewer.LocalReport.ReportPath = "ClassManagement/Class/ClassReport.rdlc";
 
             _reportViewer.RefreshReport();
 

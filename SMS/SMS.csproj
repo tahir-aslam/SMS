@@ -1847,7 +1847,9 @@
     <EmbeddedResource Include="AdvancedAccountManagement\IncomeStatement\IncomeStatementReport.rdlc" />
     <EmbeddedResource Include="AdvancedAccountManagement\TrialBalance\TrialBalanceReport.rdlc" />
     <EmbeddedResource Include="AdvancedAccountManagement\VoucherEntry\VoucherEntryReport.rdlc" />
-    <EmbeddedResource Include="ClassManagement\Class\ClassReport.rdlc" />
+    <Content Include="ClassManagement\Class\ClassReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceBio\EmployeeAttendanceBioReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\EmployeeSalarySheetBio\EmployeeSalarySheetReport.rdlc" />

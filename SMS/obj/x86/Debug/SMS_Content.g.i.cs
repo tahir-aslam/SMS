@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("classmanagement/class/classreport.rdlc")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/crystaldecisions.crystalreports.engine.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/gsmcommserver.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/gsmcommshared.dll")]
