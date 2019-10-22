@@ -62,6 +62,7 @@ namespace SMS.AdmissionManagement.Admission
 
         ClassesDAL classesDAL;
         FeesDAL feesDAL;
+        AdmissionDAL admDAL;
         List<sms_fees_actual> fees_list;
 
         public AdmissionFormNew(string m, AdmissionSearchNew adm_s, admission ob)
@@ -69,6 +70,7 @@ namespace SMS.AdmissionManagement.Admission
             InitializeComponent();
             classesDAL = new ClassesDAL();
             feesDAL = new FeesDAL();
+            admDAL = new AdmissionDAL();
 
             AS = adm_s;
             this.obj = ob;
@@ -818,6 +820,7 @@ namespace SMS.AdmissionManagement.Admission
                 obj.id="0";
             }
 
+            List<admission> adm_list = admDAL.get_all_admissions_sessions();
             bool a = Regex.IsMatch(adm_textbox.Text.Trim(), @"^\d+$");
             bool b = false;
             string full_adm_no = "";
@@ -835,7 +838,7 @@ namespace SMS.AdmissionManagement.Admission
 
            
 
-            foreach (admission adm in AS.adm_list)
+            foreach (admission adm in adm_list)
             {                
                 b = Regex.IsMatch(adm.adm_no, @"^\d+$");
                 if (a && b)

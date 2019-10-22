@@ -124,7 +124,7 @@ namespace SMS.StudentManagement.StudentAttendence
                     {
                         using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + sec.id + "&&  session_id=" + MainWindow.session.id + " ORDER BY adm_no ASC";
+                            cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + sec.id + "&&  session_id=" + MainWindow.session.id + " ORDER BY adm_no_int ASC";
                             cmd.Connection = con;
                             //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
 

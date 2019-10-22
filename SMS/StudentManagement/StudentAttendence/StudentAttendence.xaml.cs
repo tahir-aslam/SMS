@@ -454,9 +454,11 @@ namespace SMS.StudentManagement.StudentAttendence
                     std_name = adm.std_name,
                     father_name = adm.father_name,
                     roll_no = adm.roll_no,
+                    roll_no_int= adm.roll_no_int,
                     class_id = adm.class_id,
                     section_id = adm.section_id,
                     adm_no = adm.adm_no,
+                    adm_no_int=adm.adm_no_int,
                 };
                 calculateAttendence(adm.id);
                 std_vm.att_percentage = percentage.ToString("0.00");
@@ -495,6 +497,12 @@ namespace SMS.StudentManagement.StudentAttendence
                 std_vm.att_lst = std_attendence_list;
                 std_vm.att_date_lst = std_attendence_date_list;
                 std_vm_list.Add(std_vm);
+                ObservableCollection<student_attendence> attList = new ObservableCollection<student_attendence>();
+                foreach (var item in attList.OrderBy(x=>x.adm_no_int))
+                {
+                    attList.Add(item);
+                }
+                std_vm_list = attList;
             }
         }
 

@@ -32,6 +32,7 @@ namespace SMS.FeesManagement.FeesCollection
         List<classes> classes_list;
         List<sections> sections_list;        
         admission obj;
+        AdmissionDAL admDAL;
         List<fee> fee_list;
         List<admission> adm_grid_list;
         FeesDAL feesDAL;
@@ -42,6 +43,7 @@ namespace SMS.FeesManagement.FeesCollection
 
             adm_list = new List<admission>();
             feesDAL = new FeesDAL();
+            admDAL = new AdmissionDAL();
 
             classes_list = new List<classes>();
             get_all_classes();
@@ -59,7 +61,7 @@ namespace SMS.FeesManagement.FeesCollection
             section_cmb.IsEnabled = false;
             class_cmb.SelectedIndex = 0;
             adm_list.Clear();
-            get_all_admissions();
+            adm_list = admDAL.get_all_admissions();
             List<sms_fees_actual> fees_list = feesDAL.get_all_actual_fees();
             foreach (var adm in adm_list)
             {
