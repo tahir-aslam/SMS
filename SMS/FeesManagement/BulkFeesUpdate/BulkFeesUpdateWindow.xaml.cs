@@ -51,19 +51,28 @@ namespace SMS.FeesManagement.BulkFeesUpdate
         }
         private void click_save(object sender, RoutedEventArgs e)
         {
-            if (validate())
+            MessageBoxResult mbr = MessageBox.Show("Have You Backup your data before doing this operation, It will change all student fee ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (mbr == MessageBoxResult.Yes)
             {
-                if (updateActualFees())
+                if (validate())
                 {
-                    MessageBox.Show("Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
-                }
-                else 
-                {
-                    MessageBox.Show("Error", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
-                    this.Close();
+                    if (updateActualFees())
+                    {
+                        MessageBox.Show("Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error", "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                        this.Close();
+                    }
                 }
             }
+            else
+            {
+                this.Close();
+            }
+            
         }
 
         private void click_cancel(object sender, RoutedEventArgs e)
@@ -143,11 +152,25 @@ namespace SMS.FeesManagement.BulkFeesUpdate
                         feesActualObj = actual;
                         if (amount_option.SelectedIndex == 1)
                         {
-                            feesActualObj.amount = amount;
+                            if (fee_type_cmb.SelectedIndex == 0)
+                            {
+                                feesActualObj.amount = amount;
+                            }
+                            else
+                            {
+                                feesActualObj.actual_amount = amount;
+                            }
                         }
                         else 
                         {
-                            feesActualObj.amount = feesActualObj.amount + amount;
+                            if (fee_type_cmb.SelectedIndex == 0)
+                            {
+                                feesActualObj.amount = feesActualObj.amount + amount;
+                            }
+                            else
+                            {
+                                feesActualObj.actual_amount = feesActualObj.actual_amount + amount;
+                            }
                         }
 
                         //for negative

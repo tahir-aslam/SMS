@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.DAL", "SMS.DAL\SMS.DAL.
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SMS_27Sep", "SMS_27Sep\SMS_27Sep.vdproj", "{AF8083BA-AD44-466F-9447-D07C2F9D64B9}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SMS_22oct", "SMS_22oct\SMS_22oct.vdproj", "{7BAAEFDE-8FE0-4607-9872-A2F96F719697}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SMS_23Oct", "SMS_23Oct\SMS_23Oct.vdproj", "{B33C8C90-ACB8-4CA8-B202-B5FA882B6B8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +103,18 @@ Global
 		{AF8083BA-AD44-466F-9447-D07C2F9D64B9}.Release|Any CPU.ActiveCfg = Release
 		{AF8083BA-AD44-466F-9447-D07C2F9D64B9}.Release|Mixed Platforms.ActiveCfg = Release
 		{AF8083BA-AD44-466F-9447-D07C2F9D64B9}.Release|x86.ActiveCfg = Release
+		{7BAAEFDE-8FE0-4607-9872-A2F96F719697}.Debug|Any CPU.ActiveCfg = Debug
+		{7BAAEFDE-8FE0-4607-9872-A2F96F719697}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{7BAAEFDE-8FE0-4607-9872-A2F96F719697}.Debug|x86.ActiveCfg = Debug
+		{7BAAEFDE-8FE0-4607-9872-A2F96F719697}.Release|Any CPU.ActiveCfg = Release
+		{7BAAEFDE-8FE0-4607-9872-A2F96F719697}.Release|Mixed Platforms.ActiveCfg = Release
+		{7BAAEFDE-8FE0-4607-9872-A2F96F719697}.Release|x86.ActiveCfg = Release
+		{B33C8C90-ACB8-4CA8-B202-B5FA882B6B8F}.Debug|Any CPU.ActiveCfg = Debug
+		{B33C8C90-ACB8-4CA8-B202-B5FA882B6B8F}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{B33C8C90-ACB8-4CA8-B202-B5FA882B6B8F}.Debug|x86.ActiveCfg = Debug
+		{B33C8C90-ACB8-4CA8-B202-B5FA882B6B8F}.Release|Any CPU.ActiveCfg = Release
+		{B33C8C90-ACB8-4CA8-B202-B5FA882B6B8F}.Release|Mixed Platforms.ActiveCfg = Release
+		{B33C8C90-ACB8-4CA8-B202-B5FA882B6B8F}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

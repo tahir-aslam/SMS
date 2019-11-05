@@ -18,7 +18,8 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45" />
                             <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />                        
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
                             <RowDefinition Height="60" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -46,10 +47,33 @@
                             <ComboBoxItem Content="Increment Fee"/>
                         </ComboBox>
 
-                        <TextBlock Text="Amount: *" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
-                        <TextBox   Grid.Row="2" Grid.Column="1" Name="fee_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False" Margin="0" Width="130" Height="30" FontSize="16" PreviewTextInput="NumberValidationTextBox"/>
+                        <TextBlock Text="Amount Type:  "
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <ComboBox   Grid.Row="2"
+                                    Grid.Column="1"
+                                    Name="fee_type_cmb"
+                                    SelectedIndex="0"
+                                    MaxWidth="200"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="0"
+                                    Width="130"
+                                    Height="30"
+                                    FontSize="11"
+                                    SelectionChanged="amount_option_SelectionChanged">                            
+                            <ComboBoxItem Content="Receivable Amount" />
+                            <ComboBoxItem Content="Actual(Standard Charges)" />
+                        </ComboBox>
 
-                        <Grid Width="230" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,0" HorizontalAlignment="Right" >
+                        <TextBlock Text="Amount: *" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
+                        <TextBox   Grid.Row="3" Grid.Column="1" Name="fee_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False" Margin="0" Width="130" Height="30" FontSize="16" PreviewTextInput="NumberValidationTextBox"/>
+
+                        <Grid Width="230" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,0" HorizontalAlignment="Right" >
                             <Button Content="Save" Width="100" Height="30" HorizontalAlignment="Left" Click="click_save"  />
                             <Button Content="Cancel" Width="100" Height="30" HorizontalAlignment="Right" Click="click_cancel"  />
                         </Grid>

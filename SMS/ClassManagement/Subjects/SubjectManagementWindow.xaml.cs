@@ -89,6 +89,7 @@ namespace SMS.ClassManagement.Subjects
                     List<sms_exams_subjects> lst = FillObject();
                     if (subjectsDAL.InsertSubjectAssignment(lst) > 0)
                     {
+                        MessageBox.Show("Record Added Successfully");
                     }
                     else
                     {
@@ -101,146 +102,150 @@ namespace SMS.ClassManagement.Subjects
                 MessageBox.Show(ex.Message);
             }
         }
-    
 
-    private List<sms_exams_subjects> FillObject()
-    {
-        List<sms_exams_subjects> lst = new List<sms_exams_subjects>();
 
-        foreach (var sec in sections_list.Where(x => x.isChecked == true))
+        private List<sms_exams_subjects> FillObject()
         {
-            foreach (var subj in subjects_list.Where(x => x.isChecked == true))
+            List<sms_exams_subjects> lst = new List<sms_exams_subjects>();
+            sms_exams_subjects obj;
+            employees emp = v_emp_cmb.SelectedItem as employees;
+
+            foreach (var sec in sections_list.Where(x => x.isChecked == true).Where(x => x.id != "-1"))
             {
-                employees emp = v_emp_cmb.SelectedItem as employees;
-
-                subj.section_id = Convert.ToInt32(sec.id);
-                subj.emp_id = Convert.ToInt32(emp.id);
-
-                subj.created_date_time = DateTime.Now;
-                subj.updated_date_time = DateTime.Now;
-                subj.created_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
-                subj.updated_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
-
-                lst.Add(subj);
-            }
-        }
-
-        return lst;
-    }
-
-    private void click_cancel(object sender, RoutedEventArgs e)
-    {
-        this.Close();
-    }
-
-    private void v_emp_types_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        sms_emp_designation et = (sms_emp_designation)v_emp_types_cmb.SelectedItem;
-        if (v_emp_types_cmb.SelectedIndex != 0)
-        {
-            v_emp_cmb.Items.Clear();
-            v_emp_cmb.IsEnabled = true;
-            v_emp_cmb.SelectedIndex = 0;
-            v_emp_cmb.Items.Insert(0, new employees() { emp_name = "---Select Teacher---", id = "-1" });
-            foreach (employees emp in emp_list)
-            {
-                if (emp.designation_id == et.id)
+                foreach (var subj in subjects_list.Where(x => x.isChecked == true).Where(x=>x.id != -1))
                 {
-                    v_emp_cmb.Items.Add(emp);
+                    obj = new sms_exams_subjects()
+                    {
+                        id = subj.id,
+                        section_id = Convert.ToInt32(sec.id),
+                        emp_id = Convert.ToInt32(emp.id),
+                        created_date_time = DateTime.Now,
+                        updated_date_time = DateTime.Now,
+                        created_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.id),
+                        updated_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.id),
+
+                    };
+
+                    lst.Add(obj);
                 }
             }
 
-            //emp_cmb.ItemsSource = emp_list.Where(x => x.emp_type_id == et.id);
+            return lst;
         }
-        else
+
+        private void click_cancel(object sender, RoutedEventArgs e)
         {
-            v_emp_cmb.SelectedIndex = 0;
-            v_emp_cmb.IsEnabled = false;
+            this.Close();
         }
-    }
 
-    private void v_class_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        try
+        private void v_emp_types_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            classes c = (classes)v_class_cmb.SelectedItem;
-            string id = c.id;
-
-            if (v_class_cmb.SelectedIndex != 0)
+            sms_emp_designation et = (sms_emp_designation)v_emp_types_cmb.SelectedItem;
+            if (v_emp_types_cmb.SelectedIndex != 0)
             {
-                sections_list = classesDAL.get_all_sections(id);
+                v_emp_cmb.Items.Clear();
+                v_emp_cmb.IsEnabled = true;
+                v_emp_cmb.SelectedIndex = 0;
+                v_emp_cmb.Items.Insert(0, new employees() { emp_name = "---Select Teacher---", id = "-1" });
+                foreach (employees emp in emp_list)
+                {
+                    if (emp.designation_id == et.id)
+                    {
+                        v_emp_cmb.Items.Add(emp);
+                    }
+                }
 
-
-                v_section_cmb.IsEnabled = true;
-                sections_list.Insert(0, new sections() { section_name = "---All Sections---", id = "-1" });
-                v_section_cmb.ItemsSource = sections_list;
-                v_section_cmb.SelectedIndex = 0;
+                //emp_cmb.ItemsSource = emp_list.Where(x => x.emp_type_id == et.id);
             }
             else
             {
-
-                v_section_cmb.IsEnabled = false;
-                v_section_cmb.SelectedIndex = 0;
-
+                v_emp_cmb.SelectedIndex = 0;
+                v_emp_cmb.IsEnabled = false;
             }
         }
-        catch (Exception ex)
+
+        private void v_class_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MessageBox.Show(ex.Message);
+            try
+            {
+                classes c = (classes)v_class_cmb.SelectedItem;
+                string id = c.id;
+
+                if (v_class_cmb.SelectedIndex != 0)
+                {
+                    sections_list = classesDAL.get_all_sections(id);
+
+
+                    v_section_cmb.IsEnabled = true;
+                    sections_list.Insert(0, new sections() { section_name = "---All Sections---", id = "-1" });
+                    v_section_cmb.ItemsSource = sections_list;
+                    v_section_cmb.SelectedIndex = 0;
+                }
+                else
+                {
+
+                    v_section_cmb.IsEnabled = false;
+                    v_section_cmb.SelectedIndex = 0;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CheckBox_Checked_Sections(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void CheckBox_Checked_subjects(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private bool validate()
+        {
+            if (v_class_cmb.SelectedIndex == 0)
+            {
+                v_class_cmb.Focus();
+                string alertText = "Class Name Should Not Be Blank.";
+                MessageBox.Show(alertText);
+                return false;
+            }
+
+            else if (sections_list.Where(x => x.isChecked == true).Count() == 0)
+            {
+                v_section_cmb.Focus();
+                string alertText = "Please Select Minimum One Section";
+                MessageBox.Show(alertText);
+                return false;
+            }
+            else if (subjects_list.Where(x => x.isChecked == true).Count() == 0)
+            {
+                v_subject_cmb.Focus();
+                string alertText = "Please Select Minimum One Subject";
+                MessageBox.Show(alertText);
+                return false;
+            }
+            else if (v_emp_types_cmb.SelectedIndex == 0)
+            {
+                v_emp_types_cmb.Focus();
+                string alertText = "Please Select Teacher Designation";
+                MessageBox.Show(alertText);
+                return false;
+            }
+            else if (v_emp_cmb.SelectedIndex == 0)
+            {
+                v_emp_types_cmb.Focus();
+                string alertText = "Please Select Teacher";
+                MessageBox.Show(alertText);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
-
-    private void CheckBox_Checked_Sections(object sender, RoutedEventArgs e)
-    {
-    }
-
-    private void CheckBox_Checked_subjects(object sender, RoutedEventArgs e)
-    {
-
-    }
-
-    private bool validate()
-    {
-        if (v_class_cmb.SelectedIndex == 0)
-        {
-            v_class_cmb.Focus();
-            string alertText = "Class Name Should Not Be Blank.";
-            MessageBox.Show(alertText);
-            return false;
-        }
-
-        else if (sections_list.Where(x => x.isChecked == true).Count() == 0)
-        {
-            v_section_cmb.Focus();
-            string alertText = "Please Select Minimum One Section";
-            MessageBox.Show(alertText);
-            return false;
-        }
-        else if (subjects_list.Where(x => x.isChecked == true).Count() == 0)
-        {
-            v_subject_cmb.Focus();
-            string alertText = "Please Select Minimum One Subject";
-            MessageBox.Show(alertText);
-            return false;
-        }
-        else if (v_emp_types_cmb.SelectedIndex == 0)
-        {
-            v_emp_types_cmb.Focus();
-            string alertText = "Please Select Teacher Designation";
-            MessageBox.Show(alertText);
-            return false;
-        }
-        else if (v_emp_cmb.SelectedIndex == 0)
-        {
-            v_emp_types_cmb.Focus();
-            string alertText = "Please Select Teacher";
-            MessageBox.Show(alertText);
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-}
 }
