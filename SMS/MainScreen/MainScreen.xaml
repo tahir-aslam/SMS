@@ -416,7 +416,7 @@
               Grid.Column="0"
               Margin="10,0,10,10">
             <!--Tab Control-->
-            <DockPanel>
+            <DockPanel Background="Gray">
                 <TabControl   VerticalAlignment="Stretch"
                               Width="200"
                               Height="Auto"
@@ -427,8 +427,10 @@
                               MinWidth="100"
                               BorderBrush="#FF6593CF"
                               HorizontalAlignment="Left"
-                              BorderThickness="1,1,1,0"
-                              >
+                              BorderThickness="1,1,1,0">
+                    <TabControl.Background>
+                        <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg" Stretch="UniformToFill"/>
+                    </TabControl.Background>
 
                     <!--Class Management Tab-->
 

@@ -51,6 +51,7 @@ using System.Net;
 using SMS.DAL;
 using SMS.ComplaintManagment;
 using SMS.ExamsManagement.ExamDataEntry;
+using SMS.ExamsManagement.GeneralAwardList;
 
 namespace SMS.MainScreen
 {
@@ -1819,6 +1820,8 @@ namespace SMS.MainScreen
             exams_entry.Foreground = Brushes.Purple;
             define_exams_btn.Background = Brushes.White;
             define_exams_btn.Foreground = Brushes.Purple;
+            general_award_list.Background = Brushes.White;
+            general_award_list.Foreground = Brushes.Purple;
         }
         private void define_exams_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -1830,6 +1833,8 @@ namespace SMS.MainScreen
             subjects_management_button.Foreground = Brushes.Purple;
             exams_entry.Background = Brushes.White;
             exams_entry.Foreground = Brushes.Purple;
+            general_award_list.Background = Brushes.White;
+            general_award_list.Foreground = Brushes.Purple;
         }
 
         private void exams_entry_Click(object sender, RoutedEventArgs e)
@@ -1842,11 +1847,22 @@ namespace SMS.MainScreen
             subjects_management_button.Foreground = Brushes.Purple;
             define_exams_btn.Background = Brushes.White;
             define_exams_btn.Foreground = Brushes.Purple;
+            general_award_list.Background = Brushes.White;
+            general_award_list.Foreground = Brushes.Purple;
         }
 
         private void general_award_list_Click(object sender, RoutedEventArgs e)
         {
+            this.mainFrame.Content = new GeneralAwardListPage();
+            general_award_list.Background = Brushes.Purple;
+            general_award_list.Foreground = Brushes.White;
 
+            exams_entry.Background = Brushes.White;
+            exams_entry.Foreground = Brushes.Purple;
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Purple;
+            define_exams_btn.Background = Brushes.White;
+            define_exams_btn.Foreground = Brushes.Purple;
         }
 
         private void results_card_btn_Click(object sender, RoutedEventArgs e)

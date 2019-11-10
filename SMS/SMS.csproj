@@ -509,6 +509,9 @@
     <Compile Include="ExamsManagement\ExamDataEntry\ExamDataEntryPage.xaml.cs">
       <DependentUpon>ExamDataEntryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExamsManagement\GeneralAwardList\GeneralAwardListPage.xaml.cs">
+      <DependentUpon>GeneralAwardListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FeeManagement\FeeDefaulters\FeeDefaultersList.xaml.cs">
       <DependentUpon>FeeDefaultersList.xaml</DependentUpon>
     </Compile>
@@ -1338,6 +1341,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExamsManagement\ExamDataEntry\ExamDataEntryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamsManagement\GeneralAwardList\GeneralAwardListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2187,6 +2194,8 @@
     <Resource Include="images\rfid.png" />
     <Resource Include="images\adm_slip.png" />
     <Resource Include="images\complaint_icon.png" />
+    <Resource Include="images\exam_data_entry.png" />
+    <Resource Include="images\general_award_list.png" />
     <Content Include="Lib\CrystalDecisions.CrystalReports.Engine.dll" />
     <Content Include="Lib\GSMCommServer.dll" />
     <Content Include="Lib\GSMCommShared.dll" />
