@@ -50,6 +50,7 @@ using System.ComponentModel;
 using System.Net;
 using SMS.DAL;
 using SMS.ComplaintManagment;
+using SMS.ExamsManagement.ExamDataEntry;
 
 namespace SMS.MainScreen
 {
@@ -346,6 +347,36 @@ namespace SMS.MainScreen
                         if (rol.id == "78" && rol.is_active == "Y")
                         {
                             balance_sheet_btn.Visibility = Visibility.Visible;
+                        }
+
+                        // Exams Management  // New exams management
+                        if (rol.id == "110" && rol.is_active == "Y")
+                        {
+                            exams_mgmt_tab.Visibility = Visibility.Visible;
+                        }
+                        if (rol.id == "111" && rol.is_active == "Y")
+                        {
+                            subjects_management_button.Visibility = Visibility.Visible;
+                        }
+                        if (rol.id == "112" && rol.is_active == "Y")
+                        {
+                            define_exams_btn.Visibility = Visibility.Visible;
+                        }
+                        if (rol.id == "113" && rol.is_active == "Y")
+                        {
+                            exams_entry.Visibility = Visibility.Visible;
+                        }
+                        if (rol.id == "114" && rol.is_active == "Y")
+                        {
+                            exams_entry.Visibility = Visibility.Visible;
+                        }
+                        if (rol.id == "115" && rol.is_active == "Y")
+                        {
+                            general_award_list.Visibility = Visibility.Visible;
+                        }
+                        if (rol.id == "116" && rol.is_active == "Y")
+                        {
+                            results_card_btn.Visibility = Visibility.Visible;
                         }
 
                         // SMS Management
@@ -725,38 +756,7 @@ namespace SMS.MainScreen
             emp_attnd.Foreground = Brushes.Black;
         }
 
-        private void Subjects_Mgmt_Click(object sender, RoutedEventArgs e)
-        {
-            //this.mainFrame.Navigate(new SubjectSearch());
-            this.mainFrame.Content = new ClassManagement.Subjects.SubjectManagementPage();
-            subjects_management_button.Background = Brushes.Purple;
-            subjects_management_button.Foreground = Brushes.White;
-
-            button1.Background = Brushes.White;
-            button1.Foreground = Brushes.Black;
-            section_button.Background = Brushes.White;
-            section_button.Foreground = Brushes.Black;
-            add_emp.Background = Brushes.White;
-            add_emp.Foreground = Brushes.Black;
-
-            fee.Background = Brushes.White;
-            fee.Foreground = Brushes.Black;
-            paidfee_btn.Background = Brushes.White;
-            paidfee_btn.Foreground = Brushes.Black;
-            Defaulterfee_btn.Background = Brushes.White;
-            Defaulterfee_btn.Foreground = Brushes.Black;
-            paidfeeReport_btn.Background = Brushes.White;
-            paidfeeReport_btn.Foreground = Brushes.Black;
-
-            Admission.Background = Brushes.White;
-            Admission.Foreground = Brushes.Black;
-            std_attendence.Background = Brushes.White;
-            std_attendence.Foreground = Brushes.Black;
-            emp_login.Background = Brushes.White;
-            emp_login.Foreground = Brushes.Black;
-            emp_attnd.Background = Brushes.White;
-            emp_attnd.Foreground = Brushes.Black;
-        }
+       
 
         private void add_emp_Click(object sender, RoutedEventArgs e)
         {
@@ -1808,16 +1808,40 @@ namespace SMS.MainScreen
 
         // -------------------------- Exams management new exam system --------------------------------
 
+        private void Subjects_Mgmt_Click(object sender, RoutedEventArgs e)
+        {
+            //this.mainFrame.Navigate(new SubjectSearch());
+            this.mainFrame.Content = new ClassManagement.Subjects.SubjectManagementPage();
+            subjects_management_button.Background = Brushes.Purple;
+            subjects_management_button.Foreground = Brushes.White;
+
+            exams_entry.Background = Brushes.White;
+            exams_entry.Foreground = Brushes.Purple;
+            define_exams_btn.Background = Brushes.White;
+            define_exams_btn.Foreground = Brushes.Purple;
+        }
         private void define_exams_btn_Click(object sender, RoutedEventArgs e)
         {
             this.mainFrame.Content = new ExamSearch();
             define_exams_btn.Background = Brushes.Purple;
             define_exams_btn.Foreground = Brushes.White;
+
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Purple;
+            exams_entry.Background = Brushes.White;
+            exams_entry.Foreground = Brushes.Purple;
         }
 
         private void exams_entry_Click(object sender, RoutedEventArgs e)
         {
+            this.mainFrame.Content = new ExamDataEntryPage();
+            exams_entry.Background = Brushes.Purple;
+            exams_entry.Foreground = Brushes.White;
 
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Purple;
+            define_exams_btn.Background = Brushes.White;
+            define_exams_btn.Foreground = Brushes.Purple;
         }
 
         private void general_award_list_Click(object sender, RoutedEventArgs e)

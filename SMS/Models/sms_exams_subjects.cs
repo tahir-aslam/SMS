@@ -28,6 +28,7 @@ namespace SMS.Models
         public string insertion { set; get; }
         public string updation { set; get; }
         public bool isChecked { get; set; }
+        public bool Checked { get; set; }
         //public List<subjects> subjects_list { get; set; }
         public int created_emp_id { get; set; }
         public int updated_emp_id { get; set; }

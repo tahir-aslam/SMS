@@ -506,6 +506,9 @@
     <Compile Include="ExamManagement\RollNoSlip\RollNoSlipPage.xaml.cs">
       <DependentUpon>RollNoSlipPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExamsManagement\ExamDataEntry\ExamDataEntryPage.xaml.cs">
+      <DependentUpon>ExamDataEntryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FeeManagement\FeeDefaulters\FeeDefaultersList.xaml.cs">
       <DependentUpon>FeeDefaultersList.xaml</DependentUpon>
     </Compile>
@@ -1331,6 +1334,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExamManagement\RollNoSlip\RollNoSlipPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamsManagement\ExamDataEntry\ExamDataEntryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2161,7 +2168,6 @@
     <Folder Include="AdvancedAccountManagement\GeneralJournal\" />
     <Folder Include="CrystalReports\" />
     <Folder Include="ENUM\" />
-    <Folder Include="ExamsManagement\" />
     <Folder Include="Reports\Employee\EmployeeAttendanceBio\" />
     <Folder Include="Reports\Fees\" />
   </ItemGroup>

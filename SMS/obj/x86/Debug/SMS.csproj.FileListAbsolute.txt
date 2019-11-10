@@ -1001,3 +1001,5 @@ D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.exe
 D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.pdb
 D:\Scenario\Github\SMS\SMS\SMS\bin\Debug\ClassManagement\Class\ClassReport.rdlc
 D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.csprojResolveAssemblyReference.cache
+D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\ExamDataEntry\ExamDataEntryPage.g.cs
+D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\ExamDataEntry\ExamDataEntryPage.baml
