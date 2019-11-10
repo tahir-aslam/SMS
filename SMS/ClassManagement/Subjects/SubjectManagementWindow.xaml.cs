@@ -20,7 +20,7 @@ namespace SMS.ClassManagement.Subjects
     /// </summary>
     public partial class SubjectManagementWindow : Window
     {
-        SubjectManagementPage SP;
+        SubjectManagementPage ShowGridPage;
 
         List<classes> classes_list;
         List<sections> sections_list;
@@ -28,19 +28,19 @@ namespace SMS.ClassManagement.Subjects
         List<sms_emp_designation> emp_types_list;
         List<sms_exams_subjects> subjects_list;
 
-        subjects subjects_obj;
-        subjects obj;
+        sms_exams_subjects subjects_obj;
+        sms_exams_subjects obj;
         string mode;
 
         SubjectsDAL subjectsDAL;
         EmployeesDAL empDAL;
         ClassesDAL classesDAL;
 
-        public SubjectManagementWindow(string m, SubjectManagementPage sp, subjects ob)
+        public SubjectManagementWindow(string m, SubjectManagementPage sp, sms_exams_subjects ob)
         {
             InitializeComponent();
 
-            SP = sp;
+            ShowGridPage = sp;
             this.obj = ob;
             this.mode = m;
 
@@ -73,27 +73,60 @@ namespace SMS.ClassManagement.Subjects
                 emp_types_list.Insert(0, new sms_emp_designation() { designation = "---Select Designation---", id = -1 });
                 v_emp_types_cmb.SelectedIndex = 0;
                 v_emp_types_cmb.ItemsSource = emp_types_list;
+
+                if (mode == "edit")
+                {
+                    v_class_cmb.SelectedValue =  obj.class_id.ToString();
+                    v_class_cmb.IsEnabled = false;
+
+                    v_section_cmb.SelectedValue = obj.section_id;
+                    sections_list.Where(x => x.id == obj.section_id.ToString()).FirstOrDefault().isChecked = true;
+                    v_section_cmb.IsEnabled = false;
+
+                    v_subject_cmb.SelectedValue = obj.id;
+                    subjects_list.Where(x => x.id == obj.id).FirstOrDefault().isChecked = true;
+                    v_subject_cmb.IsEnabled = false;
+
+                    v_emp_types_cmb.SelectedValue = obj.emp_designation_id;
+                    v_emp_cmb.SelectedValue = obj.emp_id;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void click_save(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (validate())
                 {
-                    List<sms_exams_subjects> lst = FillObject();
-                    if (subjectsDAL.InsertSubjectAssignment(lst) > 0)
+                    if (mode == "edit")
                     {
-                        MessageBox.Show("Record Added Successfully");
+                        sms_exams_subjects obj = FillObjectForUpdate(this.obj);
+                        if (subjectsDAL.UpdateSubjectAssignment(obj) > 0)
+                        {
+                            MessageBox.Show("Record Updated Successfully");
+                            ShowGridPage.load_grid();
+                            this.Close();
+                            
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Not Any Record Inserted");
+
+                        List<sms_exams_subjects> lst = FillObject();
+                        if (subjectsDAL.InsertSubjectAssignment(lst) > 0)
+                        {
+                            MessageBox.Show("Record Added Successfully");
+                            ShowGridPage.load_grid();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Not Any Record Inserted");
+                        }
                     }
                 }
             }
@@ -103,7 +136,16 @@ namespace SMS.ClassManagement.Subjects
             }
         }
 
-
+        private sms_exams_subjects FillObjectForUpdate(sms_exams_subjects obj)
+        {
+            employees emp = v_emp_cmb.SelectedItem as employees;
+            
+            obj.emp_id = Convert.ToInt32(emp.id);
+            obj.updated_date_time = DateTime.Now;
+            obj.updated_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+            return obj;
+        }
+        
         private List<sms_exams_subjects> FillObject()
         {
             List<sms_exams_subjects> lst = new List<sms_exams_subjects>();
@@ -121,8 +163,8 @@ namespace SMS.ClassManagement.Subjects
                         emp_id = Convert.ToInt32(emp.id),
                         created_date_time = DateTime.Now,
                         updated_date_time = DateTime.Now,
-                        created_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.id),
-                        updated_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.id),
+                        created_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id),
+                        updated_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id),
 
                     };
 
@@ -132,12 +174,10 @@ namespace SMS.ClassManagement.Subjects
 
             return lst;
         }
-
         private void click_cancel(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
         private void v_emp_types_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             sms_emp_designation et = (sms_emp_designation)v_emp_types_cmb.SelectedItem;
@@ -163,7 +203,6 @@ namespace SMS.ClassManagement.Subjects
                 v_emp_cmb.IsEnabled = false;
             }
         }
-
         private void v_class_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -194,16 +233,13 @@ namespace SMS.ClassManagement.Subjects
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void CheckBox_Checked_Sections(object sender, RoutedEventArgs e)
         {
         }
-
         private void CheckBox_Checked_subjects(object sender, RoutedEventArgs e)
         {
 
         }
-
         private bool validate()
         {
             if (v_class_cmb.SelectedIndex == 0)

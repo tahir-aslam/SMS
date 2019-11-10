@@ -31,7 +31,11 @@ namespace SMS.Models
         //public List<subjects> subjects_list { get; set; }
         public int created_emp_id { get; set; }
         public int updated_emp_id { get; set; }
+        public string created_emp_name { get; set; }
+        public string updated_emp_name { get; set; }
         public DateTime created_date_time { get; set; }
         public DateTime updated_date_time { get; set; }
+        public Int32 emp_designation_id { get; set; }
+        public string emp_designation { get; set; }
     }
 }

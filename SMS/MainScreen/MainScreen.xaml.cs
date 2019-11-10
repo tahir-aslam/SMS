@@ -1806,6 +1806,32 @@ namespace SMS.MainScreen
             result_card_btn.Foreground = Brushes.Black;
         }
 
+        // -------------------------- Exams management new exam system --------------------------------
+
+        private void define_exams_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.mainFrame.Content = new ExamSearch();
+            define_exams_btn.Background = Brushes.Purple;
+            define_exams_btn.Foreground = Brushes.White;
+        }
+
+        private void exams_entry_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void general_award_list_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void results_card_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        // fees management------------------------------------------------------------------------------
         private void paidfee_btn_Click(object sender, RoutedEventArgs e)
         {
             //this.mainFrame.Navigate(new PaidFee());

@@ -636,7 +636,7 @@ namespace SMS.ExamManagement.ExamResultListBySubject
                 sec = (sections)section_cmb.SelectedItem;                
                 cl = (classes)class_cmb.SelectedItem;
                 subj = (subjects)subjects_cmb.SelectedItem;
-                get_all_admissions(cl.id);
+                //get_all_admissions(cl.id);
                 get_all_exams_entry();
                 create_report();
             }

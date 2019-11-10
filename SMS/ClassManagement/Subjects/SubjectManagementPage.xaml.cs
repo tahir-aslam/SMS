@@ -23,7 +23,7 @@ namespace SMS.ClassManagement.Subjects
     {
         List<sms_exams_subjects> subjects_list;
         SubjectManagementWindow window;
-        subjects obj;
+        sms_exams_subjects obj;
         string mode;
         SubjectsDAL subjectsDAL;
         string insertion;
@@ -34,7 +34,7 @@ namespace SMS.ClassManagement.Subjects
             InitializeComponent();
             subjects_list = new List<sms_exams_subjects>();
             subjectsDAL = new SubjectsDAL();
-            obj = new subjects();
+            obj = new sms_exams_subjects();
 
             SearchTextBox.Focus();
             load_grid();
@@ -42,8 +42,8 @@ namespace SMS.ClassManagement.Subjects
 
         public void load_grid()
         {
-            subjects_list.Clear();
-            
+            subjects_list = new List<sms_exams_subjects>();      
+            subjects_list = subjectsDAL.GetAllSubjectsAssignment();
             subjects_grid.ItemsSource = subjects_list;
             this.subjects_grid.Items.Refresh();
         }
@@ -70,7 +70,7 @@ namespace SMS.ClassManagement.Subjects
 
         public void editing()
         {
-            obj = (subjects)subjects_grid.SelectedItem;
+            obj = (sms_exams_subjects)subjects_grid.SelectedItem;
             if (obj == null)
             {
                 //MessageBox.Show("plz select a row");
@@ -88,7 +88,7 @@ namespace SMS.ClassManagement.Subjects
 
         private void click_delete(object sender, RoutedEventArgs e)
         {
-            obj = (subjects)subjects_grid.SelectedItem;
+            obj = (sms_exams_subjects)subjects_grid.SelectedItem;
             if (obj == null)
             {
                 MessageBox.Show("Please Select A Row");
@@ -98,9 +98,9 @@ namespace SMS.ClassManagement.Subjects
                 MessageBoxResult mbr = MessageBox.Show("Do You Want To Delete This Record ?", "Delete Confirmation", MessageBoxButton.YesNo);
                 if (mbr == MessageBoxResult.Yes)
                 {                    
-                    if (subjectsDAL.DeleteSubject(subjects_list.Select(x=>x.id).ToList()) == 1)
+                    if (subjectsDAL.DeleteSubjectAssignment(subjects_list.Where(x=>x.id == obj.id).Where(x=>x.section_id == obj.section_id).ToList()) == 1)
                     {
-                        
+                        MessageBox.Show("Succesfully Deleted");
                         load_grid();
                     }
                     else

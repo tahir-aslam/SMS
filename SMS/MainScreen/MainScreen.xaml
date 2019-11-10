@@ -478,7 +478,7 @@
                                     VerticalAlignment="Center"
                                     Name="subjects_management_button"
                                     Click="Subjects_Mgmt_Click"
-                                    Visibility="Visible"
+                                    Visibility="Collapsed"
                                     Grid.ColumnSpan="2"
                                     Margin="0,2" />
                         </StackPanel>
@@ -932,6 +932,51 @@
                                     Visibility="Collapsed"
                                     Click="roll_no_slip_btn_Click" />
 
+                        </StackPanel>
+                    </TabItem>
+
+                    <!--Exams Management Tab New exam system-->
+
+                    <TabItem Name="exams_mgmt_tab"
+                             Header="Exam Management"
+                             Height="35"
+                             Style="{DynamicResource OutlookTabItemStyle}"
+                             Background="{DynamicResource OutlookButtonBackground}"
+                             Foreground="{DynamicResource OutlookButtonForeground}"
+                             FontSize="15"
+                             FontFamily="Arial"
+                             Visibility="Collapsed">
+                        <StackPanel Width="190"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top">
+                            <Button Grid.Row="0"
+                                    Content="Define Exams"
+                                    Height="35"
+                                    VerticalAlignment="Center"
+                                    Name="define_exams_btn"
+                                    Visibility="Collapsed"
+                                    Click="define_exams_btn_Click" />
+                            <Button Grid.Row="1"
+                                    Content="Exam Data Entry"
+                                    Height="35"
+                                    VerticalAlignment="Center"
+                                    Name="exams_entry"
+                                    Click="exams_entry_Click"
+                                    Visibility="Collapsed" />
+                            <Button Grid.Row="2"
+                                    Content="General Award List"
+                                    Height="35"
+                                    VerticalAlignment="Center"
+                                    Name="general_award_list"
+                                    Click="general_award_list_Click"
+                                    Visibility="Collapsed" />
+                            <Button Grid.Row="3"
+                                    Content="Result Cards"
+                                    Height="35"
+                                    VerticalAlignment="Center"
+                                    Name="results_card_btn"
+                                    Click="results_card_btn_Click"
+                                    Visibility="Collapsed" />                            
                         </StackPanel>
                     </TabItem>
 

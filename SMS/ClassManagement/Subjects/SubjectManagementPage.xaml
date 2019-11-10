@@ -49,7 +49,7 @@
                         <Image Source="/SMS;component/images/Delete-icon.png" />
                     </Button>
 
-                    <Button 
+                    <Button Click="click_refresh"
                             ToolTipService.ToolTip="Refresh"
                             Height="35"
                             Width="50">
@@ -156,21 +156,42 @@
                           VerticalScrollBarVisibility="Visible"
                           MouseDoubleClick="subjects_grid_MouseDoubleClick">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Class Name"
+                        <DataGridTextColumn Header="Class"
                                             Binding="{Binding class_name}"
-                                            Width="120" />
-                        <DataGridTextColumn Header="Subject Name"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Section"
+                                            Binding="{Binding section_name}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Subject"
                                             Binding="{Binding subject_name}"
-                                            Width="120" />
-                        <DataGridTextColumn Header="Teacher Name"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Code"
+                                            Binding="{Binding subject_code}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Group"
+                                            Binding="{Binding subjects_group}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Type"
+                                            Binding="{Binding subject_type}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Designation"
+                                            Binding="{Binding emp_designation}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Teacher"
                                             Binding="{Binding emp_name}"
-                                            Width="120" />
-                        <DataGridTextColumn Header="Date Time"
-                                            Binding="{Binding date_time}"
-                                            Width="130" />
+                                            Width="*" />        
+                        <DataGridTextColumn Header="Created Date"
+                                            Binding="{Binding created_date_time}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Updated Date"
+                                            Binding="{Binding updated_date_time}"
+                                            Width="*" />
                         <DataGridTextColumn Header="Created By"
-                                            Binding="{Binding created_by}"
-                                            Width="120" />
+                                            Binding="{Binding created_emp_name}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Updated By"
+                                            Binding="{Binding updated_emp_name}"
+                                            Width="*" />
 
                     </DataGrid.Columns>
                 </DataGrid>
