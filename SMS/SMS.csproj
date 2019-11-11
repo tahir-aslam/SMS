@@ -403,6 +403,7 @@
     <Compile Include="DAL\AttendanceDAL.cs" />
     <Compile Include="DAL\ClassesDAL.cs" />
     <Compile Include="DAL\ComplaintDAL.cs" />
+    <Compile Include="DAL\DateSheetDAL.cs" />
     <Compile Include="DAL\EmployeesDAL.cs" />
     <Compile Include="DAL\LicenseDAL.cs" />
     <Compile Include="DAL\MiscDAL.cs" />
@@ -505,6 +506,12 @@
     </Compile>
     <Compile Include="ExamManagement\RollNoSlip\RollNoSlipPage.xaml.cs">
       <DependentUpon>RollNoSlipPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamsManagement\DateSheet\DateSheetPage.xaml.cs">
+      <DependentUpon>DateSheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamsManagement\DateSheet\DateSheetWindow.xaml.cs">
+      <DependentUpon>DateSheetWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExamsManagement\ExamDataEntry\ExamDataEntryPage.xaml.cs">
       <DependentUpon>ExamDataEntryPage.xaml</DependentUpon>
@@ -1337,6 +1344,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExamManagement\RollNoSlip\RollNoSlipPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamsManagement\DateSheet\DateSheetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamsManagement\DateSheet\DateSheetWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

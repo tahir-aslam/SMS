@@ -4,7 +4,7 @@
 library
 C#
 .cs
-F:\Scenario\Github\SMS\SUT.PrintEngine\obj\Debug\
+E:\Softwares\Github\SMS\SMS\SUT.PrintEngine\obj\Debug\
 SUT.PrintEngine
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 51863609133
 171862047644
-512066793174
-26-1465379068
+51-1627634489
+26736315886
 Views\PrintControlView.xaml;Controls\ProgressDialog\ProgressDialogView.xaml;Resources\Themes\Generic\Theme.xaml;Controls\WaitScreen\SmallWaitScreenView.xaml;Controls\WaitScreen\WaitScreenView.xaml;
 
 False

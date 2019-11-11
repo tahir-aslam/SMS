@@ -978,7 +978,14 @@
                                     VerticalAlignment="Center"
                                     Name="results_card_btn"
                                     Click="results_card_btn_Click"
-                                    Visibility="Collapsed" />                            
+                                    Visibility="Collapsed" />
+                            <Button Grid.Row="4"
+                                    Content="Date Sheet"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    Name="date_sheet_btn"
+                                    Click="date_sheet_btn_Click"
+                                    Visibility="Collapsed" />
                         </StackPanel>
                     </TabItem>
 

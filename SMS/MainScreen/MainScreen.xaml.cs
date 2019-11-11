@@ -52,6 +52,7 @@ using SMS.DAL;
 using SMS.ComplaintManagment;
 using SMS.ExamsManagement.ExamDataEntry;
 using SMS.ExamsManagement.GeneralAwardList;
+using SMS.ExamManagement.DateSheet;
 
 namespace SMS.MainScreen
 {
@@ -369,15 +370,15 @@ namespace SMS.MainScreen
                         }
                         if (rol.id == "114" && rol.is_active == "Y")
                         {
-                            exams_entry.Visibility = Visibility.Visible;
+                            general_award_list.Visibility = Visibility.Visible;
                         }
                         if (rol.id == "115" && rol.is_active == "Y")
                         {
-                            general_award_list.Visibility = Visibility.Visible;
+                            results_card_btn.Visibility = Visibility.Visible;
                         }
                         if (rol.id == "116" && rol.is_active == "Y")
                         {
-                            results_card_btn.Visibility = Visibility.Visible;
+                            date_sheet_btn.Visibility = Visibility.Visible;
                         }
 
                         // SMS Management
@@ -1822,6 +1823,8 @@ namespace SMS.MainScreen
             define_exams_btn.Foreground = Brushes.Purple;
             general_award_list.Background = Brushes.White;
             general_award_list.Foreground = Brushes.Purple;
+            date_sheet_btn.Background = Brushes.White;
+            date_sheet_btn.Foreground = Brushes.Purple;
         }
         private void define_exams_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -1835,6 +1838,8 @@ namespace SMS.MainScreen
             exams_entry.Foreground = Brushes.Purple;
             general_award_list.Background = Brushes.White;
             general_award_list.Foreground = Brushes.Purple;
+            date_sheet_btn.Background = Brushes.White;
+            date_sheet_btn.Foreground = Brushes.Purple;
         }
 
         private void exams_entry_Click(object sender, RoutedEventArgs e)
@@ -1849,6 +1854,8 @@ namespace SMS.MainScreen
             define_exams_btn.Foreground = Brushes.Purple;
             general_award_list.Background = Brushes.White;
             general_award_list.Foreground = Brushes.Purple;
+            date_sheet_btn.Background = Brushes.White;
+            date_sheet_btn.Foreground = Brushes.Purple;
         }
 
         private void general_award_list_Click(object sender, RoutedEventArgs e)
@@ -1863,11 +1870,29 @@ namespace SMS.MainScreen
             subjects_management_button.Foreground = Brushes.Purple;
             define_exams_btn.Background = Brushes.White;
             define_exams_btn.Foreground = Brushes.Purple;
+            date_sheet_btn.Background = Brushes.White;
+            date_sheet_btn.Foreground = Brushes.Purple;
         }
 
         private void results_card_btn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void date_sheet_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.mainFrame.Content = new ExamsManagement.DateSheet.DateSheetPage();
+            date_sheet_btn.Background = Brushes.Purple;
+            date_sheet_btn.Foreground = Brushes.White;
+
+            exams_entry.Background = Brushes.White;
+            exams_entry.Foreground = Brushes.Purple;
+            general_award_list.Background = Brushes.White;
+            general_award_list.Foreground = Brushes.Purple;
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Purple;
+            define_exams_btn.Background = Brushes.White;
+            define_exams_btn.Foreground = Brushes.Purple;
         }
 
 
