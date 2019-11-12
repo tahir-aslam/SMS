@@ -1507,3 +1507,7 @@ E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateShee
 E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetWindow.g.cs
 E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetPage.baml
 E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetWindow.baml
+D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetPage.g.cs
+D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetWindow.g.cs
+D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetPage.baml
+D:\Scenario\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetWindow.baml
