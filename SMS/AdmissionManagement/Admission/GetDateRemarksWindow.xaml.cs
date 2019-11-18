@@ -73,7 +73,7 @@ namespace SMS.AdmissionManagement.Admission
             }
             else 
             {
-                AF.withdraw_status = false;
+                AFN.withdraw_status = false;
                 MessageBox.Show("Please Enter Withdrawal Date");
             }
         }

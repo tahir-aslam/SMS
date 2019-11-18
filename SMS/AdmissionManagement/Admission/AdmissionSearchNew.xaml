@@ -68,6 +68,7 @@
                     <ComboBoxItem Content="By Name" />
                     <ComboBoxItem Content="By Father Name"/>
                     <ComboBoxItem Content="By Adm #" IsSelected="True"/>
+                    <ComboBoxItem Content="By Adm # INT"/>
                     <ComboBoxItem Content="By Roll #"/>
                     <ComboBoxItem Content="By Cell#"/>
                     <ComboBoxItem Content="By Father CNIC"/>

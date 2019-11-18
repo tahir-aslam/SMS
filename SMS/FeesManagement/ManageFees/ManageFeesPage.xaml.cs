@@ -38,12 +38,12 @@ namespace SMS.FeesManagement.ManageFees
         List<sms_fees> filter_list;
         sms_fees filter_obj;
         DateTime dt = DateTime.Now;
-        List<admission> adm_list;       
+        List<admission> adm_list;
 
         FeesDAL feesDAL;
         ClassesDAL classesDAL;
         AdmissionDAL admissionDAL;
-        MiscDAL miscDAL;        
+        MiscDAL miscDAL;
 
         int total_amount = 0;
         string mode;
@@ -77,7 +77,7 @@ namespace SMS.FeesManagement.ManageFees
             classes_list.Insert(0, new classes() { class_name = "---All Classes---", id = "-1" });
             class_cmb.ItemsSource = classes_list;
 
-            
+
             category_list.Insert(0, new sms_fees_category() { id = -1, fees_category = "--All Categories" });
             fees_category_cmb.ItemsSource = category_list;
 
@@ -85,21 +85,21 @@ namespace SMS.FeesManagement.ManageFees
             month_cmb.ItemsSource = months_list;
 
             years_list.Insert(0, new sms_years() { id = -1, year = "--All Years--" });
-            year_cmb.ItemsSource = years_list;          
+            year_cmb.ItemsSource = years_list;
         }
 
         public void load_grid()
         {
-            
+
             //_panelLoading = true;
             SearchTextBox.Focus();
-            
+
             try
             {
                 adm_list = admissionDAL.get_all_admissions();
                 fees_list = feesDAL.get_all_fees_generated();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }            
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
 
             FeesGrid.ItemsSource = fees_list;
             calculate_amount();
@@ -115,18 +115,18 @@ namespace SMS.FeesManagement.ManageFees
 
             //loadingPanel(false, "", "");
         }
-        
+
         public void calculate_amount()
         {
             sms_fees fees;
             total_amount = 0;
-            for (int i = 0; i < FeesGrid.Items.Count; i++ )
+            for (int i = 0; i < FeesGrid.Items.Count; i++)
             {
                 fees = (sms_fees)FeesGrid.Items[i];
                 total_amount = total_amount + fees.amount;
             }
             amount_TB.Text = total_amount.ToString("C", CultureInfo.CreateSpecificCulture("ur-PKR"));
-            count_text.Text = FeesGrid.Items.Count.ToString() ;
+            count_text.Text = FeesGrid.Items.Count.ToString();
         }
 
         private void click_refresh(object sender, RoutedEventArgs e)
@@ -151,7 +151,7 @@ namespace SMS.FeesManagement.ManageFees
             {
                 cv.Filter = o =>
                 {
-                    sms_fees x = o as sms_fees;
+                    admission x = o as admission;
                     if (search_cmb.SelectedIndex == 0)
                     {
                         return (x.std_name.ToUpper().StartsWith(v_search.ToUpper()) || x.std_name.ToUpper().Contains(v_search.ToUpper()));
@@ -166,26 +166,32 @@ namespace SMS.FeesManagement.ManageFees
                     }
                     else if (search_cmb.SelectedIndex == 3)
                     {
-                        return (x.roll_no.Equals(v_search.ToUpper()) || x.roll_no.Equals(v_search.ToUpper()));
+                        return (x.adm_no.Equals(v_search.ToUpper()));
                     }
                     else if (search_cmb.SelectedIndex == 4)
                     {
+                        return (x.roll_no.Equals(v_search.ToUpper()) || x.roll_no.Equals(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 5)
+                    {
                         return (x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
                     }
-                    //else if (search_cmb.SelectedIndex == 5)
-                    //{
-                    //    return (x.father_cnic.ToUpper().StartsWith(v_search.ToUpper()) || x.father_cnic.ToUpper().Contains(v_search.ToUpper()));
-                    //}
+                    else if (search_cmb.SelectedIndex == 6)
+                    {
+                        return (x.father_cnic.ToUpper().StartsWith(v_search.ToUpper()) || x.father_cnic.ToUpper().Contains(v_search.ToUpper()));
+                    }
                     else
                     {
                         return true;
                     }
+
                 };
+
                 calculate_amount();
                 clearAllFilters();
             }
             SearchTextBox.Focus();
-        }               
+        }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -201,7 +207,7 @@ namespace SMS.FeesManagement.ManageFees
             obj = null;
             mfw = new ManageFeesWindow(mode, this, obj);
             mfw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            mfw.ShowDialog();           
+            mfw.ShowDialog();
 
             load_grid();
         }
@@ -210,68 +216,68 @@ namespace SMS.FeesManagement.ManageFees
             editing();
         }
         private void click_delete(object sender, RoutedEventArgs e)
-        {            
-            List<sms_fees> checkedFeesList = fees_list.Where(x=>x.isChecked == true).ToList();
+        {
+            List<sms_fees> checkedFeesList = fees_list.Where(x => x.isChecked == true).ToList();
             List<sms_fees> feesListToBeDeleted = checkedFeesList.Where(x => x.amount == x.rem_amount).ToList();
             List<sms_fees> feesListToBeNotDeleted = checkedFeesList.Where(x => x.amount != x.rem_amount).ToList();
             int count = checkedFeesList.Count();
             if (count > 0)
             {
-                
-                    MessageBoxResult mbr = MessageBox.Show("Do You Want To Delete " + count.ToString() + " Record(s) ?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (mbr == MessageBoxResult.Yes)
+
+                MessageBoxResult mbr = MessageBox.Show("Do You Want To Delete " + count.ToString() + " Record(s) ?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (mbr == MessageBoxResult.Yes)
+                {
+
+                    count = feesDAL.deleteGeneratedFees(feesListToBeDeleted);
+
+                    //Result Window                        
+                    sms_result_engine result_obj;
+                    List<sms_result_engine> failure_list = new List<sms_result_engine>();
+                    List<sms_result_engine> success_list = new List<sms_result_engine>();
+                    int total_success = 0;
+                    int total_failure = 0;
+
+                    foreach (var item in checkedFeesList)
                     {
-                        
-                        count =  feesDAL.deleteGeneratedFees(feesListToBeDeleted);
+                        result_obj = new sms_result_engine();
+                        result_obj.serial_no = item.id;
+                        result_obj.id = item.adm_no;
+                        result_obj.action = item.std_name + " [" + item.class_name + "-" + item.section_name + "]";
 
-                        //Result Window                        
-                        sms_result_engine result_obj;
-                        List<sms_result_engine> failure_list = new List<sms_result_engine>();
-                        List<sms_result_engine> success_list = new List<sms_result_engine>();
-                        int total_success = 0;
-                        int total_failure = 0;
-
-                        foreach (var item in checkedFeesList)
+                        if (item.amount == item.rem_amount)
                         {
-                            result_obj = new sms_result_engine();
-                            result_obj.serial_no = item.id;
-                            result_obj.id = item.adm_no;
-                            result_obj.action = item.std_name + " [" + item.class_name + "-" + item.section_name + "]";
-
-                            if (item.amount == item.rem_amount)
-                            {
-                                total_success++;
-                                result_obj.reason = "Successfully Deleted";
-                                success_list.Add(result_obj);
-                            }
-                            else
-                            {
-                                total_failure++;
-                                result_obj.reason = item.fees_category + " Has Already Paid, It cannot be deleted";
-                                failure_list.Add(result_obj);
-                            }
+                            total_success++;
+                            result_obj.reason = "Successfully Deleted";
+                            success_list.Add(result_obj);
                         }
-                        sms_result_engine resultEngineObj = new sms_result_engine();
-                        resultEngineObj.success_count = total_success;
-                        resultEngineObj.failure_count = total_failure;
-                        resultEngineObj.success_list = success_list;
-                        resultEngineObj.failure_list = failure_list;
-
-                        if (count > 0)
+                        else
                         {
-                           
-                            MessageBox.Show("You Have Successfully Deleted "+count.ToString()+" Records", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
-                            load_grid();
-                        }                        
+                            total_failure++;
+                            result_obj.reason = item.fees_category + " Has Already Paid, It cannot be deleted";
+                            failure_list.Add(result_obj);
+                        }
+                    }
+                    sms_result_engine resultEngineObj = new sms_result_engine();
+                    resultEngineObj.success_count = total_success;
+                    resultEngineObj.failure_count = total_failure;
+                    resultEngineObj.success_list = success_list;
+                    resultEngineObj.failure_list = failure_list;
 
-                        ResultWindow RW = new ResultWindow(resultEngineObj);
-                        RW.ShowDialog();
+                    if (count > 0)
+                    {
 
-                        calculate_selected();
-                        calculate_amount();
-                    }                
+                        MessageBox.Show("You Have Successfully Deleted " + count.ToString() + " Records", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                        load_grid();
+                    }
+
+                    ResultWindow RW = new ResultWindow(resultEngineObj);
+                    RW.ShowDialog();
+
+                    calculate_selected();
+                    calculate_amount();
+                }
             }
-            else 
+            else
             {
                 MessageBox.Show("Please Select Minimum One Record", "Information", MessageBoxButton.OK, MessageBoxImage.Hand);
             }
@@ -280,7 +286,7 @@ namespace SMS.FeesManagement.ManageFees
         {
             string r_classes = "All";
             string r_sections = "All";
-            string r_fees_Category = "All";            
+            string r_fees_Category = "All";
             string r_months = "All";
             string r_years = "All";
 
@@ -300,7 +306,7 @@ namespace SMS.FeesManagement.ManageFees
             {
                 sms_fees_category category = (sms_fees_category)fees_category_cmb.SelectedItem;
                 r_fees_Category = category.fees_category;
-            }           
+            }
 
             if (month_cmb.SelectedIndex != 0)
             {
@@ -313,10 +319,10 @@ namespace SMS.FeesManagement.ManageFees
                 sms_years year = (sms_years)year_cmb.SelectedItem;
                 r_years = year.year;
             }
-            
+
 
             List<sms_fees> list = new List<sms_fees>();
-            for (int i = 0; i < FeesGrid.Items.Count; i++ )
+            for (int i = 0; i < FeesGrid.Items.Count; i++)
             {
                 sms_fees obj = FeesGrid.Items[i] as sms_fees;
                 obj.toDate = date_picker_to.SelectedDate.Value;
@@ -325,7 +331,7 @@ namespace SMS.FeesManagement.ManageFees
                 obj.r_sections = r_sections;
                 obj.r_months = r_months;
                 obj.r_years = r_years;
-                
+
                 list.Add(obj);
             }
             ManageFeesReportWindow window = new ManageFeesReportWindow(list);
@@ -343,7 +349,7 @@ namespace SMS.FeesManagement.ManageFees
                     PanelLoading = true;
                     dt = date_picker_from.SelectedDate.Value;
                     fees_list = feesDAL.get_all_fees_generated_by_date(date_picker_to.SelectedDate.Value, date_picker_from.SelectedDate.Value);
-                    collectionView = new ListCollectionView(fees_list);                  
+                    collectionView = new ListCollectionView(fees_list);
                     FeesGrid.ItemsSource = collectionView;
                     calculate_amount();
 
@@ -374,9 +380,9 @@ namespace SMS.FeesManagement.ManageFees
                     PanelLoading = false;
                 }
             }
-        }       
+        }
 
-        public void editing() 
+        public void editing()
         {
             obj = (sms_fees)FeesGrid.SelectedItem;
             if (obj == null)
@@ -388,7 +394,7 @@ namespace SMS.FeesManagement.ManageFees
                 mode = "edit";
                 mfw = new ManageFeesWindow(mode, this, obj);
                 mfw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                mfw.ShowDialog();               
+                mfw.ShowDialog();
             }
         }
 
@@ -396,28 +402,28 @@ namespace SMS.FeesManagement.ManageFees
 
         private void fees_category_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (fees_category_cmb.SelectedItem != null) 
-            {                
+            if (fees_category_cmb.SelectedItem != null)
+            {
                 if (fees_category_cmb.SelectedIndex != 0)
                 {
                     filter();
                 }
-                else 
+                else
                 {
                     filter();
                 }
             }
         }
         private void year_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {            
+        {
             if (year_cmb.SelectedItem != null)
             {
                 if (year_cmb.SelectedIndex != 0)
-                {                    
+                {
                     filter();
                 }
                 else
-                {                    
+                {
                     filter();
                 }
             }
@@ -427,9 +433,9 @@ namespace SMS.FeesManagement.ManageFees
             if (month_cmb.SelectedItem != null)
             {
                 if (month_cmb.SelectedIndex != 0)
-                {                    
+                {
                     filter();
-                }                    
+                }
                 else
                 {
                     filter();
@@ -475,26 +481,26 @@ namespace SMS.FeesManagement.ManageFees
             }
         }
 
-        void filter() 
+        void filter()
         {
             SearchTextBox.Text = "";
             ICollectionView cv = CollectionViewSource.GetDefaultView(FeesGrid.ItemsSource);
             cv.Filter = o =>
             {
-                sms_fees f = o as sms_fees;            
-                if(getMonth(f) && getYear(f) && getFeesCategory(f) && getClasses(f) && getSections(f))
+                sms_fees f = o as sms_fees;
+                if (getMonth(f) && getYear(f) && getFeesCategory(f) && getClasses(f) && getSections(f))
                 {
                     return true;
-                }                            
-                return false;            
+                }
+                return false;
             };
             calculate_amount();
         }
 
-        bool getMonth(sms_fees f) 
+        bool getMonth(sms_fees f)
         {
             sms_months month = (sms_months)month_cmb.SelectedItem;
-            if(month_cmb.SelectedIndex > 0 && f.month.ToString() != month.month_id)
+            if (month_cmb.SelectedIndex > 0 && f.month.ToString() != month.month_id)
             {
                 return false;
             }
@@ -537,13 +543,13 @@ namespace SMS.FeesManagement.ManageFees
             return true;
         }
 
-        void clearAllFilters() 
+        void clearAllFilters()
         {
             month_cmb.SelectedIndex = 0;
             year_cmb.SelectedIndex = 0;
             fees_category_cmb.SelectedIndex = 0;
             class_cmb.SelectedIndex = 0;
-            section_cmb.SelectedIndex = 0;            
+            section_cmb.SelectedIndex = 0;
         }
 
         //check box
@@ -560,14 +566,14 @@ namespace SMS.FeesManagement.ManageFees
                     fee.isChecked = checkBox.IsChecked.Value;
                 }
             }
-            else 
+            else
             {
                 foreach (sms_fees item in fees_list)
                 {
-                    item.isChecked = false;                 
+                    item.isChecked = false;
                 }
             }
-            
+
             FeesGrid.Items.Refresh();
             calculate_selected();
         }
@@ -587,10 +593,10 @@ namespace SMS.FeesManagement.ManageFees
             }
             calculate_selected();
         }
-        void calculate_selected() 
+        void calculate_selected()
         {
             int count = 0;
-            count = fees_list.Where(x=>x.isChecked == true).Count();
+            count = fees_list.Where(x => x.isChecked == true).Count();
             selected_text.Text = count.ToString();
         }
 
@@ -604,7 +610,7 @@ namespace SMS.FeesManagement.ManageFees
             SMS.Models.loadingPanel panel = new loadingPanel();
             panel.PanelLoading = visibility;
             panel.PanelMainMessage = mainMessage;
-            panel.PanelSubMessage = subMessage;           
+            panel.PanelSubMessage = subMessage;
             smsLoadingPanel.DataContext = panel;
         }
 

@@ -1332,8 +1332,9 @@ namespace SMS.AdmissionManagement.Admission
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "Update sms_admission SET is_active=@is_active, withdrawal_date=@withdrawal_date, remarks=@remarks, created_by=@created_by, date_time=@date_time, updation=@updation  WHERE id = @id";
+                        cmd.CommandText = "Update sms_admission SET is_active=@is_active, withdrawal_date=@withdrawal_date, remarks=@remarks, created_by=@created_by, date_time=@date_time, updation=@updation  WHERE id = @id && session_id = @session_id";
                         cmd.Connection = con;
+                        cmd.Parameters.Add("@session_id", MySqlDbType.VarChar).Value = MainWindow.session.id;
                         //cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
 

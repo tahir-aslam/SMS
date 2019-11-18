@@ -58,11 +58,14 @@
                 <StackPanel Grid.Row="0"  Margin="1" Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBox  Height="30"  Width="200"  Margin="20,0,0,0" HorizontalAlignment="Left" Name="SearchTextBox" VerticalAlignment="Center" VerticalScrollBarVisibility="Hidden"  BorderThickness="1" BorderBrush="LightGray" Background="White"  VerticalContentAlignment="Center" FontSize="16" TextChanged="SearchTextBox_TextChanged" />
                     <ComboBox Margin="10,0,0,0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="100" Height="20" VerticalAlignment="Center" Name="search_cmb" SelectedValuePath="id" SelectionChanged="search_cmb_SelectionChanged">
-                        <ComboBoxItem Content="By Name" IsSelected="True"/>
-                        <ComboBoxItem Content="By Father Name"/>
-                        <ComboBoxItem Content="By Adm #"/>
-                        <ComboBoxItem Content="By Roll #"/>
-                        <ComboBoxItem Content="By Cell#"/>
+                        <ComboBoxItem Content="By Name" />
+                        <ComboBoxItem Content="By Father Name" />
+                        <ComboBoxItem Content="By Adm #"
+                                      IsSelected="True" />
+                        <ComboBoxItem Content="By Adm # INT" />
+                        <ComboBoxItem Content="By Roll #" />
+                        <ComboBoxItem Content="By Cell#" />
+                        <ComboBoxItem Content="By Father CNIC" />
                     </ComboBox>
                     <TextBlock Text="Session: "  HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="20,0,0,0"/>
                     <ComboBox  HorizontalAlignment="Left" Width="120" Height="25" VerticalAlignment="Center" Name="session_cmb" SelectedValuePath="id" SelectionChanged="session_cmb_SelectionChanged">

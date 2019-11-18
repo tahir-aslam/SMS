@@ -437,67 +437,68 @@ namespace SMS.FeesManagement.FeesCollection
 
         public void search_box()
         {
-            if (search_cmb.SelectedIndex == 0)
+            string v_search = SearchTextBox.Text;
+            ICollectionView cv = CollectionViewSource.GetDefaultView(fee_grid.ItemsSource);
+            if (v_search == null)
             {
-                string v_search = SearchTextBox.Text;
-                fee_grid.ItemsSource = adm_list.Where(x => x.std_name.ToUpper().StartsWith(v_search.ToUpper()) || x.std_name.ToUpper().Contains(v_search.ToUpper()));
-                fee_grid.Items.Refresh();
-            }
-            else if (search_cmb.SelectedIndex == 1)
-            {
-                string v_search = SearchTextBox.Text;
-                fee_grid.ItemsSource = adm_list.Where(x => x.father_name.ToUpper().StartsWith(v_search.ToUpper()) || x.father_name.ToUpper().Contains(v_search.ToUpper()));
-                fee_grid.Items.Refresh();
-            }
-            else if (search_cmb.SelectedIndex == 2)
-            {
-                string v_search = SearchTextBox.Text;
-                fee_grid.ItemsSource = adm_list.Where(x => x.adm_no.ToUpper().StartsWith(v_search.ToUpper()) || x.adm_no.ToUpper().Contains(v_search.ToUpper()));
-                fee_grid.Items.Refresh();
-            }
-            else if (search_cmb.SelectedIndex == 3)
-            {
-                string v_search = SearchTextBox.Text;
-                fee_grid.ItemsSource = adm_list.Where(x => x.roll_no.Equals(v_search.ToUpper()) || x.roll_no.Equals(v_search.ToUpper()));
-                fee_grid.Items.Refresh();
-            }
-            else if (search_cmb.SelectedIndex == 4)
-            {
-                string v_search = SearchTextBox.Text;
-                fee_grid.ItemsSource = adm_list.Where(x => x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
-                fee_grid.Items.Refresh();
-            }
-            else if (search_cmb.SelectedIndex == 5)
-            {
-                string v_search = SearchTextBox.Text;
-                fee_grid.ItemsSource = adm_list.Where(x => x.adm_fee.ToUpper().StartsWith(v_search.ToUpper()));
-                fee_grid.Items.Refresh();
-            }
-            else if (search_cmb.SelectedIndex == 6)
-            {
-                string v_search = SearchTextBox.Text;
-                fee_grid.ItemsSource = adm_list.Where(x => x.reg_fee.ToUpper().StartsWith(v_search.ToUpper()));
-                fee_grid.Items.Refresh();
-            }
-            else if (search_cmb.SelectedIndex == 7)
-            {
-                string v_search = SearchTextBox.Text;
-                fee_grid.ItemsSource = adm_list.Where(x => x.tution_fee.ToUpper().StartsWith(v_search.ToUpper()));
-                fee_grid.Items.Refresh();
-            }
-            else if (search_cmb.SelectedIndex == 8)
-            {
-                string v_search = SearchTextBox.Text;
-                fee_grid.ItemsSource = adm_list.Where(x => x.father_cnic.ToUpper().StartsWith(v_search.ToUpper()) || x.father_cnic.ToUpper().Contains(v_search.ToUpper()));
-                fee_grid.Items.Refresh();
+                cv.Filter = null;
             }
             else
             {
+                cv.Filter = o =>
+                {
+                    admission x = o as admission;
+                    if (search_cmb.SelectedIndex == 0)
+                    {
+                        return (x.std_name.ToUpper().StartsWith(v_search.ToUpper()) || x.std_name.ToUpper().Contains(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 1)
+                    {
+                        return (x.father_name.ToUpper().StartsWith(v_search.ToUpper()) || x.father_name.ToUpper().Contains(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 2)
+                    {
+                        return (x.adm_no.ToUpper().StartsWith(v_search.ToUpper()) || x.adm_no.ToUpper().Contains(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 3)
+                    {
+                        return (x.adm_no.Equals(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 4)
+                    {
+                        return (x.roll_no.Equals(v_search.ToUpper()) || x.roll_no.Equals(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 5)
+                    {
+                        return (x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 6)
+                    {
+                        return (x.father_cnic.ToUpper().StartsWith(v_search.ToUpper()) || x.father_cnic.ToUpper().Contains(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 7)
+                    {
+                        return (x.adm_fee.ToUpper().StartsWith(v_search.ToUpper()) || x.adm_fee.ToUpper().Contains(v_search.ToUpper()));                        
+                    }
+                    else if (search_cmb.SelectedIndex == 8)
+                    {
+                        return (x.reg_fee.ToUpper().StartsWith(v_search.ToUpper()) || x.reg_fee.ToUpper().Contains(v_search.ToUpper()));                                                
+                    }
+                    else if (search_cmb.SelectedIndex == 9)
+                    {
+                        return (x.tution_fee.ToUpper().StartsWith(v_search.ToUpper()) || x.tution_fee.ToUpper().Contains(v_search.ToUpper()));                        
+                    }
+                    else
+                    {
+                        return true;
+                    }
+
+                };
             }
             SearchTextBox.Focus();
-
         }
 
+ 
         // ================        Printing         ========================
         private void print_btn_Click(object sender, RoutedEventArgs e)
         {

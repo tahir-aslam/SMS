@@ -498,7 +498,7 @@ namespace SMS.StudentManagement.StudentAttendence
                 std_vm.att_date_lst = std_attendence_date_list;
                 std_vm_list.Add(std_vm);
                 ObservableCollection<student_attendence> attList = new ObservableCollection<student_attendence>();
-                foreach (var item in attList.OrderBy(x=>x.adm_no_int))
+                foreach (var item in std_vm_list.OrderBy(x=>x.adm_no_int))
                 {
                     attList.Add(item);
                 }

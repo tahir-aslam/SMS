@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>.%3b.l%3b%3b%3b..\</PublishUrl>
+    <PublishUrl>E:\Setups\SMS\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -29,9 +29,10 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Scenario School Management Software</ProductName>
     <PublisherName>Tahir Aslam 0300-4197674</PublisherName>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -70,6 +71,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>35DD7822A0567441262860E261349B8C80D4F08C</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SMS_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GSMCommServer">
@@ -332,6 +342,9 @@
     </Compile>
     <Compile Include="ClassManagement\Subjects\SubjectManagementWindow.xaml.cs">
       <DependentUpon>SubjectManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AuthenticateAdmin\AuthenticateAdminWindow.xaml.cs">
+      <DependentUpon>AuthenticateAdminWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\DateToAge.cs" />
@@ -1159,6 +1172,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Common\AuthenticateAdmin\AuthenticateAdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Common\ResultWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1954,6 +1971,7 @@
     <None Include="SMS.Models.sms_report.datasource" />
     <None Include="SMS.Models.sms_voucher_entries.datasource" />
     <None Include="SMS.Models.student_attendence.datasource" />
+    <None Include="SMS_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\add-icon.png" />
@@ -2191,6 +2209,7 @@
     <Folder Include="AdvancedAccountManagement\GeneralJournal\" />
     <Folder Include="CrystalReports\" />
     <Folder Include="ENUM\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="Reports\Employee\EmployeeAttendanceBio\" />
     <Folder Include="Reports\Fees\" />
   </ItemGroup>

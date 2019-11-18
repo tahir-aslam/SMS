@@ -421,13 +421,17 @@ namespace SMS.AdmissionManagement.Admission
                     }
                     else if (search_cmb.SelectedIndex == 3)
                     {
-                        return (x.roll_no.Equals(v_search.ToUpper()) || x.roll_no.Equals(v_search.ToUpper()));
+                        return (x.adm_no.Equals(v_search.ToUpper()));
                     }
                     else if (search_cmb.SelectedIndex == 4)
                     {
-                        return (x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
+                        return (x.roll_no.Equals(v_search.ToUpper()) || x.roll_no.Equals(v_search.ToUpper()));
                     }
                     else if (search_cmb.SelectedIndex == 5)
+                    {
+                        return (x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
+                    }
+                    else if (search_cmb.SelectedIndex == 6)
                     {
                         return (x.father_cnic.ToUpper().StartsWith(v_search.ToUpper()) || x.father_cnic.ToUpper().Contains(v_search.ToUpper()));
                     }
@@ -438,42 +442,7 @@ namespace SMS.AdmissionManagement.Admission
 
                 };
             }
-            SearchTextBox.Focus();
-
-            //if (search_cmb.SelectedIndex == 0)
-            //{
-            //    string v_search = SearchTextBox.Text;
-            //    adm_grid.ItemsSource = adm_list.Where(x => x.std_name.ToUpper().StartsWith(v_search.ToUpper()) || x.std_name.ToUpper().Contains(v_search.ToUpper()));
-            //    adm_grid.Items.Refresh();
-            //}
-            //else if (search_cmb.SelectedIndex == 1)
-            //{
-            //    string v_search = SearchTextBox.Text;
-            //    adm_grid.ItemsSource = adm_list.Where(x => x.father_name.ToUpper().StartsWith(v_search.ToUpper()) || x.father_name.ToUpper().Contains(v_search.ToUpper()));
-            //    adm_grid.Items.Refresh();
-            //}
-            //else if (search_cmb.SelectedIndex == 2)
-            //{
-            //    string v_search = SearchTextBox.Text;
-            //    adm_grid.ItemsSource = adm_list.Where(x => x.adm_no.ToUpper().StartsWith(v_search.ToUpper()) || x.adm_no.ToUpper().Contains(v_search.ToUpper()));
-            //    adm_grid.Items.Refresh();
-            //}
-            //else if (search_cmb.SelectedIndex == 3)
-            //{
-            //    string v_search = SearchTextBox.Text;
-            //    adm_grid.ItemsSource = adm_list.Where(x => x.roll_no.Equals(v_search.ToUpper()) || x.roll_no.Equals(v_search.ToUpper()));
-            //    adm_grid.Items.Refresh();
-            //}
-            //else if (search_cmb.SelectedIndex == 4)
-            //{
-            //    string v_search = SearchTextBox.Text;
-            //    adm_grid.ItemsSource = adm_list.Where(x => x.cell_no.ToUpper().StartsWith(v_search.ToUpper()) || x.cell_no.ToUpper().Contains(v_search.ToUpper()));
-            //    adm_grid.Items.Refresh();
-            //}
-            //else 
-            //{
-            //}
-            //SearchTextBox.Focus();
+            SearchTextBox.Focus();            
         }
 
         //---------------           Get All Classes    ----------------------------------

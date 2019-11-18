@@ -63,7 +63,7 @@
                                   VerticalAlignment="Center"
                                   Name="exam_cmb"
                                   SelectedValuePath="id"
-                                  SelectionChanged="exam_cmb_SelectionChanged">
+                                  >
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">

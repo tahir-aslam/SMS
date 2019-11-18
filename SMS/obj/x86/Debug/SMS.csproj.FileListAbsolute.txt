@@ -1048,7 +1048,6 @@ E:\Softwares\Github\SMS\SMS\SMS\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
 E:\Softwares\Github\SMS\SMS\SMS\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 E:\Softwares\Github\SMS\SMS\SMS\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 E:\Softwares\Github\SMS\SMS\SMS\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.csprojResolveAssemblyReference.cache
 E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\AccountManagement\AccountBalanceSheet\BalanceSheet.baml
 E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\AccountManagement\AccountBalanceSheet\BalanceSheetPrint.baml
 E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\AccountManagement\AccountDataEntry\AccountDataForm.baml
@@ -1507,3 +1506,4 @@ E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateShee
 E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetWindow.g.cs
 E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetPage.baml
 E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\ExamsManagement\DateSheet\DateSheetWindow.baml
+E:\Softwares\Github\SMS\SMS\SMS\obj\x86\Debug\SMS.csprojResolveAssemblyReference.cache

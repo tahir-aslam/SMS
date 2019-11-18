@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>.%3b.l%3b%3b%3b..\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>E:\Setups\SMS\|E:\Setups\|C:\Users\Tahir\Desktop\|.%3b.l%3b%3b%3b..\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory />
