@@ -17,7 +17,6 @@ using System.Text.RegularExpressions;
 using Microsoft.Win32;
 using System.IO;
 using SMS.AdmissionManagement.Camera;
-using WPF_Webcam;
 using SMS.DAL;
 using System.Collections.ObjectModel;
 using SMS.AdmissionManagement.Admission.BirthDayCertificate;
