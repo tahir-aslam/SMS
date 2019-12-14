@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>E:\Setups\SMS\</PublishUrl>
+    <PublishUrl>E:\Softwares\SMS Setups\SMS_12-09-2019\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -29,7 +29,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Scenario School Management Software</ProductName>
     <PublisherName>Tahir Aslam 0300-4197674</PublisherName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -101,9 +101,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\Microsoft.Expression.Encoder.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1900,7 +1908,9 @@
     <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\EmployeeSalarySheetBio\EmployeeSalarySheetReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\SalarySheet\SalarySheetReport.rdlc" />
-    <EmbeddedResource Include="ExamsManagement\GeneralAwardList\GeneralAwardListReport.rdlc" />
+    <Content Include="ExamsManagement\GeneralAwardList\ExamGeneralAwardListReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportGrouped.rdlc" />
@@ -2200,16 +2210,9 @@
     <Resource Include="images\open_challan.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CS_sample\WPF Webcam\WPF Webcam\WPF Webcam.csproj">
-      <Project>{86C6005D-B1DF-4C7F-A035-BBA5602FF3ED}</Project>
-      <Name>WPF Webcam</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="AdvancedAccountManagement\GeneralJournal\" />
     <Folder Include="CrystalReports\" />
     <Folder Include="ENUM\" />
-    <Folder Include="NewFolder1\" />
     <Folder Include="Reports\Employee\EmployeeAttendanceBio\" />
     <Folder Include="Reports\Fees\" />
   </ItemGroup>

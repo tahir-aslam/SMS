@@ -19,6 +19,8 @@ using SUT.PrintEngine.Utils;
 using System.Windows.Markup;
 using System.Data;
 using SMS.PrintHeaderTemplates;
+using Microsoft.Reporting.WinForms;
+using SMS.DAL;
 
 namespace SMS.ExamsManagement.GeneralAwardList
 {
@@ -30,7 +32,7 @@ namespace SMS.ExamsManagement.GeneralAwardList
         List<exam> exam_list;
         List<classes> classes_list;
         List<sections> sections_list;
-        ObservableCollection<subjects> subjects_list;
+        ObservableCollection<sms_exams_subjects> subjects_list;
         List<admission> adm_list;
         List<exam_data_entry> ede_list;
         public static List<exam_data_entry> ede_exam_list;
@@ -41,6 +43,8 @@ namespace SMS.ExamsManagement.GeneralAwardList
         public static string section_name = "";
         public static string exam_name = "";
         private bool m_isSortByPercentage = false;
+        SubjectsDAL subjectsDAL;
+
         public GeneralAwardListPage()
         {
             InitializeComponent();
@@ -48,6 +52,7 @@ namespace SMS.ExamsManagement.GeneralAwardList
             get_all_exams();
             exam_cmb.Focus();
             exam_cmb.ItemsSource = exam_list;
+            subjectsDAL = new SubjectsDAL();
             exam_list.Insert(0, new exam() { exam_name = "---Select Exam---", id = "-1" });
             exam_cmb.SelectedIndex = 0;
 
@@ -112,48 +117,54 @@ namespace SMS.ExamsManagement.GeneralAwardList
                 section_name = s.section_name;
                 classes c = (classes)class_cmb.SelectedItem;
                 if (Convert.ToInt32(s.id) > 0)
-                {
-                    exam_entry_grid.Visibility = Visibility.Hidden;
+                {                    
                     exam_img_grid.Visibility = Visibility.Hidden;
+                    report_grid.Visibility = Visibility.Visible;
 
                     get_all_admissions(s.id);
-                    get_all_subjects(c.id);
+                    subjects_list = new ObservableCollection<sms_exams_subjects>();
+                    subjectsDAL.GetAllSubjectsAssignmentOfSection(Convert.ToInt32(s.id)).ForEach(x => subjects_list.Add(x));
+                    
                     get_all_exams_entry();
-
-                    if (ede_list.Count > 0)
-                    {
-                        exam_img_grid.Visibility = Visibility.Hidden;
-                        exam_entry_grid.Visibility = Visibility.Visible;
-                        print_btn.Visibility = Visibility.Visible;
-
-                        set_exam_data_entry_list();
-                        insert_avg_marks_row();
-                        insert_total_marks_row();
-                        evm = new ExamViewModel(ede_exam_list);
-                        exam_entry_grid.DataContext = evm;
-                    }
-                    else
-                    {
-                        exam_entry_grid.Visibility = Visibility.Hidden;
-                        exam_img_grid.Visibility = Visibility.Visible;
-                        print_btn.Visibility = Visibility.Hidden;
-
-                    }
+                    set_exam_data_entry_list();
+                    loadReport();
+                    
                 }
             }
             else
-            {
-
-                exam_entry_grid.Visibility = Visibility.Hidden;
+            {                
                 exam_img_grid.Visibility = Visibility.Visible;
-                print_btn.Visibility = Visibility.Hidden;
-
-                //exam_entry_grid.ItemsSource = null;
-                //exam_entry_grid.Items.Refresh();
-                //exam_entry_grid.Columns.Clear();
-
+                report_grid.Visibility = Visibility.Hidden;                
             }
 
+        }
+
+        void loadReport()
+        {
+            if (ede_exam_list.Count > 0)
+            {                
+                ReportDataSource exam = new ReportDataSource()
+                {
+                     Name = "exam",
+                     Value = ede_exam_list
+                };
+               
+                ReportDataSource ins = new ReportDataSource();
+                List<institute> ins_list = new List<institute>();
+                MainWindow.ins.date = DateTime.Now;
+                MainWindow.ins.page_no = 1;
+                ins_list.Add(MainWindow.ins);
+                ins.Name = "ins"; //Name of the report dataset in our .RDLC file
+                ins.Value = ins_list;
+
+                this._reportViewer3.LocalReport.DataSources.Clear();
+                this._reportViewer3.LocalReport.DataSources.Add(exam);
+                this._reportViewer3.LocalReport.DataSources.Add(ins);
+               /// this._reportViewer3.LocalReport.ReportEmbeddedResource = "SMS.ExamsManagement.GeneralAwardList.ExamGeneralAwardListReport.rdlc";
+                 this._reportViewer3.LocalReport.ReportEmbeddedResource = "bin.ExamsManagement.GeneralAwardList.ExamGeneralAwardListReport.rdlc";
+
+                _reportViewer3.RefreshReport();
+            }
         }
 
         //-----------              Get All Exam     ----------------------
@@ -284,59 +295,7 @@ namespace SMS.ExamsManagement.GeneralAwardList
 
                 }
             }
-        }
-
-        //-----------              Get All Subjects     ----------------------
-        public void get_all_subjects(string id)
-        {
-
-            subjects_list = new ObservableCollection<subjects>();
-            using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
-            {
-                using (MySqlCommand cmd = new MySqlCommand())
-                {
-
-
-
-                    cmd.CommandText = "SELECT* FROM sms_subject where class_id =" + id;
-                    cmd.Connection = con;
-                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
-                    try
-                    {
-                        con.Open();
-
-                        MySqlDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            subjects subject = new subjects()
-                            {
-
-                                id = Convert.ToString(reader["id"].ToString()),
-                                subject_name = Convert.ToString(reader["subject_name"].ToString()),
-                                class_id = Convert.ToString(reader["class_id"].ToString()),
-                                class_name = Convert.ToString(reader["class_name"].ToString()),
-                                emp_id = Convert.ToString(reader["emp_id"].ToString()),
-                                emp_name = Convert.ToString(reader["emp_name"].ToString()),
-                                date_time = Convert.ToDateTime(reader["date_time"]),
-                                created_by = Convert.ToString(reader["created_by"].ToString()),
-                                is_Active = Convert.ToString(reader["is_Active"].ToString()),
-                                total_marks = Convert.ToString(reader["total_marks"].ToString()),
-                                remarks = Convert.ToString(reader["remarks"].ToString()),
-
-
-                            };
-                            subjects_list.Add(subject);
-
-                        }
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Subjects DB not connected");
-                    }
-
-                }
-            }
-        }
+        }       
 
         // ===============     Get All Admissions          ================
         public void get_all_admissions(string id)
@@ -417,14 +376,14 @@ namespace SMS.ExamsManagement.GeneralAwardList
             double count = 0;
             double total = 0.0;
             double avg_marks = 0.0;
-            foreach (subjects subj in subjects_list)
+            foreach (sms_exams_subjects subj in subjects_list)
             {
                 marks = 0.0;
                 percentage = 0.0;
                 count = 0.0;
                 total = 0;
                 avg_marks = 0.0;
-                foreach (exam_data_entry ede in ede_list.Where(x => x.subject_id == subj.id))
+                foreach (exam_data_entry ede in ede_list.Where(x => x.subject_id == subj.id.ToString()))
                 {
                     count++;
                     if (ede.subject_obtained == "A" || ede.subject_obtained == "L" || string.IsNullOrEmpty(ede.subject_obtained))
@@ -489,7 +448,7 @@ namespace SMS.ExamsManagement.GeneralAwardList
             foreach (exam_data_entry ede in e2.subj_list)
             {
                 ee_subj = new exam_data_entry();
-                foreach (subjects subj in subjects_list.Where(x => x.id == ede.subject_id))
+                foreach (sms_exams_subjects subj in subjects_list.Where(x => x.id.ToString() == ede.subject_id))
                 {
                     ee_subj.subject_obtained = subj.total_marks;
                     ee_subj.subject_id = ede.subject_id;

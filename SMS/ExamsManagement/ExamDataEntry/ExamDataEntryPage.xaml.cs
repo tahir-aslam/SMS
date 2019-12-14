@@ -126,8 +126,8 @@ namespace SMS.ExamsManagement.ExamDataEntry
                     get_all_admissions(s.id);
                     if (adm_list.Count > 0)
                     {                        
-                        subjects_list = new ObservableCollection<sms_exams_subjects>();
-                        subjectsDAL.GetAllSubjectsAssignmentOfSection(Convert.ToInt32(s.id)).ForEach(x=>subjects_list.Add(x));
+                            subjects_list = new ObservableCollection<sms_exams_subjects>();
+                            subjectsDAL.GetAllSubjectsAssignmentOfSection(Convert.ToInt32(s.id)).ForEach(x=>subjects_list.Add(x));
                         get_all_exams_entry();
 
                         if (ede_list.Count > 0)
