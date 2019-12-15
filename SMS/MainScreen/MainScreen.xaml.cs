@@ -1825,6 +1825,8 @@ namespace SMS.MainScreen
             general_award_list.Foreground = Brushes.Purple;
             date_sheet_btn.Background = Brushes.White;
             date_sheet_btn.Foreground = Brushes.Purple;
+            results_card_btn.Background = Brushes.White;
+            results_card_btn.Foreground = Brushes.Purple;
         }
         private void define_exams_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -1840,6 +1842,8 @@ namespace SMS.MainScreen
             general_award_list.Foreground = Brushes.Purple;
             date_sheet_btn.Background = Brushes.White;
             date_sheet_btn.Foreground = Brushes.Purple;
+            results_card_btn.Background = Brushes.White;
+            results_card_btn.Foreground = Brushes.Purple;
         }
 
         private void exams_entry_Click(object sender, RoutedEventArgs e)
@@ -1856,6 +1860,8 @@ namespace SMS.MainScreen
             general_award_list.Foreground = Brushes.Purple;
             date_sheet_btn.Background = Brushes.White;
             date_sheet_btn.Foreground = Brushes.Purple;
+            results_card_btn.Background = Brushes.White;
+            results_card_btn.Foreground = Brushes.Purple;
         }
 
         private void general_award_list_Click(object sender, RoutedEventArgs e)
@@ -1872,11 +1878,26 @@ namespace SMS.MainScreen
             define_exams_btn.Foreground = Brushes.Purple;
             date_sheet_btn.Background = Brushes.White;
             date_sheet_btn.Foreground = Brushes.Purple;
+            results_card_btn.Background = Brushes.White;
+            results_card_btn.Foreground = Brushes.Purple;
         }
 
         private void results_card_btn_Click(object sender, RoutedEventArgs e)
         {
+            this.mainFrame.Content = new ExamsManagement.ResultCard.ResultCardPage();
+            results_card_btn.Background = Brushes.Purple;
+            results_card_btn.Foreground = Brushes.White;
 
+            exams_entry.Background = Brushes.White;
+            exams_entry.Foreground = Brushes.Purple;
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Purple;
+            define_exams_btn.Background = Brushes.White;
+            define_exams_btn.Foreground = Brushes.Purple;
+            date_sheet_btn.Background = Brushes.White;
+            date_sheet_btn.Foreground = Brushes.Purple;
+            general_award_list.Background = Brushes.White;
+            general_award_list.Foreground = Brushes.Purple;
         }
 
         private void date_sheet_btn_Click(object sender, RoutedEventArgs e)

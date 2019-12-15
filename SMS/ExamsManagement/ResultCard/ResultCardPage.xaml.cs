@@ -1,7 +1,12 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using MySql.Data.MySqlClient;
+using SMS.DAL;
+using SMS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,31 +16,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SMS.Models;
-using MySql.Data.MySqlClient;
-using System.Collections.ObjectModel;
-using SMS.ViewModels;
-using SUT.PrintEngine.Utils;
-using System.Windows.Markup;
-using System.Data;
-using SMS.PrintHeaderTemplates;
-using Microsoft.Reporting.WinForms;
-using SMS.DAL;
 
-namespace SMS.ExamsManagement.GeneralAwardList
+namespace SMS.ExamsManagement.ResultCard
 {
     /// <summary>
-    /// Interaction logic for GeneralAwardListPage.xaml
+    /// Interaction logic for ResultCardPage.xaml
     /// </summary>
-    public partial class GeneralAwardListPage : Page
+    public partial class ResultCardPage : Page
     {
         List<exam> exam_list;
         List<classes> classes_list;
         List<sections> sections_list;
-        List<exam_data_entry> exam_data_entry_list;   
+        List<exam_data_entry> exam_data_entry_list;
         ExamsDAL examsDAL;
-
-        public GeneralAwardListPage()
+        public ResultCardPage()
         {
             InitializeComponent();
 
@@ -49,8 +43,9 @@ namespace SMS.ExamsManagement.GeneralAwardList
             get_all_classes();
             class_cmb.SelectedIndex = 0;
             classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
-            class_cmb.ItemsSource = classes_list;            
+            class_cmb.ItemsSource = classes_list;
         }
+
 
         // ---------------------- Exam Selection Changed ---------------------------
         private void exam_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,13 +54,13 @@ namespace SMS.ExamsManagement.GeneralAwardList
             {
                 class_cmb.IsEnabled = true;
                 class_cmb.SelectedIndex = 0;
-            }            
+            }
         }
 
         //------------------------  Class Selection Changed -------------------------
         private void class_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            classes c = (classes)class_cmb.SelectedItem;            
+            classes c = (classes)class_cmb.SelectedItem;
 
             if (class_cmb.SelectedIndex != 0)
             {
@@ -86,25 +81,25 @@ namespace SMS.ExamsManagement.GeneralAwardList
         private void section_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (section_cmb.SelectedIndex > 0)
-            {                
+            {
                 sections s = (sections)section_cmb.SelectedItem;
                 classes c = (classes)class_cmb.SelectedItem;
-                exam ex = (exam)exam_cmb.SelectedItem;                
-                
+                exam ex = (exam)exam_cmb.SelectedItem;
+
                 if (Convert.ToInt32(s.id) > 0)
-                {                    
+                {
                     exam_img_grid.Visibility = Visibility.Hidden;
                     report_grid.Visibility = Visibility.Visible;
-                    
-                    exam_data_entry_list = examsDAL.GetAllExamDataEntryBySection(Convert.ToInt32(MainWindow.session.id), Convert.ToInt32(ex.id), Convert.ToInt32(s.id));                    
+
+                    exam_data_entry_list = examsDAL.GetAllExamDataEntryBySection(Convert.ToInt32(MainWindow.session.id), Convert.ToInt32(ex.id), Convert.ToInt32(s.id));
                     loadReport();
-                    
+
                 }
             }
             else
-            {                
+            {
                 exam_img_grid.Visibility = Visibility.Visible;
-                report_grid.Visibility = Visibility.Hidden;                
+                report_grid.Visibility = Visibility.Hidden;
             }
 
         }
@@ -112,13 +107,13 @@ namespace SMS.ExamsManagement.GeneralAwardList
         void loadReport()
         {
             if (exam_data_entry_list.Count > 0)
-            {                
+            {
                 ReportDataSource exam = new ReportDataSource()
                 {
-                     Name = "exam",
-                     Value = exam_data_entry_list
+                    Name = "exam",
+                    Value = exam_data_entry_list
                 };
-               
+
                 ReportDataSource ins = new ReportDataSource();
                 List<institute> ins_list = new List<institute>();
                 MainWindow.ins.date = DateTime.Now;
@@ -130,8 +125,8 @@ namespace SMS.ExamsManagement.GeneralAwardList
                 this._reportViewer3.LocalReport.DataSources.Clear();
                 this._reportViewer3.LocalReport.DataSources.Add(exam);
                 this._reportViewer3.LocalReport.DataSources.Add(ins);
-                this._reportViewer3.LocalReport.ReportEmbeddedResource = "SMS.ExamsManagement.GeneralAwardList.ExamGeneralAwardListReportRDLC.rdlc";
-                 //this._reportViewer3.LocalReport.ReportEmbeddedResource = "bin.ExamsManagement.GeneralAwardList.ExamGeneralAwardListReport.rdlc";
+                this._reportViewer3.LocalReport.ReportEmbeddedResource = "SMS.ExamsManagement.ResultCard.ResultCardReport.rdlc";
+                //this._reportViewer3.LocalReport.ReportEmbeddedResource = "bin.ExamsManagement.GeneralAwardList.ExamGeneralAwardListReport.rdlc";
 
                 _reportViewer3.RefreshReport();
             }
@@ -265,6 +260,6 @@ namespace SMS.ExamsManagement.GeneralAwardList
 
                 }
             }
-        }               
+        }
     }
 }

@@ -81,7 +81,7 @@
     <ManifestKeyFile>SMS_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GSMCommServer">
@@ -420,6 +420,7 @@
     <Compile Include="DAL\ComplaintDAL.cs" />
     <Compile Include="DAL\DateSheetDAL.cs" />
     <Compile Include="DAL\EmployeesDAL.cs" />
+    <Compile Include="DAL\ExamsDAL.cs" />
     <Compile Include="DAL\LicenseDAL.cs" />
     <Compile Include="DAL\MiscDAL.cs" />
     <Compile Include="DAL\RfidDAL.cs" />
@@ -533,6 +534,9 @@
     </Compile>
     <Compile Include="ExamsManagement\GeneralAwardList\GeneralAwardListPage.xaml.cs">
       <DependentUpon>GeneralAwardListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamsManagement\ResultCard\ResultCardPage.xaml.cs">
+      <DependentUpon>ResultCardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="FeeManagement\FeeDefaulters\FeeDefaultersList.xaml.cs">
       <DependentUpon>FeeDefaultersList.xaml</DependentUpon>
@@ -1382,6 +1386,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExamsManagement\ResultCard\ResultCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FeeManagement\FeeDefaulters\FeeDefaultersList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1902,9 +1910,8 @@
     <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\EmployeeSalarySheetBio\EmployeeSalarySheetReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\SalarySheet\SalarySheetReport.rdlc" />
-    <Content Include="ExamsManagement\GeneralAwardList\ExamGeneralAwardListReport.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="ExamsManagement\GeneralAwardList\ExamGeneralAwardListReportRDLC.rdlc" />
+    <EmbeddedResource Include="ExamsManagement\ResultCard\ResultCardReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportGrouped.rdlc" />
@@ -2228,6 +2235,7 @@
     <Resource Include="images\complaint_icon.png" />
     <Resource Include="images\exam_data_entry.png" />
     <Resource Include="images\general_award_list.png" />
+    <Resource Include="images\result card.png" />
     <Content Include="Lib\CrystalDecisions.CrystalReports.Engine.dll" />
     <Content Include="Lib\GSMCommServer.dll" />
     <Content Include="Lib\GSMCommShared.dll" />
