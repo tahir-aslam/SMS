@@ -22,8 +22,9 @@ namespace SMS.DAL
                         cmd.CommandText = "SELECT ses.id, ses.session_name, exam.id, exam.exam_name, cl.id, cl.class_name, sec.id, sec.section_name, emp.emp_name, "+
                                         "adm.id, adm.std_name, adm.father_name, adm.cell_no, adm.roll_no, adm.adm_no, adm.parmanent_adress, adm.image, "+
                                         "subj.id, subj.subject_name, "+
-                                        "ede.subject_obtained, ede.subject_total, ede.subject_percentage, ede.subject_grade, ede.subject_remarks, ede.obtained_marks, ede.total_marks, ede.percentage, ede.remarks, ede.grade "+
-                                        "FROM sms_exams_data_entry AS ede "+
+                                        "ede.subject_obtained, ede.subject_total, ede.subject_percentage, ede.subject_grade, ede.subject_remarks, ede.obtained_marks, ede.total_marks, ede.percentage, ede.remarks, ede.grade, "+
+                                        "ins.institute_name, ins.institute_logo "+
+                                        "FROM sms_institute as ins, sms_exams_data_entry AS ede "+
                                         "INNER JOIN sms_admission AS adm ON adm.id = ede.std_id "+
                                         "INNER JOIN sms_classes AS cl ON cl.id = ede.class_id "+
                                         "INNER JOIN sms_subjects AS sec ON sec.id = ede.section_id "+
@@ -73,7 +74,9 @@ namespace SMS.DAL
                                 total_remarks = Convert.ToString(reader[25]),
                                 percentage = Convert.ToString(reader[26]),
                                 remarks = Convert.ToString(reader[27]),
-                                grade = Convert.ToString(reader[28]),                                                   
+                                grade = Convert.ToString(reader[28]),   
+                                institute_name = Convert.ToString(reader[29]),
+                                institute_logo = (Byte[])(reader[30]),
                             };
                             list.Add(obj);                      
                         }

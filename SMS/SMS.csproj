@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>E:\Softwares\SMS Setups\SMS_12-09-2019\</PublishUrl>
+    <PublishUrl>D:\Scenario\Setups\SMS_17_12_2019\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -75,7 +75,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>35DD7822A0567441262860E261349B8C80D4F08C</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>1A77E53EF42331DEA7BC3A4767C5CBEDA3D6F77A</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>SMS_TemporaryKey.pfx</ManifestKeyFile>
@@ -1895,6 +1895,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AdmissionManagement\Admission\AdmissionSlipReport.rdlc" />
+    <EmbeddedResource Include="AdmissionManagement\Admission\AdmissionWithdrawlRegister\AdmissionWithdrawlRegisterReport.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdmissionManagement\Admission\BirthDayCertificate\BirthDayCertificateReport.rdlc" />
     <EmbeddedResource Include="AdmissionManagement\Admission\SchoolConfirmationCertificate\SchoolConfirmationCertificateReport.rdlc" />
     <EmbeddedResource Include="AdvancedAccountManagement\AccountsLedger\AccountsLedgerReport.rdlc" />

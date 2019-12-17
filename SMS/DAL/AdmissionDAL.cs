@@ -112,9 +112,10 @@ namespace SMS.DAL
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
             using (MySqlCommand cmd = new MySqlCommand())
             {
-                cmd.CommandText = "SELECT* FROM sms_admission where session_id=" + MainWindow.session.id;
+                cmd.CommandText = "SELECT* FROM sms_admission where session_id= @session_id Order By adm_date Asc";
                 cmd.Connection = con;
-                //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
+                //cmd.CommandType = System.Data.CommandType.StoredProcedure;    
+                cmd.Parameters.Add("session_id", MySqlDbType.VarChar).Value = MainWindow.session.id;                
                 try
                 {
                     con.Open();
@@ -133,6 +134,7 @@ namespace SMS.DAL
                             b_form = Convert.ToString(reader["b_form"].ToString()),
                             parmanent_adress = Convert.ToString(reader["parmanent_adress"].ToString()),
                             adm_date = Convert.ToDateTime(reader["adm_date"]),
+                            withdrawal_date = Convert.ToDateTime(reader["withdrawal_date"]),
                             cell_no = Convert.ToString(reader["cell_no"].ToString()),
                             emergency_address = Convert.ToString(reader["emergency_address"].ToString()),
                             previous_school = Convert.ToString(reader["previous_school"].ToString()),

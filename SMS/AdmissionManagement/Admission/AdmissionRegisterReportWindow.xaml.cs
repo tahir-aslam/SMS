@@ -22,13 +22,15 @@ namespace SMS.AdmissionManagement.Admission
     {
         List<admission> adm_list;
         sms_report report_data;
+        bool isAdm;
 
-        public AdmissionRegisterReportWindow(List<admission> list, sms_report report_data)
+        public AdmissionRegisterReportWindow(List<admission> list, sms_report report_data, bool _isAdm = true)
         {
             InitializeComponent();
             adm_list = list;
             this.report_data = report_data;
             _reportViewer.Load += _reportViewer_Load;
+            this.isAdm = _isAdm;
         }
 
         void _reportViewer_Load(object sender, EventArgs e)
@@ -55,8 +57,15 @@ namespace SMS.AdmissionManagement.Admission
             this._reportViewer.LocalReport.DataSources.Add(ins);
             this._reportViewer.LocalReport.DataSources.Add(report_data);
 
-            this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.AdmissionManagement.Admission.AdmissionRegisterReport.rdlc";
-            
+            if (isAdm)
+            {
+                this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.AdmissionManagement.Admission.AdmissionRegisterReport.rdlc";
+            }
+            else
+            {
+                this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.AdmissionManagement.Admission.AdmissionWithdrawlRegister.AdmissionWithdrawlRegisterReport.rdlc";
+            }
+
             _reportViewer.RefreshReport();
 
             //_isReportViewerLoaded = true;

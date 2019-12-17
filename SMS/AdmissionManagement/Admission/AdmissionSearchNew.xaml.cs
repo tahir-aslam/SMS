@@ -20,7 +20,7 @@ using SUT.PrintEngine.Utils;
 using System.Data;
 using SMS.AdmissionManagement;
 using System.ComponentModel;
-
+using SMS.DAL;
 
 namespace SMS.AdmissionManagement.Admission
 {
@@ -41,11 +41,13 @@ namespace SMS.AdmissionManagement.Admission
         public static int strength = 0;
         public static string class_name = "";
         public static string section_name = "";
+        AdmissionDAL admDAL;
 
         public AdmissionSearchNew()
         {
             InitializeComponent();
             adm_list = new List<admission>();
+            admDAL = new AdmissionDAL();
             obj = new admission();
             SearchTextBox.Focus();
             classes_list = new List<classes>();
@@ -583,44 +585,28 @@ namespace SMS.AdmissionManagement.Admission
         // ================        Printing         ========================
         private void print_btn_Click(object sender, RoutedEventArgs e)
         {
-            //AdmissionReportWF report = new AdmissionReportWF(adm_list);
-            //report.ShowDialog();
-
-            //if (class_cmb.SelectedIndex > 0)
-            //{
-            //    classes c = (classes)class_cmb.SelectedItem;
-            //    class_name = c.class_name;
-            //}
-            //else
-            //{
-            //    class_name = "";
-            //}
-
-            //if (section_cmb.SelectedIndex > 0)
-            //{
-            //    sections sec = (sections)section_cmb.SelectedItem;
-            //    section_name = sec.section_name;
-            //}
-            //else
-            //{
-            //    section_name = "";
-            //}
-
-            //get_grid_records();
-            //var dataTable = CreateSampleDataTable();
-            //var columnWidths = new List<double>() { 50, 140, 130, 60, 60, 60, 60, 90, 90, 90, 140 };
-            //var ht = new SMS.PrintHeaderTemplates.AdmissionRegisterHeader();
-            //var headerTemplate = XamlWriter.Save(ht);
-            //var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
-            //printControl.ShowPrintPreview();
-
+           
             sms_report report_data = new sms_report();
             report_data.total_strength = adm_grid.Items.OfType<admission>().Select(x => x.id).Distinct().Count();
             report_data.male_strength = adm_grid.Items.OfType<admission>().Where(x=>x.boarding == "Y").Count();
             report_data.female_strength = adm_grid.Items.OfType<admission>().Where(x => x.boarding == "N").Count();
             report_data.session = MainWindow.session.session_name;
 
-            AdmissionRegisterReportWindow window = new AdmissionRegisterReportWindow(adm_grid.Items.OfType<admission>().ToList(), report_data);
+            AdmissionRegisterReportWindow window = new AdmissionRegisterReportWindow(adm_grid.Items.OfType<admission>().ToList(), report_data, true);
+            window.Show();
+
+        }
+        private void Adm_Withdrawl_print_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+            List<admission> admwithdrawl_list = admDAL.get_all_admissions_YN();  
+            sms_report report_data = new sms_report();
+            report_data.total_strength = admwithdrawl_list.Select(x => x.id).Distinct().Count();
+            report_data.male_strength = admwithdrawl_list.Where(x => x.boarding == "Y").Count();
+            report_data.female_strength = admwithdrawl_list.Where(x => x.boarding == "N").Count();
+            report_data.session = MainWindow.session.session_name;
+
+            AdmissionRegisterReportWindow window = new AdmissionRegisterReportWindow(admwithdrawl_list.ToList(), report_data, false);
             window.Show();
 
         }
