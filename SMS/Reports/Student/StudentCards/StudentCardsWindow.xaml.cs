@@ -38,11 +38,14 @@ namespace SMS.Reports.Student.StudentCards
 
         ClassesDAL classesDAL;
         AdmissionDAL admDAL;
+        StudentReportType ReportType;
 
-        public StudentCardsWindow()
+        public StudentCardsWindow(StudentReportType type, string title)
         {
             InitializeComponent();
 
+            v_Title.Text = title;
+            this.ReportType = type;
             classesDAL = new ClassesDAL();
             admDAL = new AdmissionDAL();
 
@@ -70,6 +73,8 @@ namespace SMS.Reports.Student.StudentCards
             try
             {
                 adm_list = admDAL.get_all_admissions();
+                adm_list.ForEach(x=>x.institute_name = MainWindow.ins.institute_name);
+                adm_list.ForEach(x => x.institute_logo = MainWindow.ins.institute_logo);
                 adm_grid.ItemsSource = adm_list;
                 this.adm_grid.Items.Refresh();
                 class_cmb.SelectedIndex = 0;
@@ -239,7 +244,14 @@ namespace SMS.Reports.Student.StudentCards
                 this._reportViewer1.LocalReport.DataSources.Clear();
                 this._reportViewer1.LocalReport.DataSources.Add(adm);
                 this._reportViewer1.LocalReport.DataSources.Add(ins);
-                this._reportViewer1.LocalReport.ReportEmbeddedResource = "SMS.Reports.Student.StudentCards.studentCardsReport.rdlc";
+                if (ReportType == StudentReportType.StudentIdentityCard)
+                {
+                    this._reportViewer1.LocalReport.ReportEmbeddedResource = "SMS.Reports.Student.StudentCards.studentCardsReport.rdlc";
+                }
+                else if(ReportType == StudentReportType.StudentEnvelopes)
+                {
+                    this._reportViewer1.LocalReport.ReportEmbeddedResource = "SMS.Reports.Student.StudentEnvelopes.StudentEnvelopeReport.rdlc";
+                }
 
                 _reportViewer1.RefreshReport();
 

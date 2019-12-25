@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\Scenario\Setups\SMS_17_12_2019\</PublishUrl>
+    <PublishUrl>E:\Softwares\SMS Setups\SMS_21-12-2019\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -29,7 +29,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Scenario School Management Software</ProductName>
     <PublisherName>Tahir Aslam 0300-4197674</PublisherName>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -75,7 +75,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>1A77E53EF42331DEA7BC3A4767C5CBEDA3D6F77A</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>35DD7822A0567441262860E261349B8C80D4F08C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>SMS_TemporaryKey.pfx</ManifestKeyFile>
@@ -745,6 +745,7 @@
     <Compile Include="Models\clsSMS.cs" />
     <Compile Include="Models\employee_attendence.cs" />
     <Compile Include="Models\emp_login.cs" />
+    <Compile Include="Models\enums.cs" />
     <Compile Include="Models\exam.cs" />
     <Compile Include="Models\exam_data_entry.cs" />
     <Compile Include="Models\exam_entry.cs" />
@@ -1948,6 +1949,7 @@
     <EmbeddedResource Include="Reports\Student\AttendanceClassWise\StudentAttendanceReportClassWise.rdlc" />
     <EmbeddedResource Include="Reports\Student\Attendance\StudentAttendanceReport.rdlc" />
     <EmbeddedResource Include="Reports\Student\StudentCards\studentCardsReport.rdlc" />
+    <EmbeddedResource Include="Reports\Student\StudentEnvelopes\StudentEnvelopeReport.rdlc" />
     <EmbeddedResource Include="StudentManagement\AttendanceReportClassWise\StudentAttendanceReportClassWiseReport.rdlc" />
     <EmbeddedResource Include="StudentManagement\AttendanceReport\StudentAttendanceSheetFilledReport.rdlc">
       <SubType>Designer</SubType>

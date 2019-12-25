@@ -40,9 +40,14 @@ namespace SMS.MainScreen
 
         private void std_cards_Click(object sender, RoutedEventArgs e)
         {
-            StudentCardsWindow window = new StudentCardsWindow();
+            StudentCardsWindow window = new StudentCardsWindow(Models.StudentReportType.StudentIdentityCard, "Student Cards");
             window.Show();
+        }
 
+        private void std_envelopes_Click(object sender, RoutedEventArgs e)
+        {
+            StudentCardsWindow window = new StudentCardsWindow(Models.StudentReportType.StudentEnvelopes, "Student Envelopes");
+            window.Show();
         }
 
         private void emp_cards_Click(object sender, RoutedEventArgs e)

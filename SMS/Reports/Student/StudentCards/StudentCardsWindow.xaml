@@ -26,6 +26,7 @@
 
                 <TextBlock Text="Student Cards"
                            FontSize="20"
+                           Name="v_Title"
                            VerticalAlignment="Center"
                            Foreground="White"
                            HorizontalAlignment="Center" 

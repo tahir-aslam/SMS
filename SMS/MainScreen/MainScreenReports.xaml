@@ -41,17 +41,26 @@
                             Margin="20"
                             VerticalAlignment="Top"
                             >
-                    <Button Width="100"
+                <Button Width="100"
+                        Height="120"
+                        Name="std_cards"
+                        Click="std_cards_Click">
+                    <TextBlock Text="Student Cards(Bulk)"
+                               FontSize="20"
+                               FontFamily="Segoe UI Light"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"></TextBlock>
+                </Button>
+                <Button Width="100"
                             Height="120"
-                            Name="std_cards"
-                            Click="std_cards_Click">
-                        <TextBlock Text="Student Cards(Bulk)"
-                                   FontSize="20"
-                                   FontFamily="Segoe UI Light"
-                                   TextWrapping="Wrap"
-                                   TextAlignment="Center"
-                                   ></TextBlock>
-                    </Button>
+                            Name="std_envelopes"
+                            Click="std_envelopes_Click">
+                <TextBlock Text="Student Envelopes 1/4"
+                           FontSize="20"
+                           FontFamily="Segoe UI Light"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"></TextBlock>
+                </Button>
                 <Button Width="100"
                         Height="120"
                         Name="std_list"
