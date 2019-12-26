@@ -42,7 +42,9 @@ namespace SMS.Models
         public string subject_id { set; get; }
         public string subject_name { set; get; }
         public string subject_total { set; get; }
+        public Int32 subject_total_int { set; get; }
         public string subject_obtained { set; get; }
+        public Int32 subject_obtained_int { get; set; }
         public string subject_percentage { set; get; }
         public string subject_grade { set; get; }
         public string subject_remarks { set; get; }

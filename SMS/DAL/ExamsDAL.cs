@@ -23,9 +23,10 @@ namespace SMS.DAL
                                         "adm.id, adm.std_name, adm.father_name, adm.cell_no, adm.roll_no, adm.adm_no, adm.parmanent_adress, adm.image, "+
                                         "subj.id, subj.subject_name, "+
                                         "ede.subject_obtained, ede.subject_total, ede.subject_percentage, ede.subject_grade, ede.subject_remarks, ede.obtained_marks, ede.total_marks, ede.percentage, ede.remarks, ede.grade, "+
-                                        "ins.institute_name, ins.institute_logo "+
-                                        "FROM sms_institute as ins, sms_exams_data_entry AS ede "+
-                                        "INNER JOIN sms_admission AS adm ON adm.id = ede.std_id "+
+                                        "ins.institute_name, ins.institute_logo, "+
+                                        "ede.subject_obtained_int, ede.subject_total_int, ede.position " +
+                                        "FROM sms_institute as ins, sms_exams_data_entry AS ede " +
+                                        "INNER JOIN sms_admission AS adm ON adm.id = ede.std_id AND adm.session_id = ede.session_id " +
                                         "INNER JOIN sms_classes AS cl ON cl.id = ede.class_id "+
                                         "INNER JOIN sms_subjects AS sec ON sec.id = ede.section_id "+
                                         "INNER JOIN sms_exams_subjects AS subj ON subj.id = ede.subject_id "+
@@ -77,6 +78,9 @@ namespace SMS.DAL
                                 grade = Convert.ToString(reader[28]),   
                                 institute_name = Convert.ToString(reader[29]),
                                 institute_logo = (Byte[])(reader[30]),
+                                subject_obtained_int = Convert.ToInt32(reader[31]),
+                                subject_total_int = Convert.ToInt32(reader[32]),
+                                position = Convert.ToString(reader[33]),
                             };
                             list.Add(obj);                      
                         }

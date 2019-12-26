@@ -778,12 +778,15 @@ namespace SMS.ExamsManagement.ExamDataEntry
                         ede.subject_percentage = "";
                         ede.subject_remarks = "";
                         ede_obj.subject_obtained = "";
+                        ede_obj.subject_obtained_int = 0;
+
                         if (String.IsNullOrEmpty(ede.subject_total) || ede_obj.subject_total == "0")
                         {
                         }
                         else
                         {
-                            subject_total = Convert.ToDouble(ede.subject_total);
+                            subject_total = Convert.ToDouble(ede.subject_total);    
+                            ede.subject_total_int = Convert.ToInt32(ede.subject_total);
                             total_marks = total_marks + subject_total;
                         }
 
@@ -794,12 +797,14 @@ namespace SMS.ExamsManagement.ExamDataEntry
                         ede.subject_percentage = "-";
                         ede.subject_remarks = "Absent";
                         ede_obj.subject_obtained = "-";
+                        ede_obj.subject_obtained_int = 0;
                         if (String.IsNullOrEmpty(ede.subject_total) || ede_obj.subject_total == "0")
                         {
                         }
                         else
                         {
                             subject_total = Convert.ToDouble(ede.subject_total);
+                            ede.subject_total_int = Convert.ToInt32(ede.subject_total);
                             total_marks = total_marks + subject_total;
                         }
                     }
@@ -809,12 +814,14 @@ namespace SMS.ExamsManagement.ExamDataEntry
                         ede.subject_percentage = "-";
                         ede.subject_remarks = "Leave";
                         ede_obj.subject_obtained = "-";
+                        ede_obj.subject_obtained_int = 0;
                         if (String.IsNullOrEmpty(ede.subject_total) || ede_obj.subject_total == "0")
                         {
                         }
                         else
                         {
                             subject_total = Convert.ToDouble(ede.subject_total);
+                            ede.subject_total_int = Convert.ToInt32(ede.subject_total);
                             total_marks = total_marks + subject_total;
                         }
                     }
@@ -823,13 +830,16 @@ namespace SMS.ExamsManagement.ExamDataEntry
                         absent = false;
                         leave = false;
                         subject_obtained = Convert.ToDouble(ede.subject_obtained);
+                        ede.subject_obtained_int = Convert.ToInt32(ede.subject_obtained);
                         obtained_marks = obtained_marks + subject_obtained;
+
                         if (String.IsNullOrEmpty(ede.subject_total) || ede_obj.subject_total == "0")
-                        {
+                        {                          
                         }
                         else
                         {
                             subject_total = Convert.ToDouble(ede.subject_total);
+                            ede.subject_total_int = Convert.ToInt32(ede.subject_total);
                             subject_percentage = subject_obtained / subject_total;
                             subject_percentage = subject_percentage * 100;
 
@@ -936,7 +946,7 @@ namespace SMS.ExamsManagement.ExamDataEntry
                         {
                             using (MySqlCommand cmd = new MySqlCommand())
                             {
-                                cmd.CommandText = "Update sms_exams_data_entry SET grade=@grade, position=@position,  remarks=@remarks, obtained_marks=@obtained_marks, percentage=@percentage, total_marks=@total_marks,total_remarks=@total_remarks, subject_percentage=@subject_percentage, subject_grade=@subject_grade, subject_remarks=@subject_remarks, subject_total =@subject_total , subject_obtained =@subject_obtained where exam_id=@exam_id && section_id=@section_id  && std_id=@std_id && subject_id=@subject_id && session_id=" + MainWindow.session.id;
+                                cmd.CommandText = "Update sms_exams_data_entry SET grade=@grade, position=@position,  remarks=@remarks, obtained_marks=@obtained_marks, percentage=@percentage, total_marks=@total_marks,total_remarks=@total_remarks, subject_percentage=@subject_percentage, subject_grade=@subject_grade, subject_remarks=@subject_remarks, subject_total =@subject_total , subject_obtained =@subject_obtained, subject_total_int =@subject_total_int , subject_obtained_int =@subject_obtained_int where exam_id=@exam_id && section_id=@section_id  && std_id=@std_id && subject_id=@subject_id && session_id=" + MainWindow.session.id;
                                 cmd.Connection = con;
 
                                 cmd.Parameters.Add("@exam_id", MySqlDbType.VarChar).Value = ede_s.exam_id;
@@ -949,6 +959,8 @@ namespace SMS.ExamsManagement.ExamDataEntry
                                 cmd.Parameters.Add("@subject_percentage", MySqlDbType.VarChar).Value = ede_s.subject_percentage;
                                 cmd.Parameters.Add("@subject_total", MySqlDbType.VarChar).Value = ede_s.subject_total;
                                 cmd.Parameters.Add("@subject_obtained", MySqlDbType.VarChar).Value = ede_s.subject_obtained;
+                                cmd.Parameters.Add("@subject_total_int", MySqlDbType.Int32).Value = ede_s.subject_total_int;
+                                cmd.Parameters.Add("@subject_obtained_int", MySqlDbType.Int32).Value = ede_s.subject_obtained_int;
 
                                 cmd.Parameters.Add("@total_marks", MySqlDbType.VarChar).Value = ede_s.total_marks;
                                 cmd.Parameters.Add("@total_remarks", MySqlDbType.VarChar).Value = ede_s.total_remarks;
