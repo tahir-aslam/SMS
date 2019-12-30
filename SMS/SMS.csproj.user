@@ -2,17 +2,18 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>E:\Softwares\SMS Setups\SMS_12-09-2019\|E:\Setups\SMS\|E:\Setups\|C:\Users\Tahir\Desktop\|.%3b.l%3b%3b%3b..\</PublishUrlHistory>
-    <InstallUrlHistory />
-    <SupportUrlHistory />
-    <UpdateUrlHistory />
+    <PublishUrlHistory>E:\Softwares\SMS Setups\SMS_27-12-2019_1\|E:\Softwares\SMS Setups\SMS_27-12-2019\|E:\Softwares\SMS Setups\SMS_21-12-2019\|E:\Softwares\SMS Setups\SMS_12-09-2019\|E:\Setups\SMS\</PublishUrlHistory>
+    <InstallUrlHistory>http://sms.scenariosystem.com/</InstallUrlHistory>
+    <SupportUrlHistory>http://scenariosystem.com</SupportUrlHistory>
+    <UpdateUrlHistory>http://sms.scenariosystem.com/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
-    <ErrorReportUrlHistory />
+    <ErrorReportUrlHistory>http://scenariosystem.com</ErrorReportUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
   <PropertyGroup>
-    <ReferencePath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
+    <ReferencePath>
+    </ReferencePath>
   </PropertyGroup>
   <PropertyGroup>
     <EnableSecurityDebugging>false</EnableSecurityDebugging>

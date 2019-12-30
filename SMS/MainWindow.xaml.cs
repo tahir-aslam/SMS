@@ -10,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SMS.MainScreen;
 using MahApps.Metro.Controls;
 using MySql.Data.MySqlClient;
@@ -449,7 +448,7 @@ namespace SMS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Main Window Exception "+ex.Message);
+                MessageBox.Show("Main Window Exception " + ex.Message);
             }
         }
 
@@ -720,9 +719,16 @@ namespace SMS
         {
             string line;
             int i = 0;
+            var fileName = "Database.txt";
+            var spFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            var folderPath = Path.Combine(spFolderPath, "ScenarioSystems", "SMS");
+            var filePath = Path.Combine(folderPath, fileName);
+            
             try
-            {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader("Database.txt"))
+            {
+                //using (StreamReader sr = new StreamReader(spFolderPath + "Database.txt"))
+                using (StreamReader sr = new StreamReader(filePath))
+
                 {
                     while ((line = sr.ReadLine()) != null)
                     {
@@ -749,9 +755,8 @@ namespace SMS
             }
             catch (Exception e)
             {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-                using (StreamWriter outputFile = new StreamWriter("Database.txt"))
+                Directory.CreateDirectory(folderPath);      
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(folderPath, fileName)))
                 {
                     outputFile.WriteLine("localhost");
                     outputFile.WriteLine("3306");
@@ -759,17 +764,6 @@ namespace SMS
                     outputFile.WriteLine("root");
                 }
             }
-
-            //File.Create("fileName");
-            //string baseDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            //var assembly = Assembly.GetExecutingAssembly();
-            //var resourceName = "SMS.Database.txt";
-
-            //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            //using (StreamReader reader = new StreamReader(stream))
-            //{
-            //    database = reader.ReadToEnd();
-            //}
         }
     }
 }
