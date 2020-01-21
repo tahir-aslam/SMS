@@ -986,6 +986,13 @@
                                     Name="date_sheet_btn"
                                     Click="date_sheet_btn_Click"
                                     Visibility="Collapsed" />
+                            <Button Grid.Row="4"
+                                    Content="Teacher Evaluation"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    Name="teacher_evaluation_btn"
+                                    Click="teacher_evaluation_btn_Click"
+                                    Visibility="Visible" />
                         </StackPanel>
                     </TabItem>
 
