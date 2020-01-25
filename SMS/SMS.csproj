@@ -746,6 +746,7 @@
     <Compile Include="Models\AttendanceReport.cs" />
     <Compile Include="Models\AttendanceReportClass.cs" />
     <Compile Include="Models\balanceSheet.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\cashDetails.cs" />
     <Compile Include="Models\chart_of_accounts.cs" />
     <Compile Include="Models\CityArea.cs" />
@@ -769,6 +770,7 @@
     <Compile Include="Models\sms_emp_attendance_bio.cs" />
     <Compile Include="Models\sms_emp_designation.cs" />
     <Compile Include="Models\sms_emp_title.cs" />
+    <Compile Include="Models\sms_exams_date_sheet.cs" />
     <Compile Include="Models\sms_exams_subjects.cs" />
     <Compile Include="Models\sms_fees.cs" />
     <Compile Include="Models\sms_fees_actual.cs" />

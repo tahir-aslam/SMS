@@ -154,30 +154,46 @@
                           VerticalScrollBarVisibility="Visible"
                           MouseDoubleClick="subjects_grid_MouseDoubleClick">
                     <DataGrid.Columns>
+                        <DataGridTemplateColumn Width="45">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox HorizontalAlignment="Center"
+                                              Checked="CheckBox_Checked"
+                                              Unchecked="CheckBox_Checked"
+                                              IsThreeState="False" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox HorizontalAlignment="Center"
+                                              IsChecked="{Binding IsChecked}"
+                                              Click="CheckBox_Checked_sub"
+                                              IsThreeState="False" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Exam Date"
+                                            Binding="{Binding exam_date,  StringFormat=\{0:dd-MMM-yy\}}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Exam Name"
+                                            Binding="{Binding exam_name}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Subject"
+                                            Binding="{Binding subject_name}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Exam Time"
+                                            Binding="{Binding exam_time}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Remarks"
+                                            Binding="{Binding remarks}"
+                                            Width="*" />
                         <DataGridTextColumn Header="Class"
                                             Binding="{Binding class_name}"
                                             Width="*" />
                         <DataGridTextColumn Header="Section"
                                             Binding="{Binding section_name}"
-                                            Width="*" />
-                        <DataGridTextColumn Header="Subject"
-                                            Binding="{Binding subject_name}"
-                                            Width="*" />
-                        <DataGridTextColumn Header="Code"
-                                            Binding="{Binding subject_code}"
-                                            Width="*" />
-                        <DataGridTextColumn Header="Group"
-                                            Binding="{Binding subjects_group}"
-                                            Width="*" />
-                        <DataGridTextColumn Header="Type"
-                                            Binding="{Binding subject_type}"
-                                            Width="*" />
-                        <DataGridTextColumn Header="Designation"
-                                            Binding="{Binding emp_designation}"
-                                            Width="*" />
-                        <DataGridTextColumn Header="Teacher"
-                                            Binding="{Binding emp_name}"
-                                            Width="*" />
+                                            Width="*" />                        
                         <DataGridTextColumn Header="Created Date"
                                             Binding="{Binding created_date_time}"
                                             Width="*" />

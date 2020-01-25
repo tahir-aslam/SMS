@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SMS.ExamsManagement.DateSheet"
         mc:Ignorable="d"
         Title="DateSheetWindow"
-        Height="500"
+        Height="550"
         Width="450"
         WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Center"
@@ -55,7 +55,7 @@
                                VerticalAlignment="Center"
                                Margin="0, 0, 5, 0"
                                Height="30" />
-                        <!--<ComboBox Grid.Row="0"
+                        <ComboBox Grid.Row="0"
                                   Grid.Column="1"
                                   HorizontalAlignment="Left"
                                   Width="170"
@@ -79,7 +79,7 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
-                        </ComboBox>-->
+                        </ComboBox>
 
                         <Label Grid.Row="1"
                                Grid.Column="0"
@@ -96,10 +96,14 @@
                                   VerticalAlignment="Center"
                                   x:Name="v_class_cmb"
                                   SelectedValuePath="id"
-                                  SelectionChanged="v_class_cmb_SelectionChanged">
+                                  >
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
+                                        <CheckBox Checked="CheckBox_Checked_classes"
+                                                  Unchecked="CheckBox_Checked_classes"
+                                                  IsChecked="{Binding IsChecked,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  IsThreeState="False" />
                                         <TextBlock Text="{Binding class_name}"
                                                    HorizontalAlignment="Right"
                                                    FontSize="12" />
@@ -128,7 +132,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <CheckBox Checked="CheckBox_Checked_Sections"
                                                   Unchecked="CheckBox_Checked_Sections"
-                                                  IsChecked="{Binding isChecked}"
+                                                  IsChecked="{Binding IsChecked}"
                                                   IsThreeState="False" />
                                         <TextBlock Text="{Binding section_name}"
                                                    HorizontalAlignment="Right"
@@ -155,11 +159,7 @@
                                   SelectedValuePath="id">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <CheckBox Checked="CheckBox_Checked_subjects"
-                                                  Unchecked="CheckBox_Checked_subjects"
-                                                  IsChecked="{Binding isChecked}"
-                                                  IsThreeState="False" />
+                                    <StackPanel Orientation="Horizontal">                                        
                                         <TextBlock Text="{Binding subject_name}"
                                                    HorizontalAlignment="Right"
                                                    FontSize="12" />
@@ -168,14 +168,14 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <TextBlock Grid.Row="3"
+                        <!--<TextBlock Grid.Row="4"
                                    Grid.Column="0"
                                    Text="Teacher Designation: *  "
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
                                    Margin="0, 0, 5, 0"
                                    Height="30" />
-                        <ComboBox Grid.Row="3"
+                        <ComboBox Grid.Row="4"
                                   Grid.Column="1"
                                   HorizontalAlignment="Left"
                                   Width="170"
@@ -207,14 +207,14 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <TextBlock Grid.Row="4"
+                        <TextBlock Grid.Row="5"
                                    Grid.Column="0"
                                    Text="Teacher Name: *  "
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
                                    Margin="0, 0, 5, 0"
                                    Height="30" />
-                        <ComboBox Grid.Row="4"
+                        <ComboBox Grid.Row="5"
                                   Grid.Column="1"
                                   HorizontalAlignment="Left"
                                   Width="170"
@@ -242,25 +242,60 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <TextBlock Grid.Row="5"
+                        </ComboBox>-->
+                        <TextBlock Grid.Row="4"
                                    Grid.Column="0"
                                    Text="Exam Date: *  "
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
                                    Margin="0, 0, 5, 0"
                                    Height="30" />
-                        <DatePicker Grid.Row="5"
+                        <DatePicker Grid.Row="4"
                                    Grid.Column="1"
-                                   Text="Teacher Name: *  "
-                                 Width="170"
+                                    Name="v_exam_date"
+                                    Width="170"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="0, 0, 5, 0"
+                                   Height="30" />    
+                        
+                        <TextBlock Grid.Row="5"
+                                   Grid.Column="0"
+                                   Text="Exam Timing: *  "
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
                                    Height="30" />
+                        <TextBox Grid.Row="5"
+                                    Grid.Column="1"
+                                    Text="09:00 AM - 12:00 PM"
+                                 Name="v_exam_timing"
+                                    Width="170"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="0, 0, 5, 0"
+                                    Height="30" />    
+                        
+                        <TextBlock Grid.Row="6"
+                                   Grid.Column="0"
+                                   Text="Remarks: *  "
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox Grid.Row="6"
+                                    Grid.Column="1"
+                                    Text=""
+                                 Name="v_exam_remarks"
+                                    Width="170"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="0, 0, 5, 0"
+                                    Height="30" />
+                        
 
                         <Grid Width="230"
-                              Grid.Row="6"
+                              Grid.Row="7"
                               Grid.Column="0"
                               VerticalAlignment="Center"
                               Grid.ColumnSpan="4"
@@ -280,12 +315,9 @@
                                     HorizontalAlignment="Right"
                                     Click="click_cancel" />
                         </Grid>
-
                     </Grid>
-
                 </StackPanel>
             </Border>
-
         </StackPanel>
     </Grid>
 </Window>

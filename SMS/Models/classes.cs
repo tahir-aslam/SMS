@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
 namespace SMS.Models
 {
-   public class classes
+   public class classes : INotifyPropertyChanged
     {
         public string id { set; get; }
         public string reg_fee { set; get; }
@@ -27,6 +28,26 @@ namespace SMS.Models
         public string insertion { set; get; }
         public string updation { set; get; }
 
+        private bool _isChecked;
+        public bool IsChecked
+        {
+            get
+            {
+                return _isChecked;
+            }
+            set
+            {
+                _isChecked = value;
+                OnPropertyChanged("IsChecked");
+            }
+        }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

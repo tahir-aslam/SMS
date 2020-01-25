@@ -22,21 +22,21 @@ namespace SMS.ExamsManagement.DateSheet
     {
         DateSheetPage ShowGridPage;
 
+        List<exam> exam_list;
         List<classes> classes_list;
         List<sections> sections_list;
-        List<employees> emp_list;
-        List<sms_emp_designation> emp_types_list;
         List<sms_exams_subjects> subjects_list;
+        ExamsDAL examsDAL;
 
-        sms_exams_subjects subjects_obj;
-        sms_exams_subjects obj;
+        sms_exams_date_sheet subjects_obj;
+        sms_exams_date_sheet obj;
         string mode;
 
         SubjectsDAL subjectsDAL;
         EmployeesDAL empDAL;
         ClassesDAL classesDAL;
 
-        public DateSheetWindow(string m, DateSheetPage sp, sms_exams_subjects ob)
+        public DateSheetWindow(string m, DateSheetPage sp, sms_exams_date_sheet ob)
         {
             InitializeComponent();
 
@@ -47,8 +47,9 @@ namespace SMS.ExamsManagement.DateSheet
             subjectsDAL = new SubjectsDAL();
             empDAL = new EmployeesDAL();
             classesDAL = new ClassesDAL();
+            examsDAL = new ExamsDAL();
 
-            v_class_cmb.Focus();
+            exam_cmb.Focus();
             LoadData();
         }
 
@@ -56,10 +57,15 @@ namespace SMS.ExamsManagement.DateSheet
         {
             try
             {
+                exam_list = examsDAL.get_all_exams();
                 classes_list = classesDAL.getAllClasses();
                 subjects_list = subjectsDAL.GetAllSubjects();
-                emp_list = empDAL.get_all_active_employees();
-                emp_types_list = empDAL.get_all_employee_designation();
+                //emp_list = empDAL.get_all_active_employees();
+                //emp_types_list = empDAL.get_all_employee_designation();
+
+                exam_cmb.ItemsSource = exam_list;
+                exam_list.Insert(0, new exam() { exam_name = "---Select Exam---", id = "-1" });
+                exam_cmb.SelectedIndex = 0;
 
                 classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
                 v_class_cmb.SelectedIndex = 0;
@@ -69,25 +75,31 @@ namespace SMS.ExamsManagement.DateSheet
                 v_subject_cmb.SelectedIndex = 0;
                 v_subject_cmb.ItemsSource = subjects_list;
 
-                emp_types_list.Insert(0, new sms_emp_designation() { designation = "---Select Designation---", id = -1 });
-                v_emp_types_cmb.SelectedIndex = 0;
-                v_emp_types_cmb.ItemsSource = emp_types_list;
+                //emp_types_list.Insert(0, new sms_emp_designation() { designation = "---Select Designation---", id = -1 });
+                //v_emp_types_cmb.SelectedIndex = 0;
+                //v_emp_types_cmb.ItemsSource = emp_types_list;
 
                 if (mode == "edit")
                 {
-                    v_class_cmb.SelectedValue =  obj.class_id.ToString();
+                    exam_cmb.SelectedValue = obj.exam_id;
+                    exam_cmb.IsEnabled = false;
+
+                    v_class_cmb.SelectedValue = obj.class_id.ToString();
+                    classes_list.Where(x => x.id == obj.class_id.ToString()).FirstOrDefault().IsChecked = true;
                     v_class_cmb.IsEnabled = false;
 
+                    sections_list = classesDAL.get_all_sections(obj.class_id.ToString());                                        
+                    v_section_cmb.ItemsSource = sections_list;
                     v_section_cmb.SelectedValue = obj.section_id;
-                    sections_list.Where(x => x.id == obj.section_id.ToString()).FirstOrDefault().isChecked = true;
+                    sections_list.Where(x => x.id == obj.section_id.ToString()).FirstOrDefault().IsChecked = true;
                     v_section_cmb.IsEnabled = false;
 
-                    v_subject_cmb.SelectedValue = obj.id;
-                    subjects_list.Where(x => x.id == obj.id).FirstOrDefault().isChecked = true;
-                    v_subject_cmb.IsEnabled = false;
+                    v_subject_cmb.SelectedValue = obj.subject_id;                    
+                    v_subject_cmb.IsEnabled = true;
 
-                    v_emp_types_cmb.SelectedValue = obj.emp_designation_id;
-                    v_emp_cmb.SelectedValue = obj.emp_id;
+                    v_exam_date.SelectedDate = obj.exam_date;
+                    v_exam_timing.Text = obj.exam_time;
+                    v_exam_remarks.Text = obj.remarks;
                 }
             }
             catch (Exception ex)
@@ -103,20 +115,18 @@ namespace SMS.ExamsManagement.DateSheet
                 {
                     if (mode == "edit")
                     {
-                        sms_exams_subjects obj = FillObjectForUpdate(this.obj);
-                        if (subjectsDAL.UpdateSubjectAssignment(obj) > 0)
+                        sms_exams_date_sheet obj = FillObjectForUpdate(this.obj);
+                        if (examsDAL.UpdateDateSheet(obj) > 0)
                         {
                             MessageBox.Show("Record Updated Successfully");
                             ShowGridPage.load_grid();
                             this.Close();
-                            
                         }
                     }
                     else
                     {
-
-                        List<sms_exams_subjects> lst = FillObject();
-                        if (subjectsDAL.InsertSubjectAssignment(lst) > 0)
+                        List<sms_exams_date_sheet> lst = FillObject();
+                        if (examsDAL.InsertDateSheet(lst) > 0)
                         {
                             MessageBox.Show("Record Added Successfully");
                             ShowGridPage.load_grid();
@@ -135,105 +145,117 @@ namespace SMS.ExamsManagement.DateSheet
             }
         }
 
-        private sms_exams_subjects FillObjectForUpdate(sms_exams_subjects obj)
+        private sms_exams_date_sheet FillObjectForUpdate(sms_exams_date_sheet obj)
         {
-            employees emp = v_emp_cmb.SelectedItem as employees;
-            
-            obj.emp_id = Convert.ToInt32(emp.id);
+            sms_exams_subjects subject = (sms_exams_subjects)v_subject_cmb.SelectedItem;
+            obj.subject_id = subject.id;
+            obj.exam_date = v_exam_date.SelectedDate.Value;
+            obj.exam_time = v_exam_timing.Text;
+            obj.remarks = v_exam_remarks.Text;
             obj.updated_date_time = DateTime.Now;
             obj.updated_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
             return obj;
         }
-        
-        private List<sms_exams_subjects> FillObject()
+        private List<sms_exams_date_sheet> FillObject()
         {
-            List<sms_exams_subjects> lst = new List<sms_exams_subjects>();
-            sms_exams_subjects obj;
-            employees emp = v_emp_cmb.SelectedItem as employees;
+            List<sms_exams_date_sheet> lst = new List<sms_exams_date_sheet>();
+            exam exam = exam_cmb.SelectedItem as exam;
+            sms_exams_subjects subject = v_subject_cmb.SelectedItem as sms_exams_subjects;
+            sms_exams_date_sheet date_sheet_obj;
 
-            foreach (var sec in sections_list.Where(x => x.isChecked == true).Where(x => x.id != "-1"))
+            foreach (var cl in classes_list.Where(x => x.id != "-1").Where(x => x.IsChecked == true))
             {
-                foreach (var subj in subjects_list.Where(x => x.isChecked == true).Where(x=>x.id != -1))
+                if (v_section_cmb.IsEnabled)
                 {
-                    obj = new sms_exams_subjects()
+                    foreach (var sec in sections_list.Where(x => x.id != "-1").Where(x => x.isChecked == true))
                     {
-                        id = subj.id,
-                        section_id = Convert.ToInt32(sec.id),
-                        emp_id = Convert.ToInt32(emp.id),
-                        created_date_time = DateTime.Now,
-                        updated_date_time = DateTime.Now,
-                        created_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id),
-                        updated_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id),
-
-                    };
-
-                    lst.Add(obj);
+                        date_sheet_obj = new sms_exams_date_sheet()
+                        {
+                            class_id = Convert.ToInt32(cl.id),
+                            section_id = Convert.ToInt32(sec.id),
+                            exam_id = Convert.ToInt32(exam.id),
+                            subject_id = subject.id,
+                            exam_date = v_exam_date.SelectedDate.Value,
+                            exam_time = v_exam_timing.Text,
+                            remarks = v_exam_remarks.Text,
+                        };
+                        lst.Add(date_sheet_obj);
+                    }
+                }
+                else
+                {
+                    sections_list = classesDAL.get_all_sections(cl.id);
+                    foreach (var sec in sections_list)
+                    {
+                        date_sheet_obj = new sms_exams_date_sheet()
+                        {
+                            class_id = Convert.ToInt32(cl.id),
+                            section_id = Convert.ToInt32(sec.id),
+                            exam_id = Convert.ToInt32(exam.id),
+                            subject_id = subject.id,
+                            exam_date = v_exam_date.SelectedDate.Value,
+                            exam_time = v_exam_timing.Text,
+                            remarks = v_exam_remarks.Text,
+                        };
+                        lst.Add(date_sheet_obj);
+                    }
                 }
             }
 
+            lst.ForEach(x => x.created_date_time = DateTime.Now);
+            lst.ForEach(x => x.created_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id));
+            
             return lst;
         }
         private void click_cancel(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-        private void v_emp_types_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        }        
+        private void CheckBox_Checked_classes(object sender, RoutedEventArgs e)
         {
-            sms_emp_designation et = (sms_emp_designation)v_emp_types_cmb.SelectedItem;
-            if (v_emp_types_cmb.SelectedIndex != 0)
+            CheckBox checkBox = sender as CheckBox;
+            classes classes = checkBox.DataContext as classes;
+            if (classes.id == "-1")
             {
-                v_emp_cmb.Items.Clear();
-                v_emp_cmb.IsEnabled = true;
-                v_emp_cmb.SelectedIndex = 0;
-                v_emp_cmb.Items.Insert(0, new employees() { emp_name = "---Select Teacher---", id = "-1" });
-                foreach (employees emp in emp_list)
+                if (checkBox.IsChecked == true)
                 {
-                    if (emp.designation_id == et.id)
-                    {
-                        v_emp_cmb.Items.Add(emp);
-                    }
-                }
-
-                //emp_cmb.ItemsSource = emp_list.Where(x => x.emp_type_id == et.id);
-            }
-            else
-            {
-                v_emp_cmb.SelectedIndex = 0;
-                v_emp_cmb.IsEnabled = false;
-            }
-        }
-        private void v_class_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                classes c = (classes)v_class_cmb.SelectedItem;
-                string id = c.id;
-
-                if (v_class_cmb.SelectedIndex != 0)
-                {
-                    sections_list = classesDAL.get_all_sections(id);
-
-
-                    v_section_cmb.IsEnabled = true;
-                    sections_list.Insert(0, new sections() { section_name = "---All Sections---", id = "-1" });
-                    v_section_cmb.ItemsSource = sections_list;
-                    v_section_cmb.SelectedIndex = 0;
+                    classes_list.ForEach(x => x.IsChecked = true);
                 }
                 else
                 {
-
-                    v_section_cmb.IsEnabled = false;
-                    v_section_cmb.SelectedIndex = 0;
-
+                    classes_list.ForEach(x => x.IsChecked = false);
                 }
             }
-            catch (Exception ex)
+
+            //for section cmb
+            if (classes_list.Where(x => x.id != "-1").Where(x => x.IsChecked == true).Count() > 1)
             {
-                MessageBox.Show(ex.Message);
+                v_section_cmb.IsEnabled = false;
+            }
+            else if (classes.id != "-1")
+            {
+                sections_list = classesDAL.get_all_sections(classes.id);
+                v_section_cmb.IsEnabled = true;
+                sections_list.Insert(0, new sections() { section_name = "---All Sections---", id = "-1" });
+                v_section_cmb.ItemsSource = sections_list;
+                v_section_cmb.SelectedIndex = 0;
             }
         }
         private void CheckBox_Checked_Sections(object sender, RoutedEventArgs e)
         {
+            CheckBox checkBox = sender as CheckBox;
+            sections obj = checkBox.DataContext as sections;
+            if (obj.id == "-1")
+            {
+                if (checkBox.IsChecked == true)
+                {
+                    sections_list.ForEach(x => x.IsChecked = true);
+                }
+                else
+                {
+                    sections_list.ForEach(x => x.IsChecked = false);
+                }
+            }
         }
         private void CheckBox_Checked_subjects(object sender, RoutedEventArgs e)
         {
@@ -241,42 +263,35 @@ namespace SMS.ExamsManagement.DateSheet
         }
         private bool validate()
         {
-            if (v_class_cmb.SelectedIndex == 0)
+            if (classes_list.Where(x => x.id != "-1").Where(x => x.IsChecked == true).Count() == 0)
             {
                 v_class_cmb.Focus();
                 string alertText = "Class Name Should Not Be Blank.";
                 MessageBox.Show(alertText);
                 return false;
             }
-
-            else if (sections_list.Where(x => x.isChecked == true).Count() == 0)
+            else if (v_section_cmb.IsEnabled && sections_list.Where(x => x.id != "-1").Where(x => x.isChecked == true).Count() == 0)
             {
                 v_section_cmb.Focus();
                 string alertText = "Please Select Minimum One Section";
                 MessageBox.Show(alertText);
                 return false;
             }
-            else if (subjects_list.Where(x => x.isChecked == true).Count() == 0)
+            else if (v_subject_cmb.SelectedIndex == -1)
             {
                 v_subject_cmb.Focus();
                 string alertText = "Please Select Minimum One Subject";
                 MessageBox.Show(alertText);
                 return false;
             }
-            else if (v_emp_types_cmb.SelectedIndex == 0)
+            else if (v_exam_date.SelectedDate == null)
             {
-                v_emp_types_cmb.Focus();
-                string alertText = "Please Select Teacher Designation";
+                v_exam_date.Focus();
+                string alertText = "Please Select Exam Date";
                 MessageBox.Show(alertText);
                 return false;
             }
-            else if (v_emp_cmb.SelectedIndex == 0)
-            {
-                v_emp_types_cmb.Focus();
-                string alertText = "Please Select Teacher";
-                MessageBox.Show(alertText);
-                return false;
-            }
+
             else
             {
                 return true;

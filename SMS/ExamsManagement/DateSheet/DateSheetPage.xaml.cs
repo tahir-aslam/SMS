@@ -21,21 +21,19 @@ namespace SMS.ExamsManagement.DateSheet
     /// </summary>
     public partial class DateSheetPage : Page
     {
-        List<sms_exams_subjects> subjects_list;
+        List<sms_exams_date_sheet> date_sheet_list;
         DateSheetWindow window;
-        sms_exams_subjects obj;
+        sms_exams_date_sheet obj;
         string mode;
-        SubjectsDAL subjectsDAL;
-        string insertion;
-        string updation;
+        ExamsDAL examsDAL;
 
         public DateSheetPage()
         {
             InitializeComponent();
 
-            subjects_list = new List<sms_exams_subjects>();
-            subjectsDAL = new SubjectsDAL();
-            obj = new sms_exams_subjects();
+            date_sheet_list = new List<sms_exams_date_sheet>();
+            examsDAL = new ExamsDAL();
+            obj = new sms_exams_date_sheet();
 
             SearchTextBox.Focus();
             load_grid();
@@ -43,9 +41,8 @@ namespace SMS.ExamsManagement.DateSheet
 
         public void load_grid()
         {
-            subjects_list = new List<sms_exams_subjects>();
-            subjects_list = subjectsDAL.GetAllSubjectsAssignment();
-            subjects_grid.ItemsSource = subjects_list;
+            date_sheet_list = examsDAL.get_all_date_sheet();
+            subjects_grid.ItemsSource = date_sheet_list;
             this.subjects_grid.Items.Refresh();
         }
 
@@ -71,7 +68,7 @@ namespace SMS.ExamsManagement.DateSheet
 
         public void editing()
         {
-            obj = (sms_exams_subjects)subjects_grid.SelectedItem;
+            obj = (sms_exams_date_sheet)subjects_grid.SelectedItem;
             if (obj == null)
             {
                 //MessageBox.Show("plz select a row");
@@ -88,9 +85,8 @@ namespace SMS.ExamsManagement.DateSheet
         //-------------     Delete          ---------------------------
 
         private void click_delete(object sender, RoutedEventArgs e)
-        {
-            obj = (sms_exams_subjects)subjects_grid.SelectedItem;
-            if (obj == null)
+        {            
+            if (date_sheet_list.Where(x => x.IsChecked == true).Count() == 0)
             {
                 MessageBox.Show("Please Select A Row");
             }
@@ -99,7 +95,7 @@ namespace SMS.ExamsManagement.DateSheet
                 MessageBoxResult mbr = MessageBox.Show("Do You Want To Delete This Record ?", "Delete Confirmation", MessageBoxButton.YesNo);
                 if (mbr == MessageBoxResult.Yes)
                 {
-                    if (subjectsDAL.DeleteSubjectAssignment(subjects_list.Where(x => x.id == obj.id).Where(x => x.section_id == obj.section_id).ToList()) == 1)
+                    if (examsDAL.DeleteDateSheet(date_sheet_list.Where(x => x.IsChecked == true).Select(x => x.id).ToList(), Convert.ToInt32(MainWindow.emp_login_obj.emp_id)) > 0)
                     {
                         MessageBox.Show("Succesfully Deleted");
                         load_grid();
@@ -116,6 +112,46 @@ namespace SMS.ExamsManagement.DateSheet
         private void click_refresh(object sender, RoutedEventArgs e)
         {
             load_grid();
+        }
+
+        //check box
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            if (null == checkBox) return;
+
+            if (checkBox.IsChecked.Value)
+            {
+                foreach (var item in subjects_grid.Items)
+                {
+                    sms_exams_date_sheet fee = item as sms_exams_date_sheet;
+                    fee.IsChecked = checkBox.IsChecked.Value;
+                }
+            }
+            else
+            {
+                foreach (sms_exams_date_sheet item in date_sheet_list)
+                {
+                    item.IsChecked = false;
+                }
+            }
+
+            subjects_grid.Items.Refresh();            
+        }
+
+        private void CheckBox_Checked_sub(object sender, RoutedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            subjects_grid.SelectedItem = e.Source;
+            sms_exams_date_sheet fee = new sms_exams_date_sheet();
+            fee = (sms_exams_date_sheet)subjects_grid.SelectedItem;
+            foreach (sms_exams_date_sheet item in date_sheet_list)
+            {
+                if (fee.id == item.id)
+                {
+                    item.IsChecked = checkBox.IsChecked.Value;
+                }
+            }            
         }
     }
 }
