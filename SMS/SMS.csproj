@@ -1940,6 +1940,7 @@
     <EmbeddedResource Include="EmployeeManagement\SalarySheet\SalarySheetReport.rdlc" />
     <EmbeddedResource Include="ExamsManagement\GeneralAwardList\ExamGeneralAwardListReportRDLC.rdlc" />
     <EmbeddedResource Include="ExamsManagement\ResultCard\ResultCardReport.rdlc" />
+    <EmbeddedResource Include="ExamsManagement\RollNoSlips\RollNoSlipReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportGrouped.rdlc" />

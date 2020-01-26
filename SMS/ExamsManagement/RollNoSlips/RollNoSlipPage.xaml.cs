@@ -214,20 +214,32 @@ namespace SMS.ExamsManagement.RollNoSlips
                         foreach (var datesheet in date_sheet_list.Where(x=>x.exam_id.ToString() == ex.id).Where(x=>x.section_id.ToString() == adm.section_id))
                         {
                             adm_slip = new admission();
-                            adm_slip = adm;
+                            adm_slip.id = adm.id;
+                            adm_slip.std_name = adm.std_name;
+                            adm_slip.father_name = adm.father_name;
+                            adm_slip.class_name = adm.class_name;
+                            adm_slip.section_name = adm.section_name;
+                            adm_slip.cell_no = adm.cell_no;
+                            adm_slip.parmanent_adress = adm.parmanent_adress;
+                            adm_slip.std_image = adm.std_image;
+
                             adm_slip.exam_name = datesheet.exam_name;
                             adm_slip.exam_date = datesheet.exam_date;
                             adm_slip.exam_time = datesheet.exam_time;
                             adm_slip.exam_remarks = datesheet.remarks;
                             adm_slip.subject_name = datesheet.subject_name;
 
+                            adm_slip.institute_logo = MainWindow.ins.institute_logo;
+                            adm_slip.institute_name = MainWindow.ins.institute_name;
+
                             roll_no_slip_list.Add(adm_slip);
                         }
                     }
-                    loadReport(roll_no_slip_list);
+                    
                     //MessageBox.Show("Printing............");
                     studentGrid.Visibility = Visibility.Hidden;
-                    envelopeGrid.Visibility = Visibility.Visible;                    
+                    envelopeGrid.Visibility = Visibility.Visible;
+                    loadReport(roll_no_slip_list);
                     // Form1 form = new Form1(adm_list.Where(x => x.Checked == true).ToList());
                     //form.ShowDialog();
                 }

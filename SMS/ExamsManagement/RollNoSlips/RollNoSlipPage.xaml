@@ -269,7 +269,7 @@
                 <Grid Grid.Row="1"
                       Margin="1,0,1,1"
                       Name="report_grid"
-                      Visibility="Collapsed">
+                      Visibility="Visible">
                     <WindowsFormsHost  Name="windowsFormsHost3">
                         <rv:ReportViewer x:Name="_reportViewer3"
                                          Margin="5,5,5,5">
