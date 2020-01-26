@@ -71,6 +71,13 @@ namespace SMS.Models
         public int roll_no_int { get; set; }
         public int adm_no_int { get; set; }
         public int family_group_id { get; set; }
+
+        //roll no slip
+        public string exam_name { get; set; }
+        public DateTime exam_date { get; set; }
+        public string exam_time { get; set; }
+        public string exam_remarks { get; set; }
+        public string subject_name { get; set; }
     }
 }
 

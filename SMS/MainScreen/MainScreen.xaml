@@ -986,7 +986,14 @@
                                     Name="date_sheet_btn"
                                     Click="date_sheet_btn_Click"
                                     Visibility="Collapsed" />
-                            <Button Grid.Row="4"
+                            <Button Grid.Row="5"
+                                    Content="Roll No. Slips"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    Name="exams_roll_no_slip_btn"
+                                    Click="exams_roll_no_slip_btn_Click"
+                                    Visibility="Visible" />
+                            <Button Grid.Row="6"
                                     Content="Teacher Evaluation"
                                     Height="30"
                                     VerticalAlignment="Center"

@@ -239,8 +239,8 @@ namespace SMS.DAL
                                         "INNER JOIN sms_classes AS cl ON cl.id = eds.class_id "+
                                         "INNER JOIN sms_subjects AS sec ON sec.id = eds.section_id "+
                                         "INNER JOIN sms_exams_subjects AS subj ON subj.id = eds.subject_id "+
-                                        "Inner JOIN sms_emp AS emp_c ON emp_c.id = eds.created_emp_id " +
-                                        "Inner JOIN sms_emp AS emp_u ON emp_u.id = eds.updated_emp_id "+
+                                        "LEFT JOIN sms_emp AS emp_c ON emp_c.id = eds.created_emp_id " +
+                                        "LEFT JOIN sms_emp AS emp_u ON emp_u.id = eds.updated_emp_id "+
                                         "where eds.is_deleted=0";
                     cmd.Connection = con;
                     //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
@@ -266,11 +266,13 @@ namespace SMS.DAL
                                 subject_name = Convert.ToString(reader[11]),
                                 created_emp_name = Convert.ToString(reader[12]),
                                 updated_emp_name = Convert.ToString(reader[13]),
-                                created_date_time = Convert.ToDateTime(reader[14]),
-                                updated_date_time = Convert.ToDateTime(reader[15]),
+                                created_date_time = Convert.ToDateTime(reader[14]),                                
                             };
+                            if (!reader.IsDBNull(15))
+                            {
+                                obj.updated_date_time = Convert.ToDateTime(reader[15]);
+                            }
                             exam_list.Add(obj);
-
                         }
                         con.Close();
                     }

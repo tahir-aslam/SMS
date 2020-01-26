@@ -85,28 +85,35 @@ namespace SMS.ExamsManagement.DateSheet
         //-------------     Delete          ---------------------------
 
         private void click_delete(object sender, RoutedEventArgs e)
-        {            
-            if (date_sheet_list.Where(x => x.IsChecked == true).Count() == 0)
+        {
+            try
             {
-                MessageBox.Show("Please Select A Row");
-            }
-            else
-            {
-                MessageBoxResult mbr = MessageBox.Show("Do You Want To Delete This Record ?", "Delete Confirmation", MessageBoxButton.YesNo);
-                if (mbr == MessageBoxResult.Yes)
+                if (date_sheet_list.Where(x => x.IsChecked == true).Count() == 0)
                 {
-                    if (examsDAL.DeleteDateSheet(date_sheet_list.Where(x => x.IsChecked == true).Select(x => x.id).ToList(), Convert.ToInt32(MainWindow.emp_login_obj.emp_id)) > 0)
+                    MessageBox.Show("Please Select A Row");
+                }
+                else
+                {
+                    MessageBoxResult mbr = MessageBox.Show("Do You Want To Delete This Record ?", "Delete Confirmation", MessageBoxButton.YesNo);
+                    if (mbr == MessageBoxResult.Yes)
                     {
-                        MessageBox.Show("Succesfully Deleted");
-                        load_grid();
-                    }
-                    else
-                    {
-                        load_grid();
-                        MessageBox.Show("OOPs! Theres is some problem");
+                        if (examsDAL.DeleteDateSheet(date_sheet_list.Where(x => x.IsChecked == true).Select(x => x.id).ToList(), Convert.ToInt32(MainWindow.emp_login_obj.emp_id)) > 0)
+                        {
+                            MessageBox.Show("Succesfully Deleted");
+                            load_grid();
+                        }
+                        else
+                        {
+                            load_grid();
+                            MessageBox.Show("OOPs! Theres is some problem");
 
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         private void click_refresh(object sender, RoutedEventArgs e)

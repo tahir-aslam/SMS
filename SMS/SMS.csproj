@@ -545,6 +545,9 @@
     <Compile Include="ExamsManagement\ResultCard\ResultCardPage.xaml.cs">
       <DependentUpon>ResultCardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExamsManagement\RollNoSlips\RollNoSlipPage.xaml.cs">
+      <DependentUpon>RollNoSlipPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FeeManagement\FeeDefaulters\FeeDefaultersList.xaml.cs">
       <DependentUpon>FeeDefaultersList.xaml</DependentUpon>
     </Compile>
@@ -1400,6 +1403,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExamsManagement\ResultCard\ResultCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamsManagement\RollNoSlips\RollNoSlipPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

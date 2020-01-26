@@ -12,8 +12,8 @@ namespace SMS.Models
         public int updated_emp_id { get; set; }
         public string created_emp_name { get; set; }
         public string updated_emp_name { get; set; }
-        public DateTime created_date_time { get; set; }
-        public DateTime updated_date_time { get; set; }
+        public DateTime? created_date_time { get; set; }
+        public DateTime? updated_date_time { get; set; }
         public int is_active { set; get; }
         public int is_deleted { set; get; }
         public int is_synchronized { set; get; }

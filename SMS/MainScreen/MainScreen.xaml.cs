@@ -1850,7 +1850,6 @@ namespace SMS.MainScreen
             teacher_evaluation_btn.Background = Brushes.White;
             teacher_evaluation_btn.Foreground = Brushes.Purple;
         }
-
         private void exams_entry_Click(object sender, RoutedEventArgs e)
         {
             this.mainFrame.Content = new ExamDataEntryPage();
@@ -1870,7 +1869,6 @@ namespace SMS.MainScreen
             teacher_evaluation_btn.Background = Brushes.White;
             teacher_evaluation_btn.Foreground = Brushes.Purple;
         }
-
         private void general_award_list_Click(object sender, RoutedEventArgs e)
         {
             this.mainFrame.Content = new GeneralAwardListPage();
@@ -1890,7 +1888,6 @@ namespace SMS.MainScreen
             teacher_evaluation_btn.Background = Brushes.White;
             teacher_evaluation_btn.Foreground = Brushes.Purple;
         }
-
         private void results_card_btn_Click(object sender, RoutedEventArgs e)
         {
             this.mainFrame.Content = new ExamsManagement.ResultCard.ResultCardPage();
@@ -1910,7 +1907,6 @@ namespace SMS.MainScreen
             teacher_evaluation_btn.Background = Brushes.White;
             teacher_evaluation_btn.Foreground = Brushes.Purple;
         }
-
         private void date_sheet_btn_Click(object sender, RoutedEventArgs e)
         {
             this.mainFrame.Content = new ExamsManagement.DateSheet.DateSheetPage();
@@ -1928,7 +1924,6 @@ namespace SMS.MainScreen
             teacher_evaluation_btn.Background = Brushes.White;
             teacher_evaluation_btn.Foreground = Brushes.Purple;
         }
-
         private void teacher_evaluation_btn_Click(object sender, RoutedEventArgs e)
         {
             TeacherEvaluationReportWindow window = new Reports.Exams.TeacherEvaluation.TeacherEvaluationReportWindow();
@@ -1947,6 +1942,25 @@ namespace SMS.MainScreen
             date_sheet_btn.Foreground = Brushes.Purple;
 
             window.Show();
+        }
+        private void exams_roll_no_slip_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.mainFrame.Content = new ExamsManagement.RollNoSlips.RollNoSlipPage();
+            exams_roll_no_slip_btn.Background = Brushes.Purple;
+            exams_roll_no_slip_btn.Foreground = Brushes.White;
+
+            exams_entry.Background = Brushes.White;
+            exams_entry.Foreground = Brushes.Purple;
+            general_award_list.Background = Brushes.White;
+            general_award_list.Foreground = Brushes.Purple;
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Purple;
+            define_exams_btn.Background = Brushes.White;
+            define_exams_btn.Foreground = Brushes.Purple;
+            teacher_evaluation_btn.Background = Brushes.White;
+            teacher_evaluation_btn.Foreground = Brushes.Purple;
+            date_sheet_btn.Background = Brushes.White;
+            date_sheet_btn.Foreground = Brushes.Purple;
         }
 
 
@@ -3143,7 +3157,6 @@ namespace SMS.MainScreen
                 //Environment.Exit(0);
             }
         }
-
-       
+        
     }
 }
