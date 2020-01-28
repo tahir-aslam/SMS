@@ -159,7 +159,11 @@
                                   SelectedValuePath="id">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">                                        
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox Checked="CheckBox_Checked_subjects"
+                                                  Unchecked="CheckBox_Checked_subjects"
+                                                  IsChecked="{Binding IsChecked}"
+                                                  IsThreeState="False" />
                                         <TextBlock Text="{Binding subject_name}"
                                                    HorizontalAlignment="Right"
                                                    FontSize="12" />

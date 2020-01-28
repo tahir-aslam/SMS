@@ -94,8 +94,9 @@ namespace SMS.ExamsManagement.DateSheet
                     sections_list.Where(x => x.id == obj.section_id.ToString()).FirstOrDefault().IsChecked = true;
                     v_section_cmb.IsEnabled = false;
 
-                    v_subject_cmb.SelectedValue = obj.subject_id;                    
-                    v_subject_cmb.IsEnabled = true;
+                    v_subject_cmb.SelectedValue = obj.subject_id;
+                    subjects_list.Where(X => X.id == obj.subject_id).FirstOrDefault().IsChecked = true;        
+                    v_subject_cmb.IsEnabled = false;
 
                     v_exam_date.SelectedDate = obj.exam_date;
                     v_exam_timing.Text = obj.exam_time;
@@ -144,10 +145,9 @@ namespace SMS.ExamsManagement.DateSheet
                 MessageBox.Show(ex.Message);
             }
         }
-
         private sms_exams_date_sheet FillObjectForUpdate(sms_exams_date_sheet obj)
         {
-            sms_exams_subjects subject = (sms_exams_subjects)v_subject_cmb.SelectedItem;
+            sms_exams_subjects subject = subjects_list.Where(x => x.isChecked == true).FirstOrDefault();
             obj.subject_id = subject.id;
             obj.exam_date = v_exam_date.SelectedDate.Value;
             obj.exam_time = v_exam_timing.Text;
@@ -160,26 +160,29 @@ namespace SMS.ExamsManagement.DateSheet
         {
             List<sms_exams_date_sheet> lst = new List<sms_exams_date_sheet>();
             exam exam = exam_cmb.SelectedItem as exam;
-            sms_exams_subjects subject = v_subject_cmb.SelectedItem as sms_exams_subjects;
+            //sms_exams_subjects subject_selected = v_subject_cmb.SelectedItem as sms_exams_subjects;
             sms_exams_date_sheet date_sheet_obj;
 
             foreach (var cl in classes_list.Where(x => x.id != "-1").Where(x => x.IsChecked == true))
             {
                 if (v_section_cmb.IsEnabled)
                 {
-                    foreach (var sec in sections_list.Where(x => x.id != "-1").Where(x => x.isChecked == true))
+                    foreach (var sec in sections_list.Where(x => x.id != "-1").Where(x => x.IsChecked == true))
                     {
-                        date_sheet_obj = new sms_exams_date_sheet()
+                        foreach (var subject in subjects_list.Where(x => x.id != -1).Where(x => x.IsChecked == true))
                         {
-                            class_id = Convert.ToInt32(cl.id),
-                            section_id = Convert.ToInt32(sec.id),
-                            exam_id = Convert.ToInt32(exam.id),
-                            subject_id = subject.id,
-                            exam_date = v_exam_date.SelectedDate.Value,
-                            exam_time = v_exam_timing.Text,
-                            remarks = v_exam_remarks.Text,
-                        };
-                        lst.Add(date_sheet_obj);
+                            date_sheet_obj = new sms_exams_date_sheet()
+                            {
+                                class_id = Convert.ToInt32(cl.id),
+                                section_id = Convert.ToInt32(sec.id),
+                                exam_id = Convert.ToInt32(exam.id),
+                                subject_id = subject.id,
+                                exam_date = v_exam_date.SelectedDate.Value,
+                                exam_time = v_exam_timing.Text,
+                                remarks = v_exam_remarks.Text,
+                            };
+                            lst.Add(date_sheet_obj);
+                        }
                     }
                 }
                 else
@@ -187,17 +190,20 @@ namespace SMS.ExamsManagement.DateSheet
                     sections_list = classesDAL.get_all_sections(cl.id);
                     foreach (var sec in sections_list)
                     {
-                        date_sheet_obj = new sms_exams_date_sheet()
+                        foreach (var subject in subjects_list.Where(x => x.id != -1).Where(x => x.IsChecked == true))
                         {
-                            class_id = Convert.ToInt32(cl.id),
-                            section_id = Convert.ToInt32(sec.id),
-                            exam_id = Convert.ToInt32(exam.id),
-                            subject_id = subject.id,
-                            exam_date = v_exam_date.SelectedDate.Value,
-                            exam_time = v_exam_timing.Text,
-                            remarks = v_exam_remarks.Text,
-                        };
-                        lst.Add(date_sheet_obj);
+                            date_sheet_obj = new sms_exams_date_sheet()
+                            {
+                                class_id = Convert.ToInt32(cl.id),
+                                section_id = Convert.ToInt32(sec.id),
+                                exam_id = Convert.ToInt32(exam.id),
+                                subject_id = subject.id,
+                                exam_date = v_exam_date.SelectedDate.Value,
+                                exam_time = v_exam_timing.Text,
+                                remarks = v_exam_remarks.Text,
+                            };
+                            lst.Add(date_sheet_obj);
+                        }
                     }
                 }
             }
@@ -259,7 +265,19 @@ namespace SMS.ExamsManagement.DateSheet
         }
         private void CheckBox_Checked_subjects(object sender, RoutedEventArgs e)
         {
-
+            CheckBox checkBox = sender as CheckBox;
+            sms_exams_subjects obj = checkBox.DataContext as sms_exams_subjects;
+            if (obj.id == -1)
+            {
+                if (checkBox.IsChecked == true)
+                {
+                    subjects_list.ForEach(x => x.IsChecked = true);
+                }
+                else
+                {
+                    subjects_list.ForEach(x => x.IsChecked = false);
+                }
+            }
         }
         private bool validate()
         {
@@ -270,7 +288,7 @@ namespace SMS.ExamsManagement.DateSheet
                 MessageBox.Show(alertText);
                 return false;
             }
-            else if (v_section_cmb.IsEnabled && sections_list.Where(x => x.id != "-1").Where(x => x.isChecked == true).Count() == 0)
+            else if (v_section_cmb.IsEnabled && sections_list.Where(x => x.id != "-1").Where(x => x.IsChecked == true).Count() == 0)
             {
                 v_section_cmb.Focus();
                 string alertText = "Please Select Minimum One Section";

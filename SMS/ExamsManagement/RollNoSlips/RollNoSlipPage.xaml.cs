@@ -222,6 +222,8 @@ namespace SMS.ExamsManagement.RollNoSlips
                             adm_slip.cell_no = adm.cell_no;
                             adm_slip.parmanent_adress = adm.parmanent_adress;
                             adm_slip.std_image = adm.std_image;
+                            adm_slip.adm_no = adm.adm_no;
+                            adm_slip.roll_no = adm.roll_no;
 
                             adm_slip.exam_name = datesheet.exam_name;
                             adm_slip.exam_date = datesheet.exam_date;
