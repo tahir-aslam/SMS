@@ -405,15 +405,15 @@ namespace SMS.Messaging.ComplaintRegister
                 if (default_btn.IsChecked == true)
                 {
                     string remarks = "";
-                    if (f.complaint_status_id > 0)
-                    {
-                        remarks = f.complaint_resolved_remarks;
-                    }
-                    else
+                    if (f.complaint_status == "Registered")
                     {
                         remarks = f.complaint_remarks;
                     }
-                    message = "Respected Parents:"+Environment.NewLine+"AoA,"+Environment.NewLine+"Name:"+f.std_name+Environment.NewLine+ "Complaint No:"+f.id+Environment.NewLine+"Complaint Type:"+f.complaint_type+ " has been "+f.complaint_status+". This Complaint is from "+f.complaint_from+"."+Environment.NewLine+ remarks + Environment.NewLine+"Thank you. Admin " + MainWindow.ins.institute_name + "."+Environment.NewLine + MainWindow.ins.institute_phone +Environment.NewLine + MainWindow.ins.institute_cell;
+                    else
+                    {
+                        remarks = f.complaint_resolved_remarks;
+                    }
+                    message = "Respected Parents:"+Environment.NewLine+"AoA,"+Environment.NewLine+"Name:"+f.std_name+Environment.NewLine+ "Complaint No:"+f.id+Environment.NewLine+"Complaint Type:"+f.complaint_type+ " has been "+f.complaint_status+". This Complaint is from "+f.complaint_from+"."+Environment.NewLine+"Remarks:" + remarks + Environment.NewLine+"Thank you. Admin " + MainWindow.ins.institute_name + "."+Environment.NewLine + MainWindow.ins.institute_phone +Environment.NewLine + MainWindow.ins.institute_cell;
                 }
                 else
                 {
