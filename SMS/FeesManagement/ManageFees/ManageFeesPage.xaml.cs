@@ -151,7 +151,7 @@ namespace SMS.FeesManagement.ManageFees
             {
                 cv.Filter = o =>
                 {
-                    admission x = o as admission;
+                    sms_fees x = o as sms_fees;
                     if (search_cmb.SelectedIndex == 0)
                     {
                         return (x.std_name.ToUpper().StartsWith(v_search.ToUpper()) || x.std_name.ToUpper().Contains(v_search.ToUpper()));
@@ -162,7 +162,7 @@ namespace SMS.FeesManagement.ManageFees
                     }
                     else if (search_cmb.SelectedIndex == 2)
                     {
-                        return (x.adm_no.ToUpper().StartsWith(v_search.ToUpper()) || x.adm_no.ToUpper().Contains(v_search.ToUpper()));
+                        return (x.adm_no.ToUpper().Equals(v_search.ToUpper()));
                     }
                     else if (search_cmb.SelectedIndex == 3)
                     {

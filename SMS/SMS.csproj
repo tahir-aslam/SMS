@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>E:\Softwares\SMS Setups\SMS_04-02-2019\</PublishUrl>
+    <PublishUrl>E:\Softwares\SMS Setups\SMS_06-02-2019\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -25,7 +25,7 @@
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
+    <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://sms.scenariosystem.com/</InstallUrl>
     <UpdateUrl>http://sms.scenariosystem.com/</UpdateUrl>
@@ -34,7 +34,7 @@
     <ProductName>Scenario School Management Software</ProductName>
     <PublisherName>Scenario Systems</PublisherName>
     <SuiteName>Scenario</SuiteName>
-    <MinimumRequiredVersion>1.0.0.7</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.13</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <ApplicationRevision>13</ApplicationRevision>
@@ -1940,6 +1940,7 @@
     <EmbeddedResource Include="EmployeeManagement\EmployeeSalarySheetBio\EmployeeSalarySheetReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\SalarySheet\SalarySheetReport.rdlc" />
     <EmbeddedResource Include="ExamsManagement\GeneralAwardList\ExamGeneralAwardListReportRDLC.rdlc" />
+    <EmbeddedResource Include="ExamsManagement\ResultCard\ResultCardReport - Copy.rdlc" />
     <EmbeddedResource Include="ExamsManagement\ResultCard\ResultCardReport.rdlc" />
     <EmbeddedResource Include="ExamsManagement\RollNoSlips\RollNoSlipReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountReport.rdlc" />
