@@ -183,8 +183,9 @@ namespace SMS.DAL
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
             using (MySqlCommand cmd = new MySqlCommand())
             {
-                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && session_id=" + MainWindow.session.id + " ORDER BY adm_no_int ASC";
+                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=@section_id && session_id=" + MainWindow.session.id + " ORDER BY adm_no_int ASC";
                 cmd.Connection = con;
+                cmd.Parameters.Add("@section_id", MySqlDbType.Int32).Value = section_id;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
                 {

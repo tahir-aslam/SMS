@@ -34,6 +34,8 @@ namespace SMS.FeesManagement.BulkFeesUpdate
             {
                 adm_list_new.Add(adm);
             }
+            // mark adm_list unchecked
+            adm_list.ForEach(x=>x.Checked = false);
             std_lbl.Content = adm_list_new.Count;            
             fee_textbox.IsEnabled = false;
 
@@ -59,7 +61,7 @@ namespace SMS.FeesManagement.BulkFeesUpdate
                     if (updateActualFees())
                     {
                         MessageBox.Show("Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
+                        this.Close();                        
                     }
                     else
                     {
