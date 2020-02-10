@@ -332,7 +332,7 @@ namespace SMS.DAL
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         //cmd.CommandText = "GetAllRoles";
-                        cmd.CommandText = "SELECT* FROM sms_fees_generated As fee INNER JOIN sms_admission As adm ON fee.std_id = adm.id where adm.session_id=@session_id && fee.rem_amount > 0 ";
+                        cmd.CommandText = "SELECT* FROM sms_fees_generated As fee INNER JOIN sms_admission As adm ON fee.std_id = adm.id where adm.session_id=(select adm_inner.session_id from sms_admission as adm_inner where adm_inner.id=fee.std_id order by adm_inner.session_id DESC Limit 1) && fee.rem_amount > 0 ";
                         cmd.Connection = con;
                         cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = MainWindow.session.id;
                         //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
