@@ -521,7 +521,7 @@ namespace SMS.ExamsManagement.ExamDataEntry
                     ede_obj.father_name = adm.father_name;
                     ede_obj.roll_no = adm.roll_no;
                     ede_obj.subj_list = new List<exam_data_entry>();
-                    foreach (exam_data_entry ede_s in ede_list.Where(x => x.std_id == adm.id))
+                    foreach (exam_data_entry ede_s in ede_list.Where(x => x.std_id == adm.id).OrderBy(x=>x.sort_order))
                     {
                         exam_data_entry ede_s_o = new exam_data_entry();
                         // ede_s_o = ede_obj;

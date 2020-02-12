@@ -141,7 +141,7 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
             }
             else
             {
-                SLCWindow slc = new SLCWindow(obj);
+                SLCWindow slc = new SLCWindow(obj, Visibility.Visible);
                 slc.ShowDialog();
                 
             }
@@ -390,5 +390,19 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
             strength_textblock.Text = adm_grid.Items.Count.ToString();
         }
 
+        private void print_btn_without_Click(object sender, RoutedEventArgs e)
+        {
+            obj = (admission)adm_grid.SelectedItem;
+            if (obj == null)
+            {
+                //MessageBox.Show("plz select a row");
+            }
+            else
+            {
+                SLCWindow slc = new SLCWindow(obj, Visibility.Hidden);
+                slc.ShowDialog();
+
+            }
+        }
     }
 }

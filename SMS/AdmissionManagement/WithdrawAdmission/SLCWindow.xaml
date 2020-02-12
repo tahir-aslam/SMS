@@ -22,7 +22,7 @@
                         </Grid.RowDefinitions>
 
                         
-                        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Name="v_institute_grid">
                             <Image Source="{Binding image}"  Width="100" Height="110" Margin="5"  VerticalAlignment="Top"/>
                             <StackPanel>
                             <TextBlock Text="{Binding previous_school}"  FontSize="32" FontWeight="Bold" FontFamily="Old English Text MT"  TextWrapping="NoWrap"  TextDecorations="Underline" VerticalAlignment="Center"/>
