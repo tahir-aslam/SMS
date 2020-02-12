@@ -94,7 +94,7 @@ namespace SMS
 
             get_exam_admin_panel();
             get_fee_admin_panel();
-            //get_fees_admin_panel();
+            get_fees_admin_panel();
 
             try
             {
