@@ -97,13 +97,14 @@ namespace SMS.DAL
                         i = 0;
                         using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.CommandText = "INSERT INTO sms_exams_subject_assignment(subject_id, section_id, emp_id, std_id, created_date_time, updated_date_time, created_emp_id, updated_emp_id) Values(@subject_id, @section_id, @emp_id, @std_id, @created_date_time, @updated_date_time, @created_emp_id, @updated_emp_id)";
+                            cmd.CommandText = "INSERT INTO sms_exams_subject_assignment(subject_id, section_id, emp_id, std_id, created_date_time, updated_date_time, created_emp_id, updated_emp_id, sort_order) Values(@subject_id, @section_id, @emp_id, @std_id, @created_date_time, @updated_date_time, @created_emp_id, @updated_emp_id, @sort_order)";
                             cmd.Connection = con;
 
                             cmd.Parameters.Add("@subject_id", MySqlDbType.Int32).Value = obj.id;
                             cmd.Parameters.Add("@section_id", MySqlDbType.Int32).Value = obj.section_id;
                             cmd.Parameters.Add("@emp_id", MySqlDbType.Int32).Value = obj.emp_id;
                             cmd.Parameters.Add("@std_id", MySqlDbType.Int32).Value = 0;
+                            cmd.Parameters.Add("@sort_order", MySqlDbType.Int32).Value = obj.sort_order;
 
                             cmd.Parameters.Add("@created_date_time", MySqlDbType.DateTime).Value = obj.created_date_time;
                             cmd.Parameters.Add("@updated_date_time", MySqlDbType.DateTime).Value = obj.updated_date_time;
@@ -135,7 +136,7 @@ namespace SMS.DAL
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         cmd.CommandText = "SELECT emp.emp_name, cl.id, cl.class_name, sec.section_name, subj.subject_name, subj_g.group_name, subj_t.subject_type, "+
-                                            "emp_c.emp_name, emp_u.emp_name, ass.subject_id, ass.section_id, ass.emp_id, ass.created_emp_id, ass.updated_emp_id, ass.created_date_time, ass.updated_date_time, ass.is_active, subj.subject_code, emp_desg.id, emp_desg.designation " +
+                                            "emp_c.emp_name, emp_u.emp_name, ass.subject_id, ass.section_id, ass.emp_id, ass.created_emp_id, ass.updated_emp_id, ass.created_date_time, ass.updated_date_time, ass.is_active, subj.subject_code, emp_desg.id, emp_desg.designation, ass.sort_order " +
                                             "from sms_exams_subject_assignment AS ass "+
                                             "INNER JOIN sms_exams_subjects AS subj ON subj.id = ass.subject_id "+
                                             "INNER JOIN sms_exams_subjects_group AS subj_g ON subj_g.id = subj.subjects_group_id "+
@@ -175,6 +176,7 @@ namespace SMS.DAL
                                 subject_code = Convert.ToString(reader[17]),
                                 emp_designation_id = Convert.ToInt32(reader[18]),
                                 emp_designation = Convert.ToString(reader[19]),
+                                sort_order = Convert.ToInt32(reader[20]),
                             };
                             lst.Add(obj);
                         }
@@ -198,7 +200,7 @@ namespace SMS.DAL
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         cmd.CommandText = "SELECT emp.emp_name, cl.id, cl.class_name, sec.section_name, subj.subject_name, subj_g.group_name, subj_t.subject_type, " +
-                                            "emp_c.emp_name, emp_u.emp_name, ass.subject_id, ass.section_id, ass.emp_id, ass.created_emp_id, ass.updated_emp_id, ass.created_date_time, ass.updated_date_time, ass.is_active, subj.subject_code, emp_desg.id, emp_desg.designation " +
+                                            "emp_c.emp_name, emp_u.emp_name, ass.subject_id, ass.section_id, ass.emp_id, ass.created_emp_id, ass.updated_emp_id, ass.created_date_time, ass.updated_date_time, ass.is_active, subj.subject_code, emp_desg.id, emp_desg.designation, ass.sort_order " +
                                             "from sms_exams_subject_assignment AS ass " +
                                             "INNER JOIN sms_exams_subjects AS subj ON subj.id = ass.subject_id " +
                                             "INNER JOIN sms_exams_subjects_group AS subj_g ON subj_g.id = subj.subjects_group_id " +
@@ -210,7 +212,7 @@ namespace SMS.DAL
                                             "Inner JOIN sms_emp AS emp_u ON emp_u.id = ass.updated_emp_id " +
                                             "INNER JOIN sms_emp_designation AS emp_desg ON emp_desg.id=emp.emp_designation_id " +
                                             "Where ass.section_id=@section_id "+
-                                            "ORDER BY ass.section_id ASC, subj.subject_name ASC ";
+                                            "ORDER BY ass.sort_order ASC ";
                         cmd.Connection = con;
                         cmd.Parameters.Add("@section_id", MySqlDbType.Int32).Value = sectionID;
                         //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
@@ -240,6 +242,7 @@ namespace SMS.DAL
                                 subject_code = Convert.ToString(reader[17]),
                                 emp_designation_id = Convert.ToInt32(reader[18]),
                                 emp_designation = Convert.ToString(reader[19]),
+                                sort_order = Convert.ToInt32(reader[20]),
                             };
                             lst.Add(obj);
                         }
@@ -262,14 +265,15 @@ namespace SMS.DAL
                     con.Open();
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "Update sms_exams_subject_assignment SET emp_id=@emp_id,std_id=@std_id,updated_date_time=@updated_date_time,updated_emp_id=@updated_emp_id where subject_id = @subject_id && section_id=@section_id";
+                        cmd.CommandText = "Update sms_exams_subject_assignment SET emp_id=@emp_id,std_id=@std_id,updated_date_time=@updated_date_time,updated_emp_id=@updated_emp_id, sort_order=@sort_order where subject_id = @subject_id && section_id=@section_id";
                         cmd.Connection = con;
 
                         cmd.Parameters.Add("@subject_id", MySqlDbType.Int32).Value = obj.id;
                         cmd.Parameters.Add("@section_id", MySqlDbType.Int32).Value = obj.section_id;
                         cmd.Parameters.Add("@emp_id", MySqlDbType.Int32).Value = obj.emp_id;
                         cmd.Parameters.Add("@std_id", MySqlDbType.Int32).Value = 0;
-                        
+                        cmd.Parameters.Add("@sort_order", MySqlDbType.Int32).Value = obj.sort_order;
+
                         cmd.Parameters.Add("@updated_date_time", MySqlDbType.DateTime).Value = obj.updated_date_time;                        
                         cmd.Parameters.Add("@updated_emp_id", MySqlDbType.Int32).Value = obj.updated_emp_id;
 

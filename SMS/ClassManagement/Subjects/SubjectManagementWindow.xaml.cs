@@ -89,6 +89,8 @@ namespace SMS.ClassManagement.Subjects
 
                     v_emp_types_cmb.SelectedValue = obj.emp_designation_id;
                     v_emp_cmb.SelectedValue = obj.emp_id;
+
+                    v_sort_order.Text = obj.sort_order.ToString();
                 }
             }
             catch (Exception ex)
@@ -109,8 +111,7 @@ namespace SMS.ClassManagement.Subjects
                         {
                             MessageBox.Show("Record Updated Successfully");
                             ShowGridPage.load_grid();
-                            this.Close();
-                            
+                            this.Close();                            
                         }
                     }
                     else
@@ -143,6 +144,7 @@ namespace SMS.ClassManagement.Subjects
             obj.emp_id = Convert.ToInt32(emp.id);
             obj.updated_date_time = DateTime.Now;
             obj.updated_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+            obj.sort_order = Convert.ToInt32(v_sort_order.Text);
             return obj;
         }
         
@@ -165,8 +167,9 @@ namespace SMS.ClassManagement.Subjects
                         updated_date_time = DateTime.Now,
                         created_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id),
                         updated_emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id),
+                        sort_order = Convert.ToInt32(v_sort_order.Text)
 
-                    };
+                };
 
                     lst.Add(obj);
                 }

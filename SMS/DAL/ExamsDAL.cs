@@ -65,7 +65,7 @@ namespace SMS.DAL
                                         "subj.id, subj.subject_name, "+
                                         "ede.subject_obtained, ede.subject_total, ede.subject_percentage, ede.subject_grade, ede.subject_remarks, ede.obtained_marks, ede.total_marks, ede.percentage, ede.remarks, ede.grade, "+
                                         "ins.institute_name, ins.institute_logo, "+
-                                        "ede.subject_obtained_int, ede.subject_total_int, ede.position " +
+                                        "ede.subject_obtained_int, ede.subject_total_int, ede.position, ass.sort_order, adm.adm_no_int, adm.roll_no_int " +
                                         "FROM sms_institute as ins, sms_exams_data_entry AS ede " +
                                         "INNER JOIN sms_admission AS adm ON adm.id = ede.std_id AND adm.session_id = ede.session_id " +
                                         "INNER JOIN sms_classes AS cl ON cl.id = ede.class_id "+
@@ -122,6 +122,9 @@ namespace SMS.DAL
                                 subject_obtained_int = Convert.ToInt32(reader[31]),
                                 subject_total_int = Convert.ToInt32(reader[32]),
                                 position = Convert.ToString(reader[33]),
+                                sort_order = Convert.ToInt32(reader[34]),
+                                adm_no_int = Convert.ToInt32(reader[35]),
+                                roll_no_int = Convert.ToInt32(reader[36]),
                             };
                             list.Add(obj);                      
                         }

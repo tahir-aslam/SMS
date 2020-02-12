@@ -112,6 +112,17 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
+                    <ComboBox  HorizontalAlignment="Left"
+                               Width="120"
+                               Height="30"
+                               VerticalAlignment="Center"
+                               Name="defaulter_type_cmb"                               
+                               SelectionChanged="defaulter_type_cmb_SelectionChanged">
+                        <ComboBoxItem Content="All Defaulters"/>
+                        <ComboBoxItem Content="Withdrawl Defaulters" />
+                        <ComboBoxItem Content="Enrolled Defaulters" />                        
+                    </ComboBox>
+
 
                     <TextBlock Margin="10,0,0,0" FontFamily="Times New Roman" Name="total_fee_tb"  FontSize="24"   VerticalAlignment="Center"/>
 

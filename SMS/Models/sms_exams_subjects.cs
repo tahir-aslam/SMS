@@ -45,6 +45,7 @@ namespace SMS.Models
                 OnPropertyChanged("IsChecked");
             }
         }
+        public int sort_order { get; set; }
         
         //public List<subjects> subjects_list { get; set; }
         public int created_emp_id { get; set; }

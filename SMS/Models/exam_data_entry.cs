@@ -19,6 +19,8 @@ namespace SMS.Models
         public string std_name { set; get; }
         public string father_name { set; get; }
         public string adm_no { set; get; }
+        public Int32 adm_no_int { set; get; }
+        public Int32 roll_no_int { set; get; }
         public string roll_no { set; get; }
         public string comm_adress { set; get; }
         public string cell_no { set; get; }
@@ -73,6 +75,7 @@ namespace SMS.Models
 
         public string sectionStrength { set; get; }
         public string classStrength { set; get; }
+        public int sort_order { get; set; }
 
         public string teacher_sig_text { set; get; }
         public string principal_sig_text { set; get; }

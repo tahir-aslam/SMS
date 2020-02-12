@@ -364,6 +364,7 @@ namespace SMS.DAL
                                 due_date = Convert.ToDateTime(reader["due_date"]),
                                 session_id = Convert.ToInt32(reader["session_id"].ToString()),
                                 is_active = Convert.ToString(reader["is_active"].ToString()),
+                                adm_is_active = Convert.ToString(reader[64].ToString()),
                                 created_by = Convert.ToString(reader["created_by"].ToString()),
                                 emp_id = Convert.ToInt32(reader["emp_id"].ToString()),
                                 date_time = Convert.ToDateTime(reader["date_time"].ToString()),

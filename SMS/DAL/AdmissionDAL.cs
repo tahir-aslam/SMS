@@ -147,6 +147,7 @@ namespace SMS.DAL
                             section_name = Convert.ToString(reader["section_name"].ToString()),
                             roll_no = Convert.ToString(reader["roll_no"].ToString()),
                             adm_no = Convert.ToString(reader["adm_no"].ToString()),
+                            adm_no_int = Convert.ToInt32(reader["adm_no_int"]),
                             transport_fee = Convert.ToString(reader["transport_fee"].ToString()),
                             reg_fee = Convert.ToString(reader["reg_fee"].ToString()),
                             tution_fee = Convert.ToString(reader["tution_fee"].ToString()),

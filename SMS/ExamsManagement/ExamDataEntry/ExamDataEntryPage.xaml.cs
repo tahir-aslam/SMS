@@ -39,6 +39,7 @@ namespace SMS.ExamsManagement.ExamDataEntry
         List<exam_data_entry> submit_exam_entry_list;
         List<sms_exam_requirements> exam_req_list;
         SubjectsDAL subjectsDAL;
+        AdmissionDAL admDAL;
 
         double subject_percentage = 0;
         double subject_total = 0;
@@ -55,6 +56,7 @@ namespace SMS.ExamsManagement.ExamDataEntry
             InitializeComponent();
 
             subjectsDAL = new SubjectsDAL();
+            admDAL = new AdmissionDAL();
             get_all_exams();
             exam_cmb.Focus();
             exam_cmb.ItemsSource = exam_list;
@@ -123,7 +125,8 @@ namespace SMS.ExamsManagement.ExamDataEntry
                     exam_entry_grid.Visibility = Visibility.Hidden;
                     exam_img_grid.Visibility = Visibility.Hidden;
 
-                    get_all_admissions(s.id);
+                    //get_all_admissions(s.id);
+                    adm_list = admDAL.getAdmissionsBySectionID(Convert.ToInt32(s.id));
                     if (adm_list.Count > 0)
                     {                        
                             subjects_list = new ObservableCollection<sms_exams_subjects>();
@@ -341,44 +344,7 @@ namespace SMS.ExamsManagement.ExamDataEntry
                 }
             }
         }     
-
-        // ===============     Get All Admissions          ================
-        public void get_all_admissions(string id)
-        {
-            adm_list = new List<admission>();
-
-            using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
-            using (MySqlCommand cmd = new MySqlCommand())
-            {
-                cmd.CommandText = "SELECT id,roll_no,std_name,father_name,adm_no,section_id FROM sms_admission where is_active = 'Y' && section_id=" + id + "&& session_id =" + MainWindow.session.id + " ORDER BY adm_no ASC";
-                cmd.Connection = con;
-                //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
-                try
-                {
-                    con.Open();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-
-                        admission adm = new admission()
-                        {
-                            id = Convert.ToString(reader["id"].ToString()),
-                            std_name = Convert.ToString(reader["std_name"].ToString()),
-                            father_name = Convert.ToString(reader["father_name"].ToString()),
-                            adm_no = Convert.ToString(reader["adm_no"].ToString()),
-                            roll_no = Convert.ToString(reader["roll_no"].ToString()),
-                        };
-                        adm_list.Add(adm);
-                    }
-                    con.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
+               
         private void save_btn_Click(object sender, RoutedEventArgs e)
         {
             update_exam_list();
@@ -545,7 +511,7 @@ namespace SMS.ExamsManagement.ExamDataEntry
         public void set_exam_data_entry_list()
         {
             ede_exam_list = new List<exam_data_entry>();
-            foreach (admission adm in adm_list)
+            foreach (admission adm in adm_list.OrderBy(x=>x.adm_no_int))
             {
                 foreach (exam_data_entry ede in ede_list.Where(x => x.std_id == adm.id))
                 {

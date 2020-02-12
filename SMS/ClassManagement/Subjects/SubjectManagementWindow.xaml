@@ -36,6 +36,7 @@
                             <RowDefinition Height="45" />
                             <RowDefinition Height="45" />
                             <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
                             <RowDefinition Height="60" />
 
                         </Grid.RowDefinitions>
@@ -209,9 +210,26 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
+                        <TextBlock Grid.Row="5"
+                                   Grid.Column="0"
+                                   Text="Subject Sort Order:    "
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox Grid.Row="5"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  Width="170"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  x:Name="v_sort_order"
+                                 Text="1">
+                        </TextBox>
+
 
                         <Grid Width="230"
-                              Grid.Row="5"
+                              Grid.Row="6"
                               Grid.Column="0"
                               VerticalAlignment="Center"
                               Grid.ColumnSpan="4"
