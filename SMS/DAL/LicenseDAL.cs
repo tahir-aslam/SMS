@@ -54,7 +54,6 @@ namespace SMS.DAL
             }
             return i;
         }
-
         public institute get_expiry_OnlineDB() 
         {
             institute ins = new institute();
