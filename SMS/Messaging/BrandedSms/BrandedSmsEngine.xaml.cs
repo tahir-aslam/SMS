@@ -73,9 +73,6 @@ namespace SMS.Messaging.BrandedSms
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-
         }
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
@@ -221,7 +218,7 @@ namespace SMS.Messaging.BrandedSms
                                 {
                                     if (InsertSMSQueueOnline(queue, ConOnline) > 0)
                                     {
-                                        adm_obj.sms_status = "Sent";
+                                        adm_obj.sms_status = "Sent To Server";
                                         submit();
                                         worker.ReportProgress(((i * 100) / std_nos.Count));
                                     }
@@ -338,8 +335,7 @@ namespace SMS.Messaging.BrandedSms
                 {
                     cmd.CommandText = "INSERT INTO sms_sms_queue(receiver_id,receiver_type_id, receiver_cell_no, receiver_name, sms_message, sms_type, sms_type_id, sms_length, sort_order, created_by, date_time, emp_id, is_sent, is_periority, sender_cell_no, sender_com_port, institute_id, institute_name, institute_cell, created_date_time, downloaded_date_time, isEncoded) " +
                         "Values(@receiver_id, @receiver_type_id, @receiver_cell_no, @receiver_name, @sms_message, @sms_type, @sms_type_id, @sms_length, @sort_order, @created_by, @date_time, @emp_id, @is_sent, @is_periority, @sender_cell_no, @sender_com_port, @institute_id, @institute_name, @institute_cell, @created_date_time, @downloaded_date_time, @isEncoded)";
-                    cmd.Connection = con;
-
+                    
                     cmd.Parameters.Add("@receiver_id", MySqlDbType.Int32).Value = obj.receiver_id;
                     cmd.Parameters.Add("@receiver_type_id", MySqlDbType.Int32).Value = obj.receiver_type_id;
                     cmd.Parameters.Add("@receiver_cell_no", MySqlDbType.VarChar).Value = obj.receiver_cell_no;
@@ -364,10 +360,10 @@ namespace SMS.Messaging.BrandedSms
                     cmd.Parameters.Add("@created_date_time", MySqlDbType.DateTime).Value = obj.created_date_time;
                     cmd.Parameters.Add("@downloaded_date_time", MySqlDbType.DateTime).Value = DateTime.Now;
 
+                    cmd.Connection = con;
                     i = Convert.ToInt32(cmd.ExecuteNonQuery());
                     cmd.Parameters.Clear();
                 }
-
             }
             catch (Exception ex)
             {
@@ -405,7 +401,8 @@ namespace SMS.Messaging.BrandedSms
             }
         }
         private void finsish_btn_Click(object sender, RoutedEventArgs e)
-        {
+        {           
+            ConOnline.Close();
             this.Close();
         }
     }
