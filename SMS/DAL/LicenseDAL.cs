@@ -89,8 +89,8 @@ namespace SMS.DAL
                        {
                            ins.check =false;
                        }
-                       
-                   }
+                        con.Close();
+                    }
                }
            }
            catch(Exception ex)

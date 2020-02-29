@@ -38,6 +38,7 @@ namespace SMS.Messaging
         List<sms> sms_list;
         List<friend_list> friends_list;
         public static bool isbranded = false;
+        public static bool isFastSMS = false;
 
         public GeneralSms()
         {
@@ -319,16 +320,32 @@ namespace SMS.Messaging
                     {
                         if (encodedRB.IsChecked == true)
                         {
-                            BrandedSmsEngine bse = new BrandedSmsEngine(std_nos, true);
-                            bse.Show();
+                            if (isFastSMS)
+                            {
+                                BrandedSmsEngine bse = new BrandedSmsEngine(std_nos, true, true);
+                                bse.Show();
+                            }
+                            else
+                            {
+                                BrandedSmsEngine bse = new BrandedSmsEngine(std_nos, true, false);
+                                bse.Show();
+                            }                       
                         }
                         else
                         {
-                            BrandedSmsEngine bse = new BrandedSmsEngine(std_nos, false);
-                            bse.Show();
+                            if (isFastSMS)
+                            {
+                                BrandedSmsEngine bse = new BrandedSmsEngine(std_nos, false, true);
+                                bse.Show();
+                            }
+                            else
+                            {
+                                BrandedSmsEngine bse = new BrandedSmsEngine(std_nos, false, false);
+                                bse.Show();
+                            }
                         }
                     }
-                    else
+                    else 
                     {
                         if (encodedRB.IsChecked == true)
                         {

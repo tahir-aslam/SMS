@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>E:\Softwares\SMS Setups\SMS_15-02-2019\</PublishUrl>
+    <PublishUrl>E:\Softwares\SMS Setups\SMS_26-02-2019_2\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -37,7 +37,7 @@
     <MinimumRequiredVersion>1.0.0.14</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>19</ApplicationRevision>
+    <ApplicationRevision>22</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -766,6 +766,7 @@
     <Compile Include="Models\loadingPanel.cs" />
     <Compile Include="Models\prefix.cs" />
     <Compile Include="Models\rfid_assignment.cs" />
+    <Compile Include="Models\SMSQueue.cs" />
     <Compile Include="Models\sms_account_type.cs" />
     <Compile Include="Models\sms_complaint_from.cs" />
     <Compile Include="Models\sms_complaint_register.cs" />

@@ -59,6 +59,7 @@ namespace SMS.Messaging.SmsOption
         {
             ExamSmsNew.ExamSmsNew.isbranded = true;
             GeneralSms.isbranded = true;
+            GeneralSms.isFastSMS = false;
             AttendenceSms.AttendenceSmsPage.isbranded = true;
             BirthdaySmsPage.isbranded = true;
             EmpAttendanceSmsPage.isbranded = true;
@@ -88,5 +89,22 @@ namespace SMS.Messaging.SmsOption
             this.Close();
         }
 
+        private void FastSMS_Click(object sender, RoutedEventArgs e)
+        {
+            ExamSmsNew.ExamSmsNew.isbranded = true;
+            GeneralSms.isbranded = true;
+            GeneralSms.isFastSMS = true;
+            AttendenceSms.AttendenceSmsPage.isbranded = true;
+            BirthdaySmsPage.isbranded = true;
+            EmpAttendanceSmsPage.isbranded = true;
+            TestSmsPage.isbranded = true;
+            FeeDefaulterSms.isbranded = true;
+            FeePaidSms.isbranded = true;
+            FeesDefaulter.FeesDefaulterSmsPage.isbranded = true;
+            FeesPaid.FeesPaidSMSNew.isbranded = true;
+            Admission.AdmissionSMSPage.isbranded = true;
+            ComplaintRegister.ComplaintSMS.isbranded = true;
+            this.Close();
+        }
     }
 }
