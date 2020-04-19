@@ -42,7 +42,7 @@
                 HorizontalAlignment="Center"
                 Margin="40,10,40,0"
                 Click="FastSMS_Click">
-            <TextBlock Text="SCENARIO Fast SMS"
+            <TextBlock Text="SCENARIO Fast SMS (TRIAL)"
                        FontSize="20"
                        FontFamily="Segoe UI Light"
                        TextWrapping="Wrap"

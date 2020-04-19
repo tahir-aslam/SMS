@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>E:\Softwares\SMS Setups\SMS_26-02-2019_2\</PublishUrl>
+    <PublishUrl>E:\Softwares\SMS Setups\SMS_19-03-2020\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -37,7 +37,7 @@
     <MinimumRequiredVersion>1.0.0.14</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>22</ApplicationRevision>
+    <ApplicationRevision>23</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -426,6 +426,7 @@
     <Compile Include="DAL\AttendanceDAL.cs" />
     <Compile Include="DAL\ClassesDAL.cs" />
     <Compile Include="DAL\ComplaintDAL.cs" />
+    <Compile Include="DAL\Databases.cs" />
     <Compile Include="DAL\DateSheetDAL.cs" />
     <Compile Include="DAL\EmployeesDAL.cs" />
     <Compile Include="DAL\ExamsDAL.cs" />
@@ -2288,6 +2289,12 @@
     <Content Include="Lib\SUT.PrintEngine.dll" />
     <Content Include="Lib\WebcamControl.dll" />
     <Content Include="Lib\WPFToolkit.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SMS.Core\SMS.Core.csproj">
+      <Project>{86b98369-2ba4-4f86-8e38-ca38bbdeeaff}</Project>
+      <Name>SMS.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -139,7 +139,7 @@ namespace SMS.AdminPanel
 
         private void class_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            classes c = (classes)class_cmb.SelectedItem;            
+            classes c = (classes)class_cmb.SelectedItem;
             if (class_cmb.SelectedIndex != 0)
             {
 
@@ -164,11 +164,11 @@ namespace SMS.AdminPanel
             {
                 if (section_cmb.SelectedIndex != 0)
                 {
-                    
+
                 }
                 else
                 {
-                    
+
                 }
             }
 
@@ -183,12 +183,12 @@ namespace SMS.AdminPanel
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
             using (MySqlCommand cmd = new MySqlCommand())
             {
-                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + id + "&& session_id=" + MainWindow.session.id+" ORDER BY adm_no_int ASC";
+                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && section_id=" + id + "&& session_id=" + MainWindow.session.id + " ORDER BY adm_no_int ASC";
                 cmd.Connection = con;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
                 {
-                    con.Open();                    
+                    con.Open();
                     MySqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -220,7 +220,7 @@ namespace SMS.AdminPanel
             bool check = false;
             sections sec = (sections)section_cmb.SelectedItem;
             classes cl = (classes)class_cmb.SelectedItem;
-            if(class_cmb.SelectedIndex == 0)
+            if (class_cmb.SelectedIndex == 0)
             {
 
             }
@@ -228,16 +228,16 @@ namespace SMS.AdminPanel
             {
 
             }
-            else 
+            else
             {
                 check = false;
                 get_all_admissions(sec.id);
                 roll_no = 1;
-                foreach (admission adm in adm_list) 
+                foreach (admission adm in adm_list)
                 {
-                    if (update_admission(adm, roll_no) > 0) 
+                    if (update_admission(adm, roll_no) > 0)
                     {
-                        roll_no++;                        
+                        roll_no++;
                         check = true;
                     }
                 }
@@ -245,24 +245,24 @@ namespace SMS.AdminPanel
                 {
                     get_adm_no(sec.id);
                     delete_last_roll_no(sec.id);
-                    insert_last_roll_no(--roll_no,last_adm_no,cl.id,sec.id);
+                    insert_last_roll_no(--roll_no, last_adm_no, cl.id, sec.id);
                     MessageBox.Show("Successfully Arranged Roll Nos", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
-                else 
+                else
                 {
                     MessageBox.Show("No Record Updated", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                
+
             }
         }
 
-        public int update_admission(admission adm,int roll) 
+        public int update_admission(admission adm, int roll)
         {
             int i = 0;
             try
             {
-            using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+                using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
@@ -272,7 +272,7 @@ namespace SMS.AdminPanel
 
 
                         cmd.Parameters.Add("@id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm.id;
-                        cmd.Parameters.Add("@session_id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = MainWindow.session.id;                        
+                        cmd.Parameters.Add("@session_id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = MainWindow.session.id;
                         cmd.Parameters.Add("@roll_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = roll.ToString();
                         cmd.Parameters.Add("@roll_no_int", MySql.Data.MySqlClient.MySqlDbType.Int32).Value = Convert.ToInt32(roll);
                         cmd.Parameters.Add("@updation", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = "true";
@@ -282,7 +282,38 @@ namespace SMS.AdminPanel
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return i;
+        }
+
+        public int update_admission_nos(admission adm, int admno)
+        {
+            int i = 0;
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.CommandText = "Update sms_admission SET adm_no=@adm_no, adm_no_int=@adm_no_int,updation=@updation WHERE id = @id";
+                        cmd.Connection = con;
+                        //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+                        cmd.Parameters.Add("@id", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm.id;                        
+                        cmd.Parameters.Add("@adm_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = admno.ToString();
+                        cmd.Parameters.Add("@adm_no_int", MySql.Data.MySqlClient.MySqlDbType.Int32).Value = admno;                        
+                        cmd.Parameters.Add("@updation", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = "true";
+                        con.Open();
+                        i = Convert.ToInt32(cmd.ExecuteNonQuery());
+                        con.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -317,7 +348,7 @@ namespace SMS.AdminPanel
         }
 
         //==========       Insert last roll no        ================================
-        public void insert_last_roll_no(int roll,string adm_no, string cl_id, string sec_id)
+        public void insert_last_roll_no(int roll, string adm_no, string cl_id, string sec_id)
         {
             try
             {
@@ -358,7 +389,7 @@ namespace SMS.AdminPanel
                 using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
-                    {                        
+                    {
                         //cmd.CommandText = "GetAllRoles";
                         cmd.CommandText = "SELECT* FROM sms_roll_no";
                         cmd.Connection = con;
@@ -370,7 +401,7 @@ namespace SMS.AdminPanel
                             while (reader.Read())
                             {
                                 if (id == Convert.ToString(reader["section_id"].ToString()))
-                                {                                    
+                                {
                                     last_adm_no = Convert.ToString(reader["last_adm_no"]);
                                     break;
                                 }
@@ -390,7 +421,7 @@ namespace SMS.AdminPanel
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        {            
+        {
             try
             {
                 bool check = false;
@@ -1132,16 +1163,16 @@ namespace SMS.AdminPanel
                 //    }
                 //}
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
                 //if (feesDAL.insertFeesGenerated(generated_fees_list) > 0)
                 //{
                 //    count_TB.Refresh();
@@ -1184,7 +1215,7 @@ namespace SMS.AdminPanel
                 //            if (fees_generated_list.Count > 0)
                 //            {
                 //                #region fees
-                                
+
 
                 //                if (Convert.ToInt32(paid_fee.adm_fee) > 0)
                 //                {
@@ -1500,13 +1531,13 @@ namespace SMS.AdminPanel
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }        
+            }
         }
 
 
 
         public List<fee> get_All_paid_fee()
-        {           
+        {
             List<fee> fees_list = new List<fee>();
             try
             {
@@ -1533,7 +1564,7 @@ namespace SMS.AdminPanel
                                 reg_fee = Convert.ToString(reader["reg_fee_paid"].ToString()),
                                 adm_fee = Convert.ToString(reader["adm_fee_paid"].ToString()),
                                 security_fee = Convert.ToString(reader["security_fee_paid"].ToString()),
-                                exam_fee = Convert.ToString(reader["exam_fee_paid"].ToString()),                               
+                                exam_fee = Convert.ToString(reader["exam_fee_paid"].ToString()),
                                 tution_fee = Convert.ToString(reader["tution_fee_paid"].ToString()),
                                 other_expenses = Convert.ToString(reader["other_exp_paid"].ToString()),
                                 fine_fee = Convert.ToString(reader["fine_fee_paid"].ToString()),
@@ -1554,7 +1585,7 @@ namespace SMS.AdminPanel
             }
             return fees_list;
         }
-        public List<fee> get_all_fee() 
+        public List<fee> get_all_fee()
         {
             List<fee> fee_list = new List<fee>();
 
@@ -1578,7 +1609,7 @@ namespace SMS.AdminPanel
                         while (reader.Read())
                         {
                             fee f = new fee()
-                            {                                
+                            {
                                 reg_fee = Convert.ToString(reader["reg_fee"].ToString()),
                                 tution_fee = Convert.ToString(reader["tution_fee"].ToString()),
                                 exam_fee = Convert.ToString(reader["exam_fee"].ToString()),
@@ -1607,7 +1638,7 @@ namespace SMS.AdminPanel
         {
             sms_voucher sms_voucher_obj = new sms_voucher();
             try
-            {               
+            {
                 sms_voucher_obj.voucher_type = "CRV";
                 sms_voucher_obj.voucher_type_id = 4;
                 sms_voucher_obj.is_posted = "Y";
@@ -1734,7 +1765,7 @@ namespace SMS.AdminPanel
                 debit = 0;
                 credit = 0;
 
-                foreach (var voucher_entry in vouchers_entries_list.Where(x=>x.voucher_id == voucher.id))
+                foreach (var voucher_entry in vouchers_entries_list.Where(x => x.voucher_id == voucher.id))
                 {
                     check = true;
                     debit = debit + voucher_entry.debit;
@@ -1744,14 +1775,14 @@ namespace SMS.AdminPanel
                 {
                     MessageBox.Show("voucher_id=" + voucher.id + " Not exist in sms_voucher_entries");
                 }
-                else 
+                else
                 {
                     if (voucher.amount == debit && voucher.amount == credit)
                     {
                     }
-                    else 
+                    else
                     {
-                        MessageBox.Show("voucher_id=" + voucher.id + " with amount="+voucher.amount+" not equal in sms_voucher_entries with debit="+debit+" credit="+credit);
+                        MessageBox.Show("voucher_id=" + voucher.id + " with amount=" + voucher.amount + " not equal in sms_voucher_entries with debit=" + debit + " credit=" + credit);
                     }
                 }
             }
@@ -1834,16 +1865,52 @@ namespace SMS.AdminPanel
             dataTable.Columns.Add(dataColumn);
         }
         #endregion
-    }
-    public static class ExtensionMethods
-    {
 
-        private static Action EmptyDelegate = delegate() { };
-
-
-        public static void Refresh(this UIElement uiElement)
+        private void arrange_adm_Click(object sender, RoutedEventArgs e)
         {
-            uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
+            AdmissionDAL admDAL = new AdmissionDAL();
+            bool check = false;
+
+            check = false;
+            List<admission> lst = admDAL.get_all_admissions_sessions().OrderBy(x=>x.adm_date).ToList();
+            adm_list = lst;
+            roll_no = 1;
+            foreach (string id in adm_list.Select(x=>x.id).Distinct())
+            {
+                foreach (var adm in adm_list.Where(x=>x.id == id))
+                {
+                    if (update_admission_nos(adm, roll_no) > 0)
+                    {                        
+                    }
+                }
+                roll_no++;
+                check = true;
+            }
+            if (check)
+            {
+                //get_adm_no(sec.id);
+                //delete_last_roll_no(sec.id);
+                //insert_last_roll_no(--roll_no, last_adm_no, cl.id, sec.id);
+                MessageBox.Show("Successfully Admission Nos", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+            else
+            {
+                MessageBox.Show("No Record Updated", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
+}
+public static class ExtensionMethods
+{
+
+    private static Action EmptyDelegate = delegate () { };
+
+
+    public static void Refresh(this UIElement uiElement)
+    {
+        uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
+    }
+
 }

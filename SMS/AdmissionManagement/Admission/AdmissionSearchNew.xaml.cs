@@ -307,7 +307,7 @@ namespace SMS.AdmissionManagement.Admission
             using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
             using (MySqlCommand cmd = new MySqlCommand())
             {
-                cmd.CommandText = "SELECT* FROM sms_admission where is_active='Y' && session_id=" + MainWindow.session.id + " ORDER BY adm_no_int ASC";
+                cmd.CommandText = "SELECT* FROM sms_admission as adm Inner join sms_subjects as subj ON adm.section_id=subj.id where adm.is_active='Y' && adm.session_id=" + MainWindow.session.id + " ORDER BY adm.adm_no_int ASC";
                 cmd.Connection = con;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
                 try
@@ -349,7 +349,7 @@ namespace SMS.AdmissionManagement.Admission
                             class_id = Convert.ToString(reader["class_id"].ToString()),
                             class_name = Convert.ToString(reader["class_name"].ToString()),
                             section_id = Convert.ToString(reader["section_id"].ToString()),
-                            section_name = Convert.ToString(reader["section_name"].ToString()),
+                            section_name = Convert.ToString(reader[61]),
                             roll_no = Convert.ToString(reader["roll_no"].ToString()),
                             adm_no = Convert.ToString(reader["adm_no"].ToString()),
                             transport_fee = Convert.ToString(reader["transport_fee"].ToString()),

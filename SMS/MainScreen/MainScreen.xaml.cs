@@ -54,6 +54,7 @@ using SMS.ExamsManagement.ExamDataEntry;
 using SMS.ExamsManagement.GeneralAwardList;
 using SMS.ExamManagement.DateSheet;
 using SMS.Reports.Exams.TeacherEvaluation;
+using SMS.Core.Services;
 
 namespace SMS.MainScreen
 {
@@ -67,6 +68,7 @@ namespace SMS.MainScreen
         public bool IsInternetConnection = false;
         public DateTime OnlineDate;
         private MainWindow m_MainWindow;
+        RequestService m_RequestService;
 
         public MainScreen()
         {
@@ -77,13 +79,13 @@ namespace SMS.MainScreen
             dispatcherTimer.Start();
             InitializeComponent();
 
+            m_RequestService = new RequestService();
+
             this.session_name_tb.Text = MainWindow.session.session_name;
             day_textblock.Text = DateTime.Now.ToString("D");
             this.mainFrame.Navigate(new Start());
             institute_name_lbl.Content = MainWindow.ins.institute_name;
             institute_logo_img.Source = MainWindow.ByteToImage(MainWindow.ins.institute_logo);
-
-
         }
         public MainScreen(int i)
         {
@@ -3006,6 +3008,7 @@ namespace SMS.MainScreen
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             apply_emp_roles_list();
+
             BackgroundWorker worker = new BackgroundWorker();
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
@@ -3095,29 +3098,42 @@ namespace SMS.MainScreen
             {
                 if (MainWindow.CheckForInternetConnection())
                 {
-                    IsInternetConnection = true;                    
-
-                    LicenseDAL dal = new LicenseDAL();
+                    IsInternetConnection = true;
                     try
                     {
+                        OnlineDate = MainWindow.GetNistTime();
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show("Failed To get online date ex: " + ex.Message);
+                        OnlineDate = DateTime.Now;
+                        //throw ex;
+                    }
+
+                    if (m_RequestService.PingServer().Result)
+                    {
+                        LicenseDAL dal = new LicenseDAL();
                         try
                         {
-                            OnlineDate = MainWindow.GetNistTime();
+                            dal.inser_login_log_OnlineDB();
+                            institute ins = dal.get_expiry_OnlineDB();
+                            if (ins.check)
+                            {
+                                dal.update_sms_institute_local(ins);
+                            }
+                            else
+                            {
+                                institute obj = new institute();
+                                obj.expiry_date = DateTime.Now;
+                                obj.expiry_message = MainWindow.ins.expiry_message;
+                                obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
+                                obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
+                                obj.expiry_instant = "Y";
+                                dal.update_sms_institute_local(obj);
+                                //MessageBox.Show("Failed To Get Intitute Information Online");                            
+                            }
                         }
                         catch (Exception ex)
-                        {
-                            //MessageBox.Show("Failed To get online date ex: " + ex.Message);
-                            OnlineDate = DateTime.Now;
-                            //throw ex;
-                        }
-
-                        dal.inser_login_log_OnlineDB();
-                        institute ins = dal.get_expiry_OnlineDB();
-                        if (ins.check)
-                        {
-                            dal.update_sms_institute_local(ins);
-                        }
-                        else
                         {
                             institute obj = new institute();
                             obj.expiry_date = DateTime.Now;
@@ -3126,21 +3142,13 @@ namespace SMS.MainScreen
                             obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
                             obj.expiry_instant = "Y";
                             dal.update_sms_institute_local(obj);
-                            //MessageBox.Show("Failed To Get Intitute Information Online");                            
-                        }                        
-                    }
-                    catch (Exception ex)
-                    {
-                        institute obj = new institute();
-                        obj.expiry_date = DateTime.Now;
-                        obj.expiry_message = MainWindow.ins.expiry_message;
-                        obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
-                        obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
-                        obj.expiry_instant = "Y";
-                        dal.update_sms_institute_local(obj);
 
-                        //MessageBox.Show("InternetConnection=true ex: "+ex.Message);
-                        throw ex;
+                            //MessageBox.Show("InternetConnection=true ex: "+ex.Message);
+                            throw ex;
+                        }
+                    }
+                    else
+                    {                        
                     }
                 }
                 else

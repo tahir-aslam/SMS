@@ -225,21 +225,28 @@ namespace SMS.AdmissionManagement.PromoteStudents
        
         private void create_btn_Click(object sender, RoutedEventArgs e)
         {
-            adm_list_new = new List<admission>();
-            foreach(admission adm in adm_list.Where(x=>x.Checked == true))
+            try
             {
-                adm_list_new.Add(adm);
-            }
+                adm_list_new = new List<admission>();
+                foreach (admission adm in adm_list.Where(x => x.Checked == true))
+                {
+                    adm_list_new.Add(adm);
+                }
 
 
-            if (adm_list_new.Count > 0)
-            {
-                PromoteStudentForm psf = new PromoteStudentForm(adm_list_new);
-                psf.ShowDialog();
+                if (adm_list_new.Count > 0)
+                {
+                    PromoteStudentForm psf = new PromoteStudentForm(adm_list_new);
+                    psf.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Please Select Minimum One Student To Promote", "Stop", MessageBoxButton.OK, MessageBoxImage.Stop);
+                }
             }
-            else 
+            catch (Exception ex)
             {
-                MessageBox.Show("Please Select Minimum One Student To Promote","Stop",MessageBoxButton.OK,MessageBoxImage.Stop);
+                MessageBox.Show(ex.Message);
             }
         }
     }

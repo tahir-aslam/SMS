@@ -273,6 +273,7 @@ namespace SMS.Messaging.BrandedSms
                 cancel_btn.Visibility = Visibility.Hidden;
                 finsish_btn.Visibility = Visibility.Visible;
                 this.status_textblock.Text = "  Successfully Sent!";
+                CloseConnection();
             }
         }
         private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -402,8 +403,23 @@ namespace SMS.Messaging.BrandedSms
         }
         private void finsish_btn_Click(object sender, RoutedEventArgs e)
         {           
-            ConOnline.Close();
+            //ConOnline.Close();
             this.Close();
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            CloseConnection();
+        }
+        void CloseConnection()
+        {
+            try
+            {
+                ConOnline.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message);
+            }
         }
     }
 }
