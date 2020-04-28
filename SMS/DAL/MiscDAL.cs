@@ -269,6 +269,18 @@ namespace SMS.DAL
             return databases_list;
         }
 
-
+        public MySqlConnection OpenOnlineDatabaseConnection()
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(Connection_String.tahir123_sms_security);
+                con.Open();
+                return con;
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
