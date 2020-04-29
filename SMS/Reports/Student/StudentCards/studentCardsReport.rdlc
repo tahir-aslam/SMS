@@ -42,7 +42,7 @@
                                 <TextRun>
                                   <Value>=Fields!institute_name.Value</Value>
                                   <Style>
-                                    <FontFamily>Cooper Black</FontFamily>
+                                    <FontFamily>Calibri</FontFamily>
                                     <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
