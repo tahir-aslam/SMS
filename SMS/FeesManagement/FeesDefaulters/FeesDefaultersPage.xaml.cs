@@ -220,7 +220,14 @@ namespace SMS.FeesManagement.FeesDefaulters
             {
                 filter();
             }
-        }        
+        }
+        private void defaulter_type_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (defaulter_type_cmb.SelectedItem != null)
+            {
+                filter();
+            }
+        }
 
         void filter()
         {
@@ -229,7 +236,7 @@ namespace SMS.FeesManagement.FeesDefaulters
             cv.Filter = o =>
             {
                 sms_fees f = o as sms_fees;
-                if (getMonth(f) && getYear(f) && getFeesCategory(f) && getClasses(f) && getSections(f))
+                if (getMonth(f) && getYear(f) && getFeesCategory(f) && getClasses(f) && getSections(f) && getDefaulterType(f))
                 {
                     return true;
                 }
@@ -282,8 +289,23 @@ namespace SMS.FeesManagement.FeesDefaulters
                 return false;
             }
             return true;
-        }        
-
+        }
+        bool getDefaulterType(sms_fees f)
+        {
+            if (defaulter_type_cmb.SelectedIndex == 1 && f.adm_is_active == "N")
+            {
+                return true;
+            }
+            else if (defaulter_type_cmb.SelectedIndex == 2 && f.adm_is_active == "Y")
+            {
+                return true;
+            }
+            else if(defaulter_type_cmb.SelectedIndex == 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
         void clearAllFilters()
         {
@@ -291,7 +313,8 @@ namespace SMS.FeesManagement.FeesDefaulters
             year_cmb.SelectedIndex = 0;
             fees_category_cmb.SelectedIndex = 0;
             class_cmb.SelectedIndex = 0;
-            section_cmb.SelectedIndex = 0;            
+            section_cmb.SelectedIndex = 0;
+            defaulter_type_cmb.SelectedIndex = 0;  
         }
 
         private void clear_btn_Click(object sender, RoutedEventArgs e)
@@ -432,5 +455,7 @@ namespace SMS.FeesManagement.FeesDefaulters
             FeesDefaulterReportWindow window = new FeesDefaulterReportWindow(list,isGrouped);
             window.Show();
         }
+
+       
     }
 }

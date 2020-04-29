@@ -33,6 +33,7 @@ namespace SMS.Models
         public DateTime due_date { get; set; }
         public int session_id { get; set; }
         public string is_active { get; set; }
+        public string adm_is_active { get; set; }
         public string created_by { get; set; }
         public int emp_id { get; set; }
         public DateTime date_time { get; set; }
@@ -68,6 +69,7 @@ namespace SMS.Models
         public string roll_no { set; get; }
         public string cell_no { set; get; }
         public bool isChecked { set; get; }
+        
 
         //Fees Collection Place
         public int fees_collection_place_id { get; set; }

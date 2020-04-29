@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Common", "SMS.Common\SM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.DAL", "SMS.DAL\SMS.DAL.csproj", "{9DE549EC-84FA-48D3-BA15-710A4477D364}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Core", "SMS.Core\SMS.Core.csproj", "{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,18 @@ Global
 		{9DE549EC-84FA-48D3-BA15-710A4477D364}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9DE549EC-84FA-48D3-BA15-710A4477D364}.Release|x86.ActiveCfg = Release|Any CPU
 		{9DE549EC-84FA-48D3-BA15-710A4477D364}.Release|x86.Build.0 = Release|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

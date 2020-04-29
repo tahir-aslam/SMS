@@ -1060,7 +1060,7 @@ namespace SMS.AdmissionManagement.Admission
             
             last_roll++;
             
-            roll_format = roll_format + last_roll.ToString("D3");
+            roll_format = roll_format + last_roll.ToString();
             roll_textbox.Text = roll_format;
 
             last_adm = Convert.ToInt32(roll_no.last_adm_no);
@@ -1069,7 +1069,7 @@ namespace SMS.AdmissionManagement.Admission
                 
                 last_adm = Convert.ToInt32(roll_no.last_adm_no);
                 last_adm++;
-                adm_textbox.Text = last_adm.ToString("D6");
+                adm_textbox.Text = last_adm.ToString();
             }
         }
 
@@ -1194,8 +1194,14 @@ namespace SMS.AdmissionManagement.Admission
                         cmd.Connection = con;
                         //cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                                               
-                        cmd.Parameters.Add("@adm_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = last_adm;
+                        if (mode == "edit")
+                        {
+                            cmd.Parameters.Add("@adm_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = last_adm;
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add("@adm_no", MySql.Data.MySqlClient.MySqlDbType.VarChar).Value = adm_obj.adm_no_int;
+                        }
                         con.Open();
 
                         cmd.ExecuteScalar();
@@ -1288,8 +1294,6 @@ namespace SMS.AdmissionManagement.Admission
 
         private void section_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
-
             sections s = (sections)section_cmb.SelectedItem;
             if (s != null)
             {

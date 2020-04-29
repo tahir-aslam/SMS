@@ -26,7 +26,7 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
         List<string> list_string;
         FixedDocument fd;
         Border br;
-        public SLCWindow( admission adm)
+        public SLCWindow( admission adm, Visibility visibility)
         {
             InitializeComponent();
             this.adm_obj = adm;
@@ -35,7 +35,7 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
             adm_obj.exam_fee = adm.withdrawal_date.ToString("MMMM yyyy") + ".";
             fill_control();
             this.DataContext = adm_obj;
-
+            v_institute_grid.Visibility = visibility;
             
             //this.RemoveLogicalChild(slc_border);
             //this.RemoveVisualChild(slc_border);

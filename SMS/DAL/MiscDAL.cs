@@ -236,6 +236,51 @@ namespace SMS.DAL
             return list;
         }
 
-        
+        public List<Databases> get_all_databases()
+        {
+            List<Databases> databases_list = new List<Databases>();
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        //cmd.CommandText = "GetAllRoles";
+                        cmd.CommandText = "SHOW DATABASES;";
+                        cmd.Connection = con;
+                        //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
+                        con.Open();
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Databases obj = new Databases()
+                            {
+                                DatabaseName = Convert.ToString(reader[0]),                                
+                            };
+                            databases_list.Add(obj);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return databases_list;
+        }
+
+        public MySqlConnection OpenOnlineDatabaseConnection()
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(Connection_String.tahir123_sms_security);
+                con.Open();
+                return con;
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

@@ -1,21 +1,61 @@
 ﻿<Window x:Class="SMS.Messaging.SmsOption.OptionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="OptionWindow" Height="260" Width="380"  ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Black" BorderBrush="#FFDB1C1C" Foreground="#FFF6EDED">
+        Title="OptionWindow"
+        Height="260"
+        Width="480"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="Black"
+        BorderBrush="#FFDB1C1C"
+        Foreground="#FFF6EDED">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
-        <Button Grid.Row="0" HorizontalAlignment="Right" Content="Close" Margin="0,0,5,0" Width="70" Click="Button_Click_2" />
-        <Label Grid.Row="1" Content="Select Option" Foreground="White"/>
-        <Button Grid.Row="2" Width="120" Height="120" HorizontalAlignment="Left" Margin="40,10,0,0" Click="Button_Click">
-            <Image Source="/SMS;component/images/tplink.jpg" Margin="0"/>
+
+        <Button Grid.Row="0"
+                HorizontalAlignment="Right"
+                Content="Close"
+                Margin="0,0,5,0"
+                Width="70"
+                Click="Button_Click_2" />
+        <Label Grid.Row="1"
+               Content="Select Option"
+               Foreground="White" />
+        <Button Grid.Row="2"
+                Width="120"
+                Height="120"
+                HorizontalAlignment="Left"
+                Margin="40,10,0,0"
+                Click="Button_Click">
+            <Image Source="/SMS;component/images/tplink.jpg"
+                   Margin="0" />
         </Button>
-        <Button Grid.Row="2" Width="120" Height="120" HorizontalAlignment="Right" Margin="0,10,40,00" Click="Button_Click_1">
-            <Image Source="/SMS;component/images/branded_sms.png" Margin="0"/>
+        <Button Grid.Row="2"
+                Width="120"
+                Name="FastSMS"
+                Height="120"
+                HorizontalAlignment="Center"
+                Margin="40,10,40,0"
+                Click="FastSMS_Click">
+            <TextBlock Text="SCENARIO Fast SMS (TRIAL)"
+                       FontSize="20"
+                       FontFamily="Segoe UI Light"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"></TextBlock>
+        </Button>
+        <Button Grid.Row="2"
+                Width="120"
+                Height="120"
+                HorizontalAlignment="Right"
+                Margin="0,10,40,0"
+                Click="Button_Click_1">
+            <Image Source="/SMS;component/images/branded_sms.png"
+                   Margin="0" />
         </Button>
 
     </Grid>

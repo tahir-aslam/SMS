@@ -332,7 +332,7 @@ namespace SMS.DAL
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         //cmd.CommandText = "GetAllRoles";
-                        cmd.CommandText = "SELECT* FROM sms_fees_generated As fee INNER JOIN sms_admission As adm ON fee.std_id = adm.id where adm.session_id=@session_id && fee.rem_amount > 0 ";
+                        cmd.CommandText = "SELECT* FROM sms_fees_generated As fee INNER JOIN sms_admission As adm ON fee.std_id = adm.id where adm.session_id=(select adm_inner.session_id from sms_admission as adm_inner where adm_inner.id=fee.std_id order by adm_inner.session_id DESC Limit 1) && fee.rem_amount > 0 ";
                         cmd.Connection = con;
                         cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = MainWindow.session.id;
                         //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
@@ -364,6 +364,7 @@ namespace SMS.DAL
                                 due_date = Convert.ToDateTime(reader["due_date"]),
                                 session_id = Convert.ToInt32(reader["session_id"].ToString()),
                                 is_active = Convert.ToString(reader["is_active"].ToString()),
+                                adm_is_active = Convert.ToString(reader[64].ToString()),
                                 created_by = Convert.ToString(reader["created_by"].ToString()),
                                 emp_id = Convert.ToInt32(reader["emp_id"].ToString()),
                                 date_time = Convert.ToDateTime(reader["date_time"].ToString()),

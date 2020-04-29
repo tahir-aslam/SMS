@@ -27,6 +27,18 @@
                     <Button Click="click_refresh" ToolTipService.ToolTip="Refresh" Height="35" Width="50">
                         <Image Source="/SMS;component/images/Refresh.png" />
                     </Button>
+                    <Button ToolTipService.ToolTip="Institute Leaving Certificate Without Header"
+                            Height="35"
+                            Width="150"
+                            Name="print_btn_without"
+                            Click="print_btn_without_Click"
+                            Content="SLC Without Header"
+                            BorderBrush="Black"
+                            FontSize="15"
+                            Background="AliceBlue"
+                            BorderThickness="5">
+
+                    </Button>
                     <Button ToolTipService.ToolTip="Institute Leaving Certificate" Height="35" Width="50" Name="print_btn" Click="print_btn_Click" Content="SLC" BorderBrush="Black" FontSize="15" Background="AliceBlue" BorderThickness="5">
                         
                     </Button>

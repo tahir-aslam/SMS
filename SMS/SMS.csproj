@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>E:\Softwares\SMS Setups\SMS_21-01-2019\</PublishUrl>
+    <PublishUrl>E:\Softwares\SMS Setups\SMS_19-03-2020\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -31,15 +31,16 @@
     <UpdateUrl>http://sms.scenariosystem.com/</UpdateUrl>
     <SupportUrl>http://scenariosystem.com</SupportUrl>
     <ErrorReportUrl>http://scenariosystem.com</ErrorReportUrl>
-    <ProductName>Scenario School Management Software</ProductName>
+    <ProductName>Scenario Institute Management Software</ProductName>
     <PublisherName>Scenario Systems</PublisherName>
     <SuiteName>Scenario</SuiteName>
-    <MinimumRequiredVersion>1.0.0.7</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.14</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>23</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -425,6 +426,7 @@
     <Compile Include="DAL\AttendanceDAL.cs" />
     <Compile Include="DAL\ClassesDAL.cs" />
     <Compile Include="DAL\ComplaintDAL.cs" />
+    <Compile Include="DAL\Databases.cs" />
     <Compile Include="DAL\DateSheetDAL.cs" />
     <Compile Include="DAL\EmployeesDAL.cs" />
     <Compile Include="DAL\ExamsDAL.cs" />
@@ -765,6 +767,7 @@
     <Compile Include="Models\loadingPanel.cs" />
     <Compile Include="Models\prefix.cs" />
     <Compile Include="Models\rfid_assignment.cs" />
+    <Compile Include="Models\SMSQueue.cs" />
     <Compile Include="Models\sms_account_type.cs" />
     <Compile Include="Models\sms_complaint_from.cs" />
     <Compile Include="Models\sms_complaint_register.cs" />
@@ -1939,6 +1942,7 @@
     <EmbeddedResource Include="EmployeeManagement\EmployeeSalarySheetBio\EmployeeSalarySheetReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\SalarySheet\SalarySheetReport.rdlc" />
     <EmbeddedResource Include="ExamsManagement\GeneralAwardList\ExamGeneralAwardListReportRDLC.rdlc" />
+    <EmbeddedResource Include="ExamsManagement\ResultCard\ResultCardReport - Copy.rdlc" />
     <EmbeddedResource Include="ExamsManagement\ResultCard\ResultCardReport.rdlc" />
     <EmbeddedResource Include="ExamsManagement\RollNoSlips\RollNoSlipReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountReport.rdlc" />
@@ -2205,14 +2209,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.ReportViewer.12.0">
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft Report Viewer 2014 Runtime</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
+      <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
@@ -2290,6 +2289,12 @@
     <Content Include="Lib\SUT.PrintEngine.dll" />
     <Content Include="Lib\WebcamControl.dll" />
     <Content Include="Lib\WPFToolkit.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SMS.Core\SMS.Core.csproj">
+      <Project>{86b98369-2ba4-4f86-8e38-ca38bbdeeaff}</Project>
+      <Name>SMS.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

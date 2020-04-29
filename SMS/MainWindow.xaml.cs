@@ -32,10 +32,9 @@ namespace SMS
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static string Database = "sms";
-        public static string Server = "localhost";
-        public static string Port = "3306";
-        public static string Uid = "root";
+        public static string Server { get; set; }
+        public static string Port { get; set; }
+        public static string Uid { get; set; }
 
         public static institute ins;
         public static session session;
@@ -61,6 +60,7 @@ namespace SMS
         public static List<prefixNo> adm_no_prefix_list;
         public static List<prefixNo> roll_no_prefix_list;
         public static List<CityArea> area_list;
+        public static List<Databases> database_list;
 
         //Default Values
         // default d
@@ -73,35 +73,59 @@ namespace SMS
         RolesDAL rolesDAL;
 
 
+        private static string _Database;
+        public static string Database
+        {
+            get
+            {
+                return _Database;
+            }
+            set
+            {
+                _Database = value;
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
-            Application.Current.MainWindow.WindowState = WindowState.Maximized;
-            ReadDatabaseFile();
-            usr_name.Focus();
-            get_sms_institute();
-            institute_name_lbl.Content = ins.institute_name;
-            institute_logo_img.Source = ByteToImage(ins.institute_logo);
-            check();
-            //var c1 = ConfigurationManager.ConnectionStrings["sms"].ConnectionString;
-            //var c2 = ConfigurationManager.ConnectionStrings["web_sms"].ConnectionString;
-            //sms = c1;
-            //web_sms = c2;
-
-            get_all_sessions();
-            session_cmb.ItemsSource = session_list;
-            session_cmb.SelectedIndex = session_list.Count - 1;
-
-            get_exam_admin_panel();
-            get_fee_admin_panel();
-            //get_fees_admin_panel();
 
             try
             {
+                Database = "sms";
+                Server = "localhost";
+                Port = "3306";
+                Uid = "root";
+
+                Application.Current.MainWindow.WindowState = WindowState.Maximized;
+                ReadDatabaseFile();
+                usr_name.Focus();
+                get_sms_institute();
+                institute_name_lbl.Content = ins.institute_name;
+                institute_logo_img.Source = ByteToImage(ins.institute_logo);
+                //check();
+                //var c1 = ConfigurationManager.ConnectionStrings["sms"].ConnectionString;
+                //var c2 = ConfigurationManager.ConnectionStrings["web_sms"].ConnectionString;
+                //sms = c1;
+                //web_sms = c2;            
+                get_exam_admin_panel();
+                get_fee_admin_panel();
+                get_fees_admin_panel();
+
+
                 //new fees  
                 feesDAL = new FeesDAL();
                 miscDAL = new MiscDAL();
                 rolesDAL = new RolesDAL();
+
+                get_all_sessions();
+                session_cmb.ItemsSource = session_list;
+                session_cmb.SelectedIndex = session_list.Count - 1;
+
+                database_list = miscDAL.get_all_databases();
+                database_cmb.ItemsSource = database_list;
+                database_cmb.SelectedIndex = database_list.IndexOf(database_list.Where(x => x.DatabaseName == Database).First());
+
 
                 fees_category_list = feesDAL.get_all_fees_category();
                 fees_sub_category_list = feesDAL.get_all_fees_sub_category();
@@ -131,9 +155,6 @@ namespace SMS
                 Environment.Exit(0);
             }
         }
-
-
-
 
         public void get_exam_admin_panel()
         {
@@ -676,17 +697,17 @@ namespace SMS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (CheckForInternetConnection())
-            {
-                if (GetNistTime().Date.Equals(DateTime.Now.Date))
-                {
+            //if (CheckForInternetConnection())
+            //{
+            //    if (GetNistTime().Date.Equals(DateTime.Now.Date))
+            //    {
 
-                }
-                else
-                {
-                    MessageBox.Show("Please Correct Your System Date Time", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-            }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Please Correct Your System Date Time", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //    }
+            //}
         }
 
         void WriteLogFile()
@@ -723,7 +744,7 @@ namespace SMS
             var spFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var folderPath = Path.Combine(spFolderPath, "ScenarioSystems", "SMS");
             var filePath = Path.Combine(folderPath, fileName);
-            
+
             try
             {
                 //using (StreamReader sr = new StreamReader(spFolderPath + "Database.txt"))
@@ -755,7 +776,7 @@ namespace SMS
             }
             catch (Exception e)
             {
-                Directory.CreateDirectory(folderPath);      
+                Directory.CreateDirectory(folderPath);
                 using (StreamWriter outputFile = new StreamWriter(Path.Combine(folderPath, fileName)))
                 {
                     outputFile.WriteLine("localhost");
@@ -764,6 +785,35 @@ namespace SMS
                     outputFile.WriteLine("root");
                 }
             }
+        }
+
+        private void help_button_Click(object sender, RoutedEventArgs e)
+        {
+            if (database_cmb.IsEnabled)
+            {
+                database_cmb.IsEnabled = false;
+            }
+            else
+            {
+                database_cmb.IsEnabled = true;
+            }
+        }
+
+        private void database_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (database_cmb.SelectedItem != null)
+            {
+                Databases obj = database_cmb.SelectedItem as Databases;
+                Database = obj.DatabaseName;
+                Connection_String.con_string = "Server=" + Server + "; port=" + Port + "; Database=" + Database + "; Uid=" + Uid + "; Pwd=7120020@123; default command timeout=99999;CHARSET=utf8";
+                get_sms_institute();
+                institute_name_lbl.Content = ins.institute_name;
+                institute_logo_img.Source = ByteToImage(ins.institute_logo);
+            }
+        }
+        public static string GetSelectedDatabaseName()
+        {
+            return Database;
         }
     }
 }

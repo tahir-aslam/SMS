@@ -54,6 +54,8 @@ using SMS.ExamsManagement.ExamDataEntry;
 using SMS.ExamsManagement.GeneralAwardList;
 using SMS.ExamManagement.DateSheet;
 using SMS.Reports.Exams.TeacherEvaluation;
+using SMS.Core.Services;
+using MySql.Data.MySqlClient;
 
 namespace SMS.MainScreen
 {
@@ -67,6 +69,9 @@ namespace SMS.MainScreen
         public bool IsInternetConnection = false;
         public DateTime OnlineDate;
         private MainWindow m_MainWindow;
+        RequestService m_RequestService;
+        MiscDAL misDAL;
+        LicenseDAL licenseDAL;
 
         public MainScreen()
         {
@@ -77,13 +82,15 @@ namespace SMS.MainScreen
             dispatcherTimer.Start();
             InitializeComponent();
 
+            m_RequestService = new RequestService();
+            misDAL = new MiscDAL();
+            licenseDAL = new LicenseDAL();
+
             this.session_name_tb.Text = MainWindow.session.session_name;
             day_textblock.Text = DateTime.Now.ToString("D");
             this.mainFrame.Navigate(new Start());
             institute_name_lbl.Content = MainWindow.ins.institute_name;
             institute_logo_img.Source = MainWindow.ByteToImage(MainWindow.ins.institute_logo);
-
-
         }
         public MainScreen(int i)
         {
@@ -759,7 +766,7 @@ namespace SMS.MainScreen
             emp_attnd.Foreground = Brushes.Black;
         }
 
-       
+
 
         private void add_emp_Click(object sender, RoutedEventArgs e)
         {
@@ -3006,6 +3013,7 @@ namespace SMS.MainScreen
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             apply_emp_roles_list();
+
             BackgroundWorker worker = new BackgroundWorker();
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
@@ -3037,7 +3045,7 @@ namespace SMS.MainScreen
 
 
                 if (MainWindow.ins.expiry_instant == "Y")
-                {                    
+                {
                     MainWindow mw = new MainWindow();
                     mw.Show();
                     this.Close();
@@ -3047,7 +3055,7 @@ namespace SMS.MainScreen
                 else
                 {
                     if (DateTime.Now.Date >= MainWindow.ins.expiry_date)
-                    {                       
+                    {
 
                         LicenseDAL dal = new LicenseDAL();
                         institute obj = new institute();
@@ -3070,7 +3078,7 @@ namespace SMS.MainScreen
                     }
                     else
                     {
-                       //Run and enjoy software
+                        //Run and enjoy software
                     }
                 }
             }
@@ -3091,56 +3099,72 @@ namespace SMS.MainScreen
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
+            MySqlConnection mySqlConnection;
             try
             {
                 if (MainWindow.CheckForInternetConnection())
                 {
-                    IsInternetConnection = true;                    
-
-                    LicenseDAL dal = new LicenseDAL();
+                    IsInternetConnection = true;
                     try
                     {
-                        try
-                        {
-                            OnlineDate = MainWindow.GetNistTime();
-                        }
-                        catch (Exception ex)
-                        {
-                            //MessageBox.Show("Failed To get online date ex: " + ex.Message);
-                            OnlineDate = DateTime.Now;
-                            //throw ex;
-                        }
-
-                        dal.inser_login_log_OnlineDB();
-                        institute ins = dal.get_expiry_OnlineDB();
-                        if (ins.check)
-                        {
-                            dal.update_sms_institute_local(ins);
-                        }
-                        else
-                        {
-                            institute obj = new institute();
-                            obj.expiry_date = DateTime.Now;
-                            obj.expiry_message = MainWindow.ins.expiry_message;
-                            obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
-                            obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
-                            obj.expiry_instant = "Y";
-                            dal.update_sms_institute_local(obj);
-                            //MessageBox.Show("Failed To Get Intitute Information Online");                            
-                        }                        
+                        OnlineDate = MainWindow.GetNistTime();
                     }
                     catch (Exception ex)
                     {
-                        institute obj = new institute();
-                        obj.expiry_date = DateTime.Now;
-                        obj.expiry_message = MainWindow.ins.expiry_message;
-                        obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
-                        obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
-                        obj.expiry_instant = "Y";
-                        dal.update_sms_institute_local(obj);
+                        //MessageBox.Show("Failed To get online date ex: " + ex.Message);
+                        OnlineDate = DateTime.Now;
+                        //throw ex;
+                    }
 
-                        //MessageBox.Show("InternetConnection=true ex: "+ex.Message);
-                        throw ex;
+                    if (m_RequestService.PingServer().Result)
+                    {
+                        try
+                        {
+                            mySqlConnection = misDAL.OpenOnlineDatabaseConnection();
+
+                            try
+                            {
+                                licenseDAL.inser_login_log_OnlineDB(mySqlConnection);
+                                institute ins = licenseDAL.get_expiry_OnlineDB(mySqlConnection);
+                                
+                                if (ins.check)
+                                {
+                                    licenseDAL.update_sms_institute_local(ins);
+                                }
+                                else
+                                {
+                                    institute obj = new institute();
+                                    obj.expiry_date = DateTime.Now;
+                                    obj.expiry_message = MainWindow.ins.expiry_message;
+                                    obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
+                                    obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
+                                    obj.expiry_instant = "Y";
+                                    licenseDAL.update_sms_institute_local(obj);
+                                    //MessageBox.Show("Failed To Get Intitute Information Online");                            
+                                }
+                                mySqlConnection.Close();
+                            }
+                            catch (Exception ex)
+                            {
+                                institute obj = new institute();
+                                obj.expiry_date = DateTime.Now;
+                                obj.expiry_message = MainWindow.ins.expiry_message;
+                                obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
+                                obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
+                                obj.expiry_instant = "Y";
+                                licenseDAL.update_sms_institute_local(obj);
+
+                                //MessageBox.Show("InternetConnection=true ex: "+ex.Message);
+                                throw ex;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+                    else
+                    {
                     }
                 }
                 else
@@ -3157,6 +3181,5 @@ namespace SMS.MainScreen
                 //Environment.Exit(0);
             }
         }
-        
     }
 }
