@@ -53,7 +53,7 @@ namespace SMS.Models
         public string sms_type { set; get; }
         public bool Checked { get; set; }
         public string remarks { set; get; }
-        public DateTime withdrawal_date { set; get; }
+        public DateTime? withdrawal_date { set; get; }
         public string institute_name { set; get; }
         public byte[] institute_logo { set; get; }
         public int session_id { get; set; }

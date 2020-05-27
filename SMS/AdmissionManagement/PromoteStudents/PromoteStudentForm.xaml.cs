@@ -248,33 +248,40 @@ namespace SMS.AdmissionManagement.PromoteStudents
 
         public void promote_students() 
         {
-            classes cl = (classes)class_cmb.SelectedItem;
-            sections sec = (sections)section_cmb.SelectedItem;
-            int roll_no=0;
-
-            foreach(admission adm in adm_list)
+            try
             {
-                if (reArrangeRollNoCheckBox.IsChecked == true)
-                {
-                    roll_no++;                    
-                }
-                else
-                {
-                    roll_no = adm.roll_no_int;
-                }
+                classes cl = (classes)class_cmb.SelectedItem;
+                sections sec = (sections)section_cmb.SelectedItem;
+                int roll_no = 0;
 
-                adm.roll_no_int = roll_no;
-                adm.roll_no = MainWindow.roll_no_prefix_list.Where(x => x.id == adm.roll_no_prefix_id).FirstOrDefault().prefix_abbreviation+ roll_no;
-                //adm.adm_no = MainWindow.adm_no_prefix_list.Where(x => x.id == adm.adm_no_prefix_id).FirstOrDefault().prefix_abbreviation + adm.adm_no_int;
-
-                if (submit(adm, cl, sec) > 0) 
+                foreach (admission adm in adm_list)
                 {
-                    
+                    if (reArrangeRollNoCheckBox.IsChecked == true)
+                    {
+                        roll_no++;
+                    }
+                    else
+                    {
+                        roll_no = adm.roll_no_int;
+                    }
+
+                    adm.roll_no_int = roll_no;
+                    adm.roll_no = MainWindow.roll_no_prefix_list.Where(x => x.id == adm.roll_no_prefix_id).FirstOrDefault().prefix_abbreviation + roll_no;
+                    //adm.adm_no = MainWindow.adm_no_prefix_list.Where(x => x.id == adm.adm_no_prefix_id).FirstOrDefault().prefix_abbreviation + adm.adm_no_int;
+
+                    if (submit(adm, cl, sec) > 0)
+                    {
+
+                    }
                 }
+                MessageBox.Show("Successfull Promoted", "Stop", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+                class_cmb.SelectedIndex = 0;
             }
-            MessageBox.Show("Successfull Promoted","Stop",MessageBoxButton.OK,MessageBoxImage.Information);
-            this.Close();
-            class_cmb.SelectedIndex = 0;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public int submit(admission adm_obj,classes cl_obj, sections sec_obj) 

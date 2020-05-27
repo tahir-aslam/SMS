@@ -31,8 +31,8 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
             InitializeComponent();
             this.adm_obj = adm;
             adm_obj.adm_fee = adm.adm_date.ToString("dd MMMM yyyy");
-            adm_obj.reg_fee = adm.withdrawal_date.ToString("dd MMMM yyyy")+"";
-            adm_obj.exam_fee = adm.withdrawal_date.ToString("MMMM yyyy") + ".";
+            adm_obj.reg_fee = adm.withdrawal_date.Value.ToString("dd MMMM yyyy")+"";
+            adm_obj.exam_fee = adm.withdrawal_date.Value.ToString("MMMM yyyy") + ".";
             fill_control();
             this.DataContext = adm_obj;
             v_institute_grid.Visibility = visibility;

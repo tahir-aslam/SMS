@@ -437,11 +437,11 @@ namespace SMS.Messaging.FeesDefaulter
                         if (fees_category_cmb.SelectedIndex > 0)
                         {                            
                             //show only fees category not all if filter for specific category
-                            message = "Respected Parents: Kindly pay " + f.std_name + "'s " + category + " of month(s) " + f.month_name_group + " to the Institute. Thank you. Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
+                            message = "Respected Parents: Kindly pay " + f.std_name + "" + category + " of month(s) " + f.month_name_group + " to the Institute. Thank you. Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
                         }
                         else 
                         {
-                            message = "Respected Parents: Kindly pay " + f.std_name + "'s " + f.fees_category_group + " of month(s) " + f.month_name_group + " to the Institute. Thank you. Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
+                            message = "Respected Parents: Kindly pay " + f.std_name + "" + f.fees_category_group + " of month(s) " + f.month_name_group + " to the Institute. Thank you. Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
                         }
                         
                     }
@@ -449,11 +449,11 @@ namespace SMS.Messaging.FeesDefaulter
                     {
                         if (fees_category_cmb.SelectedIndex > 0)
                         {
-                            message = "Respected Parents: Kindly pay " + f.std_name + "'s " + category + " of month(s) " + f.month_name_group + " to the Institute."+Environment.NewLine+"Total Remaining Dues=" + f.rem_amount_group +Environment.NewLine+"Thank you. Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
+                            message = "Respected Parents: Kindly pay " + f.std_name + "" + category + " of month(s) " + f.month_name_group + " to the Institute."+Environment.NewLine+"Total Remaining Dues=" + f.rem_amount_group +Environment.NewLine+"Thank you. Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
                         }
                         else
                         {
-                            message = "Respected Parents: Kindly pay " + f.std_name + "'s " + f.fees_category_group + " of month(s) " + f.month_name_group + " Rs " + f.rem_amount_group + " to the Institute. Thank you. Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
+                            message = "Respected Parents: Kindly pay " + f.std_name + "" + f.fees_category_group + " of month(s) " + f.month_name_group + " Rs " + f.rem_amount_group + " to the Institute. Thank you. Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
                         }
                     }
                     

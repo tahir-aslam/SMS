@@ -35,7 +35,7 @@
                      Background="Purple"
                      CornerRadius="15,15,0,0"
                      Height="60">
-                <TextBlock Text="Three Exam Report With Grand Total"
+                <TextBlock Text="Promotional Exam Report With Grand Total"
                            FontSize="20"
                            VerticalAlignment="Center"
                            Foreground="White"

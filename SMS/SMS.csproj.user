@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>E:\Softwares\SMS Setups\SMS_19-03-2020\|E:\Softwares\SMS Setups\SMS_26-02-2019_2\|E:\Softwares\SMS Setups\SMS_26-02-2019_1\|E:\Softwares\SMS Setups\SMS_26-02-2019\|E:\Softwares\SMS Setups\SMS_15-02-2019\</PublishUrlHistory>
+    <PublishUrlHistory>D:\Scenario\Setups\SMS_22_05_2020\|D:\Scenario\Setups\SMS_21_05_2020\|E:\Softwares\SMS Setups\SMS_19-03-2020\|E:\Softwares\SMS Setups\SMS_26-02-2019_2\|E:\Softwares\SMS Setups\SMS_26-02-2019_1\</PublishUrlHistory>
     <InstallUrlHistory>http://sms.scenariosystem.com/</InstallUrlHistory>
     <SupportUrlHistory>http://scenariosystem.com</SupportUrlHistory>
     <UpdateUrlHistory>http://sms.scenariosystem.com/</UpdateUrlHistory>

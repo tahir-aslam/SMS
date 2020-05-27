@@ -351,7 +351,7 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
                 dataRow[7] = c.parmanent_adress;
                 dataRow[8] = c.class_in_name.ToString();
                 dataRow[9] = c.class_name.ToString();
-                dataRow[10] = c.withdrawal_date.ToString("dd-MMM-yyyy");
+                dataRow[10] = c.withdrawal_date.Value.ToString("dd-MMM-yyyy");
                 dataRow[11] = c.remarks.ToString();
 
                 dataTable.Rows.Add(dataRow);
