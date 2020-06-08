@@ -669,7 +669,7 @@ namespace SMS.Reports.Exam.ThreeExamReport
             double subject_o_grand = 0;
             double subject_total_grand = 0;
             double subject_t_grand = 0;
-            string exam_name = "Exam Report";
+            string exam_name = "Promotional Exam Report";
             ede_exam_list = new List<exam_data_entry>();
             foreach (admission adm in adm_list.Where(x => x.Checked == true))
             {

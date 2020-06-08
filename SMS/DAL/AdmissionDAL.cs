@@ -117,7 +117,7 @@ namespace SMS.DAL
                    "adm.class_id, adm.class_name, adm.section_id, adm.section_name, adm.roll_no, adm.adm_no, " +
                    "adm.adm_no_int, adm.date_time, adm.created_by, adm.is_active, adm.fees_package_id, adm.fees_package, " +
                    "adm.image, cl.class_name " +
-                    "FROM sms_admission as adm Inner join sms_classes as cl ON cl.id=adm.class_in_id where adm.session_id= @session_id Order By adm.adm_date Asc";
+                    "FROM sms_admission as adm Left join sms_classes as cl ON cl.id=adm.class_in_id where adm.session_id= @session_id Order By adm.adm_date Asc";
                 cmd.Connection = con;
                 //cmd.CommandType = System.Data.CommandType.StoredProcedure;    
                 cmd.Parameters.Add("session_id", MySqlDbType.VarChar).Value = MainWindow.session.id;

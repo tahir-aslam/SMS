@@ -25,8 +25,9 @@
                         <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Name="v_institute_grid">
                             <Image Source="{Binding image}"  Width="100" Height="110" Margin="5"  VerticalAlignment="Top"/>
                             <StackPanel>
-                            <TextBlock Text="{Binding previous_school}"  FontSize="32" FontWeight="Bold" FontFamily="Old English Text MT"  TextWrapping="NoWrap"  TextDecorations="Underline" VerticalAlignment="Center"/>
-                                <TextBlock Text="Reg.10650 G/1(2003)" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding previous_school}"  FontSize="32" FontWeight="Bold" FontFamily="Arial"  TextWrapping="NoWrap"  TextDecorations="Underline" VerticalAlignment="Center"/>
+                                <!--<TextBlock Text="Reg.10650 G/1(2003)" HorizontalAlignment="Center"/>-->
+                                <!--FontFamily="Old English Text MT"-->
                             </StackPanel>
                         </StackPanel>
                         
@@ -40,17 +41,17 @@
 
                                 <StackPanel Orientation="Horizontal" Height="35">
                                     <TextBlock Text="Certified that" VerticalAlignment="Center" FontSize="18"/>
-                                    <TextBlock Text="{Binding std_name}" Margin="10,0,0,0" FontWeight="Bold" Width="250" TextDecorations="Underline" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding std_name}" Margin="10,0,0,0" FontWeight="Bold" Width="350" TextDecorations="Underline" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Height="35">
                                     <TextBlock Text="S/O , D/O    " VerticalAlignment="Center" FontSize="18"/>
-                                    <TextBlock Text="{Binding father_name}" Width="250" FontWeight="Bold" Margin="10,0,0,0" TextDecorations="Underline" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding father_name}" Width="350" FontWeight="Bold" Margin="10,0,0,0" TextDecorations="Underline" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Height="35">
                                     <TextBlock Text="Has been a student of this Institute from" VerticalAlignment="Center" FontSize="18"/>
                                     <TextBlock Text="{Binding adm_fee}" Margin="10,0,10,0" FontWeight="Bold" TextDecorations="Underline" FontStyle="Italic" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     <TextBlock Text="To" FontSize="18" VerticalAlignment="Center"/>
-                                    <TextBlock Text="{Binding reg_fee}" Margin="10,0,0,0" FontWeight="Bold" TextDecorations="Underline" FontStyle="Italic" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding transport_fee}" Margin="10,0,0,0" FontWeight="Bold" TextDecorations="Underline" FontStyle="Italic" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     <TextBlock Text="."/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Height="35">
