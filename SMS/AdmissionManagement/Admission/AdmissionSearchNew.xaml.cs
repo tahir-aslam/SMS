@@ -118,7 +118,8 @@ namespace SMS.AdmissionManagement.Admission
         public void load_grid()
         {
             adm_list.Clear();
-            get_all_admissions();
+            //get_all_admissions();
+            adm_list = admDAL.get_all_admissions();
             adm_grid.ItemsSource = adm_list;
             class_cmb.SelectedIndex = 0;
             section_cmb.SelectedIndex = 0;
