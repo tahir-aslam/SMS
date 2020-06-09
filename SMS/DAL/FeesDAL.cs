@@ -386,17 +386,17 @@ namespace SMS.DAL
             }
             if(fees_list.Count > 0)
             {
-                fees_list = fees_list.OrderByDescending(x => x.month).OrderByDescending(x => x.year).OrderByDescending(x => x.std_id).ToList();                
-                foreach (var item in fees_list.Select(x=>x.std_id).Distinct())
-                {
-                    foreach (var item1 in fees_list.Where(x=>x.std_id == item))
-                    {
-                        item1.class_id = fees_list.Where(x => x.std_id == item).First().class_id;
-                        item1.class_name = fees_list.Where(x => x.std_id == item).First().class_name;
-                        item1.section_id = fees_list.Where(x => x.std_id == item).First().section_id;
-                        item1.section_name = fees_list.Where(x => x.std_id == item).First().section_name;
-                    }
-                }
+                //fees_list = fees_list.OrderByDescending(x => x.month).OrderByDescending(x => x.year).OrderByDescending(x => x.std_id).ToList();                
+                //foreach (var item in fees_list.Select(x=>x.std_id).Distinct())
+                //{
+                //    foreach (var item1 in fees_list.Where(x=>x.std_id == item))
+                //    {
+                //        item1.class_id = fees_list.Where(x => x.std_id == item).First().class_id;
+                //        item1.class_name = fees_list.Where(x => x.std_id == item).First().class_name;
+                //        item1.section_id = fees_list.Where(x => x.std_id == item).First().section_id;
+                //        item1.section_name = fees_list.Where(x => x.std_id == item).First().section_name;
+                //    }
+                //}
             }
             return fees_list;
         }

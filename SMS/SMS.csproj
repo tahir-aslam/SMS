@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>D:\Scenario\Setups\SMS_08_06_2020\</PublishUrl>
+    <PublishUrl>D:\Scenario\Setups\SMS_09_06_2020\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -34,10 +34,10 @@
     <ProductName>Scenario Institute Management Software</ProductName>
     <PublisherName>Scenario Systems</PublisherName>
     <SuiteName>Scenario</SuiteName>
-    <MinimumRequiredVersion>1.0.0.24</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.27</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>27</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
