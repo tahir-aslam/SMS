@@ -8,7 +8,7 @@
         Width="800"
         MinWidth="600"
         MinHeight="400"
-        Icon="/SMS;component/SMS.ico"
+        Icon="/SMS;component/ScenarioLogo.ico"
         WindowStartupLocation="CenterScreen"
         KeyDown="Window_KeyDown"
         Loaded="Window_Loaded">

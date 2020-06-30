@@ -16,6 +16,8 @@ using SMS.DAL;
 using SMS.FeesManagement.FeesRegister;
 using SMS.FeesManagement.FeesCollectionByAmount;
 using SMS.FeeManagement.FeeSearch;
+using SMS.FeesManagement.ManageFees;
+using SMS.Common;
 
 namespace SMS.FeesManagement.FeesCollection
 {
@@ -25,7 +27,7 @@ namespace SMS.FeesManagement.FeesCollection
     public partial class FeesCollectionForm : Window
     {
         admission admObj;
-        FeesDAL feeDal;
+        FeesDAL feesDAL;
         AccountsDAL accountsDAL;
         List<sms_fees> unPaidFeesList;       
         List<sms_fees> feesHistoryList;
@@ -36,17 +38,23 @@ namespace SMS.FeesManagement.FeesCollection
         int total = 0;
         int paid = 0;
         int rem = 0;
+        int count = 0;
+
+        string mode;
+        sms_fees obj;
+        ManageFeesWindow mfw;
+
 
         public FeesCollectionForm(admission adm)
         {
             InitializeComponent();
-            feeDal = new FeesDAL();
+            feesDAL = new FeesDAL();
             accountsDAL = new AccountsDAL();
             this.admObj = adm;
             try
             {
-                place_cmb.ItemsSource = feeDal.getAllFeesCollectionPlace();
-                fees_note = feeDal.getFeesNote();
+                place_cmb.ItemsSource = feesDAL.getAllFeesCollectionPlace();
+                fees_note = feesDAL.getFeesNote();
 
                 if (MainWindow.d_FeeCollectionByFeeRegisterCollectionPlace == 0)
                 {
@@ -70,16 +78,17 @@ namespace SMS.FeesManagement.FeesCollection
         {
             try
             {
-                unPaidFeesList = feeDal.getAllUnPaidFeesByStdId(Convert.ToInt32(admObj.id)).OrderBy(x => x.month).OrderBy(x => x.year).OrderByDescending(x => x.fees_category_id == 113).ToList();
-                originalUnPaidFeesList = feeDal.getAllUnPaidFeesByStdId(Convert.ToInt32(admObj.id)).OrderBy(x => x.month).OrderBy(x => x.year).OrderByDescending(x => x.fees_category_id == 113).ToList();
+                unPaidFeesList = feesDAL.getAllUnPaidFeesByStdId(Convert.ToInt32(admObj.id)).OrderBy(x => x.month).OrderBy(x => x.year).OrderByDescending(x => x.fees_category_id == 113).ToList();
+                originalUnPaidFeesList = feesDAL.getAllUnPaidFeesByStdId(Convert.ToInt32(admObj.id)).OrderBy(x => x.month).OrderBy(x => x.year).OrderByDescending(x => x.fees_category_id == 113).ToList();
                 FeesGrid.ItemsSource = unPaidFeesList;
                 FeesGrid.Items.Refresh();
                 calculateTotal();
+                calculatePaid();
                 calculate_discount_waveoff();
                 PayByAmountRB.IsChecked = true;
 
                 //fees history
-                feesHistoryList = feeDal.getFeesPaidByStdId(Convert.ToInt32(admObj.id));
+                feesHistoryList = feesDAL.getFeesPaidByStdId(Convert.ToInt32(admObj.id));
                 FeesHistoryGrid.ItemsSource = feesHistoryList;
 
                 //paid_TB.Text = "0";
@@ -221,7 +230,7 @@ namespace SMS.FeesManagement.FeesCollection
                         fee.receipt_no_full = "CRV-" + DateTime.Now.ToString("yy") + "-" + last_receipt_no.ToString("D6");
                         fee.total_amount = Convert.ToInt32(total_TB.Text);
                         fee.total_paid = Convert.ToInt32(paid_TB.Text);
-                        fee.amount_in_words = feeDal.NumberToWords(Convert.ToInt32(paid_TB.Text));
+                        fee.amount_in_words = feesDAL.NumberToWords(Convert.ToInt32(paid_TB.Text));
                         fee.total_remaining = Convert.ToInt32(rem_TB.Text);
                         int rem_amount = fee.rem_amount;
                         fee.amount_paid = rem_amount;
@@ -252,7 +261,7 @@ namespace SMS.FeesManagement.FeesCollection
                                 fee.receipt_no_full = "CRV-" + DateTime.Now.ToString("yy") + "-" + last_receipt_no.ToString("D6");
                                 fee.total_amount = Convert.ToInt32(total_TB.Text);
                                 fee.total_paid = Convert.ToInt32(paid_TB.Text);
-                                fee.amount_in_words = feeDal.NumberToWords(Convert.ToInt32(paid_TB.Text));
+                                fee.amount_in_words = feesDAL.NumberToWords(Convert.ToInt32(paid_TB.Text));
                                 fee.total_remaining = Convert.ToInt32(rem_TB.Text);
                                 fee.amount_paid = fee.rem_amount;
                                 fee.amount = fee.rem_amount;
@@ -282,7 +291,7 @@ namespace SMS.FeesManagement.FeesCollection
                                 fee.receipt_no_full = "CRV-" + DateTime.Now.ToString("yy") + "-" + last_receipt_no.ToString("D6");
                                 fee.total_amount = Convert.ToInt32(total_TB.Text);
                                 fee.total_paid = Convert.ToInt32(paid_TB.Text);
-                                fee.amount_in_words = feeDal.NumberToWords(Convert.ToInt32(paid_TB.Text));
+                                fee.amount_in_words = feesDAL.NumberToWords(Convert.ToInt32(paid_TB.Text));
                                 fee.total_remaining = Convert.ToInt32(rem_TB.Text);
                                 fee.fees_collection_place_id = place.id;
                                 fee.fees_collection_place = place.place;
@@ -339,7 +348,7 @@ namespace SMS.FeesManagement.FeesCollection
              
                             List<sms_fees> feesVoucherHistoryList = getFeeVoucherHistoryList(feesListToBePaid.First(), admObj);
 
-                            if (feeDal.submitFees(feesListToBePaid, feesListToBePaid.First().receipt_no, feesVoucherHistoryList, fillVoucherObject(), fillVoucherEntryList()) > 0)
+                            if (feesDAL.submitFees(feesListToBePaid, feesListToBePaid.First().receipt_no, feesVoucherHistoryList, fillVoucherObject(), fillVoucherEntryList()) > 0)
                             {
                                 MessageBoxResult mbr1 = MessageBox.Show("Do You Want To Print Cashed Received Voucher ?", "Print Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
                                 if (mbr1 == MessageBoxResult.Yes)
@@ -427,7 +436,7 @@ namespace SMS.FeesManagement.FeesCollection
         {
             List<sms_fees> fees_list;
             List<sms_fees> finalFeesHistoryList = new List<sms_fees>();
-            List<sms_fees> feesHistoryList = feeDal.getFeesVoucherHistoryByStdId(Convert.ToInt32(admObj.id));
+            List<sms_fees> feesHistoryList = feesDAL.getFeesVoucherHistoryByStdId(Convert.ToInt32(admObj.id));
             int count = 0;
             sms_fees fee;
 
@@ -494,11 +503,11 @@ namespace SMS.FeesManagement.FeesCollection
             {
                 foreach (sms_fees fee in unPaidFeesList)
                 {
-                    if (fee.amount == fee.rem_amount)
-                    {
+                    //if (fee.amount == fee.rem_amount)
+                    //{
                         total_discount = total_discount + fee.discount;
                         total_waveOff = total_waveOff + fee.wave_off;
-                    }
+                    //}
                 }
             }
 
@@ -601,7 +610,7 @@ namespace SMS.FeesManagement.FeesCollection
                 {
                     try
                     {
-                        if (feeDal.cancelFees(feesHistoryList.Where(x => x.receipt_no_full == window.receipt_textbox.Text).ToList()) > 0)
+                        if (feesDAL.cancelFees(feesHistoryList.Where(x => x.receipt_no_full == window.receipt_textbox.Text).ToList()) > 0)
                         {                            
                             MessageBox.Show("Successfully Canceled", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                             loadGrid();
@@ -642,6 +651,132 @@ namespace SMS.FeesManagement.FeesCollection
                 sms_fees_collection_place obj = (sms_fees_collection_place)place_cmb.SelectedItem;
                 MainWindow.d_FeeCollectionByFeeRegisterCollectionPlace = obj.id;
             }
+        }
+
+        // click Events -------------------------------------------
+
+        private void click_new(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                mode = "insert";
+                //make an object of sms_fees from admission object            
+                obj = new sms_fees
+                {
+                    std_id = Convert.ToInt32(this.admObj.id),
+                    std_name = this.admObj.std_name,
+                    class_id = Convert.ToInt32(this.admObj.class_id),
+                    class_name = this.admObj.class_name,
+                    section_id = Convert.ToInt32(this.admObj.section_id),
+                    section_name = this.admObj.section_name,
+                };
+
+                mfw = new ManageFeesWindow(mode, this, obj);
+                mfw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                mfw.ShowDialog();
+                loadGrid();
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
+        }
+        private void click_edit(object sender, RoutedEventArgs e)
+        {
+            editing();
+        }
+        private void click_delete(object sender, RoutedEventArgs e)
+        {
+            sms_fees selectedFees = FeesGrid.SelectedItem as sms_fees;
+            if (selectedFees != null)
+            {
+                if (selectedFees.amount == selectedFees.rem_amount)
+                {
+                    MessageBoxResult mbr = MessageBox.Show("Do You Want To Delete This Fees Record(s) ?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (mbr == MessageBoxResult.Yes)
+                    {
+                        List<sms_fees> feesListToBeDeleted = new List<sms_fees>();
+                        feesListToBeDeleted.Add(selectedFees);
+                        count = feesDAL.deleteGeneratedFees(feesListToBeDeleted);
+
+                        //Result Window                        
+                        sms_result_engine result_obj;
+                        List<sms_result_engine> failure_list = new List<sms_result_engine>();
+                        List<sms_result_engine> success_list = new List<sms_result_engine>();
+                        int total_success = 0;
+                        int total_failure = 0;
+
+                        foreach (var item in feesListToBeDeleted)
+                        {
+                            result_obj = new sms_result_engine();
+                            result_obj.serial_no = item.id;
+                            result_obj.id = item.adm_no;
+                            result_obj.action = item.std_name + " [" + item.class_name + "-" + item.section_name + "]";
+
+                            if (item.amount == item.rem_amount)
+                            {
+                                total_success++;
+                                result_obj.reason = "Successfully Deleted";
+                                success_list.Add(result_obj);
+                            }
+                            else
+                            {
+                                total_failure++;
+                                result_obj.reason = item.fees_category + " Has Already Paid, It cannot be deleted";
+                                failure_list.Add(result_obj);
+                            }
+                        }
+                        sms_result_engine resultEngineObj = new sms_result_engine();
+                        resultEngineObj.success_count = total_success;
+                        resultEngineObj.failure_count = total_failure;
+                        resultEngineObj.success_list = success_list;
+                        resultEngineObj.failure_list = failure_list;
+
+                        if (count > 0)
+                        {
+
+                            MessageBox.Show("You Have Successfully Deleted " + count.ToString() + " Records", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                            loadGrid();
+                        }
+
+                        ResultWindow RW = new ResultWindow(resultEngineObj);
+                        RW.ShowDialog();
+
+                        //calculate_selected();
+                        //calculate_amount();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You can not delete this fees because it already paid.","Stop",MessageBoxButton.OK,MessageBoxImage.Stop);
+                }
+            }           
+            else
+            {
+                MessageBox.Show("Please Select Minimum One Record", "Information", MessageBoxButton.OK, MessageBoxImage.Hand);
+            }
+        }
+        private void print_btn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        public void editing()
+        {
+            obj = (sms_fees)FeesGrid.SelectedItem;
+            if (obj == null)
+            {
+                //MessageBox.Show("plz select a row");
+            }
+            else
+            {
+                mode = "edit";
+                mfw = new ManageFeesWindow(mode, this, obj);
+                mfw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                mfw.ShowDialog();
+                loadGrid();                
+            }
+        }
+        
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            loadGrid();
         }
     }
 }

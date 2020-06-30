@@ -682,7 +682,7 @@ namespace SMS
             {
                 var myHttpWebRequest = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
                 var response = myHttpWebRequest.GetResponse();
-                string todaysDates = response.Headers["date"];
+                string todaysDates = response.Headers["Date"];
                 return DateTime.ParseExact(todaysDates,
                                            "ddd, dd MMM yyyy HH:mm:ss 'GMT'",
                                            CultureInfo.InvariantCulture.DateTimeFormat,
