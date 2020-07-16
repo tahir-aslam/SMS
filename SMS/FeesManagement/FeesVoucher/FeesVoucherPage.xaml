@@ -8,7 +8,8 @@
       d:DesignHeight="600"
       d:DesignWidth="1000"
       xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
-      Title="FeesVoucherPage">
+      Title="FeesVoucherPage"
+      Loaded="Page_Loaded">
     <Page.Resources>
         <localConverters:RowNumber x:Key="rowNumberConverter" />
     </Page.Resources>
@@ -96,7 +97,7 @@
                                 <ComboBoxItem Content="----Select----" />
                                 <ComboBoxItem Content="1) 1Fee Slip" />
                                 <ComboBoxItem Content="2) 2Fee Slip" />
-                                <ComboBoxItem Content="3) 3Fee Slip For Bank" />
+                                <ComboBoxItem Content="3) 3Fee Slip For Bank"/>
                                 <ComboBoxItem Content="4) 3Fee Slip For Bank (Fine)" />
                                 <ComboBoxItem Content="5) 3Fee Slip For Family" />
                             </ComboBox>
@@ -192,10 +193,9 @@
                                           Name="search_cmb1"
                                           SelectedValuePath="id"
                                           SelectionChanged="search_cmb1_SelectionChanged">
-                                    <ComboBoxItem Content="By Name" />
+                                    <ComboBoxItem Content="By Name" IsSelected="True"/>
                                     <ComboBoxItem Content="By Father Name" />
-                                    <ComboBoxItem Content="By Adm #"
-                                                  IsSelected="True" />
+                                    <ComboBoxItem Content="By Adm #" />
                                     <ComboBoxItem Content="By Roll #" />
                                 </ComboBox>
                             </StackPanel>

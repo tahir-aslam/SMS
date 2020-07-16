@@ -183,6 +183,12 @@ namespace SMS.MainScreen
                             std_promote_btn.Visibility = Visibility.Visible;
                         }
 
+                        //Old fee managegment
+                        if (rol.id == "120" && rol.is_active == "Y")
+                        {
+                            fee_mgmt_tab.Visibility = Visibility.Visible;
+                        }
+
                         // Fees Management
                         if (rol.id == "30" && rol.is_active == "Y")
                         {

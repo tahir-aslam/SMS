@@ -112,13 +112,22 @@ namespace SMS.FeesManagement.ManageFees
 
                 if (mode == "insert")
                 {
-                    std_name_TB.Visibility = Visibility.Visible;
+                    if (this.obj != null)
+                    {
+                        std_name_TB.Visibility = Visibility.Visible;
+                        std_SP.Visibility = Visibility.Collapsed;
+                        std_count_SP.Visibility = Visibility.Collapsed;
+                        std_name_TB.Text = obj.std_name;
+                    }
+                    else
+                    {
+                        std_name_TB.Visibility = Visibility.Collapsed;
+                        std_SP.Visibility = Visibility.Visible;
+                        std_count_SP.Visibility = Visibility.Visible;
+                    }
+                    
                     waveoff_SP.Visibility = Visibility.Collapsed;
-                    feeType_SP.Visibility = Visibility.Collapsed;
-                    std_count_SP.Visibility = Visibility.Collapsed;
-                    std_SP.Visibility = Visibility.Collapsed;
-
-                    std_name_TB.Text = obj.std_name;
+                    feeType_SP.Visibility = Visibility.Collapsed;          
                 }
                 else
                 {

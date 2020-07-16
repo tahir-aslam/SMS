@@ -83,11 +83,11 @@ namespace SMS.FeesManagement.FeesVoucher
             if (voucher_type_cmb.SelectedItem != null)
             {
                 if (voucher_type_cmb.SelectedIndex != 0)
-                {
-                    reset();
+                {                    
                     class_cmb.IsEnabled = true;
                     class_cmb.SelectedIndex = 0;
                     SearchTextBox1.Focus();
+                    reset();
                 }
                 else
                 {
@@ -1073,6 +1073,11 @@ namespace SMS.FeesManagement.FeesVoucher
         private void search_cmb1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SearchTextBox1.Focus();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            voucher_type_cmb.SelectedIndex = 3;
         }
     }
 }
