@@ -752,6 +752,13 @@
                                     Name="emp_attnd"
                                     Click="emp_attnd_Click"
                                     Visibility="Collapsed" />
+                            <Button Grid.Row="2"
+                                    Content="Employee Attendence Report"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    Name="emp_attnd_report"
+                                    Click="emp_attnd_report_Click"
+                                    Visibility="Visible" />
                             <Button Grid.Row="3"
                                     Content="Salary Sheet"
                                     Height="30"

@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>D:\Scenario\Setups\SMS_08_07_2020_1\</PublishUrl>
+    <PublishUrl>D:\Scenario\Setups\SMS_20_07_2020\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -37,7 +37,7 @@
     <MinimumRequiredVersion>1.0.0.32</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>33</ApplicationRevision>
+    <ApplicationRevision>34</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -428,6 +428,7 @@
     <Compile Include="DAL\ComplaintDAL.cs" />
     <Compile Include="DAL\Databases.cs" />
     <Compile Include="DAL\DateSheetDAL.cs" />
+    <Compile Include="DAL\EmployeeAttendanceDAL.cs" />
     <Compile Include="DAL\EmployeesDAL.cs" />
     <Compile Include="DAL\ExamsDAL.cs" />
     <Compile Include="DAL\LicenseDAL.cs" />
@@ -449,6 +450,9 @@
     </Compile>
     <Compile Include="EmployeeManagement\EmployeeAttendanceBio\EmployeeAttendanceBioReportWindow.xaml.cs">
       <DependentUpon>EmployeeAttendanceBioReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeAttendanceReport\EmployeeAttendanceReportPage.xaml.cs">
+      <DependentUpon>EmployeeAttendanceReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetPage.xaml.cs">
       <DependentUpon>EmployeeAttendanceSheetPage.xaml</DependentUpon>
@@ -1281,6 +1285,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EmployeeManagement\EmployeeAttendanceReport\EmployeeAttendanceReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1938,6 +1946,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceBio\EmployeeAttendanceBioReport.rdlc" />
+    <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceReport\EmployeeAttendanceReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\EmployeeSalarySheetBio\EmployeeSalarySheetReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\SalarySheet\SalarySheetReport.rdlc" />
@@ -2001,6 +2010,7 @@
     <None Include="SMS.Models.employees.datasource" />
     <None Include="SMS.Models.employees1.datasource" />
     <None Include="SMS.Models.employees2.datasource" />
+    <None Include="SMS.Models.employee_attendence.datasource" />
     <None Include="SMS.Models.exam_data_entry.datasource" />
     <None Include="SMS.Models.FeesReportData.datasource" />
     <None Include="SMS.Models.institute.datasource" />

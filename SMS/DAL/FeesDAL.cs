@@ -332,7 +332,15 @@ namespace SMS.DAL
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         //cmd.CommandText = "GetAllRoles";
-                        cmd.CommandText = "SELECT* FROM sms_fees_generated As fee INNER JOIN sms_admission As adm ON fee.std_id = adm.id where adm.session_id=(select adm_inner.session_id from sms_admission as adm_inner where adm_inner.id=fee.std_id order by adm_inner.session_id DESC Limit 1) && fee.rem_amount > 0 ";
+                        cmd.CommandText = "SELECT fee.id, fee.std_id, fee.fees_category_id, fee.fees_category, fee.fees_sub_category, fee.fees_sub_category_id, "+
+                                        "fee.amount, fee.rem_amount, fee.discount, fee.actual_amount, fee.wave_off, fee.month, fee.month_name, "+
+                                        "adm.class_id, adm.class_name, adm.section_id, adm.section_name, "+
+                                        "fee.year, fee.date, fee.due_date, "+
+                                        "adm.session_id, fee.is_active, adm.is_active, fee.created_by, fee.emp_id, fee.date_time, "+
+                                        "adm.std_name, adm.father_name, adm.cell_no, adm.adm_no, adm.roll_no "+
+                                        "FROM sms_fees_generated As fee "+
+                                        "INNER JOIN sms_admission As adm ON fee.std_id = adm.id "+
+                                        "where adm.session_id = (select adm_inner.session_id from sms_admission as adm_inner where adm_inner.id = fee.std_id order by adm_inner.session_id DESC Limit 1) && fee.rem_amount > 0";
                         cmd.Connection = con;
                         cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = MainWindow.session.id;
                         //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
@@ -342,38 +350,40 @@ namespace SMS.DAL
                         {
                             sms_fees fees = new sms_fees()
                             {
-                                id = Convert.ToInt32(reader["id"]),
-                                std_id = Convert.ToInt32(reader["std_id"]),
-                                fees_category_id = Convert.ToInt32(reader["fees_category_id"]),
-                                fees_category = Convert.ToString(reader["fees_category"].ToString()),
-                                fees_sub_category = Convert.ToString(reader["fees_sub_category"].ToString()),
-                                fees_sub_category_id = Convert.ToInt32(reader["fees_sub_category_id"]),
-                                amount = Convert.ToInt32(reader["amount"]),
-                                rem_amount = Convert.ToInt32(reader["rem_amount"]),
-                                discount = Convert.ToInt32(reader["discount"]),
-                                actual_amount = Convert.ToInt32(reader["actual_amount"]),
-                                wave_off = Convert.ToInt32(reader["wave_off"]),
-                                month = Convert.ToInt32(reader["month"]),
-                                month_name = Convert.ToString(reader["month_name"].ToString()),
-                                class_id = Convert.ToInt32(reader["class_id"]),
-                                class_name = Convert.ToString(reader["class_name"]),
-                                section_id = Convert.ToInt32(reader["section_id"]),
-                                section_name = Convert.ToString(reader["section_name"]),
-                                year = Convert.ToInt32(reader["year"]),
-                                date = Convert.ToDateTime(reader["date"]),
-                                due_date = Convert.ToDateTime(reader["due_date"]),
-                                session_id = Convert.ToInt32(reader["session_id"].ToString()),
-                                is_active = Convert.ToString(reader["is_active"].ToString()),
-                                adm_is_active = Convert.ToString(reader[64].ToString()),
-                                created_by = Convert.ToString(reader["created_by"].ToString()),
-                                emp_id = Convert.ToInt32(reader["emp_id"].ToString()),
-                                date_time = Convert.ToDateTime(reader["date_time"].ToString()),
+                                id = Convert.ToInt32(reader[0]),
+                                std_id = Convert.ToInt32(reader[1]),
+                                fees_category_id = Convert.ToInt32(reader[2]),
+                                fees_category = Convert.ToString(reader[3].ToString()),
+                                fees_sub_category = Convert.ToString(reader[4].ToString()),
+                                fees_sub_category_id = Convert.ToInt32(reader[5]),
+                                amount = Convert.ToInt32(reader[6]),
+                                rem_amount = Convert.ToInt32(reader[7]),
+                                discount = Convert.ToInt32(reader[8]),
+                                actual_amount = Convert.ToInt32(reader[9]),
+                                wave_off = Convert.ToInt32(reader[10]),
+                                month = Convert.ToInt32(reader[11]),
+                                month_name = Convert.ToString(reader[12].ToString()),
+                                class_id = Convert.ToInt32(reader[13]),
+                                class_name = Convert.ToString(reader[14]),
+                                section_id = Convert.ToInt32(reader[15]),
+                                section_name = Convert.ToString(reader[16]),
+                                year = Convert.ToInt32(reader[17]),
+                                date = Convert.ToDateTime(reader[18]),
+                                due_date = Convert.ToDateTime(reader[19]),
+                                session_id = Convert.ToInt32(reader[20].ToString()),
+                                is_active = Convert.ToString(reader[21].ToString()),
+                                adm_is_active = Convert.ToString(reader[22].ToString()),
+                                created_by = Convert.ToString(reader[23].ToString()),
+                                emp_id = Convert.ToInt32(reader[24].ToString()),
+                                date_time = Convert.ToDateTime(reader[25].ToString()),
 
-                                std_image = (byte[])(reader["image"]),
-                                std_name = Convert.ToString(reader["std_name"]),
-                                father_name = Convert.ToString(reader["father_name"]),
-                                cell_no = Convert.ToString(reader["cell_no"]),
-                                adm_no = Convert.ToString(reader["adm_no"]),
+                                //std_image = (byte[])(reader["image"]),
+                                std_name = Convert.ToString(reader[26]),
+                                father_name = Convert.ToString(reader[27]),
+                                cell_no = Convert.ToString(reader[28]),
+                                adm_no = Convert.ToString(reader[29]),
+                                roll_no = Convert.ToString(reader[30]),
+
                             };
                             fees_list.Add(fees);
                         }

@@ -12,6 +12,7 @@ namespace SMS.Models
             public int session_id { get; set; }
             public string emp_id { set; get; }
             public string emp_name { set; get; }
+            public string emp_father { set; get; }
             public string emp_type_id { set; get; }
             public string emp_type { set; get; }
             public DateTime date_time { set; get; }

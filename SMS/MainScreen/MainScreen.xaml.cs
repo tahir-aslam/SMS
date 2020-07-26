@@ -56,6 +56,7 @@ using SMS.ExamManagement.DateSheet;
 using SMS.Reports.Exams.TeacherEvaluation;
 using SMS.Core.Services;
 using MySql.Data.MySqlClient;
+using SMS.EmployeeManagement.EmployeeAttendanceReport;
 
 namespace SMS.MainScreen
 {
@@ -1221,6 +1222,7 @@ namespace SMS.MainScreen
             emp_salary_sheet_btn.Background = Brushes.White;
             emp_salary_sheet_btn.Foreground = Brushes.Black;
         }
+       
 
         private void mainFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
@@ -1261,7 +1263,39 @@ namespace SMS.MainScreen
             emp_salary_sheet_btn.Background = Brushes.White;
             emp_salary_sheet_btn.Foreground = Brushes.Black;
         }
+        private void emp_attnd_report_Click(object sender, RoutedEventArgs e)
+        {
+            this.mainFrame.Content = new EmployeeAttendanceReportPage();
+            emp_attnd_report.Background = Brushes.Purple;
+            emp_attnd_report.Foreground = Brushes.White;
 
+            button1.Background = Brushes.White;
+            button1.Foreground = Brushes.Black;
+            subject_button.Background = Brushes.White;
+            subject_button.Foreground = Brushes.Black;
+            section_button.Background = Brushes.White;
+            section_button.Foreground = Brushes.Black;
+            add_emp.Background = Brushes.White;
+            add_emp.Foreground = Brushes.Black;
+
+            fee.Background = Brushes.White;
+            fee.Foreground = Brushes.Black;
+            paidfee_btn.Background = Brushes.White;
+            paidfee_btn.Foreground = Brushes.Black;
+            Defaulterfee_btn.Background = Brushes.White;
+            Defaulterfee_btn.Foreground = Brushes.Black;
+            paidfeeReport_btn.Background = Brushes.White;
+            paidfeeReport_btn.Foreground = Brushes.Black;
+
+            Admission.Background = Brushes.White;
+            Admission.Foreground = Brushes.Black;
+            std_attendence.Background = Brushes.White;
+            std_attendence.Foreground = Brushes.Black;
+            emp_login.Background = Brushes.White;
+            emp_login.Foreground = Brushes.Black;
+            emp_salary_sheet_btn.Background = Brushes.White;
+            emp_salary_sheet_btn.Foreground = Brushes.Black;
+        }
         private void emp_payment_Click(object sender, RoutedEventArgs e)
         {
             //this.mainFrame.Navigate(new EmpPayment());
@@ -3187,5 +3221,7 @@ namespace SMS.MainScreen
                 //Environment.Exit(0);
             }
         }
+
+       
     }
 }
