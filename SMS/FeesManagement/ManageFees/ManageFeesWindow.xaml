@@ -95,12 +95,30 @@
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding month_id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                            <CheckBox Checked="chkMonth_Checked"
+                                                      Unchecked="chkMonth_Checked"
+                                                      IsChecked="{Binding isChecked}"
+                                                      IsThreeState="False" 
+                                                      Name="chkMonth"/>
                                             <TextBlock Text="{Binding month_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="150"
+                                   Content="Selected Months: "
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Height="30" />
+                            <TextBlock Width="150"
+                                       Name="txtSelectedMonths"
+                                       Text=""
+                                       TextWrapping="Wrap"
+                                       Foreground="Green"
+                                       VerticalAlignment="Center"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Style="{StaticResource gridStyle}">

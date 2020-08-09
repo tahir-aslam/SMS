@@ -42,6 +42,7 @@ namespace SMS.FeesManagement.ManageFees
         int failure_count = 0;
         List<sms_result_engine> failure_list;
         List<sms_result_engine> success_list;
+        string selectedMonths = "";
 
         string mode = "";
         sms_fees obj;
@@ -54,7 +55,7 @@ namespace SMS.FeesManagement.ManageFees
 
             this.mode = mode;
             this.obj = obj;
-            this.mfp = MFP;           
+            this.mfp = MFP;
 
             LoadGrid();
             allOption.IsChecked = true;
@@ -102,7 +103,7 @@ namespace SMS.FeesManagement.ManageFees
                 months_list.Insert(0, new sms_months() { month_name = "---Month---", id = "-1" });
                 month_cmb.ItemsSource = months_list;
 
-                
+
                 monthlyOption.IsChecked = true;
                 date.SelectedDate = DateTime.Today;
                 year_cmb.ItemsSource = MainWindow.years_list;
@@ -125,9 +126,9 @@ namespace SMS.FeesManagement.ManageFees
                         std_SP.Visibility = Visibility.Visible;
                         std_count_SP.Visibility = Visibility.Visible;
                     }
-                    
+
                     waveoff_SP.Visibility = Visibility.Collapsed;
-                    feeType_SP.Visibility = Visibility.Collapsed;          
+                    feeType_SP.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
@@ -191,72 +192,78 @@ namespace SMS.FeesManagement.ManageFees
         {
             if (mode == "insert")
             {
-                if (validate())
+                MessageBoxResult mbr = MessageBox.Show("Do You Want To Generate " + selectedMonths.ToString() + " Fee of "+adm_list.Count.ToString()+ " Student(s)?", "Generate Fee Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (mbr == MessageBoxResult.Yes)
                 {
-                    try
+                    if (validate())
                     {
-                        List<sms_fees> generated_list = populate_generated_fees(adm_list);
-
-                        int count = feesDAL.insertFeesGenerated(generated_list);
-
-                        if (count > 0)
+                        try
                         {
-                            MessageBox.Show("You have successfully generated " + count + " Students Fees", "Generated", MessageBoxButton.OK, MessageBoxImage.Information);
+                            List<sms_fees> generated_list = populate_generated_fees(adm_list);
+
+                            int count = feesDAL.insertFeesGenerated(generated_list);
+
+                            if (count > 0)
+                            {
+                                MessageBox.Show("You have successfully generated " + count + " Students Fees", "Generated", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Not Any Record Updated", "Generated ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            }
+                            ResultWindow RW = new ResultWindow(resultEngineObj);
+                            RW.ShowDialog();
                         }
-                        else
-                        {
-                            MessageBox.Show("Not Any Record Updated", "Generated ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        }
-                        ResultWindow RW = new ResultWindow(resultEngineObj);
-                        RW.ShowDialog();
+                        catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+                        this.Close();
                     }
-                    catch (Exception ex) { MessageBox.Show(ex.Message); }
-
-                    this.Close();
                 }
             }
             else
             {
-                if (obj.rem_amount > 0 && obj.rem_amount >= Convert.ToInt32(waveoff_textbox.Text))
+                MessageBoxResult mbr = MessageBox.Show("Do You Want To Update The Record?", "Update Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (mbr == MessageBoxResult.Yes)
                 {
-                    try
+                    if (obj.rem_amount > 0 && obj.rem_amount >= Convert.ToInt32(waveoff_textbox.Text))
                     {
-                        obj.amount = obj.amount;
-                        obj.rem_amount = obj.rem_amount - Convert.ToInt32(waveoff_textbox.Text);
-                        obj.wave_off = obj.wave_off + Convert.ToInt32(waveoff_textbox.Text);
-                        obj.created_by = MainWindow.emp_login_obj.emp_user_name;
-                        obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
-                        obj.date_time = DateTime.Now;
-                    }
-                    catch (Exception ex)
-                    {
-                        obj.wave_off = 0;
-                    }
-                    try
-                    {
-                        if (feesDAL.updateFeesGenerated(obj) > 0)
+                        try
                         {
-                            MessageBox.Show(" Successfully Updated Students Fees", " Updated Generated", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                            obj.amount = obj.amount;
+                            obj.rem_amount = obj.rem_amount - Convert.ToInt32(waveoff_textbox.Text);
+                            obj.wave_off = obj.wave_off + Convert.ToInt32(waveoff_textbox.Text);
+                            obj.created_by = MainWindow.emp_login_obj.emp_user_name;
+                            obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                            obj.date_time = DateTime.Now;
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("There is Some Error, Please Try Again", " Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            obj.wave_off = 0;
                         }
-                        this.Close();
-                        //mfp.load_grid();
+                        try
+                        {
+                            if (feesDAL.updateFeesGenerated(obj) > 0)
+                            {
+                                MessageBox.Show(" Successfully Updated Students Fees", " Updated Generated", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("There is Some Error, Please Try Again", " Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                            this.Close();
+                            //mfp.load_grid();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Remaining amount should be greater than zero and greater than wave off amount.", " Error", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                     }
-                }
-
-
-                else
-                {
-                    MessageBox.Show("Remaining amount should be greater than zero and greater than wave off amount.", " Error", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                }
+                }               
             }
         }
 
@@ -279,7 +286,7 @@ namespace SMS.FeesManagement.ManageFees
             sms_fees generatedFee;
             sms_years sms_year = (sms_years)year_cmb.SelectedItem;
             sms_fees_category feesCategory = (sms_fees_category)fees_category_cmb.SelectedItem;
-            sms_months sms_months = (sms_months)month_cmb.SelectedItem;
+            //List<sms_months> sms_months = (sms_months)month_cmb.SelectedItem;
 
             foreach (admission adm in admList)
             {
@@ -290,98 +297,99 @@ namespace SMS.FeesManagement.ManageFees
 
                 check_actual = false;
                 check_generated = false;
-
-                if (!feesDAL.isFeesGenerated(Convert.ToInt32(adm.id), feesCategory.id, 0, Convert.ToInt32(sms_months.month_id), sms_year.id))
+                foreach (var month in months_list.Where(x => x.isChecked == true).Where(x => x.id != "-1"))
                 {
-                    check_generated = true;
-
-                    generatedFee = new sms_fees();
-
-                    generatedFee.std_id = Convert.ToInt32(adm.id);
-                    generatedFee.fees_category_id = feesCategory.id;
-                    generatedFee.fees_category = feesCategory.fees_category;
-
-                    generatedFee.month = Convert.ToInt32(sms_months.month_id);
-                    generatedFee.month_name = sms_months.month_name;
-
-                    generatedFee.class_id = Convert.ToInt32(adm.class_id);
-                    generatedFee.class_name = adm.class_name;
-                    generatedFee.section_id = Convert.ToInt32(adm.section_id);
-                    generatedFee.section_name = adm.section_name;
-
-                    generatedFee.year = sms_year.id;
-                    generatedFee.date = date.SelectedDate.Value;
-                    generatedFee.due_date = due_date.SelectedDate.Value;
-                    generatedFee.session_id = Convert.ToInt32(MainWindow.session.id);
-
-                    generatedFee.created_by = MainWindow.emp_login_obj.emp_user_name;
-                    generatedFee.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
-
-                    generatedFee.date_time = DateTime.Now;
-
-
-                    //For Fix amount, no actual fees needed
-                    if (amountOption.IsChecked == true)
+                    if (!feesDAL.isFeesGenerated(Convert.ToInt32(adm.id), feesCategory.id, 0, Convert.ToInt32(month.month_id), sms_year.id))
                     {
-                        check_actual = true;
-                        generatedFee.amount = Convert.ToInt32(amount_textbox.Text);
-                        generatedFee.rem_amount = Convert.ToInt32(amount_textbox.Text);
-                        generatedFee.discount = 0;
+                        check_generated = true;
 
-                        generatedList.Add(generatedFee);  // add object
-                    }
-                    else
-                    {
-                        sms_fees_actual actualobj = new sms_fees_actual();
-                        List<sms_fees_actual> actualList = feesDAL.getActualFeesByStdID(Convert.ToInt32(adm.id));
-                        foreach (sms_fees_actual fee in actualList.Where(x => x.fees_category_id == feesCategory.id))
+                        generatedFee = new sms_fees();
+
+                        generatedFee.std_id = Convert.ToInt32(adm.id);
+                        generatedFee.fees_category_id = feesCategory.id;
+                        generatedFee.fees_category = feesCategory.fees_category;
+
+                        generatedFee.month = Convert.ToInt32(month.month_id);
+                        generatedFee.month_name = month.month_name;
+
+                        generatedFee.class_id = Convert.ToInt32(adm.class_id);
+                        generatedFee.class_name = adm.class_name;
+                        generatedFee.section_id = Convert.ToInt32(adm.section_id);
+                        generatedFee.section_name = adm.section_name;
+
+                        generatedFee.year = sms_year.id;
+                        generatedFee.date = date.SelectedDate.Value;
+                        generatedFee.due_date = due_date.SelectedDate.Value;
+                        generatedFee.session_id = Convert.ToInt32(MainWindow.session.id);
+
+                        generatedFee.created_by = MainWindow.emp_login_obj.emp_user_name;
+                        generatedFee.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+
+                        generatedFee.date_time = DateTime.Now;
+
+
+                        //For Fix amount, no actual fees needed
+                        if (amountOption.IsChecked == true)
                         {
-                            actualobj = fee;
                             check_actual = true;
-                        }
-
-                        if (check_actual)
-                        {
-                            generatedFee.amount = actualobj.amount;
-                            generatedFee.actual_amount = actualobj.actual_amount;
-                            generatedFee.rem_amount = actualobj.amount;
-                            generatedFee.discount = actualobj.discount;
+                            generatedFee.amount = Convert.ToInt32(amount_textbox.Text);
+                            generatedFee.rem_amount = Convert.ToInt32(amount_textbox.Text);
+                            generatedFee.discount = 0;
 
                             generatedList.Add(generatedFee);  // add object
                         }
+                        else
+                        {
+                            sms_fees_actual actualobj = new sms_fees_actual();
+                            List<sms_fees_actual> actualList = feesDAL.getActualFeesByStdID(Convert.ToInt32(adm.id));
+                            foreach (sms_fees_actual fee in actualList.Where(x => x.fees_category_id == feesCategory.id))
+                            {
+                                actualobj = fee;
+                                check_actual = true;
+                            }
+
+                            if (check_actual)
+                            {
+                                generatedFee.amount = actualobj.amount;
+                                generatedFee.actual_amount = actualobj.actual_amount;
+                                generatedFee.rem_amount = actualobj.amount;
+                                generatedFee.discount = actualobj.discount;
+
+                                generatedList.Add(generatedFee);  // add object
+                            }
+                        }
                     }
-                }
 
+                    // Result Engine
+                    result_obj.id = adm.adm_no;
+                    result_obj.action = adm.std_name + " [" + adm.class_name + "-" + adm.section_name + "]";
 
-                // Result Engine
-                result_obj.id = adm.adm_no;
-                result_obj.action = adm.std_name + " [" + adm.class_name + "-" + adm.section_name + "]";
-
-                if (check_actual && check_generated)
-                {
-                    total_success++;
-                    success_count++;
-                    result_obj.serial_no = success_count;
-                    result_obj.reason = "Successfully Added";
-
-                    success_list.Add(result_obj);
-                }
-                else //failure
-                {
-                    total_failures++;
-                    failure_count++;
-                    result_obj.serial_no = failure_count;
-                    if (!check_generated)
+                    if (check_actual && check_generated)
                     {
-                        result_obj.reason = feesCategory.fees_category + " Has Been Alrady Generated For " + sms_months.month_name + " " + sms_year.year.ToString();
-                    }
-                    else
-                    {
-                        result_obj.reason = feesCategory.fees_category + " Not Set In Admission Form, Please Set Actual Fees First";
-                    }
-                    failure_list.Add(result_obj);
-                }
+                        total_success++;
+                        success_count++;
+                        result_obj.serial_no = success_count;
+                        result_obj.reason = "Successfully Added";
 
+                        success_list.Add(result_obj);
+                    }
+                    else //failure
+                    {
+                        total_failures++;
+                        failure_count++;
+                        result_obj.serial_no = failure_count;
+                        if (!check_generated)
+                        {
+                            result_obj.reason = feesCategory.fees_category + " Has Been Alrady Generated For " + month.month_name + " " + sms_year.year.ToString();
+                        }
+                        else
+                        {
+                            result_obj.reason = feesCategory.fees_category + " Not Set In Admission Form, Please Set Actual Fees First";
+                        }
+                        failure_list.Add(result_obj);
+                    }
+
+                }
             }
             resultEngineObj = new sms_result_engine();
             resultEngineObj.success_count = total_success;
@@ -415,10 +423,10 @@ namespace SMS.FeesManagement.ManageFees
                 MessageBox.Show(alertText, "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            else if (month_cmb.SelectedIndex == 0)
+            else if (months_list.Where(x=>x.isChecked == true).Where(x=>x.id != "-1").Count() == 0)
             {
                 month_cmb.Focus();
-                string alertText = "Month Name Should Not Be Blank.";
+                string alertText = "Minimum One Month should be selected.";
                 MessageBox.Show(alertText, "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
@@ -440,6 +448,7 @@ namespace SMS.FeesManagement.ManageFees
         {
             if (fees_category_cmb.SelectedItem != null)
             {
+                sms_fees_category category = (sms_fees_category)fees_category_cmb.SelectedItem;
             }
         }
 
@@ -470,6 +479,22 @@ namespace SMS.FeesManagement.ManageFees
             amount_sp.Visibility = Visibility.Visible;
         }
 
-
+        private void chkMonth_Checked(object sender, RoutedEventArgs e)
+        {
+            selectedMonths = "";
+            if (month_cmb.SelectedItem != null)
+            {
+                var checkBox = sender as CheckBox;
+                sms_months month = (sms_months)checkBox.DataContext;
+                if (month.id != "-1")
+                {
+                    foreach (var item in months_list.Where(x => x.isChecked == true))
+                    {
+                        selectedMonths = selectedMonths + " " + item.month_name;
+                    }
+                }
+            }
+            txtSelectedMonths.Text = selectedMonths;
+        }
     }
 }
