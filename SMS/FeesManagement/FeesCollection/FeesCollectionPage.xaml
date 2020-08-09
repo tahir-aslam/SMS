@@ -42,7 +42,7 @@
         </Grid>
         <Grid Grid.Row="1" Margin="-1">
             <Border  BorderThickness="1" BorderBrush="#FFD6D4D4" Background="Purple" CornerRadius="15,15,0,0" Height="60">
-                <TextBlock Text="Fees Collection"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
+                <TextBlock Text="Fee Register"  FontSize="20" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" />
             </Border>
         </Grid>
         <Grid Grid.Row="2">

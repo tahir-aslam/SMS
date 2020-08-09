@@ -247,12 +247,14 @@ namespace SMS.EmployeeManagement.ADDEMP
         // ==============        Printing        ==============================================
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var dataTable = CreateSampleDataTable();
-            var columnWidths = new List<double>() {40, 150, 150, 100, 100, 130, 100, 200 };
-            var ht = new HeaderTemplate();
-            var headerTemplate = XamlWriter.Save(ht);
-            var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
-            printControl.ShowPrintPreview();
+            //var dataTable = CreateSampleDataTable();
+            //var columnWidths = new List<double>() {40, 150, 150, 100, 100, 130, 100, 200 };
+            //var ht = new HeaderTemplate();
+            //var headerTemplate = XamlWriter.Save(ht);
+            //var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
+            //printControl.ShowPrintPreview();
+            EmployeeReportWindow window = new EmployeeReportWindow(emp_list);
+            window.Show();
         }
 
         private DataTable CreateSampleDataTable()

@@ -439,6 +439,9 @@
     <Compile Include="DataUploader\DataUploaderWindow.xaml.cs">
       <DependentUpon>DataUploaderWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeManagement\ADDEMP\EmployeeReportWindow.xaml.cs">
+      <DependentUpon>EmployeeReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeManagement\ADDEMP\GetDateWindow.xaml.cs">
       <DependentUpon>GetDateWindow.xaml</DependentUpon>
     </Compile>
@@ -1269,6 +1272,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EmployeeManagement\ADDEMP\EmployeeReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EmployeeManagement\ADDEMP\GetDateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1945,6 +1952,7 @@
     <Content Include="ClassManagement\Class\ClassReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="EmployeeManagement\ADDEMP\EmployeesReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceBio\EmployeeAttendanceBioReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceReport\EmployeeAttendanceReport.rdlc" />
     <EmbeddedResource Include="EmployeeManagement\EmployeeAttendanceSheetBio\EmployeeAttendanceSheetReport.rdlc" />
