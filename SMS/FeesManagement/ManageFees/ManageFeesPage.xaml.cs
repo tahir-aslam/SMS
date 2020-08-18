@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Globalization;
 using SMS.Common;
 using SMS.HelperClasses;
+using SMS.Views.Common;
 
 namespace SMS.FeesManagement.ManageFees
 {
@@ -227,54 +228,61 @@ namespace SMS.FeesManagement.ManageFees
                 MessageBoxResult mbr = MessageBox.Show("Do You Want To Delete " + count.ToString() + " Record(s) ?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (mbr == MessageBoxResult.Yes)
                 {
-
-                    count = feesDAL.deleteGeneratedFees(feesListToBeDeleted);
-
-                    //Result Window                        
-                    sms_result_engine result_obj;
-                    List<sms_result_engine> failure_list = new List<sms_result_engine>();
-                    List<sms_result_engine> success_list = new List<sms_result_engine>();
-                    int total_success = 0;
-                    int total_failure = 0;
-
-                    foreach (var item in checkedFeesList)
-                    {
-                        result_obj = new sms_result_engine();
-                        result_obj.serial_no = item.id;
-                        result_obj.id = item.adm_no;
-                        result_obj.action = item.std_name + " [" + item.class_name + "-" + item.section_name + "]";
-
-                        if (item.amount == item.rem_amount)
-                        {
-                            total_success++;
-                            result_obj.reason = "Successfully Deleted";
-                            success_list.Add(result_obj);
-                        }
-                        else
-                        {
-                            total_failure++;
-                            result_obj.reason = item.fees_category + " Has Already Paid, It cannot be deleted";
-                            failure_list.Add(result_obj);
-                        }
-                    }
-                    sms_result_engine resultEngineObj = new sms_result_engine();
-                    resultEngineObj.success_count = total_success;
-                    resultEngineObj.failure_count = total_failure;
-                    resultEngineObj.success_list = success_list;
-                    resultEngineObj.failure_list = failure_list;
-
-                    if (count > 0)
+                    PasswordWindow passwordWindow = new PasswordWindow();
+                    if ((bool)passwordWindow.ShowDialog())
                     {
 
-                        MessageBox.Show("You Have Successfully Deleted " + count.ToString() + " Records", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
-                        load_grid();
+                        count = feesDAL.deleteGeneratedFees(feesListToBeDeleted);
+
+                        //Result Window                        
+                        sms_result_engine result_obj;
+                        List<sms_result_engine> failure_list = new List<sms_result_engine>();
+                        List<sms_result_engine> success_list = new List<sms_result_engine>();
+                        int total_success = 0;
+                        int total_failure = 0;
+
+                        foreach (var item in checkedFeesList)
+                        {
+                            result_obj = new sms_result_engine();
+                            result_obj.serial_no = item.id;
+                            result_obj.id = item.adm_no;
+                            result_obj.action = item.std_name + " [" + item.class_name + "-" + item.section_name + "]";
+
+                            if (item.amount == item.rem_amount)
+                            {
+                                total_success++;
+                                result_obj.reason = "Successfully Deleted";
+                                success_list.Add(result_obj);
+                            }
+                            else
+                            {
+                                total_failure++;
+                                result_obj.reason = item.fees_category + " Has Already Paid, It cannot be deleted";
+                                failure_list.Add(result_obj);
+                            }
+                        }
+                        sms_result_engine resultEngineObj = new sms_result_engine();
+                        resultEngineObj.success_count = total_success;
+                        resultEngineObj.failure_count = total_failure;
+                        resultEngineObj.success_list = success_list;
+                        resultEngineObj.failure_list = failure_list;
+
+                        if (count > 0)
+                        {
+
+                            MessageBox.Show("You Have Successfully Deleted " + count.ToString() + " Records", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                            load_grid();
+                        }
+
+                        ResultWindow RW = new ResultWindow(resultEngineObj);
+                        RW.ShowDialog();
+
+                        calculate_selected();
+                        calculate_amount();
                     }
-
-                    ResultWindow RW = new ResultWindow(resultEngineObj);
-                    RW.ShowDialog();
-
-                    calculate_selected();
-                    calculate_amount();
+                    else
+                    {
+                    }
                 }
             }
             else
