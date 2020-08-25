@@ -302,12 +302,16 @@ namespace SMS.FeesManagement.FeesCollectionLedger
 
         bool getClasses(sms_fees f)
         {
-            classes cl = (classes)class_cmb.SelectedItem;
-            if (class_cmb.SelectedIndex > 0 && f.class_id.ToString() != cl.id)
+            bool check;
+            //classes cl = (classes)class_cmb.SelectedItem;
+            foreach (var item in classes_list.Where(x=>x.IsChecked == true).Where(x=>x.id != "-1"))
             {
-                return false;
+                if (f.class_id.ToString() == item.id)
+                {
+                    return true;
+                }
             }
-            return true;
+            return false;
         }
         bool getSections(sms_fees f)
         {
@@ -552,6 +556,38 @@ namespace SMS.FeesManagement.FeesCollectionLedger
                 paid_fee_grid.Items.Refresh();
             }
             calculate_amount();
+        }
+
+        private void CheckBox_Checked_classes(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            classes classes = checkBox.DataContext as classes;
+            if (classes.id == "-1")
+            {
+                if (checkBox.IsChecked == true)
+                {
+                    classes_list.ForEach(x => x.IsChecked = true);
+                }
+                else
+                {
+                    classes_list.ForEach(x => x.IsChecked = false);
+                }
+            }
+
+            //for section cmb
+            if (classes_list.Where(x => x.id != "-1").Where(x => x.IsChecked == true).Count() > 1)
+            {
+                section_cmb.IsEnabled = false;
+            }
+            else if (classes.id != "-1")
+            {
+                sections_list = classDAL.get_all_sections(classes.id);
+                section_cmb.IsEnabled = true;
+                sections_list.Insert(0, new sections() { section_name = "---All Sections---", id = "-1" });
+                section_cmb.ItemsSource = sections_list;
+                section_cmb.SelectedIndex = 0;
+            }
+            filter();
         }
     }
 }

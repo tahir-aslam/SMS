@@ -57,7 +57,7 @@
                     <DatePicker Width="120" Name="date_picker_to"   Height="30" SelectedDateChanged="date_picker_to_SelectedDateChanged" />
                     <DatePicker Width="120" Name="date_picker_from" SelectedDateChanged="date_picker_from_SelectedDateChanged"  Height="30"/>
                     
-                    <ComboBox  HorizontalAlignment="Left" 
+                    <!--<ComboBox  HorizontalAlignment="Left" 
                                Width="120" 
                                Height="30" 
                                VerticalAlignment="Center" 
@@ -73,7 +73,29 @@
                                 </StackPanel>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
-                    </ComboBox>                    
+                    </ComboBox>-->
+                    <ComboBox Grid.Row="1"
+                              Grid.Column="1"
+                              HorizontalAlignment="Left"
+                              Width="120"
+                              Height="30"
+                              VerticalAlignment="Center"
+                              x:Name="class_cmb"
+                              SelectedValuePath="id">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Checked="CheckBox_Checked_classes"
+                                              Unchecked="CheckBox_Checked_classes"
+                                              IsChecked="{Binding IsChecked,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                              IsThreeState="False" />
+                                    <TextBlock Text="{Binding class_name}"
+                                               HorizontalAlignment="Right"
+                                               FontSize="12" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <ComboBox  HorizontalAlignment="Left"
                                Width="120" 
                                Height="30" 
