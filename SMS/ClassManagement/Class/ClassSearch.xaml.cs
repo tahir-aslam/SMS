@@ -46,12 +46,7 @@ namespace SMS.ClassManagement.Class
             InitializeComponent();
 
             
-            classes_list = new List<classes>();
-            SearchTextBox.Focus();
-            classesDAL = new ClassesDAL();
-
-            load_gird();
-            load_charges_grid();
+            
             
         }
 
@@ -469,6 +464,16 @@ namespace SMS.ClassManagement.Class
                 return true;
             }
             return false;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            classes_list = new List<classes>();
+            SearchTextBox.Focus();
+            classesDAL = new ClassesDAL();
+
+            load_gird();
+            load_charges_grid();
         }
     }
     

@@ -106,6 +106,14 @@
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.0.12.1.0\lib\net40\MahApps.Metro.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.0.0.14576, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\Microsoft.Expression.Encoder.dll</HintPath>
@@ -671,6 +679,9 @@
     </Compile>
     <Compile Include="HelperClasses\CommandManagerHelper.cs" />
     <Compile Include="HelperClasses\DelegateCommand.cs" />
+    <Compile Include="Helpers\ApplicationManager.cs" />
+    <Compile Include="Helpers\SingleInstance.cs" />
+    <Compile Include="Helpers\Splasher.cs" />
     <Compile Include="MainScreen\MainScreenReports.xaml.cs">
       <DependentUpon>MainScreenReports.xaml</DependentUpon>
     </Compile>
@@ -924,6 +935,9 @@
     <Compile Include="ViewModels\ExamReportBySubjectVM.cs" />
     <Compile Include="Views\Common\PasswordWindow.xaml.cs">
       <DependentUpon>PasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\SplashWindow.xaml.cs">
+      <DependentUpon>SplashWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="xml\Upload\UploadWindow.xaml.cs">
       <DependentUpon>UploadWindow.xaml</DependentUpon>
@@ -1876,7 +1890,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\RectangleStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Common\PasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\SplashWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2277,6 +2299,7 @@
     <Folder Include="ExamsManagement\Reports\TeacherEvaluationReport\" />
     <Folder Include="Reports\Employee\EmployeeAttendanceBio\" />
     <Folder Include="Reports\Fees\" />
+    <Folder Include="Views\UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\duplicate.jpg" />
@@ -2298,10 +2321,14 @@
     <Resource Include="images\general_award_list.png" />
     <Resource Include="images\result card.png" />
     <Resource Include="images\ScenarioLogo.ico" />
+    <Resource Include="images\Icons\icon_32.ico" />
+    <Resource Include="images\SplashScreen\splash.PNG" />
     <Content Include="Lib\CrystalDecisions.CrystalReports.Engine.dll" />
     <Content Include="Lib\GSMCommServer.dll" />
     <Content Include="Lib\GSMCommShared.dll" />
     <Content Include="Lib\GSMCommunication.dll" />
+    <Content Include="Lib\MaterialDesignColors.dll" />
+    <Content Include="Lib\MaterialDesignThemes.Wpf.dll" />
     <Content Include="Lib\Microsoft.Expression.Encoder.Api2.dll" />
     <Content Include="Lib\Microsoft.Expression.Encoder.CommonUI.dll" />
     <Content Include="Lib\Microsoft.Expression.Encoder.CoreUI.dll" />

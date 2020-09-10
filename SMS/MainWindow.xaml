@@ -11,7 +11,8 @@
         Icon="/SMS;component/ScenarioLogo.ico"
         WindowStartupLocation="CenterScreen"
         KeyDown="Window_KeyDown"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        WindowState="Maximized">
     <Window.Background>
         <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg" />
     </Window.Background>
@@ -25,8 +26,7 @@
               Background="Black">
             <StackPanel Orientation="Horizontal">
                 <Image Name="institute_logo_img"
-                       HorizontalAlignment="Left"
-                       Source="/SMS;component/images/harvard.jpg"
+                       HorizontalAlignment="Left"                       
                        Width="80"
                        Height="70"
                        Margin="1,1,0,1"

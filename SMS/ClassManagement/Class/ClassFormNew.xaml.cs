@@ -32,22 +32,11 @@ namespace SMS.ClassManagement.Class
         public ClassFormNew(string m, ClassSearch cs, classes ob)
         {
             InitializeComponent();
-            class_name_textbox.Focus();
             obj = new classes();
-
             mode = m;
             CS = cs;
             this.obj = ob;
 
-            classes_list = new List<classes>();
-            get_all_classes();
-
-
-            if (mode == "edit")
-            {
-                class_name_textbox.IsEnabled = true;
-                fill_control();
-            }
         }
         private void click_save(object sender, RoutedEventArgs e)
         {
@@ -390,6 +379,22 @@ namespace SMS.ClassManagement.Class
             {
                 save();
             }
-        }        
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            class_name_textbox.Focus();
+           
+
+            classes_list = new List<classes>();
+            get_all_classes();
+
+
+            if (mode == "edit")
+            {
+                class_name_textbox.IsEnabled = true;
+                fill_control();
+            }
+        }
     }
 }

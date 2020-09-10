@@ -90,70 +90,7 @@ namespace SMS
         {
             InitializeComponent();
 
-            try
-            {
-                Database = "sms";
-                Server = "localhost";
-                Port = "3306";
-                Uid = "root";
-
-                Application.Current.MainWindow.WindowState = WindowState.Maximized;
-                ReadDatabaseFile();
-                usr_name.Focus();
-                get_sms_institute();
-                institute_name_lbl.Content = ins.institute_name;
-                institute_logo_img.Source = ByteToImage(ins.institute_logo);
-                //check();
-                //var c1 = ConfigurationManager.ConnectionStrings["sms"].ConnectionString;
-                //var c2 = ConfigurationManager.ConnectionStrings["web_sms"].ConnectionString;
-                //sms = c1;
-                //web_sms = c2;            
-                get_exam_admin_panel();
-                get_fee_admin_panel();
-                get_fees_admin_panel();
-
-
-                //new fees  
-                feesDAL = new FeesDAL();
-                miscDAL = new MiscDAL();
-                rolesDAL = new RolesDAL();
-
-                get_all_sessions();
-                session_cmb.ItemsSource = session_list;
-                session_cmb.SelectedIndex = session_list.Count - 1;
-
-                database_list = miscDAL.get_all_databases();
-                database_cmb.ItemsSource = database_list;
-                database_cmb.SelectedIndex = database_list.IndexOf(database_list.Where(x => x.DatabaseName == Database).First());
-
-
-                fees_category_list = feesDAL.get_all_fees_category();
-                fees_sub_category_list = feesDAL.get_all_fees_sub_category();
-                years_list = miscDAL.get_all_years();
-
-                fees_package_list = feesDAL.getAllFeesPackage();
-                fees_package_list.Insert(0, new sms_fees_package() { id = -1, package_name = "-Select Package-" });
-
-                months_list = miscDAL.get_all_months();
-                months_list.Insert(0, new sms_months() { id = "-1", month_name = "-Select Month-" });
-
-                adm_no_prefix_list = miscDAL.get_all_adm_no_prefix();
-                roll_no_prefix_list = miscDAL.get_all_roll_no_prefix();
-                area_list = miscDAL.get_all_area();
-
-
-
-                basic_roles_list = rolesDAL.get_all_roles();
-
-                //WriteLogFile();
-                //ReadLogFile();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                Environment.Exit(0);
-            }
+            
         }
 
         public void get_exam_admin_panel()
@@ -697,6 +634,70 @@ namespace SMS
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Database = "sms";
+                Server = "localhost";
+                Port = "3306";
+                Uid = "root";
+
+                Application.Current.MainWindow.WindowState = WindowState.Maximized;
+                ReadDatabaseFile();
+                usr_name.Focus();
+                get_sms_institute();
+                institute_name_lbl.Content = ins.institute_name;
+                institute_logo_img.Source = ByteToImage(ins.institute_logo);
+                //check();
+                //var c1 = ConfigurationManager.ConnectionStrings["sms"].ConnectionString;
+                //var c2 = ConfigurationManager.ConnectionStrings["web_sms"].ConnectionString;
+                //sms = c1;
+                //web_sms = c2;            
+                get_exam_admin_panel();
+                get_fee_admin_panel();
+                get_fees_admin_panel();
+
+
+                //new fees  
+                feesDAL = new FeesDAL();
+                miscDAL = new MiscDAL();
+                rolesDAL = new RolesDAL();
+
+                get_all_sessions();
+                session_cmb.ItemsSource = session_list;
+                session_cmb.SelectedIndex = session_list.Count - 1;
+
+                database_list = miscDAL.get_all_databases();
+                database_cmb.ItemsSource = database_list;
+                database_cmb.SelectedIndex = database_list.IndexOf(database_list.Where(x => x.DatabaseName == Database).First());
+
+
+                fees_category_list = feesDAL.get_all_fees_category();
+                fees_sub_category_list = feesDAL.get_all_fees_sub_category();
+                years_list = miscDAL.get_all_years();
+
+                fees_package_list = feesDAL.getAllFeesPackage();
+                fees_package_list.Insert(0, new sms_fees_package() { id = -1, package_name = "-Select Package-" });
+
+                months_list = miscDAL.get_all_months();
+                months_list.Insert(0, new sms_months() { id = "-1", month_name = "-Select Month-" });
+
+                adm_no_prefix_list = miscDAL.get_all_adm_no_prefix();
+                roll_no_prefix_list = miscDAL.get_all_roll_no_prefix();
+                area_list = miscDAL.get_all_area();
+
+
+
+                basic_roles_list = rolesDAL.get_all_roles();
+
+                //WriteLogFile();
+                //ReadLogFile();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Environment.Exit(0);
+            }
             //if (CheckForInternetConnection())
             //{
             //    if (GetNistTime().Date.Equals(DateTime.Now.Date))

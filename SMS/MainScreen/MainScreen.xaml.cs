@@ -89,7 +89,7 @@ namespace SMS.MainScreen
 
             this.session_name_tb.Text = MainWindow.session.session_name;
             day_textblock.Text = DateTime.Now.ToString("D");
-            this.mainFrame.Navigate(new Start());
+           
             institute_name_lbl.Content = MainWindow.ins.institute_name;
             institute_logo_img.Source = MainWindow.ByteToImage(MainWindow.ins.institute_logo);
         }
@@ -3052,6 +3052,7 @@ namespace SMS.MainScreen
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this.mainFrame.Navigate(new Start());
             apply_emp_roles_list();
 
             BackgroundWorker worker = new BackgroundWorker();

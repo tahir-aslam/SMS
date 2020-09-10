@@ -22,7 +22,7 @@ namespace SMS.MainScreen
         public Start()
         {
             InitializeComponent();
-            search_textbox.Focus();
+           // search_textbox.Focus();
             institute_logo_img.Source = MainWindow.ByteToImage(MainWindow.ins.institute_logo);
         }
     }
