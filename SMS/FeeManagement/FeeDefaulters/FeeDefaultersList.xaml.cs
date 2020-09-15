@@ -906,7 +906,7 @@ namespace SMS.FeeManagement.FeeDefaulters
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

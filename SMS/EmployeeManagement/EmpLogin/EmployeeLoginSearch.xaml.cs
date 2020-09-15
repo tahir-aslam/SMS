@@ -37,7 +37,7 @@ namespace SMS.EmployeeManagement.EmpLogin
         {
             InitializeComponent();            
             row_obj = new emp_login();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
 
         }

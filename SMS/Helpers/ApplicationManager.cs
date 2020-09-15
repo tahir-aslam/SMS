@@ -139,7 +139,7 @@ namespace SMS.Helpers
 
         public void LoadData()
         {
-            Task.Delay(2000);
+            Task.Delay(5000);
         }
         public static ApplicationManager Instance
         {

@@ -48,7 +48,7 @@ namespace SMS.Messaging
             classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
             class_cmb.ItemsSource = classes_list;
             strength_textblock.Text = exam_entry_grid.Items.Count.ToString();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         // ---------------------- Exam Selection Changed ---------------------------

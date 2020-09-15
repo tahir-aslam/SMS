@@ -774,7 +774,7 @@ namespace SMS.FeeManagement.PaidFeeList
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();           
+            //SearchTextBox.Focus();           
         }
 
         public int get_orginal_tution_fee(string std_id)

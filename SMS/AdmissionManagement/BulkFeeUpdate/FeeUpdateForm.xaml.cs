@@ -41,18 +41,6 @@ namespace SMS.AdmissionManagement.BulkFeeUpdate
             {
                 adm_list_new.Add(adm);
             }
-            std_lbl.Content = adm_list_new.Count;
-            get_all_months();
-            month_cmb.SelectedIndex = 0;
-            months_list.Insert(0, new sms_months() { month_name = "---Select Month---", id = "-1" });
-            month_cmb.ItemsSource = months_list;
-            fee_textbox.IsEnabled = false;
-
-            get_all_fee_types();
-            other_cmb.SelectedIndex = 0;
-            fee_type_list.Insert(0, new other_fee_type() { fee_type = "---Select Type---", id = -1 });
-            other_cmb.ItemsSource = fee_type_list;
-
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -704,6 +692,22 @@ namespace SMS.AdmissionManagement.BulkFeeUpdate
                     }
                 }
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            std_lbl.Content = adm_list_new.Count;
+            get_all_months();
+            month_cmb.SelectedIndex = 0;
+            months_list.Insert(0, new sms_months() { month_name = "---Select Month---", id = "-1" });
+            month_cmb.ItemsSource = months_list;
+            fee_textbox.IsEnabled = false;
+
+            get_all_fee_types();
+            other_cmb.SelectedIndex = 0;
+            fee_type_list.Insert(0, new other_fee_type() { fee_type = "---Select Type---", id = -1 });
+            other_cmb.ItemsSource = fee_type_list;
         }
     }
     

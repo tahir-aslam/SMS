@@ -93,7 +93,7 @@ namespace SMS.FeesManagement.ManageFees
         {
 
             //_panelLoading = true;
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
 
             try
             {
@@ -137,7 +137,7 @@ namespace SMS.FeesManagement.ManageFees
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         public void search_box()

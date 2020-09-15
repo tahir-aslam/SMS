@@ -49,19 +49,7 @@ namespace SMS.AdmissionManagement.Admission
             adm_list = new List<admission>();
             admDAL = new AdmissionDAL();
             obj = new admission();
-            SearchTextBox.Focus();
-            classes_list = new List<classes>();
-            get_all_classes();
-            class_cmb.SelectedIndex = 0;
-            classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
-            class_cmb.ItemsSource = classes_list;
-
-            get_all_months();
-            month_cmb.SelectedIndex = 0;
-            months_list.Insert(0, new sms_months() { month_name = "-Select Month-", id = "-1" });
-            month_cmb.ItemsSource = months_list;
-
-            load_grid();
+           
         }
 
 
@@ -670,7 +658,7 @@ namespace SMS.AdmissionManagement.Admission
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -682,6 +670,20 @@ namespace SMS.AdmissionManagement.Admission
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            SearchTextBox.Focus();
+            classes_list = new List<classes>();
+            get_all_classes();
+            class_cmb.SelectedIndex = 0;
+            classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
+            class_cmb.ItemsSource = classes_list;
+
+            get_all_months();
+            month_cmb.SelectedIndex = 0;
+            months_list.Insert(0, new sms_months() { month_name = "-Select Month-", id = "-1" });
+            month_cmb.ItemsSource = months_list;
+
+            load_grid();
+
             var dpd = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, typeof(DataGrid));
             if (dpd != null)
             {

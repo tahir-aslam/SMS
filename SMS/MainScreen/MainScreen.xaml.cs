@@ -57,6 +57,8 @@ using SMS.Reports.Exams.TeacherEvaluation;
 using SMS.Core.Services;
 using MySql.Data.MySqlClient;
 using SMS.EmployeeManagement.EmployeeAttendanceReport;
+using SMS.Helpers;
+using SMS.Views.UserControls;
 
 namespace SMS.MainScreen
 {
@@ -73,6 +75,8 @@ namespace SMS.MainScreen
         RequestService m_RequestService;
         MiscDAL misDAL;
         LicenseDAL licenseDAL;
+        public static ScrollViewer _scroller = null;
+        private int last_index;
 
         public MainScreen()
         {
@@ -3223,6 +3227,289 @@ namespace SMS.MainScreen
             }
         }
 
-       
+        private void ClearChildControl()
+        {
+            if (ContentArea != null)
+            {
+                ContentArea.Children.Clear();
+            }
+        }
+        public void loadscroll()
+        {
+            _scroller.ScrollToTop();
+        }
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+
+                int index = ListViewMenu.SelectedIndex;
+                if (index > -1)
+                {
+
+                    ListViewMenu.SelectedIndex = -1;
+                    ToggleMenu(index);
+
+
+                    if (index == 0)
+                    {
+                        Helper.Index = 0;
+                    }
+                    else
+                    {
+                        Helper.Index = index;
+                    }
+
+
+                    switch (index)
+                    {
+                        case 0:
+                            ClearChildControl();
+                            //resetChartsFields();
+                            loadscroll();
+                            ContentArea.Children.Add(new UC_Dashboard());
+                            last_index = index;
+                            break;
+                        case 1:
+                            ClearChildControl();
+                            ContentArea.Children.Add(new UC_StudentSubMenu());
+                            last_index = index;
+                            break;
+                        case 2:
+                            last_index = index;
+                            ClearChildControl();
+                            ContentArea.Children.Add(new UC_ManageUser(false));
+                            break;
+                        case 3:
+                            last_index = index;
+                            if (CheckMainWindowPermission("View Manual Control(s)"))
+                                return;
+                            ClearChildControl();
+                            ContentArea.Children.Add(new UC_LockUnLockDoor());
+                            break;
+                        case 4:
+                            last_index = index;
+                            if (CheckMainWindowPermission("View Muster(s)"))
+                                return;
+                            ClearChildControl();
+                            ContentArea.Children.Add(new UC_Mustering());
+                            break;
+                        case 5:
+                            if (UC_Dashboard.previews != null)
+                            {
+                                if (UC_Dashboard.previews.WindowState == WindowState.Minimized)
+                                {
+                                    UC_Dashboard.previews.WindowState = WindowState.Normal;
+                                }
+                                else if (UC_Dashboard.previews.WindowState == WindowState.Maximized)
+                                {
+
+                                }
+                                else if (UC_Dashboard.previews.WindowState == WindowState.Normal)
+                                {
+
+                                }
+                                else
+                                {
+                                }
+                            }
+                            else
+                            {
+                                if (_preview == null)
+                                {
+                                    Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new System.Action(() =>
+                                    {
+                                        _preview = new PreviewModePopup();
+                                        _previews = _preview;
+                                        //_preview.Topmost = true;
+                                        //Center the main screen                                
+                                        _preview.Show();
+                                    }));
+                                    //_preview.Activate();
+
+                                }
+                                else
+                                {
+                                    if (_preview.IsShows == false)
+                                    {
+
+                                        if (_preview.WindowState == WindowState.Minimized)
+                                        {
+                                            _preview.WindowState = WindowState.Normal;
+
+                                        }
+                                        else if (_preview.WindowState == WindowState.Maximized)
+                                        {
+
+                                        }
+                                        else if (_preview.WindowState == WindowState.Normal)
+                                        {
+                                            _preview.WindowState = WindowState.Normal;
+                                        }
+                                        else
+                                        {
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new System.Action(() =>
+                                        {
+                                            _preview = new PreviewModePopup();
+                                            _previews = _preview;
+                                            _preview.Topmost = true;
+                                            _preview.Show();
+                                        }));
+                                        //_preview.Activate();
+
+                                    }
+                                }
+                            }
+
+                            break;
+                        case 6:
+                            last_index = index;
+                            if (CheckMainWindowPermission("View Report(s)"))
+                                return;
+                            ClearChildControl();
+                            ContentArea.Children.Add(new UC_Reports());
+                            break;
+                        case 7:
+                            ResetMenuState();
+                            Window yourParentWindow = Window.GetWindow(MainWin);
+                            Helper.CenterWindowOnScreen(yourParentWindow);
+                            VMSWin _vms = new VMSWin();
+                            _vms.Owner = yourParentWindow;
+                            _vms.ShowDialog();
+                            break;
+                        case 8:
+                            ClearChildControl();
+                            ContentArea.Children.Add(new UC_About(this));
+                            last_index = index;
+                            //new CardHolder().ShowDialog();
+                            //ToggleMenu(last_index);
+                            break;
+                        case 9:
+                            //Logout Click
+                            Helper.WindowCLose<PreviewModePopup>();
+                            Helper.WindowCLose<VMSWin>();
+                            new LoginUserWin(true).Show();
+                            this.Close();
+                            //  new OperatorsDAL().OperatorAuthentication(CConfig._email, "", 2);
+                            //  new OperatorsDAL().LogOperatorActivity(CConfig._operatorName, "Desktop", "Log out");
+                            //  CConfig._email = "";
+                            // CConfig._operatorName = "";
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //LogHelper.WriteException(ex.Message.ToString(), source: "Quanika");
+            }
+        }
+
+        private void ToggleMenu(int index)
+        {
+            ResetMenuState();
+            ChangeMenuState(index);
+        }
+
+        public void ResetMenuState()
+        {
+            try
+            {
+                iconHome.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_home.png", UriKind.Absolute));
+                txtHome.Foreground = resetTextColor();
+
+                iconSetting.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_settings.png", UriKind.Absolute));
+                txtSettings.Foreground = resetTextColor();
+
+                iconTools.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_portfolio.png", UriKind.Absolute));
+                txtTools.Foreground = resetTextColor();
+
+                iconMustering.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/muster.png", UriKind.Absolute));
+                txtMustring.Foreground = resetTextColor();
+
+                iconAbout.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_about.png", UriKind.Absolute));
+                txtAbout.Foreground = resetTextColor();
+
+                iconUser.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_user.png", UriKind.Absolute));
+                txtUser.Foreground = resetTextColor();
+                //iconPlans.Source = new BitmapImage(new Uri(@"pack://application:,,,/Img/Planmanager/ico_plan.png", UriKind.Absolute));
+                //txtPlans.Foreground = resetTextColor();
+
+                iconLogout.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_logout.png", UriKind.Absolute));
+                txtLogout.Foreground = resetTextColor();               
+
+                iconReport.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_reports.png", UriKind.Absolute));
+                txtReport.Foreground = resetTextColor();
+            }
+            catch (Exception ex)
+            {
+                //LogHelper.WriteException(ex.Message, source: "Quanika");
+            }
+        }
+        private static SolidColorBrush resetTextColor()
+        {
+            return new SolidColorBrush(Color.FromRgb(119, 119, 119));
+        }
+        private static SolidColorBrush changeTextColor()
+        {
+            return new SolidColorBrush(Color.FromRgb(0, 195, 179));
+        }
+        private void ChangeMenuState(int index)
+        {
+            try
+            {
+                switch (index)
+                {
+                    case 0:
+                        iconHome.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_home_hover.png", UriKind.Absolute));
+                        txtHome.Foreground = changeTextColor();
+                        break;
+                    case 1:
+                        iconSetting.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_settings_hover.png", UriKind.Absolute));
+                        txtSettings.Foreground = changeTextColor();
+                        break;
+                    case 2:
+                        iconUser.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_user_hover.png", UriKind.Absolute));
+                        txtUser.Foreground = changeTextColor();
+                        break;
+
+                    case 3:
+                        iconTools.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_portfolio_hover.png", UriKind.Absolute));
+                        txtTools.Foreground = changeTextColor();
+                        break;
+                    case 4:
+                        iconMustering.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/muster_hover.png", UriKind.Absolute));
+                        txtMustring.Foreground = changeTextColor();
+                        break;
+                    case 5:
+                        //iconPlans.Source = new BitmapImage(new Uri(@"pack://application:,,,/Img/planmanager/ico_plan_active.png", UriKind.Absolute));
+                        //txtPlans.Foreground = changeTextColor();
+                        break;
+                    case 6:
+                        iconReport.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_report_active.png", UriKind.Absolute));
+                        txtReport.Foreground = changeTextColor();
+                        break;                   
+                    case 8:
+                        iconAbout.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_about_active.png", UriKind.Absolute));
+                        txtAbout.Foreground = changeTextColor();
+                        break;
+                    case 9:
+                        iconLogout.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/MainWinImg/icon_logout_active.png", UriKind.Absolute));
+                        txtLogout.Foreground = changeTextColor();
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                //LogHelper.WriteException(ex.Message, source: "Quanika");
+            }
+        }
     }
 }

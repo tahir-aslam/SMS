@@ -154,7 +154,7 @@ namespace SMS.Common
         }
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
     }
 }

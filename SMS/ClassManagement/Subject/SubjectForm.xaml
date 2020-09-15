@@ -1,13 +1,30 @@
 ﻿<Window x:Class="SMS.ClassManagement.Subject.SubjectForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SubjectForm" Height="350" Width="450" KeyDown="Window_KeyDown">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <StackPanel Grid.Row="0"  Grid.Column="0" Margin="10" MaxWidth="500">
-            <Border BorderThickness="1" BorderBrush="#FFD6D4D4" CornerRadius="15,15,0,0">
+        Title="SubjectForm"
+        Height="350"
+        Width="450"
+        KeyDown="Window_KeyDown"
+        Loaded="Window_Loaded">
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Center">
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10"
+                    MaxWidth="500">
+            <Border BorderThickness="1"
+                    BorderBrush="#FFD6D4D4"
+                    CornerRadius="15,15,0,0">
                 <StackPanel>
-                    <Border Background="Purple" Height="50" CornerRadius="15,15,0,0" BorderThickness="0">
-                        <TextBlock Text="Subject Management Form" Foreground="White" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Border Background="Purple"
+                            Height="50"
+                            CornerRadius="15,15,0,0"
+                            BorderThickness="0">
+                        <TextBlock Text="Subject Management Form"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" />
 
                     </Border>
 
@@ -15,26 +32,46 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45" />
                             <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />                           
+                            <RowDefinition Height="45" />
                             <RowDefinition Height="60" />
 
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150" />
-                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="220" />
 
 
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Content="Class Name: *" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
-                        <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="170" Height="30" VerticalAlignment="Center" Name="class_cmb" SelectedValuePath="id" >
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Content="Class Name: *"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                        <ComboBox Grid.Row="0"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  Width="170"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  Name="class_cmb"
+                                  SelectedValuePath="id">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
 
-                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <TextBlock Text="{Binding id}"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="10"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   Visibility="Collapsed"></TextBlock>
 
-                                        <TextBlock Text="{Binding class_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                        <TextBlock Text="{Binding class_name}"
+                                                   HorizontalAlignment="Right"
+                                                   FontSize="12"></TextBlock>
 
 
 
@@ -43,15 +80,35 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <Label Grid.Row="1" Grid.Column="0" Content="Teacher Name:  " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
-                        <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="170" Height="30" VerticalAlignment="Center" Name="teacher_cmb" SelectedValuePath="id">
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Content="Teacher Name:  "
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                        <ComboBox Grid.Row="1"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  Width="170"
+                                  Height="30"
+                                  VerticalAlignment="Center"
+                                  Name="teacher_cmb"
+                                  SelectedValuePath="id">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
 
-                                        <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <TextBlock Text="{Binding id}"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="10"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   Visibility="Collapsed"></TextBlock>
 
-                                        <TextBlock Text="{Binding emp_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                        <TextBlock Text="{Binding emp_name}"
+                                                   HorizontalAlignment="Right"
+                                                   FontSize="12"></TextBlock>
 
 
 
@@ -62,24 +119,104 @@
 
 
 
-                        <TextBlock Text="Subject Name: *  " Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>
-                        <TextBox   Grid.Row="2" Grid.Column="1" Name="subj_name_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="170" Height="30" FontSize="16" />
+                        <TextBlock Text="Subject Name: *  "
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30" />
+                        <TextBox   Grid.Row="2"
+                                   Grid.Column="1"
+                                   Name="subj_name_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16" />
 
-                        <TextBlock Text="Total Marks:   " Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30" Visibility="Hidden"/>
-                        <TextBox   Grid.Row="3" Grid.Column="1" Name="total_marks_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="170" Height="30" FontSize="16" Visibility="Hidden"/>
+                        <TextBlock Text="Total Marks:   "
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30"
+                                   Visibility="Hidden" />
+                        <TextBox   Grid.Row="3"
+                                   Grid.Column="1"
+                                   Name="total_marks_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16"
+                                   Visibility="Hidden" />
 
-                        <TextBlock Text="Remarks:   " Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30" Visibility="Hidden"/>
-                        <TextBox   Grid.Row="4" Grid.Column="1" Name="remarks_textbox" MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="170" Height="30" FontSize="16" Visibility="Hidden"/>
+                        <TextBlock Text="Remarks:   "
+                                   Grid.Row="4"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30"
+                                   Visibility="Hidden" />
+                        <TextBox   Grid.Row="4"
+                                   Grid.Column="1"
+                                   Name="remarks_textbox"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="170"
+                                   Height="30"
+                                   FontSize="16"
+                                   Visibility="Hidden" />
 
-                        <TextBlock Text="Is Active: " Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30" Visibility="Hidden"/>
-                        <CheckBox   Grid.Row="5" Grid.Column="5" Name="is_active_chekbox"  MaxWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Width="200" Height="30" FontSize="16" Visibility="Hidden"/>
+                        <TextBlock Text="Is Active: "
+                                   Grid.Row="5"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0, 0, 5, 0"
+                                   Height="30"
+                                   Visibility="Hidden" />
+                        <CheckBox   Grid.Row="5"
+                                    Grid.Column="5"
+                                    Name="is_active_chekbox"
+                                    MaxWidth="200"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="0"
+                                    Width="200"
+                                    Height="30"
+                                    FontSize="16"
+                                    Visibility="Hidden" />
 
 
-                        <Grid Width="230" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="4" Margin="0,0,48,0" HorizontalAlignment="Right" >
+                        <Grid Width="230"
+                              Grid.Row="6"
+                              Grid.Column="0"
+                              VerticalAlignment="Center"
+                              Grid.ColumnSpan="4"
+                              Margin="0,0,48,0"
+                              HorizontalAlignment="Right">
 
-                            <Button Content="Save" Width="100" Height="30" HorizontalAlignment="Left" Click="click_save"  />
+                            <Button Content="Save"
+                                    Width="100"
+                                    Height="30"
+                                    HorizontalAlignment="Left"
+                                    Click="click_save" />
 
-                            <Button Content="Cancel" Width="100" Height="30" HorizontalAlignment="Right" Click="click_cancel"  />
+                            <Button Content="Cancel"
+                                    Width="100"
+                                    Height="30"
+                                    HorizontalAlignment="Right"
+                                    Click="click_cancel" />
                         </Grid>
 
                     </Grid>

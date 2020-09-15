@@ -45,7 +45,7 @@ namespace SMS.FeeManagement.FeeSearch
             class_cmb.SelectedIndex = 0;
             classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
             class_cmb.ItemsSource = classes_list;
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
             strength_textblock.Text = fee_grid.Items.Count.ToString();
 
@@ -523,7 +523,7 @@ namespace SMS.FeeManagement.FeeSearch
         }
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         public void get_grid_records()

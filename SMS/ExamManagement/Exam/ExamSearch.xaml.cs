@@ -37,7 +37,7 @@ namespace SMS.ExamManagement.Exam
             InitializeComponent();
             exam_list = new List<exam>();
             row_obj = new exam();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
         }
 

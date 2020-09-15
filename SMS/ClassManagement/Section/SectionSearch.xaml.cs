@@ -37,8 +37,7 @@ namespace SMS.ClassManagement.Section
             InitializeComponent();
             sections_list = new List<sections>();
             row_obj = new sections();
-            SearchTextBox.Focus();
-            load_grid();
+           
         }
 
         public void load_grid()
@@ -324,6 +323,11 @@ namespace SMS.ClassManagement.Section
             var dataColumn = new DataColumn(columnName, type);
             dataTable.Columns.Add(dataColumn);
         }
-        
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            SearchTextBox.Focus();
+            load_grid();
+        }
     }
 }

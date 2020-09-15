@@ -4,6 +4,7 @@
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:ctr="clr-namespace:SMS.Controls"
         xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Scenario Systems. 0300-4197674"
         Height="800"
         Width="1000"
@@ -13,9 +14,9 @@
         Deactivated="MetroWindow_Deactivated"
         Loaded="Window_Loaded"
         Name="v_MainScreen">
-    <Window.Background>
+    <!--<Window.Background>
         <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg" />
-    </Window.Background>
+    </Window.Background>-->
     <Window.Resources>
         <SolidColorBrush x:Key="OutlookButtonForeground"
                          Color="Black" />
@@ -227,987 +228,1434 @@
 
     </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="220" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        <Border BorderThickness="1"
+                Background="White"
+                BorderBrush="#FF9B9B9B">
+
+            <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown"
+                  Background="#E2E2E2"
+                  x:Name="grdParent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="1285*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="70*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Background="White"
+                            MouseDown="StackPanel_MouseDown">
+                    <StackPanel.BitmapEffect>
+                        <DropShadowBitmapEffect Color="#FFAEAEAE"
+                                                ShadowDepth="7"
+                                                Direction="315"
+                                                Softness="1" />
+                    </StackPanel.BitmapEffect>
+                    <Grid Margin="0"
+                          Height="60">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1" />
+                                <ColumnDefinition Width="20*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/images/splashscreen/logo.png"
+                                   Grid.Column="1" />
+                        </Grid>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Stretch"
+                                    Margin="0"
+                                    Grid.Column="1">
+
+                            <StackPanel Orientation="Horizontal"
+                                        x:Name="pnlShowUsers"
+                                        Visibility="Collapsed">
+                                <!--<TextBlock Name="txtOperatorName"
+                                           Text="{Binding Path=(optName)}"
+                                           FontFamily="Open Sans Reguler"
+                                           Cursor="Hand"
+                                           FontSize="12"
+                                           Margin="5"
+                                           VerticalAlignment="Center"></TextBlock>-->
+                                <materialDesign:PackIcon x:Name="icoUser"
+                                                         Cursor="Hand"
+                                                         Kind="User"
+                                                         VerticalAlignment="Center"
+                                                         Width="25"
+                                                         Height="25"
+                                                         Margin="10,0"
+                                                         Foreground="#FF969696" />
+                                <Separator Width="2"
+                                           Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                            </StackPanel>
+
+                          
 
 
-        <Grid Grid.Row="0"
-              Background="Black"
-              Grid.ColumnSpan="2"
-              Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="90" />
-                <ColumnDefinition Width="*" />               
-                <ColumnDefinition Width="490" />
-            </Grid.ColumnDefinitions>
-            <Image Name="institute_logo_img"
-                   HorizontalAlignment="Left"
-                   Source="/SMS;component/images/sms.png"
-                   Width="80"
-                   Height="70"
-                   Margin="0,1"
-                   VerticalAlignment="Center" />
-            <StackPanel Grid.Column="1"
-                        Orientation="Horizontal"
-                        Margin="0,0,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center">
-                <Label Content="Scenario Management Solution"
-                       Name="institute_name_lbl"
-                       Foreground="Bisque"
-                       HorizontalAlignment="Left"
-                       FontSize="30"
-                       FontFamily="Georgia"
-                       MouseLeftButtonDown="institute_name_lbl_MouseLeftButtonDown" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Grid.Column="2" 
-                        HorizontalAlignment="Right"
-                        >
-            <Button Grid.Column="2"
-                    Name="home_btn"
-                    ToolTipService.ToolTip="Sms"
-                    Height="50"
-                    Width="50"
-                    x:FieldModifier="public"
-                    Background="Black"
-                    BorderBrush="Black"
-                    Click="home_btn_Click">
-                <Image  Source="/SMS;component/images/home.png" />
-            </Button>
-            <Button Grid.Column="3"
-                    Name="smsSend"
-                    ToolTipService.ToolTip="Sms"
-                    Height="50"
-                    Width="50"
-                    Click="smsSend_Click"
-                    x:FieldModifier="public"
-                    Background="Black"
-                    BorderBrush="Black"
-                    Visibility="Collapsed">
-                <Image  Source="/SMS;component/images/smsicon.png"
-                        Name="img" />
-            </Button>
-            <Button Grid.Column="4"
-                    Name="web_btn"
-                    ToolTipService.ToolTip="Web Panel"
-                    Height="50"
-                    Width="50"
-                    x:FieldModifier="public"
-                    Background="Black"
-                    BorderBrush="Black"
-                    Click="web_btn_Click"
-                    Visibility="Visible">
-                <Image  Source="/SMS;component/images/web2.png"
-                        Name="img_web" />
-            </Button>
-            <Button Grid.Column="5"
-                    HorizontalAlignment="Left"
-                    ToolTip="Upload Data To Online Database"
-                    Name="data_uploader_btn"
-                    Width="50"
-                    Height="50"
-                    Background="Black"
-                    BorderBrush="Black"
-                    Click="data_uploader_btn_Click"
-                    Visibility="Visible">
-                <Image Source="/SMS;component/images/upload1.png" />
-            </Button>
-            <Button Grid.Column="6"
-                    HorizontalAlignment="Left"
-                    ToolTip="Download Data From Online Database"
-                    Width="50"
-                    Height="50"
-                    Background="Black"
-                    BorderBrush="Black">
-                <Image  Source="/SMS;component/images/download1.png" />
-            </Button>
-            <Button Grid.Column="7"
-                    HorizontalAlignment="Left"
-                    Name="setting_btn"
-                    ToolTip="Scenario Admin Panel"
-                    Width="50"
-                    Height="50"
-                    Background="Black"
-                    BorderBrush="Black"
-                    Click="setting_btn_Click">
-                <Image  Source="/SMS;component/images/setting.png" />
-            </Button>
-            <Button Grid.Column="8"
-                    HorizontalAlignment="Left"
-                    ToolTip="Logout"
-                    Width="50"
-                    Height="50"
-                    Background="Black"
-                    BorderBrush="Black"
-                    Name="logout_btn"
-                    Click="logout_btn_Click">
-                <Image  Source="/SMS;component/images/logout.png"
-                        ImageFailed="Image_ImageFailed" />
-            </Button>
-            </StackPanel>
+                            <!--<Separator Width="2"
+                                       Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />-->
 
-        </Grid>
+                            <Image x:Name="icoAlarm"
+                                   MouseDown="icon_Alarm"
+                                   Cursor="Hand"
+                                   Width="20"
+                                   Height="20"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0"
+                                   HorizontalAlignment="Center"
+                                   Source="/images/MainWinImg/alarmofficon.png" />
 
-        <Grid Grid.Row="1"
-              Grid.Column="0"
-              HorizontalAlignment="Center"
-              VerticalAlignment="Center">
-            <TextBlock Text="Session"
-                       FontWeight="Bold"
-                       FontSize="18"
-                       Name="session_name_tb"
-                       Foreground="Gray" />
-        </Grid>
 
-        <Grid Grid.Row="1"
-              Grid.Column="1"
-              HorizontalAlignment="Center"
-              VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="230" />
-                <ColumnDefinition Width="100" />
 
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0"
-                       Text="Wednesday"
-                       HorizontalAlignment="Left"
-                       Name="day_textblock"
-                       FontSize="19"
-                       Foreground="LightGray"
-                       FontFamily="Georgia" />
-            <!--<TextBlock Grid.Column="2" Text="01 March " HorizontalAlignment="Right"  Name="date_textblock" FontSize="16" Foreground="Purple" FontWeight="Black"/>-->
-            <TextBlock Grid.Column="1"
-                       Text=" 01:25:55 "
-                       HorizontalAlignment="Right"
-                       Name="time_textblock"
-                       FontSize="19"
-                       Foreground="Brown"
-                       FontFamily="Georgia" />
-        </Grid>
 
-        <Grid Grid.Row="1"
-              Grid.Column="1"
-              Grid.RowSpan="2">
-            <Frame Name="mainFrame"
-                   Margin="10,0,10,10"
-                   NavigationUIVisibility="Hidden">
-            </Frame>
-        </Grid>
-        <Grid Grid.Row="1"
-              Grid.Column="1"
-              Grid.RowSpan="2"
-              VerticalAlignment="Bottom">
-            <ctr:LoadingPanel x:Name="smsLoadingPanel"
-                              IsLoading="{Binding PanelLoading}"
-                              Message="{Binding PanelMainMessage}"
-                              SubMessage="{Binding PanelSubMessage}"
-                              ClosePanelCommand="{Binding PanelCloseCommand}" />
-        </Grid>
 
-        <Grid Grid.Row="2"
-              Grid.Column="0"
-              Margin="10,0,10,10">
-            <!--Tab Control-->
-            <DockPanel Background="Gray">
-                <TabControl   VerticalAlignment="Stretch"
-                              Width="200"
-                              Height="Auto"
-                              DockPanel.Dock="Left"
-                              TabStripPlacement="Bottom"
-                              Style="{DynamicResource OutlookTabControlStyle}"
-                              MaxWidth="300"
-                              MinWidth="100"
-                              BorderBrush="#FF6593CF"
-                              HorizontalAlignment="Left"
-                              BorderThickness="1,1,1,0">
-                    <TabControl.Background>
-                        <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg" Stretch="UniformToFill"/>
-                    </TabControl.Background>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0,0,5,0">
+                                <Separator Width="2"
+                                           Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                            </StackPanel>
+                            <Button x:Name="btnSetting"
+                                    Background="Transparent"
+                                    BorderBrush="{x:Null}"
+                                    Padding="0"
+                                    Cursor="Hand"
+                                    Click="btnSetting_Click">
+                                <materialDesign:PackIcon Kind="SettingsOutline"
+                                                         Cursor="Hand"
+                                                         Width="25"
+                                                         Height="25"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="#FF969696" />
+                            </Button>
+                            <Button x:Name="btnMin"
+                                    Background="{x:Null}"
+                                    BorderBrush="{x:Null}"
+                                    Padding="0"
+                                    Cursor="Hand"
+                                    Margin="40,0,0,0"
+                                    Click="btnMin_Click">
+                                <materialDesign:PackIcon Kind="WindowMinimize"
+                                                         Width="18"
+                                                         Height="14"
+                                                         Foreground="#FF444444" />
+                                <!--<Image Source="/Img/MainWinImg/ico_min.png" Stretch="Uniform"/>-->
+                            </Button>
+                            <Button x:Name="btnMax"
+                                    Background="{x:Null}"
+                                    BorderBrush="{x:Null}"
+                                    Padding="0"
+                                    Cursor="Hand"
+                                    Margin="12,0,0,0"
+                                    Click="btnMax_Click">
+                                <Image x:Name="icoMaximize"
+                                       Source="/images/MainWinImg/ico_max_half.png"
+                                       Stretch="Uniform"
+                                       Width="20"
+                                       Height="20" />
+                            </Button>
 
-                    <!--Class Management Tab-->
+                            <Button x:Name="ButtonFechar"
+                                    Background="{x:Null}"
+                                    BorderBrush="{x:Null}"
+                                    Cursor="Hand"
+                                    Padding="0"
+                                    Margin="12,0,10,0"
+                                    Click="ButtonFechar_Click">
+                                <!--<Image Source="/Img/MainWinImg/ico_close.png" Stretch="Uniform" Width="20" Height="20"/>-->
+                                <materialDesign:PackIcon Kind="Close"
+                                                         Width="17"
+                                                         Height="17"
+                                                         Foreground="#FF444444" />
 
-                    <TabItem   Header="Class Management"
-                               Name="class_mgmt_tab"
-                               Height="30"
-                               Style="{DynamicResource OutlookTabItemStyle}"
-                               Background="{DynamicResource OutlookButtonBackground}"
-                               Foreground="{DynamicResource OutlookButtonForeground}"
-                               FontSize="15"
-                               FontFamily="Arial"
-                               Visibility="Collapsed"
-                               >
-                        <StackPanel Width="190"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top"
-                                    Orientation="Vertical">
-                            <Button Content="Classes"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="button1"
-                                    Click="classMgmt_Click"
-                                    Visibility="Collapsed"
-                                    Grid.ColumnSpan="2"
-                                    Margin="0,2" />
-                            <Button Grid.Row="1"
-                                    Content="Sections"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="section_button"
-                                    Click="sectionMgmt_Click"
-                                    Visibility="Collapsed"
-                                    Grid.ColumnSpan="2"
-                                    Margin="0,2" />
-                            <Button Grid.Row="2"
-                                    Content="Subjects"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="subject_button"
-                                    Click="SubjectMgmt_Click"
-                                    Visibility="Collapsed"
-                                    Grid.ColumnSpan="2"
-                                    Margin="0,2" />                            
+                            </Button>
                         </StackPanel>
-                    </TabItem>
+                    </Grid>
+                </StackPanel>
 
-                    <!--Admission Management Tab-->
+                <Border Background="White"
+                        Grid.RowSpan="2"
+                        Grid.Row="1">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FFAEAEAE"
+                                          Direction="320"
+                                          BlurRadius="7.5"
+                                          ShadowDepth="7"
+                                          Opacity="0.5"
+                                          RenderingBias="Quality" />
+                    </Border.Effect>
+                    <Grid x:Name="grdContent">
+                        <StackPanel  HorizontalAlignment="Center"
+                                     VerticalAlignment="Top">
+                            <ListView x:Name="ListViewMenu"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      VerticalContentAlignment="Center"
+                                      HorizontalContentAlignment="Center"
+                                      Cursor="Hand"
+                                      FontSize="10"
+                                      Tag="Language"
+                                      Foreground="#FF777777"
+                                      FontFamily="Open Sans Light"
+                                      SelectionChanged="ListViewMenu_SelectionChanged">
+                                <ListViewItem Cursor="Hand"
+                                              Height="55">
+                                    <StackPanel Orientation="Vertical">
+                                        <Image Source="/Images/MainWinImg/icon_home.png"
+                                               Name="iconHome"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Text="Home"
+                                                   Tag="Language"
+                                                   Name="txtHome" />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem  Cursor="Hand"
+                                               Height="55">
+                                    <StackPanel VerticalAlignment="Stretch">
+                                        <Image Source="/Images/MainWinImg/icon_settings.png"
+                                               Name="iconSetting"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Margin="0"
+                                                   Text="Student"
+                                                   Name="txtSettings"
+                                                   Tag="Language"
+                                                   />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Cursor="Hand"
+                                              Height="55"
+                                              x:Name="lisCardHolder">
+                                    <StackPanel>
+                                        <Image Source="/Images/MainWinImg/icon_user.png"
+                                               Name="iconUser"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Text="Card Holder"
+                                                   Tag="Language"
+                                                   Name="txtUser" />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Cursor="Hand"
+                                              Height="55"
+                                              x:Name="lisDoorControl">
+                                    <StackPanel>
+                                        <Image Source="/Images/MainWinImg/icon_portfolio.png"
+                                               Name="iconTools"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Text="Manual Control"
+                                                   Tag="Language"
+                                                   Name="txtTools" />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Cursor="Hand"
+                                              Height="55"
+                                              x:Name="lisMustering">
+                                    <StackPanel>
+                                        <Image Source="/Images/MainWinImg/icon_portfolio.png"
+                                               Name="iconMustering"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Text="e-Mustering"
+                                                   Tag="Language"
+                                                   Name="txtMustring" />
+                                    </StackPanel>
+                                </ListViewItem>                               
+                                <ListViewItem Cursor="Hand"
+                                              Height="55"
+                                              x:Name="lisReport">
+                                    <StackPanel>
+                                        <Image Source="/Images/MainWinImg/icon_reports.png"
+                                               x:Name="iconReport"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Text="Reports"
+                                                   Tag="Language"
+                                                   Name="txtReport" />
+                                    </StackPanel>
+                                </ListViewItem>                              
+                                <ListViewItem Height="55"
+                                              Cursor="Hand">
+                                    <StackPanel>
+                                        <Image Source="/Images/MainWinImg/icon_about.png"
+                                               Name="iconAbout"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Text="About"
+                                                   Tag="Language"
+                                                   Name="txtAbout" />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Cursor="Hand"
+                                              Height="55"
+                                              x:Name="lisLogout">
+                                    <StackPanel>
+                                        <Image Source="/Images/MainWinImg/icon_logout.png"
+                                               Name="iconLogout"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Text="Logout"
+                                                   Tag="Language"
+                                                   Name="txtLogout" />
+                                    </StackPanel>
+                                </ListViewItem>
+                            </ListView>
+                        </StackPanel>
+                       
+                    </Grid>
+                </Border>
 
-                    <TabItem Name="adm_mgmt_tab"
-                             Header="Admission Management"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial"
-                             Visibility="Collapsed">
-                        <Grid Width="190"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Top">
-                            <StackPanel Orientation="Vertical">
-                                <Button Grid.Row="0"
-                                        Content="Admission Register"
+                <Grid Grid.Column="1"
+                      Grid.Row="1"
+                      x:Name="GridMainContent">
+                    <ScrollViewer Name="Main_scroll">
+                        <ScrollViewer.Resources>
+                            <Style x:Key="ScrollThumbs"
+                                   TargetType="{x:Type Thumb}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Thumb}">
+                                            <Grid x:Name="Grid">
+                                                <Border x:Name="ScrollBarRectangle"
+                                                        CornerRadius="5"
+                                                        HorizontalAlignment="Stretch"
+                                                        VerticalAlignment="Stretch"
+                                                        Width="Auto"
+                                                        Height="Auto"
+                                                        Background="#FF646464" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="Tag"
+                                                         Value="Horizontal">
+                                                    <Setter TargetName="ScrollBarRectangle"
+                                                            Property="Width"
+                                                            Value="Auto" />
+                                                    <Setter TargetName="ScrollBarRectangle"
+                                                            Property="Height"
+                                                            Value="7" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                            <Style TargetType="{x:Type ScrollBar}">
+                                <Setter Property="Margin"
+                                        Value="0" />
+                                <Setter Property="Stylus.IsFlicksEnabled"
+                                        Value="false" />
+                                <Setter Property="Foreground"
+                                        Value="#959393" />
+                                <Setter Property="Background"
+                                        Value="Gainsboro" />
+                                <Setter Property="Width"
+                                        Value="8" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ScrollBar}">
+                                            <Grid x:Name="GridRoot"
+                                                  Width="8"
+                                                  Background="{TemplateBinding Background}">
+                                                <Track x:Name="PART_Track"
+                                                       IsDirectionReversed="true"
+                                                       Focusable="false">
+                                                    <Track.Thumb>
+                                                        <Thumb x:Name="ScrollBarThumb"
+                                                               Background="{TemplateBinding Foreground}"
+                                                               Style="{StaticResource ScrollThumbs}" />
+                                                    </Track.Thumb>
+                                                    <Track.IncreaseRepeatButton>
+                                                        <RepeatButton x:Name="PageUp"
+                                                                      Command="ScrollBar.PageDownCommand"
+                                                                      Opacity="0"
+                                                                      Focusable="false" />
+                                                    </Track.IncreaseRepeatButton>
+                                                    <Track.DecreaseRepeatButton>
+                                                        <RepeatButton x:Name="PageDown"
+                                                                      Command="ScrollBar.PageUpCommand"
+                                                                      Opacity="0"
+                                                                      Focusable="false" />
+                                                    </Track.DecreaseRepeatButton>
+                                                </Track>
+                                            </Grid>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsEnabled"
+                                                         Value="false">
+                                                    <Setter TargetName="ScrollBarThumb"
+                                                            Property="Visibility"
+                                                            Value="Collapsed" />
+                                                </Trigger>
+                                                <Trigger Property="Orientation"
+                                                         Value="Horizontal">
+                                                    <Setter TargetName="GridRoot"
+                                                            Property="LayoutTransform">
+                                                        <Setter.Value>
+                                                            <RotateTransform Angle="-90" />
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter TargetName="PART_Track"
+                                                            Property="LayoutTransform">
+                                                        <Setter.Value>
+                                                            <RotateTransform Angle="-90" />
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Width"
+                                                            Value="Auto" />
+                                                    <Setter Property="Height"
+                                                            Value="8" />
+                                                    <Setter TargetName="ScrollBarThumb"
+                                                            Property="Tag"
+                                                            Value="Horizontal" />
+                                                    <Setter TargetName="PageDown"
+                                                            Property="Command"
+                                                            Value="ScrollBar.PageLeftCommand" />
+                                                    <Setter TargetName="PageUp"
+                                                            Property="Command"
+                                                            Value="ScrollBar.PageRightCommand" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ScrollViewer.Resources>
+
+                        <DockPanel  x:Name="ContentArea"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Stretch"
+                                    Margin="15,15,15,5">
+                        </DockPanel>
+                    </ScrollViewer>
+
+                    <!--<Alert:UC_AlertMsgBox x:Name="AlertMsgBox" />-->
+                </Grid>
+
+                <Border Grid.Column="1"
+                        Grid.Row="2"
+                        Background="White">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FFAEAEAE"
+                                          Direction="40"
+                                          BlurRadius="7"
+                                          ShadowDepth="5"
+                                          Opacity="0.6" />
+                    </Border.Effect>
+                    <Grid>
+                        <TextBlock x:Name="txtCurrentDatetime"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Bold"
+                                   Style="{DynamicResource MainFooterText}"
+                                   HorizontalAlignment="Left" />
+
+                        <StackPanel VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    Orientation="Horizontal"
+                                    Margin="20,0">
+                            <materialDesign:PackIcon Kind="Copyright"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="#FF727272" />
+                            <Button x:Name="btnQuanika"
+                                    Padding="0"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontFamily="Open Sans Semibold"
+                                    FontSize="12"
+                                    FontWeight="Normal"
+                                    Foreground="#FF52AD30"
+                                    Click="btnQuanika_Click">
+                                <StackPanel>
+                                    <TextBlock Text="School Mobilizer 0334-7507674. "
+                                               Tag="Language" />
+                                </StackPanel>
+                            </Button>
+                            <TextBlock Text="All Rights Reserved"
+                                       Tag="Language"
+                                       Style="{DynamicResource MainFooterText}" />
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Grid Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Row="0"
+                  Background="Black"
+                  Grid.ColumnSpan="2"
+                  Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="490" />
+                </Grid.ColumnDefinitions>
+                <Image Name="institute_logo_img"
+                       HorizontalAlignment="Left"
+                       Source="/SMS;component/images/sms.png"
+                       Width="80"
+                       Height="70"
+                       Margin="0,1"
+                       VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+                    <Label Content="Scenario Management Solution"
+                           Name="institute_name_lbl"
+                           Foreground="Bisque"
+                           HorizontalAlignment="Left"
+                           FontSize="30"
+                           FontFamily="Georgia"
+                           MouseLeftButtonDown="institute_name_lbl_MouseLeftButtonDown" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="2"
+                            HorizontalAlignment="Right">
+                    <Button Grid.Column="2"
+                            Name="home_btn"
+                            ToolTipService.ToolTip="Sms"
+                            Height="50"
+                            Width="50"
+                            x:FieldModifier="public"
+                            Background="Black"
+                            BorderBrush="Black"
+                            Click="home_btn_Click">
+                        <Image  Source="/SMS;component/images/home.png" />
+                    </Button>
+                    <Button Grid.Column="3"
+                            Name="smsSend"
+                            ToolTipService.ToolTip="Sms"
+                            Height="50"
+                            Width="50"
+                            Click="smsSend_Click"
+                            x:FieldModifier="public"
+                            Background="Black"
+                            BorderBrush="Black"
+                            Visibility="Collapsed">
+                        <Image  Source="/SMS;component/images/smsicon.png"
+                                Name="img" />
+                    </Button>
+                    <Button Grid.Column="4"
+                            Name="web_btn"
+                            ToolTipService.ToolTip="Web Panel"
+                            Height="50"
+                            Width="50"
+                            x:FieldModifier="public"
+                            Background="Black"
+                            BorderBrush="Black"
+                            Click="web_btn_Click"
+                            Visibility="Visible">
+                        <Image  Source="/SMS;component/images/web2.png"
+                                Name="img_web" />
+                    </Button>
+                    <Button Grid.Column="5"
+                            HorizontalAlignment="Left"
+                            ToolTip="Upload Data To Online Database"
+                            Name="data_uploader_btn"
+                            Width="50"
+                            Height="50"
+                            Background="Black"
+                            BorderBrush="Black"
+                            Click="data_uploader_btn_Click"
+                            Visibility="Visible">
+                        <Image Source="/SMS;component/images/upload1.png" />
+                    </Button>
+                    <Button Grid.Column="6"
+                            HorizontalAlignment="Left"
+                            ToolTip="Download Data From Online Database"
+                            Width="50"
+                            Height="50"
+                            Background="Black"
+                            BorderBrush="Black">
+                        <Image  Source="/SMS;component/images/download1.png" />
+                    </Button>
+                    <Button Grid.Column="7"
+                            HorizontalAlignment="Left"
+                            Name="setting_btn"
+                            ToolTip="Scenario Admin Panel"
+                            Width="50"
+                            Height="50"
+                            Background="Black"
+                            BorderBrush="Black"
+                            Click="setting_btn_Click">
+                        <Image  Source="/SMS;component/images/setting.png" />
+                    </Button>
+                    <Button Grid.Column="8"
+                            HorizontalAlignment="Left"
+                            ToolTip="Logout"
+                            Width="50"
+                            Height="50"
+                            Background="Black"
+                            BorderBrush="Black"
+                            Name="logout_btn"
+                            Click="logout_btn_Click">
+                        <Image  Source="/SMS;component/images/logout.png"
+                                ImageFailed="Image_ImageFailed" />
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="0"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+                <TextBlock Text="Session"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Name="session_name_tb"
+                           Foreground="Gray" />
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="230" />
+                    <ColumnDefinition Width="100" />
+
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Text="Wednesday"
+                           HorizontalAlignment="Left"
+                           Name="day_textblock"
+                           FontSize="19"
+                           Foreground="LightGray"
+                           FontFamily="Georgia" />
+                <!--<TextBlock Grid.Column="2" Text="01 March " HorizontalAlignment="Right"  Name="date_textblock" FontSize="16" Foreground="Purple" FontWeight="Black"/>-->
+                <TextBlock Grid.Column="1"
+                           Text=" 01:25:55 "
+                           HorizontalAlignment="Right"
+                           Name="time_textblock"
+                           FontSize="19"
+                           Foreground="Brown"
+                           FontFamily="Georgia" />
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  Grid.RowSpan="2">
+                <Frame Name="mainFrame"
+                       Margin="10,0,10,10"
+                       NavigationUIVisibility="Hidden">
+                </Frame>
+            </Grid>
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  Grid.RowSpan="2"
+                  VerticalAlignment="Bottom">
+                <ctr:LoadingPanel x:Name="smsLoadingPanel"
+                                  IsLoading="{Binding PanelLoading}"
+                                  Message="{Binding PanelMainMessage}"
+                                  SubMessage="{Binding PanelSubMessage}"
+                                  ClosePanelCommand="{Binding PanelCloseCommand}" />
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  Grid.Column="0"
+                  Margin="10,0,10,10">
+                <!--Tab Control-->
+                <DockPanel Background="Gray">
+                    <TabControl   VerticalAlignment="Stretch"
+                                  Width="200"
+                                  Height="Auto"
+                                  DockPanel.Dock="Left"
+                                  TabStripPlacement="Bottom"
+                                  Style="{DynamicResource OutlookTabControlStyle}"
+                                  MaxWidth="300"
+                                  MinWidth="100"
+                                  BorderBrush="#FF6593CF"
+                                  HorizontalAlignment="Left"
+                                  BorderThickness="1,1,1,0">
+                        <TabControl.Background>
+                            <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg"
+                                        Stretch="UniformToFill" />
+                        </TabControl.Background>
+
+                        <!--Class Management Tab-->
+
+                        <TabItem   Header="Class Management"
+                                   Name="class_mgmt_tab"
+                                   Height="30"
+                                   Style="{DynamicResource OutlookTabItemStyle}"
+                                   Background="{DynamicResource OutlookButtonBackground}"
+                                   Foreground="{DynamicResource OutlookButtonForeground}"
+                                   FontSize="15"
+                                   FontFamily="Arial"
+                                   Visibility="Collapsed">
+                            <StackPanel Width="190"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Orientation="Vertical">
+                                <Button Content="Classes"
                                         Height="30"
                                         VerticalAlignment="Center"
-                                        Name="Admission"
-                                        Click="Admission_Click"
+                                        Name="button1"
+                                        Click="classMgmt_Click"
                                         Visibility="Collapsed"
-                                       />
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,2" />
                                 <Button Grid.Row="1"
-                                        Content="Admission Register"
+                                        Content="Sections"
                                         Height="30"
                                         VerticalAlignment="Center"
-                                        Name="Admission_new"
-                                        Click="Admission_new_Click" 
-                                        Visibility="Collapsed"/>
-                                <Button Grid.Row="2"
-                                        Content="Withdrawal Register"
-                                        Height="30"
-                                        VerticalAlignment="Center"
-                                        Name="Admission_withdraw"
+                                        Name="section_button"
+                                        Click="sectionMgmt_Click"
                                         Visibility="Collapsed"
-                                        Click="Admission_withdraw_Click" />
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,2" />
+                                <Button Grid.Row="2"
+                                        Content="Subjects"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="subject_button"
+                                        Click="SubjectMgmt_Click"
+                                        Visibility="Collapsed"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,2" />
+                            </StackPanel>
+                        </TabItem>
+
+                        <!--Admission Management Tab-->
+
+                        <TabItem Name="adm_mgmt_tab"
+                                 Header="Admission Management"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial"
+                                 Visibility="Collapsed">
+                            <Grid Width="190"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Top">
+                                <StackPanel Orientation="Vertical">
+                                    <Button Grid.Row="0"
+                                            Content="Admission Register"
+                                            Height="30"
+                                            VerticalAlignment="Center"
+                                            Name="Admission"
+                                            Click="Admission_Click"
+                                            Visibility="Collapsed" />
+                                    <Button Grid.Row="1"
+                                            Content="Admission Register"
+                                            Height="30"
+                                            VerticalAlignment="Center"
+                                            Name="Admission_new"
+                                            Click="Admission_new_Click"
+                                            Visibility="Collapsed" />
+                                    <Button Grid.Row="2"
+                                            Content="Withdrawal Register"
+                                            Height="30"
+                                            VerticalAlignment="Center"
+                                            Name="Admission_withdraw"
+                                            Visibility="Collapsed"
+                                            Click="Admission_withdraw_Click" />
+                                    <Button Grid.Row="3"
+                                            Content="Bulk Fee Update"
+                                            Height="30"
+                                            VerticalAlignment="Center"
+                                            Name="bulk_fee_update_btn"
+                                            Visibility="Collapsed"
+                                            Click="bulk_fee_update_btn_Click" />
+                                    <Button Grid.Row="4"
+                                            Content="Promote Students"
+                                            Height="30"
+                                            VerticalAlignment="Center"
+                                            Name="std_promote_btn"
+                                            Visibility="Collapsed"
+                                            Click="std_promote_btn_Click" />
+                                    <Button Grid.Row="5"
+                                            Content="Fine Management"
+                                            Height="30"
+                                            VerticalAlignment="Center"
+                                            Name="fine_btn"
+                                            Visibility="Collapsed"
+                                            Click="fine_btn_Click" />
+                                    <Button Grid.Row="6"
+                                            Content="Envelopes"
+                                            Height="30"
+                                            VerticalAlignment="Center"
+                                            Name="envelope_btn"
+                                            Click="envelope_btn_Click"
+                                            Visibility="Collapsed" />
+                                    <Button Grid.Row="7"
+                                            Content="Student List By Section"
+                                            Height="30"
+                                            VerticalAlignment="Center"
+                                            Name="std_list_section"
+                                            Click="std_list_section_Click"
+                                            Visibility="Collapsed" />
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+
+                        <!--Fee Management Tab-->
+
+                        <TabItem Name="fee_mgmt_tab"
+                                 Visibility="Collapsed"
+                                 Header="Fee Management"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial">
+                            <Grid Width="190"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <Button Grid.Row="0"
+                                        Content="Fee Register"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="fee"
+                                        Click="fee_Click"
+                                        Visibility="Visible" />
+                                <Button Grid.Row="1"
+                                        Content="Paid Fee Ledger "
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="paidfee_btn"
+                                        Click="paidfee_btn_Click"
+                                        Visibility="Visible" />
+                                <Button Grid.Row="2"
+                                        Content="Fee Defaulters List"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="Defaulterfee_btn"
+                                        Click="Defaulterfee_btn_Click"
+                                        Visibility="Visible" />
                                 <Button Grid.Row="3"
+                                        Content="Paid Fee Report"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="paidfeeReport_btn"
+                                        Click="paidfeeReport_btn_Click"
+                                        Visibility="Visible" />
+                                <Button Grid.Row="4"
+                                        Content="Fee Vouchers"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="fee_vouchers_btn"
+                                        Visibility="Visible"
+                                        Click="fee_vouchers_btn_Click" />
+                                <Button Grid.Row="5"
+                                        Content="Pay Fee By Voucher"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="fee_vouchers_paid_btn"
+                                        Visibility="Visible"
+                                        Click="fee_vouchers_paid_btn_Click" />
+                                <Button Grid.Row="6"
+                                        Content="Pay Fee By Amount"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="fee_amount_paid_btn"
+                                        Visibility="Visible"
+                                        Click="fee_amount_paid_btn_Click" />
+
+                            </Grid>
+                        </TabItem>
+
+                        <!--Feessssss Management Tab-->
+
+                        <TabItem Name="fees_mgmt_tab"
+                                 Header="Fee Management"
+                                 Visibility="Collapsed"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial">
+                            <StackPanel Width="190"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Orientation="Vertical">
+
+                                <Button Grid.Row="0"
+                                        Content="Fee Generation"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="ManageFeesBTN"
+                                        Visibility="Collapsed"
+                                        Click="ManageFees_Click" />
+                                <Button Grid.Row="1"
+                                        Content="Fee Register"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="FeesCollectionBTN"
+                                        Visibility="Collapsed"
+                                        Click="FeesCollectionBTN_Click" />
+                                <Button Grid.Row="2"
+                                        Content="Fee Collection Ledger"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="FeesCollectionReportBTN"
+                                        Visibility="Collapsed"
+                                        Click="FeesCollectionReportBTN_Click" />
+                                <Button Grid.Row="3"
+                                        Content="Fee Defaulters"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="FeesDefaulterBTN"
+                                        Visibility="Collapsed"
+                                        Click="FeesDefaulterBTN_Click" />
+                                <Button Grid.Row="4"
+                                        Content="Fee Vouchers"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="FeesVouchersBTN"
+                                        Visibility="Collapsed"
+                                        Click="FeesVouchersBTN_Click" />
+                                <Button Grid.Row="5"
+                                        Content="Fee Collection By Amount"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="FeesByAmountBTN"
+                                        Visibility="Collapsed"
+                                        Click="FeesByAmountBTN_Click" />
+                                <Button Grid.Row="6"
+                                        Content="Fee Collection By Voucher"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="FeesByVouchersBTN"
+                                        Visibility="Collapsed"
+                                        Click="FeesByVouchersBTN_Click" />
+                                <Button Grid.Row="7"
+                                        Content="Advance Fee Reports"
+                                        Height="30"
+                                        Click="sampleReportsBTN_Click"
+                                        VerticalAlignment="Center"
+                                        Name="sampleReportsBTN"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="7"
                                         Content="Bulk Fee Update"
                                         Height="30"
                                         VerticalAlignment="Center"
-                                        Name="bulk_fee_update_btn"
-                                        Visibility="Collapsed"
-                                        Click="bulk_fee_update_btn_Click"
-                                        />
-                                <Button Grid.Row="4"
-                                        Content="Promote Students"
-                                        Height="30"
-                                        VerticalAlignment="Center"
-                                        Name="std_promote_btn"
-                                        Visibility="Collapsed"
-                                        Click="std_promote_btn_Click" />
-                                <Button Grid.Row="5"
-                                        Content="Fine Management"
-                                        Height="30"
-                                        VerticalAlignment="Center"
-                                        Name="fine_btn"
-                                        Visibility="Collapsed"
-                                        Click="fine_btn_Click"
-                                        />
-                                <Button Grid.Row="6"
-                                        Content="Envelopes"
-                                        Height="30"
-                                        VerticalAlignment="Center"
-                                        Name="envelope_btn"                                        
-                                        Click="envelope_btn_Click" 
-                                        Visibility="Collapsed"/>
-                                <Button Grid.Row="7"
-                                        Content="Student List By Section"
-                                        Height="30"
-                                        VerticalAlignment="Center"
-                                        Name="std_list_section"
-                                        Click="std_list_section_Click"
+                                        Name="bulkFeesButton"
+                                        Click="bulkFeesButton_Click"
                                         Visibility="Collapsed" />
                             </StackPanel>
-                        </Grid>
-                    </TabItem>
-
-                    <!--Fee Management Tab-->
-
-                    <TabItem Name="fee_mgmt_tab"
-                             Visibility="Collapsed"
-                             Header="Fee Management"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial"
-                             >
-                        <Grid Width="190"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Top">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                            </Grid.RowDefinitions>
-                            <Button Grid.Row="0"
-                                    Content="Fee Register"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="fee"
-                                    Click="fee_Click"
-                                    Visibility="Visible" />
-                            <Button Grid.Row="1"
-                                    Content="Paid Fee Ledger "
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="paidfee_btn"
-                                    Click="paidfee_btn_Click"
-                                    Visibility="Visible" />
-                            <Button Grid.Row="2"
-                                    Content="Fee Defaulters List"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="Defaulterfee_btn"
-                                    Click="Defaulterfee_btn_Click"
-                                    Visibility="Visible" />
-                            <Button Grid.Row="3"
-                                    Content="Paid Fee Report"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="paidfeeReport_btn"
-                                    Click="paidfeeReport_btn_Click"
-                                    Visibility="Visible" />
-                            <Button Grid.Row="4"
-                                    Content="Fee Vouchers"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="fee_vouchers_btn"
-                                    Visibility="Visible"
-                                    Click="fee_vouchers_btn_Click" />
-                            <Button Grid.Row="5"
-                                    Content="Pay Fee By Voucher"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="fee_vouchers_paid_btn"
-                                    Visibility="Visible"
-                                    Click="fee_vouchers_paid_btn_Click" />
-                            <Button Grid.Row="6"
-                                    Content="Pay Fee By Amount"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="fee_amount_paid_btn"
-                                    Visibility="Visible"
-                                    Click="fee_amount_paid_btn_Click" />
-
-                        </Grid>
-                    </TabItem>
-
-                    <!--Feessssss Management Tab-->
-
-                    <TabItem Name="fees_mgmt_tab"
-                             Header="Fee Management"
-                             Visibility="Collapsed"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial">
-                        <StackPanel Width="190"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top"
-                                    Orientation="Vertical">
-
-                            <Button Grid.Row="0"
-                                    Content="Fee Generation"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="ManageFeesBTN"
-                                    Visibility="Collapsed"
-                                    Click="ManageFees_Click" />
-                            <Button Grid.Row="1"
-                                    Content="Fee Register"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="FeesCollectionBTN"
-                                    Visibility="Collapsed"
-                                    Click="FeesCollectionBTN_Click" />
-                            <Button Grid.Row="2"
-                                    Content="Fee Collection Ledger"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="FeesCollectionReportBTN"
-                                    Visibility="Collapsed"
-                                    Click="FeesCollectionReportBTN_Click" />
-                            <Button Grid.Row="3"
-                                    Content="Fee Defaulters"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="FeesDefaulterBTN"
-                                    Visibility="Collapsed"
-                                    Click="FeesDefaulterBTN_Click" />
-                            <Button Grid.Row="4"
-                                    Content="Fee Vouchers"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="FeesVouchersBTN"
-                                    Visibility="Collapsed"
-                                    Click="FeesVouchersBTN_Click" />
-                            <Button Grid.Row="5"
-                                    Content="Fee Collection By Amount"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="FeesByAmountBTN"
-                                    Visibility="Collapsed"
-                                    Click="FeesByAmountBTN_Click" />
-                            <Button Grid.Row="6"
-                                    Content="Fee Collection By Voucher"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="FeesByVouchersBTN"
-                                    Visibility="Collapsed"
-                                    Click="FeesByVouchersBTN_Click" />
-                            <Button Grid.Row="7"
-                                    Content="Advance Fee Reports"
-                                    Height="30"
-                                    Click="sampleReportsBTN_Click"
-                                    VerticalAlignment="Center"
-                                    Name="sampleReportsBTN"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="7"
-                                    Content="Bulk Fee Update"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="bulkFeesButton"
-                                    Click="bulkFeesButton_Click"
-                                    Visibility="Collapsed" />
-                        </StackPanel>
-                    </TabItem>
+                        </TabItem>
 
 
-                    <!--Employee Management Tab-->
+                        <!--Employee Management Tab-->
 
-                    <TabItem Name="emp_mgmt_tab"
-                             Header="Employee Management"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial"
-                             Visibility="Collapsed">
-                        <StackPanel Width="190"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top"
-                                    Orientation="Vertical">
+                        <TabItem Name="emp_mgmt_tab"
+                                 Header="Employee Management"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial"
+                                 Visibility="Collapsed">
+                            <StackPanel Width="190"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Orientation="Vertical">
 
-                            <Button Grid.Row="0"
-                                    Content="Employees"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="add_emp"
-                                    Click="add_emp_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="1"
-                                    Content="Withdraw Employees"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="withdraw_emp"
-                                    Visibility="Collapsed"
-                                    Click="withdraw_emp_Click" />
-                            <Button Grid.Row="2"
-                                    Content="Employee Attendence"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="emp_attnd"
-                                    Click="emp_attnd_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="2"
-                                    Content="Employee Attendence Report"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="emp_attnd_report"
-                                    Click="emp_attnd_report_Click"
-                                    Visibility="Visible" />
-                            <Button Grid.Row="3"
-                                    Content="Salary Sheet"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="emp_salary_sheet_btn"
-                                    Click="emp_salary_sheet_btn_Click" 
-                                    Visibility="Collapsed"/>
-                            <Button Grid.Row="4"
-                                    Content="Employee Payments"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="emp_payment"
-                                    Click="emp_payment_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="5"
-                                    Content="Employee Login"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="emp_login"
-                                    Click="emp_login_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="6"
-                                    Content="Employee Roles"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="emp_roles_btn"
-                                    Click="emp_roles_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="7"
-                                    Content="Unit Testing"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="unit_test_btn"
-                                    Visibility="Collapsed"
-                                    Click="unit_test_btn_Click"                                    />
-                        </StackPanel>
-                    </TabItem>
+                                <Button Grid.Row="0"
+                                        Content="Employees"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="add_emp"
+                                        Click="add_emp_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="1"
+                                        Content="Withdraw Employees"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="withdraw_emp"
+                                        Visibility="Collapsed"
+                                        Click="withdraw_emp_Click" />
+                                <Button Grid.Row="2"
+                                        Content="Employee Attendence"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="emp_attnd"
+                                        Click="emp_attnd_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="2"
+                                        Content="Employee Attendence Report"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="emp_attnd_report"
+                                        Click="emp_attnd_report_Click"
+                                        Visibility="Visible" />
+                                <Button Grid.Row="3"
+                                        Content="Salary Sheet"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="emp_salary_sheet_btn"
+                                        Click="emp_salary_sheet_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="4"
+                                        Content="Employee Payments"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="emp_payment"
+                                        Click="emp_payment_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="5"
+                                        Content="Employee Login"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="emp_login"
+                                        Click="emp_login_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="6"
+                                        Content="Employee Roles"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="emp_roles_btn"
+                                        Click="emp_roles_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="7"
+                                        Content="Unit Testing"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="unit_test_btn"
+                                        Visibility="Collapsed"
+                                        Click="unit_test_btn_Click" />
+                            </StackPanel>
+                        </TabItem>
 
-                    <!--Student Management Tab-->
+                        <!--Student Management Tab-->
 
-                    <TabItem Name="student_mgmt_tab"
-                             Header="Student Management"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial"
-                             Visibility="Collapsed">
-                        <StackPanel Width="190"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top">
-                            <Button Grid.Row="0"
-                                    Content="Student Attendance"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="std_attendence"
-                                    Click="std_attendence_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="0"
-                                    Content="Student Attendance History"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="std_attendence_history"                                    
-                                    Visibility="Collapsed"
-                                    Click="std_attendence_history_Click" />                            
-                            <Button Grid.Row="1"
-                                    Content="Daily Attendance Report"
-                                    Name="daily_attendance_report_btn"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Visibility="Collapsed"
-                                    Click="Button_Click" />
-                            <Button Grid.Row="2"
-                                    Content="Student Attendance Sheet"
-                                    Name="attendance_sheet_btn"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Click="attendance_sheet_btn_Click" />
-                            <Button Grid.Row="3"
-                                    Content="Attendance Report Class Wise"
-                                    Name="attendance_report_class_wise"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Click="attendance_report_class_wise_Click" />
-                            <Button Grid.Row="3"
-                                    Content="Complaint Register"
-                                    Name="V_ComplaintRegiter"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Click="V_ComplaintRegiter_Click"/>
-                        </StackPanel>
-                    </TabItem>
+                        <TabItem Name="student_mgmt_tab"
+                                 Header="Student Management"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial"
+                                 Visibility="Collapsed">
+                            <StackPanel Width="190"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top">
+                                <Button Grid.Row="0"
+                                        Content="Student Attendance"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="std_attendence"
+                                        Click="std_attendence_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="0"
+                                        Content="Student Attendance History"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="std_attendence_history"
+                                        Visibility="Collapsed"
+                                        Click="std_attendence_history_Click" />
+                                <Button Grid.Row="1"
+                                        Content="Daily Attendance Report"
+                                        Name="daily_attendance_report_btn"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Visibility="Collapsed"
+                                        Click="Button_Click" />
+                                <Button Grid.Row="2"
+                                        Content="Student Attendance Sheet"
+                                        Name="attendance_sheet_btn"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Click="attendance_sheet_btn_Click" />
+                                <Button Grid.Row="3"
+                                        Content="Attendance Report Class Wise"
+                                        Name="attendance_report_class_wise"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Click="attendance_report_class_wise_Click" />
+                                <Button Grid.Row="3"
+                                        Content="Complaint Register"
+                                        Name="V_ComplaintRegiter"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Click="V_ComplaintRegiter_Click" />
+                            </StackPanel>
+                        </TabItem>
 
-                    <!--Exam Management Tab-->
+                        <!--Exam Management Tab-->
 
-                    <TabItem Name="exam_mgmt_tab"
-                             Header="Exam Management"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial"
-                             Visibility="Collapsed">
-                        <StackPanel Width="190"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top">
+                        <TabItem Name="exam_mgmt_tab"
+                                 Header="Exam Management"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial"
+                                 Visibility="Collapsed">
+                            <StackPanel Width="190"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top">
 
-                            <Button Grid.Row="0"
-                                    Content="Exams"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="exams_btn"
-                                    Visibility="Collapsed"
-                                    Click="exams_btn_Click" />
-                            <Button Grid.Row="1"
-                                    Content="Exam Data Entry"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="exam_entry"
-                                    Click="exam_entry_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="2"
-                                    Content="General Award List"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="result_list_btn"
-                                    Click="result_list_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="3"
-                                    Content="Result Cards"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="result_card_btn"
-                                    Click="result_card_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="4"
-                                    Content="Result Cards New"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="result_card_btn_new"
-                                    Visibility="Collapsed"
-                                    Click="result_card_btn_new_Click" />
-                            <Button Grid.Row="5"
-                                    Content="Exam Reports"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="exam_report_btn"
-                                    Visibility="Collapsed"
-                                    Click="exam_report_btn_Click" />
-                            <Button Grid.Row="6"
-                                    Content="Result List By Subject"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="result_list_subject"
-                                    Visibility="Collapsed"
-                                    Click="result_list_subject_Click" />
-                            <Button Grid.Row="7"
-                                    Content="Multiple Result Cards"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="midterm_btn"
-                                    Visibility="Collapsed"
-                                    Click="midterm_btn_Click" />
-                            <Button Grid.Row="8"
-                                    Content="Roll No Slips"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="roll_no_slip_btn"
-                                    Visibility="Collapsed"
-                                    Click="roll_no_slip_btn_Click" />
+                                <Button Grid.Row="0"
+                                        Content="Exams"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="exams_btn"
+                                        Visibility="Collapsed"
+                                        Click="exams_btn_Click" />
+                                <Button Grid.Row="1"
+                                        Content="Exam Data Entry"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="exam_entry"
+                                        Click="exam_entry_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="2"
+                                        Content="General Award List"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="result_list_btn"
+                                        Click="result_list_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="3"
+                                        Content="Result Cards"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="result_card_btn"
+                                        Click="result_card_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="4"
+                                        Content="Result Cards New"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="result_card_btn_new"
+                                        Visibility="Collapsed"
+                                        Click="result_card_btn_new_Click" />
+                                <Button Grid.Row="5"
+                                        Content="Exam Reports"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="exam_report_btn"
+                                        Visibility="Collapsed"
+                                        Click="exam_report_btn_Click" />
+                                <Button Grid.Row="6"
+                                        Content="Result List By Subject"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="result_list_subject"
+                                        Visibility="Collapsed"
+                                        Click="result_list_subject_Click" />
+                                <Button Grid.Row="7"
+                                        Content="Multiple Result Cards"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="midterm_btn"
+                                        Visibility="Collapsed"
+                                        Click="midterm_btn_Click" />
+                                <Button Grid.Row="8"
+                                        Content="Roll No Slips"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="roll_no_slip_btn"
+                                        Visibility="Collapsed"
+                                        Click="roll_no_slip_btn_Click" />
 
-                        </StackPanel>
-                    </TabItem>
+                            </StackPanel>
+                        </TabItem>
 
-                    <!--Exams Management Tab New exam system-->
+                        <!--Exams Management Tab New exam system-->
 
-                    <TabItem Name="exams_mgmt_tab"
-                             Header="Exam/Test Management"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial"
-                             Visibility="Collapsed">
-                        <StackPanel Width="190"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top">
-                            <Button Grid.Row="3"
-                                    Content="Subjects Management"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="subjects_management_button"
-                                    Click="Subjects_Mgmt_Click"
-                                    Visibility="Collapsed"
-                                    Grid.ColumnSpan="2"
-                                    Margin="0,2" />
-                            <Button Grid.Row="0"
-                                    Content="Define Exams"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="define_exams_btn"
-                                    Visibility="Collapsed"
-                                    Click="define_exams_btn_Click" />
-                            <Button Grid.Row="1"
-                                    Content="Exam Data Entry"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="exams_entry"
-                                    Click="exams_entry_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="2"
-                                    Content="General Award List"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="general_award_list"
-                                    Click="general_award_list_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="3"
-                                    Content="Result Cards"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="results_card_btn"
-                                    Click="results_card_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="4"
-                                    Content="Date Sheet"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="date_sheet_btn"
-                                    Click="date_sheet_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="5"
-                                    Content="Roll No. Slips"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="exams_roll_no_slip_btn"
-                                    Click="exams_roll_no_slip_btn_Click"
-                                    Visibility="Visible" />
-                            <Button Grid.Row="6"
-                                    Content="Teacher Evaluation"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="teacher_evaluation_btn"
-                                    Click="teacher_evaluation_btn_Click"
-                                    Visibility="Visible" />
-                        </StackPanel>
-                    </TabItem>
+                        <TabItem Name="exams_mgmt_tab"
+                                 Header="Exam/Test Management"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial"
+                                 Visibility="Collapsed">
+                            <StackPanel Width="190"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top">
+                                <Button Grid.Row="3"
+                                        Content="Subjects Management"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="subjects_management_button"
+                                        Click="Subjects_Mgmt_Click"
+                                        Visibility="Collapsed"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,2" />
+                                <Button Grid.Row="0"
+                                        Content="Define Exams"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="define_exams_btn"
+                                        Visibility="Collapsed"
+                                        Click="define_exams_btn_Click" />
+                                <Button Grid.Row="1"
+                                        Content="Exam Data Entry"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="exams_entry"
+                                        Click="exams_entry_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="2"
+                                        Content="General Award List"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="general_award_list"
+                                        Click="general_award_list_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="3"
+                                        Content="Result Cards"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="results_card_btn"
+                                        Click="results_card_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="4"
+                                        Content="Date Sheet"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="date_sheet_btn"
+                                        Click="date_sheet_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="5"
+                                        Content="Roll No. Slips"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="exams_roll_no_slip_btn"
+                                        Click="exams_roll_no_slip_btn_Click"
+                                        Visibility="Visible" />
+                                <Button Grid.Row="6"
+                                        Content="Teacher Evaluation"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="teacher_evaluation_btn"
+                                        Click="teacher_evaluation_btn_Click"
+                                        Visibility="Visible" />
+                            </StackPanel>
+                        </TabItem>
 
-                    <!--Account Management Tab-->
+                        <!--Account Management Tab-->
 
-                    <TabItem Header="Accounts Management"
-                             Visibility="Collapsed"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Name="account_mgmt_tab"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial"
-                             >
-                        <Grid Width="190"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Top">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="40" />
-                            </Grid.RowDefinitions>
-                            <Button Grid.Row="0"
-                                    Content="Accounts"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="accounts_btn"
-                                    Visibility="Collapsed"
-                                    Click="accounts_btn_Click" />
-                            <Button Grid.Row="1"
-                                    Content="Account Ledger"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="account_entry_btn"
-                                    Visibility="Collapsed"
-                                    Click="account_entry_btn_Click" />
-                            <Button Grid.Row="2"
-                                    Content="Balance Sheet"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="account_balance_btn"
-                                    Visibility="Collapsed"
-                                    Click="account_balance_btn_Click" />
-                            <Button Grid.Row="3"
-                                    Content="Revenue"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="revenue_btn"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="4"
-                                    Content="Investors"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="investors_btn"
-                                    Visibility="Collapsed"
-                                    Click="investors_btn_Click" />
-                            <Button Grid.Row="5"
-                                    Content="Investments"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="investments_btn"
-                                    Visibility="Collapsed"
-                                    Click="investments_btn_Click" />
-                            <Button Grid.Row="6"
-                                    Content="Cash Detail"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="cash_detail_btn"
-                                    Visibility="Collapsed"
-                                    Click="cash_detail_btn_Click" />
-                        </Grid>
-                    </TabItem>
-                    
-                    <!--Accounts Management Tab-->
-                    <TabItem Header="Accounts Management"
-                             Visibility="Collapsed"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Name="adv_account_mgmt_tab"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial"
-                             >
-                        <StackPanel Width="190"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top">
+                        <TabItem Header="Accounts Management"
+                                 Visibility="Collapsed"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Name="account_mgmt_tab"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial">
+                            <Grid Width="190"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Button Grid.Row="0"
+                                        Content="Accounts"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="accounts_btn"
+                                        Visibility="Collapsed"
+                                        Click="accounts_btn_Click" />
+                                <Button Grid.Row="1"
+                                        Content="Account Ledger"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="account_entry_btn"
+                                        Visibility="Collapsed"
+                                        Click="account_entry_btn_Click" />
+                                <Button Grid.Row="2"
+                                        Content="Balance Sheet"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="account_balance_btn"
+                                        Visibility="Collapsed"
+                                        Click="account_balance_btn_Click" />
+                                <Button Grid.Row="3"
+                                        Content="Revenue"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="revenue_btn"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="4"
+                                        Content="Investors"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="investors_btn"
+                                        Visibility="Collapsed"
+                                        Click="investors_btn_Click" />
+                                <Button Grid.Row="5"
+                                        Content="Investments"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="investments_btn"
+                                        Visibility="Collapsed"
+                                        Click="investments_btn_Click" />
+                                <Button Grid.Row="6"
+                                        Content="Cash Detail"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="cash_detail_btn"
+                                        Visibility="Collapsed"
+                                        Click="cash_detail_btn_Click" />
+                            </Grid>
+                        </TabItem>
 
-                            <Button Grid.Row="0"
-                                    Content="Category Accounts"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="main_accounts_btn"
-                                    Click="main_accounts_btn_Click" 
-                                    Visibility="Collapsed"/>
-                            <Button Grid.Row="1"
-                                    Content="Transaction Accounts"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="detailed_accounts_btn"
-                                    Click="detailed_accounts_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="2"
-                                    Content="General Journal"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="voucher_entry_btn"
-                                    Click="voucher_entry_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="3"
-                                    Content="Account Ledger"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="account_ledger_btn"
-                                    Click="account_ledger_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="4"
-                                    Content="Income Statement"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="income_statement_btn"
-                                    Click="income_statement_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="5"
-                                    Content="Cash Flow Statement"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="cashFlow_statement_btn"
-                                    Click="cashFlow_statement_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="6"
-                                    Content="Trial Balance"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="trial_balance_btn"
-                                    Click="trial_balance_btn_Click"
-                                    Visibility="Collapsed" />
-                            <Button Grid.Row="6"
-                                    Content="Balance Sheet"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="balance_sheet_btn"
-                                    Click="balance_sheet_btn_Click"
-                                    Visibility="Collapsed" />
+                        <!--Accounts Management Tab-->
+                        <TabItem Header="Accounts Management"
+                                 Visibility="Collapsed"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Name="adv_account_mgmt_tab"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial">
+                            <StackPanel Width="190"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top">
 
-                        </StackPanel>
-                    </TabItem>
-                    <!--Reports Management Tab-->
-                    <TabItem Header="Reports Management"
-                             Visibility="Collapsed"
-                             Height="30"
-                             Style="{DynamicResource OutlookTabItemStyle}"
-                             Name="reports_mgmt_tab"
-                             Background="{DynamicResource OutlookButtonBackground}"
-                             Foreground="{DynamicResource OutlookButtonForeground}"
-                             FontSize="15"
-                             FontFamily="Arial">
-                        <StackPanel Width="190"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top">
-                            <Button Content="Student Reports"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="student_reports_btn"                                    
-                                    Visibility="Collapsed"
-                                    Click="student_reports_btn_Click" />
-                            <Button Content="Employee Reports"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="emp_reports_btn"
-                                    Visibility="Collapsed"
-                                    Click="emp_reports_btn_Click"
-                                    />
-                            <Button Content="Exam Reports"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="exam_reports_btn"
-                                    Visibility="Collapsed"
-                                    Click="exam_reports_btn_Click" />
-                            <Button Content="Finance Reports"
-                                    Height="30"
-                                    VerticalAlignment="Center"
-                                    Name="finance_reports_btn"
-                                    Visibility="Collapsed"
-                                    Click="finance_reports_btn_Click" />
-                        </StackPanel>
-                    </TabItem>
+                                <Button Grid.Row="0"
+                                        Content="Category Accounts"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="main_accounts_btn"
+                                        Click="main_accounts_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="1"
+                                        Content="Transaction Accounts"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="detailed_accounts_btn"
+                                        Click="detailed_accounts_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="2"
+                                        Content="General Journal"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="voucher_entry_btn"
+                                        Click="voucher_entry_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="3"
+                                        Content="Account Ledger"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="account_ledger_btn"
+                                        Click="account_ledger_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="4"
+                                        Content="Income Statement"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="income_statement_btn"
+                                        Click="income_statement_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="5"
+                                        Content="Cash Flow Statement"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="cashFlow_statement_btn"
+                                        Click="cashFlow_statement_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="6"
+                                        Content="Trial Balance"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="trial_balance_btn"
+                                        Click="trial_balance_btn_Click"
+                                        Visibility="Collapsed" />
+                                <Button Grid.Row="6"
+                                        Content="Balance Sheet"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="balance_sheet_btn"
+                                        Click="balance_sheet_btn_Click"
+                                        Visibility="Collapsed" />
 
-                </TabControl>
-            </DockPanel>
-            <!--End Tab Control-->
+                            </StackPanel>
+                        </TabItem>
+                        <!--Reports Management Tab-->
+                        <TabItem Header="Reports Management"
+                                 Visibility="Collapsed"
+                                 Height="30"
+                                 Style="{DynamicResource OutlookTabItemStyle}"
+                                 Name="reports_mgmt_tab"
+                                 Background="{DynamicResource OutlookButtonBackground}"
+                                 Foreground="{DynamicResource OutlookButtonForeground}"
+                                 FontSize="15"
+                                 FontFamily="Arial">
+                            <StackPanel Width="190"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top">
+                                <Button Content="Student Reports"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="student_reports_btn"
+                                        Visibility="Collapsed"
+                                        Click="student_reports_btn_Click" />
+                                <Button Content="Employee Reports"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="emp_reports_btn"
+                                        Visibility="Collapsed"
+                                        Click="emp_reports_btn_Click" />
+                                <Button Content="Exam Reports"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="exam_reports_btn"
+                                        Visibility="Collapsed"
+                                        Click="exam_reports_btn_Click" />
+                                <Button Content="Finance Reports"
+                                        Height="30"
+                                        VerticalAlignment="Center"
+                                        Name="finance_reports_btn"
+                                        Visibility="Collapsed"
+                                        Click="finance_reports_btn_Click" />
+                            </StackPanel>
+                        </TabItem>
+
+                    </TabControl>
+                </DockPanel>
+                <!--End Tab Control-->
+
+
+            </Grid>
+
 
 
         </Grid>
-
-
-
     </Grid>
+    
 </Window>

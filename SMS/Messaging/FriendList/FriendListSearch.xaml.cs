@@ -39,7 +39,7 @@ namespace SMS.Messaging.FriendList
 
             friends_list = new List<friend_list>();
             row_obj = new friend_list();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
             strength_textblock.Text = friends_grid.Items.Count.ToString();
         }

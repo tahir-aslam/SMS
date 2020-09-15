@@ -47,7 +47,7 @@ namespace SMS.AdmissionManagement.Admission
             InitializeComponent();
             adm_list = new List<admission>();
             obj = new admission();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             classes_list = new List<classes>();
             get_all_classes();
             class_cmb.SelectedIndex = 0;
@@ -693,7 +693,7 @@ namespace SMS.AdmissionManagement.Admission
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

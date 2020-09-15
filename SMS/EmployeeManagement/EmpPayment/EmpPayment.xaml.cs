@@ -28,7 +28,7 @@ namespace SMS.EmployeeManagement.EmpPayment
             InitializeComponent();
 
             emp_list = new List<employees>();            
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
         }
 

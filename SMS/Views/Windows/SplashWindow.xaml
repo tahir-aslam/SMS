@@ -16,13 +16,13 @@
         WindowStyle="None"
         Icon="/images/Icons/icon_32.ico"
         Loaded="Window_Loaded">
-    <Grid>
+    <Grid Background="white">
 
 
         <Rectangle Style="{DynamicResource recSplachScreen}" />
         <Image Source="/images/SplashScreen/Splash.png"
-               Stretch="UniformToFill"
-               Margin="4"></Image>
+               
+               Margin="25"></Image>
 
         <!--<TextBlock Text="(1.00.01v-1.01b)" FontSize="9" Margin="238,283,318,55" Foreground="#FF2F2F2F" ></TextBlock>-->
         <TextBlock Text="Loading"

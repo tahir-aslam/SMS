@@ -98,7 +98,7 @@ namespace SMS.Messaging.FeesPaid
 
         public void loadGrid()
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             date_picker_to.SelectedDate = DateTime.Now;
             date_picker_from.SelectedDate = DateTime.Now;
             default_btn.IsChecked = true;
@@ -351,7 +351,7 @@ namespace SMS.Messaging.FeesPaid
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

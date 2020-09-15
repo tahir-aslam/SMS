@@ -37,7 +37,7 @@ namespace SMS.FeeManagement.FeePaidByVoucher
         public FeePaidByVoucherPage()
         {
             InitializeComponent();            
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

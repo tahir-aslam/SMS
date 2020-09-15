@@ -51,7 +51,7 @@ namespace SMS.Reports.Student.StudentCards
 
             try
             {
-                SearchTextBox.Focus();
+                //SearchTextBox.Focus();
                 classes_list = classesDAL.get_all_classes();
                 class_cmb.SelectedIndex = 0;
                 classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
@@ -119,7 +119,7 @@ namespace SMS.Reports.Student.StudentCards
         }
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
         
 

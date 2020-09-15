@@ -37,8 +37,7 @@ namespace SMS.ClassManagement.Subject
             InitializeComponent();
             subjects_list = new List<subjects>();
             obj = new subjects();
-            SearchTextBox.Focus();
-            load_grid();
+           
         }
 
         public void load_grid()
@@ -333,6 +332,11 @@ namespace SMS.ClassManagement.Subject
             var dataColumn = new DataColumn(columnName, type);
             dataTable.Columns.Add(dataColumn);
         }
-       
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            SearchTextBox.Focus();
+            load_grid();
+        }
     }
 }

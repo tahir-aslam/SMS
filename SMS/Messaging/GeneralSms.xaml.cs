@@ -43,7 +43,7 @@ namespace SMS.Messaging
         public GeneralSms()
         {
             InitializeComponent();            
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             count = 0;
             load_grid();
             strength_textblock.Text = adm_grid.Items.Count.ToString();

@@ -716,7 +716,7 @@ namespace SMS.FeesManagement.FeesVoucher
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -1072,7 +1072,7 @@ namespace SMS.FeesManagement.FeesVoucher
 
         private void search_cmb1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox1.Focus();
+            //SearchTextBox1.Focus();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

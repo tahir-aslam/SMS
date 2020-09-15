@@ -40,31 +40,7 @@ namespace SMS.ClassManagement.Section
             this.obj = obj;
             this.mode = mode;
 
-            class_cmb.Focus();
-            sections_list = new List<sections>();
-            get_all_sections();
-
-            classes_list = new List<classes>();
-            emp_list = new List<employees>();
-
-            get_all_classes();
-            get_all_emp();
-
-            class_cmb.SelectedIndex = 0;
-            //teacher_cmb.SelectedIndex = 0;
-            
-            classes_list.Insert(0, new classes() {class_name="---Select Class---",id="-1" });
-            emp_list.Insert(0, new employees() {emp_name="---Select Teacher---",id="-1" });
-
-            class_cmb.ItemsSource = classes_list;
-            //teacher_cmb.ItemsSource = emp_list;
-            
-            if(mode=="edit")
-            {
-               // class_cmb.IsEnabled =false;
-               // section_name_textbox.IsEnabled = false;
-                fill_control();
-            }
+           
         }
 
         private void click_cancel(object sender, RoutedEventArgs e)
@@ -441,6 +417,35 @@ namespace SMS.ClassManagement.Section
                 save();
             }
             
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            class_cmb.Focus();
+            sections_list = new List<sections>();
+            get_all_sections();
+
+            classes_list = new List<classes>();
+            emp_list = new List<employees>();
+
+            get_all_classes();
+            get_all_emp();
+
+            class_cmb.SelectedIndex = 0;
+            //teacher_cmb.SelectedIndex = 0;
+
+            classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
+            emp_list.Insert(0, new employees() { emp_name = "---Select Teacher---", id = "-1" });
+
+            class_cmb.ItemsSource = classes_list;
+            //teacher_cmb.ItemsSource = emp_list;
+
+            if (mode == "edit")
+            {
+                // class_cmb.IsEnabled =false;
+                // section_name_textbox.IsEnabled = false;
+                fill_control();
+            }
         }
     }
 }

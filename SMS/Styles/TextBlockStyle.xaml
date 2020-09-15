@@ -1,0 +1,1266 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SMS.Styles">
+    <Style x:Key="HeaderTextBlack"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize"
+                Value="32" />
+        <Setter Property="Margin"
+                Value="5" />
+        <Setter Property="FontWeight"
+                Value="Bold"></Setter>
+        <Setter Property="VerticalAlignment"
+                Value="Center"></Setter>
+        <Setter Property="FontSize"
+                Value="32"></Setter>
+        <Setter Property="Margin"
+                Value="8"></Setter>
+        <Setter Property="TextWrapping"
+                Value="WrapWithOverflow"></Setter>
+        <Setter Property="Foreground"
+                Value="#FFACACAC"></Setter>
+    </Style>
+    <Style x:Key="HeaderLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontSize"
+                Value="32" />
+        <Setter Property="Margin"
+                Value="5" />
+        <!--<Setter Property="Foreground" Value="Black" />-->
+    </Style>
+    <!--common styles-->
+    <Style TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="TextWrapping"
+                Value="WrapWithOverflow" />
+    </Style>
+
+    <!--===================================== Add Controller Style ===================================-->
+    <Style x:Key="addControlTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+    </Style>
+    <!--Sub Heading-->
+    <Style x:Key="addControlSubHeading"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+    </Style>
+
+    <!--Main Heading-->
+    <Style x:Key="mainHeading"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="Margin"
+                Value="5,0,0,0" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+        <Setter Property="FontSize"
+                Value="15" />
+    </Style>
+
+    <!--//IP_MAC Texkblock-->
+    <Style x:Key="ipMACTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+        <Setter Property="FontSize"
+                Value="13" />
+    </Style>
+    <Style x:Key="ipMACValue"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="12" />
+    </Style>
+    <Style x:Key="recHeaderTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin"
+                Value="5,0" />
+        <Setter Property="FontSize"
+                Value="16"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold"></Setter>
+        <Setter Property="VerticalAlignment"
+                Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+    <!--Model Value-->
+    <Style x:Key="modelValue"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="2,0,2,7" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Bottom" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+        <Setter Property="FontSize"
+                Value="9" />
+    </Style>
+
+
+    <!--//Controller Name-->
+    <Style x:Key="contNameTxt"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="10,0" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+        <Setter Property="FontSize"
+                Value="13" />
+    </Style>
+
+
+    <!--//Controller Model-->
+    <Style x:Key="tblModal"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="8" />
+        <Setter Property="Margin"
+                Value="3,0" />
+    </Style>
+
+    <!--===================================== Main Menu Style ===================================-->
+    <Style x:Key="mainMenuTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="40,0,0,0" />
+        <Setter Property="Grid.Row"
+                Value="0" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="#FF191919" />
+        <Setter Property="FontSize"
+                Value="20" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+    </Style>
+    <!--//Pie chart headering graph-->
+    <Style x:Key="pieChartHeadering"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="20,0,0,0" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="#FF191919" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+    </Style>
+    <!--Chart TextBlock Graph-->
+    <Style x:Key="chartTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+    </Style>
+    <Style x:Key="cameragrid"
+           TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="Foreground"
+                Value="Black" />
+
+
+    </Style>
+    <!--Chart Inside TextBlock Graph-->
+    <Style x:Key="insideTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="FontSize"
+                Value="18" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+    </Style>
+    <!--User Info Main TextBlock-->
+    <Style x:Key="userHeader"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+    </Style>
+
+    <!--User Info Sub Headeing TextBlock-->
+    <Style x:Key="userSubHeader"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+    </Style>
+    <!--User Info Label TextBlock-->
+    <Style x:Key="userLabel"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+    </Style>
+    <!--===================================== AxisSubMenu  Style ===================================-->
+    <Style x:Key="subMenuTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="FontSize"
+                Value="15" />
+        <Setter Property="Cursor"
+                Value="Hand" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Reguler" />
+    </Style>
+
+
+
+
+
+    <!--===================================== Schedule Style ===================================-->
+    <!--//Scheduler horus TextBlock-->
+    <Style x:Key="ScheduleTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontWeight"
+                Value="Bold" />
+        <Setter Property="FontSize"
+                Value="16" />
+
+    </Style>
+
+    <!--//Scheduler Week Name TextBlock-->
+    <Style x:Key="ScheduleWeekTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="FontSize"
+                Value="12" />
+
+    </Style>
+
+
+
+    <!--//Scheduler Header Icons TextBlock-->
+    <Style x:Key="ScheduleHeaderTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="FontSize"
+                Value="14" />
+
+    </Style>
+
+
+    <!--//Scheduler One Time Event TextBlock-->
+    <Style x:Key="ScheduleOneTimeTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="FontSize"
+                Value="16" />
+
+    </Style>
+
+
+
+
+    <!--===================================== One Time Event Style ===================================-->
+    <!--//Scheduler horus TextBlock-->
+    <Style x:Key="oneTimeEvent"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Bottom" />
+        <Setter Property="Margin"
+                Value="0,0,0,6" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Regular" />
+        <Setter Property="FontSize"
+                Value="16" />
+
+    </Style>
+
+
+
+    <!--===================================== Mange User Style ===================================-->
+    <!--//Scheduler horus TextBlock-->
+    <Style x:Key="mangeUsers"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+        <Setter Property="Margin"
+                Value="0,0,30,0" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Regular" />
+        <Setter Property="FontSize"
+                Value="16" />
+
+    </Style>
+
+    <!--//Scheduler horus TextBlock-->
+    <Style x:Key="mangeUsersListBox"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+        <Setter Property="FontSize"
+                Value="18" />
+        <Setter Property="Margin"
+                Value="3" />
+    </Style>
+
+
+    <!--===================================== Mange Card Style ===================================-->
+    <Style x:Key="CardTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin"
+                Value="5,0" />
+        <Setter Property="FontSize"
+                Value="16"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans"></Setter>
+        <Setter Property="VerticalAlignment"
+                Value="Center"></Setter>
+        <Setter Property="Foreground"
+                Value="White"></Setter>
+    </Style>
+
+
+
+    <!--===================================== Door Detials TextBlock Style ===================================-->
+    <Style x:Key="doorDetailsBtn"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin"
+                Value="3"></Setter>
+        <Setter Property="FontSize"
+                Value="14"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Center"></Setter>
+    </Style>
+
+    <!--===================================== Priority Style ===================================-->
+    <!--//Scheduler horus TextBlock-->
+    <Style x:Key="txtBlockPriority"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Regular" />
+        <Setter Property="FontSize"
+                Value="16" />
+    </Style>
+
+
+    <Style x:Key="txtLevel"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="Margin"
+                Value="10,0,0,0" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="Foreground"
+                Value="#FF4CAF50" />
+    </Style>
+
+
+
+
+
+
+
+
+
+    <!--=====================================  Sub Menu Style ===================================-->
+    <!--//Normal-->
+    <Style x:Key="subMainText"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="0,0,0,17" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Bottom" />
+        <Setter Property="Foreground"
+                Value="#FF2F3538" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+    </Style>
+    <!--//Active-->
+
+
+
+    <!--===================================== Lock Unlock Door TextBlock Style ===================================-->
+    <Style x:Key="doorTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin"
+                Value="5,0" />
+        <Setter Property="FontSize"
+                Value="16"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold"></Setter>
+        <Setter Property="VerticalAlignment"
+                Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+
+    <!--===================================== About TextBlock Style ===================================-->
+    <Style x:Key="aboutTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="FontSize"
+                Value="18"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold"></Setter>
+        <Setter Property="Foreground"
+                Value="#FF282828"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+    <!--//Sub heading control-->
+    <Style x:Key="subHeadingTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize"
+                Value="15"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold"></Setter>
+        <Setter Property="Foreground"
+                Value="#FF282828"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+    <!--//License heading control-->
+    <Style x:Key="licTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize"
+                Value="17"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold"></Setter>
+        <Setter Property="Foreground"
+                Value="#FF282828"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+    <!--//Hyperlink heading control-->
+    <Style x:Key="hyperLinkTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize"
+                Value="17"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold"></Setter>
+        <Setter Property="Foreground"
+                Value="#FF282828"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+    <!--//Hyperlink style -->
+    <Style x:Key="hyperLinkStyle"
+           TargetType="{x:Type Hyperlink}">
+        <Setter Property="Foreground"
+                Value="#FF6C6A6B"></Setter>
+    </Style>
+
+    <!--//CopyRight heading control-->
+    <Style x:Key="copyRightTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize"
+                Value="12"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans"></Setter>
+        <Setter Property="Foreground"
+                Value="#FF282828"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Right"></Setter>
+    </Style>
+
+    <!--//Hyperlink heading control-->
+    <Style x:Key="supportTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize"
+                Value="15"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans"></Setter>
+        <Setter Property="Foreground"
+                Value="#FF6C6A6B"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+    <!--//Security Information-->
+    <Style x:Key="securityTextBlock"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize"
+                Value="14"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans"></Setter>
+        <Setter Property="Foreground"
+                Value="#FF282828"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+
+    <!--//Faq Header-->
+    <Style x:Key="faqHeader"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="FontSize"
+                Value="15"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold"></Setter>
+        <Setter Property="Foreground"
+                Value="#FF282828"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+
+    <!--//Faq paragraph-->
+    <Style x:Key="faqDetail"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin"
+                Value="35,4,35,0" />
+        <Setter Property="FontSize"
+                Value="12"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans"></Setter>
+        <Setter Property="Foreground"
+                Value="#FF282828"></Setter>
+        <Setter Property="TextWrapping"
+                Value="Wrap"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+
+    <!--===================================== Axis Setting Style ===================================-->
+    <!--//Normal-->
+    <Style x:Key="normalText"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="0,0,0,17" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Bottom" />
+        <Setter Property="Foreground"
+                Value="#FF2F3538" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+    </Style>
+    <!--//Active-->
+
+    <Style x:Key="activeText"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="0,0,0,17" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Bottom" />
+        <Setter Property="Foreground"
+                Value="#FF282828" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontWeight"
+                Value="Bold" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+    </Style>
+
+
+    <!--===================================== General Setting Style ===================================-->
+    <Style x:Key="tblGeneral"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="3,3,40,3" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+    </Style>
+
+
+    <!--===================================== Card Formsts Style ===================================-->
+    <!--//Content Heading-->
+    <Style x:Key="tblBodyHeading"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+        <Setter Property="Foreground"
+                Value="#FF282828" />
+        <Setter Property="Margin"
+                Value="42,4" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="FontWeight"
+                Value="Bold" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+    </Style>
+    <!--//Content Body Detail-->
+    <Style x:Key="tblBodyDetail"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="#FF515050" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+    </Style>
+
+    <!--// Heading-->
+    <Style x:Key="tblHeading"
+           TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="#FF282828" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="FontWeight"
+                Value="Bold" />
+
+    </Style>
+
+
+    <!--===================================== Controller Time Zone Style ===================================-->
+    <!--//Main Heading-->
+    <Style x:Key="tblMainHeading"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="30" />
+        <Setter Property="Foreground"
+                Value="LightGray" />
+        <Setter Property="Margin"
+                Value="0,15" />
+    </Style>
+
+
+    <!--//Content Heading-->
+    <Style x:Key="tblConHeading"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Regular" />
+        <Setter Property="FontSize"
+                Value="13" />
+    </Style>
+
+
+    <Style x:Key="lblDateTime"
+           TargetType="TextBlock">
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+        <Setter Property="FontSize"
+                Value="15" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+    </Style>
+
+
+    <!--===================================== Add Card Format Style ===================================-->
+    <!--//Main Heading-->
+    <Style x:Key="tblAddCardFormat"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="Margin"
+                Value="0,0" />
+    </Style>
+    <!--//Body Content Left-->
+    <Style x:Key="tblContentBody"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Foreground"
+                Value="#FF4D4B4B" />
+        <Setter Property="Margin"
+                Value="30,0,0,0" />
+    </Style>
+
+    <!--//Body Content Right-->
+    <Style x:Key="tblContentBodyR"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Foreground"
+                Value="Gray" />
+        <Setter Property="Margin"
+                Value="0,0,0,0" />
+    </Style>
+
+
+
+
+
+
+
+
+
+
+    <!--=====================================  ``````````````````````````````````````` ===================================-->
+    <!--=====================================  ``````````````````````````````````````` ===================================-->
+    <!--=====================================  Create a Generic Textblock Style Starts ===================================-->
+    <!--=====================================  ``````````````````````````````````````` ===================================-->
+    <!--=====================================  ``````````````````````````````````````` ===================================-->
+
+    <!--=====================================  Axis Sub Menu Configuration  TextBlock Style ===================================-->
+    <!--//Normal-->
+    <Style x:Key="configurationNoramlTxt"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="0,0,0,17" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Bottom" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Foreground"
+                Value="#FF2F3538" />
+        <Setter Property="TextAlignment"
+                Value="Center" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Regular" />
+    </Style>
+    <!--//Active-->
+    <Style x:Key="configurationActiveTxt"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="0,0,0,17" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Bottom" />
+        <Setter Property="Foreground"
+                Value="#FF2F3538" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="TextAlignment"
+                Value="Center" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+    </Style>
+
+    <!--=====================================  Main Menu TextBlock Style ===================================-->
+    <Style x:Key="mainHeadingTitle"
+           TargetType="TextBlock">
+        <Setter Property="Margin"
+                Value="20,15" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="#FF191919" />
+        <Setter Property="FontSize"
+                Value="18" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+    </Style>
+
+    <Style x:Key="MainFooterText"
+           TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="#FF191919" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="FontSize"
+                Value="12" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+    </Style>
+
+    <!--===================================== Menu Heading TextBlock Style ===================================-->
+    <Style x:Key="menuHeading"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin"
+                Value="5,0" />
+        <Setter Property="FontSize"
+                Value="16"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold"></Setter>
+        <Setter Property="VerticalAlignment"
+                Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+
+    <!--===================================== Forms Field Headings Style =================================== (Lable)-->
+    <Style x:Key="formFieldHeading"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Margin"
+                Value="3,3,3,3" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+    </Style>
+
+    <!--===================================== Forms Field Headings Normal Text Style ===================================-->
+    <Style x:Key="normalFieldHeading"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+
+    </Style>
+
+    <!--===================================== Camera Field Style =================================== (Lable)-->
+    <Style x:Key="txtCamera"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Margin"
+                Value="3,3,3,3" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+    </Style>
+
+    <!--===================================== Generic Listbox Text Style ===================================-->
+    <Style x:Key="txtListBox"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+
+    </Style>
+
+    <!--===================================== Forms Detail Text Style =================================== (Lable)-->
+    <Style x:Key="txtDetail"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Margin"
+                Value="3,3,3,3" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+    </Style>
+
+
+    <!--===================================== Button TextBlock Style ===================================-->
+    <Style x:Key="txtButton"
+           TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+        <Setter Property="FontSize"
+                Value="14" />
+
+    </Style>
+
+
+    <!--===================================== Bold 16 TextBlock Style ===================================-->
+    <Style x:Key="boldSixteen"
+           TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+        <Setter Property="FontSize"
+                Value="16" />
+
+    </Style>
+
+    <Style x:Key="ControllerDetailsTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="3,3,40,3" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Regular" />
+        <Setter Property="FontSize"
+                Value="13" />
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+    </Style>
+    <!--===================================== Open Form Field TextBlock Style ===================================-->
+    <Style x:Key="opnFormField"
+           TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="14" />
+
+    </Style>
+
+
+
+
+    <!--===================================== Operator Role TextBlock Style ===================================-->
+    <Style x:Key="txtOperatorRole"
+           TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Bold" />
+        <Setter Property="FontSize"
+                Value="12" />
+    </Style>
+
+    <Style x:Key="txtTooTipHeader"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="FontFamily"
+                Value="Open Sans Semibold" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Margin"
+                Value="10 10 10 7" />
+    </Style>
+
+    <Style x:Key="txtTootTipParagraph"
+           TargetType="TextBlock">
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="12" />
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="Margin"
+                Value="5 5 7 10" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+    </Style>
+
+    <!--===================================== Server Camera List TextBlock Style ===================================-->
+    <Style x:Key="txtServerCameraList"
+           TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="10 0" />
+        <!--<Setter Property="TextWrapping" Value="Wrap"/>-->
+    </Style>
+
+    <!--===================================== Menu Heading TextBlock Style ===================================-->
+    <Style x:Key="MusteringMenu"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin"
+                Value="15,0" />
+        <Setter Property="FontSize"
+                Value="14"></Setter>
+        <Setter Property="FontFamily"
+                Value="Open Sans Extrabold"></Setter>
+        <Setter Property="VerticalAlignment"
+                Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"></Setter>
+    </Style>
+
+
+
+    <!--===================================== Add Controller Textblock Style ===================================-->
+    <!--Heading-->
+    <Style x:Key="txtController"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontWeight"
+                Value="Bold" />
+        <Setter Property="FontSize"
+                Value="13" />
+    </Style>
+    <!--Noraml-->
+    <Style x:Key="txtControllerNormal"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="13" />
+    </Style>
+
+    <Style x:Key="txtControllerType"
+           TargetType="TextBlock">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="Margin"
+                Value="10,0,0,0" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="FontFamily"
+                Value="Open Sans" />
+        <Setter Property="FontSize"
+                Value="13" />
+    </Style>
+
+
+</ResourceDictionary>

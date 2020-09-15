@@ -39,7 +39,7 @@ namespace SMS.Messaging.SavedSms
 
             sms_list = new List<sms>();
             row_obj = new sms();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
             strength_textblock.Text = sms_grid.Items.Count.ToString();
         }

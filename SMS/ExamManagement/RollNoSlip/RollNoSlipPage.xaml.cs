@@ -33,7 +33,7 @@ namespace SMS.ExamManagement.RollNoSlip
         {
             InitializeComponent();
 
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             classes_list = new List<classes>();
             get_all_classes();
             class_cmb.SelectedIndex = 0;
@@ -136,7 +136,7 @@ namespace SMS.ExamManagement.RollNoSlip
         }
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         // ===============     Get All Admissions          ================

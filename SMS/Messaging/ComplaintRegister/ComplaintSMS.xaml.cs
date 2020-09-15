@@ -43,7 +43,7 @@ namespace SMS.Messaging.ComplaintRegister
         {
             InitializeComponent();
 
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             classes_list = new List<classes>();
             get_all_classes();
             class_cmb.SelectedIndex = 0;
@@ -68,7 +68,7 @@ namespace SMS.Messaging.ComplaintRegister
             class_cmb.SelectedIndex = 0;
             section_cmb.SelectedIndex = 0;
             default_btn.IsChecked = true;
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
 
             if (MainWindow.ins.isMultiPartSMSAccess == "Y")
             {
@@ -344,7 +344,7 @@ namespace SMS.Messaging.ComplaintRegister
         }
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {

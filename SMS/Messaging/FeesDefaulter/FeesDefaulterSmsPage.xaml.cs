@@ -91,7 +91,7 @@ namespace SMS.Messaging.FeesDefaulter
 
         public void loadGrid()
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
 
             fees_list = feesDAL.getAllUnPaidFees();
             setFeesList(fees_list);
@@ -233,7 +233,7 @@ namespace SMS.Messaging.FeesDefaulter
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         //Filters

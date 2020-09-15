@@ -36,14 +36,7 @@ namespace SMS.AdmissionManagement.BulkFeeUpdate
         public FeeUpdatePage()
         {
             InitializeComponent();
-            SearchTextBox.Focus();
-            classes_list = new List<classes>();
-            get_all_classes();
-            class_cmb.SelectedIndex = 0;
-            classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
-            class_cmb.ItemsSource = classes_list;
-            
-            load_grid();
+           
         }
         public void load_grid()
         {            
@@ -371,5 +364,16 @@ namespace SMS.AdmissionManagement.BulkFeeUpdate
 
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            SearchTextBox.Focus();
+            classes_list = new List<classes>();
+            get_all_classes();
+            class_cmb.SelectedIndex = 0;
+            classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
+            class_cmb.ItemsSource = classes_list;
+
+            load_grid();
+        }
     }
 }

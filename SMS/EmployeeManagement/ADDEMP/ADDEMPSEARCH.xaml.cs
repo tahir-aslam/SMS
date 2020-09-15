@@ -40,7 +40,7 @@ namespace SMS.EmployeeManagement.ADDEMP
 
             empDAL = new EmployeesDAL();            
             obj = new employees();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
             strength_textblock.Text = emp_grid.Items.Count.ToString();
         }

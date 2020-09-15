@@ -644,9 +644,7 @@ namespace SMS
                 Application.Current.MainWindow.WindowState = WindowState.Maximized;
                 ReadDatabaseFile();
                 usr_name.Focus();
-                get_sms_institute();
-                institute_name_lbl.Content = ins.institute_name;
-                institute_logo_img.Source = ByteToImage(ins.institute_logo);
+                get_sms_institute();                
                 //check();
                 //var c1 = ConfigurationManager.ConnectionStrings["sms"].ConnectionString;
                 //var c2 = ConfigurationManager.ConnectionStrings["web_sms"].ConnectionString;
@@ -807,9 +805,7 @@ namespace SMS
                 Databases obj = database_cmb.SelectedItem as Databases;
                 Database = obj.DatabaseName;
                 Connection_String.con_string = "Server=" + Server + "; port=" + Port + "; Database=" + Database + "; Uid=" + Uid + "; Pwd=7120020@123; default command timeout=99999;CHARSET=utf8";
-                get_sms_institute();
-                institute_name_lbl.Content = ins.institute_name;
-                institute_logo_img.Source = ByteToImage(ins.institute_logo);
+                get_sms_institute();                
             }
         }
         public static string GetSelectedDatabaseName()

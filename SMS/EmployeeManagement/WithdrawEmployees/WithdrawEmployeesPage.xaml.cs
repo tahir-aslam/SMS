@@ -38,7 +38,7 @@ namespace SMS.EmployeeManagement.WithdrawEmployees
 
             emp_list = new List<employees>();
             obj = new employees();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
             strength_textblock.Text = emp_grid.Items.Count.ToString();
         }

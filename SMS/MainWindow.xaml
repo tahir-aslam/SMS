@@ -8,55 +8,41 @@
         Width="800"
         MinWidth="600"
         MinHeight="400"
-        Icon="/SMS;component/ScenarioLogo.ico"
+        Icon="/SMS;component/images/Icons/icon_32.ico"
         WindowStartupLocation="CenterScreen"
         KeyDown="Window_KeyDown"
         Loaded="Window_Loaded"
         WindowState="Maximized">
-    <Window.Background>
-        <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg" />
-    </Window.Background>
+    
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
+        <Grid.RowDefinitions>            
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0"
-              Background="Black">
-            <StackPanel Orientation="Horizontal">
-                <Image Name="institute_logo_img"
-                       HorizontalAlignment="Left"                       
-                       Width="80"
-                       Height="70"
-                       Margin="1,1,0,1"
-                       VerticalAlignment="Center" />
-                <StackPanel Grid.Column="1"
-                            Orientation="Horizontal"
-                            Margin="10,10,0,0">
-                    <Label  Grid.Column="1"
-                            Content="Scenario Management Solution"
-                            Name="institute_name_lbl"
-                            Foreground="White"
-                            FontSize="35"
-                            FontFamily="Georgia" />
-                </StackPanel>
 
-            </StackPanel>
+        <Grid Grid.Column="0">
+            <Image Source="images/SplashScreen/logo_380.png"
+                   Margin="15"
+                   MaxWidth="300"/>
         </Grid>
-
-        <Grid Grid.Row="1">
+        <Grid Grid.Column="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg" />                        
+            </Grid.Background>
             <StackPanel Grid.Row="0"
                         Grid.Column="0"
-                        Margin="10"
-                        Width="500"
+                        Margin="15"                        
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
                 <Border BorderThickness="0"
                         BorderBrush="#FFD6D4D4">
                     <StackPanel>
                         <Border CornerRadius="8,8,0,0"
-                                Background="Purple"
+                                Background="Green"
                                 Height="55">
                             <TextBlock Text="Sign In"
                                        Foreground="White"

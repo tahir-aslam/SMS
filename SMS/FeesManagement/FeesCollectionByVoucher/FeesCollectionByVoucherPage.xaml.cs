@@ -41,7 +41,7 @@ namespace SMS.FeesManagement.FeesCollectionByVoucher
             paidFeesList = new List<sms_fees>();
 
             date_picker.SelectedDate = DateTime.Now;
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         private void Page_KeyDown(object sender, KeyEventArgs e)

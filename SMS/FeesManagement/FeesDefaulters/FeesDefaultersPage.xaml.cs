@@ -74,7 +74,7 @@ namespace SMS.FeesManagement.FeesDefaulters
 
         public void loadGrid()
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
 
             fees_list = feesDAL.getAllUnPaidFees();
             foreach (var item in fees_list)
@@ -163,7 +163,7 @@ namespace SMS.FeesManagement.FeesDefaulters
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
         
         //Filters

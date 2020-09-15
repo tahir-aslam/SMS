@@ -7,7 +7,8 @@
         Height="650"
         Width="1100"
         KeyDown="Window_KeyDown"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
     <Grid HorizontalAlignment="Center"
           VerticalAlignment="Center">
 

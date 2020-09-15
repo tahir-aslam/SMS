@@ -38,7 +38,7 @@ namespace SMS.AccountManagement.Account
 
             account_list = new List<account>();
             row_obj = new account();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
         }
 

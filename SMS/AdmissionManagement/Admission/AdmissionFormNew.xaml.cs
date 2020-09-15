@@ -75,56 +75,7 @@ namespace SMS.AdmissionManagement.Admission
             this.obj = ob;
             this.mode = m;
 
-            session_cmb.SelectedIndex = 0;
-            classes_list = new List<classes>();
-            sections_list = new List<sections>();
-            get_all_classes();
-            class_cmb.SelectedIndex = 0;
-            classes_list.Insert(0, new classes() { class_name = "-Select Class-", id = "-1" });
-            class_cmb.ItemsSource = classes_list;
-            religion_textbox.Text = "Islam";
-            roll_textbox.IsEnabled = true;
-            get_all_sessions();
-            session_cmb.ItemsSource = session_list;
-            session_cmb.SelectedIndex = Convert.ToInt32(MainWindow.session.id) - 1;
-            session_cmb.IsEnabled = false;
-            get_all_months();
-            std_card_btn.IsEnabled = false;
-            sibling_btn.IsEnabled = false;
-            schoolConfirmation_btn.IsEnabled = true;
-
-            roll_no_prefix_cmb.ItemsSource = MainWindow.roll_no_prefix_list;
-            adm_no_prefix_cmb.ItemsSource = MainWindow.adm_no_prefix_list;
-            area_cmb.ItemsSource = MainWindow.area_list;
-            class_in_cmb.ItemsSource = classes_list;
-
-            roll_no_prefix_cmb.SelectedIndex = 0;
-            adm_no_prefix_cmb.SelectedIndex = 0;
-            area_cmb.SelectedIndex = 0;
-            class_in_cmb.SelectedIndex = 0;
-
-            List<sms_fees_package> fees_package_list = MainWindow.fees_package_list;
-            package_cmb.ItemsSource = fees_package_list;
-            package_cmb.SelectedIndex = 0;
-
-            List<sms_months> months_list = MainWindow.months_list;
-            month_cmb.ItemsSource = months_list;
-            month_cmb.SelectedIndex = 0;            
-
-            if (mode == "edit")
-            {
-                birthday_btn.IsEnabled = true;
-                sibling_btn.IsEnabled = true;
-                std_card_btn.IsEnabled = true;
-
-                last_id = Convert.ToInt32(obj.id);                
-                fill_control();                
-                class_cmb.IsEnabled = true;               
-                
-                full_name_textbox.Focus();
-
-                generate_CB.Visibility = Visibility.Collapsed;
-            }
+            
         }
             
         public void get_all_sessions() 
@@ -1499,7 +1450,60 @@ namespace SMS.AdmissionManagement.Admission
             adm_list.Add(adm);
             AdmissionSlip window = new AdmissionSlip(adm_list);
             window.ShowDialog();
-        }            
-        
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            session_cmb.SelectedIndex = 0;
+            classes_list = new List<classes>();
+            sections_list = new List<sections>();
+            get_all_classes();
+            class_cmb.SelectedIndex = 0;
+            classes_list.Insert(0, new classes() { class_name = "-Select Class-", id = "-1" });
+            class_cmb.ItemsSource = classes_list;
+            religion_textbox.Text = "Islam";
+            roll_textbox.IsEnabled = true;
+            get_all_sessions();
+            session_cmb.ItemsSource = session_list;
+            session_cmb.SelectedIndex = Convert.ToInt32(MainWindow.session.id) - 1;
+            session_cmb.IsEnabled = false;
+            get_all_months();
+            std_card_btn.IsEnabled = false;
+            sibling_btn.IsEnabled = false;
+            schoolConfirmation_btn.IsEnabled = true;
+
+            roll_no_prefix_cmb.ItemsSource = MainWindow.roll_no_prefix_list;
+            adm_no_prefix_cmb.ItemsSource = MainWindow.adm_no_prefix_list;
+            area_cmb.ItemsSource = MainWindow.area_list;
+            class_in_cmb.ItemsSource = classes_list;
+
+            roll_no_prefix_cmb.SelectedIndex = 0;
+            adm_no_prefix_cmb.SelectedIndex = 0;
+            area_cmb.SelectedIndex = 0;
+            class_in_cmb.SelectedIndex = 0;
+
+            List<sms_fees_package> fees_package_list = MainWindow.fees_package_list;
+            package_cmb.ItemsSource = fees_package_list;
+            package_cmb.SelectedIndex = 0;
+
+            List<sms_months> months_list = MainWindow.months_list;
+            month_cmb.ItemsSource = months_list;
+            month_cmb.SelectedIndex = 0;
+
+            if (mode == "edit")
+            {
+                birthday_btn.IsEnabled = true;
+                sibling_btn.IsEnabled = true;
+                std_card_btn.IsEnabled = true;
+
+                last_id = Convert.ToInt32(obj.id);
+                fill_control();
+                class_cmb.IsEnabled = true;
+
+                full_name_textbox.Focus();
+
+                generate_CB.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }

@@ -197,7 +197,7 @@ namespace SMS.Messaging.History
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         public void search_box()

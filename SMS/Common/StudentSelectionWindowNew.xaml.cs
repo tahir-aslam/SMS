@@ -39,7 +39,7 @@ namespace SMS.Common
         public StudentSelectionWindowNew()
         {
             InitializeComponent();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             classes_list = new List<classes>();
             get_all_classes();
             class_cmb.SelectedIndex = 0;
@@ -128,7 +128,7 @@ namespace SMS.Common
         }
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
 
         // ===============     Get All Admissions          ================

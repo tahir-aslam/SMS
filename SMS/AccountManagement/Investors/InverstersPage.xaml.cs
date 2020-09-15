@@ -37,7 +37,7 @@ namespace SMS.AccountManagement.Investors
             InitializeComponent();
             investors_list = new List<sms_investor>();
             row_obj = new sms_investor();
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
         }
         public void load_grid()

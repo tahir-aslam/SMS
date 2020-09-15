@@ -35,33 +35,11 @@ namespace SMS.ClassManagement.Subject
 
             SS = ss;
             this.obj = ob;
-            this.mode = m;
-
-            class_cmb.Focus();
+            this.mode = m;           
 
             subjects_list = new List<subjects>();
             classes_list = new List<classes>();
-            emp_list = new List<employees>();
-
-            get_all_subjects();
-            get_all_classes();
-            get_all_emp();
-
-            class_cmb.SelectedIndex = 0;
-            teacher_cmb.SelectedIndex = 0;
-
-            classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
-            emp_list.Insert(0, new employees() { emp_name = "---Select Teacher---", id = "-1" });
-
-            class_cmb.ItemsSource = classes_list;
-            teacher_cmb.ItemsSource = emp_list;
-
-            if (mode == "edit")
-            {
-                //class_cmb.IsEnabled = false;
-                //section_name_textbox.IsEnabled = false;
-                fill_control();
-            }
+            emp_list = new List<employees>();            
         }
 
        
@@ -473,5 +451,28 @@ namespace SMS.ClassManagement.Subject
             }
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            class_cmb.Focus();
+            get_all_subjects();
+            get_all_classes();
+            get_all_emp();
+
+            class_cmb.SelectedIndex = 0;
+            teacher_cmb.SelectedIndex = 0;
+
+            classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
+            emp_list.Insert(0, new employees() { emp_name = "---Select Teacher---", id = "-1" });
+
+            class_cmb.ItemsSource = classes_list;
+            teacher_cmb.ItemsSource = emp_list;
+
+            if (mode == "edit")
+            {
+                //class_cmb.IsEnabled = false;
+                //section_name_textbox.IsEnabled = false;
+                fill_control();
+            }
+        }
     }
 }

@@ -9,7 +9,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />               
-                <ResourceDictionary Source="Styles/RectangleStyle.xaml" />                
+                <ResourceDictionary Source="Styles/RectangleStyle.xaml" />
+                <ResourceDictionary Source="Styles/ImageStyle.xaml" />
+                <ResourceDictionary Source="Styles/ListBoxStyle.xaml" />
+                <ResourceDictionary Source="Styles/TextBlockStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>           
         </ResourceDictionary>       
     </Application.Resources>

@@ -37,7 +37,7 @@ namespace SMS.Reports.Employee
             InitializeComponent();
 
             empDAL = new EmployeesDAL();            
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
             strength_textblock.Text = emp_grid.Items.Count.ToString();
         }

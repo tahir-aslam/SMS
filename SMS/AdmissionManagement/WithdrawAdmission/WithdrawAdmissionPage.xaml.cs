@@ -38,11 +38,7 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
         public WithdrawAdmissionPage()
         {
             InitializeComponent();
-            load_grid();
-            get_all_sessions();
-            session_cmb.ItemsSource = session_list;
-            session_cmb.SelectedIndex = Convert.ToInt32(MainWindow.session.id)-1;
-            strength_textblock.Text = adm_grid.Items.Count.ToString();
+          
         }
         public void load_grid()
         {
@@ -242,7 +238,7 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
         public void search_box()
         {
@@ -378,6 +374,12 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            load_grid();
+            get_all_sessions();
+            session_cmb.ItemsSource = session_list;
+            session_cmb.SelectedIndex = Convert.ToInt32(MainWindow.session.id) - 1;
+            strength_textblock.Text = adm_grid.Items.Count.ToString();
+
             var dpd = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, typeof(DataGrid));
             if (dpd != null)
             {

@@ -41,7 +41,7 @@ namespace SMS.ExamsManagement.RollNoSlips
             classesDAL = new ClassesDAL();
             examsDAL = new ExamsDAL();
 
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
 
             classes_list = classesDAL.getAllClasses();
             class_cmb.SelectedIndex = 0;
@@ -99,7 +99,7 @@ namespace SMS.ExamsManagement.RollNoSlips
         }
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
         
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -35,7 +35,7 @@ namespace SMS.ExamsManagement.DateSheet
             examsDAL = new ExamsDAL();
             obj = new sms_exams_date_sheet();
 
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
         }
 

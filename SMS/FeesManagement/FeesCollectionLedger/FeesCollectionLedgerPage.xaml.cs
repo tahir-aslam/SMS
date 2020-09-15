@@ -87,7 +87,7 @@ namespace SMS.FeesManagement.FeesCollectionLedger
 
         public void loadGrid() 
         {
-            SearchTextBox.Focus();                       
+            //SearchTextBox.Focus();                       
             date_picker_to.SelectedDate = DateTime.Now;
             date_picker_from.SelectedDate = DateTime.Now;
         }
@@ -207,7 +207,7 @@ namespace SMS.FeesManagement.FeesCollectionLedger
 
         private void search_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
         }
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

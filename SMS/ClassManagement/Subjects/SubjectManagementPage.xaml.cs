@@ -36,7 +36,7 @@ namespace SMS.ClassManagement.Subjects
             subjectsDAL = new SubjectsDAL();
             obj = new sms_exams_subjects();
 
-            SearchTextBox.Focus();
+            //SearchTextBox.Focus();
             load_grid();
         }
 

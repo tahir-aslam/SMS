@@ -68,7 +68,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>ScenarioLogo.ico</ApplicationIcon>
+    <ApplicationIcon>images\Icons\icon_32.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -680,6 +680,7 @@
     <Compile Include="HelperClasses\CommandManagerHelper.cs" />
     <Compile Include="HelperClasses\DelegateCommand.cs" />
     <Compile Include="Helpers\ApplicationManager.cs" />
+    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Helpers\SingleInstance.cs" />
     <Compile Include="Helpers\Splasher.cs" />
     <Compile Include="MainScreen\MainScreenReports.xaml.cs">
@@ -935,6 +936,12 @@
     <Compile Include="ViewModels\ExamReportBySubjectVM.cs" />
     <Compile Include="Views\Common\PasswordWindow.xaml.cs">
       <DependentUpon>PasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\UC_Dashboard.xaml.cs">
+      <DependentUpon>UC_Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\UC_StudentSubMenu.xaml.cs">
+      <DependentUpon>UC_StudentSubMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\SplashWindow.xaml.cs">
       <DependentUpon>SplashWindow.xaml</DependentUpon>
@@ -1890,11 +1897,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\ImageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\RectangleStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\TextBlockStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Common\PasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\UC_Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\UC_StudentSubMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2299,7 +2326,6 @@
     <Folder Include="ExamsManagement\Reports\TeacherEvaluationReport\" />
     <Folder Include="Reports\Employee\EmployeeAttendanceBio\" />
     <Folder Include="Reports\Fees\" />
-    <Folder Include="Views\UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\duplicate.jpg" />
@@ -2323,6 +2349,47 @@
     <Resource Include="images\ScenarioLogo.ico" />
     <Resource Include="images\Icons\icon_32.ico" />
     <Resource Include="images\SplashScreen\splash.PNG" />
+    <Resource Include="images\SplashScreen\logo.png" />
+    <Resource Include="images\SplashScreen\logo_380.PNG" />
+    <Resource Include="images\MainWinImg\Ack.png" />
+    <Resource Include="images\MainWinImg\AckAll.png" />
+    <Resource Include="images\MainWinImg\alarmofficon.png" />
+    <Resource Include="images\MainWinImg\alarmonicon.png" />
+    <Resource Include="images\MainWinImg\delete.png" />
+    <Resource Include="images\MainWinImg\deleteAll.png" />
+    <Resource Include="images\MainWinImg\icon_about.png" />
+    <Resource Include="images\MainWinImg\icon_about_active.png" />
+    <Resource Include="images\MainWinImg\icon_alarm_note.png" />
+    <Resource Include="images\MainWinImg\icon_equalizer.png" />
+    <Resource Include="images\MainWinImg\icon_equalizer_hover.png" />
+    <Resource Include="images\MainWinImg\icon_home.png" />
+    <Resource Include="images\MainWinImg\icon_home_hover.png" />
+    <Resource Include="images\MainWinImg\icon_logout.png" />
+    <Resource Include="images\MainWinImg\icon_logout_active.png" />
+    <Resource Include="images\MainWinImg\icon_portfolio.png" />
+    <Resource Include="images\MainWinImg\icon_portfolio_hover.png" />
+    <Resource Include="images\MainWinImg\icon_reports.png" />
+    <Resource Include="images\MainWinImg\icon_report_active.png" />
+    <Resource Include="images\MainWinImg\icon_settings.png" />
+    <Resource Include="images\MainWinImg\icon_settings_hover.png" />
+    <Resource Include="images\MainWinImg\icon_user.png" />
+    <Resource Include="images\MainWinImg\icon_user_hover.png" />
+    <Resource Include="images\MainWinImg\ico_cardholder.png" />
+    <Resource Include="images\MainWinImg\ico_cardholder_hover.png" />
+    <Resource Include="images\MainWinImg\ico_close.png" />
+    <Resource Include="images\MainWinImg\ico_controller.png" />
+    <Resource Include="images\MainWinImg\ico_controller_hover.png" />
+    <Resource Include="images\MainWinImg\ico_max_full.png" />
+    <Resource Include="images\MainWinImg\ico_max_half.png" />
+    <Resource Include="images\MainWinImg\ico_min.png" />
+    <Resource Include="images\MainWinImg\maximize.png" />
+    <Resource Include="images\MainWinImg\musical-bell-outline.png" />
+    <Resource Include="images\MainWinImg\muster.png" />
+    <Resource Include="images\MainWinImg\muster_hover.png" />
+    <Resource Include="images\MainWinImg\open-exit-door.png" />
+    <Resource Include="images\MainWinImg\open-exit-door_hover.png" />
+    <Resource Include="images\MainWinImg\power-close.png" />
+    <Resource Include="images\MainWinImg\setting.png" />
     <Content Include="Lib\CrystalDecisions.CrystalReports.Engine.dll" />
     <Content Include="Lib\GSMCommServer.dll" />
     <Content Include="Lib\GSMCommShared.dll" />
@@ -2351,42 +2418,42 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.Practices.ObjectBuilder2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.Practices.Unity">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
