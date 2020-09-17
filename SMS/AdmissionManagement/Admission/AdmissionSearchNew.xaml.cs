@@ -21,13 +21,14 @@ using System.Data;
 using SMS.AdmissionManagement;
 using System.ComponentModel;
 using SMS.DAL;
+using SMS.Views.UserControls;
 
 namespace SMS.AdmissionManagement.Admission
 {
     /// <summary>
     /// Interaction logic for AdmissionSearchNew.xaml
     /// </summary>
-    public partial class AdmissionSearchNew : Page
+    public partial class AdmissionSearchNew : UserControl
     {
         List<admission> adm_grid_list;
         public List<admission> adm_list;
@@ -706,6 +707,12 @@ namespace SMS.AdmissionManagement.Admission
                     editing();
                 }
             }
+        }
+
+        private void icoBack_Click(object sender, RoutedEventArgs e)
+        {
+            grdParent.Children.Clear();
+            grdParent.Children.Add(new UC_StudentSubMenu());
         }
     }
 }

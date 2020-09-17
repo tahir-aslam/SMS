@@ -1,0 +1,106 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SMS.Styles">
+    <Style x:Key="BackgroundColor"
+           TargetType="Grid">
+        <Setter Property="Background">
+            <Setter.Value>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFEAEAEA"
+                                  Offset="1" />
+                    <GradientStop Color="White"
+                                  Offset="0.168" />
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--========================================== Add Controller Style ==========================================-->
+
+    <Style x:Key="addControllerGrdBg"
+           TargetType="Grid">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFF2F2F2"
+                                  Offset="0.663" />
+                    <GradientStop Color="White"
+                                  Offset="0.1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--========================================== Sub menu Style ==========================================-->
+    <Style x:Key="subMenuGrid"
+           TargetType="Grid">
+        <Setter Property="Width"
+                Value="150" />
+        <Setter Property="Height"
+                Value="130" />
+    </Style>
+
+
+    <!--<Style x:Key="addControllerMainGrdbg" TargetType="Grid">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"  StartPoint="0,1">
+                    <GradientStop Color="#FFF2F2F2" Offset="0.663"/>
+                    <GradientStop Color="White" Offset="0.1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+
+    <!--========================================== VMS Grid Style ==========================================-->
+
+
+    <Style x:Key="grdLeftMenu"
+           TargetType="Grid">
+        <Setter Property="Grid.Row"
+                Value="0" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,0">
+                    <GradientStop Color="#FFC1BFC0"
+                                  Offset="0.605" />
+                    <GradientStop Color="#FFE1E1E1"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <Style x:Key="grdLeftMenuBG"
+           TargetType="Grid">
+        <Setter Property="Width"
+                Value="280" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,0.5"
+                                     StartPoint="0,0.5">
+                    <GradientStop Color="#FFE6E6E6" />
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="10"
+                                  Color="#877b77"
+                                  Opacity=".2"
+                                  ShadowDepth="8"
+                                  Direction="-1" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

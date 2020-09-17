@@ -21,7 +21,7 @@ namespace SMS.AdmissionManagement.Envelope
     /// <summary>
     /// Interaction logic for EnvelopePage.xaml
     /// </summary>
-    public partial class EnvelopePage : Page
+    public partial class EnvelopePage : UserControl
     {
         List<admission> adm_list;
         List<classes> classes_list;

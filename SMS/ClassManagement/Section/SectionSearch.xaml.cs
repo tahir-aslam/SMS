@@ -329,5 +329,10 @@ namespace SMS.ClassManagement.Section
             SearchTextBox.Focus();
             load_grid();
         }
+
+        private void print_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

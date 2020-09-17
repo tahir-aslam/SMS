@@ -1,0 +1,720 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SMS.Styles">
+    <!--===================================== Add Controller Style ===================================-->
+    <Style x:Key="AddContBorder"
+           TargetType="Border">
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="BorderBrush"
+                Value="#FF000000" />
+        <Setter Property="CornerRadius"
+                Value="3" />
+        <Setter Property="Background"
+                Value="#FFADB2AC" />
+    </Style>
+
+    <Style x:Key="ipRangeBorder"
+           TargetType="Border">
+        <Setter Property="Margin"
+                Value="5,20" />
+        <Setter Property="BorderBrush"
+                Value="Black" />
+        <Setter Property="CornerRadius"
+                Value="3" />
+        <Setter Property="Background"
+                Value="#FFADB2AC" />
+    </Style>
+    <!--//Header Style-->
+    <Style x:Key="headerBorder"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="BorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="CornerRadius"
+                Value="15,15,0,0" />
+        <Setter Property="Background"
+                Value="#FFC1C1C1" />
+    </Style>
+
+
+    <!--===================================== Main Menu Style ===================================-->
+    <Style x:Key="mainMenuBorder"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="2" />
+        <Setter Property="BorderBrush"
+                Value="#FFAFAFAF" />
+        <Setter Property="CornerRadius"
+                Value="20" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     MappingMode="RelativeToBoundingBox"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="1" />
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.145" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+    <!--===================================== UC_Dashboard Style ===================================-->
+    <Style x:Key="brdButton"
+           TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush"
+                Value="#FFC4C4C4"></Setter>
+        <Setter Property="Margin"
+                Value="20,0"></Setter>
+        <Setter Property="Background"
+                Value="#FFF0F0F0"></Setter>
+        <Setter Property="VerticalAlignment"
+                Value="Center"></Setter>
+        <Setter Property="BorderThickness"
+                Value="1.5"></Setter>
+        <Setter Property="CornerRadius"
+                Value="4"></Setter>
+    </Style>
+
+    <!--===================================== AxisSubMenu  Style ===================================-->
+
+    <Style x:Key="BorderHovering"
+           TargetType="{x:Type Border}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="#FFB4B4B4"
+                                  Offset="0" />
+                    <GradientStop Color="#FFF2F2F2"
+                                  Offset="0.692" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin"
+                Value="0,0,0,5" />
+        <Setter Property="BorderThickness"
+                Value="2" />
+        <Setter Property="BorderBrush"
+                Value="Gray" />
+        <Setter Property="Width"
+                Value="105" />
+        <Setter Property="Height"
+                Value="110" />
+        <Setter Property="CornerRadius"
+                Value="7" />
+        <!--<Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="0" Color="Black" Opacity="1" BlurRadius="20"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+
+            </Trigger>
+        </Style.Triggers>-->
+    </Style>
+
+
+
+    <!--===================================== Controller Details UserControl Style ===================================-->
+    <Style x:Key="ControllerDetailsBorder"
+           TargetType="Border">
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="BorderBrush"
+                Value="#FF000000" />
+        <Setter Property="CornerRadius"
+                Value="5" />
+        <Setter Property="Height"
+                Value="40" />
+        <Setter Property="Background"
+                Value="#FFADB2AC" />
+    </Style>
+
+    <Style x:Key="SearchControllerDetails"
+           TargetType="Border">
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="BorderBrush"
+                Value="#FF000000" />
+        <Setter Property="CornerRadius"
+                Value="4" />
+        <Setter Property="Height"
+                Value="35" />
+        <Setter Property="BorderBrush"
+                Value="#FF969696" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     MappingMode="RelativeToBoundingBox"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFDEDEDE"
+                                  Offset="0.986" />
+                    <GradientStop Color="White"
+                                  Offset="0.1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--===================================== Controller Details UserControl Style ===================================-->
+    <Style x:Key="ControllerDetsssailsBorder"
+           TargetType="Border">
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="BorderBrush"
+                Value="#FF000000" />
+        <Setter Property="CornerRadius"
+                Value="5" />
+        <Setter Property="Height"
+                Value="40" />
+        <Setter Property="Background"
+                Value="#FFADB2AC" />
+    </Style>
+
+
+
+
+    <!--===================================== Card Win Style ===================================-->
+
+    <Style x:Key="BgCardWin"
+           TargetType="Border">
+        <Setter Property="BorderBrush"
+                Value="#FF000000" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="CornerRadius"
+                Value="10" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.189" />
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.744" />
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="0.535" />
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="0.447" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--===================================== Usercontrol Rectangle Style ===================================-->
+
+    <Style x:Key="brdRecHeader"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="CornerRadius"
+                Value="15,15,0,0" />
+        <Setter Property="Background"
+                Value="#FFC1C1C1" />
+
+    </Style>
+
+
+    <!--===================================== Submenu Border Style ===================================-->
+
+    <Style x:Key="brdSubMenu"
+           TargetType="Border">
+        <Setter Property="Background"
+                Value="#FF91949C" />
+        <Setter Property="CornerRadius"
+                Value="7" />
+    </Style>
+
+    <Style x:Key="brdPrentSubMenu"
+           TargetType="Border">
+        <Setter Property="CornerRadius"
+                Value="50" />
+        <Setter Property="Margin"
+                Value="0,8,0,0" />
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+        <Setter Property="Width"
+                Value="65" />
+        <Setter Property="Height"
+                Value="65" />
+        <Setter Property="Background"
+                Value="#FF00C3B3" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Panel.ZIndex"
+                Value="1" />
+    </Style>
+
+    <Style x:Key="brdChildSubMenu"
+           TargetType="Border">
+        <Setter Property="CornerRadius"
+                Value="6" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="#FFEEEEEE" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,1"
+                                     EndPoint="0,0">
+                    <GradientStop Color="#FFF2F3F1"
+                                  Offset="0.015" />
+                    <GradientStop Color="#FFFAFAFA"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="0"
+                                  ShadowDepth="1"
+                                  Color="Gray"
+                                  Direction="300"
+                                  Opacity="0.5" />
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+    <!--===================================== Usercontrol Style ===================================-->
+    <Style x:Key="userControlBorder"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="2" />
+        <Setter Property="BorderBrush"
+                Value="#FFAFAFAF" />
+        <Setter Property="CornerRadius"
+                Value="5" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFF2F2F2"
+                                  Offset="0.663" />
+                    <GradientStop Color="White"
+                                  Offset="0.1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+
+
+    <!--===================================== Door Loack Unloack Style ===================================-->
+    <Style x:Key="SearchDoor"
+           TargetType="Border">
+        <Setter Property="Margin"
+                Value="15,0" />
+        <Setter Property="BorderBrush"
+                Value="#FF000000" />
+        <Setter Property="CornerRadius"
+                Value="5" />
+        <Setter Property="Height"
+                Value="35" />
+        <Setter Property="Width"
+                Value="335" />
+        <Setter Property="BorderBrush"
+                Value="#FF969696" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     MappingMode="RelativeToBoundingBox"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.663" />
+                    <GradientStop Color="#FFFBFBFB"
+                                  Offset="0.1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--//body background-->
+
+    <Style x:Key="statusBorder"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="0,0,0,2" />
+        <Setter Property="BorderBrush"
+                Value="#FFC5C5C5" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="Background"
+                Value="#FFF9F9F9" />
+    </Style>
+
+    <!--===================================== Add Controller Style ===================================-->
+    <Style x:Key="menuBorder"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="0,0,0,2" />
+        <Setter Property="BorderBrush"
+                Value="#FFC5C5C5" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="Background"
+                Value="#FFEEECED" />
+    </Style>
+    <!--//Searchfield-->
+    <Style x:Key="SearchController"
+           TargetType="Border">
+        <Setter Property="Margin"
+                Value="14,0" />
+        <Setter Property="BorderBrush"
+                Value="#FF000000" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="CornerRadius"
+                Value="5" />
+        <Setter Property="Height"
+                Value="35" />
+        <Setter Property="Width"
+                Value="310" />
+        <Setter Property="BorderBrush"
+                Value="#FF969696" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     MappingMode="RelativeToBoundingBox"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.663" />
+                    <GradientStop Color="#FFFBFBFB"
+                                  Offset="0.1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--//Ip Fields-->
+    <Style x:Key="IpField"
+           TargetType="Border">
+        <Setter Property="BorderBrush"
+                Value="#FF5E5E5E" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="CornerRadius"
+                Value="15" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.189" />
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.744" />
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="0.535" />
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="0.447" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20"
+                                  ShadowDepth="10"
+                                  Opacity="0.5" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--===================================== Login Style ===================================-->
+    <Style x:Key="loginBorder"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="2" />
+        <Setter Property="BorderBrush"
+                Value="#FFA7A7A7" />
+        <Setter Property="CornerRadius"
+                Value="5" />
+        <Setter Property="Height"
+                Value="45" />
+        <Setter Property="Background"
+                Value="White" />
+    </Style>
+    <!--//Searchfield-->
+
+
+    <!--===================================== Border Password Style ===================================-->
+    <Style x:Key="passBorder"
+           TargetType="Border">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     MappingMode="RelativeToBoundingBox"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFDEDEDE"
+                                  Offset="0.663" />
+                    <GradientStop Color="White"
+                                  Offset="0.1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush"
+                Value="#FF969696"></Setter>
+        <Setter Property="BorderThickness"
+                Value="1"></Setter>
+        <Setter Property="Height"
+                Value="35"></Setter>
+        <Setter Property="Margin"
+                Value="3,0"></Setter>
+        <Setter Property="CornerRadius"
+                Value="4" />
+    </Style>
+
+    <!--===================================== Border Tab Style ===================================-->
+    <Style x:Key="brdTab1"
+           TargetType="Border">
+        <Setter Property="BorderBrush"
+                Value="#FFAEAEAE" />
+        <Setter Property="Background"
+                Value="#FFCCCCCC" />
+        <Setter Property="BorderThickness"
+                Value="0 1 0 0" />
+    </Style>
+    <Style x:Key="brdTab2"
+           TargetType="Border">
+        <Setter Property="BorderBrush"
+                Value="#FF999999" />
+        <Setter Property="Background"
+                Value="#FFCCCCCC" />
+        <Setter Property="BorderThickness"
+                Value="0 1 0 0" />
+    </Style>
+
+    <!--===================================== Server Stations Style ===================================-->
+    <Style x:Key="brdServerField"
+           TargetType="Border">
+        <Setter Property="BorderBrush"
+                Value="#FFCACACA" />
+        <Setter Property="Height"
+                Value="40" />
+        <Setter Property="CornerRadius"
+                Value="4" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,1">
+                    <GradientStop Color="White"
+                                  Offset="0" />
+                    <GradientStop Color="#FFE4E4E4"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness"
+                Value="1" />
+    </Style>
+
+
+    <!--===================================== VMS Border Style ===================================-->
+    <Style x:Key="grdLeftMenuSearch"
+           TargetType="Border">
+        <Setter Property="Margin"
+                Value="20,10" />
+        <Setter Property="BorderThickness"
+                Value="1.5" />
+        <Setter Property="CornerRadius"
+                Value="3" />
+        <Setter Property="BorderBrush"
+                Value="#FFC3C3C3" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,0">
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="0" />
+                    <GradientStop Color="#FFF6F6F6"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Right Side Border-->
+    <Style x:Key="brdRightContent"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="1.5" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="BorderBrush"
+                Value="#FFCCCCCC" />
+    </Style>
+    <!--Preset Border-->
+    <Style x:Key="brdPreset"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="CornerRadius"
+                Value="15" />
+        <Setter Property="BorderBrush"
+                Value="#FF747474" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.189" />
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.744" />
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="0.535" />
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="0.447" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--//TRANSACTION Search-->
+    <Style x:Key="grdTransactionSearch"
+           TargetType="Border">
+        <Setter Property="Margin"
+                Value="50,30,0,0" />
+        <Setter Property="Width"
+                Value="250" />
+        <Setter Property="Height"
+                Value="40" />
+        <Setter Property="BorderThickness"
+                Value="1.5" />
+        <Setter Property="CornerRadius"
+                Value="3" />
+        <Setter Property="BorderBrush"
+                Value="#FFC3C3C3" />
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,0">
+                    <GradientStop Color="WhiteSmoke"
+                                  Offset="0" />
+                    <GradientStop Color="#FFEBEBEB"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+    <!--===================================== UC_Floor Style ===================================-->
+
+    <Style x:Key="brd1Floor"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="0.7" />
+        <Setter Property="BorderBrush"
+                Value="#FFC7C7C7" />
+        <Setter Property="Grid.ColumnSpan"
+                Value="4" />
+        <Setter Property="VerticalAlignment"
+                Value="Bottom" />
+    </Style>
+    <!--//Border 2-->
+    <Style x:Key="brd2Floor"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="0.6" />
+        <Setter Property="BorderBrush"
+                Value="White" />
+        <Setter Property="Grid.ColumnSpan"
+                Value="4" />
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+    </Style>
+
+
+
+    <Style x:Key="brdReport"
+           TargetType="Border">
+        <Setter Property="BorderThickness"
+                Value="2" />
+        <Setter Property="BorderBrush"
+                Value="#FF747474" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.189" />
+                    <GradientStop Color="#FFE6E6E6"
+                                  Offset="0.744" />
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="0.535" />
+                    <GradientStop Color="#FFFEFEFE"
+                                  Offset="0.447" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="brdHeaderReport"
+           TargetType="Border">
+        <Setter Property="Background"
+                Value="#FF747474" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+    </Style>
+
+
+
+
+    <!--===================================== Reports Ip Addrss Range Style ===================================-->
+    <Style x:Key="brdReportIp"
+           TargetType="Border">
+        <Setter Property="BorderBrush"
+                Value="#FF969696"></Setter>
+        <Setter Property="Height"
+                Value="35"></Setter>
+        <Setter Property="CornerRadius"
+                Value="4"></Setter>
+        <Setter Property="BorderThickness"
+                Value="1"></Setter>
+        <Setter Property="Margin"
+                Value="3,0"></Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1"
+                                     MappingMode="RelativeToBoundingBox"
+                                     StartPoint="0,1">
+                    <GradientStop Color="#FFDEDEDE"
+                                  Offset="0.663" />
+                    <GradientStop Color="White"
+                                  Offset="0.1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

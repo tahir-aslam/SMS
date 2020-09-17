@@ -4,9 +4,219 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SMS.Views.UserControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="600" d:DesignWidth="600">
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
+                                         OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1}">
+        <Grid x:Name="grdParent">
+            <StackPanel>
+                <Grid Margin="0,0,0,20">
+                    <Rectangle Style="{DynamicResource mainMenuRec}"
+                               Margin="0"
+                               VerticalAlignment="Stretch"
+                               HorizontalAlignment="Stretch" />
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20*" />
+                                <RowDefinition Height="80*" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Background="Transparent"
+                                        Padding="0"
+                                        BorderThickness="0"
+                                        Margin="15,0,0,0"
+                                        x:Name="icoBack"
+                                        Click="icoBack_Click"
+                                        Visibility="Collapsed">
+                                    <materialDesign:PackIcon Style="{DynamicResource icoBackUC}" />
+                                </Button>
+                                <TextBlock Text="Student Management"
+                                           Tag="Language"
+                                           Style="{DynamicResource mainHeadingTitle}" />
+                            </StackPanel>
+
+
+                            <Rectangle  Style="{DynamicResource mainMenuLine}" />
+
+                            <StackPanel Grid.Row="1">
+                                <WrapPanel Margin="30,50,30,0">
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spClasses"
+                                                MouseLeftButtonUp="spClasses_MouseLeftButtonUp"
+                                                MouseEnter="spClasses_MouseEnter"
+                                                MouseLeave="spClasses_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdClasses"
+                                                    Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtClasses"
+                                                           Text="Classes"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spSections"
+                                                MouseLeftButtonUp="spSections_MouseLeftButtonUp"
+                                                MouseEnter="spSections_MouseEnter"
+                                                MouseLeave="spSections_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdSections"
+                                                    Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtSections"
+                                                           Text="Sections"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                </WrapPanel>
+                                <WrapPanel Margin="30,50,30,0">
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"                                                
+                                                MouseLeftButtonUp="spController_MouseLeftButtonUp"
+                                                MouseEnter="spController_MouseEnter"
+                                                MouseLeave="spController_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdAdmission" Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtAdmission"
+                                                           Text="Admission Register"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spWithdrawl"
+                                                MouseLeftButtonUp="spWithdrawl_MouseLeftButtonUp"
+                                                MouseEnter="spWithdrawl_MouseEnter"
+                                                MouseLeave="spWithdrawl_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdWithdrawl" Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtWithdraw"
+                                                           Text="Withdrawl Register"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                </WrapPanel>
+                                <WrapPanel Margin="30,50,30,0">
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spPromote"
+                                                MouseLeftButtonUp="spPromote_MouseLeftButtonUp"
+                                                MouseEnter="spPromote_MouseEnter"
+                                                MouseLeave="spPromote_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdPromote"
+                                                    Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtPromote"
+                                                           Text="Promote Students"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spEnvelopes"
+                                                MouseLeftButtonUp="spEnvelopes_MouseLeftButtonUp"
+                                                MouseEnter="spEnvelopes_MouseEnter"
+                                                MouseLeave="spEnvelopes_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdEnvelopes"
+                                                    Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtEnvelopes"
+                                                           Text="Student Envelopes"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                </WrapPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>

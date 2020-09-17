@@ -5,11 +5,16 @@
         xmlns:ctr="clr-namespace:SMS.Controls"
         xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Scenario Systems. 0300-4197674"
-        Height="800"
-        Width="1000"
+        Title="School Mobilizer"
+        Height="768"
+        Width="1366"
         WindowState="Maximized"
-        Icon="/SMS;component/ScenarioLogo.ico"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"        
+        ResizeMode="CanMinimize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Icon="/SMS;component/images/Icons/icon_32.ico"
         Activated="MetroWindow_Activated"
         Deactivated="MetroWindow_Deactivated"
         Loaded="Window_Loaded"
@@ -232,7 +237,7 @@
                 Background="White"
                 BorderBrush="#FF9B9B9B">
 
-            <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown"
+            <Grid 
                   Background="#E2E2E2"
                   x:Name="grdParent">
                 <Grid.ColumnDefinitions>
@@ -259,7 +264,7 @@
                     <Grid Margin="0"
                           Height="60">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="100" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Grid>
@@ -268,7 +273,8 @@
                                 <ColumnDefinition Width="20*" />
                             </Grid.ColumnDefinitions>
                             <Image Source="/images/splashscreen/logo.png"
-                                   Grid.Column="1" />
+                                   Grid.Column="1" 
+                                   Margin="5"/>
                         </Grid>
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Right"
@@ -305,7 +311,7 @@
                                        Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />-->
 
                             <Image x:Name="icoAlarm"
-                                   MouseDown="icon_Alarm"
+                                   
                                    Cursor="Hand"
                                    Width="20"
                                    Height="20"
@@ -643,40 +649,7 @@
                                           ShadowDepth="5"
                                           Opacity="0.6" />
                     </Border.Effect>
-                    <Grid>
-                        <TextBlock x:Name="txtCurrentDatetime"
-                                   VerticalAlignment="Center"
-                                   FontWeight="Bold"
-                                   Style="{DynamicResource MainFooterText}"
-                                   HorizontalAlignment="Left" />
-
-                        <StackPanel VerticalAlignment="Center"
-                                    HorizontalAlignment="Right"
-                                    Orientation="Horizontal"
-                                    Margin="20,0">
-                            <materialDesign:PackIcon Kind="Copyright"
-                                                     VerticalAlignment="Center"
-                                                     Foreground="#FF727272" />
-                            <Button x:Name="btnQuanika"
-                                    Padding="0"
-                                    Background="Transparent"
-                                    BorderThickness="0"
-                                    FontFamily="Open Sans Semibold"
-                                    FontSize="12"
-                                    FontWeight="Normal"
-                                    Foreground="#FF52AD30"
-                                    Click="btnQuanika_Click">
-                                <StackPanel>
-                                    <TextBlock Text="School Mobilizer 0334-7507674. "
-                                               Tag="Language" />
-                                </StackPanel>
-                            </Button>
-                            <TextBlock Text="All Rights Reserved"
-                                       Tag="Language"
-                                       Style="{DynamicResource MainFooterText}" />
-                        </StackPanel>
-
-                    </Grid>
+                    
                 </Border>
             </Grid>
         </Border>

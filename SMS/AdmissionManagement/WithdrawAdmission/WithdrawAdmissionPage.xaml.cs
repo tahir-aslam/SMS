@@ -19,14 +19,14 @@ using System.Windows.Markup;
 using SUT.PrintEngine.Utils;
 using System.Data;
 using System.ComponentModel;
-
+using SMS.Views.UserControls;
 
 namespace SMS.AdmissionManagement.WithdrawAdmission
 {
     /// <summary>
     /// Interaction logic for WithdrawAdmissionPage.xaml
     /// </summary>
-    public partial class WithdrawAdmissionPage : Page
+    public partial class WithdrawAdmissionPage : UserControl
     {
         List<admission> adm_list;
         WithdrawAdmissionPage WAP;
@@ -405,6 +405,12 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
                 slc.ShowDialog();
 
             }
+        }
+
+        private void icoBack_Click(object sender, RoutedEventArgs e)
+        {
+            grdParent.Children.Clear();
+            grdParent.Children.Add(new UC_StudentSubMenu());
         }
     }
 }

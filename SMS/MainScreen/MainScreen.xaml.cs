@@ -59,6 +59,7 @@ using MySql.Data.MySqlClient;
 using SMS.EmployeeManagement.EmployeeAttendanceReport;
 using SMS.Helpers;
 using SMS.Views.UserControls;
+using System.Diagnostics;
 
 namespace SMS.MainScreen
 {
@@ -3278,127 +3279,18 @@ namespace SMS.MainScreen
                         case 2:
                             last_index = index;
                             ClearChildControl();
-                            ContentArea.Children.Add(new UC_ManageUser(false));
+                            ContentArea.Children.Add(new UC_FeeSubMenu());
                             break;
-                        case 3:
-                            last_index = index;
-                            if (CheckMainWindowPermission("View Manual Control(s)"))
-                                return;
-                            ClearChildControl();
-                            ContentArea.Children.Add(new UC_LockUnLockDoor());
-                            break;
-                        case 4:
-                            last_index = index;
-                            if (CheckMainWindowPermission("View Muster(s)"))
-                                return;
-                            ClearChildControl();
-                            ContentArea.Children.Add(new UC_Mustering());
-                            break;
-                        case 5:
-                            if (UC_Dashboard.previews != null)
-                            {
-                                if (UC_Dashboard.previews.WindowState == WindowState.Minimized)
-                                {
-                                    UC_Dashboard.previews.WindowState = WindowState.Normal;
-                                }
-                                else if (UC_Dashboard.previews.WindowState == WindowState.Maximized)
-                                {
-
-                                }
-                                else if (UC_Dashboard.previews.WindowState == WindowState.Normal)
-                                {
-
-                                }
-                                else
-                                {
-                                }
-                            }
-                            else
-                            {
-                                if (_preview == null)
-                                {
-                                    Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new System.Action(() =>
-                                    {
-                                        _preview = new PreviewModePopup();
-                                        _previews = _preview;
-                                        //_preview.Topmost = true;
-                                        //Center the main screen                                
-                                        _preview.Show();
-                                    }));
-                                    //_preview.Activate();
-
-                                }
-                                else
-                                {
-                                    if (_preview.IsShows == false)
-                                    {
-
-                                        if (_preview.WindowState == WindowState.Minimized)
-                                        {
-                                            _preview.WindowState = WindowState.Normal;
-
-                                        }
-                                        else if (_preview.WindowState == WindowState.Maximized)
-                                        {
-
-                                        }
-                                        else if (_preview.WindowState == WindowState.Normal)
-                                        {
-                                            _preview.WindowState = WindowState.Normal;
-                                        }
-                                        else
-                                        {
-                                        }
-
-                                    }
-                                    else
-                                    {
-                                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new System.Action(() =>
-                                        {
-                                            _preview = new PreviewModePopup();
-                                            _previews = _preview;
-                                            _preview.Topmost = true;
-                                            _preview.Show();
-                                        }));
-                                        //_preview.Activate();
-
-                                    }
-                                }
-                            }
-
-                            break;
-                        case 6:
-                            last_index = index;
-                            if (CheckMainWindowPermission("View Report(s)"))
-                                return;
-                            ClearChildControl();
-                            ContentArea.Children.Add(new UC_Reports());
-                            break;
-                        case 7:
-                            ResetMenuState();
-                            Window yourParentWindow = Window.GetWindow(MainWin);
-                            Helper.CenterWindowOnScreen(yourParentWindow);
-                            VMSWin _vms = new VMSWin();
-                            _vms.Owner = yourParentWindow;
-                            _vms.ShowDialog();
-                            break;
+                       
                         case 8:
                             ClearChildControl();
-                            ContentArea.Children.Add(new UC_About(this));
+                            ContentArea.Children.Add(new UC_About());
                             last_index = index;
                             //new CardHolder().ShowDialog();
                             //ToggleMenu(last_index);
                             break;
                         case 9:
-                            //Logout Click
-                            Helper.WindowCLose<PreviewModePopup>();
-                            Helper.WindowCLose<VMSWin>();
-                            new LoginUserWin(true).Show();
-                            this.Close();
-                            //  new OperatorsDAL().OperatorAuthentication(CConfig._email, "", 2);
-                            //  new OperatorsDAL().LogOperatorActivity(CConfig._operatorName, "Desktop", "Log out");
-                            //  CConfig._email = "";
-                            // CConfig._operatorName = "";
+
                             break;
 
                         default:
@@ -3510,6 +3402,68 @@ namespace SMS.MainScreen
             {
                 //LogHelper.WriteException(ex.Message, source: "Quanika");
             }
+        }
+        private void btnMax_Click(object sender, MouseButtonEventArgs e)
+        {
+            ChangeWindowState();
+        }
+
+        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Application.Current.Shutdown();
+                //Environment.Exit(0);
+                Process.GetCurrentProcess().Kill();
+            }
+            catch (Exception)// No need to log this exception
+            {
+            }
+        }
+
+        private void btnMin_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void btnSetting_Click(object sender, RoutedEventArgs e)
+        {
+            ClearChildControl();
+            //ContentArea.Children.Add(new AxisSubMenu());
+        }
+        private void ChangeWindowState()
+        {
+
+
+            if (this.WindowState == WindowState.Maximized)
+            {
+
+                this.WindowState = WindowState.Normal;
+                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                icoMaximize.Source = new BitmapImage(new Uri("/Images/MainWinImg/ico_max_half.png", UriKind.RelativeOrAbsolute));
+                //UC_About.ChangeIconHight(false);
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+                icoMaximize.Source = new BitmapImage(new Uri("/Images/MainWinImg/ico_max_full.png", UriKind.RelativeOrAbsolute));
+                //UC_About.ChangeIconHight(true);
+            }
+
+            //dashboard.Height = 1750;
+            //dashboard.Background = new SolidColorBrush(Color.FromRgb(170, 88, 91));                 
+
+
+        }
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnMax_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeWindowState();
         }
     }
 }

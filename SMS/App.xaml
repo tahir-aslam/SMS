@@ -13,6 +13,11 @@
                 <ResourceDictionary Source="Styles/ImageStyle.xaml" />
                 <ResourceDictionary Source="Styles/ListBoxStyle.xaml" />
                 <ResourceDictionary Source="Styles/TextBlockStyle.xaml" />
+                <ResourceDictionary Source="Styles/IconStyle.xaml" />
+                <ResourceDictionary Source="Styles/StackPanelStyle.xaml" />
+                <ResourceDictionary Source="Styles/GridStyle.xaml" />
+                <ResourceDictionary Source="Styles/BorderStyle.xaml" />
+                <ResourceDictionary Source="Styles/ButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>           
         </ResourceDictionary>       
     </Application.Resources>

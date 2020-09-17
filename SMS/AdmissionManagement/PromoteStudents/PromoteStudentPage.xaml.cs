@@ -27,7 +27,7 @@ namespace SMS.AdmissionManagement.PromoteStudents
     /// <summary>
     /// Interaction logic for PromoteStudentPage.xaml
     /// </summary>
-    public partial class PromoteStudentPage : Page
+    public partial class PromoteStudentPage : UserControl
     {
         List<classes> classes_list;
         List<sections> sections_list;

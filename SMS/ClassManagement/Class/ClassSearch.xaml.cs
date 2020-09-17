@@ -27,7 +27,7 @@ namespace SMS.ClassManagement.Class
     /// <summary>
     /// Interaction logic for ClassSearch.xaml
     /// </summary>
-    public partial class ClassSearch : Page
+    public partial class ClassSearch : UserControl
     {
        List<classes> classes_list;
        classes obj;
@@ -474,6 +474,11 @@ namespace SMS.ClassManagement.Class
 
             load_gird();
             load_charges_grid();
+        }
+
+        private void print_btn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
     

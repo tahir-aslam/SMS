@@ -937,8 +937,14 @@
     <Compile Include="Views\Common\PasswordWindow.xaml.cs">
       <DependentUpon>PasswordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\UC_About.xaml.cs">
+      <DependentUpon>UC_About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\UC_Dashboard.xaml.cs">
       <DependentUpon>UC_Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\UC_FeeSubMenu.xaml.cs">
+      <DependentUpon>UC_FeeSubMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\UC_StudentSubMenu.xaml.cs">
       <DependentUpon>UC_StudentSubMenu.xaml</DependentUpon>
@@ -1897,6 +1903,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\BorderStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\GridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\IconStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\ImageStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1909,6 +1931,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\StackPanelStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\TextBlockStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1917,7 +1943,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UserControls\UC_About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControls\UC_Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\UC_FeeSubMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2390,6 +2424,45 @@
     <Resource Include="images\MainWinImg\open-exit-door_hover.png" />
     <Resource Include="images\MainWinImg\power-close.png" />
     <Resource Include="images\MainWinImg\setting.png" />
+    <Resource Include="images\SplashScreen\logo_icon.ico" />
+    <Resource Include="images\SubMenu\access_profile.png" />
+    <Resource Include="images\SubMenu\badge-design-icon.png" />
+    <Resource Include="images\SubMenu\card_holder.png" />
+    <Resource Include="images\SubMenu\card_holder_img.png" />
+    <Resource Include="images\SubMenu\controller_img.png" />
+    <Resource Include="images\SubMenu\door_lock.png" />
+    <Resource Include="images\SubMenu\door_lockUnlock.png" />
+    <Resource Include="images\SubMenu\door_unlock.png" />
+    <Resource Include="images\SubMenu\event_logs.png" />
+    <Resource Include="images\SubMenu\event_reciever.png" />
+    <Resource Include="images\SubMenu\icon-card-holder-l.png" />
+    <Resource Include="images\SubMenu\ico_controller.png" />
+    <Resource Include="images\SubMenu\language.png" />
+    <Resource Include="images\SubMenu\linkunlinkicon.png" />
+    <Resource Include="images\SubMenu\menu_area.png" />
+    <Resource Include="images\SubMenu\menu_camaracategory.png" />
+    <Resource Include="images\SubMenu\menu_camaraserver.png" />
+    <Resource Include="images\SubMenu\menu_cardformat.png" />
+    <Resource Include="images\SubMenu\menu_cardholder.png" />
+    <Resource Include="images\SubMenu\menu_controller.png" />
+    <Resource Include="images\SubMenu\menu_datetimesetting.png" />
+    <Resource Include="images\SubMenu\menu_doorgroup.png" />
+    <Resource Include="images\SubMenu\menu_eventlogs.png" />
+    <Resource Include="images\SubMenu\menu_outputs.png" />
+    <Resource Include="images\SubMenu\menu_plans.png" />
+    <Resource Include="images\SubMenu\menu_priority.png" />
+    <Resource Include="images\SubMenu\menu_rules.png" />
+    <Resource Include="images\SubMenu\menu_schedule.png" />
+    <Resource Include="images\SubMenu\menu_sensor.png" />
+    <Resource Include="images\SubMenu\oprator.png" />
+    <Resource Include="images\SubMenu\oprator_roles.png" />
+    <Resource Include="images\SubMenu\panel.png" />
+    <Resource Include="images\SubMenu\partitionicon.png" />
+    <Resource Include="images\SubMenu\priority.png" />
+    <Resource Include="images\SubMenu\schedule_clock.png" />
+    <Resource Include="images\SubMenu\server.png" />
+    <Resource Include="images\SubMenu\template icon.png" />
+    <Resource Include="images\SubMenu\userpartitionicon.png" />
     <Content Include="Lib\CrystalDecisions.CrystalReports.Engine.dll" />
     <Content Include="Lib\GSMCommServer.dll" />
     <Content Include="Lib\GSMCommShared.dll" />
@@ -2418,42 +2491,42 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.Practices.ObjectBuilder2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.Practices.Unity">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

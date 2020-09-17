@@ -1,0 +1,95 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SMS.Styles">
+    <!--===================================== Scheduler Style ===================================-->
+
+    <!--//Drag Drop event StackPanel-->
+    <Style x:Key="SchedulerStackPanel"
+           TargetType="{x:Type StackPanel}">
+
+        <Setter Property="Margin"
+                Value="5,0,0,0" />
+        <Setter Property="Orientation"
+                Value="Horizontal" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+    </Style>
+
+
+
+    <!--===================================== Reactanguler Header Style ===================================-->
+
+    <!--//Drag Drop event StackPanel-->
+    <Style x:Key="recHeaderPanel"
+           TargetType="{x:Type StackPanel}">
+
+        <Setter Property="Margin"
+                Value="5,10" />
+        <Setter Property="Orientation"
+                Value="Horizontal" />
+    </Style>
+
+
+    <!--===================================== Reactanguler Header Style ===================================-->
+
+    <!--//Drag Drop event StackPanel-->
+    <Style x:Key="pnlOriHorizontal"
+           TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation"
+                Value="Horizontal" />
+    </Style>
+
+
+    <!--===================================== Axis Sub Menu Style ===================================-->
+
+    <!--//Drag Drop event StackPanel-->
+    <Style x:Key="pnlSubMenu"
+           TargetType="{x:Type StackPanel}">
+        <Setter Property="Cursor"
+                Value="Hand" />
+        <Setter Property="Margin"
+                Value="10,0" />
+        <!--<Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FFC7C7C7" />
+                <Setter Property="Opacity" Value="70" />
+            </Trigger>
+            -->
+        <!--<Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>-->
+        <!--
+        </Style.Triggers>-->
+    </Style>
+
+
+    <!--===================================== Login StackPanel Style ===================================-->
+
+    <!--//Drag Drop event StackPanel-->
+    <Style x:Key="pnlLogin"
+           TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation"
+                Value="Horizontal" />
+        <Setter Property="Margin"
+                Value="10,0,0,0" />
+    </Style>
+
+
+    <!--===================================== Operator Role StackPanel Style ===================================-->
+
+    <!--//Drag Drop event StackPanel-->
+    <Style x:Key="pnlOptRole"
+           TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation"
+                Value="Horizontal" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="0 0 15 0" />
+        <!--<Setter Property="Background" Value="Blue" />-->
+    </Style>
+
+
+</ResourceDictionary>
