@@ -21,6 +21,7 @@ using System.Data;
 using System.IO;
 using SMS.AdmissionManagement.PromoteStudents;
 using SMS.DAL;
+using SMS.Views.UserControls;
 
 namespace SMS.AdmissionManagement.PromoteStudents
 {
@@ -248,6 +249,12 @@ namespace SMS.AdmissionManagement.PromoteStudents
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void icoBack_Click(object sender, RoutedEventArgs e)
+        {
+            grdParent.Children.Clear();
+            grdParent.Children.Add(new UC_StudentSubMenu());
         }
     }
 }

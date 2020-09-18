@@ -203,18 +203,8 @@
                         <Grid Grid.Row="0"
                               Margin="1,0,1,1">
                             <DataGrid x:Name="adm_grid"
-                                      AutoGenerateColumns="False"
-                                      FontSize="12"
-                                      Background="White"
-                                      IsReadOnly="True"
-                                      RowHeight="30"
-                                      BorderThickness="0"
-                                      HorizontalScrollBarVisibility="Visible"
-                                      VerticalScrollBarVisibility="Visible"
-                                      SelectedValuePath="id"
-                                      ScrollViewer.CanContentScroll="True"
-                                      SelectionChanged="adm_grid_SelectionChanged"
-                                      Margin="0,2,0,-2">
+                                      Style="{DynamicResource DatagridGeneralStyle}"
+                                      SelectionChanged="adm_grid_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn Width="50">
                                         <DataGridTemplateColumn.HeaderTemplate>

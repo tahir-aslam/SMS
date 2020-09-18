@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="Styles/GridStyle.xaml" />
                 <ResourceDictionary Source="Styles/BorderStyle.xaml" />
                 <ResourceDictionary Source="Styles/ButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/DatagridStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>           
         </ResourceDictionary>       
     </Application.Resources>

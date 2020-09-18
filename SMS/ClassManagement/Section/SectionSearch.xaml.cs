@@ -17,13 +17,14 @@ using SMS.ClassManagement.Section;
 using System.Data;
 using System.Windows.Markup;
 using SUT.PrintEngine.Utils;
+using SMS.Views.UserControls;
 
 namespace SMS.ClassManagement.Section
 {
     /// <summary>
     /// Interaction logic for SectionSearch.xaml
     /// </summary>
-    public partial class SectionSearch : Page
+    public partial class SectionSearch : UserControl
      {
         List<sections> sections_list;
         SectionForm sf;
@@ -333,6 +334,12 @@ namespace SMS.ClassManagement.Section
         private void print_button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+         private void icoBack_Click(object sender, RoutedEventArgs e)
+        {
+            grdParent.Children.Clear();
+            grdParent.Children.Add(new UC_StudentSubMenu());
         }
     }
 }

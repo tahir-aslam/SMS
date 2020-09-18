@@ -15,6 +15,7 @@ using SMS.Models;
 using MySql.Data.MySqlClient;
 using System.IO;
 using SUT.PrintEngine.Utils;
+using SMS.Views.UserControls;
 
 namespace SMS.AdmissionManagement.Envelope
 {
@@ -388,5 +389,11 @@ namespace SMS.AdmissionManagement.Envelope
             {
                 MessageBox.Show(ex.Message);
             }        }
+
+        private void icoBack_Click(object sender, RoutedEventArgs e)
+        {
+            grdParent.Children.Clear();
+            grdParent.Children.Add(new UC_StudentSubMenu());
+        }
     }
 }

@@ -281,16 +281,10 @@
                             </Grid>
                             <Grid Grid.Row="1"
                                   Margin="1,0,1,1">
+                                <!--datagrid-->
                                 <DataGrid x:Name="adm_grid"
-                                          AutoGenerateColumns="False"
-                                          FontSize="12"
-                                          Background="White"
-                                          IsReadOnly="True"
+                                         Style="{DynamicResource DatagridGeneralStyle}"
                                           RowHeight="50"
-                                          MinHeight="400"
-                                          BorderThickness="0"
-                                          HorizontalScrollBarVisibility="Visible"
-                                          VerticalScrollBarVisibility="Visible"
                                           MouseDoubleClick="adm_grid_MouseDoubleClick"
                                           SelectedValuePath="id"
                                           ScrollViewer.CanContentScroll="True">
@@ -359,7 +353,6 @@
 
                                     </DataGrid.Columns>
                                 </DataGrid>
-
                             </Grid>
 
                         </Grid>

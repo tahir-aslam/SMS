@@ -20,7 +20,7 @@ using SUT.PrintEngine.Utils;
 using System.Data;
 using System.Windows.Markup;
 using SMS.DAL;
-
+using SMS.Views.UserControls;
 
 namespace SMS.ClassManagement.Class
 {
@@ -479,6 +479,12 @@ namespace SMS.ClassManagement.Class
         private void print_btn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void icoBack_Click(object sender, RoutedEventArgs e)
+        {
+            grdParent.Children.Clear();
+            grdParent.Children.Add(new UC_StudentSubMenu());
         }
     }
     

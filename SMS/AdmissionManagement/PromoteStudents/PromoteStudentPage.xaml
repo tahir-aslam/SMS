@@ -45,16 +45,6 @@
                 <!--Grid Header End-->
 
                 <Grid Grid.Row="2">
-                    <Grid.Background>
-                        <LinearGradientBrush EndPoint="0.5,1"
-                                             StartPoint="0.5,0">
-                            <GradientStop Color="LightGray"
-                                          Offset="0" />
-                            <GradientStop Color="Gray"
-                                          Offset="1" />
-                        </LinearGradientBrush>
-                    </Grid.Background>
-
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
                         <RowDefinition Height="*" />
@@ -144,16 +134,7 @@
                                       VerticalScrollBarVisibility="Auto">
                             <DataGrid ItemsSource="{Binding examList}"
                                       x:Name="adm_grid"
-                                      HorizontalAlignment="Stretch"
-                                      GridLinesVisibility="All"
-                                      AutoGenerateColumns="False"
-                                      FontSize="14"
-                                      Background="White"
-                                      IsReadOnly="False"
-                                      RowHeight="30"
-                                      BorderThickness="0"
-                                      SelectionMode="Single"
-                                      CanUserAddRows="False">
+                                      Style="{DynamicResource DatagridGeneralStyle}">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn Width="50">
                                         <DataGridTemplateColumn.HeaderTemplate>
