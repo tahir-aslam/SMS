@@ -14,6 +14,8 @@
                 Value="Single" />
         <Setter Property="VerticalGridLinesBrush"
                 Value="Transparent" />
+        <Setter Property="HorizontalGridLinesBrush"
+                Value="LightGray" />
         <Setter Property="Background"
                 Value="White" />
     </Style>

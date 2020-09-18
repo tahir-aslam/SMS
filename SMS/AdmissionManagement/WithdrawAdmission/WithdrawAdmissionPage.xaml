@@ -262,17 +262,8 @@
                             <Grid Grid.Row="1"
                                   Margin="1,0,1,1">
                                 <DataGrid x:Name="adm_grid"
-                                          AutoGenerateColumns="False"
-                                          MinHeight="200"
-                                          FontSize="12"
-                                          Background="White"
-                                          IsReadOnly="True"
-                                          RowHeight="50"
-                                          BorderThickness="0"
-                                          HorizontalScrollBarVisibility="Visible"
-                                          VerticalScrollBarVisibility="Visible"
-                                          SelectedValuePath="id"
-                                          ScrollViewer.CanContentScroll="True">
+                                         Style="{DynamicResource DatagridGeneralStyle}"
+                                          RowHeight="50">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Sr#"
                                                             IsReadOnly="True"

@@ -283,11 +283,9 @@
                                   Margin="1,0,1,1">
                                 <!--datagrid-->
                                 <DataGrid x:Name="adm_grid"
-                                         Style="{DynamicResource DatagridGeneralStyle}"
+                                          Style="{DynamicResource DatagridGeneralStyle}"
                                           RowHeight="50"
-                                          MouseDoubleClick="adm_grid_MouseDoubleClick"
-                                          SelectedValuePath="id"
-                                          ScrollViewer.CanContentScroll="True">
+                                          MouseDoubleClick="adm_grid_MouseDoubleClick">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Sr#"
                                                             IsReadOnly="True"
