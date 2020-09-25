@@ -16,8 +16,8 @@
                 Value="Transparent" />
         <Setter Property="HorizontalGridLinesBrush"
                 Value="LightGray" />
-        <Setter Property="Background"
-                Value="White" />
+        <!--<Setter Property="Background"
+                Value="White" />-->
     </Style>
     
 </ResourceDictionary>

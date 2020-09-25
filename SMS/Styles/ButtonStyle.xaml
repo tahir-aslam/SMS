@@ -16,4 +16,36 @@
         <Setter Property="Margin"
                 Value="5" />
     </Style>
+
+    <Style x:Key="ImageButtonStyle"
+           TargetType="Button">
+        <Setter Property="Cursor"
+                Value="Hand" />
+        <Setter Property="Background"
+                Value="#FF747474" />
+        <Setter Property="Margin"
+                Value="5 0" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Width"
+                Value="100" />
+        <Setter Property="Height"
+                Value="30" />
+    </Style>
+
+    <Style x:Key="AdmissionFormMenuButtonStyle"
+           TargetType="Button">
+        <Setter Property="Cursor"
+                Value="Hand" />
+        <Setter Property="Background"
+                Value="#FF747474" />
+        <Setter Property="Margin"
+                Value="5 0" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Width"
+                Value="50" />
+        <Setter Property="Height"
+                Value="30" />
+    </Style>
 </ResourceDictionary>

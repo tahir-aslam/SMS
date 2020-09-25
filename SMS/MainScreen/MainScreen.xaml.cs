@@ -3267,7 +3267,7 @@ namespace SMS.MainScreen
                         case 0:
                             ClearChildControl();
                             //resetChartsFields();
-                            loadscroll();
+                            //loadscroll();
                             ContentArea.Children.Add(new UC_Dashboard());
                             last_index = index;
                             break;

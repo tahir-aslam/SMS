@@ -79,25 +79,35 @@
                                         Margin="1"
                                         Orientation="Horizontal"
                                         HorizontalAlignment="Stretch">
-                                <TextBox  Height="30"
-                                          Width="200"
-                                          Margin="20,0,0,0"
-                                          HorizontalAlignment="Left"
-                                          Name="SearchTextBox"
-                                          VerticalAlignment="Center"
-                                          VerticalScrollBarVisibility="Hidden"
-                                          BorderThickness="1"
-                                          BorderBrush="LightGray"
-                                          Background="White"
-                                          VerticalContentAlignment="Center"
-                                          FontSize="16"
-                                          TextChanged="SearchTextBox_TextChanged" />
+                                <StackPanel Margin="5,0,0,0"
+                                            VerticalAlignment="Center">
+                                    <Border Style="{DynamicResource SearchControllerDetails}"
+                                            Margin="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="200" />
+                                                <ColumnDefinition Width="30" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid>
+                                                <TextBox MaxLength="64"
+                                                         Width="auto"
+                                                         HorizontalAlignment="Stretch"
+                                                         Style="{DynamicResource txtSearchController}"
+                                                         Name="SearchTextBox"
+                                                         TextChanged="SearchTextBox_TextChanged" />
+                                            </Grid>
+                                            <Grid Grid.Column="1">
+                                                <materialDesign:PackIcon Style="{DynamicResource icoSearch}" />
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
                                 <ComboBox Margin="10,0,0,0"
                                           Grid.Row="0"
                                           Grid.Column="1"
                                           HorizontalAlignment="Left"
                                           Width="120"
-                                          Height="20"
+                                          Height="25"
                                           VerticalAlignment="Center"
                                           Name="search_cmb"
                                           SelectedValuePath="id"

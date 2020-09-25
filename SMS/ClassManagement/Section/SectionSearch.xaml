@@ -9,11 +9,16 @@
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
                                          OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1}">
         <Grid x:Name="grdParent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
             <Rectangle Style="{DynamicResource mainMenuRec}"
                        Margin="0"
                        VerticalAlignment="Stretch"
-                       HorizontalAlignment="Stretch" />
-            <Grid>
+                       HorizontalAlignment="Stretch"
+                       Grid.RowSpan="2" />
+            <Grid Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*" />
                     <RowDefinition Height="80*" />
@@ -95,40 +100,32 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0"
-                                  Margin="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition  Width=".35*" />
-                                    <ColumnDefinition Width=".65*" />
-                                </Grid.ColumnDefinitions>
-
-
-                                <Label Grid.Column="0"
-                                       Height="25"
-                                       HorizontalAlignment="Right"
-                                       Margin="0,0,0,0"
-                                       Name="label"
-                                       VerticalAlignment="Center"
-                                       Content="Search Section Name:   "
-                                       Foreground="Black"
-                                       BorderThickness="0"
-                                       BorderBrush="#FF551755"
-                                       VerticalContentAlignment="Center"
-                                       HorizontalContentAlignment="Right" />
-                                <TextBox  Height="35"
-                                          Grid.Column="1"
-                                          Width="300"
-                                          MaxWidth="500"
-                                          Margin="10,0,0,0"
-                                          HorizontalAlignment="Left"
-                                          Name="SearchTextBox"
-                                          VerticalAlignment="Center"
-                                          VerticalScrollBarVisibility="Hidden"
-                                          BorderThickness="1"
-                                          BorderBrush="LightGray"
-                                          Background="White"
-                                          VerticalContentAlignment="Center"
-                                          FontSize="16"
-                                          TextChanged="SearchTextBox_TextChanged" />
+                                  Margin="1"
+                                  Width="250"
+                                  HorizontalAlignment="Left">
+                                <StackPanel Margin="5,0,0,0"
+                                            VerticalAlignment="Center">
+                                    <Border Style="{DynamicResource SearchControllerDetails}"
+                                            Margin="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="200" />
+                                                <ColumnDefinition Width="30" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid>
+                                                <TextBox MaxLength="64"
+                                                         Width="auto"
+                                                         HorizontalAlignment="Stretch"
+                                                         Style="{DynamicResource txtSearchController}"
+                                                         Name="SearchTextBox"
+                                                         TextChanged="SearchTextBox_TextChanged" />
+                                            </Grid>
+                                            <Grid Grid.Column="1">
+                                                <materialDesign:PackIcon Style="{DynamicResource icoSearch}" />
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
                             </Grid>
                             <Grid Grid.Row="1"
                                   Margin="1,0,1,1">

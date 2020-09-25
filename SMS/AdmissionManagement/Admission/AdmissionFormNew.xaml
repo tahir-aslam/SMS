@@ -3,845 +3,859 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wpf="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:s="clr-namespace:System;assembly=mscorlib"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="AdmissionFormNew"
-        Height="650"
-        Width="1100"
+        Height="620"
+        Width="1050"
         KeyDown="Window_KeyDown"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
-    <Grid HorizontalAlignment="Center"
-          VerticalAlignment="Center">
+    <Window.Background>
+        <ImageBrush ImageSource="/images/SplashScreen/logo_380.png" 
+                     
+                    />
+    </Window.Background>
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
+                                         OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1}">
+        
+        <Grid>            
 
-        <StackPanel Grid.Row="0"
-                    Grid.Column="0"
-                    Margin="5">
-            <StackPanel.Background>
-                <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg"
-                            Opacity="0.5" />
-            </StackPanel.Background>
-            <Border BorderThickness="1"
-                    BorderBrush="#FFD6D4D4"
-                    CornerRadius="15,15,0,0">
-                <StackPanel>
-                    <Border Background="Purple"
-                            Height="50"
-                            CornerRadius="15,15,0,0"
-                            BorderThickness="0">
-                        <TextBlock Text="Student Management Form"
-                                   Foreground="White"
-                                   FontSize="15"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" />
+            <Rectangle Grid.Column="1"
+                       Style="{DynamicResource recPanelBodyContent}"
+                       Margin="0" />
+            <Grid x:Name="grdDetails"
+                  Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="20*" />
+                </Grid.RowDefinitions>
 
-                    </Border>
-
-                    <Grid Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                            <RowDefinition Height="45" />
-                        </Grid.RowDefinitions>
+                <Border Style="{DynamicResource brdRecHeader}"
+                        Grid.Row="0">
+                    <Grid Margin="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="160" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="160" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="160" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="100" />
-
-
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
+                        <StackPanel Style="{DynamicResource recHeaderPanel}"
+                                    Margin="5,0">
+                            <materialDesign:PackIcon Kind="InformationOutline"
+                                                     Style="{DynamicResource icoBorderHeader}" />
+                            <TextBlock Style="{DynamicResource menuHeading}"
+                                       Tag="Language">Admission Form</TextBlock>
+                        </StackPanel>
+                       
+                    </Grid>
+                </Border>
 
-                        <Label Grid.Row="0"
+                <Grid Grid.Row="1"
+                      Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="160" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="160" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="160" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+
+
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           Content="Select Session: *"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0, 0, 5, 0"
+                           Height="30" />
+                    <ComboBox Grid.Row="0"
+                              Grid.Column="2"
+                              Grid.ColumnSpan="2"
+                              HorizontalAlignment="Left"
+                              Width="150"
+                              Height="30"
+                              VerticalAlignment="Center"
+                              Name="session_cmb"
+                              SelectedValuePath="id"
+                              Style="{DynamicResource cmbOverride}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding id}"
+                                               HorizontalAlignment="Left"
+                                               FontSize="10"
+                                               Foreground="White"
+                                               VerticalAlignment="Center"
+                                               Visibility="Collapsed"></TextBlock>
+                                    <TextBlock Text="{Binding session_name}"
+                                               HorizontalAlignment="Right"
+                                               FontSize="12"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="4"
+                                Orientation="Horizontal"
+                                Grid.ColumnSpan="4"
+                                Margin="2"
+                                HorizontalAlignment="Right">
+
+                        <Button Grid.Row="0"
+                                Name="std_card_btn"
+                                Grid.Column="4"                               
+                                ToolTipService.ToolTip="Student Card"
+                                Grid.ColumnSpan="2"                                            
+                                Click="std_card_btn_Click"
+                                Style="{DynamicResource AdmissionFormMenuButtonStyle}"
+                                >
+                            <Image  Source="/SMS;component/images/std_card.png" />
+                        </Button>
+                        <Button Grid.Row="0"
+                                Name="sibling_btn"
+                                IsEnabled="False"
+                                Grid.Column="4"                               
+                                ToolTipService.ToolTip="Siblings"
+                                Grid.ColumnSpan="2"
+                                Click="sibling_btn_Click"
+                                Style="{DynamicResource AdmissionFormMenuButtonStyle}">
+                            <Image  Source="/SMS;component/images/sibling.png"
+                                    />
+                        </Button>
+
+                        <Button Grid.Row="0"
+                                Name="birthday_btn"
+                                IsEnabled="False"
+                                Grid.Column="4"
+                                Style="{DynamicResource AdmissionFormMenuButtonStyle}"
+                                ToolTipService.ToolTip="BirthDay Certificate"
+                                Grid.ColumnSpan="2"
+                                Content="BD-C"
+                                FontSize="16"
+                                Click="birthday_btn_Click">
+                        </Button>
+
+                        <Button Grid.Row="0"
+                                Name="schoolConfirmation_btn"
+                                IsEnabled="False"
+                                Grid.Column="4"                                
+                                ToolTipService.ToolTip="School Certificate"
+                                Grid.ColumnSpan="2"
+                                Content="SC-C"
+                                FontSize="16"
+                                Click="schoolConfirmation_btn_Click"
+                                Style="{DynamicResource AdmissionFormMenuButtonStyle}">
+                        </Button>
+
+                        <Button Grid.Row="0"
+                                Name="print_btn"
+                                Grid.Column="5"                                
+                                ToolTipService.ToolTip="Admission Form"
+                                Grid.ColumnSpan="2"
+                                IsEnabled="True"
+                                Click="print_btn_Click"
+                                Style="{DynamicResource AdmissionFormMenuButtonStyle}">
+                            <Image  Source="/SMS;component/images/print3.jpg" />
+                        </Button>
+                        <Button Grid.Row="0"
+                                Name="rfid_btn"
+                                Grid.Column="5"                                
+                                ToolTipService.ToolTip="RFID"
+                                Grid.ColumnSpan="2"
+                                IsEnabled="True"
+                                Click="rfid_btn_Click"
+                                Style="{DynamicResource AdmissionFormMenuButtonStyle}">
+                            <Image  Source="/SMS;component/images/rfid.png" />
+                        </Button>
+                        <Button Grid.Row="0"
+                                Name="adm_slip_btn"
+                                Grid.Column="5"                              
+                                ToolTipService.ToolTip="Admission Slip"
+                                Grid.ColumnSpan="2"
+                                IsEnabled="True"
+                                Click="adm_slip_btn_Click"
+                                Style="{DynamicResource AdmissionFormMenuButtonStyle}">
+                            <Image  Source="/SMS;component/images/adm_slip.png" />
+                        </Button>
+                        <Button Grid.Row="0"
+                                Name="withdraw_btn"
+                                Grid.Column="6"                                
+                                ToolTipService.ToolTip="Withdraw Admission"
+                                Grid.ColumnSpan="2"
+                                Click="withdraw_btn_Click"
+                                IsEnabled="True"
+                                Style="{DynamicResource AdmissionFormMenuButtonStyle}">
+                            <Image  Source="/SMS;component/images/withdraw.png" />
+                        </Button>
+                    </StackPanel>
+
+                    <TextBlock Text="Full Name:  *"
+                               Grid.Row="1"
                                Grid.Column="0"
-                               Grid.ColumnSpan="2"
-                               Content="Select Session: *"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0, 0, 5, 0"
                                Height="30" />
-                        <ComboBox Grid.Row="0"
-                                  Grid.Column="2"
-                                  Grid.ColumnSpan="2"
-                                  HorizontalAlignment="Left"
-                                  Width="150"
-                                  Height="30"
-                                  VerticalAlignment="Center"
-                                  Name="session_cmb"
-                                  SelectedValuePath="id">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding id}"
-                                                   HorizontalAlignment="Left"
-                                                   FontSize="10"
-                                                   Foreground="White"
-                                                   VerticalAlignment="Center"
-                                                   Visibility="Collapsed"></TextBlock>
-                                        <TextBlock Text="{Binding session_name}"
-                                                   HorizontalAlignment="Right"
-                                                   FontSize="12"></TextBlock>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-
-                        <StackPanel Grid.Row="0"
-                                    Grid.Column="4"
-                                    Orientation="Horizontal"
-                                    Grid.ColumnSpan="4"
-                                    Margin="2"
-                                    HorizontalAlignment="Right">
-
-                            <Button Grid.Row="0"
-                                    Name="std_card_btn"
-                                    Grid.Column="4"
-                                    Width="50"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,0,5,0"
-                                    ToolTipService.ToolTip="Student Card"
-                                    Grid.ColumnSpan="2"
-                                    IsEnabled="True"
-                                    Click="std_card_btn_Click">
-                                <Image  Source="/SMS;component/images/std_card.png" />
-                            </Button>
-                            <Button Grid.Row="0"
-                                    Name="sibling_btn"
-                                    IsEnabled="False"
-                                    Grid.Column="4"
-                                    Width="50"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,0,5,0"
-                                    ToolTipService.ToolTip="Siblings"
-                                    Grid.ColumnSpan="2"
-                                    Click="sibling_btn_Click">
-                                <Image  Source="/SMS;component/images/sibling.png" />
-                            </Button>
-
-                            <Button Grid.Row="0"
-                                    Name="birthday_btn"
-                                    IsEnabled="False"
-                                    Grid.Column="4"
-                                    Width="50"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,0,5,0"
-                                    ToolTipService.ToolTip="BirthDay Certificate"
-                                    Grid.ColumnSpan="2"
-                                    Content="BD-C"
-                                    FontSize="16"
-                                    Click="birthday_btn_Click">
-                            </Button>
-
-                            <Button Grid.Row="0"
-                                    Name="schoolConfirmation_btn"
-                                    IsEnabled="False"
-                                    Grid.Column="4"
-                                    Width="50"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,0,5,0"
-                                    ToolTipService.ToolTip="School Certificate"
-                                    Grid.ColumnSpan="2"
-                                    Content="SC-C"
-                                    FontSize="16"
-                                    Click="schoolConfirmation_btn_Click">
-                            </Button>
-
-                            <Button Grid.Row="0"
-                                    Name="print_btn"
-                                    Grid.Column="5"
-                                    Width="50"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,0,5,0"
-                                    ToolTipService.ToolTip="Admission Form"
-                                    Grid.ColumnSpan="2"
-                                    IsEnabled="True"
-                                    Click="print_btn_Click">
-                                <Image  Source="/SMS;component/images/print3.jpg" />
-                            </Button>
-                            <Button Grid.Row="0"
-                                    Name="rfid_btn"
-                                    Grid.Column="5"
-                                    Width="50"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,0,5,0"
-                                    ToolTipService.ToolTip="RFID"
-                                    Grid.ColumnSpan="2"
-                                    IsEnabled="True"
-                                    Click="rfid_btn_Click">
-                                <Image  Source="/SMS;component/images/rfid.png" />
-                            </Button>
-                            <Button Grid.Row="0"
-                                    Name="adm_slip_btn"
-                                    Grid.Column="5"
-                                    Width="50"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,0,5,0"
-                                    ToolTipService.ToolTip="Admission Slip"
-                                    Grid.ColumnSpan="2"
-                                    IsEnabled="True"
-                                    Click="adm_slip_btn_Click">
-                                <Image  Source="/SMS;component/images/adm_slip.png" />
-                            </Button>
-                            <Button Grid.Row="0"
-                                    Name="withdraw_btn"
-                                    Grid.Column="6"
-                                    Width="50"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,0,5,0"
-                                    ToolTipService.ToolTip="Withdraw Admission"
-                                    Grid.ColumnSpan="2"
-                                    Click="withdraw_btn_Click"
-                                    IsEnabled="True">
-                                <Image  Source="/SMS;component/images/withdraw.png" />
-                            </Button>
-                        </StackPanel>
-
-                        <TextBlock Text="Full Name:  *"
-                                   Grid.Row="1"
-                                   Grid.Column="0"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <TextBox   Grid.Row="1"
-                                   Grid.Column="1"
-                                   MaxLength="30"
-                                   Name="full_name_textbox"
-                                   MaxWidth="200"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="0"
-                                   Width="150"
-                                   Height="30"
-                                   FontSize="16"
-                                   BorderBrush="Green" />
-
-                        <TextBlock Text="Father Name:  *"
-                                   Grid.Row="2"
-                                   Grid.Column="0"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <TextBox   Grid.Row="2"
-                                   Grid.Column="1"
-                                   BorderBrush="Green"
-                                   MaxLength="30"
-                                   Name="fname_textbox"
-                                   MaxWidth="200"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="0"
-                                   Width="150"
-                                   Height="30"
-                                   FontSize="16" />
-
-                        <TextBlock Text="Father CNIC#:   "
-                                   Grid.Row="3"
-                                   Grid.Column="0"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <wpf:MaskedTextBox   Grid.Row="3"
-                                             Grid.Column="1"
-                                             Mask="#####-#######-#"
-                                             ValueDataType="{x:Type s:Int32}"
-                                             MaxLength="13"
-                                             Name="fCNIC_textbox"
-                                             MaxWidth="200"
-                                             HorizontalAlignment="Left"
-                                             VerticalAlignment="Center"
-                                             Margin="0"
-                                             Width="150"
-                                             Height="30"
-                                             FontSize="16"
-                                             PreviewTextInput="NumberValidationTextBox" />
-
-                        <TextBlock Text="Father Occupation:"
-                                   FontSize="11"
-                                   Grid.Row="4"
-                                   Grid.Column="0"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <TextBox   Grid.Row="4"
-                                   Grid.Column="1"
-                                   MaxLength="30"
-                                   Name="fIncome_textbox"
-                                   MaxWidth="200"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="0"
-                                   Width="150"
-                                   Height="30"
-                                   FontSize="16" />
-
-                        <TextBlock Text="Religion:   "
-                                   Grid.Row="5"
-                                   Grid.Column="0"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <TextBox   Grid.Row="5"
-                                   Grid.Column="1"
-                                   MaxLength="30"
-                                   Name="religion_textbox"
-                                   MaxWidth="200"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="0"
-                                   Width="150"
-                                   Height="30"
-                                   FontSize="16" />
-
-                        <TextBlock Text="DOB:  *"
-                                   Grid.Row="6"
-                                   Grid.Column="0"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <DatePicker BorderBrush="Green"
-                                    Grid.Row="6"
-                                    Grid.Column="1"
-                                    Name="dob_textbox"
-                                    MaxWidth="200"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    Margin="0"
-                                    Width="150"
-                                    Height="30"
-                                    FontSize="16" />
-
-                        <TextBlock Text="B-Form #:   "
-                                   Grid.Row="7"
-                                   Grid.Column="0"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <wpf:MaskedTextBox   Grid.Row="7"
-                                             Grid.Column="1"
-                                             Mask="#####-#######-#"
-                                             ValueDataType="{x:Type s:Int32}"
-                                             Name="bForm_textbox"
-                                             MaxWidth="200"
-                                             HorizontalAlignment="Left"
-                                             VerticalAlignment="Center"
-                                             Margin="0"
-                                             Width="150"
-                                             Height="30"
-                                             FontSize="16"
-                                             PreviewTextInput="NumberValidationTextBox" />
-
-                        <TextBlock Text="Permanent Address:   "
-                                   Grid.Row="8"
-                                   Grid.RowSpan="2"
-                                   Grid.Column="0"
-                                   TextWrapping="Wrap"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <TextBox   Grid.Row="8"
-                                   Grid.Column="1"
-                                   Grid.RowSpan="2"
-                                   MaxLength="100"
-                                   TextWrapping="Wrap"
-                                   Name="address_textbox"
-                                   MaxWidth="200"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="0"
-                                   Width="150"
-                                   Height="60"
-                                   FontSize="16"
-                                   Text="House-  St- Block- " />
-                        <!--Column 2-->
-
-
-                        <TextBlock Text="Cell #:  *"
-                                   Grid.Row="1"
-                                   Grid.Column="2"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <TextBox   Grid.Row="1"
-                                   Grid.Column="3"
-                                   BorderBrush="Green"
-                                   Name="cell_textbox"
-                                   MaxWidth="200"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="0"
-                                   Width="150"
-                                   Height="30"
-                                   HorizontalContentAlignment="Center"
-                                   FontSize="16"
-                                   PreviewTextInput="NumberValidationTextBox"
-                                   Text=""
-                                   MaxLength="10" />
-                        <Label Grid.Row="1"
-                               Grid.Column="3"
-                               FontSize="14"
-                               Width="34"
+                    <TextBox   Grid.Row="1"
+                               Grid.Column="1"
+                               MaxLength="30"
+                               Name="full_name_textbox"
+                               MaxWidth="200"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
-                               Content="+92" />
+                               Margin="0"
+                               Width="150"
+                               Height="30"
+                               FontSize="16"
+                               BorderBrush="Green"
+                               Style="{DynamicResource txtField}" />
 
-                        <TextBlock Text="Admission Date: *"
-                                   Grid.Row="2"
-                                   Grid.Column="2"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <DatePicker BorderBrush="Green"
-                                    Grid.Row="2"
-                                    Grid.Column="3"
-                                    Name="adm_date_textbox"
-                                    MaxWidth="200"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    Margin="0"
-                                    Width="150"
-                                    Height="30"
-                                    FontSize="16" />
+                    <TextBlock Text="Father Name:  *"
+                               Grid.Row="2"
+                               Grid.Column="0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <TextBox   Grid.Row="2"
+                               Grid.Column="1"
+                               BorderBrush="Green"
+                               MaxLength="30"
+                               Name="fname_textbox"
+                               MaxWidth="200"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0"
+                               Width="150"
+                               Height="30"
+                               FontSize="16"
+                               Style="{DynamicResource txtField}" />
 
-                        <TextBlock Text="Land Line #:   "
-                                   Grid.Row="3"
-                                   Grid.Column="2"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <TextBox   Grid.Row="3"
+                    <TextBlock Text="Father CNIC#:   "
+                               Grid.Row="3"
+                               Grid.Column="0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <wpf:MaskedTextBox   Grid.Row="3"
+                                         Grid.Column="1"
+                                         Mask="#####-#######-#"
+                                         ValueDataType="{x:Type s:Int32}"
+                                         MaxLength="13"
+                                         Name="fCNIC_textbox"
+                                         MaxWidth="200"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="0"
+                                         Width="150"
+                                         Height="30"
+                                         FontSize="16"
+                                         PreviewTextInput="NumberValidationTextBox"
+                                         Style="{DynamicResource txtField}" />
+
+                    <TextBlock Text="Father Occupation:"
+                               FontSize="11"
+                               Grid.Row="4"
+                               Grid.Column="0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <TextBox   Grid.Row="4"
+                               Grid.Column="1"
+                               MaxLength="30"
+                               Name="fIncome_textbox"
+                               MaxWidth="200"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0"
+                               Width="150"
+                               Height="30"
+                               FontSize="16"
+                               Style="{DynamicResource txtField}" />
+
+                    <TextBlock Text="Religion:   "
+                               Grid.Row="5"
+                               Grid.Column="0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <TextBox   Grid.Row="5"
+                               Grid.Column="1"
+                               MaxLength="30"
+                               Name="religion_textbox"
+                               MaxWidth="200"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0"
+                               Width="150"
+                               Height="30"
+                               FontSize="16"
+                               Style="{DynamicResource txtField}" />
+
+                    <TextBlock Text="DOB:  *"
+                               Grid.Row="6"
+                               Grid.Column="0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <DatePicker BorderBrush="Green"
+                                Grid.Row="6"
+                                Grid.Column="1"
+                                Name="dob_textbox"
+                                MaxWidth="200"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="0"
+                                Width="150"
+                                Height="30"
+                                FontSize="16" />
+
+                    <TextBlock Text="B-Form #:   "
+                               Grid.Row="7"
+                               Grid.Column="0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <wpf:MaskedTextBox   Grid.Row="7"
+                                         Grid.Column="1"
+                                         Mask="#####-#######-#"
+                                         ValueDataType="{x:Type s:Int32}"
+                                         Name="bForm_textbox"
+                                         MaxWidth="200"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="0"
+                                         Width="150"
+                                         Height="30"
+                                         FontSize="16"
+                                         PreviewTextInput="NumberValidationTextBox"
+                                         Style="{DynamicResource txtField}" />
+
+                    <TextBlock Text="Permanent Address:   "
+                               Grid.Row="8"
+                               Grid.RowSpan="2"
+                               Grid.Column="0"
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <TextBox   Grid.Row="8"
+                               Grid.Column="1"
+                               Grid.RowSpan="2"
+                               MaxLength="100"
+                               TextWrapping="Wrap"
+                               Name="address_textbox"
+                               MaxWidth="200"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0"
+                               Width="150"
+                               Height="60"
+                               FontSize="16"
+                               Text="House-  St- Block- "
+                               Style="{DynamicResource txtField}" />
+                    <!--Column 2-->
+
+
+                    <TextBlock Text="Cell #:  *"
+                               Grid.Row="1"
+                               Grid.Column="2"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <TextBox   Grid.Row="1"
+                               Grid.Column="3"
+                               BorderBrush="Green"
+                               Name="cell_textbox"
+                               MaxWidth="200"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0"
+                               Width="150"
+                               Height="30"
+                               HorizontalContentAlignment="Center"
+                               FontSize="16"
+                               PreviewTextInput="NumberValidationTextBox"
+                               Text=""
+                               MaxLength="10"
+                               Style="{DynamicResource txtField}" />
+                    <Label Grid.Row="1"
+                           Grid.Column="3"
+                           FontSize="12"
+                           Width="34"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Content="+92" />
+
+                    <TextBlock Text="Admission Date: *"
+                               Grid.Row="2"
+                               Grid.Column="2"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <DatePicker BorderBrush="Green"
+                                Grid.Row="2"
+                                Grid.Column="3"
+                                Name="adm_date_textbox"
+                                MaxWidth="200"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="0"
+                                Width="150"
+                                Height="30"
+                                FontSize="16" />
+
+                    <TextBlock Text="Land Line #:   "
+                               Grid.Row="3"
+                               Grid.Column="2"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <TextBox   Grid.Row="3"
+                               Grid.Column="3"
+                               Name="Ephone_textbox"
+                               MaxLength="14"
+                               MaxWidth="200"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0"
+                               Width="150"
+                               Height="30"
+                               FontSize="16"
+                               PreviewTextInput="NumberValidationTextBox"
+                               Style="{DynamicResource txtField}" />
+
+                    <TextBlock Text="Previous Institute"
+                               Grid.Row="4"
+                               Grid.Column="2"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <TextBox   Grid.Row="4"
+                               Grid.Column="3"
+                               Name="pre_school_textbox"
+                               MaxLength="30"
+                               MaxWidth="200"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0"
+                               Width="150"
+                               Height="30"
+                               FontSize="16"
+                               Style="{DynamicResource txtField}" />
+
+                    <Label Grid.Row="5"
+                           Grid.Column="2"
+                           Content="Adm In Class:  "
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0, 0, 5, 0"
+                           Height="30" />
+                    <ComboBox Grid.Row="5"
+                              Grid.Column="3"
+                              BorderBrush="Green"
+                              HorizontalAlignment="Left"
+                              Width="150"
+                              Height="30"
+                              VerticalAlignment="Center"
+                              Name="class_in_cmb"
+                              SelectedValuePath="id"
+                              Style="{DynamicResource cmbOverride}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock Text="{Binding id}"
+                                               HorizontalAlignment="Left"
+                                               FontSize="10"
+                                               Foreground="White"
+                                               VerticalAlignment="Center"
+                                               Visibility="Collapsed"></TextBlock>
+
+                                    <TextBlock Text="{Binding class_name}"
+                                               HorizontalAlignment="Right"
+                                               FontSize="12"></TextBlock>
+
+
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Label Grid.Row="7"
+                           Grid.Column="2"
+                           Content="Area:   "
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0, 0, 5, 0"
+                           Height="30" />
+                    <ComboBox Grid.Row="7"
+                              Grid.Column="3"
+                              BorderBrush="Green"
+                              HorizontalAlignment="Left"
+                              Width="150"
+                              Height="30"
+                              VerticalAlignment="Center"
+                              Name="area_cmb"
+                              SelectedValuePath="id"
+                              Style="{DynamicResource cmbOverride}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding area}"
+                                               HorizontalAlignment="Right"
+                                               FontSize="12"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <TextBlock Text="Gender:   "
+                               Grid.Row="6"
+                               Grid.Column="2"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 5, 0"
+                               Height="30" />
+                    <RadioButton   Grid.Row="6"
                                    Grid.Column="3"
-                                   Name="Ephone_textbox"
-                                   MaxLength="14"
-                                   MaxWidth="200"
+                                   Name="boarding_yes"
+                                   GroupName="boarding_checkbox"
+                                   MaxWidth="100"
+                                   Content="Male"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="0"
-                                   Width="150"
+                                   Width="70"
                                    Height="30"
                                    FontSize="16"
-                                   PreviewTextInput="NumberValidationTextBox" />
-
-                        <TextBlock Text="Previous Institute"
-                                   Grid.Row="4"
-                                   Grid.Column="2"
+                                   IsChecked="True" />
+                    <RadioButton   Grid.Row="6"
+                                   Grid.Column="3"
+                                   Name="boarding_no"
+                                   GroupName="boarding_checkbox"
+                                   MaxWidth="100"
+                                   Content="Female"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <TextBox   Grid.Row="4"
-                                   Grid.Column="3"
-                                   Name="pre_school_textbox"
-                                   MaxLength="30"
-                                   MaxWidth="200"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
                                    Margin="0"
-                                   Width="150"
+                                   Width="80"
                                    Height="30"
                                    FontSize="16" />
 
-                        <Label Grid.Row="5"
+
+
+                    <TextBlock Text="Communication Address:   "
+                               Grid.Row="8"
+                               Grid.RowSpan="2"
                                Grid.Column="2"
-                               Content="Adm In Class:  "
+                               TextWrapping="Wrap"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0, 0, 5, 0"
                                Height="30" />
-                        <ComboBox Grid.Row="5"
-                                  Grid.Column="3"
-                                  BorderBrush="Green"
-                                  HorizontalAlignment="Left"
-                                  Width="150"
-                                  Height="30"
-                                  VerticalAlignment="Center"
-                                  Name="class_in_cmb"
-                                  SelectedValuePath="id">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
+                    <TextBox   Grid.Row="8"
+                               Grid.Column="3"
+                               Grid.RowSpan="2"
+                               MaxLength="150"
+                               TextWrapping="Wrap"
+                               Name="commm_textbox"
+                               MaxWidth="200"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0"
+                               Width="150"
+                               Height="60"
+                               FontSize="16"
+                               Text="House-  St- Block- "
+                               Style="{DynamicResource txtField}" />
 
-                                        <TextBlock Text="{Binding id}"
-                                                   HorizontalAlignment="Left"
-                                                   FontSize="10"
-                                                   Foreground="White"
-                                                   VerticalAlignment="Center"
-                                                   Visibility="Collapsed"></TextBlock>
 
-                                        <TextBlock Text="{Binding class_name}"
-                                                   HorizontalAlignment="Right"
-                                                   FontSize="12"></TextBlock>
+                    <!--Column 3-->
 
 
 
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                    <Label Grid.Row="1"
+                           Grid.Column="4"
+                           Content="Class: *"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0, 0, 5, 0"
+                           Height="30" />
+                    <ComboBox Grid.Row="1"
+                              Grid.Column="5"
+                              BorderBrush="Green"
+                              HorizontalAlignment="Left"
+                              Width="150"
+                              Height="30"
+                              VerticalAlignment="Center"
+                              Name="class_cmb"
+                              SelectedValuePath="id"
+                              SelectionChanged="class_cmb_SelectionChanged"
+                              Style="{DynamicResource cmbOverride}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
 
-                        <Label Grid.Row="7"
-                               Grid.Column="2"
-                               Content="Area:   "
+                                    <TextBlock Text="{Binding id}"
+                                               HorizontalAlignment="Left"
+                                               FontSize="10"
+                                               Foreground="White"
+                                               VerticalAlignment="Center"
+                                               Visibility="Collapsed"></TextBlock>
+
+                                    <TextBlock Text="{Binding class_name}"
+                                               HorizontalAlignment="Right"
+                                               FontSize="12"></TextBlock>
+
+
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Label Grid.Row="2"
+                           Grid.Column="4"
+                           Content="Section: *"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0, 0, 5, 0"
+                           Height="30" />
+                    <ComboBox BorderBrush="Green"
+                              Grid.Row="2"
+                              Grid.Column="5"
+                              HorizontalAlignment="Left"
+                              Width="150"
+                              Height="30"
+                              VerticalAlignment="Center"
+                              Name="section_cmb"
+                              SelectedValuePath="id"
+                              SelectionChanged="section_cmb_SelectionChanged"
+                              Style="{DynamicResource cmbOverride}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock Text="{Binding id}"
+                                               HorizontalAlignment="Left"
+                                               FontSize="10"
+                                               Foreground="White"
+                                               VerticalAlignment="Center"
+                                               Visibility="Collapsed"></TextBlock>
+
+                                    <TextBlock Text="{Binding section_name}"
+                                               HorizontalAlignment="Right"
+                                               FontSize="12"></TextBlock>
+
+
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <TextBlock Text="Roll #:  *"
+                               Grid.Row="3"
+                               Grid.Column="4"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0, 0, 5, 0"
                                Height="30" />
-                        <ComboBox Grid.Row="7"
-                                  Grid.Column="3"
-                                  BorderBrush="Green"
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="3"
+                                Grid.Column="5">
+                        <ComboBox BorderBrush="Green"                                  
+                                  Grid.Row="2"
+                                  Grid.Column="5"
                                   HorizontalAlignment="Left"
-                                  Width="150"
+                                  Width="50"
                                   Height="30"
                                   VerticalAlignment="Center"
-                                  Name="area_cmb"
-                                  SelectedValuePath="id">
+                                  Name="roll_no_prefix_cmb"
+                                  SelectedValuePath="id"
+                                  >
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding area}"
+                                        <TextBlock Text="{Binding prefix}"
                                                    HorizontalAlignment="Right"
                                                    FontSize="12"></TextBlock>
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-
-                        <TextBlock Text="Gender:   "
-                                   Grid.Row="6"
-                                   Grid.Column="2"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <RadioButton   Grid.Row="6"
-                                       Grid.Column="3"
-                                       Name="boarding_yes"
-                                       GroupName="boarding_checkbox"
-                                       MaxWidth="100"
-                                       Content="Male"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="0"
-                                       Width="70"
-                                       Height="30"
-                                       FontSize="16"
-                                       IsChecked="True" />
-                        <RadioButton   Grid.Row="6"
-                                       Grid.Column="3"
-                                       Name="boarding_no"
-                                       GroupName="boarding_checkbox"
-                                       MaxWidth="100"
-                                       Content="Female"
-                                       HorizontalAlignment="Right"
-                                       VerticalAlignment="Center"
-                                       Margin="0"
-                                       Width="80"
-                                       Height="30"
-                                       FontSize="16" />
-
-
-
-                        <TextBlock Text="Communication Address:   "
-                                   Grid.Row="8"
-                                   Grid.RowSpan="2"
-                                   Grid.Column="2"
-                                   TextWrapping="Wrap"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <TextBox   Grid.Row="8"
-                                   Grid.Column="3"
-                                   Grid.RowSpan="2"
-                                   MaxLength="150"
-                                   TextWrapping="Wrap"
-                                   Name="commm_textbox"
-                                   MaxWidth="200"
+                        <TextBox   Grid.Row="3"
+                                   Grid.Column="5"
+                                   BorderBrush="Green"
+                                   MaxLength="14"
+                                   Name="roll_textbox"
+                                   MaxWidth="100"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="0"
                                    Width="150"
-                                   Height="60"
+                                   Height="30"
                                    FontSize="16"
-                                   Text="House-  St- Block- " />
+                                   IsReadOnly="False"
+                                   FontStyle="Italic"
+                                   FontWeight="Black"
+                                   PreviewTextInput="NumberValidationTextBox"
+                                   Style="{DynamicResource txtField}" />
+
+                    </StackPanel>
 
 
-                        <!--Column 3-->
-
-
-
-                        <Label Grid.Row="1"
+                    <TextBlock Text="Admission #:  *"
+                               Grid.Row="4"
                                Grid.Column="4"
-                               Content="Class Name: *"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                Margin="0, 0, 5, 0"
                                Height="30" />
-                        <ComboBox Grid.Row="1"
-                                  Grid.Column="5"
-                                  BorderBrush="Green"
-                                  HorizontalAlignment="Left"
-                                  Width="150"
-                                  Height="30"
-                                  VerticalAlignment="Center"
-                                  Name="class_cmb"
-                                  SelectedValuePath="id"
-                                  SelectionChanged="class_cmb_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-
-                                        <TextBlock Text="{Binding id}"
-                                                   HorizontalAlignment="Left"
-                                                   FontSize="10"
-                                                   Foreground="White"
-                                                   VerticalAlignment="Center"
-                                                   Visibility="Collapsed"></TextBlock>
-
-                                        <TextBlock Text="{Binding class_name}"
-                                                   HorizontalAlignment="Right"
-                                                   FontSize="12"></TextBlock>
-
-
-
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-
-                        <Label Grid.Row="2"
-                               Grid.Column="4"
-                               Content="Section Name: *"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0, 0, 5, 0"
-                               Height="30" />
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="4"
+                                Grid.Column="5">
                         <ComboBox BorderBrush="Green"
                                   Grid.Row="2"
                                   Grid.Column="5"
                                   HorizontalAlignment="Left"
-                                  Width="150"
+                                  Width="50"
                                   Height="30"
                                   VerticalAlignment="Center"
-                                  Name="section_cmb"
-                                  SelectedValuePath="id"
-                                  SelectionChanged="section_cmb_SelectionChanged">
+                                  Name="adm_no_prefix_cmb"
+                                  SelectedValuePath="id">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-
-                                        <TextBlock Text="{Binding id}"
-                                                   HorizontalAlignment="Left"
-                                                   FontSize="10"
-                                                   Foreground="White"
-                                                   VerticalAlignment="Center"
-                                                   Visibility="Collapsed"></TextBlock>
-
-                                        <TextBlock Text="{Binding section_name}"
+                                        <TextBlock Text="{Binding prefix}"
                                                    HorizontalAlignment="Right"
                                                    FontSize="12"></TextBlock>
-
-
-
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
+                        <TextBox BorderBrush="Green"
+                                 Grid.Row="4"
+                                 Grid.Column="5"
+                                 MaxLength="14"
+                                 Name="adm_textbox"
+                                 MaxWidth="200"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Margin="0"
+                                 Width="100"
+                                 Height="30"
+                                 FontSize="16"
+                                 IsReadOnly="False"
+                                 FontStyle="Italic"
+                                 FontWeight="Black"
+                                 PreviewTextInput="NumberValidationTextBox" 
+                        Style="{DynamicResource txtField}"/>
 
-                        <TextBlock Text="Roll #:  *"
-                                   Grid.Row="3"
-                                   Grid.Column="4"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <StackPanel Orientation="Horizontal"
-                                    Grid.Row="3"
-                                    Grid.Column="5">
-                            <ComboBox BorderBrush="Green"
-                                      Grid.Row="2"
-                                      Grid.Column="5"
-                                      HorizontalAlignment="Left"
-                                      Width="50"
-                                      Height="30"
-                                      VerticalAlignment="Center"
-                                      Name="roll_no_prefix_cmb"
-                                      SelectedValuePath="id">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding prefix}"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="12"></TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <TextBox   Grid.Row="3"
-                                       Grid.Column="5"
-                                       BorderBrush="Green"
-                                       MaxLength="14"
-                                       Name="roll_textbox"
-                                       MaxWidth="100"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Margin="0"
-                                       Width="150"
-                                       Height="30"
-                                       FontSize="16"
-                                       IsReadOnly="False"
-                                       FontStyle="Italic"
-                                       FontWeight="Black"
-                                       PreviewTextInput="NumberValidationTextBox" />
-
-                        </StackPanel>
+                    </StackPanel>
 
 
-                        <TextBlock Text="Admission #:  *"
-                                   Grid.Row="4"
-                                   Grid.Column="4"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Margin="0, 0, 5, 0"
-                                   Height="30" />
-                        <StackPanel Orientation="Horizontal"
-                                    Grid.Row="4"
-                                    Grid.Column="5">
-                            <ComboBox BorderBrush="Green"
-                                      Grid.Row="2"
-                                      Grid.Column="5"
-                                      HorizontalAlignment="Left"
-                                      Width="50"
-                                      Height="30"
-                                      VerticalAlignment="Center"
-                                      Name="adm_no_prefix_cmb"
-                                      SelectedValuePath="id">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding prefix}"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="12"></TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <TextBox BorderBrush="Green"
-                                     Grid.Row="4"
-                                     Grid.Column="5"
-                                     MaxLength="14"
-                                     Name="adm_textbox"
-                                     MaxWidth="200"
-                                     HorizontalAlignment="Left"
-                                     VerticalAlignment="Center"
-                                     Margin="0"
-                                     Width="100"
-                                     Height="30"
-                                     FontSize="16"
-                                     IsReadOnly="False"
-                                     FontStyle="Italic"
-                                     FontWeight="Black"
-                                     PreviewTextInput="NumberValidationTextBox" />
+                    <Border BorderBrush="Gray"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Grid.Row="1"
+                            Grid.Column="6"
+                            Grid.ColumnSpan="2"
+                            Grid.RowSpan="3">
+                        <Image   Name="student_image"
+                                 Margin="2" />
+                    </Border>
 
-                        </StackPanel>
+                    <Button Grid.Row="4"
+                            Grid.Column="6"
+                            Click="Button_Click"
+                            Style="{DynamicResource ImageButtonStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="File"
+                                                 Style="{DynamicResource icoButton}" />
+                        <TextBlock Text="Browse"
+                                   Style="{DynamicResource txtButton}"
+                                   Tag="Language" />
+                    </StackPanel>
+                    </Button>
+                    <Button Grid.Row="4"
+                            Grid.Column="7"
+                            Click="camera_btn_Click_1"                            
+                            Style="{DynamicResource  AdmissionFormMenuButtonStyle}">
+                        <Image Source="/SMS;component/images/camera.png"                               
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               ImageFailed="Image_ImageFailed"
+                               />
+                    </Button>
 
+                    <Grid Grid.Row="5"
+                          Grid.Column="4"
+                          Grid.ColumnSpan="4"
+                          Grid.RowSpan="5"
+                          Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="315" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <DataGrid Name="feesDataGrid"
+                                  RowHeight="35"
+                                  HorizontalGridLinesBrush="LightGray"
+                                  VerticalGridLinesBrush="Gray"
+                                  GridLinesVisibility="All"
+                                  BorderThickness="1"
+                                  BorderBrush="Gray"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Fees"
+                                                    IsReadOnly="True"
+                                                    Binding="{Binding fees_category}"
+                                                    Width="90" />
+                                <DataGridTextColumn Header="Amount"
+                                                    FontSize="15"
+                                                    Binding="{Binding actual_amount}"
+                                                    Width="75" />
+                                <DataGridTextColumn Header="Disc"
+                                                    FontSize="15"
+                                                    Binding="{Binding discount}"
+                                                    Width="60" />
+                                <DataGridTextColumn Header="Receiveable"
+                                                    FontSize="15"
+                                                    Binding="{Binding amount}"
+                                                    Width="*" />
 
-                        <Border BorderBrush="Gray"
-                                BorderThickness="1"
-                                CornerRadius="5"
-                                Grid.Row="1"
-                                Grid.Column="6"
-                                Grid.ColumnSpan="2"
-                                Grid.RowSpan="3">
-                            <Image   Name="student_image"
-                                     Margin="2" />
-                        </Border>
-
-                        <Button Grid.Row="4"
-                                Grid.Column="6"
-                                Content="Browse"
-                                Width="80"
-                                Height="25"
-                                Margin="10,0,0,0"
-                                Click="Button_Click"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center" />
-                        <Button Grid.Row="4"
-                                Grid.Column="7"
-                                Width="50"
-                                Height="30"
-                                Name="camera_btn"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Background="White"
-                                BorderThickness="0"
-                                Click="camera_btn_Click_1">
-                            <Image Source="/SMS;component/images/camera.png"
-                                   Width="40"
-                                   Height="30"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   ImageFailed="Image_ImageFailed" />
-                        </Button>
-
-                        <Grid Grid.Row="5"
-                              Grid.Column="4"
-                              Grid.ColumnSpan="4"
-                              Grid.RowSpan="5"
-                              Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="315" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <DataGrid Name="feesDataGrid"
-                                      RowHeight="30"
-                                      HorizontalGridLinesBrush="LightGray"
-                                      VerticalGridLinesBrush="Gray"
-                                      GridLinesVisibility="All"
-                                      BorderThickness="1"
-                                      BorderBrush="Gray"
-                                      AutoGenerateColumns="False"
-                                      CanUserAddRows="False"
-                                      CanUserDeleteRows="False">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Fees"
-                                                        IsReadOnly="True"
-                                                        Binding="{Binding fees_category}"
-                                                        Width="90" />
-                                    <DataGridTextColumn Header="Amount"
-                                                        FontSize="15"
-                                                        Binding="{Binding actual_amount}"
-                                                        Width="75" />
-                                    <DataGridTextColumn Header="Disc"
-                                                        FontSize="15"
-                                                        Binding="{Binding discount}"
-                                                        Width="60" />
-                                    <DataGridTextColumn Header="Receiveable"
-                                                        FontSize="15"
-                                                        Binding="{Binding amount}"
-                                                        Width="*" />
-
-                                    <!--<DataGridTemplateColumn Header="Disc"  Width="70">                                      
+                                <!--<DataGridTemplateColumn Header="Disc"  Width="70">                                      
                                         <DataGridTemplateColumn.CellEditingTemplate>
                                             <DataTemplate>                                                
                                                 <TextBox Text="{Binding discount}"  Foreground="Black" BorderThickness="1" BorderBrush="Gray" FontSize="14"/>
@@ -857,103 +871,117 @@
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellEditingTemplate>
                                     </DataGridTemplateColumn>-->
-                                </DataGrid.Columns>
-                            </DataGrid>
+                            </DataGrid.Columns>
+                        </DataGrid>
 
-                            <Border Grid.Column="1"
-                                    BorderThickness="0,1,1,1"
-                                    BorderBrush="Gray"
-                                    Background="LightBlue">
-                                <StackPanel>
-                                    <TextBlock Text="Package"
-                                               Height="30"
-                                               FontSize="16"
-                                               HorizontalAlignment="Center" />
-                                    <ComboBox  Name="package_cmb"
-                                               Width="120"
-                                               SelectedValuePath="id"
-                                               SelectedIndex="0">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding id}"
-                                                               HorizontalAlignment="Left"
-                                                               FontSize="10"
-                                                               Foreground="White"
-                                                               VerticalAlignment="Center"
-                                                               Visibility="Collapsed"></TextBlock>
-                                                    <TextBlock Text="{Binding package_name}"
-                                                               HorizontalAlignment="Right"
-                                                               FontSize="12"></TextBlock>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-
-                                    <CheckBox Content="Generate Fee"
-                                              Name="generate_CB"
-                                              HorizontalAlignment="Center"
-                                              Margin="0,50,0,0"
-                                              Unchecked="generate_CB_Unchecked"
-                                              Checked="generate_CB_Checked" />
-                                    <Label Content="Month"
-                                           Visibility="Collapsed"
-                                           Name="month_Lbl"
+                        <Border Grid.Column="1"
+                                BorderThickness="0,1,1,1"
+                                BorderBrush="Gray"
+                                >
+                            <StackPanel>
+                                <TextBlock Text="Package"
                                            Height="30"
+                                           FontSize="16"
                                            HorizontalAlignment="Center" />
-                                    <ComboBox Width="110"
-                                              Visibility="Collapsed"
-                                              Name="month_cmb"
-                                              SelectedValuePath="id">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding id}"
-                                                               HorizontalAlignment="Left"
-                                                               FontSize="10"
-                                                               Foreground="White"
-                                                               VerticalAlignment="Center"
-                                                               Visibility="Collapsed"></TextBlock>
-                                                    <TextBlock Text="{Binding month_name}"
-                                                               HorizontalAlignment="Right"
-                                                               FontSize="12"></TextBlock>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
+                                <ComboBox  Name="package_cmb"
+                                           Width="120"
+                                           SelectedValuePath="id"
+                                           SelectedIndex="0"
+                                           Height="30"
+                                           Style="{DynamicResource cmbOverride}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding id}"
+                                                           HorizontalAlignment="Left"
+                                                           FontSize="10"
+                                                           Foreground="White"
+                                                           VerticalAlignment="Center"
+                                                           Visibility="Collapsed"></TextBlock>
+                                                <TextBlock Text="{Binding package_name}"
+                                                           HorizontalAlignment="Right"
+                                                           FontSize="12"></TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+
+                                <CheckBox Content="Generate Fee"
+                                          Name="generate_CB"
+                                          HorizontalAlignment="Center"
+                                          Margin="0,50,0,0"
+                                          Unchecked="generate_CB_Unchecked"
+                                          Checked="generate_CB_Checked" />
+                                <Label Content="Month"
+                                       Visibility="Collapsed"
+                                       Name="month_Lbl"
+                                       Height="30"
+                                       HorizontalAlignment="Center" />
+                                <ComboBox Width="110"
+                                          Visibility="Collapsed"
+                                          Name="month_cmb"
+                                          SelectedValuePath="id">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding id}"
+                                                           HorizontalAlignment="Left"
+                                                           FontSize="10"
+                                                           Foreground="White"
+                                                           VerticalAlignment="Center"
+                                                           Visibility="Collapsed"></TextBlock>
+                                                <TextBlock Text="{Binding month_name}"
+                                                           HorizontalAlignment="Right"
+                                                           FontSize="12"></TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
 
 
-                                    <!--<TextBlock Text="Remarks" FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                                <!--<TextBlock Text="Remarks" FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                                     <TextBox Height="125" Background="LightYellow" HorizontalAlignment="Center" Width="120" TextWrapping="Wrap" Name="std_remarks_TB"/>-->
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-
-
-                        <Grid Width="230"
-                              Grid.Row="10"
-                              Grid.Column="4"
-                              VerticalAlignment="Bottom"
-                              Grid.ColumnSpan="2"
-                              Margin="0,0,0,15"
-                              HorizontalAlignment="Center">
-                            <Button Content="Save"
-                                    Width="100"
-                                    Height="30"
-                                    HorizontalAlignment="Left"
-                                    Click="click_save" />
-                            <Button Content="Cancel"
-                                    Width="100"
-                                    Height="30"
-                                    HorizontalAlignment="Right"
-                                    Click="click_cancel" />
-                        </Grid>
-
+                            </StackPanel>
+                        </Border>
                     </Grid>
 
-                </StackPanel>
-            </Border>
 
-        </StackPanel>
-    </Grid>
+                    <StackPanel Width="230"
+                          Grid.Row="10"
+                          Grid.Column="4"
+                          VerticalAlignment="Bottom"
+                          Grid.ColumnSpan="2"
+                          Margin="0,0,0,10"
+                          HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                        <Button  Click="click_save"
+                                 Style="{DynamicResource ImageButtonStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Harddisk"
+                                                         Style="{DynamicResource icoButton}" />
+                                <TextBlock Text="Save"
+                                           Style="{DynamicResource txtButton}"
+                                           Tag="Language" />
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{DynamicResource ImageButtonStyle}"
+                                Click="click_cancel">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Close"
+                                                         Style="{DynamicResource icoButton}" />
+                                <TextBlock Text="Close"
+                                           Style="{DynamicResource txtButton}"
+                                           Tag="Language" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Grid>
+    </materialDesign:TransitioningContent>
 </Window>

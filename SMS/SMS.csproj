@@ -103,6 +103,14 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\ICSharpCode.SharpZipLib.dll.0.85.4.369\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.0.12.1.0\lib\net40\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -434,6 +442,7 @@
     <Compile Include="DAL\AttendanceDAL.cs" />
     <Compile Include="DAL\ClassesDAL.cs" />
     <Compile Include="DAL\ComplaintDAL.cs" />
+    <Compile Include="DAL\DashboardDAL.cs" />
     <Compile Include="DAL\Databases.cs" />
     <Compile Include="DAL\DateSheetDAL.cs" />
     <Compile Include="DAL\EmployeeAttendanceDAL.cs" />
@@ -775,6 +784,7 @@
     <Compile Include="Models\chart_of_accounts.cs" />
     <Compile Include="Models\CityArea.cs" />
     <Compile Include="Models\clsSMS.cs" />
+    <Compile Include="Models\DashboardChartModel.cs" />
     <Compile Include="Models\employee_attendence.cs" />
     <Compile Include="Models\emp_login.cs" />
     <Compile Include="Models\enums.cs" />
@@ -1911,6 +1921,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\ComboBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\DatagridStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1931,6 +1945,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\MessageBoxButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\PolygonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\RectangleStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1940,6 +1962,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\TextBlockStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextboxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2467,10 +2493,29 @@
     <Resource Include="images\SubMenu\server.png" />
     <Resource Include="images\SubMenu\template icon.png" />
     <Resource Include="images\SubMenu\userpartitionicon.png" />
+    <Resource Include="images\Dashboard\1.jpg" />
+    <Resource Include="images\Dashboard\2.png" />
+    <Resource Include="images\Dashboard\3.png" />
+    <Resource Include="images\Dashboard\4.png" />
+    <Resource Include="images\Dashboard\5.png" />
+    <Resource Include="images\Dashboard\axis-banner-big.png" />
+    <Resource Include="images\Dashboard\axis-banner.png" />
+    <Resource Include="images\Dashboard\ico_menu.png" />
+    <Resource Include="images\Dashboard\ico_no_user_image.png" />
+    <Resource Include="images\Dashboard\ico_setting.png" />
+    <Resource Include="images\Dashboard\ico_setting_white.png" />
+    <Resource Include="images\Dashboard\ico_statistic.png" />
+    <Resource Include="images\Dashboard\ico_statistic_wht.png" />
+    <Resource Include="images\Dashboard\man.jpeg" />
+    <Resource Include="images\Dashboard\no_camera.png" />
+    <Resource Include="images\Dashboard\no_camera1.png" />
+    <Resource Include="images\Dashboard\no_cameraf.png" />
     <Content Include="Lib\CrystalDecisions.CrystalReports.Engine.dll" />
     <Content Include="Lib\GSMCommServer.dll" />
     <Content Include="Lib\GSMCommShared.dll" />
     <Content Include="Lib\GSMCommunication.dll" />
+    <Content Include="Lib\LiveCharts.dll" />
+    <Content Include="Lib\LiveCharts.Wpf.dll" />
     <Content Include="Lib\MaterialDesignColors.dll" />
     <Content Include="Lib\MaterialDesignThemes.Wpf.dll" />
     <Content Include="Lib\Microsoft.Expression.Encoder.Api2.dll" />
@@ -2495,42 +2540,42 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.Practices.ObjectBuilder2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.Practices.Unity">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

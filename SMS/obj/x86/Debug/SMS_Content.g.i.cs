@@ -13,6 +13,8 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/gsmcommserver.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/gsmcommshared.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/gsmcommunication.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/livecharts.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/livecharts.wpf.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/materialdesigncolors.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/materialdesignthemes.wpf.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/microsoft.expression.encoder.api2.dll")]

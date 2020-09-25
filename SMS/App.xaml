@@ -19,6 +19,10 @@
                 <ResourceDictionary Source="Styles/BorderStyle.xaml" />
                 <ResourceDictionary Source="Styles/ButtonStyle.xaml" />
                 <ResourceDictionary Source="Styles/DatagridStyle.xaml" />
+                <ResourceDictionary Source="Styles/TextboxStyle.xaml" />
+                <ResourceDictionary Source="Styles/ComboBoxStyle.xaml" />
+                <ResourceDictionary Source="Styles/MessageBoxButtonStyle.xaml" />
+                <ResourceDictionary Source="Styles/PolygonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>           
         </ResourceDictionary>       
     </Application.Resources>
