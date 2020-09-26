@@ -15,7 +15,7 @@ namespace SMS.Models
         public int TotalStudentAbsent { get; set; }
         public int TotalStudentLeave { get; set; }
 
-        public int TotalEmployee { get; set; }
+        public int TotalEmp { get; set; }
         public int TotalEmpMale { get; set; }
         public int TotalEmpFemale { get; set; }
         public int TotalEmpPresent { get; set; }

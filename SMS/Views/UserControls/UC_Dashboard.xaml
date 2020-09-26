@@ -27,9 +27,8 @@
     </UserControl.Resources>
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
                                          OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1}">
-        <Grid Height="1950"
-              x:Name="grdParent"
-              Margin="-10,0,10,0">
+        <Grid x:Name="grdParent"
+              Margin="10,0,10,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="72*" />
                 <RowDefinition Height="60*" />
@@ -37,341 +36,575 @@
                 <RowDefinition Height="105*" />
             </Grid.RowDefinitions>
 
-            <!--AxisStats Row Shaded Effect-->
             <Rectangle Style="{DynamicResource mainMenuRec}"
                        Grid.Row="0" />
-            <!--AxisStats Row Shaded Effect-->
 
-            <!--AxisStats Row Grid Container Starts-->
+
+
             <Grid Grid.Row="0">
                 <!--Rows Definition-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="53" />
                     <RowDefinition Height="80*" />
+                    <RowDefinition Height="80*" />
                 </Grid.RowDefinitions>
-                <!--Columns Definition-->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="90*" />                    
-                </Grid.ColumnDefinitions>
 
                 <!--First Row Grid Container Background-->
                 <TextBlock Text="System Status"
                            Tag="Language"
                            Style="{DynamicResource mainHeadingTitle}" />
                 <Rectangle Style="{DynamicResource mainMenuLine}" />
-                <!--Sessions DropDownMenu-->
 
-                <!--1st Row Grid inside Container-->
+                <!--Student  Statistics-->
                 <Grid Grid.Row="1"
                       Visibility="Visible"
                       Grid.Column="0">
-                    <!--1st Row Grid Columns Definition-->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />                        
-                    </Grid.ColumnDefinitions>
-                    <!--1st Row Grid Rows Definition-->
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100*" />
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Column="0">
-                        <Grid.RowDefinitions>                            
-                            <RowDefinition Height="70*" />
-                            <RowDefinition Height="30*" />
+                    <Rectangle RadiusY="23.61"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               RadiusX="23.61"
+                               Stroke="#FFD7D7D7"
+                               Fill="White"
+                               StrokeThickness="1"
+                               Margin="10 9 0 20">
+                    </Rectangle>
+                    <!--1st row 1st column Cartesian Chart-->
+                    <Grid Grid.Row="0"
+                          Grid.Column="0"
+                          Margin="10 10 0 20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="20*" />
                         </Grid.RowDefinitions>
-                        <Grid  Grid.Row="0"
-                               Margin="10 10 0 0"
-                               x:Name="grdBanner">
-                            <Image Stretch="Fill"
-                                   x:Name="imgBanner" />
+
+                        <!--Graph Related Data Comment Code End-->
+
+                        <Grid>
+                            <!--Grid Header Content Start-->
+                            <TextBlock Name="tbPanelHeading"
+                                       Text="Student Statistics"
+                                       Tag="Language"
+                                       Style="{DynamicResource pieChartHeadering}" />
+                            <Rectangle Style="{DynamicResource mainMenuLine}" />
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center">
+                                <Grid Margin="0,0,10,0">
+                                    <Button Style="{DynamicResource btnGraph}"
+                                            x:Name="btnStatistics"
+                                            Click="btnStatistics_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Images/Dashboard/ico_statistic_wht.png"
+                                                   Width="15"
+                                                   Height="15"
+                                                   Margin="0 0 2 0" />
+                                            <TextBlock Text="STATISTICS"
+                                                       Tag="Language" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Polygon Name="btn1"
+                                             Style="{DynamicResource polyGraph}" />
+                                </Grid>
+                                <Grid Margin="0,0,20,0">
+                                    <Button Style="{DynamicResource btnGraph}"
+                                            x:Name="btnSettings"
+                                            Click="btnSettings_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Images/Dashboard/ico_setting_white.png"
+                                                   Width="15"
+                                                   Height="15"
+                                                   Margin="0 0 2 0" />
+                                            <TextBlock Text="SETTINGS"
+                                                       Tag="Language" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Polygon Name="btn2"
+                                             Style="{DynamicResource polyGraph}" />
+                                </Grid>
+                            </StackPanel>
                         </Grid>
-                        <Rectangle RadiusY="23.61"
-                                   Grid.Column="0"
-                                   Grid.Row="1"
-                                   RadiusX="23.61"
-                                   Stroke="#FFD7D7D7"
-                                   Fill="White"
-                                   StrokeThickness="1"
-                                   Margin="10 9 0 20">
-                        </Rectangle>
-                        <!--1st row 1st column Cartesian Chart-->
-                        <Grid Grid.Row="0"
-                              Grid.Column="0"
-                              Margin="10 10 0 20">
+                        <!--Grid Header Content End-->
+
+                        <Grid Grid.Row="1"
+                              x:Name="grdGraphStatic"
+                              Visibility="Visible"
+                              ShowGridLines="False">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="45" />
-                                <RowDefinition Height="20*" />
+                                <RowDefinition Height="4*" />
+                                <RowDefinition Height="8*" />
+                                <RowDefinition Height="60*" />
+                                <RowDefinition Height="3*" />
                             </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="2*" />
 
-                            <!--Graph Related Data Comment Code End-->
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       Tag="Language"
+                                       Text="Total Students" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="3"
+                                       Tag="Language"
+                                       Text="Boys" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="5"
+                                       Tag="Language"
+                                       Text="Girls" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="7"
+                                       Tag="Language"
+                                       Text="Present" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="9"
+                                       Tag="Language"
+                                       Text="Absent" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="11"
+                                       Text="Leave" />
 
-                            <Grid>
-                                <!--Grid Header Content Start-->
-                                <TextBlock Name="tbPanelHeading"
-                                           Text="Student Statistics"
-                                           Tag="Language"
-                                           Style="{DynamicResource pieChartHeadering}" />
-                                <Rectangle Style="{DynamicResource mainMenuLine}" />
-                                <StackPanel Orientation="Horizontal"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Center">
-                                    <Grid Margin="0,0,10,0">
-                                        <Button Style="{DynamicResource btnGraph}"
-                                                x:Name="btnStatistics"
-                                                Click="btnStatistics_Click">
-                                            <StackPanel Orientation="Horizontal">
-                                                <Image Source="/Images/Dashboard/ico_statistic_wht.png"
-                                                       Width="15"
-                                                       Height="15"
-                                                       Margin="0 0 2 0" />
-                                                <TextBlock Text="STATISTICS"
-                                                           Tag="Language" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Polygon Name="btn1"
-                                                 Style="{DynamicResource polyGraph}" />
-                                    </Grid>
-                                    <Grid Margin="0,0,20,0">
-                                        <Button Style="{DynamicResource btnGraph}"
-                                                x:Name="btnSettings"
-                                                Click="btnSettings_Click">
-                                            <StackPanel Orientation="Horizontal">
-                                                <Image Source="/Images/Dashboard/ico_setting_white.png"
-                                                       Width="15"
-                                                       Height="15"
-                                                       Margin="0 0 2 0" />
-                                                <TextBlock Text="SETTINGS"
-                                                           Tag="Language" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Polygon Name="btn2"
-                                                 Style="{DynamicResource polyGraph}" />
-                                    </Grid>
-                                </StackPanel>
+                            <Grid Grid.Column="1"
+                                  Grid.Row="2">
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}"
+                                              x:Name="chart5">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieStudentsInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PieStudentsActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalStudents"
+                                           Style="{DynamicResource insideTextBlock}" />
                             </Grid>
-                            <!--Grid Header Content End-->
-
-                            <Grid Grid.Row="1"
-                                  x:Name="grdGraphStatic"
-                                  Visibility="Visible"
-                                  ShowGridLines="False">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="4*" />
-                                    <RowDefinition Height="8*" />
-                                    <RowDefinition Height="60*" />
-                                    <RowDefinition Height="3*" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="12*" />
-                                    <ColumnDefinition Width="0*" />
-                                    <ColumnDefinition Width="12*" />
-                                    <ColumnDefinition Width="0*" />
-                                    <ColumnDefinition Width="12*" />
-                                    <ColumnDefinition Width="0*" />
-                                    <ColumnDefinition Width="12*" />
-                                    <ColumnDefinition Width="0*" />
-                                    <ColumnDefinition Width="12*" />
-                                    <ColumnDefinition Width="0*" />
-                                    <ColumnDefinition Width="12*" />
-                                    <ColumnDefinition Width="2*" />
-
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Style="{DynamicResource chartTextBlock}"
-                                           Grid.Row="1"
-                                           Grid.Column="1"
-                                           Tag="Language"
-                                           Text="Total Students" />
-                                <TextBlock Style="{DynamicResource chartTextBlock}"
-                                           Grid.Row="1"
-                                           Grid.Column="3"
-                                           Tag="Language"
-                                           Text="Boys" />
-                                <TextBlock Style="{DynamicResource chartTextBlock}"
-                                           Grid.Row="1"
-                                           Grid.Column="5"
-                                           Tag="Language"
-                                           Text="Girls" />
-                                <TextBlock Style="{DynamicResource chartTextBlock}"
-                                           Grid.Row="1"
-                                           Grid.Column="7"
-                                           Tag="Language"
-                                           Text="Present" />
-                                <TextBlock Style="{DynamicResource chartTextBlock}"
-                                           Grid.Row="1"
-                                           Grid.Column="9"
-                                           Tag="Language"
-                                           Text="Absent" />
-                                <TextBlock Style="{DynamicResource chartTextBlock}"
-                                           Grid.Row="1"
-                                           Grid.Column="11"
-                                           Text="Leave" />
-
-
-                                <Grid Grid.Column="1"
-                                      Grid.Row="2">
-                                    <lvc:PieChart Style="{StaticResource PieChartStyle}"                                                  
-                                                  DataTooltip="{x:Null}"
-                                                  x:Name="chart5">
-                                        <lvc:PieChart.ChartLegend>
-                                            <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
-                                        </lvc:PieChart.ChartLegend>
-                                        <lvc:PieChart.Series>
-                                            <lvc:PieSeries  x:Name="PieStudentsInActive"
-                                                            Fill="LightGray"
-                                                            Foreground="Transparent"
-                                                            Stroke="Transparent"
-                                                            DataLabels="False" />
-                                            <lvc:PieSeries x:Name="PieStudentsActive"
-                                                           Fill="#FF55C312"
-                                                           Foreground="Transparent"
-                                                           Stroke="Transparent"
-                                                           DataLabels="False" />
-                                        </lvc:PieChart.Series>
-                                    </lvc:PieChart>
-                                    <TextBlock x:Name="lblTotalStudents"
-                                               Style="{DynamicResource insideTextBlock}" />
-                                </Grid>
-                                <Grid Grid.Column="3"
-                                      Grid.Row="2">
-                                    <lvc:PieChart Style="{StaticResource PieChartStyle}"
-                                                  DataTooltip="{x:Null}"
-                                                  x:Name="chart2">
-                                        <lvc:PieChart.ChartLegend>
-                                            <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
-                                        </lvc:PieChart.ChartLegend>
-                                        <lvc:PieChart.Series>
-                                            <lvc:PieSeries  x:Name="PieBoysInActive"
-                                                            Fill="LightGray"
-                                                            Foreground="Transparent"
-                                                            Stroke="Transparent"
-                                                            DataLabels="False" />
-                                            <lvc:PieSeries x:Name="PieBoysActive"
-                                                           Fill="#FF55C312"
-                                                           Foreground="Transparent"
-                                                           Stroke="Transparent"
-                                                           DataLabels="False" />
-                                        </lvc:PieChart.Series>
-                                    </lvc:PieChart>
-                                    <TextBlock x:Name="lblTotalBoys"
-                                               Style="{DynamicResource insideTextBlock}"
-                                               Text="" />
-                                </Grid>
-                                <Grid Grid.Column="5"
-                                      Grid.Row="2">
-
-                                    <lvc:PieChart Style="{StaticResource PieChartStyle}"
-                                                  DataTooltip="{x:Null}"
-                                                  x:Name="chart1">
-                                        <lvc:PieChart.ChartLegend>
-                                            <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
-                                        </lvc:PieChart.ChartLegend>
-                                        <lvc:PieChart.Series>
-                                            <lvc:PieSeries  x:Name="PieGirlsInActive"
-                                                            Fill="LightGray"
-                                                            Foreground="Transparent"
-                                                            Stroke="Transparent"
-                                                            DataLabels="False" />
-                                            <lvc:PieSeries x:Name="PieGirlsActive"
-                                                           Fill="#FF55C312"
-                                                           Foreground="Transparent"
-                                                           Stroke="Transparent"
-                                                           DataLabels="False" />
-                                        </lvc:PieChart.Series>
-                                    </lvc:PieChart>
-                                    <TextBlock x:Name="lblTotalGirls"
-                                               Style="{DynamicResource insideTextBlock}"
-                                               Text="" />
-                                </Grid>
-                                <Grid Grid.Column="7"
-                                      Grid.Row="2">
-                                    <lvc:PieChart Style="{StaticResource PieChartStyle}"
-                                                  DataTooltip="{x:Null}"
-                                                  x:Name="chart3">
-                                        <lvc:PieChart.ChartLegend>
-                                            <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
-                                        </lvc:PieChart.ChartLegend>
-                                        <lvc:PieChart.Series>
-                                            <lvc:PieSeries  x:Name="PiePresentInActive"
-                                                            Fill="LightGray"
-                                                            Foreground="Transparent"
-                                                            Stroke="Transparent"
-                                                            DataLabels="False" />
-                                            <lvc:PieSeries x:Name="PiePresentActive"
-                                                           Fill="#FF55C312"
-                                                           Foreground="Transparent"
-                                                           Stroke="Transparent"
-                                                           DataLabels="False" />
-                                        </lvc:PieChart.Series>
-                                    </lvc:PieChart>
-                                    <TextBlock x:Name="lblTotalPresent"
-                                               Style="{DynamicResource insideTextBlock}"
-                                               Text="" />
-                                </Grid>
-                                <Grid Grid.Column="9"
-                                      Grid.Row="2">
-                                    <lvc:PieChart  Style="{StaticResource PieChartStyle}"
-                                                   DataTooltip="{x:Null}"
-                                                   x:Name="chart4">
-                                        <lvc:PieChart.ChartLegend>
-                                            <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
-                                        </lvc:PieChart.ChartLegend>
-                                        <lvc:PieChart.Series>
-                                            <lvc:PieSeries  x:Name="PieAbsentInActive"
-                                                            Fill="LightGray"
-                                                            Foreground="Transparent"
-                                                            Stroke="Transparent"
-                                                            DataLabels="False" />
-                                            <lvc:PieSeries x:Name="PieAbsentActive"
-                                                           Fill="#FF55C312"
-                                                           Foreground="Transparent"
-                                                           Stroke="Transparent"
-                                                           DataLabels="False" />
-                                        </lvc:PieChart.Series>
-                                    </lvc:PieChart>
-                                    <TextBlock x:Name="lblTotalAbsent"
-                                               Style="{DynamicResource insideTextBlock}"
-                                               Text="" />
-                                </Grid>
-                                <Grid Grid.Column="11"
-                                      Grid.Row="2">
-                                    <lvc:PieChart Style="{StaticResource PieChartStyle}"
-                                                  DataTooltip="{x:Null}"
-                                                  x:Name="chart6">
-                                        <lvc:PieChart.ChartLegend>
-                                            <lvc:DefaultLegend BulletSize="10"></lvc:DefaultLegend>
-                                        </lvc:PieChart.ChartLegend>
-                                        <lvc:PieChart.Series>
-                                            <lvc:PieSeries  x:Name="PieLeaveInActive"
-                                                            Fill="LightGray"
-                                                            Foreground="Transparent"
-                                                            Stroke="Transparent"
-                                                            DataLabels="False"
-                                                            Values="5" />
-                                            <lvc:PieSeries x:Name="PieLeaveActive"
-                                                           Fill="#FF55C312"
-                                                           Foreground="Transparent"
-                                                           Stroke="Transparent"
-                                                           DataLabels="False"
-                                                           Values="7" />
-                                        </lvc:PieChart.Series>
-                                    </lvc:PieChart>
-                                    <TextBlock x:Name="lblTotalLeave"
-                                               Style="{DynamicResource insideTextBlock}"
-                                               Text="" />
-                                </Grid>
+                            <Grid Grid.Column="3"
+                                  Grid.Row="2">
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}"
+                                              x:Name="chart2">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieBoysInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PieBoysActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalBoys"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
                             </Grid>
+                            <Grid Grid.Column="5"
+                                  Grid.Row="2">
 
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}"
+                                              x:Name="chart1">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieGirlsInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PieGirlsActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalGirls"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
+                            </Grid>
+                            <Grid Grid.Column="7"
+                                  Grid.Row="2">
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}"
+                                              x:Name="chart3">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PiePresentInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PiePresentActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalPresent"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
+                            </Grid>
+                            <Grid Grid.Column="9"
+                                  Grid.Row="2">
+                                <lvc:PieChart  Style="{StaticResource PieChartStyle}"
+                                               DataTooltip="{x:Null}"
+                                               x:Name="chart4">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieAbsentInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PieAbsentActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalAbsent"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
+                            </Grid>
+                            <Grid Grid.Column="11"
+                                  Grid.Row="2">
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}"
+                                              x:Name="chart6">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="10"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieLeaveInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False"
+                                                        Values="5" />
+                                        <lvc:PieSeries x:Name="PieLeaveActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False"
+                                                       Values="7" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalLeave"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
+                            </Grid>
                         </Grid>
-
                     </Grid>
-                  
                 </Grid>
-                <!--1st Row Grid inside Container End-->
+
+                <!--Employee  Statistics-->
+                <Grid Grid.Row="2"
+                      Visibility="Visible"
+                      Grid.Column="0">
+                    <Rectangle RadiusY="23.61"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               RadiusX="23.61"
+                               Stroke="#FFD7D7D7"
+                               Fill="White"
+                               StrokeThickness="1"
+                               Margin="10 9 0 20">
+                    </Rectangle>
+                    <!--1st row 1st column Cartesian Chart-->
+                    <Grid Grid.Row="0"
+                          Grid.Column="0"
+                          Margin="10 10 0 20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="20*" />
+                        </Grid.RowDefinitions>
+
+                        <!--Graph Related Data Comment Code End-->
+
+                        <Grid>
+                            <!--Grid Header Content Start-->
+                            <TextBlock Text="Employee Statistics"
+                                       Tag="Language"
+                                       Style="{DynamicResource pieChartHeadering}" />
+                            <Rectangle Style="{DynamicResource mainMenuLine}" />
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center">
+                                <Grid Margin="0,0,10,0">
+                                    <Button Style="{DynamicResource btnGraph}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Images/Dashboard/ico_statistic_wht.png"
+                                                   Width="15"
+                                                   Height="15"
+                                                   Margin="0 0 2 0" />
+                                            <TextBlock Text="STATISTICS"
+                                                       Tag="Language" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Polygon Style="{DynamicResource polyGraph}" />
+                                </Grid>
+                                <Grid Margin="0,0,20,0">
+                                    <Button Style="{DynamicResource btnGraph}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Images/Dashboard/ico_setting_white.png"
+                                                   Width="15"
+                                                   Height="15"
+                                                   Margin="0 0 2 0" />
+                                            <TextBlock Text="SETTINGS"
+                                                       Tag="Language" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Polygon Style="{DynamicResource polyGraph}" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <!--Grid Header Content End-->
+
+                        <Grid Grid.Row="2"
+                              Visibility="Visible"
+                              ShowGridLines="False">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*" />
+                                <RowDefinition Height="8*" />
+                                <RowDefinition Height="60*" />
+                                <RowDefinition Height="3*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="0*" />
+                                <ColumnDefinition Width="12*" />
+                                <ColumnDefinition Width="2*" />
+
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       Tag="Language"
+                                       Text="Total Employees" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="3"
+                                       Tag="Language"
+                                       Text="Male" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="5"
+                                       Tag="Language"
+                                       Text="Female" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="7"
+                                       Tag="Language"
+                                       Text="Present" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="9"
+                                       Tag="Language"
+                                       Text="Absent" />
+                            <TextBlock Style="{DynamicResource chartTextBlock}"
+                                       Grid.Row="1"
+                                       Grid.Column="11"
+                                       Text="Leave" />
+
+                            <Grid Grid.Column="1"
+                                  Grid.Row="2">
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieEmpInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PieEmpActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalEmp"
+                                           Style="{DynamicResource insideTextBlock}" />
+                            </Grid>
+                            <Grid Grid.Column="3"
+                                  Grid.Row="2">
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieEmpMaleInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PieEmpMaleActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalEmpMale"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
+                            </Grid>
+                            <Grid Grid.Column="5"
+                                  Grid.Row="2">
+
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieEmpFemaleInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PieEmpFemaleActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalEmpFemales"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
+                            </Grid>
+                            <Grid Grid.Column="7"
+                                  Grid.Row="2">
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieEmpPresentInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PieEmpPresentActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalEmpPresent"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
+                            </Grid>
+                            <Grid Grid.Column="9"
+                                  Grid.Row="2">
+                                <lvc:PieChart  Style="{StaticResource PieChartStyle}"
+                                               DataTooltip="{x:Null}">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="12"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieEmpAbsentInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False" />
+                                        <lvc:PieSeries x:Name="PieEmpAbsentActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalEmpAbsent"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
+                            </Grid>
+                            <Grid Grid.Column="11"
+                                  Grid.Row="2">
+                                <lvc:PieChart Style="{StaticResource PieChartStyle}"
+                                              DataTooltip="{x:Null}">
+                                    <lvc:PieChart.ChartLegend>
+                                        <lvc:DefaultLegend BulletSize="10"></lvc:DefaultLegend>
+                                    </lvc:PieChart.ChartLegend>
+                                    <lvc:PieChart.Series>
+                                        <lvc:PieSeries  x:Name="PieEmpLeaveInActive"
+                                                        Fill="LightGray"
+                                                        Foreground="Transparent"
+                                                        Stroke="Transparent"
+                                                        DataLabels="False"
+                                                        Values="5" />
+                                        <lvc:PieSeries x:Name="PieEmpLeaveActive"
+                                                       Fill="#FF55C312"
+                                                       Foreground="Transparent"
+                                                       Stroke="Transparent"
+                                                       DataLabels="False"
+                                                       Values="7" />
+                                    </lvc:PieChart.Series>
+                                </lvc:PieChart>
+                                <TextBlock x:Name="lblTotalEmpLeave"
+                                           Style="{DynamicResource insideTextBlock}"
+                                           Text="" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
-
-
-
         </Grid>
     </materialDesign:TransitioningContent>
 </UserControl>

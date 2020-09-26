@@ -43,6 +43,8 @@ namespace SMS.DAL
                             con.Open();
 
                             MySqlDataReader reader = cmd.ExecuteReader();
+
+                            #region Students
                             while (reader.Read())
                             {
                                 _charts.TotalStudents = reader.GetInt32(0);
@@ -72,13 +74,13 @@ namespace SMS.DAL
                             {
                                 _charts.TotalStudentLeave = (int)reader.GetInt32(0);
                             }
+                            #endregion
 
-                            //----------------------------------
-
+                            #region Employees
                             reader.NextResult();
                             while (reader.Read())
                             {
-                                _charts.TotalEmployee = (int)reader.GetInt32(0);
+                                _charts.TotalEmp = (int)reader.GetInt32(0);
                             }
                             reader.NextResult();
                             while (reader.Read())
@@ -105,14 +107,15 @@ namespace SMS.DAL
                             {
                                 _charts.TotalEmpLeave = (int)reader.GetInt32(0);
                             }
+                            #endregion
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     throw ex;
-                }                
-              
+                }
+
                 res.status = true;
                 res.data = _charts;
                 return _charts;

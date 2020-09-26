@@ -24,11 +24,13 @@ namespace SMS.Views.UserControls
     /// </summary>
     public partial class UC_Dashboard : UserControl
     {
+        #region Fields
         DashboardChartModel DashboardResult;
         DashboardDAL dashboardDAL;
 
+        #region Students
         ObservableValue TotalStudents;
-        ObservableValue TotalStudents2;
+        ObservableValue TotalStudentsInActive;
         ObservableValue TotalBoys;
         ObservableValue TotalGirls;
         ObservableValue TotalStudentPresent;
@@ -37,26 +39,36 @@ namespace SMS.Views.UserControls
         ObservableValue TotalStudentPresentInActive;
         ObservableValue TotalStudentAbsentInActive;
         ObservableValue TotalStudentLeaveInActive;
+        #endregion
 
-        ObservableValue TotalEmployee;
-        ObservableValue TotalEmpMale;
-        ObservableValue TotalEmpFemale;
+        #region Employees
+        ObservableValue TotalEmp;
+        ObservableValue TotalEmpInActive;
+        ObservableValue TotalEmpMales;
+        ObservableValue TotalEmpFemales;
         ObservableValue TotalEmpPresent;
-        ObservableValue TotalEmpLeave;
         ObservableValue TotalEmpAbsent;
+        ObservableValue TotalEmpLeave;
+        ObservableValue TotalEmpPresentInActive;
+        ObservableValue TotalEmpAbsentInActive;
+        ObservableValue TotalEmpLeaveInActive;
+        #endregion
 
         SolidColorBrush _activeColor = new SolidColorBrush(Color.FromRgb(85, 196, 18));
         SolidColorBrush _activeBorder = Brushes.Transparent;
         SolidColorBrush _inActiveColor = new SolidColorBrush(Color.FromRgb(211, 211, 211));
         SolidColorBrush _inActiveBorder = Brushes.Transparent;
 
+        #endregion
+
         public UC_Dashboard()
         {
             InitializeComponent();
             dashboardDAL = new DashboardDAL();
 
+            #region Students
             TotalStudents = new ObservableValue(0);
-            TotalStudents2 = new ObservableValue(0);
+            TotalStudentsInActive = new ObservableValue(0);
             TotalBoys = new ObservableValue(0);
             TotalGirls = new ObservableValue(0);
             TotalStudentPresent = new ObservableValue(0);
@@ -65,6 +77,20 @@ namespace SMS.Views.UserControls
             TotalStudentPresentInActive = new ObservableValue(1);
             TotalStudentAbsentInActive = new ObservableValue(1);
             TotalStudentLeaveInActive = new ObservableValue(1);
+            #endregion
+
+            #region Employees
+            TotalEmp = new ObservableValue(0);
+            TotalEmpInActive = new ObservableValue(0);
+            TotalEmpMales = new ObservableValue(0);
+            TotalEmpFemales = new ObservableValue(0);
+            TotalEmpPresent = new ObservableValue(0);
+            TotalEmpAbsent = new ObservableValue(0);
+            TotalEmpLeave = new ObservableValue(0);
+            TotalEmpPresentInActive = new ObservableValue(1);
+            TotalEmpAbsentInActive = new ObservableValue(1);
+            TotalEmpLeaveInActive = new ObservableValue(1);
+            #endregion
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -72,20 +98,9 @@ namespace SMS.Views.UserControls
             initGraph();
             DashboardResult = dashboardDAL.loadPieChart(Convert.ToInt32(MainWindow.session.id));
             loadTotalReaderStatisticGraphs(DashboardResult);
-
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnStatistics_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -94,8 +109,9 @@ namespace SMS.Views.UserControls
         {
             try
             {
+                #region Students
                 // Total students
-                PieStudentsInActive.Values = new ChartValues<ObservableValue> { TotalStudents2 };
+                PieStudentsInActive.Values = new ChartValues<ObservableValue> { TotalStudentsInActive };
                 PieStudentsActive.Values = new ChartValues<ObservableValue> { TotalStudents };
 
                 // Boys
@@ -119,15 +135,42 @@ namespace SMS.Views.UserControls
                 // Leave
                 PieLeaveInActive.Values = new ChartValues<ObservableValue> { TotalStudentLeaveInActive };
                 PieLeaveActive.Values = new ChartValues<ObservableValue> { TotalStudentLeave };
+                #endregion
+
+                #region Employees
+
+                // Total students
+                PieEmpInActive.Values = new ChartValues<ObservableValue> { TotalEmpInActive };
+                PieEmpActive.Values = new ChartValues<ObservableValue> { TotalEmp };
+
+                // Boys
+
+                PieEmpMaleInActive.Values = new ChartValues<ObservableValue> { TotalEmpFemales };
+                PieEmpMaleActive.Values = new ChartValues<ObservableValue> { TotalEmpMales };
+
+                // Girls
+                PieEmpFemaleInActive.Values = new ChartValues<ObservableValue> { TotalEmpMales };
+                PieEmpFemaleActive.Values = new ChartValues<ObservableValue> { TotalEmpFemales };
+
+                // Present                        
+
+                PieEmpPresentInActive.Values = new ChartValues<ObservableValue> { TotalEmpPresentInActive };
+                PieEmpPresentActive.Values = new ChartValues<ObservableValue> { TotalEmpPresent };
+
+                // Absent
+                PieEmpAbsentInActive.Values = new ChartValues<ObservableValue> { TotalEmpAbsentInActive };
+                PieEmpAbsentActive.Values = new ChartValues<ObservableValue> { TotalEmpAbsent };
+
+                // Leave
+                PieEmpLeaveInActive.Values = new ChartValues<ObservableValue> { TotalEmpLeaveInActive };
+                PieEmpLeaveActive.Values = new ChartValues<ObservableValue> { TotalEmpLeave };
+                #endregion
             }
             catch (Exception ex)
             {
                 //LogHelper.WriteException(ex.Message.ToString(), source: "Quanika(initGraph)");
             }
         }
-
-
-
 
         private void loadTotalReaderStatisticGraphs(DashboardChartModel dCount)
         {
@@ -145,9 +188,10 @@ namespace SMS.Views.UserControls
         }
         private void assignChartsData(SolidColorBrush _activeColor, SolidColorBrush _activeBorder, SolidColorBrush _inActiveColor, SolidColorBrush _inActiveBorder, DashboardChartModel _chatsData)
         {
+            #region Students
             // Students
             TotalStudents.Value = _chatsData.TotalStudents;
-            TotalStudents2.Value = 0;
+            TotalStudentsInActive.Value = 0;
             lblTotalStudents.Text = _chatsData.TotalStudents.ToString();
 
             // Boys
@@ -172,6 +216,46 @@ namespace SMS.Views.UserControls
             TotalStudentLeave.Value = _chatsData.TotalStudentLeave;
             TotalStudentLeaveInActive.Value = (_chatsData.TotalStudentAbsent + _chatsData.TotalStudentPresent) == 0 ? 1 : _chatsData.TotalStudentAbsent + _chatsData.TotalStudentPresent;
             lblTotalLeave.Text = _chatsData.TotalStudentLeave.ToString();
+            #endregion
+
+            #region Employees
+            // Employees
+            TotalEmp.Value = _chatsData.TotalEmp;
+            TotalEmpInActive.Value = 0;
+            lblTotalEmp.Text = _chatsData.TotalStudents.ToString();
+
+            // Male
+            TotalEmpMales.Value = _chatsData.TotalEmpMale;
+            lblTotalEmpMale.Text = _chatsData.TotalEmpMale.ToString();
+
+            // Females
+            TotalEmpFemales.Value = _chatsData.TotalEmpFemale;
+            lblTotalEmpFemales.Text = _chatsData.TotalEmpFemale.ToString();
+
+            // Present
+            TotalEmpPresent.Value = _chatsData.TotalEmpPresent;
+            TotalEmpPresentInActive.Value = (_chatsData.TotalEmpAbsent + _chatsData.TotalEmpLeave) == 0 ? 1 : _chatsData.TotalEmpAbsent + _chatsData.TotalEmpLeave;
+            lblTotalEmpPresent.Text = _chatsData.TotalStudentPresent.ToString();
+
+            // Absent
+            TotalEmpAbsent.Value = _chatsData.TotalEmpAbsent;
+            TotalEmpAbsentInActive.Value = (_chatsData.TotalEmpLeave + _chatsData.TotalEmpPresent) == 0 ? 1 : _chatsData.TotalEmpLeave + _chatsData.TotalEmpPresent;
+            lblTotalEmpAbsent.Text = _chatsData.TotalStudentAbsent.ToString();
+
+            // Leave
+            TotalEmpLeave.Value = _chatsData.TotalStudentLeave;
+            TotalEmpLeaveInActive.Value = (_chatsData.TotalEmpAbsent + _chatsData.TotalEmpPresent) == 0 ? 1 : _chatsData.TotalEmpAbsent + _chatsData.TotalEmpPresent;
+            lblTotalEmpLeave.Text = _chatsData.TotalStudentLeave.ToString();
+            #endregion
+        }
+        private void btnStatistics_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }
