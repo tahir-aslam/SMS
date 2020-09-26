@@ -62,9 +62,9 @@ namespace SMS.Views.UserControls
             TotalStudentPresent = new ObservableValue(0);
             TotalStudentAbsent = new ObservableValue(0);
             TotalStudentLeave = new ObservableValue(0);
-            TotalStudentPresentInActive = new ObservableValue(0);
-            TotalStudentAbsentInActive = new ObservableValue(0);
-            TotalStudentLeaveInActive = new ObservableValue(0);
+            TotalStudentPresentInActive = new ObservableValue(1);
+            TotalStudentAbsentInActive = new ObservableValue(1);
+            TotalStudentLeaveInActive = new ObservableValue(1);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -72,7 +72,7 @@ namespace SMS.Views.UserControls
             initGraph();
             DashboardResult = dashboardDAL.loadPieChart(Convert.ToInt32(MainWindow.session.id));
             loadTotalReaderStatisticGraphs(DashboardResult);
-            
+
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -105,7 +105,7 @@ namespace SMS.Views.UserControls
 
                 // Girls
                 PieGirlsInActive.Values = new ChartValues<ObservableValue> { TotalBoys };
-                PieGirlsActive.Values = new ChartValues<ObservableValue> { TotalGirls};
+                PieGirlsActive.Values = new ChartValues<ObservableValue> { TotalGirls };
 
                 // Present                        
 
@@ -113,11 +113,11 @@ namespace SMS.Views.UserControls
                 PiePresentActive.Values = new ChartValues<ObservableValue> { TotalStudentPresent };
 
                 // Absent
-                PieAbsentInActive.Values = new ChartValues<ObservableValue> { TotalStudentAbsentInActive};
+                PieAbsentInActive.Values = new ChartValues<ObservableValue> { TotalStudentAbsentInActive };
                 PieAbsentActive.Values = new ChartValues<ObservableValue> { TotalStudentAbsent };
 
                 // Leave
-                PieLeaveInActive.Values = new ChartValues<ObservableValue> { TotalStudentLeaveInActive};
+                PieLeaveInActive.Values = new ChartValues<ObservableValue> { TotalStudentLeaveInActive };
                 PieLeaveActive.Values = new ChartValues<ObservableValue> { TotalStudentLeave };
             }
             catch (Exception ex)
@@ -160,17 +160,17 @@ namespace SMS.Views.UserControls
 
             // Present
             TotalStudentPresent.Value = _chatsData.TotalStudentPresent;
-            TotalStudentPresentInActive.Value = _chatsData.TotalStudentAbsent + _chatsData.TotalStudentLeave;
+            TotalStudentPresentInActive.Value = (_chatsData.TotalStudentAbsent + _chatsData.TotalStudentLeave) == 0 ? 1 : _chatsData.TotalStudentAbsent + _chatsData.TotalStudentLeave;
             lblTotalPresent.Text = _chatsData.TotalStudentPresent.ToString();
 
             // Absent
             TotalStudentAbsent.Value = _chatsData.TotalStudentAbsent;
-            TotalStudentAbsentInActive.Value = _chatsData.TotalStudentLeave + _chatsData.TotalStudentPresent;
+            TotalStudentAbsentInActive.Value = (_chatsData.TotalStudentLeave + _chatsData.TotalStudentPresent) == 0 ? 1 : _chatsData.TotalStudentLeave + _chatsData.TotalStudentPresent;
             lblTotalAbsent.Text = _chatsData.TotalStudentAbsent.ToString();
 
             // Leave
             TotalStudentLeave.Value = _chatsData.TotalStudentLeave;
-            TotalStudentLeaveInActive.Value = _chatsData.TotalStudentAbsent + _chatsData.TotalStudentPresent;
+            TotalStudentLeaveInActive.Value = (_chatsData.TotalStudentAbsent + _chatsData.TotalStudentPresent) == 0 ? 1 : _chatsData.TotalStudentAbsent + _chatsData.TotalStudentPresent;
             lblTotalLeave.Text = _chatsData.TotalStudentLeave.ToString();
         }
 
