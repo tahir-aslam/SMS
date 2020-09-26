@@ -35,10 +35,19 @@ namespace SMS.DAL
                             "SELECT COUNT(*) as count FROM sms_emp AS emp WHERE emp.is_active = 'Y' && emp.emp_sex = 'Female'; " +
                             "SELECT COUNT(*) as count FROM sms_emp_attendence AS att WHERE att.attendence_date = @date && att.attendence = 'P'; " +
                             "SELECT COUNT(*) as count FROM sms_emp_attendence AS att WHERE att.attendence_date = @date && att.attendence = 'A'; " +
-                            "SELECT COUNT(*) FROM sms_emp_attendence AS att WHERE att.attendence_date = @date && att.attendence = 'L';";
+                            "SELECT COUNT(*) FROM sms_emp_attendence AS att WHERE att.attendence_date = @date && att.attendence = 'L';"+
+                            "SELECT SUM(g.amount) FROM sms_fees_generated AS g WHERE g.month = @CurrentMonth && g.year = @CurrentYear; " +
+                            "SELECT SUM(g.rem_amount) FROM sms_fees_generated AS g WHERE g.month = @CurrentMonth && g.year = @CurrentYear; " +
+                            "SELECT SUM(g.wave_off) FROM sms_fees_generated AS g WHERE g.month = @CurrentMonth && g.year = @CurrentYear; " +
+                            "SELECT SUM(p.amount_paid) FROM sms_fees_paid AS p WHERE p.month = @CurrentMonth && p.year = @CurrentYear; " +
+                            "SELECT SUM(p.amount_paid) FROM sms_fees_paid AS p WHERE MONTH(p.date)= @CurrentMonth && YEAR(p.date) = @CurrentYear; " +
+                            "SELECT SUM(g.rem_amount) FROM sms_fees_generated AS g; ";
+
 
                             cmd.Parameters.Add("@sessionID", MySqlDbType.Int32).Value = sessionID;
                             cmd.Parameters.Add("@date", MySqlDbType.Date).Value = DateTime.Now;
+                            cmd.Parameters.Add("@CurrentMonth", MySqlDbType.Int16).Value = DateTime.Now.Month;
+                            cmd.Parameters.Add("@CurrentYear", MySqlDbType.Int16).Value = DateTime.Now.Year;
                             cmd.Connection = con;
                             con.Open();
 
@@ -106,6 +115,39 @@ namespace SMS.DAL
                             while (reader.Read())
                             {
                                 _charts.TotalEmpLeave = (int)reader.GetInt32(0);
+                            }
+                            #endregion
+
+                            #region Fee
+                            reader.NextResult();
+                            while (reader.Read())
+                            {
+                                _charts.FeeGeneratedForMonth = (int)reader.GetInt32(0);
+                            }
+                            reader.NextResult();
+                            while (reader.Read())
+                            {
+                                _charts.FeeDefaulterForMonth = (int)reader.GetInt32(0);
+                            }
+                            reader.NextResult();
+                            while (reader.Read())
+                            {
+                                _charts.FeeWaveOffForMonth = (int)reader.GetInt32(0);
+                            }
+                            reader.NextResult();
+                            while (reader.Read())
+                            {
+                                _charts.FeePaidForMonth = (int)reader.GetInt32(0);
+                            }
+                            reader.NextResult();
+                            while (reader.Read())
+                            {
+                                _charts.FeePaidInMonth = (int)reader.GetInt32(0);
+                            }
+                            reader.NextResult();
+                            while (reader.Read())
+                            {
+                                _charts.FeeDefaulterTotal = (int)reader.GetInt32(0);
                             }
                             #endregion
                         }

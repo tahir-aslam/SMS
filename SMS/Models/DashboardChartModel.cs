@@ -25,8 +25,14 @@ namespace SMS.Models
         public int TotalWithdrawled { get; set; }
         public int TotalNewEnrolled { get; set; }
 
-        public int TotalFeeGenerated { get; set; }
-        public int TotalFeePaid { get; set; }
+        public int FeeGeneratedForMonth { get; set; }
+        public int FeePaidForMonth { get; set; }
+        public int FeeDefaulterForMonth { get; set; }
+        public int FeeWaveOffForMonth { get; set; }
+        public int FeePaidInMonth{ get; set; } 
+        public int FeeDefaulterTotal { get; set; }
+
+
         public int TotalExpenses { get; set; }
         public int TotalLiabilities { get; set; }
         public int TotalSalaryGenerated { get; set; }

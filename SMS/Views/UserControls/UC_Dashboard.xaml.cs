@@ -54,6 +54,21 @@ namespace SMS.Views.UserControls
         ObservableValue TotalEmpLeaveInActive;
         #endregion
 
+        #region Fee
+        ObservableValue TotalFeeGeneratedForMonth;
+        ObservableValue TotalFeeGeneratedForMonthInActive;
+        ObservableValue TotalFeePaidForMonth;
+        ObservableValue TotalFeePaidForMonthInActive;
+        ObservableValue TotalFeeDefaulterForMonth;
+        ObservableValue TotalFeeDefaulterForMonthInActive;
+        ObservableValue TotalFeeWaveOffForMonth;
+        ObservableValue TotalFeeWaveOffForMonthInActive;
+        ObservableValue TotalFeePaidInMonth;
+        ObservableValue TotalFeePaidInMonthInActive;
+        ObservableValue TotalFeeDefaulterTotal;
+        ObservableValue TotalFeeDefaulterTotalInActive;
+        #endregion
+
         SolidColorBrush _activeColor = new SolidColorBrush(Color.FromRgb(85, 196, 18));
         SolidColorBrush _activeBorder = Brushes.Transparent;
         SolidColorBrush _inActiveColor = new SolidColorBrush(Color.FromRgb(211, 211, 211));
@@ -90,6 +105,21 @@ namespace SMS.Views.UserControls
             TotalEmpPresentInActive = new ObservableValue(1);
             TotalEmpAbsentInActive = new ObservableValue(1);
             TotalEmpLeaveInActive = new ObservableValue(1);
+            #endregion
+
+            #region Fee
+            TotalFeeGeneratedForMonth = new ObservableValue(0);
+            TotalFeeGeneratedForMonthInActive = new ObservableValue(0);
+            TotalFeePaidForMonth = new ObservableValue(0);
+            TotalFeePaidForMonthInActive = new ObservableValue(0);
+            TotalFeeDefaulterForMonth = new ObservableValue(0);
+            TotalFeeDefaulterForMonthInActive = new ObservableValue(0);
+            TotalFeeWaveOffForMonth = new ObservableValue(0);
+            TotalFeeWaveOffForMonthInActive = new ObservableValue(0);
+            TotalFeePaidInMonth = new ObservableValue(0);
+            TotalFeePaidInMonthInActive = new ObservableValue(0);
+            TotalFeeDefaulterTotal = new ObservableValue(0);
+            TotalFeeDefaulterTotalInActive = new ObservableValue(0);
             #endregion
         }
 
@@ -165,6 +195,35 @@ namespace SMS.Views.UserControls
                 PieEmpLeaveInActive.Values = new ChartValues<ObservableValue> { TotalEmpLeaveInActive };
                 PieEmpLeaveActive.Values = new ChartValues<ObservableValue> { TotalEmpLeave };
                 #endregion
+
+                #region Fee
+
+                // Total students
+                PieFeeGeneratedForMonthInActive.Values = new ChartValues<ObservableValue> { TotalFeeGeneratedForMonthInActive };
+                PieFeeGeneratedForMonthActive.Values = new ChartValues<ObservableValue> { TotalFeeGeneratedForMonth };
+
+                // Total students
+                PieFeePaidForMonthInActive.Values = new ChartValues<ObservableValue> { TotalFeePaidForMonthInActive };
+                PieFeePaidForMonthActive.Values = new ChartValues<ObservableValue> { TotalFeePaidForMonth };
+
+                // Total students
+                PieFeeDefaulterForMonthInActive.Values = new ChartValues<ObservableValue> { TotalFeeDefaulterForMonthInActive };
+                PieFeeDefaulterForMonthActive.Values = new ChartValues<ObservableValue> { TotalFeeDefaulterForMonth };
+
+                // Total students
+                PieFeeWaveOffForMonthInActive.Values = new ChartValues<ObservableValue> { TotalFeeWaveOffForMonthInActive };
+                PieFeeWaveOffForMonthActive.Values = new ChartValues<ObservableValue> { TotalFeeWaveOffForMonth };
+
+                // Total students
+                PieFeePaidInMonthInActive.Values = new ChartValues<ObservableValue> { TotalFeePaidInMonthInActive };
+                PieFeePaidInMonthActive.Values = new ChartValues<ObservableValue> { TotalFeePaidInMonth };
+
+                // Total students
+                PieFeeDefaulterTotalInActive.Values = new ChartValues<ObservableValue> { TotalFeeDefaulterTotalInActive };
+                PieFeeDefaulterTotalActive.Values = new ChartValues<ObservableValue> { TotalFeeDefaulterTotal };
+
+
+                #endregion
             }
             catch (Exception ex)
             {
@@ -222,7 +281,7 @@ namespace SMS.Views.UserControls
             // Employees
             TotalEmp.Value = _chatsData.TotalEmp;
             TotalEmpInActive.Value = 0;
-            lblTotalEmp.Text = _chatsData.TotalStudents.ToString();
+            lblTotalEmp.Text = _chatsData.TotalEmp.ToString();
 
             // Male
             TotalEmpMales.Value = _chatsData.TotalEmpMale;
@@ -235,17 +294,52 @@ namespace SMS.Views.UserControls
             // Present
             TotalEmpPresent.Value = _chatsData.TotalEmpPresent;
             TotalEmpPresentInActive.Value = (_chatsData.TotalEmpAbsent + _chatsData.TotalEmpLeave) == 0 ? 1 : _chatsData.TotalEmpAbsent + _chatsData.TotalEmpLeave;
-            lblTotalEmpPresent.Text = _chatsData.TotalStudentPresent.ToString();
+            lblTotalEmpPresent.Text = _chatsData.TotalEmpPresent.ToString();
 
             // Absent
             TotalEmpAbsent.Value = _chatsData.TotalEmpAbsent;
             TotalEmpAbsentInActive.Value = (_chatsData.TotalEmpLeave + _chatsData.TotalEmpPresent) == 0 ? 1 : _chatsData.TotalEmpLeave + _chatsData.TotalEmpPresent;
-            lblTotalEmpAbsent.Text = _chatsData.TotalStudentAbsent.ToString();
+            lblTotalEmpAbsent.Text = _chatsData.TotalEmpAbsent.ToString();
 
             // Leave
             TotalEmpLeave.Value = _chatsData.TotalStudentLeave;
             TotalEmpLeaveInActive.Value = (_chatsData.TotalEmpAbsent + _chatsData.TotalEmpPresent) == 0 ? 1 : _chatsData.TotalEmpAbsent + _chatsData.TotalEmpPresent;
-            lblTotalEmpLeave.Text = _chatsData.TotalStudentLeave.ToString();
+            lblTotalEmpLeave.Text = _chatsData.TotalEmpLeave.ToString();
+            #endregion
+
+            #region Fee
+            // Generated
+            TotalFeeGeneratedForMonth.Value = _chatsData.FeeGeneratedForMonth;
+            TotalFeeGeneratedForMonthInActive.Value = 0;
+            lblFeeGeneratedForMonth.Text = _chatsData.FeeGeneratedForMonth.ToString();
+
+            // Paid
+            TotalFeePaidForMonth.Value = _chatsData.FeePaidForMonth;
+            TotalFeePaidForMonthInActive.Value = (_chatsData.FeeDefaulterForMonth + _chatsData.FeeWaveOffForMonth) == 0 ? 1 : _chatsData.FeeDefaulterForMonth + _chatsData.FeeWaveOffForMonth;
+            lblFeePaidForMonth.Text = _chatsData.FeePaidForMonth.ToString();
+
+
+            // WaveOff
+            TotalFeeWaveOffForMonth.Value = _chatsData.FeeWaveOffForMonth;
+            TotalFeeWaveOffForMonthInActive.Value = (_chatsData.FeeDefaulterForMonth + _chatsData.FeePaidForMonth) == 0 ? 1 : _chatsData.FeeDefaulterForMonth + _chatsData.FeePaidForMonth;
+            lblFeeWaveOffForMonth.Text = _chatsData.FeeWaveOffForMonth.ToString();
+
+            // defaulter
+            TotalFeeDefaulterForMonth.Value = _chatsData.FeeDefaulterForMonth;
+            TotalFeeDefaulterForMonthInActive.Value = (_chatsData.FeeWaveOffForMonth + _chatsData.FeePaidForMonth) == 0 ? 1 : _chatsData.FeeWaveOffForMonth + _chatsData.FeePaidForMonth;
+            lblFeeDefaulterForMonth.Text = _chatsData.FeeDefaulterForMonth.ToString();
+
+            // Paid total
+            TotalFeePaidInMonth.Value = _chatsData.FeePaidInMonth;
+            TotalFeePaidInMonthInActive.Value = 0;
+            lblFeePaidInMonth.Text = _chatsData.FeePaidInMonth.ToString();
+
+            // Total defaulter
+            TotalFeeDefaulterTotal.Value = _chatsData.FeeDefaulterTotal;
+            TotalFeeDefaulterTotalInActive.Value = 0;
+            lblFeeDefaulterTotal.Text = _chatsData.FeeDefaulterTotal.ToString();
+
+
             #endregion
         }
         private void btnStatistics_Click(object sender, RoutedEventArgs e)
