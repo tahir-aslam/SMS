@@ -127,6 +127,148 @@
                                             </Border>
                                         </Grid>
                                     </StackPanel>
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spFeeDefaulter"
+                                                MouseLeftButtonUp="spFeeDefaulter_MouseLeftButtonUp"
+                                                MouseEnter="spFeeDefaulter_MouseEnter"
+                                                MouseLeave="spFeeDefaulter_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdFeeDefaulter"
+                                                    Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtFeeDefaulter"
+                                                           Text="Fee Defaulter"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spFeeVouchers"
+                                                MouseLeftButtonUp="spFeeVouchers_MouseLeftButtonUp"
+                                                MouseEnter="spFeeVouchers_MouseEnter"
+                                                MouseLeave="spFeeVouchers_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdFeeVouchers"
+                                                    Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtFeeVouchers"
+                                                           Text="Fee Vouchers"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spFeeCollectionByVoucher"
+                                                MouseLeftButtonUp="spFeeCollectionByVoucher_MouseLeftButtonUp"
+                                                MouseEnter="spFeeCollectionByVoucher_MouseEnter"
+                                                MouseLeave="spFeeCollectionByVoucher_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdFeeCollectionByVoucher"
+                                                    Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtFeeCollectionByVoucher"
+                                                           Text="Fee Collection By Amount"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spFeeCollectionByAmount"
+                                                MouseLeftButtonUp="spFeeCollectionByAmount_MouseLeftButtonUp"
+                                                MouseEnter="spFeeCollectionByAmount_MouseEnter"
+                                                MouseLeave="spFeeCollectionByAmount_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdFeeCollectionByAmount"
+                                                    Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtFeeCollectionByAmount"
+                                                           Text="Fee Collection By Voucher"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                </WrapPanel>
+                                <WrapPanel Margin="30,50,30,0">
+                                    <StackPanel Style="{DynamicResource pnlSubMenu}"
+                                                x:Name="spBulkFeeUpdate"
+                                                MouseLeftButtonUp="spBulkFeeUpdate_MouseLeftButtonUp"
+                                                MouseEnter="spBulkFeeUpdate_MouseEnter"
+                                                MouseLeave="spBulkFeeUpdate_MouseLeave"
+                                                Visibility="Visible">
+                                        <Grid Style="{DynamicResource subMenuGrid}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="25*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border x:Name="bdBulkFeeUpdate"
+                                                    Grid.RowSpan="2"
+                                                    Style="{DynamicResource brdPrentSubMenu}">
+                                                <Image Source="/Images/SubMenu/menu_controller.png"
+                                                       Style="{DynamicResource imgSubMenu}" />
+                                            </Border>
+
+                                            <Border Style="{DynamicResource brdChildSubMenu}"
+                                                    Grid.Row="1">
+                                                <TextBlock x:Name="txtBulkFeeUpdate"
+                                                           Text="Bulk Fee Update"
+                                                           Tag="Language"
+                                                           Style="{DynamicResource configurationNoramlTxt}" />
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
                                 </WrapPanel>
                             </StackPanel>
                         </Grid>

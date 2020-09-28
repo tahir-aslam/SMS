@@ -29,5 +29,125 @@ namespace SMS.Views.UserControls
         {
 
         }
+
+        private void spFeeGeneration_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeGeneration_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeRegister_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spFeeRegister_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeRegister_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeCollectionLedger_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spFeeCollectionLedger_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeCollectionLedger_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeDefaulter_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spFeeDefaulter_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeDefaulter_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeVouchers_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spFeeVouchers_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeVouchers_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeCollectionByVoucher_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spFeeCollectionByVoucher_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeCollectionByVoucher_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeCollectionByAmount_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spFeeCollectionByAmount_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spFeeCollectionByAmount_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spBulkFeeUpdate_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spBulkFeeUpdate_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spBulkFeeUpdate_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void icoBack_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
