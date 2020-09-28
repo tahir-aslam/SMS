@@ -10,7 +10,7 @@
         Width="1366"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"        
+        WindowStyle="None"
         ResizeMode="CanMinimize"
         AllowsTransparency="True"
         Background="Transparent"
@@ -237,8 +237,7 @@
                 Background="White"
                 BorderBrush="#FF9B9B9B">
 
-            <Grid 
-                  Background="#E2E2E2"
+            <Grid Background="#E2E2E2"
                   x:Name="grdParent">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
@@ -273,8 +272,8 @@
                                 <ColumnDefinition Width="20*" />
                             </Grid.ColumnDefinitions>
                             <Image Source="/images/splashscreen/logo.png"
-                                   Grid.Column="1" 
-                                   Margin="5"/>
+                                   Grid.Column="1"
+                                   Margin="5" />
                         </Grid>
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Right"
@@ -304,14 +303,13 @@
                                            Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                             </StackPanel>
 
-                          
+
 
 
                             <!--<Separator Width="2"
                                        Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />-->
 
                             <Image x:Name="icoAlarm"
-                                   
                                    Cursor="Hand"
                                    Width="20"
                                    Height="20"
@@ -426,24 +424,23 @@
                                 <ListViewItem  Cursor="Hand"
                                                Height="55">
                                     <StackPanel VerticalAlignment="Stretch">
-                                        <Image Source="/Images/MainWinImg/icon_settings.png"
+                                        <Image Source="/Images/MainWinImg/icon_user.png"
                                                Name="iconSetting"
                                                Style="{DynamicResource imgListMenu}" />
                                         <TextBlock Margin="0"
                                                    Text="Student"
                                                    Name="txtSettings"
-                                                   Tag="Language"
-                                                   />
+                                                   Tag="Language" />
                                     </StackPanel>
                                 </ListViewItem>
                                 <ListViewItem Cursor="Hand"
                                               Height="55"
                                               x:Name="lisCardHolder">
                                     <StackPanel>
-                                        <Image Source="/Images/MainWinImg/icon_user.png"
+                                        <Image Source="/Images/MainWinImg/icon_reports.png"
                                                Name="iconUser"
                                                Style="{DynamicResource imgListMenu}" />
-                                        <TextBlock Text="Card Holder"
+                                        <TextBlock Text="Fee"
                                                    Tag="Language"
                                                    Name="txtUser" />
                                     </StackPanel>
@@ -455,7 +452,7 @@
                                         <Image Source="/Images/MainWinImg/icon_portfolio.png"
                                                Name="iconTools"
                                                Style="{DynamicResource imgListMenu}" />
-                                        <TextBlock Text="Manual Control"
+                                        <TextBlock Text="Exam/Result"
                                                    Tag="Language"
                                                    Name="txtTools" />
                                     </StackPanel>
@@ -464,26 +461,46 @@
                                               Height="55"
                                               x:Name="lisMustering">
                                     <StackPanel>
-                                        <Image Source="/Images/MainWinImg/icon_portfolio.png"
+                                        <Image Source="/Images/MainWinImg/icon_user.png"
                                                Name="iconMustering"
                                                Style="{DynamicResource imgListMenu}" />
-                                        <TextBlock Text="e-Mustering"
+                                        <TextBlock Text="Employee"
                                                    Tag="Language"
-                                                   Name="txtMustring" />
+                                                   Name="txtMustring"
+                                                   TextWrapping="Wrap" />
                                     </StackPanel>
-                                </ListViewItem>                               
+                                </ListViewItem>
+                                <ListViewItem Cursor="Hand"
+                                              Height="55"
+                                              x:Name="listAccounts">
+                                    <StackPanel>
+                                        <Image Source="/Images/MainWinImg/icon_reports.png"
+                                               x:Name="iconReport"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Text="Accounts"
+                                                   Tag="Language"
+                                                   Name="txtReport" />
+                                    </StackPanel>
+                                </ListViewItem>
                                 <ListViewItem Cursor="Hand"
                                               Height="55"
                                               x:Name="lisReport">
                                     <StackPanel>
                                         <Image Source="/Images/MainWinImg/icon_reports.png"
-                                               x:Name="iconReport"
                                                Style="{DynamicResource imgListMenu}" />
                                         <TextBlock Text="Reports"
-                                                   Tag="Language"
-                                                   Name="txtReport" />
+                                                   Tag="Language" />
                                     </StackPanel>
-                                </ListViewItem>                              
+                                </ListViewItem>
+                                <ListViewItem Cursor="Hand"
+                                              Height="55">
+                                    <StackPanel>
+                                        <Image Source="/Images/MainWinImg/icon_reports.png"
+                                               Style="{DynamicResource imgListMenu}" />
+                                        <TextBlock Text="SMS"
+                                                   Tag="Language" />
+                                    </StackPanel>
+                                </ListViewItem>
                                 <ListViewItem Height="55"
                                               Cursor="Hand">
                                     <StackPanel>
@@ -509,7 +526,7 @@
                                 </ListViewItem>
                             </ListView>
                         </StackPanel>
-                       
+
                     </Grid>
                 </Border>
 
@@ -649,7 +666,7 @@
                                           ShadowDepth="5"
                                           Opacity="0.6" />
                     </Border.Effect>
-                    
+
                 </Border>
             </Grid>
         </Border>
@@ -1630,5 +1647,5 @@
 
         </Grid>
     </Grid>
-    
+
 </Window>

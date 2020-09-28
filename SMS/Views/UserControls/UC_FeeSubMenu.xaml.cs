@@ -24,5 +24,10 @@ namespace SMS.Views.UserControls
         {
             InitializeComponent();
         }
+
+        private void spFeeGeneration_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

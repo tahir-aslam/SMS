@@ -208,5 +208,95 @@ namespace SMS.Views.UserControls
         {
             resetHoveringStyle(5);
         }
+
+        private void spStudentAttendance_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendance_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendance_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceHistory_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceHistory_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceHistory_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceDailyReport_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceDailyReport_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceDailyReport_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceSheet_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceSheet_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceSheetReport_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceSheetReport_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spStudentAttendanceSheetReport_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spComplaintRegister_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spComplaintRegister_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spComplaintRegister_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
