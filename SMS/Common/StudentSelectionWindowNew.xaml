@@ -68,12 +68,24 @@
                   Margin="1,0,1,0">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Defaulters Of  " Margin="20,0,0,0" VerticalAlignment="Center"/>
-                    <ComboBox IsTextSearchEnabled="True"  HorizontalAlignment="Left" Width="140" Height="30" VerticalAlignment="Center" Name="month_cmb"  SelectedValuePath="id" SelectionChanged="month_cmb_SelectionChanged">
+                    <ComboBox  HorizontalAlignment="Left"
+                               Width="130"
+                               Height="30"
+                               VerticalAlignment="Center"
+                               Name="month_cmb"
+                               SelectedValuePath="id"
+                               SelectionChanged="month_cmb_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding id}" HorizontalAlignment="Left" FontSize="10" Foreground="White" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
-                                    <TextBlock Text="{Binding month_name}" HorizontalAlignment="Right" FontSize="12"></TextBlock>
+                                    <CheckBox Name="chkMonth"
+                                              Checked="chkMonth_Checked"
+                                              Unchecked="chkMonth_Checked"
+                                              IsChecked="{Binding isChecked}"
+                                              IsThreeState="False" />
+                                    <TextBlock Text="{Binding month_name}"
+                                               HorizontalAlignment="Right"
+                                               FontSize="12"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>

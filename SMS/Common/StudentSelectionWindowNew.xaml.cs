@@ -351,7 +351,7 @@ namespace SMS.Common
             if (adm_list.Select(y => y.Checked == true).Count() > 0)
             {
                 //idelegate.getSelectedStudents(adm_list.Where(x=>x.Checked == true).ToList());
-                
+
                 this.Close();
             }
             else
@@ -366,20 +366,20 @@ namespace SMS.Common
             {
                 sms_months sm = (sms_months)month_cmb.SelectedItem;
                 List<sms_fees> fees_list = feesDAL.getAllUnPaidFeesByMonth(Convert.ToInt32(sm.month_id));
-                    adm_grid.ItemsSource = adm_list.Where(x => fees_list.Any(y => y.std_id.ToString() == x.id));
-                
+                adm_grid.ItemsSource = adm_list.Where(x => fees_list.Any(y => y.std_id.ToString() == x.id));
+
             }
-            else 
+            else
             {
                 adm_grid.ItemsSource = adm_list;
             }
         }
-        
+
         private void Window_Closed(object sender, EventArgs e)
         {
             if (adm_list.Select(y => y.Checked == true).Count() > 0)
-            {                
-                
+            {
+
             }
             else
             {
@@ -391,8 +391,34 @@ namespace SMS.Common
         private void date_picker_to_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             DateTime selected_date = (DateTime)date_picker.SelectedDate;
-            List<sms_fees> paid_fees_list = feesDAL.getFeesPaidByDate(selected_date.Date,selected_date.Date);
+            List<sms_fees> paid_fees_list = feesDAL.getFeesPaidByDate(selected_date.Date, selected_date.Date);
             adm_grid.ItemsSource = adm_list.Where(x => paid_fees_list.Any(y => y.std_id.ToString() == x.id));
+
+        }
+
+        private void chkMonth_Checked(object sender, RoutedEventArgs e)
+        {
+            List<sms_fees> list = new List<sms_fees>();
+            int count = 0;
+            foreach (sms_months sm in months_list.Where(x => x.isChecked == true).Where(x => x.id != "-1"))
+            {
+                list.AddRange(feesDAL.getAllUnPaidFeesByMonth(Convert.ToInt32(sm.month_id)));
+                count++;
+            }
+
+            if (count > 0)
+            {
+                adm_grid.ItemsSource = adm_list.Where(x => list.Any(y => y.std_id.ToString() == x.id));
+            }
+            else
+            {
+                adm_grid.ItemsSource = adm_list;
+            }
+            
+        }
+
+        private void chkMonth_Unchecked(object sender, RoutedEventArgs e)
+        {
 
         }
     }
