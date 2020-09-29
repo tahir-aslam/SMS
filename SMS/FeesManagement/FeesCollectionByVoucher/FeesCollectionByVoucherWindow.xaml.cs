@@ -94,5 +94,17 @@ namespace SMS.FeesManagement.FeesCollectionByVoucher
                 MainWindow.d_FeeCollectionByVocherCollectionPlace = obj.id;
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (MainWindow.emp_login_obj.emp_id == "0")
+            {
+                date_picker.IsEnabled = true;
+            }
+            else
+            {
+                date_picker.IsEnabled = false;
+            }
+        }
     }
 }

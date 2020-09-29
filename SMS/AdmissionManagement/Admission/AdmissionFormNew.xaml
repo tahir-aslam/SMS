@@ -821,7 +821,8 @@
                                       BorderBrush="Gray"
                                       AutoGenerateColumns="False"
                                       CanUserAddRows="False"
-                                      CanUserDeleteRows="False">
+                                      CanUserDeleteRows="False"
+                                     >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Fees"
                                                         IsReadOnly="True"

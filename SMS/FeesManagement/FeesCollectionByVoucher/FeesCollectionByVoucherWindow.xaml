@@ -5,7 +5,8 @@
         Height="580"
         Width="350" 
         WindowStartupLocation="CenterScreen"
-        KeyDown="Window_KeyDown">
+        KeyDown="Window_KeyDown"
+        Loaded="Window_Loaded">
     <Grid >
         <StackPanel Margin="10" >
             <Border BorderThickness="1" 

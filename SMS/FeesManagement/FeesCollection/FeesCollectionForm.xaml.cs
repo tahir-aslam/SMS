@@ -93,6 +93,15 @@ namespace SMS.FeesManagement.FeesCollection
 
                 //paid_TB.Text = "0";
                 paid_TB.Focus();
+
+                if (MainWindow.emp_login_obj.emp_id == "0")
+                {
+                    date_picker.IsEnabled = true;
+                }
+                else
+                {
+                    date_picker.IsEnabled = false;
+                }
             }
             catch (Exception ex)
             {
