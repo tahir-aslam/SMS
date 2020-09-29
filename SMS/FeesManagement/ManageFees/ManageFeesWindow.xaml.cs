@@ -430,14 +430,7 @@ namespace SMS.FeesManagement.ManageFees
                 MessageBox.Show(alertText, "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-
-            else if (month_cmb.SelectedIndex == 0)
-            {
-                month_cmb.Focus();
-                string alertText = "Month Name Should Not Be Blank.";
-                MessageBox.Show(alertText, "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
+           
             else
             {
                 return true;
