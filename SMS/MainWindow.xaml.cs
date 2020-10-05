@@ -689,6 +689,7 @@ namespace SMS
 
                 //WriteLogFile();
                 //ReadLogFile();
+                this.Activate();
 
             }
             catch (Exception ex)

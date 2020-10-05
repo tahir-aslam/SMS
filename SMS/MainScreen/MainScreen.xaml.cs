@@ -103,6 +103,19 @@ namespace SMS.MainScreen
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //this.mainFrame.Navigate(new Start());
+            ListViewMenu.SelectedIndex = 0;
+            apply_emp_roles_list();
+
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.DoWork += new DoWorkEventHandler(worker_DoWork);
+            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
+            worker.RunWorkerAsync();
+            this.Activate();
+        }
+
         public void loadingPanel(bool visibility, string mainMessage, string subMessage)
         {
             SMS.Models.loadingPanel panel = new loadingPanel();
@@ -3055,19 +3068,7 @@ namespace SMS.MainScreen
 
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //this.mainFrame.Navigate(new Start());
-            ListViewMenu.SelectedIndex = 0;
-            apply_emp_roles_list();
-
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            worker.RunWorkerAsync();
-
-
-        }
+        
 
         public void apply_license()
         {

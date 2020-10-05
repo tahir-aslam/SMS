@@ -33,7 +33,7 @@
                                         Visibility="Collapsed">
                                     <materialDesign:PackIcon Style="{DynamicResource icoBackUC}" />
                                 </Button>
-                                <TextBlock Text="Student Management"
+                                <TextBlock Text="Fee Management"
                                            Tag="Language"
                                            Style="{DynamicResource mainHeadingTitle}" />
                             </StackPanel>
