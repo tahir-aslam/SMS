@@ -24,5 +24,95 @@ namespace SMS.Views.UserControls
         {
             InitializeComponent();
         }
+
+        private void icoBack_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void spSubjectManagement_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spSubjectManagement_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spSubjectManagement_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spDefineExam_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spDefineExam_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spDefineExam_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spExamDataEntry_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spExamDataEntry_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spExamDataEntry_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spGeneralAwardList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spGeneralAwardList_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spResultCard_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spResultCard_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spResultCard_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spDateSheet_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spDateSheet_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spDateSheet_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
