@@ -21,13 +21,15 @@ namespace SMS.FeesManagement.FeesCollectionLedger
     public partial class FeesCollectionLedgerReportWindow : Window
     {
         List<sms_fees> fees_list;
-        bool isGrouped = false;
+        bool feeGrouped = false;
+        bool classGrouped = false;
 
-        public FeesCollectionLedgerReportWindow(List<sms_fees> lst, bool isGrouped)
+        public FeesCollectionLedgerReportWindow(List<sms_fees> lst, bool feeGrouped, bool classGrouped=false)
         {
             InitializeComponent();
             fees_list = lst;
-            this.isGrouped = isGrouped;
+            this.feeGrouped = feeGrouped;
+            this.classGrouped = classGrouped;
             _reportViewer.Load += _reportViewer_Load;
         }
 
@@ -47,15 +49,22 @@ namespace SMS.FeesManagement.FeesCollectionLedger
 
             this._reportViewer.LocalReport.DataSources.Add(fees);
             this._reportViewer.LocalReport.DataSources.Add(ins);
-            if (isGrouped)
+            if (feeGrouped == true && classGrouped == false)
             {
                 this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.FeesManagement.FeesCollectionLedger.FeesCollectionLedgerReportGrouped.rdlc";
             }
-            else 
+            else if(feeGrouped == false && classGrouped == false)
             {
                 this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.FeesManagement.FeesCollectionLedger.FeesCollectionLedgerReport.rdlc";
             }
-            
+            else if (feeGrouped == true && classGrouped == true)
+            {
+                this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.FeesManagement.FeesCollectionLedger.FeesCollectionLedgerReportGroupedWithoutClassGroup.rdlc";
+            }
+            else
+            {
+            }
+
 
             _reportViewer.RefreshReport();
 

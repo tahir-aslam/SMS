@@ -1971,6 +1971,7 @@
     <EmbeddedResource Include="ExamsManagement\RollNoSlips\RollNoSlipReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionByAmount\FeesCollectionByAmountReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReport.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportGroupedWithoutClassGroup.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportGrouped.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportNew.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollection\StduentFeeReportIndividual.rdlc" />
@@ -1998,6 +1999,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Employee\EmployeeCardReport.rdlc" />
     <EmbeddedResource Include="Reports\Exams\TeacherEvaluation\TeacherEvaluationReport.rdlc" />
+    <EmbeddedResource Include="Reports\Fees\FeesCollectionLedgerReport.rdlc" />
     <EmbeddedResource Include="Reports\MiscReports\StudentListBySection\StudentListBySectionReportFourColumn.rdlc" />
     <EmbeddedResource Include="Reports\MiscReports\StudentListBySection\StudentListBySectionReport.rdlc" />
     <EmbeddedResource Include="Reports\Student\AttendanceClassWise\StudentAttendanceReportClassWise.rdlc" />
@@ -2276,7 +2278,6 @@
     <Folder Include="ENUM\" />
     <Folder Include="ExamsManagement\Reports\TeacherEvaluationReport\" />
     <Folder Include="Reports\Employee\EmployeeAttendanceBio\" />
-    <Folder Include="Reports\Fees\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\duplicate.jpg" />
@@ -2324,42 +2325,42 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.Practices.ObjectBuilder2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.Practices.Unity">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

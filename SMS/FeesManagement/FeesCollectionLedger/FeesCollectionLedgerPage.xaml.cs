@@ -395,7 +395,7 @@ namespace SMS.FeesManagement.FeesCollectionLedger
             print(true); // isgrouped = true;
         }
 
-        void print(bool isGrouped) 
+        void print(bool isGrouped, bool isClassGrouped = false) 
         {
             if (feesCollectionList.Count > 0)
             {
@@ -524,8 +524,10 @@ namespace SMS.FeesManagement.FeesCollectionLedger
 
                     fees_list.Add(item);
                 }
-                FeesCollectionLedgerReportWindow window = new FeesCollectionLedgerReportWindow(fees_list,isGrouped);
-                window.Show();
+
+                FeesCollectionLedgerReportWindow window = new FeesCollectionLedgerReportWindow(fees_list, isGrouped, isClassGrouped);
+                    window.Show();
+               
             }
             else
             {
@@ -588,6 +590,16 @@ namespace SMS.FeesManagement.FeesCollectionLedger
                 section_cmb.SelectedIndex = 0;
             }
             filter();
+        }
+
+        private void print_without_group_button__Click(object sender, RoutedEventArgs e)
+        {
+            print(true); // isgrouped = true;
+        }
+
+        private void Print_withoutclassgroup_button_Click(object sender, RoutedEventArgs e)
+        {
+            print(true, true); // isgrouped = true;
         }
     }
 }
