@@ -14,6 +14,7 @@ using SMS.Models;
 using SUT.PrintEngine.Utils;
 using System.Windows.Markup;
 using System.Windows.Threading;
+using SMS.DAL;
 
 namespace SMS.AdmissionManagement.WithdrawAdmission
 {
@@ -26,6 +27,7 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
         List<string> list_string;
         FixedDocument fd;
         Border br;
+        FeesDAL feesDAL;
         public SLCWindow( admission adm, Visibility visibility)
         {
             InitializeComponent();
@@ -38,6 +40,10 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
             fill_control();
             this.DataContext = adm_obj;
             v_institute_grid.Visibility = visibility;
+
+            feesDAL = new FeesDAL();
+            sms_fees fee = feesDAL.getLastFeeReceived(Convert.ToInt32(adm.id));
+            adm_obj.Last_Fee_Received = fee.month_name + " " + fee.year;
             
             //this.RemoveLogicalChild(slc_border);
             //this.RemoveVisualChild(slc_border);

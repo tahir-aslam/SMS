@@ -78,6 +78,9 @@ namespace SMS.Models
         public string exam_time { get; set; }
         public string exam_remarks { get; set; }
         public string subject_name { get; set; }
+
+        // SLC
+        public string Last_Fee_Received { get; set; }        
     }
 }
 

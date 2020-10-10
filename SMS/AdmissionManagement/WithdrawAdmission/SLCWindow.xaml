@@ -62,7 +62,7 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Height="35">
                                     <TextBlock Text="and has cleared the dues upto " VerticalAlignment="Center" FontSize="18"/>
-                                    <TextBlock Text="{Binding exam_fee}" Margin="10,0,10,0" FontWeight="Bold" TextDecorations="Underline" FontStyle="Italic" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Last_Fee_Received}" Margin="10,0,10,0" FontWeight="Bold" TextDecorations="Underline" FontStyle="Italic" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     <TextBlock Text=" His / Her DOB as mentioned" FontSize="18" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Height="35">
