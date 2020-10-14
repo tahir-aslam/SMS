@@ -84,42 +84,49 @@ namespace SMS.EmployeeManagement.SalarySheet
         }
 
         public void loadReport() 
-        {            
-            sms_months month_obj =month_cmb.SelectedItem as sms_months;
-            sms_years year_obj = year_cmb.SelectedItem as sms_years;           
-
-            if(month_cmb.SelectedIndex != 0 && year_cmb.SelectedIndex !=0 && month_cmb.SelectedItem!=null && year_cmb.SelectedItem != null)
+        {
+            try
             {
-                List<employees> employees_salary_list = empDAL.get_salary_sheet(Convert.ToInt32(month_obj.month_id), year_obj.id);
-                ReportDataSource emp = new ReportDataSource();
-                emp.Name = "emp";
-                if (emp_types_cmb.SelectedItem != null && emp_types_cmb.SelectedIndex != 0)
+                sms_months month_obj = month_cmb.SelectedItem as sms_months;
+                sms_years year_obj = year_cmb.SelectedItem as sms_years;
+
+                if (month_cmb.SelectedIndex != 0 && year_cmb.SelectedIndex != 0 && month_cmb.SelectedItem != null && year_cmb.SelectedItem != null)
                 {
-                    employees_types et = (employees_types)emp_types_cmb.SelectedItem;
-                    emp.Value = employees_salary_list.Where(x=>x.emp_type_id.ToString() == et.id.ToString());
+                    List<employees> employees_salary_list = empDAL.get_salary_sheet(Convert.ToInt32(month_obj.month_id), year_obj.id);
+                    ReportDataSource emp = new ReportDataSource();
+                    emp.Name = "emp";
+                    if (emp_types_cmb.SelectedItem != null && emp_types_cmb.SelectedIndex != 0)
+                    {
+                        employees_types et = (employees_types)emp_types_cmb.SelectedItem;
+                        emp.Value = employees_salary_list.Where(x => x.emp_type_id.ToString() == et.id.ToString());
+                    }
+                    else
+                    {
+                        emp.Value = employees_salary_list;
+                    }
+
+
+                    ReportDataSource ins = new ReportDataSource();
+                    List<institute> ins_list = new List<institute>();
+                    MainWindow.ins.date = DateTime.Now;
+                    MainWindow.ins.month_name = month_obj.month_name;
+                    MainWindow.ins.year = year_obj.year;
+                    MainWindow.ins.page_no = 1;
+                    ins_list.Add(MainWindow.ins);
+                    ins.Name = "ins"; //Name of the report dataset in our .RDLC file
+                    ins.Value = ins_list;
+
+                    this._reportViewer3.LocalReport.DataSources.Clear();
+                    this._reportViewer3.LocalReport.DataSources.Add(emp);
+                    this._reportViewer3.LocalReport.DataSources.Add(ins);
+                    this._reportViewer3.LocalReport.ReportEmbeddedResource = "SMS.EmployeeManagement.SalarySheet.SalarySheetReport.rdlc";
+
+                    _reportViewer3.RefreshReport();
                 }
-                else 
-                {
-                    emp.Value = employees_salary_list;
-                }
-                
-
-                ReportDataSource ins = new ReportDataSource();
-                List<institute> ins_list = new List<institute>();
-                MainWindow.ins.date = DateTime.Now;
-                MainWindow.ins.month_name = month_obj.month_name;
-                MainWindow.ins.year = year_obj.year;
-                MainWindow.ins.page_no = 1;
-                ins_list.Add(MainWindow.ins);
-                ins.Name = "ins"; //Name of the report dataset in our .RDLC file
-                ins.Value = ins_list;
-
-                this._reportViewer3.LocalReport.DataSources.Clear();
-                this._reportViewer3.LocalReport.DataSources.Add(emp);
-                this._reportViewer3.LocalReport.DataSources.Add(ins);
-                this._reportViewer3.LocalReport.ReportEmbeddedResource = "SMS.EmployeeManagement.SalarySheet.SalarySheetReport.rdlc";
-
-                _reportViewer3.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

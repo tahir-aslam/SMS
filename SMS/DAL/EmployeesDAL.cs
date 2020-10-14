@@ -173,15 +173,22 @@ namespace SMS.DAL
 
             foreach (var emp in emp_list)
             {
-                one_day_salary = 0;
-                deduction = 0;
-                List<employee_attendence> attendance_list = get_emp_attendance_by_month(Convert.ToInt32(emp.id), month, year);
-                emp.total_absents = 0;
-                emp.total_absents = attendance_list.Where(x => x.attendence == 'A').Count();
-                emp.total_days = attendance_list.Count();
-                one_day_salary = Convert.ToDouble(emp.emp_pay) / 30;
-                deduction = one_day_salary * emp.total_absents;
-                emp.deduction_amount = deduction;
+                try
+                {
+                    one_day_salary = 0;
+                    deduction = 0;
+                    List<employee_attendence> attendance_list = get_emp_attendance_by_month(Convert.ToInt32(emp.id), month, year);
+                    emp.total_absents = 0;
+                    emp.total_absents = attendance_list.Where(x => x.attendence == 'A').Count();
+                    emp.total_days = attendance_list.Count();
+                    one_day_salary = Convert.ToDouble(emp.emp_pay) / 30;
+                    deduction = one_day_salary * emp.total_absents;
+                    emp.deduction_amount = deduction;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }          
             return emp_list;
         }

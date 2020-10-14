@@ -140,7 +140,7 @@ namespace SMS.FeesManagement.FeesCollectionLedger
             {
                 fees = (sms_fees)paid_fee_grid.Items[i];
                 total_amount = total_amount + fees.amount_paid;
-                total_discount = total_discount + fees.discount;
+                total_discount = total_discount + fees.Std_discount_tution_fee;
                 total_waveoff = total_waveoff + fees.wave_off;
             }
             

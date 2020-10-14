@@ -426,9 +426,9 @@
                                             Width="Auto" />
                         <DataGridTextColumn Header="Balance"
                                             Binding="{Binding rem_amount}"
-                                            Width="Auto" />
+                                            Width="Auto" /> 
                         <DataGridTextColumn Header="Discount"
-                                            Binding="{Binding discount}"
+                                            Binding="{Binding Std_discount_tution_fee}"
                                             Width="Auto" />
                         <DataGridTextColumn Header="W.OFF"
                                             Binding="{Binding wave_off}"
@@ -441,6 +441,9 @@
                                             Width="Auto" />
                         <DataGridTextColumn Header="T.Paid"
                                             Binding="{Binding total_paid}"
+                                            Width="Auto" />
+                        <DataGridTextColumn Header="T.Discount"
+                                            Binding="{Binding discount}"
                                             Width="Auto" />
                         <DataGridTextColumn Header="T.Balance"
                                             Binding="{Binding total_remaining}"
