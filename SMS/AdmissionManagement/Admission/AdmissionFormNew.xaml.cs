@@ -1379,7 +1379,8 @@ namespace SMS.AdmissionManagement.Admission
                 obj.adm_date = DateTime.Now;
                 obj.dob.ToString("");
             }
-            
+
+            if (mode == "insert") { obj = null; }
             AdmissionFormPrint afp = new AdmissionFormPrint(obj);
             afp.ShowDialog();
             

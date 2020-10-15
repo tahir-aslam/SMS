@@ -35,8 +35,12 @@ namespace SMS.AdmissionManagement.Admission
                 this.adm_obj = adm;
                 adm_obj.institute_logo = MainWindow.ins.institute_logo;
                 adm_obj.date_time = DateTime.Now;
-                adm_obj.institute_name = MainWindow.ins.institute_name;           
-            }                
+                adm_obj.institute_name = MainWindow.ins.institute_name;
+                adm_obj.adm_date_string = adm.adm_date.ToString("dd-MMM-yyyy");
+                adm_obj.dob_string = adm.dob.ToString("dd-MMM-yyyy");
+                
+            }      
+            
             this.DataContext = adm_obj;            
         }
 

@@ -41,7 +41,7 @@
                             <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0">
                                 <TextBlock Text="Adm Date:-  "  VerticalAlignment="Center" FontSize="18" />
                                 <Border BorderThickness="0,0,0,1" BorderBrush="Gray" VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding adm_date,  StringFormat=\{0:dd-MMM-yyyy\}}"  Margin="10,0,0,0" FontWeight="Bold" Width="110"  FontStyle="Italic" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding adm_date_string}"  Margin="10,0,0,0" FontWeight="Bold" Width="110"  FontStyle="Italic" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -85,7 +85,7 @@
                             <StackPanel Orientation="Horizontal" Height="40" VerticalAlignment="Center">
                                 <TextBlock Text="5. Date Of Birth:- "  VerticalAlignment="Center" FontSize="18" />
                                 <Border BorderThickness="0,0,0,1" BorderBrush="Black" VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding dob,  StringFormat=\{0:dd-MMM-yyyy\}}" Width="450"  Margin="10,0,0,0" FontWeight="Bold" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding dob_string}" Width="450"  Margin="10,0,0,0" FontWeight="Bold" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="40" VerticalAlignment="Center">

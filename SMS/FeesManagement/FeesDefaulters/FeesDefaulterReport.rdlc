@@ -2264,7 +2264,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.36459in</Height>
+      <Height>0.31251in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -2288,7 +2288,7 @@
           <rd:DefaultName>Textbox98</rd:DefaultName>
           <Top>0.02778in</Top>
           <Left>3.57639in</Left>
-          <Height>0.28473in</Height>
+          <Height>0.27084in</Height>
           <Width>3.92708in</Width>
           <Style>
             <Border>
@@ -2310,7 +2310,7 @@
                   <Value>=First(Fields!date.Value, "ins")</Value>
                   <Style>
                     <FontSize>8pt</FontSize>
-                    <Format>f</Format>
+                    <Format>g</Format>
                     <TextDecoration>None</TextDecoration>
                     <Color>DimGray</Color>
                   </Style>
@@ -2322,7 +2322,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox72</rd:DefaultName>
-          <Top>0.01389in</Top>
           <Left>0.01389in</Left>
           <Height>0.29862in</Height>
           <Width>3.49306in</Width>
@@ -2344,9 +2343,7 @@
           <Style>None</Style>
         </Border>
         <TopBorder>
-          <Color>Black</Color>
           <Style>Solid</Style>
-          <Width>1pt</Width>
         </TopBorder>
       </Style>
     </PageFooter>

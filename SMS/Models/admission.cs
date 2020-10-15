@@ -81,6 +81,12 @@ namespace SMS.Models
 
         // SLC
         public string Last_Fee_Received { get; set; }        
+
+        //admission form
+
+        public string adm_date_string { get; set; }
+        public string issue_date_string { get; set; }
+        public string dob_string { get; set; }
     }
 }
 
