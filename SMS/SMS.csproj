@@ -1976,6 +1976,7 @@
     <EmbeddedResource Include="FeesManagement\FeesCollectionLedger\FeesCollectionLedgerReportNew.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesCollection\StduentFeeReportIndividual.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesDefaulters\FeesDefaulterReportGrouped.rdlc" />
+    <EmbeddedResource Include="FeesManagement\FeesDefaulters\FeeDefaulterReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesRegister\FeesVoucherHistoryReport.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReport1.rdlc" />
     <EmbeddedResource Include="FeesManagement\FeesVoucher\FeesVoucherReport2.rdlc" />
@@ -2325,42 +2326,42 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.Practices.ObjectBuilder2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.Practices.Unity">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
