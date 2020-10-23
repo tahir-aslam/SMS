@@ -746,8 +746,8 @@ namespace SMS.StudentManagement.StudentAttendence
                         {
                             if (submit_attendence() == 0)
                             {
-                                if (update() > 0)
-                                {
+                                //if (update() > 0)
+                                //{
                                     MessageBox.Show("Successfully Added", "Successfully Added", MessageBoxButton.OK, MessageBoxImage.Information);
                                     get_all_attendence(sections_list.Where(x => x.isChecked == true).ToList());
                                     get_all_admissions(sections_list.Where(x => x.isChecked == true).ToList());
@@ -757,7 +757,7 @@ namespace SMS.StudentManagement.StudentAttendence
                                     attendence_grid.DataContext = svm;
                                     att_button.IsEnabled = true;
                                     attendence_grid.Items.Refresh();
-                                }
+                                //}
                             }
 
                         }
