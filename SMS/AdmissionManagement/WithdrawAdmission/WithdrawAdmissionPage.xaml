@@ -67,7 +67,32 @@
             </Grid.RowDefinitions>    
             
             <Grid Grid.Row="0" Background="White" Margin="1">
-                <StackPanel Grid.Row="0"  Margin="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Grid.Row="0"  Margin="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    
+                        <DatePicker Width="135"
+                                    Name="date_picker_to"
+                                    Margin="10,0,0,0"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    SelectedDateChanged="date_picker_to_SelectedDateChanged"
+                                    BorderThickness="1"
+                                    BorderBrush="LightGray"
+                                    Background="White"
+                                    FontSize="15" />
+
+                        <DatePicker  Height="30"
+                                     Width="135"
+                                     Margin="10,0,0,0"
+                                     HorizontalAlignment="Left"
+                                     Name="date_picker_from"
+                                     VerticalAlignment="Center"
+                                     BorderThickness="1"
+                                     BorderBrush="LightGray"
+                                     Background="White"
+                                     VerticalContentAlignment="Center"
+                                     FontSize="15"
+                                     SelectedDateChanged="date_picker_SelectedDateChanged" />                        
+                    
                     <TextBox  Height="30"  Width="200"  Margin="20,0,0,0" HorizontalAlignment="Left" Name="SearchTextBox" VerticalAlignment="Center" VerticalScrollBarVisibility="Hidden"  BorderThickness="1" BorderBrush="LightGray" Background="White"  VerticalContentAlignment="Center" FontSize="16" TextChanged="SearchTextBox_TextChanged" />
                     <ComboBox Margin="10,0,0,0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="100" Height="20" VerticalAlignment="Center" Name="search_cmb" SelectedValuePath="id" SelectionChanged="search_cmb_SelectionChanged">
                         <ComboBoxItem Content="By Name" />

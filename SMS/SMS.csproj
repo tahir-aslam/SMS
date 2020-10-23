@@ -314,6 +314,9 @@
     <Compile Include="AdmissionManagement\WithdrawAdmission\WithdrawAdmissionPage.xaml.cs">
       <DependentUpon>WithdrawAdmissionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdmissionManagement\WithdrawAdmission\WithdrawlReportWindow.xaml.cs">
+      <DependentUpon>WithdrawlReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdvancedAccountManagement\AccountsLedger\AccountsLedgerPage.xaml.cs">
       <DependentUpon>AccountsLedgerPage.xaml</DependentUpon>
     </Compile>
@@ -1108,6 +1111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdmissionManagement\WithdrawAdmission\WithdrawAdmissionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdmissionManagement\WithdrawAdmission\WithdrawlReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1950,6 +1957,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdmissionManagement\Admission\BirthDayCertificate\BirthDayCertificateReport.rdlc" />
     <EmbeddedResource Include="AdmissionManagement\Admission\SchoolConfirmationCertificate\SchoolConfirmationCertificateReport.rdlc" />
+    <EmbeddedResource Include="AdmissionManagement\WithdrawAdmission\WithdrawlRegisterReport.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdvancedAccountManagement\AccountsLedger\AccountsLedgerReport.rdlc" />
     <EmbeddedResource Include="AdvancedAccountManagement\CashFlowStatement\CashFlowStatementReport.rdlc" />
     <EmbeddedResource Include="AdvancedAccountManagement\DetailedAccounts\ChartOfAccountsReport.rdlc" />

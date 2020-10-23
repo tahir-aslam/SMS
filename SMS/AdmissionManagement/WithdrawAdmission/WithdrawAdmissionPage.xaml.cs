@@ -309,13 +309,14 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
 
         private void print_btn_list_Click(object sender, RoutedEventArgs e)
         {
-            get_grid_records();
-            var dataTable = CreateSampleDataTable();
-            var columnWidths = new List<double>() { 30, 80, 60, 110, 90, 110, 80, 100, 70, 90, 90, 60 };
-            var ht = new PrintHeaderTemplates.WithdrawHeader();
-            var headerTemplate = XamlWriter.Save(ht);
-            var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
-            printControl.ShowPrintPreview();
+            sms_report report_data = new sms_report();
+            report_data.total_strength = adm_grid.Items.OfType<admission>().Select(x => x.id).Distinct().Count();
+            report_data.male_strength = adm_grid.Items.OfType<admission>().Where(x => x.boarding == "Y").Count();
+            report_data.female_strength = adm_grid.Items.OfType<admission>().Where(x => x.boarding == "N").Count();
+            report_data.session = MainWindow.session.session_name;
+
+            WithdrawlReportWindow window = new WithdrawlReportWindow(adm_grid.Items.OfType<admission>().ToList(),report_data);
+            window.Show();
         }
 
         private DataTable CreateSampleDataTable()
@@ -403,6 +404,27 @@ namespace SMS.AdmissionManagement.WithdrawAdmission
                 slc.ShowDialog();
 
             }
+        }
+
+        private void date_picker_to_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (date_picker_to.SelectedDate != null && date_picker_from.SelectedDate != null)
+            {
+                FilterRecord(date_picker_to.SelectedDate.Value, date_picker_from.SelectedDate.Value);
+            }
+        }
+
+        private void date_picker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (date_picker_to.SelectedDate != null && date_picker_from.SelectedDate != null)
+            {
+                FilterRecord(date_picker_to.SelectedDate.Value, date_picker_from.SelectedDate.Value);
+            }
+        }
+
+        void FilterRecord(DateTime sDate, DateTime eDate)
+        {
+            adm_grid.ItemsSource = adm_list.Where(x=>x.withdrawal_date.Value >= sDate).Where(x=>x.withdrawal_date.Value <= eDate);
         }
     }
 }
