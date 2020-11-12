@@ -68,7 +68,7 @@ namespace SMS.Messaging.AttendenceSms
             section_cmb.IsEnabled = false;
             
             class_cmb.ItemsSource = classes_list;
-            attendnce_date.SelectedDate = DateTime.Now;
+            //attendnce_date.SelectedDate = DateTime.Now;
             strength_textblock.Text = attendence_grid.Items.Count.ToString();
 
             if (MainWindow.ins.isMultiPartSMSAccess == "Y")
@@ -91,8 +91,7 @@ namespace SMS.Messaging.AttendenceSms
             populate_emp_vm_list();
 
             svm = new StudentViewModel(std_vm_list, group_by_att_dates);
-            attendence_grid.DataContext = svm;
-            
+            attendence_grid.DataContext = svm;           
 
         }
 

@@ -282,5 +282,19 @@ namespace SMS.DAL
                 throw ex;
             }
         }
+
+        public MySqlConnection OpenLocalDatabaseConnection(string conString)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(conString);
+                con.Open();
+                return con;
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
