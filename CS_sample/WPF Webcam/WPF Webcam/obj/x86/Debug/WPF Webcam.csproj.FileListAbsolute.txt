@@ -139,3 +139,14 @@ D:\Scenario\Github\SMS\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Web
 D:\Scenario\Github\SMS\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.g.resources
 D:\Scenario\Github\SMS\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF_Webcam.Properties.Resources.resources
 D:\Scenario\Github\SMS\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csproj.GenerateResource.Cache
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csprojResolveAssemblyReference.cache
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\MainWindow.baml
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\MainWindow.g.cs
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\App.g.cs
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam_MarkupCompile.cache
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.g.resources
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF_Webcam.Properties.Resources.resources
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csproj.GenerateResource.Cache
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.csproj.CoreCompileInputs.cache
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.exe
+E:\Scenario\GitHub\SMS\CS_sample\WPF Webcam\WPF Webcam\obj\x86\Debug\WPF Webcam.pdb

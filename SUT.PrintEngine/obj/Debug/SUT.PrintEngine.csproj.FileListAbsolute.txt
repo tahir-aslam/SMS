@@ -146,3 +146,4 @@ E:\Softwares\Github\SMS\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.Resources.
 E:\Softwares\Github\SMS\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.csproj.GenerateResource.Cache
 E:\Softwares\Github\SMS\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.dll
 E:\Softwares\Github\SMS\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.pdb
+E:\Scenario\GitHub\SMS\SUT.PrintEngine\obj\Debug\SUT.PrintEngine.csprojResolveAssemblyReference.cache

@@ -61,3 +61,11 @@ E:\Softwares\Github\SMS\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\Complaint
 E:\Softwares\Github\SMS\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintSearch.g.cs
 E:\Softwares\Github\SMS\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement_MarkupCompile.cache
 E:\Softwares\Github\SMS\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement.g.resources
+E:\Scenario\GitHub\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement.csprojResolveAssemblyReference.cache
+E:\Scenario\GitHub\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintForm.baml
+E:\Scenario\GitHub\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintSearch.baml
+E:\Scenario\GitHub\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintForm.g.cs
+E:\Scenario\GitHub\SMS\SMS.ComplaintManagement\obj\x86\Debug\View\ComplaintSearch.g.cs
+E:\Scenario\GitHub\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement_MarkupCompile.cache
+E:\Scenario\GitHub\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement.g.resources
+E:\Scenario\GitHub\SMS\SMS.ComplaintManagement\obj\x86\Debug\SMS.ComplaintManagement.csproj.CoreCompileInputs.cache
