@@ -287,9 +287,11 @@ namespace SMS.DAL
         {
             try
             {
-                MySqlConnection con = new MySqlConnection(conString);
-                con.Open();
-                return con;
+                using (MySqlConnection con = new MySqlConnection(conString))
+                {
+                    con.Open();
+                    return con;
+                }
             }
             catch (MySqlException ex)
             {

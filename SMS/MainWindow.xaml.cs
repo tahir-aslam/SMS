@@ -90,6 +90,11 @@ namespace SMS
         {
             InitializeComponent();
 
+            //new fees  
+            feesDAL = new FeesDAL();
+            miscDAL = new MiscDAL();
+            rolesDAL = new RolesDAL();
+
             try
             {
                 Database = "sms";
@@ -113,10 +118,7 @@ namespace SMS
                 get_fees_admin_panel();
 
 
-                //new fees  
-                feesDAL = new FeesDAL();
-                miscDAL = new MiscDAL();
-                rolesDAL = new RolesDAL();
+
 
                 get_all_sessions();
                 session_cmb.ItemsSource = session_list;
@@ -785,6 +787,73 @@ namespace SMS
                     outputFile.WriteLine("root");
                 }
             }
+
+            String con_string = "Server=" + Server + "; port=" + Port + "; Database=" + Database + "; Uid=" + Uid + "; Pwd=7120020@123; default command timeout=99999;CHARSET=utf8; SslMode=None;";
+            Connection_String.con_string = con_string;
+
+            // check connnection
+            try
+            {
+                miscDAL.OpenLocalDatabaseConnection(Connection_String.con_string);
+            }
+            catch (Exception ex)
+            {
+                CheckAllNetwork(con_string);
+            }
+        }
+
+        void CheckAllNetwork(string conString)
+        {
+            MessageBox.Show("Ethernet");
+            GetAllLocalIPv4(NetworkInterfaceType.Ethernet);
+            MessageBox.Show("wireless");
+            GetAllLocalIPv4(NetworkInterfaceType.Wireless80211);
+
+            string myHost = System.Net.Dns.GetHostName();
+
+            System.Net.IPHostEntry myIPs = System.Net.Dns.GetHostEntry(myHost);
+
+            // Loop through all IP addresses and display each 
+
+            foreach (System.Net.IPAddress ip in myIPs.AddressList)
+            {
+                conString = "Server=" + ip.ToString() + "; port=" + Port + "; Database=" + Database + "; Uid=" + Uid + "; Pwd=7120020@123; default command timeout=99999;CHARSET=utf8; SslMode=None;";
+                Connection_String.con_string = conString;
+                try
+                {
+                   // MessageBox.Show(ConnectionString.con_string + "     total=" + myIPs.AddressList.Count());
+                    if (ip.ToString().StartsWith("192"))
+                    {
+                        miscDAL.OpenLocalDatabaseConnection(conString);
+                        break;
+                    }
+                }
+                catch (Exception exx)
+                {
+                    //MessageBox.Show(exx.Message);
+                    //continue;
+                }
+            }
+        }
+
+        public static string[] GetAllLocalIPv4(NetworkInterfaceType _type)
+        {
+            List<string> ipAddrList = new List<string>();
+            foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                if (item.NetworkInterfaceType == _type && item.OperationalStatus == OperationalStatus.Up)
+                {
+                    foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
+                    {
+                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                        {
+                            ipAddrList.Add(ip.Address.ToString());
+                            MessageBox.Show(ip.Address.ToString());
+                        }
+                    }
+                }
+            }
+            return ipAddrList.ToArray();
         }
 
         private void help_button_Click(object sender, RoutedEventArgs e)
