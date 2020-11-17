@@ -20,7 +20,9 @@
         <Grid Grid.Row="0" Background="Black" VerticalAlignment="Center">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" >
                 <Image Name="institute_logo_img"  HorizontalAlignment="Left" Source="/SMS;component/images/harvard.jpg" Width="80" Height="70" Margin="0,1,0,1" VerticalAlignment="Center"/>
-                <Label Name="institute_name_lbl" Content="SmS" Foreground="White" FontSize="25" FontFamily="Georgia" HorizontalAlignment="Left" Margin="10,0,0,0"  VerticalAlignment="Center"/>    
+                <Label Name="institute_name_lbl" Content="SmS" Foreground="White" FontSize="25" FontFamily="Georgia" HorizontalAlignment="Left" Margin="10,0,0,0"  VerticalAlignment="Center" Visibility="Collapsed"/>
+                <Label Content="Messaging" Foreground="White" FontSize="25" FontFamily="Georgia" HorizontalAlignment="Left" Margin="10,0,0,0"  VerticalAlignment="Center" />
+
             </StackPanel>
             
             
@@ -38,6 +40,9 @@
                     <Image Source="/SMS;component/images/adm_slip.png" />
                 </Button>
                 <Button Name="exam_sms" Height="50" Width="60" Margin="5" ToolTipService.ToolTip="Examination SmS" Click="exam_sms_Click">
+                    <Image Source="/SMS;component/images/class_img.jpg" />
+                </Button>
+                <Button Name="exam_sms_new" Height="50" Width="60" Margin="5" ToolTipService.ToolTip="Examination SmS NEW" Click="exam_sms_new_Click">
                     <Image Source="/SMS;component/images/class_img.jpg" />
                 </Button>
                 <Button Name="test_sms" Height="50" Width="60" Margin="5" ToolTipService.ToolTip="Test SmS" Click="test_sms_Click">

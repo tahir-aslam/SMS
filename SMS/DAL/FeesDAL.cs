@@ -33,7 +33,6 @@ namespace SMS.DAL
                     };
                     fees_category_list.Add(fees_category);
                 }
-
             }
             catch (Exception ex)
             {

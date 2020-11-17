@@ -150,6 +150,11 @@ namespace SMS.Messaging
         {
             this.sms_frame.Navigate(new Messaging.ComplaintRegister.ComplaintSMS());
         }
+
+        private void exam_sms_new_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }

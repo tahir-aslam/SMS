@@ -19,6 +19,7 @@ using SUT.PrintEngine.Utils;
 using System.Windows.Markup;
 using System.Data;
 using System.IO;
+using SMS.Common;
 
 namespace SMS.ExamManagement.ExamResultCard
 {
@@ -619,8 +620,22 @@ namespace SMS.ExamManagement.ExamResultCard
         private void print_btn_Click(object sender, RoutedEventArgs e)
         {
             var visualSize = new Size(Result_grid_lstbox.ActualWidth, Result_grid_lstbox.ActualHeight);
-            var printControl = PrintControlFactory.Create(visualSize, Result_grid_lstbox);
-            printControl.ShowPrintPreview();
+            //var printControl = PrintControlFactory.Create(visualSize, Result_grid_lstbox);
+            //printControl.ShowPrintPreview();
+
+            PrintEngineWindow window = new PrintEngineWindow(visualSize, Result_grid_lstbox);
+            window.Show();
+
+            //DEMOApplication.MainWindow window = new DEMOApplication.MainWindow(visualSize, Result_grid_lstbox);
+            //window.Show();
+            
+
+            //var dataTable = CreateSampleDataTable();
+            //var columnWidths = new List<double>() { 30, 40, 300, 300, 150 };
+            //var ht = new HeaderTemplate();
+            //var headerTemplate = XamlWriter.Save(ht);
+            //var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
+            //printControl.ShowPrintPreview();
         }
         public void insert_total_marks_row()
         {
@@ -760,5 +775,57 @@ namespace SMS.ExamManagement.ExamResultCard
         //        MessageBox.Show(ex.Message);
         //    }
         //}
+
+
+        //------------------------ Testing printing
+
+        #region PrintDataTable
+        private void PrintDataTableClick(object sender, RoutedEventArgs e)
+        {
+            var dataTable = CreateSampleDataTable();
+            var columnWidths = new List<double>() { 30, 40, 300, 300, 150 };
+            var ht = new HeaderTemplate();
+            var headerTemplate = XamlWriter.Save(ht);
+            var printControl = PrintControlFactory.Create(dataTable, columnWidths, headerTemplate);
+            printControl.ShowPrintPreview();
+        }
+
+        private DataTable CreateSampleDataTable()
+        {
+            var dataTable = new DataTable();
+            AddColumn(dataTable, "ID", typeof(int));
+            AddColumn(dataTable, "Name", typeof(string));
+            AddColumn(dataTable, "Birth Date", typeof(DateTime));
+            AddColumn(dataTable, "Profession", typeof(string));
+            AddColumn(dataTable, "Address", typeof(string));
+
+            for (int i = 1; i < 300; i++)
+            {
+                AddRow(dataTable, i);
+            }
+            return dataTable;
+        }
+
+        private void AddRow(DataTable dataTable, int i)
+        {
+            var name = string.Format("saraf {0}", i);
+            var dob = string.Format("{0}", DateTime.Now.AddDays(-(i * 18)));
+            var profession = string.Format("Engineer {0}", i);
+            var address = string.Format("8{0} Jack Clow Road, London", i);
+            var dataRow = dataTable.NewRow();
+            dataRow[0] = i;
+            dataRow[1] = name;
+            dataRow[2] = dob;
+            dataRow[3] = profession;
+            dataRow[4] = address;
+            dataTable.Rows.Add(dataRow);
+        }
+
+        private void AddColumn(DataTable dataTable, string columnName, Type type)
+        {
+            var dataColumn = new DataColumn(columnName, type);
+            dataTable.Columns.Add(dataColumn);
+        }
+        #endregion
     }
 }

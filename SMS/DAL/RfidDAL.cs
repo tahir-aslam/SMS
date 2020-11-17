@@ -43,5 +43,85 @@ namespace SMS.DAL
             }
             return i;
         }
+        public rfid_assignment GetIDFromRfidCArdNo(string card_no)
+        {
+            int i = 0;
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.CommandText = "select * from sms_rfid_assignment where card_no=" + card_no;
+                        cmd.Connection = con;
+                        con.Open();
+
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            rfid_assignment obj = new rfid_assignment()
+                            {
+                                card_holder_id = Convert.ToInt32(reader["card_holder_id"]),
+                                is_std = Convert.ToString(reader["is_std"]),
+                            };
+                            return obj;
+                        }
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return null;
+        }
+        public int DeleteRFIDCard(string card)
+        {
+            int i = 0;
+            using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    cmd.CommandText = "Delete from sms_rfid_assignment where card_no=" + card;
+                    cmd.Connection = con;
+                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
+                    try
+                    {
+                        con.Open();
+                        i = Convert.ToInt32(cmd.ExecuteNonQuery());
+                    }
+                    catch(Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+            return i;
+        }
+
+        public int DeleteRFIDCardFromCardHolderID(int cardHolderID)
+        {
+            int i = 0;
+            using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    cmd.CommandText = "Delete from sms_rfid_assignment where card_holder_id=" + cardHolderID;
+                    cmd.Connection = con;
+                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
+                    try
+                    {
+                        con.Open();
+                        i = Convert.ToInt32(cmd.ExecuteNonQuery());
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+            return i;
+        }
     }
 }

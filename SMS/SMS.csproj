@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>E:\Scenario\Setups\SMS_2020_11_13\</PublishUrl>
+    <PublishUrl>E:\Scenario\Setups\SMS_2020_11_15\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -37,7 +37,7 @@
     <MinimumRequiredVersion>1.0.0.32</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>40</ApplicationRevision>
+    <ApplicationRevision>42</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -45,7 +45,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -138,7 +138,7 @@
     </Reference>
     <Reference Include="SUT.PrintEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\SUT.PrintEngine.dll</HintPath>
+      <HintPath>C:\Users\tahir\Downloads\WPFPrintEngine_Alpha_1\WPFPrintEngine\Source\SUT.PrintEngine\bin\Debug\SUT.PrintEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -363,6 +363,9 @@
     <Compile Include="Common\DateToAge.cs" />
     <Compile Include="Common\DateToWords.cs" />
     <Compile Include="Common\MetroMenuResources.cs" />
+    <Compile Include="Common\PrintEngineWindow.xaml.cs">
+      <DependentUpon>PrintEngineWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\ResultWindow.xaml.cs">
       <DependentUpon>ResultWindow.xaml</DependentUpon>
     </Compile>
@@ -1215,6 +1218,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Common\AuthenticateAdmin\AuthenticateAdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\PrintEngineWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

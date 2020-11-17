@@ -54,11 +54,38 @@ namespace SMS.AdmissionManagement.Admission
                             is_std = "Y",
                         };
 
+                        // check is this card assigned to any student or not
+                        rfid_assignment rfidObj = rfidDAL.GetIDFromRfidCArdNo(textInput);
+                        if (rfidObj != null)
+                        {
+                            if (rfidObj.card_holder_id.ToString() == adm_obj.id)
+                            {
+                                MessageBox.Show("Already assigned to this student");
+                            }
+                            else
+                            {
+                                MessageBoxResult mbr = MessageBox.Show("This card is already assigned to some other. Do You Want To Assign this Card to " + adm_obj.std_name, "Confirmation", MessageBoxButton.YesNo);
+                                if (mbr == MessageBoxResult.Yes)
+                                {
+                                    if (rfidDAL.DeleteRFIDCard(textInput) > 0)
+                                    {
+                                        if (rfidDAL.DeleteRFIDCardFromCardHolderID(Convert.ToInt32(adm_obj.id)) > 0)
+                                        {
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Card not deleted successfully");
+                                    }
+                                }
+                            }
+                        }
                         if (rfidDAL.InserRfidCard(obj) > 0)
                         {
                             v_register.Visibility = Visibility.Visible;
                             v_alreadyregister.Visibility = Visibility.Collapsed;
                         }
+
                         else
                         {
                             v_register.Visibility = Visibility.Collapsed;
@@ -72,12 +99,12 @@ namespace SMS.AdmissionManagement.Admission
                             v_register.Visibility = Visibility.Collapsed;
                             v_alreadyregister.Visibility = Visibility.Visible;
                         }
-                        else 
+
+                        else
                         {
                             MessageBox.Show(ex.Message);
                         }
-                        Debug.WriteLine(ex);
-                        
+                        Debug.WriteLine(ex);                        
                     }
                 }
                 else 
