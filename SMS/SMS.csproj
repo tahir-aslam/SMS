@@ -710,6 +710,9 @@
     <Compile Include="Messaging\ExamSmsNew\ExamSmsNew.xaml.cs">
       <DependentUpon>ExamSmsNew.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Messaging\ExamsSMS\ExamsSMS.xaml.cs">
+      <DependentUpon>ExamsSMS.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Messaging\FeeDefaulterSms.xaml.cs">
       <DependentUpon>FeeDefaulterSms.xaml</DependentUpon>
     </Compile>
@@ -1695,6 +1698,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Messaging\ExamSmsNew\ExamSmsNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messaging\ExamsSMS\ExamsSMS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

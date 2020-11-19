@@ -30,16 +30,17 @@ namespace SMS.Messaging.SmsOption
     /// Interaction logic for OptionWindow.xaml
     /// </summary>
     public partial class OptionWindow : Window
-    {        
-        
+    {
+        public bool IsClosed;
         public OptionWindow()
         {
             InitializeComponent();
             
         }
 
+        //gsm
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        {        
             ExamSmsNew.ExamSmsNew.isbranded = false;
             GeneralSms.isbranded = false;
             BirthdaySmsPage.isbranded = false;
@@ -55,8 +56,10 @@ namespace SMS.Messaging.SmsOption
 
         }
 
+        //branded
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            
             ExamSmsNew.ExamSmsNew.isbranded = true;
             GeneralSms.isbranded = true;
             GeneralSms.isFastSMS = false;
@@ -73,22 +76,7 @@ namespace SMS.Messaging.SmsOption
             this.Close();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            ExamSmsNew.ExamSmsNew.isbranded = false;
-            GeneralSms.isbranded = false;
-            BirthdaySmsPage.isbranded = false;
-            EmpAttendanceSmsPage.isbranded = false;
-            TestSmsPage.isbranded = false;
-            FeeDefaulterSms.isbranded = false;
-            FeePaidSms.isbranded = false;
-            FeesDefaulter.FeesDefaulterSmsPage.isbranded = false;
-            FeesPaid.FeesPaidSMSNew.isbranded = false;
-            Admission.AdmissionSMSPage.isbranded = false;
-            ComplaintRegister.ComplaintSMS.isbranded = false;
-            this.Close();
-        }
-
+        //fast sms
         private void FastSMS_Click(object sender, RoutedEventArgs e)
         {
             ExamSmsNew.ExamSmsNew.isbranded = true;
@@ -106,5 +94,25 @@ namespace SMS.Messaging.SmsOption
             ComplaintRegister.ComplaintSMS.isbranded = true;
             this.Close();
         }
+
+        //close
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            IsClosed = true;
+            ExamSmsNew.ExamSmsNew.isbranded = false;
+            GeneralSms.isbranded = false;
+            BirthdaySmsPage.isbranded = false;
+            EmpAttendanceSmsPage.isbranded = false;
+            TestSmsPage.isbranded = false;
+            FeeDefaulterSms.isbranded = false;
+            FeePaidSms.isbranded = false;
+            FeesDefaulter.FeesDefaulterSmsPage.isbranded = false;
+            FeesPaid.FeesPaidSMSNew.isbranded = false;
+            Admission.AdmissionSMSPage.isbranded = false;
+            ComplaintRegister.ComplaintSMS.isbranded = false;
+            this.Close();
+        }
+
+      
     }
 }

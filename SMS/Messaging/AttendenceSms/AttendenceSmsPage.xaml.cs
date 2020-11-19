@@ -66,7 +66,7 @@ namespace SMS.Messaging.AttendenceSms
             section_cmb.SelectedIndex = 0;
             classes_list.Insert(0, new classes() { class_name = "---Select Class---", id = "-1" });
             section_cmb.IsEnabled = false;
-            
+
             class_cmb.ItemsSource = classes_list;
             //attendnce_date.SelectedDate = DateTime.Now;
             strength_textblock.Text = attendence_grid.Items.Count.ToString();
@@ -91,7 +91,7 @@ namespace SMS.Messaging.AttendenceSms
             populate_emp_vm_list();
 
             svm = new StudentViewModel(std_vm_list, group_by_att_dates);
-            attendence_grid.DataContext = svm;           
+            attendence_grid.DataContext = svm;
 
         }
 
@@ -105,7 +105,7 @@ namespace SMS.Messaging.AttendenceSms
                 sa = (student_attendence)attendence_grid.Items[i];
                 sa.Active = checkBox.IsChecked.Value;
             }
-            attendence_grid.Items.Refresh();            
+            attendence_grid.Items.Refresh();
         }
         private void CheckBox_Checked_sub(object sender, RoutedEventArgs e)
         {
@@ -200,7 +200,7 @@ namespace SMS.Messaging.AttendenceSms
                                 total_leaves = Convert.ToString(reader["total_leaves"].ToString()),
                                 attendence = Convert.ToChar(reader["attendence"]),
                                 attendence_date = Convert.ToDateTime(reader["attendence_date"]),
-                                
+
                             };
                             all_attendence_list.Add(att);
 
@@ -245,8 +245,8 @@ namespace SMS.Messaging.AttendenceSms
                         while (reader.Read())
                         {
                             totalAbsents = Convert.ToInt32(reader[0]);
-                            totalLeaves = Convert.ToInt32(reader[1]);                            
-                            
+                            totalLeaves = Convert.ToInt32(reader[1]);
+
                         }
                     }
                 }
@@ -255,7 +255,7 @@ namespace SMS.Messaging.AttendenceSms
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         //-----------------           Populate Student view model list----------------------
@@ -278,8 +278,8 @@ namespace SMS.Messaging.AttendenceSms
                         class_id = adm.class_id,
                         section_id = adm.section_id,
                         adm_no = adm.adm_no,
-                        class_name=adm.class_name,
-                        section_name=adm.section_name,
+                        class_name = adm.class_name,
+                        section_name = adm.section_name,
                     };
 
                     std_attendence_list = new List<char>();
@@ -321,7 +321,7 @@ namespace SMS.Messaging.AttendenceSms
                     std_vm.att_date_lst = std_attendence_date_list;
                     std_vm_list.Add(std_vm);
                     break;
-                }                
+                }
             }
         }
 
@@ -430,7 +430,7 @@ namespace SMS.Messaging.AttendenceSms
                 section_cmb.ItemsSource = sections_list;
                 section_cmb.SelectedIndex = 0;
 
-                foreach (student_attendence std in std_vm_list.Where(x => x.class_id == id)) 
+                foreach (student_attendence std in std_vm_list.Where(x => x.class_id == id))
                 {
                     std_vm_list1.Add(std);
                 }
@@ -444,7 +444,7 @@ namespace SMS.Messaging.AttendenceSms
 
                 svm = new StudentViewModel(std_vm_list, group_by_att_dates);
                 attendence_grid.DataContext = svm;
-                
+
 
             }
         }
@@ -463,14 +463,14 @@ namespace SMS.Messaging.AttendenceSms
                 svm = new StudentViewModel(std_vm_list1, group_by_att_dates);
                 attendence_grid.DataContext = svm;
             }
-            else 
-            {                
+            else
+            {
                 //svm = new StudentViewModel(std_vm_list, group_by_att_dates);
                 //attendence_grid.DataContext = svm;
             }
         }
 
-      
+
         private void send_btn_Click(object sender, RoutedEventArgs e)
         {
             int absents = 0;
@@ -480,24 +480,25 @@ namespace SMS.Messaging.AttendenceSms
             string message = "";
             foreach (student_attendence st in std_vm_list.Where(x => x.Active == true))
             {
-                get_all_attendence_month(dt,st.std_id);
+                //get_all_attendence_month(dt,st.std_id);
 
                 if (st.attendence == 'A')
                 {
-                    message = "Respected Parents"+Environment.NewLine+"AoA"+Environment.NewLine+ st.std_name + " is absent from Institute on " + dt.ToString("dd MMM yyyy");
-                    message = message + " Total " + dt.ToString("MMM") + " Absentees =" + totalAbsents+" , Leave = "+totalLeaves + ". Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
+                    message = "Respected Parents" + Environment.NewLine + "AoA" + Environment.NewLine + st.std_name + " is absent from Institute on " + dt.ToString("dd MMM yyyy");
+                    message = message + Environment.NewLine + " Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
+                    //message = message + " Total " + dt.ToString("MMM") + " Absentees =" + totalAbsents+" , Leave = "+totalLeaves + ". Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
                 }
-                else 
+                else
                 {
                     message = "Respected Parents, AoA, " + st.std_name + " is on leave from Institute on " + dt.ToString("dd MMM yyyy");
-                    message = message + " Total " + dt.ToString("MMM") + " Absentees =" + totalAbsents + " , Leave = " + totalLeaves + ". Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
+                    message = message + Environment.NewLine + " Admin " + MainWindow.ins.institute_name + ". " + MainWindow.ins.institute_phone + " " + MainWindow.ins.institute_cell;
                 }
 
-                if(general_btn.IsChecked == true)
+                if (general_btn.IsChecked == true)
                 {
                     message = message_textbox.Text;
                 }
-                
+
 
                 foreach (admission adm_obj in adm_list.Where(x => x.id == st.std_id))
                 {
@@ -505,7 +506,7 @@ namespace SMS.Messaging.AttendenceSms
                     adm_obj.sms_type = "Attendance Sms";
                     std_nos.Add(adm_obj);
                     break;
-                }   
+                }
             }
             if (std_nos.Count > 0)
             {
@@ -568,20 +569,20 @@ namespace SMS.Messaging.AttendenceSms
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-           
-                if (default_btn.IsChecked == true)
-                {
-                    general_grid.Visibility = Visibility.Hidden;
-                    encodedRB.IsChecked = false;
-                    englishRB.IsChecked = true;
-                }
-                else
-                {
-                    general_grid.Visibility = Visibility.Visible;
-                    englishRB.IsChecked = true;
-                    encodedRB.IsChecked = false;
-                }
-            
+
+            if (default_btn.IsChecked == true)
+            {
+                general_grid.Visibility = Visibility.Hidden;
+                encodedRB.IsChecked = false;
+                englishRB.IsChecked = true;
+            }
+            else
+            {
+                general_grid.Visibility = Visibility.Visible;
+                englishRB.IsChecked = true;
+                encodedRB.IsChecked = false;
+            }
+
         }
 
         private void encodedRB_Checked(object sender, RoutedEventArgs e)

@@ -300,10 +300,13 @@ namespace SMS.Controls
                     break;
                 }
 
-                if (comm.IsConnected())
+                adm_obj = new admission();
+
+                if (comm.IsConnected() && port.IsOpen)
                 {
                     #region loop
                     i++;
+                    
                     try
                     {
                         if ((worker.CancellationPending == true))
@@ -317,7 +320,7 @@ namespace SMS.Controls
                         {
                             isSend = false;
                             Thread.Sleep(500);
-                            adm_obj = new admission();
+                            
 
                             adm_obj.std_name = adm.std_name;
                             adm_obj.cell_no = adm.cell_no;
