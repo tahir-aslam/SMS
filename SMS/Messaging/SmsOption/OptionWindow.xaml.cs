@@ -61,6 +61,7 @@ namespace SMS.Messaging.SmsOption
         {
             
             ExamSmsNew.ExamSmsNew.isbranded = true;
+            ExamsSMS.ExamsSMS.isbranded = true;
             GeneralSms.isbranded = true;
             GeneralSms.isFastSMS = false;
             AttendenceSms.AttendenceSmsPage.isbranded = true;
