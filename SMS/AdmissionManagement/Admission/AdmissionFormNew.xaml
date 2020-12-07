@@ -865,7 +865,7 @@
                                     BorderBrush="Gray"
                                     Background="LightBlue">
                                 <StackPanel>
-                                    <TextBlock Text="Package"
+                                    <TextBlock Text="Category"
                                                Height="30"
                                                FontSize="16"
                                                HorizontalAlignment="Center" />
