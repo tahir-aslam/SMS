@@ -302,7 +302,7 @@ namespace SMS.Controls
 
                 adm_obj = new admission();
 
-                if (comm.IsConnected() && port.IsOpen)
+                if (comm.IsConnected() && comm.IsOpen())
                 {
                     #region loop
                     i++;
