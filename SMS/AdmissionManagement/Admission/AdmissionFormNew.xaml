@@ -421,7 +421,7 @@
                                     Height="30"
                                     FontSize="16" />
 
-                        <TextBlock Text="Land Line #:   "
+                        <TextBlock Text="Whats App #:   "
                                    Grid.Row="3"
                                    Grid.Column="2"
                                    HorizontalAlignment="Right"
@@ -685,7 +685,7 @@
                                       Height="30"
                                       VerticalAlignment="Center"
                                       Name="roll_no_prefix_cmb"
-                                      SelectedValuePath="id">
+                                      SelectedValuePath="id" SelectionChanged="roll_no_prefix_cmb_SelectionChanged">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
@@ -734,7 +734,7 @@
                                       Height="30"
                                       VerticalAlignment="Center"
                                       Name="adm_no_prefix_cmb"
-                                      SelectedValuePath="id">
+                                      SelectedValuePath="id" SelectionChanged="adm_no_prefix_cmb_SelectionChanged">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">

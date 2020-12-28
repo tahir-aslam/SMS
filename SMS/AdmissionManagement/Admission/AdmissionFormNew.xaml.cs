@@ -1500,7 +1500,21 @@ namespace SMS.AdmissionManagement.Admission
             adm_list.Add(adm);
             AdmissionSlip window = new AdmissionSlip(adm_list);
             window.ShowDialog();
-        }            
-        
+        }
+
+        private void adm_no_prefix_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (adm_no_prefix_cmb.SelectedItem != null)
+            {
+
+            }
+        }
+
+        private void roll_no_prefix_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (roll_no_prefix_cmb.SelectedItem != null)
+            {
+            }
+        }
     }
 }
