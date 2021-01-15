@@ -259,9 +259,22 @@
                     <ComboBoxItem Content="By Cell#" />
                     <ComboBoxItem Content="By Father CNIC" />
                 </ComboBox>
+
+                <ComboBox HorizontalAlignment="Left"
+                               Width="120" Margin="5,0,0,0"
+                               Height="30"
+                               VerticalAlignment="Center"
+                               Name="student_type_cmb"                               
+                               SelectionChanged="student_type_cmb_SelectionChanged">
+                    <ComboBoxItem Content="All Students" IsSelected="True"/>
+                    <ComboBoxItem Content="Withdrawled" />
+                    <ComboBoxItem Content="Enrolled" />    
+                
+                    </ComboBox>
+                    
                 <ComboBox Grid.Row="0"
                           Grid.Column="1"
-                          Margin="148,0,0,0"
+                          Margin="28,0,0,0"
                           HorizontalAlignment="Left"
                           Width="130"
                           Height="30"

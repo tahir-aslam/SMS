@@ -110,8 +110,9 @@ namespace SMS.FeesManagement.ManageFees
             year_cmb.SelectedIndex = 0;
             class_cmb.SelectedIndex = 0;
 
-            date_picker_to.SelectedDate = MainWindow.session.session_start;
-            date_picker_from.SelectedDate = DateTime.Now.AddDays(20);
+            //date_picker_to.SelectedDate = MainWindow.session.session_start;
+            date_picker_to.SelectedDate = DateTime.Now.Date.AddDays(-DateTime.Now.Day);
+            date_picker_from.SelectedDate = DateTime.Now;
             //year_cmb.SelectedValue = DateTime.Now.Year;
 
             //loadingPanel(false, "", "");
@@ -754,6 +755,42 @@ namespace SMS.FeesManagement.ManageFees
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        private void student_type_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (student_type_cmb.SelectedItem != null && FeesGrid != null)
+            {
+                ICollectionView cv = CollectionViewSource.GetDefaultView(FeesGrid.ItemsSource);
+                if (student_type_cmb.SelectedItem == null)
+                {
+                    cv.Filter = null;
+                }
+                else
+                {
+                    cv.Filter = o =>
+                    {
+                        sms_fees x = o as sms_fees;
+                        if (student_type_cmb.SelectedIndex == 0)
+                        {
+                            return (x.adm_is_active == "N") || (x.adm_is_active == "Y");
+                        }
+                        else if (student_type_cmb.SelectedIndex == 1)
+                        {
+                            return (x.adm_is_active == "N");
+                        }
+                        else
+                        {
+                            return (x.adm_is_active == "Y");
+                        }
+
+                    };
+                }
+                calculate_amount();
+                calculate_selected();
+            }
+            
+           
         }
     }
 }

@@ -46,7 +46,7 @@ namespace SMS.Views.Common
 
         void MatchPassword()
         {
-            if (txtPassword.Password == MainWindow.emp_login_obj.emp_pwd)
+            if (txtPassword.Password == MainWindow.EmpAdminPassword)
             {
                 Window.GetWindow(this).DialogResult = true;
                 Window.GetWindow(this).Close();

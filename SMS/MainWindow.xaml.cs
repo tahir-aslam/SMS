@@ -45,6 +45,7 @@ namespace SMS
         public static string web_sms;
         List<emp_login> emp_login_list;
         public static emp_login emp_login_obj;
+        public static string EmpAdminPassword;
         public static List<roles> roles_list;
         public static List<roles> basic_roles_list;
         List<session> session_list;
@@ -516,11 +517,14 @@ namespace SMS
         public bool check(string uid, string pwd)
         {
             foreach (emp_login el in emp_login_list)
-            {
+            {                
                 if (el.emp_user_name == uid && el.emp_pwd == pwd)
                 {
                     emp_login_obj = new emp_login();
                     emp_login_obj = el;
+
+                    EmpAdminPassword = emp_login_list.Where(x => x.emp_id == "0").Select(x => x.emp_pwd).First();
+
                     return true;
                 }
             }
@@ -821,7 +825,7 @@ namespace SMS
                 Connection_String.con_string = conString;
                 try
                 {
-                   // MessageBox.Show(ConnectionString.con_string + "     total=" + myIPs.AddressList.Count());
+                    // MessageBox.Show(ConnectionString.con_string + "     total=" + myIPs.AddressList.Count());
                     if (ip.ToString().StartsWith("192"))
                     {
                         miscDAL.OpenLocalDatabaseConnection(conString);

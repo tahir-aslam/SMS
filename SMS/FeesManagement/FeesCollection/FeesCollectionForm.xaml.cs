@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -18,6 +19,7 @@ using SMS.FeesManagement.FeesCollectionByAmount;
 using SMS.FeeManagement.FeeSearch;
 using SMS.FeesManagement.ManageFees;
 using SMS.Common;
+using SMS.Views.Common;
 
 namespace SMS.FeesManagement.FeesCollection
 {
@@ -701,55 +703,59 @@ namespace SMS.FeesManagement.FeesCollection
                     MessageBoxResult mbr = MessageBox.Show("Do You Want To Delete This Fees Record(s) ?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     if (mbr == MessageBoxResult.Yes)
                     {
-                        List<sms_fees> feesListToBeDeleted = new List<sms_fees>();
-                        feesListToBeDeleted.Add(selectedFees);
-                        count = feesDAL.deleteGeneratedFees(feesListToBeDeleted);
-
-                        //Result Window                        
-                        sms_result_engine result_obj;
-                        List<sms_result_engine> failure_list = new List<sms_result_engine>();
-                        List<sms_result_engine> success_list = new List<sms_result_engine>();
-                        int total_success = 0;
-                        int total_failure = 0;
-
-                        foreach (var item in feesListToBeDeleted)
+                        PasswordWindow passwordWindow = new PasswordWindow();
+                        if ((bool)passwordWindow.ShowDialog())
                         {
-                            result_obj = new sms_result_engine();
-                            result_obj.serial_no = item.id;
-                            result_obj.id = item.adm_no;
-                            result_obj.action = item.std_name + " [" + item.class_name + "-" + item.section_name + "]";
+                            List<sms_fees> feesListToBeDeleted = new List<sms_fees>();
+                            feesListToBeDeleted.Add(selectedFees);
+                            count = feesDAL.deleteGeneratedFees(feesListToBeDeleted);
 
-                            if (item.amount == item.rem_amount)
+                            //Result Window                        
+                            sms_result_engine result_obj;
+                            List<sms_result_engine> failure_list = new List<sms_result_engine>();
+                            List<sms_result_engine> success_list = new List<sms_result_engine>();
+                            int total_success = 0;
+                            int total_failure = 0;
+
+                            foreach (var item in feesListToBeDeleted)
                             {
-                                total_success++;
-                                result_obj.reason = "Successfully Deleted";
-                                success_list.Add(result_obj);
+                                result_obj = new sms_result_engine();
+                                result_obj.serial_no = item.id;
+                                result_obj.id = item.adm_no;
+                                result_obj.action = item.std_name + " [" + item.class_name + "-" + item.section_name + "]";
+
+                                if (item.amount == item.rem_amount)
+                                {
+                                    total_success++;
+                                    result_obj.reason = "Successfully Deleted";
+                                    success_list.Add(result_obj);
+                                }
+                                else
+                                {
+                                    total_failure++;
+                                    result_obj.reason = item.fees_category + " Has Already Paid, It cannot be deleted";
+                                    failure_list.Add(result_obj);
+                                }
                             }
-                            else
+                            sms_result_engine resultEngineObj = new sms_result_engine();
+                            resultEngineObj.success_count = total_success;
+                            resultEngineObj.failure_count = total_failure;
+                            resultEngineObj.success_list = success_list;
+                            resultEngineObj.failure_list = failure_list;
+
+                            if (count > 0)
                             {
-                                total_failure++;
-                                result_obj.reason = item.fees_category + " Has Already Paid, It cannot be deleted";
-                                failure_list.Add(result_obj);
+
+                                MessageBox.Show("You Have Successfully Deleted " + count.ToString() + " Records", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                                loadGrid();
                             }
+
+                            ResultWindow RW = new ResultWindow(resultEngineObj);
+                            RW.ShowDialog();
+
+                            //calculate_selected();
+                            //calculate_amount();
                         }
-                        sms_result_engine resultEngineObj = new sms_result_engine();
-                        resultEngineObj.success_count = total_success;
-                        resultEngineObj.failure_count = total_failure;
-                        resultEngineObj.success_list = success_list;
-                        resultEngineObj.failure_list = failure_list;
-
-                        if (count > 0)
-                        {
-
-                            MessageBox.Show("You Have Successfully Deleted " + count.ToString() + " Records", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
-                            loadGrid();
-                        }
-
-                        ResultWindow RW = new ResultWindow(resultEngineObj);
-                        RW.ShowDialog();
-
-                        //calculate_selected();
-                        //calculate_amount();
                     }
                 }
                 else

@@ -1478,7 +1478,8 @@ namespace SMS.DAL
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         //cmd.CommandText = "GetAllRoles";
-                        cmd.CommandText = "SELECT * FROM sms_fees_generated AS fee INNER JOIN sms_admission AS adm ON fee.std_id = adm.id where DATE(fee.Date) >= @sDate && DATE(fee.Date) <= @eDate && adm.session_id= @session_id ORDER BY fee.date_time DESC";
+                        cmd.CommandText = "SELECT fee.id,fee.std_id,fee.fees_category_id,fee.fees_category,fee.amount,fee.rem_amount,fee.discount, fee.actual_amount, fee.wave_off, fee.month, fee.month_name, fee.year, fee.date, fee.due_date, fee.date_time, fee.created_by, fee.emp_id, "+
+                            "adm.std_name, adm.father_name, adm.adm_no, adm.class_id, adm.class_name, adm.section_id, adm.section_name, adm.roll_no, adm.cell_no, adm.is_active, adm.session_id FROM sms_fees_generated AS fee INNER JOIN sms_admission AS adm ON fee.std_id = adm.id where DATE(fee.Date) >= @sDate && DATE(fee.Date) <= @eDate ORDER BY fee.date_time DESC";
                         cmd.Connection = con;
                         cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = MainWindow.session.id;
                         cmd.Parameters.Add("@sDate", MySqlDbType.Date).Value = sDate;
@@ -1490,37 +1491,35 @@ namespace SMS.DAL
                         {
                             sms_fees fees = new sms_fees()
                             {
-                                id = Convert.ToInt32(reader["id"]),
-                                std_id = Convert.ToInt32(reader["std_id"]),
-                                fees_category_id = Convert.ToInt32(reader["fees_category_id"]),
-                                fees_category = Convert.ToString(reader["fees_category"].ToString()),
-                                fees_sub_category = Convert.ToString(reader["fees_sub_category"].ToString()),
-                                fees_sub_category_id = Convert.ToInt32(reader["fees_sub_category_id"]),
-                                amount = Convert.ToInt32(reader["amount"]),
-                                rem_amount = Convert.ToInt32(reader["rem_amount"]),
-                                discount = Convert.ToInt32(reader["discount"]),
-                                actual_amount = Convert.ToInt32(reader["actual_amount"]),
-                                wave_off = Convert.ToInt32(reader["wave_off"]),
-                                month = Convert.ToInt32(reader["month"]),
-                                month_name = Convert.ToString(reader["month_name"].ToString()),
-                                class_id = Convert.ToInt32(reader["class_id"]),
-                                class_name = Convert.ToString(reader["class_name"]),
-                                section_id = Convert.ToInt32(reader["section_id"]),
-                                section_name = Convert.ToString(reader["section_name"]),
-                                year = Convert.ToInt32(reader["year"]),
-                                date = Convert.ToDateTime(reader["date"]),
-                                due_date = Convert.ToDateTime(reader["due_date"]),
-                                session_id = Convert.ToInt32(reader["session_id"].ToString()),
-                                is_active = Convert.ToString(reader["is_active"].ToString()),
-                                created_by = Convert.ToString(reader["created_by"].ToString()),
-                                emp_id = Convert.ToInt32(reader["emp_id"].ToString()),
-                                date_time = Convert.ToDateTime(reader["date_time"].ToString()),
-
-                                std_name = Convert.ToString(reader["std_name"]),
-                                father_name = Convert.ToString(reader["father_name"]),
-                                adm_no = Convert.ToString(reader["adm_no"]),
-                                roll_no = Convert.ToString(reader["roll_no"]),
-                                cell_no = Convert.ToString(reader["cell_no"]),
+                                id = Convert.ToInt32(reader[0]),
+                                std_id = Convert.ToInt32(reader[1]),
+                                fees_category_id = Convert.ToInt32(reader[2]),
+                                fees_category = Convert.ToString(reader[3].ToString()),                                
+                                amount = Convert.ToInt32(reader[4]),
+                                rem_amount = Convert.ToInt32(reader[5]),
+                                discount = Convert.ToInt32(reader[6]),
+                                actual_amount = Convert.ToInt32(reader[7]),
+                                wave_off = Convert.ToInt32(reader[8]),
+                                month = Convert.ToInt32(reader[9]),
+                                month_name = Convert.ToString(reader[10].ToString()),
+                                year = Convert.ToInt32(reader[11]),
+                                date = Convert.ToDateTime(reader[12]),
+                                due_date = Convert.ToDateTime(reader[13]),                                
+                                date_time = Convert.ToDateTime(reader[14].ToString()),
+                                created_by = Convert.ToString(reader[15].ToString()),
+                                emp_id = Convert.ToInt32(reader[16].ToString()),                                                              
+                                
+                                std_name = Convert.ToString(reader[17]),
+                                father_name = Convert.ToString(reader[18]),
+                                adm_no = Convert.ToString(reader[19]),
+                                class_id = Convert.ToInt32(reader[20]),
+                                class_name = Convert.ToString(reader[21]),
+                                section_id = Convert.ToInt32(reader[22]),
+                                section_name = Convert.ToString(reader[23]),
+                                roll_no = Convert.ToString(reader[24]),
+                                cell_no = Convert.ToString(reader[25]),
+                                adm_is_active = Convert.ToString(reader[26]),
+                                session_id = Convert.ToInt32(reader[27].ToString()),                                
                             };
                             fees_list.Add(fees);
                         }
@@ -2122,23 +2121,7 @@ namespace SMS.DAL
                                 total_amount = Convert.ToInt32(reader[16]),
                                 total_paid = Convert.ToInt32(reader[17]),    
                                 date = Convert.ToDateTime(reader[18]),
-                                std_id = Convert.ToInt32(reader[19]),
-                                
-                                //std_name = Convert.ToString(reader["adm.std_name"].ToString()),
-                                //father_name = Convert.ToString(reader["adm.father_name"].ToString()),
-                                //class_name = Convert.ToString(reader["adm.class_name"].ToString()),
-                                //roll_no = Convert.ToString(reader["adm.roll_no"].ToString()),
-                                //class_id = Convert.ToInt32(reader["adm.class_id"]),
-                                //section_id = Convert.ToInt32(reader["adm.section_id"]),
-                                //section_name = Convert.ToString(reader["adm.section_name"].ToString()),
-                                //cell_no = Convert.ToString(reader["adm.cell_no"].ToString()),
-                                //adm_no = Convert.ToString(reader["adm.adm_no"].ToString()),
-                                //fees_generated_id = Convert.ToInt32(reader["fv.fees_generated_id"]),
-                                //receipt_no_full = Convert.ToString(reader["fv.receipt_no_full"].ToString()),
-                                //receipt_no = Convert.ToInt32(reader["fv.receipt_no"]),
-                                //total_amount = Convert.ToInt32(reader["fv.total_amount"]),
-                                //total_paid = Convert.ToInt32(reader["fv.total_paid"]),
-                                //amount = Convert.ToInt32(reader["fee.rem_amount"]),
+                                std_id = Convert.ToInt32(reader[19]),                                
                             };
                             list.Add(voucher);
                         }
