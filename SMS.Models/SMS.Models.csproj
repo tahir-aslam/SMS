@@ -17,7 +17,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -48,8 +48,8 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
+    <Reference Include="Google.Protobuf, Version=3.14.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.14.0\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
@@ -62,9 +62,6 @@
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.22\lib\net452\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data.Entity.EF6, Version=6.10.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.Entity.6.10.9\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data.EntityFramework, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.EntityFramework.8.0.22\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
@@ -92,6 +89,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
@@ -108,11 +106,415 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\SMSDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMSDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMSDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMSDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMSDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_accounts.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_accounts_category.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_accounts_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_account_entry.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_account_entry_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_account_types.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_admission.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_admission_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_bank_details.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_branches.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_chart_of_accounts.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_city_area.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_classes.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_classes_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_complaint_from.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_complaint_register.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_complaint_status.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_complaint_type.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_device_info.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_attendance.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_attendence.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_attendence_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_designation.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_image.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_login.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_login_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_thumb_enroll.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_title.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_emp_types.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exam.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exams.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exams_data_entry.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exams_date_sheet.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exams_subjects.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exams_subjects_group.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exams_subject_assignment.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exams_subject_type.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exams_types.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exam_admin_panel.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exam_data_entry.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exam_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exam_entry.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_exam_requirements.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fee.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_actual.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_admin_panel.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_category.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_classes.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_collection_place.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_generated.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_note.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_package.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_paid.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_sub_category.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_types.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_voucher.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fees_voucher_history.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fee_admin_panel.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fee_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fee_history_by_amount.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fee_note.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fee_paid.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fee_paid_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fee_vouchers.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_finance_type.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fine.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fine_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_fine_types.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_finger_types.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_freind_type.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_friend_list.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_friend_list_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_history.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_institute.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_investments.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_investments_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_investors.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_investors_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_last_receipt_no.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_months.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_other_fee.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_other_fee_types.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_prefix_admission_no.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_prefix_roll_no.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_rfid_assignment.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_roles.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_roles_assignment.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_roles_assignment_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_roll_no.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_saved.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_saved_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_sessions.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_settings.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_sms_queue.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_sms_receiver_type.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_sms_type.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_student_attendence.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_subject.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_subjects.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_subjects_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_subject_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_voucher.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_voucher_cancel.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_voucher_entries.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_voucher_types.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sms_years.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_admin_login.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_datesheet.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_datesheets.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_events.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_events_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_events_images.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_events_images_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_latest_news.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_messages.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_messages_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_notification.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_online_admission.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_slider_images.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\web_slider_images_deleted.cs">
+      <DependentUpon>SMSDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Models\SMSDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SMSDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\SMSDataModel.edmx.diagram">
+      <DependentUpon>SMSDataModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Models\SMSDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SMSDataModel.edmx</DependentUpon>
+      <LastGenOutput>SMSDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SMSDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SMSDataModel.edmx</DependentUpon>
+      <LastGenOutput>SMSDataModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
