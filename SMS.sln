@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS", "SMS\SMS.csproj", "{23FC9054-B931-4AAB-84BC-B0942D174359}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.DAL", "SMS.DAL\SMS.DAL.csproj", "{9DE549EC-84FA-48D3-BA15-710A4477D364}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Core", "SMS.Core\SMS.Core.csproj", "{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Models", "SMS.Models\SMS.Models.csproj", "{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,8 +107,23 @@ Global
 		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Release|x86.ActiveCfg = Release|Any CPU
 		{86B98369-2BA4-4F86-8E38-CA38BBDEEAFF}.Release|x86.Build.0 = Release|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Debug|x86.Build.0 = Debug|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Release|x86.ActiveCfg = Release|Any CPU
+		{B10A9EBE-D0BC-4F60-A605-7C58091D62C0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EAD02C08-AE2A-4F44-AA56-3EC6395B4AF4}
 	EndGlobalSection
 EndGlobal
