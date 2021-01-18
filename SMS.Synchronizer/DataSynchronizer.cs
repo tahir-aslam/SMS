@@ -14,12 +14,20 @@ namespace SMS.Synchronizer
         #region Fields
         private static DataSynchronizer instance;
         public static object syncRoot = new object();
+        private readonly smsEntitiesConnectionString context;
+        private BackgroundWorker bw = new BackgroundWorker();
         #endregion
 
         #region Ctors       
         private DataSynchronizer()
         {
-            context
+            context = new smsEntitiesConnectionString();
+
+            bw.WorkerReportsProgress = true;
+            bw.WorkerSupportsCancellation = true;
+            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            bw.ProgressChanged += new ProgressChangedEventHandler(bw_ProgressChanged);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);                  
         }
         #endregion
 
@@ -41,46 +49,47 @@ namespace SMS.Synchronizer
         #endregion
 
         #region Methods
-        public void ExecuteOnMainThread(Action action)
+        private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            //Application.Current.Dispatcher.BeginInvokeOnMainThread(action);
+            BackgroundWorker worker = sender as BackgroundWorker;
+            
+            List<sms_admission> admList = context.sms_admission.ToList();
+
         }
-        public void ExecuteAsync(Action execute, Action completionAction, bool showBusyIndicator = false,
-            string busyIndicatorMsg = "")
+        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var bw = new BackgroundWorker();
-            bw.DoWork += (sender, args) => execute();
-            bw.RunWorkerCompleted += (sender, args) =>
+            if ((e.Cancelled == true))
             {
-
-                if (showBusyIndicator)
-                    HideBusyInidicator();
-
-                if (completionAction != null)
-                {
-                    completionAction();
-                }
-            };
-
-            if (showBusyIndicator)
-                ShowBusyInidicator(busyIndicatorMsg);
-
-            bw.RunWorkerAsync();
+                //cancel_btn.Visibility = Visibility.Hidden;
+                //uploader_btn.Visibility = Visibility.Visible;
+                //this.status_textblock.Text = "Canceled!";
+            }
+            else if (!(e.Error == null))
+            {
+                //cancel_btn.Visibility = Visibility.Hidden;
+                //uploader_btn.Visibility = Visibility.Visible;
+                //this.status_textblock.Text = ("Error: " + e.Error.Message);
+            }
+            else
+            {
+                //uploader_btn.Visibility = Visibility.Hidden;
+                //cancel_btn.Visibility = Visibility.Hidden;
+                //finsish_btn.Visibility = Visibility.Visible;
+                //this.status_textblock.Text = "  Successfully Updated!";
+            }
         }
 
-        #region Busy Indicator
-
-        public void ShowBusyInidicator(string message = null)
+        private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            //SendBusyIndicatorMessage(true, busyNoticeDetails: message);
+            //progressbar.Maximum = maximum;
+            //uploader_content_total_textblock.Text = Convert.ToString(maximum);
+            //this.progressbar_textblock.Text = (e.ProgressPercentage.ToString() + "%");
+            //this.progressbar.Value = j;
+            //this.uploader_content_textblock.Text = j.ToString();
+            //this.effective_rows_tb.Text = effective_rows.ToString() + "  Effective Row(s)";
+            //this.records_chnges_tb.Text = records_changes;
+
         }
-
-        public void HideBusyInidicator()
-        {            
-        }
-
-
-        #endregion
         #endregion
 
         #region Commands
