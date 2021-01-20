@@ -16,6 +16,7 @@ using SMS.Models;
 using MySql.Data.MySqlClient;
 using System.IO;
 using System.Net;
+using SMS.Synchronizer;
 
 namespace SMS.Controls
 {
@@ -61,34 +62,34 @@ namespace SMS.Controls
         public DataUploader()
         {
             InitializeComponent();
+            this.DataContext = DataSynchronizer.Instance;
             
-            
-            get_all_admissions();            
-            get_notification();
-            get_all_slider_images();
-            get_all_events();
-            get_all_event_images();
-            get_all_messages();
-            get_all_classes();
-            get_all_sections();
-            get_all_subjects();
-            get_all_employees();
-            get_institute();
-            get_all_paid_fee();
+            //get_all_admissions();            
+            //get_notification();
+            //get_all_slider_images();
+            //get_all_events();
+            //get_all_event_images();
+            //get_all_messages();
+            //get_all_classes();
+            //get_all_sections();
+            //get_all_subjects();
+            //get_all_employees();
+            //get_institute();
+            //get_all_paid_fee();
             
 
-            maximum = adm_list.Count  + 1 + slider_images_list.Count + events_list.Count + events_images_list.Count + messages_list.Count + classes_list.Count + sections_list.Count + subjects_list.Count + emp_list.Count +1 + paid_fee_list.Count   ;
+            //maximum = adm_list.Count  + 1 + slider_images_list.Count + events_list.Count + events_images_list.Count + messages_list.Count + classes_list.Count + sections_list.Count + subjects_list.Count + emp_list.Count +1 + paid_fee_list.Count   ;
 
-            uploader_btn.Visibility = Visibility.Visible;
-            progressbar.Minimum = 0;
-            progressbar.Maximum = maximum ;
-            uploader_content_total_textblock.Text =Convert.ToString(maximum);
+            //uploader_btn.Visibility = Visibility.Visible;
+            //progressbar.Minimum = 0;
+            //progressbar.Maximum = maximum ;
+            //uploader_content_total_textblock.Text =Convert.ToString(maximum);
 
-            bw.WorkerReportsProgress = true;
-            bw.WorkerSupportsCancellation = true;
-            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
-            bw.ProgressChanged += new ProgressChangedEventHandler(bw_ProgressChanged);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            //bw.WorkerReportsProgress = true;
+            //bw.WorkerSupportsCancellation = true;
+            //bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            //bw.ProgressChanged += new ProgressChangedEventHandler(bw_ProgressChanged);
+            //bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
         }
 
         private void uploader_btn_Click(object sender, RoutedEventArgs e)
@@ -1048,7 +1049,6 @@ namespace SMS.Controls
                 this.status_textblock.Text = "  Successfully Updated!";
             }
         }
-
         private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressbar.Maximum = maximum;

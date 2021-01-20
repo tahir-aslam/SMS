@@ -13,7 +13,7 @@ namespace SMS.Synchronizer
     {
         #region Fields
         private static DataSynchronizer instance;
-        public static object syncRoot = new object();
+        private static object syncRoot = new object();
         private readonly smsEntitiesConnectionString context;
         private BackgroundWorker bw = new BackgroundWorker();
         #endregion
@@ -27,7 +27,9 @@ namespace SMS.Synchronizer
             bw.WorkerSupportsCancellation = true;
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.ProgressChanged += new ProgressChangedEventHandler(bw_ProgressChanged);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);                  
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+
+            bw.RunWorkerAsync();
         }
         #endregion
 

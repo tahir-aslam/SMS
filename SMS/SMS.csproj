@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SMS</RootNamespace>
     <AssemblyName>SMS</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -2422,6 +2422,10 @@
     <ProjectReference Include="..\SMS.Core\SMS.Core.csproj">
       <Project>{86b98369-2ba4-4f86-8e38-ca38bbdeeaff}</Project>
       <Name>SMS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMS.Synchronizer\SMS.Synchronizer.csproj">
+      <Project>{d25e7eee-5723-4a23-824b-1b40cc081b0c}</Project>
+      <Name>SMS.Synchronizer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
