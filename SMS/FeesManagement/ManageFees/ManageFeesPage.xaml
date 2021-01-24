@@ -362,7 +362,8 @@
                           Margin="0,2,0,-2"
                           CanUserAddRows="False"
                           CanUserDeleteRows="False"
-                          Grid.ColumnSpan="2">
+                          Grid.ColumnSpan="2"
+                          SelectionMode="Single">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="45">
                             <DataGridTemplateColumn.HeaderTemplate>

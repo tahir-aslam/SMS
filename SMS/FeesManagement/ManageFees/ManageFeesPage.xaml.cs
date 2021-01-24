@@ -95,15 +95,18 @@ namespace SMS.FeesManagement.ManageFees
             //_panelLoading = true;
             SearchTextBox.Focus();
 
-            try
-            {
-                adm_list = admissionDAL.get_all_admissions();
-                fees_list = feesDAL.get_all_fees_generated();
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            //try
+            //{
+            //    adm_list = admissionDAL.get_all_admissions();
+            //    fees_list = feesDAL.get_all_fees_generated();
+            //}
+            //catch (Exception ex) { MessageBox.Show(ex.Message); }
 
+            //FeesGrid.ItemsSource = fees_list;
+            //calculate_amount();
+
+            fees_list = new List<sms_fees>();
             FeesGrid.ItemsSource = fees_list;
-            calculate_amount();
 
             fees_category_cmb.SelectedIndex = 0;
             month_cmb.SelectedIndex = 0;
@@ -357,7 +360,7 @@ namespace SMS.FeesManagement.ManageFees
                 {
                     PanelLoading = true;
                     dt = date_picker_from.SelectedDate.Value;
-                    fees_list = feesDAL.get_all_fees_generated_by_date(date_picker_to.SelectedDate.Value, date_picker_from.SelectedDate.Value);
+                     fees_list = feesDAL.get_all_fees_generated_by_date(date_picker_to.SelectedDate.Value, date_picker_from.SelectedDate.Value);
                     collectionView = new ListCollectionView(fees_list);
                     FeesGrid.ItemsSource = collectionView;
                     calculate_amount();
@@ -593,12 +596,9 @@ namespace SMS.FeesManagement.ManageFees
             FeesGrid.SelectedItem = e.Source;
             sms_fees fee = new sms_fees();
             fee = (sms_fees)FeesGrid.SelectedItem;
-            foreach (sms_fees item in fees_list)
+            foreach (sms_fees item in fees_list.Where(x => x.id == fee.id))
             {
-                if (fee.id == item.id)
-                {
-                    item.isChecked = checkBox.IsChecked.Value;
-                }
+                item.isChecked = checkBox.IsChecked.Value;
             }
             calculate_selected();
         }
@@ -789,8 +789,8 @@ namespace SMS.FeesManagement.ManageFees
                 calculate_amount();
                 calculate_selected();
             }
-            
-           
+
+
         }
     }
 }

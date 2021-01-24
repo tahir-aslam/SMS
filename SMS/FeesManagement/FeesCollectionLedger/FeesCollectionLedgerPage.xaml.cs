@@ -196,9 +196,7 @@ namespace SMS.FeesManagement.FeesCollectionLedger
                 calculate_amount();
             }
             SearchTextBox.Focus();
-        }        
-
-        
+        }                
 
         private void click_refresh(object sender, RoutedEventArgs e)
         {
@@ -291,7 +289,7 @@ namespace SMS.FeesManagement.FeesCollectionLedger
             cv.Filter = o =>
             {
                 sms_fees f = o as sms_fees;
-                if (getMonth(f) && getYear(f) && getFeesCategory(f) && getClasses(f) && getSections(f) && getemployees(f) && getFeesCollectionPlace(f))
+                if (getemployees(f) && getMonth(f) && getYear(f) && getFeesCategory(f) && getClasses(f) && getSections(f) && getFeesCollectionPlace(f))
                 {
                     return true;
                 }
@@ -302,16 +300,25 @@ namespace SMS.FeesManagement.FeesCollectionLedger
 
         bool getClasses(sms_fees f)
         {
-            bool check;
+            bool check = false;
             //classes cl = (classes)class_cmb.SelectedItem;
             foreach (var item in classes_list.Where(x=>x.IsChecked == true).Where(x=>x.id != "-1"))
             {
-                if (f.class_id.ToString() == item.id)
+                if (f.class_id.ToString() != item.id)
                 {
-                    return true;
+                    check = true; // not found
                 }
             }
-            return false;
+
+            //if not found return false
+            if (check)
+            {
+                return false;
+            }
+            else 
+            {
+                return true;
+            }
         }
         bool getSections(sms_fees f)
         {

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
-using SMS.Models.Models;
 
 namespace SMS.Synchronizer
 {
@@ -14,14 +13,14 @@ namespace SMS.Synchronizer
         #region Fields
         private static DataSynchronizer instance;
         private static object syncRoot = new object();
-        private readonly smsEntitiesConnectionString context;
+        //private readonly smsEntitiesConnectionString context;
         private BackgroundWorker bw = new BackgroundWorker();
         #endregion
 
         #region Ctors       
         private DataSynchronizer()
         {
-            context = new smsEntitiesConnectionString();
+           // context = new smsEntitiesConnectionString();
 
             bw.WorkerReportsProgress = true;
             bw.WorkerSupportsCancellation = true;
@@ -55,7 +54,7 @@ namespace SMS.Synchronizer
         {
             BackgroundWorker worker = sender as BackgroundWorker;
             
-            List<sms_admission> admList = context.sms_admission.ToList();
+            //List<sms_admission> admList = context.sms_admission.ToList();
 
         }
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -96,7 +95,5 @@ namespace SMS.Synchronizer
 
         #region Commands
         #endregion
-
-
     }
 }
