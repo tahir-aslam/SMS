@@ -349,6 +349,62 @@ namespace SMS.FeesManagement.ManageFees
             ManageFeesReportWindow window = new ManageFeesReportWindow(list);
             window.Show();
         }
+        private void print_wavepff_btn_Click(object sender, RoutedEventArgs e)
+        {
+            string r_classes = "All";
+            string r_sections = "All";
+            string r_fees_Category = "All";
+            string r_months = "All";
+            string r_years = "All";
+
+            if (class_cmb.SelectedIndex != 0)
+            {
+                classes cl = (classes)class_cmb.SelectedItem;
+                r_classes = cl.class_name;
+
+                if (section_cmb.SelectedIndex != 0)
+                {
+                    sections sec = (sections)section_cmb.SelectedItem;
+                    r_sections = sec.section_name;
+                }
+            }
+
+            if (fees_category_cmb.SelectedIndex != 0)
+            {
+                sms_fees_category category = (sms_fees_category)fees_category_cmb.SelectedItem;
+                r_fees_Category = category.fees_category;
+            }
+
+            if (month_cmb.SelectedIndex != 0)
+            {
+                sms_months month = (sms_months)month_cmb.SelectedItem;
+                r_months = month.month_name;
+            }
+
+            if (year_cmb.SelectedIndex != 0)
+            {
+                sms_years year = (sms_years)year_cmb.SelectedItem;
+                r_years = year.year;
+            }
+
+
+            List<sms_fees> list = new List<sms_fees>();
+            for (int i = 0; i < FeesGrid.Items.Count; i++)
+            {
+                sms_fees obj = FeesGrid.Items[i] as sms_fees;
+                obj.toDate = date_picker_to.SelectedDate.Value;
+                obj.fromDate = date_picker_from.SelectedDate.Value;
+                obj.r_classes = r_classes;
+                obj.r_sections = r_sections;
+                obj.r_months = r_months;
+                obj.r_years = r_years;
+
+                list.Add(obj);
+            }
+            ManageFeesReportWindow window = new ManageFeesReportWindow(list.Where(x=>x.wave_off > 0).ToList(),"WaveOff");
+            window.Show();
+        }
+
 
         private void date_picker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -792,5 +848,7 @@ namespace SMS.FeesManagement.ManageFees
 
 
         }
+
+       
     }
 }

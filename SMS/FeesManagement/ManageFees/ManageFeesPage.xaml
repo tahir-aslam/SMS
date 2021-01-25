@@ -58,7 +58,14 @@
                         <Image Source="/SMS;component/images/Refresh.png" />
                     </Button>
 
-                    <Button ToolTipService.ToolTip="Print"
+                    <Button ToolTipService.ToolTip="Print Wave Off Fee (Portrait)"
+                            Height="35"
+                            Width="50"
+                            Name="print_wavepff_btn"
+                            Click="print_wavepff_btn_Click">
+                        <Image Source="/SMS;component/images/print3.jpg" />
+                    </Button>
+                    <Button ToolTipService.ToolTip="Print Generated Fee (Portrait)"
                             Height="35"
                             Width="50"
                             Name="print_btn"

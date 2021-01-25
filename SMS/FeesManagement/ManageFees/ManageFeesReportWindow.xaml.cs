@@ -21,11 +21,13 @@ namespace SMS.FeesManagement.ManageFees
     public partial class ManageFeesReportWindow : Window
     {
         List<sms_fees> fees_list;
+        string reportType = "";
 
-        public ManageFeesReportWindow(List<sms_fees> lst)
+        public ManageFeesReportWindow(List<sms_fees> lst, string reportType = "")
         {
             InitializeComponent();
             fees_list = lst;
+            this.reportType = reportType;
             _reportViewer.Load += _reportViewer_Load;
         }
 
@@ -45,7 +47,14 @@ namespace SMS.FeesManagement.ManageFees
 
             this._reportViewer.LocalReport.DataSources.Add(fees);
             this._reportViewer.LocalReport.DataSources.Add(ins);
-            this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.FeesManagement.ManageFees.ManageFeesReport.rdlc";
+            if (reportType == "WaveOff")
+            {
+                this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.FeesManagement.ManageFees.FeesWaveOffReport.rdlc";
+            }
+            else
+            {
+                this._reportViewer.LocalReport.ReportEmbeddedResource = "SMS.FeesManagement.ManageFees.ManageFeesReport.rdlc";
+            }
 
             _reportViewer.RefreshReport();
 

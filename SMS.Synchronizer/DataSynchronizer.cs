@@ -35,9 +35,9 @@ namespace SMS.Synchronizer
         #endregion
 
         #region Properties
-        public static DataSynchronizer Instance 
+        public static DataSynchronizer Instance
         {
-            get 
+            get
             {
                 if (instance == null)
                 {
@@ -55,8 +55,8 @@ namespace SMS.Synchronizer
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            
-            List<sms_admission> admList = context.sms_admission.ToList();
+
+            List<sms_admission> admList = context.sms_admission.Where(x => x.insertion == "true").ToList();
 
         }
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
