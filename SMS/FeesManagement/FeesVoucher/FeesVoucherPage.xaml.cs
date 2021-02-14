@@ -356,7 +356,7 @@ namespace SMS.FeesManagement.FeesVoucher
 
                             }
 
-                            if (fees_list != null)
+                            if (fees_list != null && fees_list.Count > 0)
                             {
 
                                 total_amount = fees_list.Select(x => x.rem_amount).Sum();
@@ -586,6 +586,10 @@ namespace SMS.FeesManagement.FeesVoucher
                                 voucher_type_cmb.SelectedIndex = 0;
                             }
                             #endregion
+                        }
+                        else 
+                        {
+                            MessageBox.Show("No Pending Fees Found.");
                         }
                     }
                     catch (Exception ex)
