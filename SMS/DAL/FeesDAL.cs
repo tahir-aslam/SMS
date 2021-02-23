@@ -1479,7 +1479,7 @@ namespace SMS.DAL
                     {
                         //cmd.CommandText = "GetAllRoles";
                         cmd.CommandText = "SELECT fee.id,fee.std_id,fee.fees_category_id,fee.fees_category,fee.amount,fee.rem_amount,fee.discount, fee.actual_amount, fee.wave_off, fee.month, fee.month_name, fee.year, fee.date, fee.due_date, fee.date_time, fee.created_by, fee.emp_id, "+
-                            "adm.std_name, adm.father_name, adm.adm_no, adm.class_id, adm.class_name, adm.section_id, adm.section_name, adm.roll_no, adm.cell_no, adm.is_active, adm.session_id FROM sms_fees_generated AS fee Left JOIN sms_admission AS adm ON fee.std_id = adm.id && adm.session_id=(Select Max(adm_inner.session_id) from sms_admission as adm_inner where adm_inner.id=adm.id) where DATE(fee.Date) >= @sDate && DATE(fee.Date) <= @eDate ORDER BY fee.date_time DESC";
+                            "adm.std_name, adm.father_name, adm.adm_no, adm.class_id, adm.class_name, adm.section_id, adm.section_name, adm.roll_no, adm.cell_no, adm.is_active, adm.session_id FROM sms_fees_generated AS fee Inner JOIN sms_admission AS adm ON fee.std_id = adm.id && adm.session_id=(Select Max(adm_inner.session_id) from sms_admission as adm_inner where adm_inner.id=adm.id) where DATE(fee.Date) >= @sDate && DATE(fee.Date) <= @eDate ORDER BY fee.date_time DESC";
                         cmd.Connection = con;
                         cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = MainWindow.session.id;
                         cmd.Parameters.Add("@sDate", MySqlDbType.Date).Value = sDate;

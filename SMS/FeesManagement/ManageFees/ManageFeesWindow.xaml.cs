@@ -225,38 +225,45 @@ namespace SMS.FeesManagement.ManageFees
                 MessageBoxResult mbr = MessageBox.Show("Do You Want To Update The Record?", "Update Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (mbr == MessageBoxResult.Yes)
                 {
-                    if (obj.rem_amount > 0 && obj.rem_amount >= Convert.ToInt32(waveoff_textbox.Text))
+                    if (obj.rem_amount >= Convert.ToInt32(waveoff_textbox.Text))
                     {
-                        try
+                        if ((obj.rem_amount - Convert.ToInt32(waveoff_textbox.Text)) <= obj.amount)
                         {
-                            obj.amount = obj.amount;
-                            obj.rem_amount = obj.rem_amount - Convert.ToInt32(waveoff_textbox.Text);
-                            obj.wave_off = obj.wave_off + Convert.ToInt32(waveoff_textbox.Text);
-                            obj.created_by = MainWindow.emp_login_obj.emp_user_name;
-                            obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
-                            obj.date_time = DateTime.Now;
-                        }
-                        catch (Exception ex)
-                        {
-                            obj.wave_off = 0;
-                        }
-                        try
-                        {
-                            if (feesDAL.updateFeesGenerated(obj) > 0)
+                            try
                             {
-                                MessageBox.Show(" Successfully Updated Students Fees", " Updated Generated", MessageBoxButton.OK, MessageBoxImage.Information);
+                                obj.amount = obj.amount;
+                                obj.rem_amount = obj.rem_amount - Convert.ToInt32(waveoff_textbox.Text);
+                                obj.wave_off = obj.wave_off + Convert.ToInt32(waveoff_textbox.Text);
+                                obj.created_by = MainWindow.emp_login_obj.emp_user_name;
+                                obj.emp_id = Convert.ToInt32(MainWindow.emp_login_obj.emp_id);
+                                obj.date_time = DateTime.Now;
+                            }
+                            catch (Exception ex)
+                            {
+                                obj.wave_off = 0;
+                            }
+                            try
+                            {
+                                if (feesDAL.updateFeesGenerated(obj) > 0)
+                                {
+                                    MessageBox.Show(" Successfully Updated Students Fees", " Updated Generated", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                                }
+                                else
+                                {
+                                    MessageBox.Show("There is Some Error, Please Try Again", " Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                                this.Close();
+                                //mfp.load_grid();
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                MessageBox.Show("There is Some Error, Please Try Again", " Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                MessageBox.Show(ex.Message);
                             }
-                            this.Close();
-                            //mfp.load_grid();
                         }
-                        catch (Exception ex)
+                        else 
                         {
-                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Remaining amount - Wave off amount should not be greater than original amount.", " Error", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                         }
                     }
                     else
