@@ -389,11 +389,15 @@ namespace SMS.MainScreen
                         }
                         if (rol.id == "115" && rol.is_active == "Y")
                         {
-                            results_card_btn.Visibility = Visibility.Visible;
+                            result_card_btn_new.Visibility = Visibility.Visible;
                         }
                         if (rol.id == "116" && rol.is_active == "Y")
                         {
                             date_sheet_btn.Visibility = Visibility.Visible;
+                        }
+                        if (rol.id == "117" && rol.is_active == "Y")
+                        {
+                            exams_roll_no_slip_btn.Visibility = Visibility.Visible;
                         }
 
                         // SMS Management
@@ -645,6 +649,41 @@ namespace SMS.MainScreen
                         {
                             balance_sheet_btn.Visibility = Visibility.Visible;
                         }
+
+                        // Exams Management
+                        if (rol.module_id == "110")
+                        {
+                            exams_mgmt_tab.Visibility = Visibility.Visible;
+                        }
+                        if (rol.module_id == "111")
+                        {
+                            subjects_management_button.Visibility = Visibility.Visible;
+                        }
+                        if (rol.module_id == "112")
+                        {
+                            define_exams_btn.Visibility = Visibility.Visible;
+                        }
+                        if (rol.module_id == "113")
+                        {
+                            exams_entry.Visibility = Visibility.Visible;
+                        }
+                        if (rol.module_id == "114")
+                        {
+                            general_award_list.Visibility = Visibility.Visible;
+                        }
+                        if (rol.module_id == "115")
+                        {
+                            result_card_btn_new.Visibility = Visibility.Visible;
+                        }
+                        if (rol.module_id == "116")
+                        {
+                            date_sheet_btn.Visibility = Visibility.Visible;
+                        }
+                        if (rol.module_id == "117")
+                        {
+                            exams_roll_no_slip_btn.Visibility = Visibility.Visible;
+                        }
+
 
                         // SMS Management
                         if (rol.module_id == "80")

@@ -999,7 +999,7 @@
                                     VerticalAlignment="Center"
                                     Name="exams_roll_no_slip_btn"
                                     Click="exams_roll_no_slip_btn_Click"
-                                    Visibility="Visible" />
+                                    Visibility="Collapsed" />
                             <Button Grid.Row="6"
                                     Content="Teacher Evaluation"
                                     Height="30"
