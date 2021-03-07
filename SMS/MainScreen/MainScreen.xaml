@@ -950,7 +950,16 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Top">
                             <Button Grid.Row="3"
-                                    Content="Subjects Management"
+                                    Content="Subjects"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    Name="subjects_button"
+                                    Click="subjects_button_Click"
+                                    Visibility="Collapsed"
+                                    Grid.ColumnSpan="2"
+                                    Margin="0,2" />
+                            <Button Grid.Row="3"
+                                    Content="Subjects Assignment"
                                     Height="30"
                                     VerticalAlignment="Center"
                                     Name="subjects_management_button"
@@ -1203,11 +1212,6 @@
                 </TabControl>
             </DockPanel>
             <!--End Tab Control-->
-
-
         </Grid>
-
-
-
     </Grid>
 </Window>

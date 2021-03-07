@@ -399,6 +399,10 @@ namespace SMS.MainScreen
                         {
                             exams_roll_no_slip_btn.Visibility = Visibility.Visible;
                         }
+                        if (rol.id == "118" && rol.is_active == "Y")
+                        {
+                            subjects_button.Visibility = Visibility.Visible;
+                        }
 
                         // SMS Management
                         if (rol.id == "80" && rol.is_active == "Y")
@@ -682,6 +686,10 @@ namespace SMS.MainScreen
                         if (rol.module_id == "117")
                         {
                             exams_roll_no_slip_btn.Visibility = Visibility.Visible;
+                        }
+                        if (rol.module_id == "118")
+                        {
+                            subjects_button.Visibility = Visibility.Visible;
                         }
 
 
@@ -1897,6 +1905,27 @@ namespace SMS.MainScreen
 
         // -------------------------- Exams management new exam system --------------------------------
 
+        private void subjects_button_Click(object sender, RoutedEventArgs e)
+        {
+            this.mainFrame.Content = new ExamsManagement.Subjects.SubjectSearch();
+            subjects_button.Background = Brushes.Purple;
+            subjects_button.Foreground = Brushes.White;
+
+            subjects_management_button.Background = Brushes.White;
+            subjects_management_button.Foreground = Brushes.Purple;
+            exams_entry.Background = Brushes.White;
+            exams_entry.Foreground = Brushes.Purple;
+            define_exams_btn.Background = Brushes.White;
+            define_exams_btn.Foreground = Brushes.Purple;
+            general_award_list.Background = Brushes.White;
+            general_award_list.Foreground = Brushes.Purple;
+            date_sheet_btn.Background = Brushes.White;
+            date_sheet_btn.Foreground = Brushes.Purple;
+            results_card_btn.Background = Brushes.White;
+            results_card_btn.Foreground = Brushes.Purple;
+            teacher_evaluation_btn.Background = Brushes.White;
+            teacher_evaluation_btn.Foreground = Brushes.Purple;
+        }
         private void Subjects_Mgmt_Click(object sender, RoutedEventArgs e)
         {
             //this.mainFrame.Navigate(new SubjectSearch());

@@ -603,6 +603,12 @@
     <Compile Include="ExamsManagement\RollNoSlips\RollNoSlipPage.xaml.cs">
       <DependentUpon>RollNoSlipPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExamsManagement\Subjects\SubjectForm.xaml.cs">
+      <DependentUpon>SubjectForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamsManagement\Subjects\SubjectSearch.xaml.cs">
+      <DependentUpon>SubjectSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FeeManagement\FeeDefaulters\FeeDefaultersList.xaml.cs">
       <DependentUpon>FeeDefaultersList.xaml</DependentUpon>
     </Compile>
@@ -1487,6 +1493,14 @@
     <Page Include="ExamsManagement\RollNoSlips\RollNoSlipPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamsManagement\Subjects\SubjectForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExamsManagement\Subjects\SubjectSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="FeeManagement\FeeDefaulters\FeeDefaultersList.xaml">
       <SubType>Designer</SubType>
