@@ -205,15 +205,17 @@
                         <MenuItem Header="New Admissions">
                             <Grid>
                                 <StackPanel>
-                                    <Button Height="40"
+                                    <GroupBox Header="New Session">
+                                        <Button Height="40"
                                             Width="45"
                                             Margin="0,10,0,0"
                                             Click="Button_Click"
                                             HorizontalAlignment="Center">
-                                        <Image  Source="/SMS;component/images/new.png" />
-                                    </Button>
-                                    <!--<Label Grid.Row="0" Grid.Column="0" Content="Adm Month: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Height="30"/>-->
-                                    <ComboBox Grid.Row="0"
+                                            <Image  Source="/SMS;component/images/new.png" />
+                                        </Button>
+                                    </GroupBox>
+                                    <GroupBox Header="Month Wise">
+                                        <ComboBox Grid.Row="0"
                                               Margin="0,5,0,0"
                                               Grid.Column="1"
                                               HorizontalAlignment="Center"
@@ -223,22 +225,32 @@
                                               Name="month_cmb"
                                               SelectionChanged="month_cmb_SelectionChanged"
                                               SelectedValuePath="id">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding id}"
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding id}"
                                                                HorizontalAlignment="Left"
                                                                FontSize="10"
                                                                Foreground="White"
                                                                VerticalAlignment="Center"
                                                                Visibility="Collapsed"></TextBlock>
-                                                    <TextBlock Text="{Binding month_name}"
+                                                        <TextBlock Text="{Binding month_name}"
                                                                HorizontalAlignment="Right"
                                                                FontSize="12"></TextBlock>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                    </GroupBox>
+                                    <GroupBox Header="Date Wise">
+                                        <StackPanel>
+                                            <Label Content="Start Date" FontSize="10"/>
+                                            <DatePicker Name="dtStart" SelectedDateChanged="dtStart_SelectedDateChanged"/>
+
+                                            <Label Content="End Date" FontSize="10" Margin="0,10,0,0"/>
+                                            <DatePicker Name="dtEnd" SelectedDateChanged="dtEnd_SelectedDateChanged"/>
+                                        </StackPanel>
+                                    </GroupBox>
                                 </StackPanel>
                             </Grid>
                         </MenuItem>
@@ -249,10 +261,7 @@
                             </Grid>
                         </MenuItem>
                         <Separator />
-                        <MenuItem Header="_Save" />
-                        <MenuItem Header="_Save As..." />
-                        <Separator />
-                        <MenuItem Header="_Exit" />
+                        
                     </MenuItem>
                 </Menu>
             </StackPanel>

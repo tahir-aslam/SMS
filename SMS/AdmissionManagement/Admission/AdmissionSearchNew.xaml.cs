@@ -445,7 +445,7 @@ namespace SMS.AdmissionManagement.Admission
 
                 };
             }
-            SearchTextBox.Focus();            
+            SearchTextBox.Focus();
         }
 
         //---------------           Get All Classes    ----------------------------------
@@ -577,7 +577,7 @@ namespace SMS.AdmissionManagement.Admission
                 }
                 else
                 {
-                   // adm_grid.ItemsSource = null;
+                    // adm_grid.ItemsSource = null;
                 }
             }
             SearchTextBox.Focus();
@@ -586,10 +586,10 @@ namespace SMS.AdmissionManagement.Admission
         // ================        Printing         ========================
         private void print_btn_Click(object sender, RoutedEventArgs e)
         {
-           
+
             sms_report report_data = new sms_report();
             report_data.total_strength = adm_grid.Items.OfType<admission>().Select(x => x.id).Distinct().Count();
-            report_data.male_strength = adm_grid.Items.OfType<admission>().Where(x=>x.boarding == "Y").Count();
+            report_data.male_strength = adm_grid.Items.OfType<admission>().Where(x => x.boarding == "Y").Count();
             report_data.female_strength = adm_grid.Items.OfType<admission>().Where(x => x.boarding == "N").Count();
             report_data.session = MainWindow.session.session_name;
 
@@ -600,7 +600,7 @@ namespace SMS.AdmissionManagement.Admission
         private void Adm_Withdrawl_print_btn_Click(object sender, RoutedEventArgs e)
         {
 
-            List<admission> admwithdrawl_list = admDAL.get_all_admissions_YN();  
+            List<admission> admwithdrawl_list = admDAL.get_all_admissions_YN();
             sms_report report_data = new sms_report();
             report_data.total_strength = admwithdrawl_list.Select(x => x.id).Distinct().Count();
             report_data.male_strength = admwithdrawl_list.Where(x => x.boarding == "Y").Count();
@@ -705,5 +705,28 @@ namespace SMS.AdmissionManagement.Admission
                 }
             }
         }
+
+        void FilterAdmissionDateWise(DateTime sDate, DateTime eDate)
+        {
+            adm_grid.ItemsSource = adm_list.Where(x => x.adm_date >= sDate).Where(x=>x.adm_date <= eDate);
+            adm_grid.Items.Refresh();
+        }
+
+        private void dtStart_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dtStart.SelectedDate != null && dtEnd.SelectedDate != null)
+            {
+                FilterAdmissionDateWise(dtStart.SelectedDate.Value, dtEnd.SelectedDate.Value);
+            }
+        }
+
+        private void dtEnd_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dtStart.SelectedDate != null && dtEnd.SelectedDate != null)
+            {
+                FilterAdmissionDateWise(dtStart.SelectedDate.Value, dtEnd.SelectedDate.Value);
+            }
+        }
+    
     }
 }
