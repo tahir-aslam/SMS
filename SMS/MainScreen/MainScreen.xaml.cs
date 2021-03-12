@@ -389,7 +389,7 @@ namespace SMS.MainScreen
                         }
                         if (rol.id == "115" && rol.is_active == "Y")
                         {
-                            result_card_btn_new.Visibility = Visibility.Visible;
+                            results_card_btn.Visibility = Visibility.Visible;
                         }
                         if (rol.id == "116" && rol.is_active == "Y")
                         {
@@ -677,7 +677,7 @@ namespace SMS.MainScreen
                         }
                         if (rol.module_id == "115")
                         {
-                            result_card_btn_new.Visibility = Visibility.Visible;
+                            results_card_btn.Visibility = Visibility.Visible;
                         }
                         if (rol.module_id == "116")
                         {
