@@ -427,7 +427,7 @@
                               MinWidth="100"
                               BorderBrush="#FF6593CF"
                               HorizontalAlignment="Left"
-                              BorderThickness="1,1,1,0">
+                              BorderThickness="1,1,1,0" Margin="0,6,0,-6">
                     <TabControl.Background>
                         <ImageBrush ImageSource="/SMS;component/images/23_demo_image.jpg" Stretch="UniformToFill"/>
                     </TabControl.Background>
@@ -1165,6 +1165,13 @@
                                     Name="balance_sheet_btn"
                                     Click="balance_sheet_btn_Click"
                                     Visibility="Collapsed" />
+                            <Button Grid.Row="6"
+                                    Content="Income Expense Report"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    Name="income_expense_btn"
+                                    Click="income_expense_btn_Click"
+                                    Visibility="Visible" />
 
                         </StackPanel>
                     </TabItem>

@@ -22,5 +22,11 @@ namespace SMS.Models
         public DateTime date_time { set; get; }
         public int emp_id { set; get; }
 
+        //report 
+        public DateTime from_date { get; set; }
+        public DateTime to_date { get; set; }
+        public double total_expense { get; set; }
+        public double total_revenue { get; set; }
+        public double income { get; set; }
     }
 }

@@ -894,7 +894,7 @@ namespace SMS.DAL
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "select * from sms_voucher where DATE(voucher_date) >= @sDate && DATE(voucher_date) <= @eDate ORDER BY date_time DESC";                        
+                        cmd.CommandText = "select * from sms_voucher where DATE(voucher_date) >= @sDate && DATE(voucher_date) <= @eDate ORDER BY date_time DESC";
                         cmd.Parameters.Add("@sDate", MySqlDbType.Date).Value = sDate;
                         cmd.Parameters.Add("@eDate", MySqlDbType.Date).Value = eDate;
                         cmd.Connection = con;
@@ -992,7 +992,7 @@ namespace SMS.DAL
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.CommandText = "select * from sms_voucher_entries where (DATE(voucher_date) >= @sDate && DATE(voucher_date) <= @eDate) ORDER By id DESC";                        
+                        cmd.CommandText = "select * from sms_voucher_entries where (DATE(voucher_date) >= @sDate && DATE(voucher_date) <= @eDate) ORDER By id DESC";
                         cmd.Parameters.Add("@sDate", MySqlDbType.Date).Value = sDate;
                         cmd.Parameters.Add("@eDate", MySqlDbType.Date).Value = eDate;
                         cmd.Connection = con;
@@ -1391,6 +1391,52 @@ namespace SMS.DAL
             }
             return i;
         }
+
+        #region Get all revenue and expense
+        public List<sms_voucher> getAllVoucherIncomeExpenseGroupWiseByDate(DateTime sDate, DateTime eDate)
+        {
+            List<sms_voucher> voucherList = new List<sms_voucher>();
+
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(Connection_String.con_string))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.CommandText = "SELECT ve.voucher_type_id, ve.voucher_date, Sum(amount), ve.voucher_type  FROM sms_voucher AS ve " +
+                                            "where (Date(ve.voucher_date) >= @sDate && Date(ve.voucher_date) <= @eDate)" +
+                                            "GROUP BY ve.voucher_date, ve.voucher_type_id " +
+                                            "ORDER BY ve.voucher_date ASC";
+                        cmd.Parameters.Add("@sDate", MySqlDbType.Date).Value = sDate;
+                        cmd.Parameters.Add("@eDate", MySqlDbType.Date).Value = eDate;
+                        cmd.Connection = con;
+                        con.Open();
+
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            sms_voucher voucher = new sms_voucher()
+                            {
+                                voucher_type_id = Convert.ToInt32(reader[0]),
+                                voucher_date = Convert.ToDateTime(reader[1]),
+                                amount = Convert.ToDouble(reader[2]),
+                                voucher_type = reader[3].ToString(),
+                                
+                            };
+                            voucherList.Add(voucher);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            return voucherList;
+        }
+        #endregion
 
     }
 }

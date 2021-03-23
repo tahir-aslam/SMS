@@ -641,7 +641,7 @@ namespace SMS
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }

@@ -19,7 +19,7 @@
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>E:\Scenario\Setups\SMS_2021_03_08\</PublishUrl>
+    <PublishUrl>E:\Scenario\Setups\SMS_2021_03_13\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -39,7 +39,7 @@
     <MinimumRequiredVersion>1.0.0.48</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationRevision>53</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -380,6 +380,9 @@
     </Compile>
     <Compile Include="AdvancedAccountManagement\MainAccounts\MainAccountWindow.xaml.cs">
       <DependentUpon>MainAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedAccountManagement\Reports\MonthlyIncomeExpenseReport.xaml.cs">
+      <DependentUpon>MonthlyIncomeExpenseReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdvancedAccountManagement\TrialBalance\TrialBalancePage.xaml.cs">
       <DependentUpon>TrialBalancePage.xaml</DependentUpon>
@@ -1210,6 +1213,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AdvancedAccountManagement\Reports\MonthlyIncomeExpenseReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdvancedAccountManagement\TrialBalance\TrialBalancePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -2032,6 +2039,7 @@
     <EmbeddedResource Include="AdvancedAccountManagement\CashFlowStatement\CashFlowStatementReport.rdlc" />
     <EmbeddedResource Include="AdvancedAccountManagement\DetailedAccounts\ChartOfAccountsReport.rdlc" />
     <EmbeddedResource Include="AdvancedAccountManagement\IncomeStatement\IncomeStatementReport.rdlc" />
+    <EmbeddedResource Include="AdvancedAccountManagement\Reports\MonthlyIncomeExpense.rdlc" />
     <EmbeddedResource Include="AdvancedAccountManagement\TrialBalance\TrialBalanceReport.rdlc" />
     <EmbeddedResource Include="AdvancedAccountManagement\VoucherEntry\VoucherEntryReport.rdlc" />
     <Content Include="ClassManagement\Class\ClassReport.rdlc">
@@ -2122,6 +2130,7 @@
     <None Include="SMS.Models.sms_fees4.datasource" />
     <None Include="SMS.Models.sms_history.datasource" />
     <None Include="SMS.Models.sms_report.datasource" />
+    <None Include="SMS.Models.sms_voucher.datasource" />
     <None Include="SMS.Models.sms_voucher_entries.datasource" />
     <None Include="SMS.Models.student_attendence.datasource" />
     <None Include="SMS_TemporaryKey.pfx" />

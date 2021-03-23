@@ -2878,6 +2878,30 @@ namespace SMS.MainScreen
             cashFlow_statement_btn.Foreground = Brushes.Black;
         }
 
+        private void income_expense_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.mainFrame.Navigate(new AdvancedAccountManagement.Reports.MonthlyIncomeExpenseReport());
+            income_expense_btn.Background = Brushes.Purple;
+            income_expense_btn.Foreground = Brushes.White;
+
+            trial_balance_btn.Background = Brushes.White;
+            trial_balance_btn.Foreground = Brushes.Black;
+            main_accounts_btn.Background = Brushes.White;
+            main_accounts_btn.Foreground = Brushes.Black;
+            detailed_accounts_btn.Background = Brushes.White;
+            detailed_accounts_btn.Foreground = Brushes.Black;
+            voucher_entry_btn.Background = Brushes.White;
+            voucher_entry_btn.Foreground = Brushes.Black;
+            account_ledger_btn.Background = Brushes.White;
+            account_ledger_btn.Foreground = Brushes.Black;
+            balance_sheet_btn.Background = Brushes.White;
+            balance_sheet_btn.Foreground = Brushes.Black;
+            income_statement_btn.Background = Brushes.White;
+            income_statement_btn.Foreground = Brushes.Black;
+            cashFlow_statement_btn.Background = Brushes.White;
+            cashFlow_statement_btn.Foreground = Brushes.Black;
+        }
+
 
         // Fees Management
         private void ManageFees_Click(object sender, RoutedEventArgs e)
