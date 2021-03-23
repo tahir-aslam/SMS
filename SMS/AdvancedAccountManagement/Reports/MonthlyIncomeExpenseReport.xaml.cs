@@ -77,6 +77,7 @@ namespace SMS.AdvancedAccountManagement.Reports
                         temp = new sms_voucher()
                         {
                             voucher_date = i,
+                            voucher_type_id=3,
                         };
                         entries.Add(temp);
                     }                    

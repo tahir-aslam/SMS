@@ -635,7 +635,7 @@ namespace SMS
             {
                 using (var client = new WebClient())
                 {
-                    using (var stream = client.OpenRead("http://www.google.com"))
+                    using (var stream = client.OpenRead("https://www.google.com/"))
                     {
                         return true;
                     }
