@@ -215,6 +215,7 @@ namespace SMS.ExamsManagement.RollNoSlips
                         {
                             adm_slip = new admission();
                             adm_slip.id = adm.id;
+                            adm_slip.std_image = adm.image;
                             adm_slip.std_name = adm.std_name;
                             adm_slip.father_name = adm.father_name;
                             adm_slip.class_name = adm.class_name;

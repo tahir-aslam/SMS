@@ -3266,27 +3266,29 @@ namespace SMS.MainScreen
                                 else
                                 {
                                     institute obj = new institute();
+
                                     obj.expiry_date = DateTime.Now;
                                     obj.expiry_message = MainWindow.ins.expiry_message;
                                     obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
                                     obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
                                     obj.expiry_instant = "Y";
-                                    licenseDAL.update_sms_institute_local(obj);
-                                    //MessageBox.Show("Failed To Get Intitute Information Online");                            
+
+                                    licenseDAL.update_sms_institute_local(obj);                                                      
                                 }
                                 mySqlConnection.Close();
                             }
                             catch (Exception ex)
                             {
                                 institute obj = new institute();
+
                                 obj.expiry_date = DateTime.Now;
                                 obj.expiry_message = MainWindow.ins.expiry_message;
                                 obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
                                 obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
                                 obj.expiry_instant = "Y";
+
                                 licenseDAL.update_sms_institute_local(obj);
 
-                                //MessageBox.Show("InternetConnection=true ex: "+ex.Message);
                                 throw ex;
                             }
                         }

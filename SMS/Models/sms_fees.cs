@@ -16,6 +16,7 @@ namespace SMS.Models
         public int actual_amount { get; set; }
         public int amount { get; set; }
         public int rem_amount { get; set; }
+        public string fees_status { get; set; }
         public int rem_amount_group { get; set; }
         public int discount { get; set; }
         public int wave_off { get; set; }

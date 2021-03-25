@@ -55,7 +55,7 @@
                             <TextRun>
                               <Value>=Fields!institute_name.Value</Value>
                               <Style>
-                                <FontSize>16pt</FontSize>
+                                <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -67,7 +67,7 @@
                       <rd:DefaultName>institute_name</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>DimGray</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -76,13 +76,29 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <ColSpan>5</ColSpan>
+                    <ColSpan>4</ColSpan>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
                 <TablixCell />
                 <TablixCell />
-                <TablixCell />
+                <TablixCell>
+                  <CellContents>
+                    <Image Name="Image9">
+                      <Source>Database</Source>
+                      <Value>=Fields!std_image.Value</Value>
+                      <MIMEType>image/jpeg</MIMEType>
+                      <Sizing>FitProportional</Sizing>
+                      <Style>
+                        <Border>
+                          <Color>Silver</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                      </Style>
+                    </Image>
+                    <rd:Selected>true</rd:Selected>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
