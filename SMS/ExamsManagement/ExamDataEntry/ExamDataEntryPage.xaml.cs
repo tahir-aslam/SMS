@@ -796,7 +796,7 @@ namespace SMS.ExamsManagement.ExamDataEntry
                         absent = false;
                         leave = false;
                         subject_obtained = Convert.ToDouble(ede.subject_obtained);
-                        ede.subject_obtained_int = Convert.ToInt32(ede.subject_obtained);
+                        ede.subject_obtained_int = Convert.ToDouble(ede.subject_obtained);
                         obtained_marks = obtained_marks + subject_obtained;
 
                         if (String.IsNullOrEmpty(ede.subject_total) || ede_obj.subject_total == "0")
@@ -805,7 +805,7 @@ namespace SMS.ExamsManagement.ExamDataEntry
                         else
                         {
                             subject_total = Convert.ToDouble(ede.subject_total);
-                            ede.subject_total_int = Convert.ToInt32(ede.subject_total);
+                            ede.subject_total_int = Convert.ToDouble(ede.subject_total);
                             subject_percentage = subject_obtained / subject_total;
                             subject_percentage = subject_percentage * 100;
 
