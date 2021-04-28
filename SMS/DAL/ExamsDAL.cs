@@ -63,7 +63,7 @@ namespace SMS.DAL
                         cmd.CommandText = "SELECT ses.id, ses.session_name, exam.id, exam.exam_name, cl.id, cl.class_name, sec.id, sec.section_name, emp.emp_name, "+
                                         "adm.id, adm.std_name, adm.father_name, adm.cell_no, adm.roll_no, adm.adm_no, adm.parmanent_adress, adm.image, "+
                                         "subj.id, subj.subject_name, "+
-                                        "ede.subject_obtained, ede.subject_total, ede.subject_percentage, ede.subject_grade, ede.subject_remarks, ede.obtained_marks, ede.total_marks, ede.percentage, ede.remarks, ede.grade, "+
+                                        "ede.subject_obtained, ede.subject_total, ede.subject_percentage, ede.subject_grade, ede.subject_remarks, ede.obtained_marks, ede.total_remarks, ede.percentage, ede.remarks, ede.grade, "+
                                         "ins.institute_name, ins.institute_logo, "+
                                         "ede.subject_obtained_int, ede.subject_total_int, ede.position, ass.sort_order, adm.adm_no_int, adm.roll_no_int " +
                                         "FROM sms_institute as ins, sms_exams_data_entry AS ede " +
@@ -75,7 +75,7 @@ namespace SMS.DAL
                                         "INNER JOIN sms_exams_subject_assignment AS ass ON ass.subject_id = ede.subject_id AND ass.section_id = ede.section_id "+
                                         "INNER JOIN sms_emp AS emp ON emp.id = ass.emp_id "+
                                         "INNER JOIN sms_sessions AS ses ON ses.id = ede.session_id "+
-                                        "WHERE ede.section_id = @section_id  AND ede.exam_id = @exam_id AND ede.session_id = @session_id " +
+                                        "WHERE ede.section_id = @section_id  AND ede.exam_id = @exam_id AND ede.session_id = @session_id AND adm.is_active='Y' " +
                                         "ORDER BY adm.adm_no_int ASC";
                         cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = session_id;
                         cmd.Parameters.Add("@exam_id", MySqlDbType.Int32).Value = exam_id;

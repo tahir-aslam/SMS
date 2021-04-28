@@ -108,7 +108,7 @@ namespace SMS.ViewModels
             TitleList = new List<string>();
             i = 0;
 
-            foreach (exam_data_entry ede in lst)
+            foreach (exam_data_entry ede in lst.OrderBy(x=>x.adm_no_int))
             {
                 examList.Add(ede);
             }

@@ -143,7 +143,7 @@ namespace SMS.ExamsManagement.ExamDataEntry
 
                             set_exam_data_entry_list();
                             populate_exams_entry_grid();
-                            insert_total_marks_row();
+                            insert_total_marks_row();                            
                             evm = new ExamViewModel(ede_exam_list);
                             exam_entry_grid.DataContext = evm;
                         }

@@ -3279,16 +3279,18 @@ namespace SMS.MainScreen
                             }
                             catch (Exception ex)
                             {
-                                institute obj = new institute();
+                                if (!ex.Message.Contains("The underlying connection was closed:"))
+                                {
+                                    institute obj = new institute();
 
-                                obj.expiry_date = DateTime.Now;
-                                obj.expiry_message = MainWindow.ins.expiry_message;
-                                obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
-                                obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
-                                obj.expiry_instant = "Y";
+                                    obj.expiry_date = DateTime.Now;
+                                    obj.expiry_message = MainWindow.ins.expiry_message;
+                                    obj.expiry_warning_day = MainWindow.ins.expiry_warning_day;
+                                    obj.expiry_warning_message = MainWindow.ins.expiry_warning_message;
+                                    obj.expiry_instant = "Y";
 
-                                licenseDAL.update_sms_institute_local(obj);
-
+                                    licenseDAL.update_sms_institute_local(obj);
+                                }
                                 throw ex;
                             }
                         }
