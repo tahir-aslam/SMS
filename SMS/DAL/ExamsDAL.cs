@@ -65,8 +65,9 @@ namespace SMS.DAL
                                         "subj.id, subj.subject_name, "+
                                         "ede.subject_obtained, ede.subject_total, ede.subject_percentage, ede.subject_grade, ede.subject_remarks, ede.obtained_marks, ede.total_remarks, ede.percentage, ede.remarks, ede.grade, "+
                                         "ins.institute_name, ins.institute_logo, "+
-                                        "ede.subject_obtained_int, ede.subject_total_int, ede.position, ass.sort_order, adm.adm_no_int, adm.roll_no_int " +
-                                        "FROM sms_institute as ins, sms_exams_data_entry AS ede " +
+                                        "ede.subject_obtained_int, ede.subject_total_int, ede.position, ass.sort_order, adm.adm_no_int, adm.roll_no_int, " +
+                                        "admin.position_visibility, admin.position_text_visibility, admin.position_percentage, admin.position_limit, admin.attendance_visibility, admin.attendance_text_visibility, admin.image_visibility, admin.remarks_visibility, admin.remarks_text_visibility, admin.teacher_visibility, admin.principal_visibility, admin.parents_visibility, admin.teacher_sig_text, admin.principal_sig_text, admin.parents_sig_text, admin.teacher_sig_image, admin.principal_sig_image, admin.parents_sig_image " +
+                                        "FROM sms_institute as ins, sms_exam_admin_panel as admin, sms_exams_data_entry AS ede " +
                                         "INNER JOIN sms_admission AS adm ON adm.id = ede.std_id AND adm.session_id = ede.session_id " +
                                         "INNER JOIN sms_classes AS cl ON cl.id = ede.class_id "+
                                         "INNER JOIN sms_subjects AS sec ON sec.id = ede.section_id "+
@@ -125,6 +126,25 @@ namespace SMS.DAL
                                 sort_order = Convert.ToInt32(reader[34]),
                                 adm_no_int = Convert.ToInt32(reader[35]),
                                 roll_no_int = Convert.ToInt32(reader[36]),
+
+                                position_visibility = Convert.ToString(reader[37]),
+                                position_text_visibility = Convert.ToString(reader[38]),
+                                position_percentage = Convert.ToString(reader[39]),
+                                position_limit = Convert.ToString(reader[40]),
+                                attendance_visibility = Convert.ToString(reader[41]),
+                                attendance_text_visibility = Convert.ToString(reader[42]),
+                                image_visibility = Convert.ToString(reader[43]),
+                                remarks_visibility = Convert.ToString(reader[44]),
+                                remarks_text_visibility = Convert.ToString(reader[45]),
+                                teacher_visibility = Convert.ToString(reader[46]),
+                                principal_visibility = Convert.ToString(reader[47]),
+                                parents_visibility  = Convert.ToString(reader[48]),
+                                teacher_sig_text = Convert.ToString(reader[49]),
+                                principal_sig_text = Convert.ToString(reader[50]),
+                                parents_sig_text = Convert.ToString(reader[51]),
+                                teacher_sig_image = (Byte[])(reader[52]),
+                                principal_sig_image = (Byte[])(reader[53]),
+                                parents_sig_image = (Byte[])(reader[54]),                               
                             };
                             list.Add(obj);                      
                         }

@@ -122,9 +122,16 @@ namespace SMS.ExamsManagement.ResultCard
                 ins.Name = "ins"; //Name of the report dataset in our .RDLC file
                 ins.Value = ins_list;
 
+                ReportDataSource exam_admin = new ReportDataSource();
+                List<sms_exam_admin_panel> exam_admin_list = new List<sms_exam_admin_panel>();                
+                exam_admin_list.Add(MainWindow.examAdminPanel);
+                ins.Name = "exam_admin"; //Name of the report dataset in our .RDLC file
+                ins.Value = exam_admin_list;
+
                 this._reportViewer3.LocalReport.DataSources.Clear();
                 this._reportViewer3.LocalReport.DataSources.Add(exam);
                 this._reportViewer3.LocalReport.DataSources.Add(ins);
+                this._reportViewer3.LocalReport.DataSources.Add(exam_admin);
                 this._reportViewer3.LocalReport.ReportEmbeddedResource = "SMS.ExamsManagement.ResultCard.ResultCardReport.rdlc";
                 //this._reportViewer3.LocalReport.ReportEmbeddedResource = "bin.ExamsManagement.GeneralAwardList.ExamGeneralAwardListReport.rdlc";
 

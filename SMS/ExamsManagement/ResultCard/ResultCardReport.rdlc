@@ -2147,6 +2147,7 @@
                       </Style>
                     </Textbox>
                     <ColSpan>5</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -2167,8 +2168,9 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Teacher's Sign.</Value>
+                              <Value>=Fields!teacher_sig_text.Value</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -2200,7 +2202,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox74">
+                    <Textbox Name="teacher_sig_image">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -2214,7 +2216,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox74</rd:DefaultName>
+                      <rd:DefaultName>teacher_sig_image</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2240,8 +2242,9 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Parent's Sign.</Value>
+                              <Value>=Fields!parents_sig_text.Value</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -2275,7 +2278,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox75">
+                    <Textbox Name="Textbox2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -2289,7 +2292,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox75</rd:DefaultName>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2315,8 +2318,9 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Principal's Sign.</Value>
+                              <Value>=Fields!principal_sig_text.Value</Value>
                               <Style>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -2350,7 +2354,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox76">
+                    <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -2364,7 +2368,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox76</rd:DefaultName>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2563,11 +2567,18 @@
       </ConnectionProperties>
       <rd:DataSourceID>9839d617-d7d5-4d11-bf99-7311c491f2c8</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="SMSModels2">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>162f0e77-0559-4e30-b344-5f3d9322b423</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="exam">
       <Query>
-        <DataSourceName>SMSModels1</DataSourceName>
+        <DataSourceName>SMSModels2</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -2581,6 +2592,14 @@
         </Field>
         <Field Name="att_percentage">
           <DataField>att_percentage</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="attendance_text_visibility">
+          <DataField>attendance_text_visibility</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="attendance_visibility">
+          <DataField>attendance_visibility</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="cell_no">
@@ -2647,6 +2666,10 @@
           <DataField>id</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="image_visibility">
+          <DataField>image_visibility</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="insertion">
           <DataField>insertion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -2695,6 +2718,10 @@
           <DataField>parents_sig_text</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="parents_visibility">
+          <DataField>parents_visibility</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="percentage">
           <DataField>percentage</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -2711,6 +2738,22 @@
           <DataField>position</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="position_limit">
+          <DataField>position_limit</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="position_percentage">
+          <DataField>position_percentage</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="position_text_visibility">
+          <DataField>position_text_visibility</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="position_visibility">
+          <DataField>position_visibility</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="principal_sig_image">
           <DataField>principal_sig_image</DataField>
           <rd:TypeName>System.Byte[]</rd:TypeName>
@@ -2719,8 +2762,20 @@
           <DataField>principal_sig_text</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="principal_visibility">
+          <DataField>principal_visibility</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="remarks">
           <DataField>remarks</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="remarks_text_visibility">
+          <DataField>remarks_text_visibility</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="remarks_visibility">
+          <DataField>remarks_visibility</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="roll_no">
@@ -2789,7 +2844,7 @@
         </Field>
         <Field Name="subject_obtained_int">
           <DataField>subject_obtained_int</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="subject_percentage">
           <DataField>subject_percentage</DataField>
@@ -2809,7 +2864,7 @@
         </Field>
         <Field Name="subject_total_int">
           <DataField>subject_total_int</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="teacher_sig_image">
           <DataField>teacher_sig_image</DataField>
@@ -2817,6 +2872,10 @@
         </Field>
         <Field Name="teacher_sig_text">
           <DataField>teacher_sig_text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="teacher_visibility">
+          <DataField>teacher_visibility</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="total_absents">

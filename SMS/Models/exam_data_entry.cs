@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace SMS.Models
 {
-    public class exam_data_entry : INotifyPropertyChanged
+    public class exam_data_entry : sms_exam_admin_panel, INotifyPropertyChanged
     {
         public string id { set; get; }
         public string exam_id { set; get; }
@@ -77,13 +77,13 @@ namespace SMS.Models
         public string classStrength { set; get; }
         public int sort_order { get; set; }
 
-        public string teacher_sig_text { set; get; }
-        public string principal_sig_text { set; get; }
-        public string parents_sig_text { set; get; }
+        //public string teacher_sig_text { set; get; }
+        //public string principal_sig_text { set; get; }
+        //public string parents_sig_text { set; get; }
 
-        public Byte[] teacher_sig_image { get; set; }
-        public Byte[] principal_sig_image { get; set; }
-        public Byte[] parents_sig_image { get; set; }
+        //public Byte[] teacher_sig_image { get; set; }
+        //public Byte[] principal_sig_image { get; set; }
+        //public Byte[] parents_sig_image { get; set; }
 
         public string date { set; get; }
 
