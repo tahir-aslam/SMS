@@ -114,5 +114,25 @@ namespace SMS.Views.UserControls
         {
 
         }
+
+        private void GeneralAwardList(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spBulkFeeUpdate_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void spBulkFeeUpdate_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void spBulkFeeUpdate_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
