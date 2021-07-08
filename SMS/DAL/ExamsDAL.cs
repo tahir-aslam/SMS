@@ -66,7 +66,8 @@ namespace SMS.DAL
                                         "ede.subject_obtained, ede.subject_total, ede.subject_percentage, ede.subject_grade, ede.subject_remarks, ede.obtained_marks, ede.total_remarks, ede.percentage, ede.remarks, ede.grade, "+
                                         "ins.institute_name, ins.institute_logo, "+
                                         "ede.subject_obtained_int, ede.subject_total_int, ede.position, ass.sort_order, adm.adm_no_int, adm.roll_no_int, " +
-                                        "admin.position_visibility, admin.position_text_visibility, admin.position_percentage, admin.position_limit, admin.attendance_visibility, admin.attendance_text_visibility, admin.image_visibility, admin.remarks_visibility, admin.remarks_text_visibility, admin.teacher_visibility, admin.principal_visibility, admin.parents_visibility, admin.teacher_sig_text, admin.principal_sig_text, admin.parents_sig_text, admin.teacher_sig_image, admin.principal_sig_image, admin.parents_sig_image " +
+                                        "admin.position_visibility, admin.position_text_visibility, admin.position_percentage, admin.position_limit, admin.attendance_visibility, admin.attendance_text_visibility, admin.image_visibility, admin.remarks_visibility, admin.remarks_text_visibility, admin.teacher_visibility, admin.principal_visibility, admin.parents_visibility, admin.teacher_sig_text, admin.principal_sig_text, admin.parents_sig_text, admin.teacher_sig_image, admin.principal_sig_image, admin.parents_sig_image, " +
+                                        "att.total_days, att.total_abs, att.total_presents, att.total_leaves, att.att_percentage " +
                                         "FROM sms_institute as ins, sms_exam_admin_panel as admin, sms_exams_data_entry AS ede " +
                                         "INNER JOIN sms_admission AS adm ON adm.id = ede.std_id AND adm.session_id = ede.session_id " +
                                         "INNER JOIN sms_classes AS cl ON cl.id = ede.class_id "+
@@ -75,7 +76,9 @@ namespace SMS.DAL
                                         "INNER JOIN sms_exam AS exam ON exam.id = ede.exam_id "+
                                         "INNER JOIN sms_exams_subject_assignment AS ass ON ass.subject_id = ede.subject_id AND ass.section_id = ede.section_id "+
                                         "INNER JOIN sms_emp AS emp ON emp.id = ass.emp_id "+
-                                        "INNER JOIN sms_sessions AS ses ON ses.id = ede.session_id "+
+                                        "Left JOIN (Select * from sms_student_attendence as att_inner Group By att_inner.std_id) att ON ede.std_id = att.std_id AND ede.session_id = att.session_id " +
+                                        //"INNER JOIN sms_student_attendence att ON ede.std_id = (Select std_id from sms_student_attendence as att_inner where ede.std_id = att_inner.std_id AND ede.session_id = att_inner.session_id Order By att_inner.attendence_date DESC Limit 1) " +
+                                        "INNER JOIN sms_sessions AS ses ON ses.id = ede.session_id " +
                                         "WHERE ede.section_id = @section_id  AND ede.exam_id = @exam_id AND ede.session_id = @session_id AND adm.is_active='Y' " +
                                         "ORDER BY adm.adm_no_int ASC";
                         cmd.Parameters.Add("@session_id", MySqlDbType.Int32).Value = session_id;
@@ -144,7 +147,13 @@ namespace SMS.DAL
                                 parents_sig_text = Convert.ToString(reader[51]),
                                 teacher_sig_image = (Byte[])(reader[52]),
                                 principal_sig_image = (Byte[])(reader[53]),
-                                parents_sig_image = (Byte[])(reader[54]),                               
+                                parents_sig_image = (Byte[])(reader[54]),
+
+                                total_days = Convert.ToString(reader[55]),
+                                total_absents = Convert.ToString(reader[56]),
+                                total_presents = Convert.ToString(reader[57]),
+                                total_leaves = Convert.ToString(reader[58]),
+                                att_percentage = Convert.ToString(reader[59]),
                             };
                             list.Add(obj);                      
                         }
