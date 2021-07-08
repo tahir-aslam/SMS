@@ -19,11 +19,11 @@
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>E:\Scenario\Setups\SMS_2021_04_28\</PublishUrl>
+    <PublishUrl>C:\Scenario\Setups\SMS_2021_07_06_1\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Background</UpdateMode>
+    <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
@@ -35,11 +35,11 @@
     <ErrorReportUrl>http://scenariosystem.com</ErrorReportUrl>
     <ProductName>Scenario Institute Management Software</ProductName>
     <PublisherName>Scenario Systems</PublisherName>
-    <SuiteName>Scenario</SuiteName>
+    <SuiteName>Scenario 0300-4197674</SuiteName>
     <MinimumRequiredVersion>1.0.0.48</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>59</ApplicationRevision>
+    <ApplicationRevision>61</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
